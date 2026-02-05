@@ -1,0 +1,253 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Propositional Logic
+
+1️⃣ Concept Teaching (Simple & GATE-Oriented)
+🔹 What is a Proposition?
+
+A proposition is a declarative statement that is either TRUE or FALSE, but not both.
+
+✔️ Examples:
+
+“7 is a prime number” → TRUE
+
+“2 + 2 = 5” → FALSE
+❌ Not propositions:
+
+Questions, commands, open statements (e.g., x > 5)
+
+🔹 Logical Connectives (Very Important for GATE)
+Symbol	Name	Meaning
+¬p	NOT	Negation
+p ∧ q	AND	True if both are true
+p ∨ q	OR	True if at least one is true
+p → q	Implication	False only when p=T, q=F
+p ↔ q	Biconditional	True when both same
+
+📌 GATE Trap:
+
+Students often think p → q means “q causes p” ❌
+
+Actually, only false when p is true and q is false
+
+🔹 Truth Table (Core Skill)
+
+You must be able to construct truth tables quickly for:
+
+Implication
+
+Biconditional
+
+Compound propositions
+
+🔹 Tautology, Contradiction, Contingency
+
+Tautology: Always TRUE
+
+Contradiction: Always FALSE
+
+Contingency: Sometimes true, sometimes false
+
+🔹 Important Logical Laws (Frequently Asked)
+
+De Morgan’s Laws
+
+¬(p ∧ q) = ¬p ∨ ¬q
+
+¬(p ∨ q) = ¬p ∧ ¬q
+
+Implication Removal:
+
+p → q ≡ ¬p ∨ q
+
+📌 GATE Favorite: Convert implication → OR before solving.
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+If p is TRUE and q is FALSE, what is the value of (p → q)?
+Answer: FALSE
+Explanation: Implication is false only when p=T and q=F.
+
+Q2.
+
+Which of the following is a tautology?
+A) p ∧ ¬p
+B) p ∨ ¬p
+C) p → ¬p
+D) ¬(p ∨ q)
+
+Answer: B
+Explanation: Law of excluded middle — always true.
+
+Q3.
+
+¬(p ∧ q) is logically equivalent to:
+Answer: ¬p ∨ ¬q
+Explanation: Direct application of De Morgan’s law.
+
+Q4.
+
+If p ↔ q is TRUE, then:
+Answer: p and q have same truth value
+Explanation: Biconditional is true when both match.
+
+Q5.
+
+Which is NOT a proposition?
+A) 5 > 3
+B) x + 2 = 5
+C) Earth is round
+D) 7 is odd
+
+Answer: B
+Explanation: Depends on variable x → not fixed truth value.
+
+Q6.
+
+p → q is equivalent to:
+Answer: ¬p ∨ q
+Explanation: Standard implication elimination.
+
+Q7.
+
+Which is a contradiction?
+Answer: p ∧ ¬p
+Explanation: Cannot be true simultaneously.
+
+Q8.
+
+If p = F, q = T, then p → q = ?
+Answer: TRUE
+Explanation: Implication true when antecedent is false.
+
+Q9.
+
+Truth value of (p ∨ q) ∧ ¬p when p=F, q=T?
+Answer: TRUE
+Explanation: (F∨T)=T and ¬F=T → T∧T=T.
+
+Q10.
+
+Which law converts ¬(p ∨ q)?
+Answer: De Morgan’s Law
+Explanation: ¬p ∧ ¬q.
+
+Q11.
+
+Number of rows in truth table for 3 variables?
+Answer: 8
+Explanation: 2³ = 8.
+
+Q12.
+
+p → q is false when:
+Answer: p=T, q=F
+Explanation: Only false case.
+
+Q13.
+
+(p ∧ q) → p is:
+Answer: Tautology
+Explanation: If p∧q true, p must be true.
+
+Q14.
+
+Which connective has highest precedence?
+Answer: ¬ (NOT)
+Explanation: Evaluated first.
+
+Q15.
+
+If p is TRUE, ¬p is:
+Answer: FALSE
+Explanation: Definition of negation.
+
+Q16.
+
+(p → q) ∧ (q → p) equals:
+Answer: p ↔ q
+Explanation: Definition of biconditional.
+
+Q17.
+
+Which is logically equivalent to p ∨ q?
+Answer: ¬(¬p ∧ ¬q)
+Explanation: De Morgan’s law.
+
+Q18.
+
+If p ↔ q is FALSE, then:
+Answer: p ≠ q
+Explanation: Truth values differ.
+
+Q19.
+
+Which is a contingency?
+Answer: p ∧ q
+Explanation: Sometimes true, sometimes false.
+
+Q20.
+
+Value of ¬(TRUE)?
+Answer: FALSE
+Explanation: Negation rule.
+
+Q21.
+
+(p ∨ q) ∨ r is equivalent to:
+Answer: p ∨ (q ∨ r)
+Explanation: Associative law.
+
+Q22.
+
+Which law: p ∧ T = p
+Answer: Identity law
+Explanation: TRUE does not change AND.
+
+Q23.
+
+p ∨ F = ?
+Answer: p
+Explanation: Identity law for OR.
+
+Q24.
+
+p ∧ F = ?
+Answer: FALSE
+Explanation: Domination law.
+
+Q25.
+
+p ∨ T = ?
+Answer: TRUE
+Explanation: Domination law.
+
+Q26.
+
+Which removes double negation?
+Answer: ¬(¬p) = p
+Explanation: Double negation law.
+
+Q27.
+
+(p → q) ∨ (q → p) is:
+Answer: Tautology
+Explanation: Always at least one implication true.
+
+Q28.
+
+Which is logically strongest?
+Answer: p ∧ q
+Explanation: Requires both to be true.
+
+Q29.
+
+Which is weakest?
+Answer: p ∨ q
+Explanation: Only one true needed.
+
+Q30.
+
+Main GATE use of propositional logic?
+Answer: Proofs, equivalence, reasoning
+Explanation: Foundation for TOC & Discrete problems.
