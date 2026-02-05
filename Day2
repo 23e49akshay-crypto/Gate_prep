@@ -1,0 +1,253 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Sets
+
+1️⃣ Concept Teaching (Simple & GATE-Oriented)
+🔹 What is a Set?
+
+A set is a well-defined collection of distinct objects.
+
+✔️ Examples:
+
+A = {1, 2, 3}
+
+Vowels = {a, e, i, o, u}
+
+❌ Not a set:
+
+“Collection of good students” (not well-defined)
+
+🔹 Types of Sets (VERY IMPORTANT)
+
+Empty set (∅): No elements
+
+Singleton set: One element
+
+Finite set: Limited elements
+
+Infinite set: Unlimited elements
+
+Universal set (U): All possible elements
+
+Subset (A ⊆ B): Every element of A is in B
+
+Proper subset (A ⊂ B): A ⊆ B and A ≠ B
+
+📌 GATE Trap:
+
+∅ ⊆ A is always true
+
+🔹 Set Operations
+Operation	Symbol	Meaning
+Union	A ∪ B	All elements of A or B
+Intersection	A ∩ B	Common elements
+Difference	A − B	In A but not in B
+Complement	A′	Elements not in A
+🔹 Important Laws (Frequently Asked)
+
+Commutative: A ∪ B = B ∪ A
+
+Associative: (A ∪ B) ∪ C = A ∪ (B ∪ C)
+
+Distributive: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)
+
+De Morgan’s Laws:
+
+(A ∪ B)′ = A′ ∩ B′
+
+(A ∩ B)′ = A′ ∪ B′
+
+📌 GATE Favorite: Apply De Morgan directly instead of drawing Venn diagrams.
+
+🔹 Cardinality (Number of Elements)
+
+n(A ∪ B) = n(A) + n(B) − n(A ∩ B)
+
+For 3 sets:
+
+n(A∪B∪C) = n(A)+n(B)+n(C)
+           −n(A∩B)−n(B∩C)−n(C∩A)
+           +n(A∩B∩C)
+
+
+📌 GATE Trap: Forgetting to subtract intersections.
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+If A = {1,2,3}, which is true?
+Answer: 1 ∈ A
+Explanation: 1 is an element of A.
+
+Q2.
+
+Which is always true?
+Answer: ∅ ⊆ A
+Explanation: Empty set is subset of every set.
+
+Q3.
+
+If A ⊆ B and B ⊆ A, then:
+Answer: A = B
+Explanation: Mutual containment implies equality.
+
+Q4.
+
+If A has n elements, number of subsets = ?
+Answer: 2ⁿ
+Explanation: Each element has two choices: in or out.
+
+Q5.
+
+A ∩ ∅ = ?
+Answer: ∅
+Explanation: No common elements possible.
+
+Q6.
+
+A ∪ ∅ = ?
+Answer: A
+Explanation: Union with empty set changes nothing.
+
+Q7.
+
+A ∩ U = ?
+Answer: A
+Explanation: Universal set contains all elements.
+
+Q8.
+
+A ∪ U = ?
+Answer: U
+Explanation: Union with universal gives universal.
+
+Q9.
+
+(A′)′ = ?
+Answer: A
+Explanation: Double complement law.
+
+Q10.
+
+(A ∪ B)′ = ?
+Answer: A′ ∩ B′
+Explanation: De Morgan’s law.
+
+Q11.
+
+(A ∩ B)′ = ?
+Answer: A′ ∪ B′
+Explanation: De Morgan’s law.
+
+Q12.
+
+If n(A)=20, n(B)=15, n(A∩B)=5, n(A∪B)=?
+Answer: 30
+Explanation: 20+15−5 = 30.
+
+Q13.
+
+If A ⊂ B, then:
+Answer: A ⊆ B and A ≠ B
+Explanation: Definition of proper subset.
+
+Q14.
+
+Which is NOT a subset of A={1,2}?
+Answer: {1,2,3}
+Explanation: Contains extra element.
+
+Q15.
+
+If A−B = ∅, then:
+Answer: A ⊆ B
+Explanation: No element of A lies outside B.
+
+Q16.
+
+n(P(A)) = ?
+Answer: 2ⁿ
+Explanation: Power set size.
+
+Q17.
+
+A − A = ?
+Answer: ∅
+Explanation: Removing all elements.
+
+Q18.
+
+A ∩ A = ?
+Answer: A
+Explanation: Idempotent law.
+
+Q19.
+
+A ∪ A = ?
+Answer: A
+Explanation: Idempotent law.
+
+Q20.
+
+Which law: A ∪ (B ∩ C) = (A∪B) ∩ (A∪C)?
+Answer: Distributive law
+Explanation: Union distributes over intersection.
+
+Q21.
+
+If U has 10 elements and A has 4, n(A′)=?
+Answer: 6
+Explanation: 10 − 4 = 6.
+
+Q22.
+
+Which symbol denotes complement?
+Answer: A′
+Explanation: Standard notation.
+
+Q23.
+
+If A={ }, then A is:
+Answer: Empty set
+Explanation: Contains no elements.
+
+Q24.
+
+Is {∅} empty?
+Answer: No
+Explanation: It contains one element (∅).
+
+Q25.
+
+Number of proper subsets of a set with n elements?
+Answer: 2ⁿ − 1
+Explanation: Excluding the set itself.
+
+Q26.
+
+If A ⊆ B and B ⊆ C, then:
+Answer: A ⊆ C
+Explanation: Transitive property.
+
+Q27.
+
+Which is GATE trap in sets?
+Answer: Confusing ∈ with ⊆
+Explanation: Element vs subset confusion.
+
+Q28.
+
+If A={1,{2}}, then 2 ∈ A?
+Answer: False
+Explanation: {2} is element, not 2.
+
+Q29.
+
+Which operation removes common elements?
+Answer: Difference
+Explanation: A−B removes shared elements.
+
+Q30.
+
+Most PYQ-tested concept in sets?
+Answer: Cardinality + De Morgan
+Explanation: Repeatedly asked in GATE.
