@@ -1,0 +1,284 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Relations
+
+1️⃣ Concept Teaching (Simple, Strict, GATE-Oriented)
+🔹 What is a Relation?
+
+A relation from set A to set B is a subset of A × B.
+
+Cartesian Product:
+A × B = {(a, b) | a ∈ A, b ∈ B}
+
+✔️ Example:
+If A = {1,2}, B = {a,b}
+A × B = {(1,a),(1,b),(2,a),(2,b)}
+
+A relation R ⊆ A × B
+
+🔹 Types of Relations (VERY IMPORTANT FOR GATE)
+
+Let R be a relation on set A.
+
+1️⃣ Reflexive
+
+(a, a) ∈ R for all a ∈ A
+
+✔️ Example: ≤ , ≥
+❌ Example: <
+
+📌 GATE Trap:
+Reflexive depends on domain elements, not pairs count.
+
+2️⃣ Symmetric
+
+If (a, b) ∈ R ⇒ (b, a) ∈ R
+
+✔️ Example: a = b
+❌ Example: a < b
+
+3️⃣ Antisymmetric
+
+If (a, b) ∈ R and (b, a) ∈ R ⇒ a = b
+
+✔️ Example: ≤
+📌 Trap:
+Antisymmetric ≠ asymmetric
+
+4️⃣ Transitive
+
+If (a, b) ∈ R and (b, c) ∈ R ⇒ (a, c) ∈ R
+
+✔️ Example: ≤
+❌ Example: “is parent of”
+
+🔹 Special Relations (High Weightage)
+✅ Equivalence Relation
+
+A relation that is:
+
+Reflexive
+
+Symmetric
+
+Transitive
+
+✔️ Example: a ≡ b (mod n)
+
+📌 GATE Favorite:
+Number of equivalence classes = partition of set.
+
+✅ Partial Order Relation (POSET)
+
+A relation that is:
+
+Reflexive
+
+Antisymmetric
+
+Transitive
+
+✔️ Example: (P(S), ⊆), (N, ≤)
+
+📌 Used heavily in lattices
+
+🔹 Matrix & Graph Representation
+
+Matrix: R[i][j] = 1 if (i,j) ∈ R
+
+Directed Graph:
+Nodes = elements
+Edge a → b if (a,b) ∈ R
+
+📌 GATE Trick:
+Transitivity can be checked visually using paths.
+
+🔹 Counting Relations
+
+If |A| = n and |B| = m:
+
+|A × B| = nm
+
+Number of relations = 2ⁿᵐ
+
+📌 PYQ Favorite Formula
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+If A={1,2}, B={a,b}, |A×B| = ?
+Answer: 4
+Explanation: |A×B| = 2×2
+
+Q2.
+
+A relation R is a subset of:
+Answer: A×B
+Explanation: Definition of relation.
+
+Q3.
+
+Which relation is reflexive?
+Answer: ≤
+Explanation: (a,a) always exists.
+
+Q4.
+
+Which relation is NOT reflexive?
+Answer: <
+Explanation: (a,a) never exists.
+
+Q5.
+
+If (a,b)∈R ⇒ (b,a)∈R, R is:
+Answer: Symmetric
+Explanation: Definition.
+
+Q6.
+
+Which relation is antisymmetric?
+Answer: ≤
+Explanation: Both directions imply equality.
+
+Q7.
+
+Antisymmetric means:
+Answer: a=b when both (a,b),(b,a)∈R
+Explanation: Core definition.
+
+Q8.
+
+Which is symmetric but not antisymmetric?
+Answer: a=b
+Explanation: Both directions allowed.
+
+Q9.
+
+If R is transitive and (a,b),(b,c)∈R then:
+Answer: (a,c)∈R
+Explanation: Definition.
+
+Q10.
+
+Which is NOT transitive?
+Answer: “is friend of”
+Explanation: a→b, b→c doesn’t imply a→c.
+
+Q11.
+
+Equivalence relation requires:
+Answer: Reflexive, Symmetric, Transitive
+Explanation: Standard definition.
+
+Q12.
+
+Example of equivalence relation:
+Answer: a ≡ b (mod n)
+Explanation: Satisfies all three.
+
+Q13.
+
+Equivalence classes form a:
+Answer: Partition
+Explanation: Disjoint and exhaustive.
+
+Q14.
+
+POSET stands for:
+Answer: Partially Ordered Set
+Explanation: Standard terminology.
+
+Q15.
+
+POSET requires:
+Answer: Reflexive, Antisymmetric, Transitive
+Explanation: Definition.
+
+Q16.
+
+Which is a POSET?
+Answer: (P(A), ⊆)
+Explanation: Subset relation.
+
+Q17.
+
+If |A|=n, number of relations on A is:
+Answer: 2ⁿ²
+Explanation: |A×A| = n².
+
+Q18.
+
+If |A|=3, total relations on A?
+Answer: 2⁹ = 512
+Explanation: 3×3=9.
+
+Q19.
+
+Matrix representation of relation uses:
+Answer: 0 and 1
+Explanation: Presence or absence of pair.
+
+Q20.
+
+Graph representation of relation uses:
+Answer: Directed edges
+Explanation: Ordered pairs.
+
+Q21.
+
+Which relation is reflexive & transitive but not symmetric?
+Answer: ≤
+Explanation: Standard example.
+
+Q22.
+
+Which relation is symmetric & transitive but not reflexive?
+Answer: a≠b
+Explanation: No (a,a).
+
+Q23.
+
+Identity relation is:
+Answer: {(a,a) | a∈A}
+Explanation: Only self-pairs.
+
+Q24.
+
+Identity relation is always:
+Answer: Equivalence relation
+Explanation: Satisfies all three.
+
+Q25.
+
+Universal relation contains:
+Answer: All pairs
+Explanation: A×A.
+
+Q26.
+
+Empty relation is reflexive?
+Answer: No
+Explanation: (a,a) missing.
+
+Q27.
+
+Empty relation is symmetric?
+Answer: Yes
+Explanation: Vacuously true.
+
+Q28.
+
+Empty relation is transitive?
+Answer: Yes
+Explanation: No counterexample.
+
+Q29.
+
+Most PYQ-tested relation type?
+Answer: Equivalence & POSET
+Explanation: Repeated GATE focus.
+
+Q30.
+
+Biggest GATE trap in relations?
+Answer: Confusing antisymmetric & asymmetric
+Explanation: Very common mistake.
