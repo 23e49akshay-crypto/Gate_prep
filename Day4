@@ -1,0 +1,275 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Functions
+
+1️⃣ Concept Teaching (Clear, Strict, GATE-Oriented)
+🔹 What is a Function?
+
+A function f from set A to set B is a relation such that:
+
+Every element of A is related to
+
+Exactly one element of B
+
+📌 Written as:
+f : A → B
+
+A → Domain
+
+B → Codomain
+
+Actual outputs → Range
+
+📌 GATE Trap:
+Every function is a relation, but not every relation is a function.
+
+🔹 Function Condition (VERY IMPORTANT)
+
+For f ⊆ A×B to be a function:
+
+∀a ∈ A, one and only one (a,b) must exist
+
+❌ One-to-many → NOT a function
+✔️ Many-to-one → Allowed
+
+🔹 Types of Functions (HIGH WEIGHTAGE)
+1️⃣ One-to-One (Injective)
+
+f(a₁) = f(a₂) ⇒ a₁ = a₂
+
+📌 No two different inputs map to same output.
+
+✔️ Example: f(x)=2x
+❌ Example: f(x)=x² (over integers)
+
+2️⃣ Onto (Surjective)
+
+Range = Codomain
+
+✔️ Every element of B has a pre-image.
+
+📌 GATE Trap:
+Codomain ≠ Range (check carefully).
+
+3️⃣ Bijective
+
+One-to-one
+
+Onto
+
+📌 Only bijective functions have inverses
+
+🔹 Invertible Functions
+
+A function f is invertible iff it is bijective.
+
+f⁻¹ exists
+
+f⁻¹ ∘ f = Identity
+
+🔹 Composition of Functions
+
+If f : A→B and g : B→C
+Then (g∘f)(x) = g(f(x))
+
+📌 GATE Trap:
+Order matters → g∘f ≠ f∘g
+
+🔹 Counting Functions (PYQ FAVORITE)
+
+If |A| = m, |B| = n:
+
+Total functions = nᵐ
+
+One-to-one functions (m≤n): nPₘ
+
+Onto functions: n! × S(m,n)
+(S = Stirling number of 2nd kind)
+
+📌 Usually GATE asks total functions only.
+
+🔹 Special Functions
+
+Identity function: f(x)=x
+
+Constant function: f(x)=c
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+A function is a subset of:
+Answer: A×B
+Explanation: Functions are special relations.
+
+Q2.
+
+Which condition must a function satisfy?
+Answer: Exactly one output per input
+Explanation: Core definition.
+
+Q3.
+
+Which is NOT a function?
+Answer: One-to-many relation
+Explanation: Violates function rule.
+
+Q4.
+
+Many-to-one mapping is:
+Answer: Allowed
+Explanation: Multiple inputs can map to same output.
+
+Q5.
+
+If f(x)=x² over integers, f is:
+Answer: Not one-to-one
+Explanation: f(2)=f(−2).
+
+Q6.
+
+Injective function means:
+Answer: Distinct inputs → distinct outputs
+Explanation: Definition.
+
+Q7.
+
+Surjective function means:
+Answer: Range = Codomain
+Explanation: Onto definition.
+
+Q8.
+
+Bijective function is:
+Answer: One-to-one and onto
+Explanation: Combines both.
+
+Q9.
+
+Which function has inverse?
+Answer: Bijective
+Explanation: Necessary and sufficient.
+
+Q10.
+
+If f has inverse, then f is:
+Answer: Bijective
+Explanation: Always true.
+
+Q11.
+
+If |A|=3, |B|=2, number of functions A→B?
+Answer: 2³ = 8
+Explanation: nᵐ.
+
+Q12.
+
+If |A|=2, |B|=3, number of functions?
+Answer: 3² = 9
+Explanation: Each input has 3 choices.
+
+Q13.
+
+If |A|=3, |B|=2, number of one-to-one functions?
+Answer: 0
+Explanation: m>n impossible.
+
+Q14.
+
+If |A|=2, |B|=3, injective functions?
+Answer: 3P2 = 6
+Explanation: Permutations.
+
+Q15.
+
+Onto function possible when:
+Answer: |A| ≥ |B|
+Explanation: Enough elements needed.
+
+Q16.
+
+Which is identity function?
+Answer: f(x)=x
+Explanation: Maps each element to itself.
+
+Q17.
+
+Constant function is:
+Answer: Many-to-one
+Explanation: All inputs same output.
+
+Q18.
+
+Range is always:
+Answer: Subset of codomain
+Explanation: By definition.
+
+Q19.
+
+Codomain equals range in:
+Answer: Onto function
+Explanation: Surjective property.
+
+Q20.
+
+If f:A→B and g:B→C, then g∘f maps:
+Answer: A→C
+Explanation: Composition rule.
+
+Q21.
+
+(g∘f)(x)=?
+Answer: g(f(x))
+Explanation: Definition.
+
+Q22.
+
+Is composition commutative?
+Answer: No
+Explanation: Order matters.
+
+Q23.
+
+Inverse of f exists if:
+Answer: f is bijective
+Explanation: Mandatory condition.
+
+Q24.
+
+f⁻¹∘f equals:
+Answer: Identity
+Explanation: Inverse property.
+
+Q25.
+
+Total relations vs functions:
+Answer: Functions are fewer
+Explanation: Extra restriction.
+
+Q26.
+
+If f is injective, then f⁻¹ is:
+Answer: Function
+Explanation: One-to-one ensures uniqueness.
+
+Q27.
+
+If f is surjective, then f⁻¹ is:
+Answer: Relation
+Explanation: May not be unique.
+
+Q28.
+
+Most PYQ-tested function topic?
+Answer: Counting functions
+Explanation: Very frequent.
+
+Q29.
+
+Biggest GATE trap in functions?
+Answer: Confusing range & codomain
+Explanation: Very common error.
+
+Q30.
+
+Functions are heavily used in:
+Answer: Discrete + TOC
+Explanation: Foundation topic.
