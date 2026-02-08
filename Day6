@@ -1,0 +1,311 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Graph Theory – Basics of Graphs
+
+1️⃣ Concept Teaching (Strict, Simple, GATE-Oriented)
+🔹 What is a Graph?
+
+A graph G is an ordered pair:
+
+𝐺=(V,E)
+G=(V,E)
+
+V → Set of vertices (nodes)
+
+E → Set of edges (connections)
+
+✔️ Example:
+V = {1,2,3}
+E = {(1,2), (2,3)}
+
+🔹 Types of Graphs (VERY IMPORTANT)
+1️⃣ Undirected Graph
+
+Edges have no direction
+
+(u,v) = (v,u)
+
+✔️ Example: friendship graph
+
+2️⃣ Directed Graph (Digraph)
+
+Edges have direction
+
+(u,v) ≠ (v,u)
+
+✔️ Example: one-way road
+
+3️⃣ Simple Graph
+
+No self-loop
+
+No multiple edges
+
+📌 GATE Trap:
+If multiple edges exist → not simple
+
+4️⃣ Multigraph
+
+Multiple edges allowed
+
+Self-loops may exist
+
+🔹 Degree of a Vertex
+In Undirected Graph:
+
+Degree(v) = number of edges incident on v
+
+Self-loop contributes 2
+
+📌 GATE Favorite Trap
+
+In Directed Graph:
+
+In-degree → incoming edges
+
+Out-degree → outgoing edges
+
+📌 Important Property:
+
+∑
+in-degree
+=
+∑
+out-degree
+=
+∣
+𝐸
+∣
+∑in-degree=∑out-degree=∣E∣
+🔹 Handshaking Lemma (PYQ FAVORITE)
+
+For undirected graph:
+
+∑
+degrees of all vertices
+=
+2|E|
+∑degrees of all vertices=2∣E∣
+
+📌 Important Result:
+
+Number of vertices with odd degree is always even
+
+🔹 Special Graphs
+✅ Complete Graph (Kₙ)
+
+Every pair of vertices connected
+
+Number of edges:
+
+∣E|=n(n-1)2∣E∣=2
+n(n−1)
+	​
+
+✅ Null Graph
+
+Vertices exist
+
+No edges
+
+✅ Regular Graph
+
+All vertices have same degree
+
+🔹 Path, Walk, Trail, Cycle (VERY CONFUSING – GATE TRAP)
+Term	Meaning
+Walk	Vertices & edges can repeat
+Trail	Edges not repeated
+Path	Vertices not repeated
+Cycle	Closed path
+
+📌 Most common GATE mistake:
+Path ≠ Walk
+
+🔹 Connected Graph
+
+A graph is connected if a path exists between every pair of vertices
+
+🔹 Subgraph
+
+A graph whose vertices and edges are subsets of another graph.
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+A graph G is defined as:
+Answer: (V, E)
+Explanation: Vertices and edges.
+
+Q2.
+
+In undirected graph, (u,v) equals:
+Answer: (v,u)
+Explanation: No direction.
+
+Q3.
+
+Self-loop contributes how much degree?
+Answer: 2
+Explanation: Counts twice.
+
+Q4.
+
+Which graph has no loops and no multiple edges?
+Answer: Simple graph
+Explanation: Definition.
+
+Q5.
+
+A graph with multiple edges is called:
+Answer: Multigraph
+Explanation: Definition.
+
+Q6.
+
+In-degree + out-degree sum equals:
+Answer: |E| + |E|
+Explanation: Each edge counted once each.
+
+Q7.
+
+Sum of degrees of undirected graph equals:
+Answer: 2|E|
+Explanation: Handshaking lemma.
+
+Q8.
+
+Number of odd degree vertices is always:
+Answer: Even
+Explanation: Theorem.
+
+Q9.
+
+Edges in complete graph K₅?
+Answer: 10
+Explanation: 5×4/2.
+
+Q10.
+
+Degree of each vertex in Kₙ?
+Answer: n−1
+Explanation: Connected to all others.
+
+Q11.
+
+Graph with no edges is:
+Answer: Null graph
+Explanation: Definition.
+
+Q12.
+
+All vertices same degree means:
+Answer: Regular graph
+Explanation: Definition.
+
+Q13.
+
+Path allows repetition of vertices?
+Answer: No
+Explanation: Path has no repetition.
+
+Q14.
+
+Walk allows repetition of vertices?
+Answer: Yes
+Explanation: Allowed.
+
+Q15.
+
+Trail allows repetition of edges?
+Answer: No
+Explanation: Edge repetition not allowed.
+
+Q16.
+
+Closed path is called:
+Answer: Cycle
+Explanation: Definition.
+
+Q17.
+
+Graph is connected if:
+Answer: Path exists between every pair
+Explanation: Definition.
+
+Q18.
+
+Subgraph means:
+Answer: Subset of vertices and edges
+Explanation: Definition.
+
+Q19.
+
+Which is directed graph?
+Answer: One-way road
+Explanation: Direction matters.
+
+Q20.
+
+In digraph, sum of indegrees equals:
+Answer: |E|
+Explanation: Each edge contributes once.
+
+Q21.
+
+Maximum edges in simple graph with n vertices?
+Answer: n(n−1)/2
+Explanation: Complete graph.
+
+Q22.
+
+Minimum edges for connected graph with n vertices?
+Answer: n−1
+Explanation: Tree.
+
+Q23.
+
+A tree is a graph which is:
+Answer: Connected and acyclic
+Explanation: Definition.
+
+Q24.
+
+Cycle graph contains:
+Answer: Exactly one cycle
+Explanation: Definition.
+
+Q25.
+
+Degree sequence must satisfy:
+Answer: Handshaking lemma
+Explanation: Sum even.
+
+Q26.
+
+Odd degree vertices possible count:
+Answer: 2,4,6,…
+Explanation: Even only.
+
+Q27.
+
+Most PYQ-tested concept here?
+Answer: Degree & Handshaking
+Explanation: Very frequent.
+
+Q28.
+
+Biggest GATE trap in graphs?
+Answer: Confusing path, walk, trail
+Explanation: Common mistake.
+
+Q29.
+
+Self-loop allowed in simple graph?
+Answer: No
+Explanation: Violates definition.
+
+Q30.
+
+Graph theory heavily used in:
+Answer: CN, OS, Algorithms
+Explanation: Routing, scheduling, traversal.
