@@ -1,0 +1,323 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Trees (Graph Theory)
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is a Tree?
+
+A tree is a graph that is:
+
+Connected
+
+Acyclic (no cycles)
+
+📌 Most important identity (PYQ FAVORITE):
+If a tree has n vertices, then it has exactly:
+
+𝑛
+−
+1
+ edges
+n−1 edges
+
+✔️ If either condition fails → not a tree
+
+🔹 Equivalent Definitions of Tree (VERY IMPORTANT)
+
+For a graph with n vertices, the following are equivalent:
+
+Connected and acyclic
+
+Connected with n−1 edges
+
+Acyclic with n−1 edges
+
+Exactly one simple path between every pair of vertices
+
+📌 GATE Trap:
+Questions often ask which condition is sufficient.
+
+🔹 Rooted Tree
+
+A rooted tree has:
+
+One designated node called root
+
+Direction away from the root (implicit)
+
+Terms:
+
+Parent
+
+Child
+
+Leaf (external node) → no children
+
+Internal node → at least one child
+
+Level / Height / Depth
+
+🔹 Degree in Trees
+
+Degree of a node = number of children
+
+Degree of tree = maximum degree of any node
+
+🔹 Binary Tree (HIGH WEIGHTAGE)
+
+A binary tree is a rooted tree where:
+
+Each node has at most 2 children
+
+Left child & Right child are distinguished
+
+🔹 Types of Binary Trees
+1️⃣ Full Binary Tree
+
+Every node has 0 or 2 children
+
+2️⃣ Complete Binary Tree
+
+All levels filled except possibly last
+
+Last level filled from left to right
+
+📌 Used heavily in Heaps
+
+3️⃣ Perfect Binary Tree
+
+All internal nodes have 2 children
+
+All leaves at same level
+
+🔹 Important Binary Tree Properties (PYQ GOLD)
+
+If a binary tree has:
+
+n₀ leaves
+
+n₂ nodes with 2 children
+
+Then:
+
+𝑛
+0
+=
+𝑛
+2
++
+1
+n
+0
+	​
+
+=n
+2
+	​
+
++1
+
+📌 Extremely common GATE formula
+
+🔹 Height of Binary Tree
+
+Maximum number of edges from root to a leaf
+
+For a binary tree of height h:
+
+Max nodes = 2^{h+1} − 1
+
+Min nodes = h + 1
+
+🔹 Spanning Tree
+
+A spanning tree of a graph:
+
+Includes all vertices
+
+Is a tree
+
+Has exactly n−1 edges
+
+📌 GATE Favorite:
+Connected graph may have multiple spanning trees
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+A tree with n vertices has how many edges?
+Answer: n−1
+Explanation: Fundamental property.
+
+Q2.
+
+A tree is always:
+Answer: Connected and acyclic
+Explanation: Definition.
+
+Q3.
+
+If a graph has n−1 edges and is connected, it is a:
+Answer: Tree
+Explanation: Equivalent condition.
+
+Q4.
+
+If a graph has n−1 edges and no cycles, it is a:
+Answer: Tree
+Explanation: Another equivalent condition.
+
+Q5.
+
+Number of simple paths between two vertices in a tree?
+Answer: Exactly one
+Explanation: Tree property.
+
+Q6.
+
+A rooted tree differs from a tree by having:
+Answer: A designated root
+Explanation: Definition.
+
+Q7.
+
+Leaf node is a node with:
+Answer: No children
+Explanation: External node.
+
+Q8.
+
+Internal node has:
+Answer: At least one child
+Explanation: Definition.
+
+Q9.
+
+Degree of a node in tree equals:
+Answer: Number of children
+Explanation: Rooted tree definition.
+
+Q10.
+
+A binary tree allows maximum how many children per node?
+Answer: 2
+Explanation: Definition.
+
+Q11.
+
+In a full binary tree, each node has:
+Answer: 0 or 2 children
+Explanation: Definition.
+
+Q12.
+
+A complete binary tree is used in:
+Answer: Heap
+Explanation: Data structures.
+
+Q13.
+
+Perfect binary tree means:
+Answer: All leaves at same level
+Explanation: Definition.
+
+Q14.
+
+If n₂ = number of nodes with 2 children, leaves = ?
+Answer: n₂ + 1
+Explanation: Standard formula.
+
+Q15.
+
+If a binary tree has 10 leaves, nodes with 2 children = ?
+Answer: 9
+Explanation: n₀ = n₂ + 1.
+
+Q16.
+
+Height of a single-node tree is:
+Answer: 0
+Explanation: No edges.
+
+Q17.
+
+Max nodes in binary tree of height h?
+Answer: 2^{h+1} − 1
+Explanation: Complete tree.
+
+Q18.
+
+Min nodes in binary tree of height h?
+Answer: h + 1
+Explanation: Skewed tree.
+
+Q19.
+
+Spanning tree contains how many vertices?
+Answer: All vertices
+Explanation: Definition.
+
+Q20.
+
+Spanning tree contains how many edges?
+Answer: n−1
+Explanation: Tree property.
+
+Q21.
+
+A connected graph with cycles can have:
+Answer: Multiple spanning trees
+Explanation: Different edge choices.
+
+Q22.
+
+Removing one edge from a cycle makes graph:
+Answer: A tree (if connected)
+Explanation: Cycle removed.
+
+Q23.
+
+Adding one edge to a tree creates:
+Answer: Exactly one cycle
+Explanation: Important property.
+
+Q24.
+
+Which graph is always acyclic?
+Answer: Tree
+Explanation: Definition.
+
+Q25.
+
+Binary tree is a special case of:
+Answer: Rooted tree
+Explanation: With degree ≤2.
+
+Q26.
+
+Most PYQ-tested tree concept?
+Answer: n−1 edges & binary tree formulas
+Explanation: Repeated in GATE.
+
+Q27.
+
+Biggest GATE trap in trees?
+Answer: Confusing tree with forest
+Explanation: Forest may be disconnected.
+
+Q28.
+
+Forest is defined as:
+Answer: Collection of disjoint trees
+Explanation: Definition.
+
+Q29.
+
+If a forest has k trees and n vertices, edges = ?
+Answer: n − k
+Explanation: Each tree contributes nᵢ−1.
+
+Q30.
+
+Trees are heavily used in:
+Answer: DSA & Algorithms
+Explanation: Searching, heaps, MST.
