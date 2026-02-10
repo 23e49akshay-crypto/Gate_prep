@@ -1,0 +1,291 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Euler & Hamiltonian Paths (Graph Theory)
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Euler Path & Euler Circuit
+
+An Euler path is a path that:
+
+Traverses every edge exactly once
+
+Vertices may repeat
+
+An Euler circuit (Euler cycle):
+
+Is an Euler path
+
+Starts and ends at the same vertex
+
+📌 Edges matter, not vertices (BIG GATE TRAP)
+
+🔹 Conditions for Euler Graph (UNDIRECTED)
+
+Let G be a connected undirected graph.
+
+✅ Euler Circuit exists iff:
+
+All vertices have even degree
+
+✅ Euler Path (but not circuit) exists iff:
+
+Exactly two vertices have odd degree
+
+❌ No Euler Path:
+
+More than 2 odd-degree vertices
+
+📌 PYQ FAVORITE:
+Count odd-degree vertices first.
+
+🔹 Euler Path in Directed Graph
+
+For a directed graph:
+
+✅ Euler Circuit:
+
+In-degree(v) = Out-degree(v) for every vertex
+
+✅ Euler Path (not circuit):
+
+One vertex: out-degree = in-degree + 1 (start)
+
+One vertex: in-degree = out-degree + 1 (end)
+
+All others: in-degree = out-degree
+
+🔹 Hamiltonian Path & Circuit
+
+A Hamiltonian path:
+
+Visits every vertex exactly once
+
+A Hamiltonian circuit:
+
+Hamiltonian path that is closed
+
+📌 Vertices matter, not edges (OPPOSITE of Euler)
+
+🔹 Key Differences (VERY IMPORTANT)
+Euler	Hamilton
+Covers all edges	Covers all vertices
+Vertices may repeat	No vertex repetition
+Easy necessary & sufficient conditions	No general test
+Degree-based	Structural
+
+📌 GATE Trap:
+Students mix up conditions.
+
+🔹 Important Theorems (For Hamiltonian)
+
+These are sufficient, not necessary.
+
+1️⃣ Dirac’s Theorem
+
+If a simple graph with n ≥ 3 vertices has:
+
+degree
+(v)≥𝑛2∀𝑣
+degree(v)≥2n	​∀v
+→ Graph is Hamiltonian
+
+2️⃣ Ore’s Theorem
+
+For every non-adjacent vertices u, v:
+
+𝑑𝑒𝑔(𝑢)+𝑑𝑒𝑔(v)≥𝑛
+deg(u)+deg(v)≥n
+
+→ Graph is Hamiltonian
+
+📌 GATE asks to apply, not prove
+
+🔹 Common GATE Traps
+
+Euler → count degrees
+
+Hamilton → check structure
+
+Euler conditions are necessary & sufficient
+
+Hamilton conditions are only sufficient
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Euler path uses every edge:
+Answer: Exactly once
+Explanation: Definition.
+
+Q2.
+
+Euler circuit must start and end at:
+Answer: Same vertex
+Explanation: Closed path.
+
+Q3.
+
+In Euler path, vertices may repeat?
+Answer: Yes
+Explanation: Edges are restricted, not vertices.
+
+Q4.
+
+In Hamilton path, vertices may repeat?
+Answer: No
+Explanation: Each vertex exactly once.
+
+Q5.
+
+Euler path depends on:
+Answer: Degrees of vertices
+Explanation: Odd/even degree rule.
+
+Q6.
+
+Hamilton path depends on:
+Answer: Graph structure
+Explanation: No simple formula.
+
+Q7.
+
+An undirected graph has Euler circuit if:
+Answer: All vertices have even degree
+Explanation: Necessary & sufficient.
+
+Q8.
+
+An undirected graph has Euler path (not circuit) if:
+Answer: Exactly two vertices have odd degree
+Explanation: Start and end vertices.
+
+Q9.
+
+Graph with 4 odd-degree vertices has Euler path?
+Answer: No
+Explanation: More than 2 odd vertices.
+
+Q10.
+
+Graph with 0 odd-degree vertices has:
+Answer: Euler circuit
+Explanation: All even.
+
+Q11.
+
+Directed Euler circuit requires:
+Answer: in-degree = out-degree for all
+Explanation: Balance condition.
+
+Q12.
+
+Directed Euler path requires:
+Answer: One start, one end imbalance
+Explanation: +1 and −1 condition.
+
+Q13.
+
+Hamiltonian circuit covers:
+Answer: All vertices once
+Explanation: Definition.
+
+Q14.
+
+Which graph is always Hamiltonian?
+Answer: Complete graph
+Explanation: Easy to find cycle.
+
+Q15.
+
+Which graph is always Eulerian?
+Answer: Cycle graph
+Explanation: All degrees = 2.
+
+Q16.
+
+Tree can have Euler circuit?
+Answer: No
+Explanation: Leaves have degree 1.
+
+Q17.
+
+Tree can have Euler path?
+Answer: Only if exactly two vertices exist
+Explanation: Degree-1 leaves.
+
+Q18.
+
+Path graph has Euler path?
+Answer: Yes
+Explanation: Two odd vertices.
+
+Q19.
+
+Path graph has Hamilton path?
+Answer: Yes
+Explanation: Visits all vertices once.
+
+Q20.
+
+Dirac’s theorem applies for n ≥ ?
+Answer: 3
+Explanation: Condition requirement.
+
+Q21.
+
+Dirac’s theorem condition:
+Answer: deg(v) ≥ n/2
+Explanation: For all vertices.
+
+Q22.
+
+Ore’s theorem condition:
+Answer: deg(u)+deg(v) ≥ n
+Explanation: Non-adjacent vertices.
+
+Q23.
+
+Dirac’s theorem guarantees:
+Answer: Hamiltonian graph
+Explanation: Sufficient condition.
+
+Q24.
+
+Euler theorem gives:
+Answer: Necessary & sufficient condition
+Explanation: Complete test.
+
+Q25.
+
+Hamiltonian theorems are:
+Answer: Sufficient only
+Explanation: Not necessary.
+
+Q26.
+
+Most PYQ-tested Euler concept?
+Answer: Counting odd-degree vertices
+Explanation: Always asked.
+
+Q27.
+
+Most PYQ-tested Hamilton concept?
+Answer: Dirac/Ore application
+Explanation: Standard GATE questions.
+
+Q28.
+
+Euler path ignores:
+Answer: Vertex repetition
+Explanation: Allowed.
+
+Q29.
+
+Hamilton path ignores:
+Answer: Edge repetition
+Explanation: Edge reuse allowed.
+
+Q30.
+
+Biggest GATE trap here?
+Answer: Mixing Euler & Hamilton conditions
+Explanation: Very common error.
