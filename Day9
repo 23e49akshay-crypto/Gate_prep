@@ -1,0 +1,322 @@
+🧠 Topic: Graph Coloring & Planar Graphs
+
+PART 1️⃣ – Graph Coloring
+🔹 What is Graph Coloring?
+
+Graph coloring means assigning colors to vertices such that:
+
+No two adjacent vertices have the same color.
+
+📌 This is called Proper Vertex Coloring.
+
+🔹 Chromatic Number (χ(G)) — VERY IMPORTANT
+
+The minimum number of colors required to properly color a graph is called the chromatic number.
+
+Examples:
+
+Complete graph 
+𝐾𝑛Kn
+	​
+
+ → χ(G) = n
+
+Bipartite graph → χ(G) = 2
+
+Tree (n ≥ 2) → χ(G) = 2
+
+📌 GATE Trap:
+A graph with no edges → χ(G) = 1
+
+🔹 Important Results
+1️⃣ Bipartite Graph
+
+Vertices can be divided into 2 disjoint sets
+
+No edges within same set
+
+χ(G) = 2 (if at least one edge exists)
+
+📌 A graph is bipartite iff it has no odd cycle
+
+2️⃣ Complete Graph
+𝜒(𝐾𝑛)=𝑛χ(Kn	​)=n
+
+Every vertex connected to every other.
+
+3️⃣ Cycle Graph 
+𝐶𝑛Cn
+	​
+
+
+If n is even → χ(G) = 2
+
+If n is odd → χ(G) = 3
+
+📌 Very common PYQ.
+
+🔹 Coloring Applications (GATE Perspective)
+
+Scheduling problems
+
+Register allocation
+
+Map coloring
+
+PART 2️⃣ – Planar Graphs
+🔹 What is a Planar Graph?
+
+A graph is planar if it can be drawn on a plane without edge crossings.
+
+📌 Important:
+Edges may cross in drawing but if can be rearranged to avoid crossing → planar.
+
+🔹 Euler’s Formula (EXTREMELY IMPORTANT)
+
+For connected planar graph:
+
+𝑉
+−
+𝐸
++
+𝐹
+=
+2
+V−E+F=2
+
+Where:
+
+V = vertices
+
+E = edges
+
+F = faces
+
+📌 This formula is heavily tested.
+
+🔹 Important Inequalities
+
+For simple connected planar graph with V ≥ 3:
+
+𝐸
+≤
+3
+𝑉
+−
+6
+E≤3V−6
+
+If graph has no triangles:
+
+𝐸≤2𝑉−4
+E≤2V−4
+
+📌 GATE Trick:
+Use inequality to prove non-planarity.
+
+🔹 Non-Planar Graphs (VERY IMPORTANT)
+
+Two fundamental non-planar graphs:
+
+𝐾5K5
+	​
+
+
+𝐾3,3K
+3,3
+	​
+
+
+If a graph contains either as a subdivision → non-planar.
+
+🔹 Faces in Planar Graph
+
+Using Euler’s formula:
+
+𝐹=𝐸−𝑉+2
+F=E−V+2
+🔹 Maximum Regions Formed by Edges
+
+With n vertices in planar graph:
+Max edges = 3n − 6
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Chromatic number of K₄?
+Answer: 4
+Explanation: Complete graph needs n colors.
+
+Q2.
+
+Chromatic number of tree (n≥2)?
+Answer: 2
+Explanation: Trees are bipartite.
+
+Q3.
+
+Chromatic number of cycle C₆?
+Answer: 2
+Explanation: Even cycle.
+
+Q4.
+
+Chromatic number of C₅?
+Answer: 3
+Explanation: Odd cycle.
+
+Q5.
+
+A graph with no edges has χ(G)=?
+Answer: 1
+Explanation: All vertices same color.
+
+Q6.
+
+A graph is bipartite iff:
+Answer: No odd cycle
+Explanation: Key theorem.
+
+Q7.
+
+χ(K_n)=?
+Answer: n
+Explanation: Fully connected.
+
+Q8.
+
+Minimum colors required for complete bipartite graph?
+Answer: 2
+Explanation: Two partitions.
+
+Q9.
+
+Planar graph satisfies:
+Answer: V − E + F = 2
+Explanation: Euler formula.
+
+Q10.
+
+If V=6, E=9, F=?
+Answer: 5
+Explanation: 6−9+F=2 ⇒ F=5.
+
+Q11.
+
+Max edges in planar graph with 5 vertices?
+Answer: 9
+Explanation: 3V−6 = 15−6.
+
+Q12.
+
+Which is non-planar?
+Answer: K₅
+Explanation: Fundamental theorem.
+
+Q13.
+
+Which is non-planar?
+Answer: K₃,₃
+Explanation: Bipartite non-planar.
+
+Q14.
+
+If E > 3V−6 then graph is:
+Answer: Non-planar
+Explanation: Violates inequality.
+
+Q15.
+
+Planar graph with no triangles satisfies:
+Answer: E ≤ 2V−4
+Explanation: Special case.
+
+Q16.
+
+Faces in planar graph equals:
+Answer: E − V + 2
+Explanation: From Euler.
+
+Q17.
+
+In planar graph, sum of face degrees equals:
+Answer: 2E
+Explanation: Each edge counted twice.
+
+Q18.
+
+χ(G)=2 implies graph is:
+Answer: Bipartite
+Explanation: Definition.
+
+Q19.
+
+Tree is planar?
+Answer: Yes
+Explanation: No cycles.
+
+Q20.
+
+Complete graph K₅ planar?
+Answer: No
+Explanation: Exceeds edge bound.
+
+Q21.
+
+Complete graph K₄ planar?
+Answer: Yes
+Explanation: Satisfies condition.
+
+Q22.
+
+Most PYQ-tested planar formula?
+Answer: V−E+F=2
+Explanation: Always appears.
+
+Q23.
+
+Odd cycle is bipartite?
+Answer: No
+Explanation: Requires 3 colors.
+
+Q24.
+
+Even cycle is bipartite?
+Answer: Yes
+Explanation: 2-colorable.
+
+Q25.
+
+Chromatic number of K₂,₃?
+Answer: 2
+Explanation: Bipartite.
+
+Q26.
+
+Planar graph with 10 vertices max edges?
+Answer: 24
+Explanation: 3(10)−6.
+
+Q27.
+
+If planar graph has 7 faces and 10 vertices, edges=?
+Answer: 15
+Explanation: V−E+F=2.
+
+Q28.
+
+Biggest GATE trap in planar graphs?
+Answer: Forgetting connected condition
+Explanation: Euler formula needs connected graph.
+
+Q29.
+
+Chromatic number of K₁?
+Answer: 1
+Explanation: Single vertex.
+
+Q30.
+
+Most PYQ-tested coloring concept?
+Answer: Odd vs Even cycle
+Explanation: Very common.
