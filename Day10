@@ -1,0 +1,315 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Graph Isomorphism & Graph Matrices
+
+PART 1️⃣ – Graph Isomorphism
+🔹 What is Graph Isomorphism?
+
+Two graphs G₁(V₁,E₁) and G₂(V₂,E₂) are isomorphic if:
+
+There exists a bijection
+
+𝑓:𝑉1→𝑉2f:V1	​→V2
+	​
+
+
+Such that:
+
+(𝑢,𝑣)∈𝐸1  ⟺  (𝑓(𝑓()∈𝐸2(u,v)∈E1	​
+
+⟺(f(u),f(v))∈E
+2
+	​
+
+
+📌 Meaning:
+Graphs are structurally identical, just labels differ.
+
+🔹 Necessary Conditions for Isomorphism (PYQ FAVORITE)
+
+If two graphs are isomorphic, they must have:
+
+Same number of vertices
+
+Same number of edges
+
+Same degree sequence
+
+Same number of connected components
+
+Same number of cycles of each length
+
+📌 Important:
+These are necessary but NOT sufficient.
+
+🔹 Degree Sequence Check (Very Common)
+
+Sort vertex degrees in non-decreasing order.
+
+If degree sequences differ → NOT isomorphic.
+
+If same → further checking required.
+
+🔹 Quick GATE Tricks
+
+✔ Check:
+
+Degree pattern
+
+Number of triangles
+
+Number of pendant vertices
+
+Adjacency relationships
+
+📌 GATE Trap:
+Same degree sequence ≠ automatically isomorphic.
+
+PART 2️⃣ – Graph Matrices
+🔹 1️⃣ Adjacency Matrix
+
+For graph with n vertices:
+
+n × n matrix
+
+A[i][j] = 1 if edge exists, else 0
+
+For undirected graph:
+
+Matrix is symmetric.
+
+For simple graph:
+
+Diagonal entries = 0.
+
+🔹 Important Property
+
+Number of edges in undirected graph:
+
+12∑𝐴[𝑖][𝑗]21
+	​
+
+∑A[i][j]
+🔹 2️⃣ Incidence Matrix
+
+n × m matrix (n vertices, m edges)
+
+Entry = 1 if vertex incident to edge
+
+For directed graph:
+
+−1 (tail), +1 (head)
+
+🔹 3️⃣ Degree Matrix
+
+Diagonal matrix where:
+
+D[i][i] = degree of vertex i
+
+🔹 4️⃣ Laplacian Matrix (Very Important)
+𝐿
+=
+𝐷
+−
+𝐴
+L=D−A
+
+Where:
+
+D = degree matrix
+
+A = adjacency matrix
+
+📌 Used in:
+
+Connectivity
+
+Spanning trees (Kirchhoff’s theorem)
+
+🔹 Important Matrix Results (PYQ GOLD)
+
+A² gives number of walks of length 2
+
+Aᵏ gives number of walks of length k
+
+📌 Walks, not paths (big trap).
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Two graphs are isomorphic if:
+Answer: There exists bijection preserving adjacency
+Explanation: Definition.
+
+Q2.
+
+Isomorphic graphs must have same:
+Answer: Number of vertices and edges
+Explanation: Necessary condition.
+
+Q3.
+
+If degree sequences differ:
+Answer: Not isomorphic
+Explanation: Immediate rejection.
+
+Q4.
+
+Same degree sequence guarantees isomorphism?
+Answer: No
+Explanation: Only necessary.
+
+Q5.
+
+If one graph has 3 triangles and other has 2:
+Answer: Not isomorphic
+Explanation: Cycle structure differs.
+
+Q6.
+
+Adjacency matrix of undirected graph is:
+Answer: Symmetric
+Explanation: A[i][j]=A[j][i].
+
+Q7.
+
+Adjacency matrix size for 5 vertices?
+Answer: 5×5
+Explanation: n×n.
+
+Q8.
+
+Diagonal entries in simple graph adjacency matrix:
+Answer: 0
+Explanation: No self-loops.
+
+Q9.
+
+Sum of all entries in adjacency matrix equals:
+Answer: 2|E|
+Explanation: Each edge counted twice.
+
+Q10.
+
+Incidence matrix size:
+Answer: n×m
+Explanation: Vertices × edges.
+
+Q11.
+
+In directed incidence matrix, tail entry is:
+Answer: −1
+Explanation: Convention.
+
+Q12.
+
+Degree matrix is:
+Answer: Diagonal matrix
+Explanation: Degrees on diagonal.
+
+Q13.
+
+Laplacian matrix equals:
+Answer: D − A
+Explanation: Definition.
+
+Q14.
+
+If graph has 6 vertices, adjacency matrix size?
+Answer: 6×6
+Explanation: n×n.
+
+Q15.
+
+Number of edges from adjacency matrix:
+Answer: Half of sum of entries
+Explanation: Undirected case.
+
+Q16.
+
+A²[i][j] gives:
+Answer: Walks of length 2
+Explanation: Matrix multiplication property.
+
+Q17.
+
+A³ gives:
+Answer: Walks of length 3
+Explanation: General rule.
+
+Q18.
+
+Most PYQ-tested isomorphism trick?
+Answer: Degree sequence check
+Explanation: Quick elimination.
+
+Q19.
+
+Graph with different components count is:
+Answer: Not isomorphic
+Explanation: Structure differs.
+
+Q20.
+
+Laplacian matrix used in:
+Answer: Spanning tree count
+Explanation: Kirchhoff’s theorem.
+
+Q21.
+
+If adjacency matrix not symmetric:
+Answer: Directed graph
+Explanation: Asymmetry indicates direction.
+
+Q22.
+
+Sum of degrees equals:
+Answer: 2|E|
+Explanation: Handshaking lemma.
+
+Q23.
+
+Walk differs from path because:
+Answer: Vertices may repeat
+Explanation: Walk allows repetition.
+
+Q24.
+
+Isomorphism preserves:
+Answer: Degree of vertices
+Explanation: Structural identity.
+
+Q25.
+
+Graph labeling does not affect:
+Answer: Isomorphism class
+Explanation: Only structure matters.
+
+Q26.
+
+Complete graphs with same n are:
+Answer: Isomorphic
+Explanation: Unique structure.
+
+Q27.
+
+Tree with different degree sequences are:
+Answer: Not isomorphic
+Explanation: Degree mismatch.
+
+Q28.
+
+Incidence matrix column sum equals:
+Answer: 2 (undirected simple graph)
+Explanation: Each edge touches two vertices.
+
+Q29.
+
+Largest eigenvalue of Laplacian relates to:
+Answer: Connectivity
+Explanation: Spectral property.
+
+Q30.
+
+Biggest GATE trap in isomorphism?
+Answer: Same degrees ⇒ assume isomorphic
+Explanation: Not always true.
