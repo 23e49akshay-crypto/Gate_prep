@@ -1,0 +1,309 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Isomorphism & Graph Isomorphism
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is Graph Isomorphism?
+
+Two graphs G₁(V₁, E₁) and G₂(V₂, E₂) are isomorphic if:
+
+There exists a one-to-one and onto mapping
+
+Between their vertex sets
+
+That preserves adjacency
+
+📌 In simple words:
+Graphs are structurally identical, even if drawn differently.
+
+🔹 Formal Definition
+
+A function
+
+𝑓
+:
+𝑉
+1
+→
+𝑉
+2
+f:V
+1
+	​
+
+→V
+2
+	​
+
+
+Such that:
+
+(
+𝑢
+,
+𝑣
+)
+∈
+𝐸
+1
+  
+⟺
+  
+(
+𝑓
+(
+𝑢
+)
+,
+𝑓
+(
+𝑣
+)
+)
+∈
+𝐸
+2
+(u,v)∈E
+1
+	​
+
+⟺(f(u),f(v))∈E
+2
+	​
+
+
+📌 Edges must correspond exactly.
+
+🔹 Necessary Conditions for Isomorphism (VERY IMPORTANT)
+
+If two graphs are isomorphic, they must have:
+
+Same number of vertices
+
+Same number of edges
+
+Same degree sequence
+
+Same number of connected components
+
+Same number of cycles of each length
+
+📌 GATE Trap:
+These are necessary but NOT sufficient.
+
+🔹 Degree Sequence Method (Most Common in GATE)
+
+Steps:
+
+Count degrees of all vertices
+
+Arrange in non-increasing order
+
+Compare sequences
+
+If sequences differ → NOT isomorphic.
+
+🔹 Adjacency Matrix Method
+
+Two graphs are isomorphic if:
+Their adjacency matrices are the same under permutation of rows & columns.
+
+📌 Used in theoretical questions.
+
+🔹 Important Notes
+
+Isomorphic graphs have:
+
+Same chromatic number
+
+Same number of spanning trees
+
+Same number of triangles
+
+Drawing style does NOT matter.
+
+🔹 Automorphism
+
+An automorphism is an isomorphism of a graph to itself.
+
+📌 Symmetric graphs have many automorphisms.
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Two graphs are isomorphic if they have same:
+Answer: Structure
+Explanation: Same connectivity pattern.
+
+Q2.
+
+Isomorphic graphs must have same number of vertices?
+Answer: Yes
+Explanation: Necessary condition.
+
+Q3.
+
+Isomorphic graphs must have same number of edges?
+Answer: Yes
+Explanation: Necessary.
+
+Q4.
+
+If degree sequences differ, graphs are:
+Answer: Not isomorphic
+Explanation: Immediate rejection.
+
+Q5.
+
+If degree sequences same, graphs are:
+Answer: Not necessarily isomorphic
+Explanation: Only necessary condition.
+
+Q6.
+
+Isomorphism preserves:
+Answer: Adjacency
+Explanation: Core definition.
+
+Q7.
+
+Isomorphic graphs have same chromatic number?
+Answer: Yes
+Explanation: Structural property preserved.
+
+Q8.
+
+Isomorphic graphs have same number of components?
+Answer: Yes
+Explanation: Connectivity preserved.
+
+Q9.
+
+If one graph is connected and other not:
+Answer: Not isomorphic
+Explanation: Components differ.
+
+Q10.
+
+Automorphism is:
+Answer: Isomorphism to itself
+Explanation: Definition.
+
+Q11.
+
+Complete graph Kₙ is isomorphic to:
+Answer: Any complete graph with n vertices
+Explanation: Structure identical.
+
+Q12.
+
+Cycle graph Cₙ is isomorphic to:
+Answer: Any cycle with n vertices
+Explanation: Same structure.
+
+Q13.
+
+Trees with same number of vertices are always isomorphic?
+Answer: No
+Explanation: Structure may differ.
+
+Q14.
+
+Isomorphism requires mapping to be:
+Answer: Bijective
+Explanation: One-to-one and onto.
+
+Q15.
+
+If one graph has a triangle and other does not:
+Answer: Not isomorphic
+Explanation: Cycle count differs.
+
+Q16.
+
+Adjacency matrix helps in checking:
+Answer: Isomorphism
+Explanation: By permutation.
+
+Q17.
+
+Degree sequence of K₄?
+Answer: (3,3,3,3)
+Explanation: Each connected to 3.
+
+Q18.
+
+Degree sequence of C₅?
+Answer: (2,2,2,2,2)
+Explanation: Each degree 2.
+
+Q19.
+
+If two graphs have different number of odd-degree vertices:
+Answer: Not isomorphic
+Explanation: Degree property preserved.
+
+Q20.
+
+Isomorphic graphs have same number of spanning trees?
+Answer: Yes
+Explanation: Structural invariant.
+
+Q21.
+
+Graph labeling affects isomorphism?
+Answer: No
+Explanation: Labels irrelevant.
+
+Q22.
+
+Graph shape drawing affects isomorphism?
+Answer: No
+Explanation: Structure matters only.
+
+Q23.
+
+Isomorphism problem is in which class?
+Answer: NP (not known NP-complete)
+Explanation: Complexity theory.
+
+Q24.
+
+Which property not preserved under isomorphism?
+Answer: Vertex labels
+Explanation: Labels change.
+
+Q25.
+
+If two graphs have same V and E but different degrees:
+Answer: Not isomorphic
+Explanation: Degree mismatch.
+
+Q26.
+
+Isomorphism preserves path lengths?
+Answer: Yes
+Explanation: Structural mapping.
+
+Q27.
+
+Isomorphism preserves cycle length?
+Answer: Yes
+Explanation: Structural property.
+
+Q28.
+
+Most PYQ-tested trick?
+Answer: Degree sequence check
+Explanation: First elimination step.
+
+Q29.
+
+Biggest GATE trap?
+Answer: Assuming same degree sequence implies isomorphic
+Explanation: Not sufficient.
+
+Q30.
+
+Graph isomorphism heavily used in:
+Answer: Pattern recognition & algorithms
+Explanation: Structure matching.
