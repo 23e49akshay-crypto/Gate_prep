@@ -1,0 +1,289 @@
+
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Combinatorics – Permutations & Combinations
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Fundamental Counting Principle (FCP)
+
+If:
+
+Task 1 can be done in m ways
+
+Task 2 can be done in n ways
+
+Then total ways =
+
+𝑚×𝑛
+m×n
+
+📌 Most basic but heavily used.
+
+🔹 Permutations
+
+Permutation = Arrangement matters
+
+Number of ways to arrange r objects from n:
+
+𝑛𝑃𝑟=𝑛!(𝑛−𝑟)!nP	​=(n−r)!n!
+	​
+
+Special Cases:
+
+Arrange all n objects:
+
+𝑛!n!
+
+Circular permutation:
+
+(𝑛−1)!(n−1)!
+
+📌 GATE Trap:
+For circular arrangements → reduce by 1.
+
+🔹 Combinations
+
+Combination = Selection only
+
+𝑛𝐶𝑟=𝑛!𝑟!(𝑛)!n	​=r!(n−r)!n!
+	​
+
+
+📌 Key identity:
+
+𝑛𝐶𝑟=𝑛𝐶𝑛−𝑟nCr	​=nCn−r
+	​
+
+🔹 Important Identities (Very Important)
+
+1️⃣ Pascal’s Identity:
+
+𝑛𝐶𝑟=𝑛−1𝐶𝑟−1+𝑛−1𝐶𝑟nCr	​=n−1Cr−1	​+n−1Cr
+	​
+
+
+2️⃣ Sum of all combinations:
+
+\sum_{r=0}^{n} ^nC_r = 2^n
+🔹 Combinations with Repetition
+𝑛𝐶𝑟
+ with repetition
+=𝑛+𝑟−1𝐶𝑟nCr
+	​
+
+ with repetition=
+n+r−1Cr
+	​
+
+🔹 Derangements (PYQ Favorite)
+
+Number of permutations with no element in correct position:
+
+!𝑛=𝑛!(1−11!+12!−13!+...)!n=n!(1−1!1	+21	​−3!1	​+...)
+
+Approximation:
+
+!𝑛≈𝑛!𝑒!n≈en!
+	​
+
+🔹 Multiset Permutations
+
+If objects are repeated:
+
+𝑛!𝑛1!𝑛2!𝑛3!..n1	​!n2	​!n3	​!...n!
+	​
+
+
+Example:
+Word "LEVEL":
+
+5!2!2!2!2!5!
+	​
+
+🔹 Important GATE Traps
+
+Confusing permutation vs combination
+
+Forgetting circular formula
+
+Ignoring repetition condition
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Number of permutations of 5 objects taken 3?
+Answer: 60
+Explanation: 5P3 = 5×4×3.
+
+Q2.
+
+5! equals?
+Answer: 120
+Explanation: 5×4×3×2×1.
+
+Q3.
+
+Number of combinations of 5 objects taken 2?
+Answer: 10
+Explanation: 5C2.
+
+Q4.
+
+6C0 equals?
+Answer: 1
+Explanation: One way to choose nothing.
+
+Q5.
+
+nC1 equals?
+Answer: n
+Explanation: Choosing 1 element.
+
+Q6.
+
+Number of circular permutations of 4 people?
+Answer: 6
+Explanation: (4−1)!.
+
+Q7.
+
+Sum of nC0 + nC1 + ... + nCn?
+Answer: 2^n
+Explanation: Identity.
+
+Q8.
+
+If 10C3 = 120, then 10C7 = ?
+Answer: 120
+Explanation: Symmetry property.
+
+Q9.
+
+Number of arrangements of word “ABC”?
+Answer: 6
+Explanation: 3!.
+
+Q10.
+
+Arrangements of “AAB”?
+Answer: 3
+Explanation: 3!/2!.
+
+Q11.
+
+Number of subsets of 4-element set?
+Answer: 16
+Explanation: 2⁴.
+
+Q12.
+
+Number of ways to choose 3 from 10?
+Answer: 120
+Explanation: 10C3.
+
+Q13.
+
+10P10 equals?
+Answer: 10!
+Explanation: All arranged.
+
+Q14.
+
+If order matters, use:
+Answer: Permutation
+Explanation: Arrangement.
+
+Q15.
+
+If order does not matter, use:
+Answer: Combination
+Explanation: Selection only.
+
+Q16.
+
+Derangement of 3 objects equals?
+Answer: 2
+Explanation: !3 = 2.
+
+Q17.
+
+Number of ways to seat 5 around table?
+Answer: 24
+Explanation: (5−1)!.
+
+Q18.
+
+nPr equals?
+Answer: nCr × r!
+Explanation: Identity.
+
+Q19.
+
+Maximum value of nCr occurs at r=?
+Answer: n/2
+Explanation: Symmetry.
+
+Q20.
+
+5C2 equals?
+Answer: 10
+Explanation: Formula.
+
+Q21.
+
+If repetition allowed, formula becomes?
+Answer: (n+r−1)Cr
+Explanation: Combination with repetition.
+
+Q22.
+
+Ways to arrange digits 1,2,3 without repetition?
+Answer: 6
+Explanation: 3!.
+
+Q23.
+
+Ways to arrange 3 letters from 5?
+Answer: 60
+Explanation: 5P3.
+
+Q24.
+
+Value of 0! equals?
+Answer: 1
+Explanation: Defined as 1.
+
+Q25.
+
+Pascal identity expresses?
+Answer: nCr = (n−1)C(r−1)+(n−1)Cr
+Explanation: Recursive relation.
+
+Q26.
+
+Number of subsets of n-element set?
+Answer: 2^n
+Explanation: Binary choice.
+
+Q27.
+
+Biggest GATE trap here?
+Answer: Order confusion
+Explanation: Permutation vs combination.
+
+Q28.
+
+nC(n−1) equals?
+Answer: n
+Explanation: Symmetry.
+
+Q29.
+
+If nCr = nC(r−1), then r=?
+Answer: (n+1)/2
+Explanation: Middle term equality.
+
+Q30.
+
+Most PYQ-tested combinatorics concept?
+Answer: Permutation & combination formulas
+Explanation: Very frequent.
