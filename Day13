@@ -1,0 +1,326 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Recurrence Relations
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is a Recurrence Relation?
+
+A recurrence relation defines a sequence where:
+
+𝑎
+𝑛
+ depends on previous terms
+a
+n
+	​
+
+ depends on previous terms
+
+Example:
+
+𝑎𝑛=𝑎𝑛−1+2an	​=an−1	​+2
+
+📌 Used heavily in:
+
+Algorithm analysis
+
+Divide & Conquer
+
+DP
+
+🔹 Types of Recurrence Relations
+1️⃣ Linear Recurrence
+
+Form:
+
+𝑎𝑛=𝑐1𝑎𝑛−1+𝑐2𝑎𝑛−2+...+𝑐𝑘𝑎𝑛−𝑘an	​=c1	​an−1	​+c2	​an−2	​+...+ck	​an−k
+	​
+
+2️⃣ Homogeneous Recurrence
+
+No extra term.
+
+Example:
+
+z𝑛=2𝑎𝑛−1an	​=2an−1
+	​
+
+3️⃣ Non-Homogeneous Recurrence
+
+Has extra function term.
+
+Example:
+
+𝑎𝑛=2𝑎𝑛−1+3an
+	​=2an−1+3
+🔹 Solving Linear Homogeneous Recurrence
+Step 1: Characteristic Equation
+
+If:
+
+𝑎𝑛=𝑟𝑎𝑛−1an	​=ran−1
+	​
+
+
+Assume:
+
+𝑎𝑛=𝑥𝑛an	​=xn
+
+Solve for x.
+
+Example:
+𝑎𝑛=2𝑎𝑛−1an	​=2an−1
+	​
+
+
+Characteristic equation:
+
+z=2
+x=2
+
+Solution:
+
+𝑎𝑛=𝐶(2𝑛)an	​=C(2n)
+🔹 Distinct Roots Case
+
+If:
+
+𝑎𝑛=𝑎𝑛−1+𝑎𝑛−2an	​
+=a
+n−1
+	​
+
++a
+n−2
+	​
+
+
+Characteristic equation:
+
+𝑥2=𝑥+1x2
+=x+1
+
+Solve quadratic.
+
+General solution:
+
+𝑎𝑛=𝐴𝑟1𝑛+𝐵𝑟2𝑛an	​=Ar1n	​+Br2n
+	​
+
+🔹 Repeated Roots Case
+
+If root r repeated k times:
+
+𝑎𝑛=(𝐴+𝐵𝑛+𝐶𝑛2+...)𝑟𝑛an
+	​
+=(A+Bn+Cn2+...)rn
+
+📌 Very common GATE trap.
+
+🔹 Non-Homogeneous Recurrence
+
+General solution =
+Complementary solution + Particular solution
+
+𝑎𝑛=𝑎𝑛(𝑐)+𝑎𝑛(𝑝)an	​=an(c)	​+an(p)	​
+
+🔹 Master Theorem (Algorithm Link)
+
+For:
+
+𝑇(𝑛)z𝑎𝑇(𝑛/𝑏)+𝑓(𝑛)
+T(n)=aT(n/b)+f(n)
+
+Compare f(n) with:
+
+𝑛log⁡𝑏𝑎nlogb	​a
+
+📌 Very important in GATE Algorithms.
+
+🔹 Important GATE Traps
+
+Forgetting initial conditions
+
+Ignoring repeated roots
+
+Mixing homogeneous & non-homogeneous
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Recurrence relation defines:
+Answer: Sequence recursively
+Explanation: Depends on previous terms.
+
+Q2.
+
+aₙ = 2aₙ₋₁ is:
+Answer: Linear homogeneous
+Explanation: No extra term.
+
+Q3.
+
+aₙ = 2aₙ₋₁ + 3 is:
+Answer: Non-homogeneous
+Explanation: Has constant term.
+
+Q4.
+
+Characteristic equation method used for:
+Answer: Linear recurrences
+Explanation: Standard method.
+
+Q5.
+
+If root is 3, solution form is:
+Answer: C·3ⁿ
+Explanation: Standard solution.
+
+Q6.
+
+If roots r₁,r₂ distinct:
+Answer: A r₁ⁿ + B r₂ⁿ
+Explanation: General form.
+
+Q7.
+
+If root repeated twice r:
+Answer: (A+Bn)rⁿ
+Explanation: Repeated root formula.
+
+Q8.
+
+Fibonacci recurrence is:
+Answer: aₙ = aₙ₋₁ + aₙ₋₂
+Explanation: Classic example.
+
+Q9.
+
+Order of recurrence equals:
+Answer: Number of previous terms
+Explanation: Highest lag.
+
+Q10.
+
+T(n)=2T(n/2)+n falls under:
+Answer: Master theorem
+Explanation: Divide & conquer.
+
+Q11.
+
+If f(n)=n^{log_b a}, case is:
+Answer: Case 2
+Explanation: Master theorem.
+
+Q12.
+
+Initial conditions are needed to find:
+Answer: Constants
+Explanation: A, B values.
+
+Q13.
+
+Homogeneous recurrence has:
+Answer: No extra function
+Explanation: Only previous terms.
+
+Q14.
+
+Non-homogeneous general solution equals:
+Answer: Complementary + Particular
+Explanation: Standard method.
+
+Q15.
+
+aₙ = aₙ₋₁, with a₀=5 gives:
+Answer: Constant 5
+Explanation: Repeats.
+
+Q16.
+
+Degree of characteristic equation equals:
+Answer: Order of recurrence
+Explanation: Same degree.
+
+Q17.
+
+Repeated root multiplicity 3 gives form:
+Answer: (A+Bn+Cn²)rⁿ
+Explanation: Polynomial factor.
+
+Q18.
+
+Most PYQ-tested recurrence?
+Answer: Fibonacci type
+Explanation: Common.
+
+Q19.
+
+T(n)=T(n/2)+1 gives complexity?
+Answer: O(log n)
+Explanation: Shrinking input.
+
+Q20.
+
+T(n)=2T(n/2)+1 gives complexity?
+Answer: O(n)
+Explanation: Master theorem.
+
+Q21.
+
+Characteristic equation for aₙ=aₙ₋₁+aₙ₋₂ is:
+Answer: x² = x+1
+Explanation: Substitute xⁿ.
+
+Q22.
+
+If roots are equal, ignore repeated term?
+Answer: No
+Explanation: Must multiply by n.
+
+Q23.
+
+Most GATE trap here?
+Answer: Repeated root handling
+Explanation: Common error.
+
+Q24.
+
+Recurrence used in:
+Answer: Algorithm analysis
+Explanation: Time complexity.
+
+Q25.
+
+Linear recurrence means:
+Answer: Terms appear linearly
+Explanation: No powers.
+
+Q26.
+
+If aₙ=3aₙ₋₁−2aₙ₋₂, order is:
+Answer: 2
+Explanation: Depends on two terms.
+
+Q27.
+
+Number of constants equals:
+Answer: Order
+Explanation: Same as equation degree.
+
+Q28.
+
+Biggest mistake students make?
+Answer: Skipping initial conditions
+Explanation: Cannot find constants.
+
+Q29.
+
+Complementary solution solves:
+Answer: Homogeneous part
+Explanation: Ignore extra term.
+
+Q30.
+
+Recurrence relations heavily used in:
+Answer: Algorithms & TOC
+Explanation: Complexity analysis.
