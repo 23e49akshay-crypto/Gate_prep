@@ -1,0 +1,289 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Pigeonhole Principle
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Basic Pigeonhole Principle (PHP)
+
+If:
+
+n objects are placed into m boxes
+
+n > m
+
+Then:
+👉 At least one box contains at least 2 objects
+
+📌 Simple but extremely powerful.
+
+🔹 Generalized Pigeonhole Principle
+
+If:
+
+n objects are placed into m boxes
+
+Then:
+👉 At least one box contains:
+
+⌈
+𝑛
+𝑚
+⌉
+⌈
+m
+n
+	​
+
+⌉
+
+objects
+
+(ceiling function)
+
+🔹 Why It Works?
+
+Because average number of objects per box is:
+
+𝑛
+𝑚
+m
+n
+	​
+
+
+So at least one box must have ≥ ceiling value.
+
+🔹 Common GATE Patterns
+
+Minimum number to guarantee repetition
+
+Remainder problems
+
+Birthday-type problems
+
+Graph theory degree arguments
+
+🔹 Classic Applications
+1️⃣ Minimum people to guarantee same birthday?
+
+There are 365 possible birthdays.
+
+To guarantee at least 2 share birthday:
+
+365
++
+1
+=
+366
+365+1=366
+2️⃣ Remainder Example
+
+Among 6 integers, at least two have same remainder when divided by 5.
+
+Why?
+Possible remainders: 0,1,2,3,4 (5 boxes)
+
+6 numbers → at least two share remainder.
+
+🔹 Stronger Version (Important)
+
+If n items placed in m boxes, then:
+
+At least one box has
+
+𝑘
++
+1
+ items if 
+𝑛
+>
+𝑘
+𝑚
+k+1 items if n>km
+🔹 Common GATE Traps
+
+Forgetting ceiling
+
+Mixing minimum guarantee vs possibility
+
+Overthinking simple distribution
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Basic PHP applies when:
+Answer: n > m
+Explanation: More objects than boxes.
+
+Q2.
+
+If 10 objects in 9 boxes, at least one box has:
+Answer: 2
+Explanation: 10 > 9.
+
+Q3.
+
+If 20 objects in 6 boxes, minimum in one box?
+Answer: 4
+Explanation: ceil(20/6)=4.
+
+Q4.
+
+Ceiling of 7/3 equals?
+Answer: 3
+Explanation: Smallest integer ≥ 2.33.
+
+Q5.
+
+Minimum students for two sharing birthday?
+Answer: 366
+Explanation: 365+1.
+
+Q6.
+
+Among 13 people, at least how many born in same month?
+Answer: 2
+Explanation: 12 months.
+
+Q7.
+
+If 25 socks in 3 colors, minimum to guarantee same color pair?
+Answer: 4
+Explanation: Worst case 1+1+1+1.
+
+Q8.
+
+If 100 numbers chosen from 1–99, two must be equal?
+Answer: Yes
+Explanation: 100 > 99.
+
+Q9.
+
+Minimum edges in graph with 6 vertices to ensure one vertex degree ≥3?
+Answer: 7
+Explanation: Apply PHP on degree sum.
+
+Q10.
+
+If 17 numbers chosen from 1–16, repetition guaranteed?
+Answer: Yes
+Explanation: 17 > 16.
+
+Q11.
+
+General PHP formula gives:
+Answer: ceil(n/m)
+Explanation: Maximum minimum.
+
+Q12.
+
+If n = km + 1, then at least one box has:
+Answer: k+1
+Explanation: Direct rule.
+
+Q13.
+
+Minimum people to ensure at least 3 share birthday?
+Answer: 2×365+1 = 731
+Explanation: Generalized PHP.
+
+Q14.
+
+Among 51 integers, at least two have same remainder mod 50?
+Answer: Yes
+Explanation: 51 > 50.
+
+Q15.
+
+PHP proves existence, not:
+Answer: Which specific box
+Explanation: Only guarantee.
+
+Q16.
+
+If 9 balls in 4 boxes, at least one has?
+Answer: 3
+Explanation: ceil(9/4)=3.
+
+Q17.
+
+Minimum to guarantee 4 in same box when 5 boxes?
+Answer: 16
+Explanation: 3×5+1.
+
+Q18.
+
+Most PYQ-tested idea?
+Answer: Remainder problems
+Explanation: Very common.
+
+Q19.
+
+If 1000 numbers chosen from 1–999, repetition?
+Answer: Yes
+Explanation: 1000 > 999.
+
+Q20.
+
+PHP heavily used in:
+Answer: Graph theory
+Explanation: Degree arguments.
+
+Q21.
+
+Among 6 people, two have same initial?
+Answer: Yes
+Explanation: 26 letters? No guarantee — trap question.
+
+Q22.
+
+If 27 pigeons, 26 holes, minimum one hole has?
+Answer: 2
+Explanation: Basic PHP.
+
+Q23.
+
+If 100 objects in 10 boxes, at least one has?
+Answer: 10
+Explanation: ceil(100/10)=10.
+
+Q24.
+
+Biggest GATE trap here?
+Answer: Forgetting ceiling
+Explanation: Common mistake.
+
+Q25.
+
+PHP guarantees at least one box has ≥ average?
+Answer: Yes
+Explanation: Ceiling of average.
+
+Q26.
+
+If 30 students, 4 sections, minimum in one section?
+Answer: 8
+Explanation: ceil(30/4)=8.
+
+Q27.
+
+Among 367 people, at least two share birthday?
+Answer: Yes
+Explanation: >365.
+
+Q28.
+
+If 8 numbers chosen from 1–7, repetition?
+Answer: Yes
+Explanation: 8>7.
+
+Q29.
+
+General PHP helps in finding:
+Answer: Minimum guarantee
+Explanation: Core use.
+
+Q30.
+
+Most common student mistake?
+Answer: Using floor instead of ceiling
+Explanation: Must use ceiling.
