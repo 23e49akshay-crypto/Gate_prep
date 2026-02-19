@@ -1,0 +1,372 @@
+📚 Subject: Engineering Mathematics – Discrete Mathematics
+🧠 Topic: Engineering Mathematics – Linear Algebra (Matrices & Determinants)
+
+✅ We have completed the core Discrete Mathematics portion.
+Now we move to Engineering Mathematics.
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Matrix Basics
+
+A matrix is a rectangular array of numbers:
+
+𝐴=[𝑎𝑖𝑗]
+A=[a
+ij]
+
+Size: m × n
+m → rows
+n → columns
+
+🔹 Types of Matrices
+
+Row matrix (1 × n)
+
+Column matrix (m × 1)
+
+Square matrix (n × n)
+
+Zero matrix
+
+Identity matrix (I)
+
+Diagonal matrix
+
+Symmetric matrix (A = Aᵀ)
+
+Skew-symmetric (Aᵀ = −A)
+
+📌 GATE Trap:
+Diagonal entries of skew-symmetric matrix are always 0.
+
+🔹 Matrix Operations
+1️⃣ Addition
+
+Only same order matrices.
+
+2️⃣ Multiplication
+
+If A is m×n and B is n×p
+Result = m×p
+
+📌 Matrix multiplication is NOT commutative.
+
+🔹 Transpose
+(
+𝐴
+𝑇
+)
+𝑖
+𝑗
+=
+𝐴
+𝑗
+𝑖
+(A
+T
+)
+ij
+	​
+
+=A
+ji
+	​
+
+
+Properties:
+
+(Aᵀ)ᵀ = A
+
+(AB)ᵀ = BᵀAᵀ
+
+🔹 Determinant (Very Important)
+
+Defined only for square matrix.
+
+For 2×2 matrix:
+
+∣
+𝑎
+	
+𝑏
+
+
+𝑐
+	
+𝑑
+∣
+=
+𝑎
+𝑑
+−
+𝑏
+𝑐
+	​
+
+a
+c
+	​
+
+b
+d
+	​
+
+	​
+
+=ad−bc
+🔹 Important Determinant Properties
+
+1️⃣ Swap two rows → sign changes
+2️⃣ Two identical rows → determinant = 0
+3️⃣ Row multiple factor comes outside
+4️⃣ Upper/lower triangular matrix → product of diagonal elements
+
+📌 GATE Favorite:
+Use row operations smartly.
+
+🔹 Inverse of Matrix
+𝐴
+−
+1
+=
+1
+∣
+𝐴
+∣
+adj
+(
+𝐴
+)
+A
+−1
+=
+∣A∣
+1
+	​
+
+adj(A)
+
+Exists only if:
+
+∣
+𝐴
+∣
+≠
+0
+∣A∣
+
+=0
+
+📌 Determinant ≠ 0 → matrix is non-singular
+
+🔹 Rank of Matrix
+
+Rank = Maximum number of linearly independent rows (or columns).
+
+📌 Rank ≤ min(m,n)
+
+🔹 System of Linear Equations
+
+For AX = B:
+
+Unique solution → det(A) ≠ 0
+
+No solution → inconsistent
+
+Infinite solutions → rank deficient
+
+🔹 Eigenvalues & Eigenvectors (Introduction)
+
+Eigenvalue λ satisfies:
+
+∣
+𝐴
+−
+𝜆
+𝐼
+∣
+=
+0
+∣A−λI∣=0
+
+📌 Characteristic equation.
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Matrix of size 3×4 has:
+Answer: 3 rows, 4 columns
+Explanation: Order definition.
+
+Q2.
+
+Multiplication possible if:
+Answer: Columns of A = rows of B
+Explanation: Condition.
+
+Q3.
+
+Matrix multiplication is:
+Answer: Not commutative
+Explanation: AB ≠ BA generally.
+
+Q4.
+
+Transpose of transpose equals:
+Answer: Original matrix
+Explanation: (Aᵀ)ᵀ = A.
+
+Q5.
+
+If A symmetric, then:
+Answer: A = Aᵀ
+Explanation: Definition.
+
+Q6.
+
+If A skew-symmetric, diagonal entries are:
+Answer: 0
+Explanation: aᵢᵢ = −aᵢᵢ.
+
+Q7.
+
+Determinant of identity matrix equals:
+Answer: 1
+Explanation: Product of diagonals.
+
+Q8.
+
+If two rows identical, determinant equals:
+Answer: 0
+Explanation: Property.
+
+Q9.
+
+Determinant of triangular matrix equals:
+Answer: Product of diagonal elements
+Explanation: Key property.
+
+Q10.
+
+If det(A)=0, matrix is:
+Answer: Singular
+Explanation: No inverse.
+
+Q11.
+
+Inverse exists if:
+Answer: det(A) ≠ 0
+Explanation: Condition.
+
+Q12.
+
+Rank of identity matrix of size n?
+Answer: n
+Explanation: All rows independent.
+
+Q13.
+
+Rank ≤ ?
+Answer: min(m,n)
+Explanation: Definition.
+
+Q14.
+
+Eigenvalues found from:
+Answer: |A − λI| = 0
+Explanation: Characteristic equation.
+
+Q15.
+
+If λ is eigenvalue, then Ax = ?
+Answer: λx
+Explanation: Definition.
+
+Q16.
+
+det(AB) equals:
+Answer: det(A)det(B)
+Explanation: Property.
+
+Q17.
+
+If A invertible, rank equals:
+Answer: n
+Explanation: Full rank.
+
+Q18.
+
+If A is 2×2 and det=5, det(A⁻¹)=?
+Answer: 1/5
+Explanation: Reciprocal.
+
+Q19.
+
+Trace of matrix equals:
+Answer: Sum of diagonal elements
+Explanation: Definition.
+
+Q20.
+
+Eigenvalues sum equals:
+Answer: Trace
+Explanation: Property.
+
+Q21.
+
+Eigenvalues product equals:
+Answer: Determinant
+Explanation: Property.
+
+Q22.
+
+If A orthogonal, then:
+Answer: AᵀA = I
+Explanation: Definition.
+
+Q23.
+
+If A symmetric, eigenvalues are:
+Answer: Real
+Explanation: Important theorem.
+
+Q24.
+
+Most PYQ-tested determinant property?
+Answer: Row operation tricks
+Explanation: Frequently used.
+
+Q25.
+
+If rank < n in AX=B, solutions are:
+Answer: Infinite or none
+Explanation: Depends consistency.
+
+Q26.
+
+Characteristic equation degree equals:
+Answer: n
+Explanation: For n×n matrix.
+
+Q27.
+
+If A diagonal, eigenvalues are:
+Answer: Diagonal elements
+Explanation: Direct.
+
+Q28.
+
+Biggest GATE trap here?
+Answer: Forgetting determinant sign change
+Explanation: Row swap mistake.
+
+Q29.
+
+Identity matrix inverse equals:
+Answer: Identity
+Explanation: I⁻¹ = I.
+
+Q30.
+
+Matrices heavily used in:
+Answer: Linear Algebra & ML
+Explanation: Core math tool.
