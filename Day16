@@ -1,0 +1,405 @@
+📚 Subject: Engineering Mathematics – Linear Algebra
+🧠 Topic: Vector Spaces & Linear Independence
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Vector Space
+
+A vector space over a field F is a set V with:
+
+Vector addition
+
+Scalar multiplication
+
+Satisfying 10 axioms (closure, associativity, distributive laws, etc.)
+
+📌 For GATE: Focus on examples, subspaces, basis, dimension.
+
+🔹 Examples of Vector Spaces
+
+ℝⁿ
+
+Polynomial space Pₙ
+
+Set of all m×n matrices
+
+Continuous functions
+
+🔹 Subspace
+
+A subset W of V is a subspace if:
+
+Contains zero vector
+
+Closed under addition
+
+Closed under scalar multiplication
+
+📌 Subspace Test (Very Important)
+
+🔹 Linear Combination
+
+Vector v is linear combination of v₁, v₂,…, vₙ if:
+
+𝑣
+=
+𝑐
+1
+𝑣
+1
++
+𝑐
+2
+𝑣
+2
++
+.
+.
+.
++
+𝑐
+𝑛
+𝑣
+𝑛
+v=c
+1
+	​
+
+v
+1
+	​
+
++c
+2
+	​
+
+v
+2
+	​
+
++...+c
+n
+	​
+
+v
+n
+	​
+
+🔹 Linear Independence (VERY IMPORTANT)
+
+Vectors v₁, v₂,…, vₙ are linearly independent if:
+
+𝑐
+1
+𝑣
+1
++
+𝑐
+2
+𝑣
+2
++
+.
+.
+.
++
+𝑐
+𝑛
+𝑣
+𝑛
+=
+0
+c
+1
+	​
+
+v
+1
+	​
+
++c
+2
+	​
+
+v
+2
+	​
+
++...+c
+n
+	​
+
+v
+n
+	​
+
+=0
+
+implies:
+
+𝑐
+1
+=
+𝑐
+2
+=
+.
+.
+.
+=
+𝑐
+𝑛
+=
+0
+c
+1
+	​
+
+=c
+2
+	​
+
+=...=c
+n
+	​
+
+=0
+
+Otherwise → linearly dependent.
+
+🔹 Key Results
+
+If number of vectors > dimension → dependent
+
+If determinant ≠ 0 → vectors independent
+
+Rank equals maximum independent vectors
+
+🔹 Basis
+
+A set of vectors that:
+
+Are linearly independent
+
+Span the vector space
+
+📌 Basis size = Dimension
+
+🔹 Dimension
+
+Number of vectors in any basis.
+
+Example:
+
+ℝ³ → dimension = 3
+
+P₂ → dimension = 3
+
+🔹 Row Space & Column Space
+
+Row space dimension = Rank
+
+Column space dimension = Rank
+
+📌 Important theorem:
+Row rank = Column rank
+
+🔹 Null Space
+
+Set of solutions to:
+
+𝐴
+𝑥
+=
+0
+Ax=0
+
+Dimension of null space = Nullity
+
+Rank-Nullity Theorem:
+
+Rank
++
+Nullity
+=
+𝑛
+Rank+Nullity=n
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+ℝ³ is a vector space over:
+Answer: ℝ
+Explanation: Real field.
+
+Q2.
+
+Zero vector must exist in:
+Answer: Vector space
+Explanation: Axiom.
+
+Q3.
+
+Subspace must contain:
+Answer: Zero vector
+Explanation: Mandatory.
+
+Q4.
+
+If set not closed under addition, it is:
+Answer: Not subspace
+Explanation: Violates condition.
+
+Q5.
+
+Vectors independent if only trivial solution?
+Answer: Yes
+Explanation: Definition.
+
+Q6.
+
+If determinant of matrix ≠ 0, columns are:
+Answer: Independent
+Explanation: Full rank.
+
+Q7.
+
+Basis must satisfy:
+Answer: Independent and spanning
+Explanation: Two conditions.
+
+Q8.
+
+Dimension equals:
+Answer: Number of basis vectors
+Explanation: Definition.
+
+Q9.
+
+Dimension of ℝ⁴?
+Answer: 4
+Explanation: Standard basis.
+
+Q10.
+
+Dimension of P₂?
+Answer: 3
+Explanation: {1,x,x²}.
+
+Q11.
+
+If 5 vectors in ℝ³, they are:
+Answer: Dependent
+Explanation: More than dimension.
+
+Q12.
+
+Rank equals:
+Answer: Maximum independent rows
+Explanation: Definition.
+
+Q13.
+
+Rank-nullity theorem states:
+Answer: Rank + Nullity = n
+Explanation: Fundamental theorem.
+
+Q14.
+
+Null space solves:
+Answer: Ax=0
+Explanation: Homogeneous system.
+
+Q15.
+
+Dimension of null space is:
+Answer: Nullity
+Explanation: Definition.
+
+Q16.
+
+If rank = n, nullity equals:
+Answer: 0
+Explanation: Full rank.
+
+Q17.
+
+Row rank equals:
+Answer: Column rank
+Explanation: Important theorem.
+
+Q18.
+
+If vectors span space but not independent, they are:
+Answer: Not basis
+Explanation: Need both conditions.
+
+Q19.
+
+If independent but not spanning, they are:
+Answer: Not basis
+Explanation: Need spanning too.
+
+Q20.
+
+Standard basis of ℝ² has:
+Answer: 2 vectors
+Explanation: e₁, e₂.
+
+Q21.
+
+Maximum independent vectors in ℝ⁵?
+Answer: 5
+Explanation: Dimension.
+
+Q22.
+
+If rank < n, system has:
+Answer: Infinite solutions
+Explanation: Nullity > 0.
+
+Q23.
+
+Most PYQ-tested concept here?
+Answer: Rank-nullity
+Explanation: Frequently asked.
+
+Q24.
+
+Linear combination forms:
+Answer: Span
+Explanation: Set generated.
+
+Q25.
+
+If determinant = 0, vectors are:
+Answer: Dependent
+Explanation: Singular matrix.
+
+Q26.
+
+Basis of ℝ³ example?
+Answer: {(1,0,0),(0,1,0),(0,0,1)}
+Explanation: Standard basis.
+
+Q27.
+
+Biggest GATE trap?
+Answer: Forgetting zero vector condition
+Explanation: Subspace check.
+
+Q28.
+
+Nullity cannot exceed:
+Answer: n
+Explanation: Dimension limit.
+
+Q29.
+
+Dimension of row space equals:
+Answer: Rank
+Explanation: Theorem.
+
+Q30.
+
+Vector spaces heavily used in:
+Answer: ML, Signal Processing
+Explanation: Linear algebra base.
