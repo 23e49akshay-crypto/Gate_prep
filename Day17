@@ -1,0 +1,316 @@
+📚 Subject: Engineering Mathematics – Linear Algebra
+🧠 Topic: Eigenvalues, Eigenvectors & Diagonalization
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Eigenvalue & Eigenvector
+
+For a square matrix A:
+
+A non-zero vector x is an eigenvector if:
+
+𝐴
+𝑥
+=
+𝜆
+𝑥
+Ax=λx
+
+Where:
+
+λ → eigenvalue
+
+x ≠ 0
+
+🔹 Characteristic Equation
+
+Eigenvalues are found by solving:
+
+∣
+𝐴
+−
+𝜆
+𝐼
+∣
+=
+0
+∣A−λI∣=0
+
+This gives a polynomial of degree n (for n×n matrix).
+
+🔹 Key Properties (Very Important)
+
+1️⃣ Sum of eigenvalues = Trace(A)
+2️⃣ Product of eigenvalues = det(A)
+3️⃣ If A is triangular → eigenvalues = diagonal elements
+4️⃣ If A symmetric → eigenvalues are real
+5️⃣ If λ is eigenvalue of A, then 1/λ is eigenvalue of A⁻¹
+
+🔹 Eigenvectors
+
+After finding λ, solve:
+
+(
+𝐴
+−
+𝜆
+𝐼
+)
+𝑥
+=
+0
+(A−λI)x=0
+
+This gives eigenvectors.
+
+🔹 Algebraic vs Geometric Multiplicity
+
+Algebraic multiplicity → times λ appears as root
+
+Geometric multiplicity → dimension of eigenspace
+
+Important:
+
+1
+≤
+𝐺
+𝑀
+≤
+𝐴
+𝑀
+1≤GM≤AM
+🔹 Diagonalization
+
+Matrix A is diagonalizable if:
+
+𝐴
+=
+𝑃
+𝐷
+𝑃
+−
+1
+A=PDP
+−1
+
+Where:
+
+D → diagonal matrix of eigenvalues
+
+P → matrix of eigenvectors
+
+Condition:
+Matrix must have n linearly independent eigenvectors.
+
+🔹 When is Matrix NOT Diagonalizable?
+
+If:
+
+Geometric multiplicity < Algebraic multiplicity
+
+📌 Very common GATE question.
+
+🔹 Orthogonal Diagonalization
+
+If A is symmetric:
+
+𝐴
+=
+𝑄
+𝐷
+𝑄
+𝑇
+A=QDQ
+T
+
+Where Q is orthogonal.
+
+🔹 Cayley-Hamilton Theorem
+
+Every matrix satisfies its own characteristic equation.
+
+Used to:
+
+Find powers of matrix
+
+Find inverse
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Eigenvalue equation is:
+Answer: Ax = λx
+Explanation: Definition.
+
+Q2.
+
+Eigenvectors must be:
+Answer: Non-zero
+Explanation: Zero vector not allowed.
+
+Q3.
+
+Eigenvalues found using:
+Answer: |A − λI| = 0
+Explanation: Characteristic equation.
+
+Q4.
+
+Sum of eigenvalues equals:
+Answer: Trace
+Explanation: Property.
+
+Q5.
+
+Product of eigenvalues equals:
+Answer: Determinant
+Explanation: Property.
+
+Q6.
+
+Eigenvalues of triangular matrix are:
+Answer: Diagonal elements
+Explanation: Determinant expansion.
+
+Q7.
+
+If A symmetric, eigenvalues are:
+Answer: Real
+Explanation: Theorem.
+
+Q8.
+
+If λ eigenvalue of A, then eigenvalue of A⁻¹ is:
+Answer: 1/λ
+Explanation: Property.
+
+Q9.
+
+If det(A)=0, one eigenvalue must be:
+Answer: 0
+Explanation: Product property.
+
+Q10.
+
+Geometric multiplicity ≤ ?
+Answer: Algebraic multiplicity
+Explanation: Always true.
+
+Q11.
+
+Matrix diagonalizable if:
+Answer: n independent eigenvectors
+Explanation: Condition.
+
+Q12.
+
+Repeated eigenvalue always diagonalizable?
+Answer: No
+Explanation: Depends on GM.
+
+Q13.
+
+If AM=2, GM=1, matrix is:
+Answer: Not diagonalizable
+Explanation: GM<AM.
+
+Q14.
+
+If A diagonalizable, A^k equals:
+Answer: PD^kP⁻¹
+Explanation: Useful property.
+
+Q15.
+
+Eigenvector of identity matrix?
+Answer: Any non-zero vector
+Explanation: λ=1.
+
+Q16.
+
+Eigenvalues of identity matrix?
+Answer: 1
+Explanation: All diagonal 1.
+
+Q17.
+
+Trace of 2×2 matrix equals:
+Answer: Sum of diagonal
+Explanation: Definition.
+
+Q18.
+
+Cayley-Hamilton states:
+Answer: Matrix satisfies its characteristic equation
+Explanation: Theorem.
+
+Q19.
+
+If eigenvalues are distinct, matrix is:
+Answer: Diagonalizable
+Explanation: Always true.
+
+Q20.
+
+If A orthogonal, eigenvalues magnitude equals:
+Answer: 1
+Explanation: Property.
+
+Q21.
+
+Eigenvectors corresponding to distinct eigenvalues are:
+Answer: Linearly independent
+Explanation: Theorem.
+
+Q22.
+
+If A is 2×2 with trace 5 and det 6, eigenvalues satisfy:
+Answer: λ₁+λ₂=5, λ₁λ₂=6
+Explanation: Property.
+
+Q23.
+
+Most PYQ-tested concept here?
+Answer: Diagonalizability condition
+Explanation: Very frequent.
+
+Q24.
+
+If eigenvalue 0 exists, matrix is:
+Answer: Singular
+Explanation: det=0.
+
+Q25.
+
+If A symmetric, diagonalization is:
+Answer: Orthogonal
+Explanation: QDQᵀ.
+
+Q26.
+
+Eigenvalues of scalar matrix cI?
+Answer: c
+Explanation: All diagonal c.
+
+Q27.
+
+Dimension of eigenspace equals:
+Answer: Geometric multiplicity
+Explanation: Definition.
+
+Q28.
+
+Biggest GATE trap?
+Answer: Confusing AM & GM
+Explanation: Common mistake.
+
+Q29.
+
+Characteristic polynomial degree equals:
+Answer: n
+Explanation: For n×n matrix.
+
+Q30.
+
+Eigenvalues heavily used in:
+Answer: ML & Stability analysis
+Explanation: Real applications.
