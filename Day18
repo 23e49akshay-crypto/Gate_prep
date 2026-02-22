@@ -1,0 +1,338 @@
+📚 Subject: Engineering Mathematics – Calculus
+🧠 Topic: Limits, Continuity & Differentiability
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Limit of a Function
+
+The limit of f(x) as x → a is:
+
+lim
+⁡
+𝑥→𝑎𝑓(𝑥)x→alim
+	​
+
+f(x)
+
+Exists if:
+
+Left-hand limit (LHL) = Right-hand limit (RHL)
+
+🔹 Important Standard Limits
+lim
+⁡
+𝑥
+→
+0
+sin
+⁡
+𝑥
+𝑥
+=
+1
+x→0
+lim
+	​
+
+x
+sinx
+	​
+
+=1
+lim
+⁡
+𝑥
+→
+0
+1
+−
+cos
+⁡
+𝑥𝑥2=12x→0lim
+	​x21−cosx
+	​
+=21
+	​
+
+lim
+⁡𝑥→0(1+𝑥)1/𝑥=𝑒x→0lim
+	​
+
+(1+x)
+1/x
+=e
+
+📌 Extremely important for GATE.
+
+🔹 Continuity
+
+A function is continuous at x = a if:
+
+f(a) exists
+
+Limit exists
+
+Limit = f(a)
+
+Types of Discontinuity
+
+Removable
+
+Jump
+
+Infinite
+
+📌 GATE often asks piecewise continuity.
+
+🔹 Differentiability
+
+f(x) is differentiable at x = a if:
+
+limℎ→0𝑓(𝑎+ℎ)−𝑓(𝑎)ℎh→0lim
+	​
+
+h
+f(a+h)−f(a)
+	​
+
+
+exists.
+
+Important Fact:
+
+If differentiable → continuous
+But continuous → NOT necessarily differentiable.
+
+📌 Corner/cusp points are continuous but not differentiable.
+
+🔹 Important Derivatives
+
+d/dx (xⁿ) = nxⁿ⁻¹
+
+d/dx (eˣ) = eˣ
+
+d/dx (ln x) = 1/x
+
+d/dx (sin x) = cos x
+
+d/dx (cos x) = −sin x
+
+🔹 Product Rule
+(𝑓𝑔)′=𝑓′𝑔+𝑓𝑔′(fg)′=f′g+fg′
+🔹 Chain Rule (VERY IMPORTANT)
+𝑑𝑑𝑥𝑓(𝑔(𝑥))=𝑓′(𝑔(𝑥))𝑔z(𝑥)dxd
+	​
+
+f(g(x))=f
+′
+(g(x))g
+′
+(x)
+
+📌 Heavy GATE usage.
+
+🔹 L’Hospital’s Rule
+
+For 0/0 or ∞/∞:
+
+lim
+⁡
+𝑓(𝑥)𝑔(𝑥)=lim
+⁡
+𝑓′(𝑥)𝑔′(𝑥)limg(x)f(x)
+	​
+
+=limg′(x)f′(x)
+	​
+
+🔹 Maxima & Minima
+
+Critical points when:
+
+𝑓′(𝑥)=0f′(x)=0
+
+Second derivative test:
+
+f''(x) > 0 → Min
+
+f''(x) < 0 → Max
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Limit exists if:
+Answer: LHL = RHL
+Explanation: Basic definition.
+
+Q2.
+
+lim x→0 (sin x)/x equals?
+Answer: 1
+Explanation: Standard limit.
+
+Q3.
+
+If limit ≠ function value, function is:
+Answer: Discontinuous
+Explanation: Fails continuity condition.
+
+Q4.
+
+Differentiable implies:
+Answer: Continuous
+Explanation: Always true.
+
+Q5.
+
+Continuous implies differentiable?
+Answer: No
+Explanation: Counterexamples exist.
+
+Q6.
+
+Derivative of eˣ equals:
+Answer: eˣ
+Explanation: Standard derivative.
+
+Q7.
+
+Derivative of ln x equals:
+Answer: 1/x
+Explanation: Standard.
+
+Q8.
+
+Chain rule used when:
+Answer: Composite function
+Explanation: f(g(x)).
+
+Q9.
+
+Product rule formula?
+Answer: f'g + fg'
+Explanation: Definition.
+
+Q10.
+
+L’Hospital applies for:
+Answer: 0/0
+Explanation: Indeterminate form.
+
+Q11.
+
+Critical point occurs when:
+Answer: f'(x)=0
+Explanation: Necessary condition.
+
+Q12.
+
+If f''(x)>0, point is:
+Answer: Minimum
+Explanation: Convex upward.
+
+Q13.
+
+If f''(x)<0, point is:
+Answer: Maximum
+Explanation: Concave downward.
+
+Q14.
+
+Derivative of x² equals:
+Answer: 2x
+Explanation: Power rule.
+
+Q15.
+
+Derivative of sin x equals:
+Answer: cos x
+Explanation: Standard.
+
+Q16.
+
+Derivative of cos x equals:
+Answer: −sin x
+Explanation: Standard.
+
+Q17.
+
+If f'(a) does not exist, function is:
+Answer: Not differentiable
+Explanation: Definition.
+
+Q18.
+
+Corner point example:
+Answer: |x|
+Explanation: Not differentiable at 0.
+
+Q19.
+
+Derivative of constant equals:
+Answer: 0
+Explanation: Constant rule.
+
+Q20.
+
+Limit of (1+x)^(1/x) as x→0 equals:
+Answer: e
+Explanation: Standard result.
+
+Q21.
+
+Derivative of tan x equals:
+Answer: sec²x
+Explanation: Standard.
+
+Q22.
+
+Derivative of x⁻¹ equals:
+Answer: −x⁻²
+Explanation: Power rule.
+
+Q23.
+
+Most PYQ-tested concept here?
+Answer: Standard limits
+Explanation: Very common.
+
+Q24.
+
+Biggest GATE trap?
+Answer: Mixing continuity & differentiability
+Explanation: Very common mistake.
+
+Q25.
+
+If limit infinite, function is:
+Answer: Discontinuous
+Explanation: Infinite discontinuity.
+
+Q26.
+
+Derivative gives:
+Answer: Slope of tangent
+Explanation: Geometric meaning.
+
+Q27.
+
+If f'(x)=0 and f''(x)=0, test is:
+Answer: Inconclusive
+Explanation: Need higher derivatives.
+
+Q28.
+
+Derivative of √x equals:
+Answer: 1/(2√x)
+Explanation: Power rule.
+
+Q29.
+
+Continuity requires function defined at point?
+Answer: Yes
+Explanation: Must exist.
+
+Q30.
+
+Calculus heavily used in:
+Answer: Optimization & ML
+Explanation: Core math.
