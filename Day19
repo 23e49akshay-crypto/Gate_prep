@@ -1,0 +1,372 @@
+📚 Subject: Engineering Mathematics – Linear Algebra
+🧠 Topic: Vector Spaces & Linear Independence
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is a Vector Space?
+
+A vector space V over a field F is a set of vectors with:
+
+Vector addition
+
+Scalar multiplication
+
+satisfying 10 axioms (closure, associativity, distributivity, identity, inverse, etc.)
+
+📌 For GATE:
+You don’t memorize all axioms — focus on properties.
+
+🔹 Examples of Vector Spaces
+
+✔ ℝⁿ
+✔ Set of polynomials Pₙ
+✔ Set of all n×n matrices
+
+❌ Set of positive real numbers (not closed under subtraction)
+
+🔹 Subspace
+
+A subset W of V is a subspace if:
+
+Zero vector ∈ W
+
+Closed under addition
+
+Closed under scalar multiplication
+
+📌 Subspace Test = 3 conditions only
+
+🔹 Linear Combination
+
+Vector v is linear combination of vectors v₁, v₂,… if:
+
+𝑣
+=
+𝑎
+1
+𝑣
+1
++
+𝑎
+2
+𝑣
+2
++
+.
+.
+.
+v=a
+1
+	​
+
+v
+1
+	​
+
++a
+2
+	​
+
+v
+2
+	​
+
++...
+🔹 Span
+
+Span(S) = Set of all linear combinations of vectors in S.
+
+📌 Span = smallest subspace containing S.
+
+🔹 Linear Independence (VERY IMPORTANT)
+
+Vectors v₁,…,vₙ are linearly independent if:
+
+𝑎
+1
+𝑣
+1
++
+.
+.
+.
++
+𝑎
+𝑛
+𝑣
+𝑛
+=
+0
+a
+1
+	​
+
+v
+1
+	​
+
++...+a
+n
+	​
+
+v
+n
+	​
+
+=0
+
+implies:
+
+𝑎
+1
+=
+𝑎
+2
+=
+.
+.
+.
+=
+0
+a
+1
+	​
+
+=a
+2
+	​
+
+=...=0
+
+Otherwise → linearly dependent.
+
+Shortcut:
+
+If number of vectors > dimension → automatically dependent.
+
+📌 Very common GATE trap.
+
+🔹 Basis
+
+A basis of vector space V is:
+
+Linearly independent set
+
+That spans V
+
+🔹 Dimension
+
+Number of vectors in basis.
+
+Examples:
+
+dim(ℝⁿ) = n
+
+dim(Pₙ) = n+1
+
+🔹 Rank & Nullity (Important)
+
+For matrix A:
+
+Rank
++
+Nullity
+=
+𝑛
+Rank+Nullity=n
+
+(Rank-Nullity Theorem)
+
+🔹 Row Space & Column Space
+
+Row space dimension = rank
+
+Column space dimension = rank
+
+🔹 Common GATE Traps
+
+Confusing span with basis
+
+Forgetting zero vector condition in subspace
+
+More vectors than dimension → dependent
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Vector space must contain:
+Answer: Zero vector
+Explanation: Required property.
+
+Q2.
+
+Subspace must satisfy how many conditions?
+Answer: 3
+Explanation: Zero, addition, scalar closure.
+
+Q3.
+
+Span of set gives:
+Answer: All linear combinations
+Explanation: Definition.
+
+Q4.
+
+If 4 vectors in ℝ³, they are:
+Answer: Linearly dependent
+Explanation: 4 > dimension 3.
+
+Q5.
+
+Basis must be:
+Answer: Independent and spanning
+Explanation: Both required.
+
+Q6.
+
+Dimension of ℝ⁴?
+Answer: 4
+Explanation: Standard basis size.
+
+Q7.
+
+Dimension of P₂?
+Answer: 3
+Explanation: 1, x, x².
+
+Q8.
+
+If vectors are dependent, then:
+Answer: At least one is combination of others
+Explanation: Definition.
+
+Q9.
+
+Rank-nullity theorem states:
+Answer: Rank + Nullity = n
+Explanation: Fundamental theorem.
+
+Q10.
+
+If rank = n, matrix is:
+Answer: Full rank
+Explanation: Independent columns.
+
+Q11.
+
+Number of basis vectors equals:
+Answer: Dimension
+Explanation: Definition.
+
+Q12.
+
+Zero vector always belongs to:
+Answer: Every subspace
+Explanation: Required.
+
+Q13.
+
+If determinant ≠ 0, columns are:
+Answer: Independent
+Explanation: Full rank.
+
+Q14.
+
+If determinant = 0, columns are:
+Answer: Dependent
+Explanation: Rank deficient.
+
+Q15.
+
+Null space dimension equals:
+Answer: Nullity
+Explanation: Definition.
+
+Q16.
+
+Row space dimension equals:
+Answer: Rank
+Explanation: Theorem.
+
+Q17.
+
+Column space dimension equals:
+Answer: Rank
+Explanation: Same as row rank.
+
+Q18.
+
+Basis of ℝ³ has how many vectors?
+Answer: 3
+Explanation: Dimension 3.
+
+Q19.
+
+If span(S)=V, S is:
+Answer: Spanning set
+Explanation: Covers space.
+
+Q20.
+
+If S independent but not spanning, it is:
+Answer: Not basis
+Explanation: Needs both.
+
+Q21.
+
+If S spans but not independent, it is:
+Answer: Not basis
+Explanation: Independence required.
+
+Q22.
+
+Independent set maximum size equals:
+Answer: Dimension
+Explanation: Cannot exceed.
+
+Q23.
+
+Rank of identity matrix size n?
+Answer: n
+Explanation: All independent.
+
+Q24.
+
+Nullity equals:
+Answer: n − rank
+Explanation: From theorem.
+
+Q25.
+
+Most PYQ-tested concept here?
+Answer: Linear independence
+Explanation: Very frequent.
+
+Q26.
+
+If 3 vectors in ℝ³ are independent, they form:
+Answer: Basis
+Explanation: Full dimension.
+
+Q27.
+
+Biggest GATE trap?
+Answer: Forgetting dimension limit
+Explanation: >n → dependent.
+
+Q28.
+
+If matrix has 2 pivot columns in 3×3, rank=?
+Answer: 2
+Explanation: Pivot count.
+
+Q29.
+
+Span of empty set equals:
+Answer: {0}
+Explanation: Only zero vector.
+
+Q30.
+
+Vector spaces heavily used in:
+Answer: ML, Graphics, Cryptography
+Explanation: Linear algebra core.
