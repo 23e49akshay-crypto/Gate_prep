@@ -1,0 +1,517 @@
+📚 Subject: Engineering Mathematics – Calculus
+🧠 Topic: Limits, Continuity & Differentiability
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Limits
+lim
+⁡
+𝑥
+→
+𝑎
+𝑓
+(
+𝑥
+)
+x→a
+lim
+	​
+
+f(x)
+
+means the value that f(x) approaches as x approaches a.
+
+Important Standard Limits (VERY IMPORTANT)
+
+1️⃣
+
+lim
+⁡
+𝑥
+→
+0
+sin
+⁡
+𝑥
+𝑥
+=
+1
+x→0
+lim
+	​
+
+x
+sinx
+	​
+
+=1
+
+2️⃣
+
+lim
+⁡
+𝑥
+→
+0
+1
+−
+cos
+⁡
+𝑥
+𝑥
+2
+=
+1
+2
+x→0
+lim
+	​
+
+x
+2
+1−cosx
+	​
+
+=
+2
+1
+	​
+
+
+3️⃣
+
+lim
+⁡
+𝑥
+→
+0
+𝑒
+𝑥
+−
+1
+𝑥
+=
+1
+x→0
+lim
+	​
+
+x
+e
+x
+−1
+	​
+
+=1
+
+4️⃣
+
+lim
+⁡
+𝑥
+→
+0
+ln
+⁡
+(
+1
++
+𝑥
+)
+𝑥
+=
+1
+x→0
+lim
+	​
+
+x
+ln(1+x)
+	​
+
+=1
+
+📌 GATE Trap:
+Always convert to standard forms.
+
+🔹 Continuity
+
+A function f(x) is continuous at x = a if:
+
+f(a) is defined
+
+Limit exists
+
+Limit = f(a)
+
+Types of Discontinuity
+
+Removable
+
+Jump
+
+Infinite
+
+🔹 Differentiability
+
+If derivative exists at a point → function is differentiable.
+
+📌 Important:
+
+Differentiable ⇒ Continuous
+
+Continuous ⇏ Differentiable
+
+Example: |x| at x=0.
+
+🔹 Derivative Definition
+𝑓
+′
+(
+𝑥
+)
+=
+lim
+⁡
+ℎ
+→
+0
+𝑓
+(
+𝑥
++
+ℎ
+)
+−
+𝑓
+(
+𝑥
+)
+ℎ
+f
+′
+(x)=
+h→0
+lim
+	​
+
+h
+f(x+h)−f(x)
+	​
+
+🔹 Important Derivative Formulas
+
+(xⁿ)' = nxⁿ⁻¹
+
+(eˣ)' = eˣ
+
+(ln x)' = 1/x
+
+(sin x)' = cos x
+
+(cos x)' = −sin x
+
+🔹 Chain Rule
+𝑑
+𝑑
+𝑥
+𝑓
+(
+𝑔
+(
+𝑥
+)
+)
+=
+𝑓
+′
+(
+𝑔
+(
+𝑥
+)
+)
+⋅
+𝑔
+′
+(
+𝑥
+)
+dx
+d
+	​
+
+f(g(x))=f
+′
+(g(x))⋅g
+′
+(x)
+🔹 Product Rule
+(
+𝑢
+𝑣
+)
+′
+=
+𝑢
+′
+𝑣
++
+𝑢
+𝑣
+′
+(uv)
+′
+=u
+′
+v+uv
+′
+🔹 L’Hospital’s Rule (VERY IMPORTANT)
+
+For 0/0 or ∞/∞ forms:
+
+lim
+⁡
+𝑓
+(
+𝑥
+)
+𝑔
+(
+𝑥
+)
+=
+lim
+⁡
+𝑓
+′
+(
+𝑥
+)
+𝑔
+′
+(
+𝑥
+)
+lim
+g(x)
+f(x)
+	​
+
+=lim
+g
+′
+(x)
+f
+′
+(x)
+	​
+
+🔹 Maxima & Minima
+
+At critical point:
+
+𝑓
+′
+(
+𝑥
+)
+=
+0
+f
+′
+(x)=0
+
+Second derivative test:
+
+f''(x) > 0 → minima
+
+f''(x) < 0 → maxima
+
+🔹 Common GATE Traps
+
+Applying L’Hospital unnecessarily
+
+Forgetting differentiability condition
+
+Ignoring domain issues
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+lim x→0 (sin x)/x = ?
+Answer: 1
+Explanation: Standard limit.
+
+Q2.
+
+lim x→0 (1−cos x)/x² = ?
+Answer: 1/2
+Explanation: Standard identity.
+
+Q3.
+
+If function differentiable, it is:
+Answer: Continuous
+Explanation: Always true.
+
+Q4.
+
+|x| at x=0 is:
+Answer: Continuous but not differentiable
+Explanation: Sharp corner.
+
+Q5.
+
+Derivative of x³?
+Answer: 3x²
+Explanation: Power rule.
+
+Q6.
+
+Derivative of eˣ?
+Answer: eˣ
+Explanation: Self derivative.
+
+Q7.
+
+Derivative of ln x?
+Answer: 1/x
+Explanation: Standard.
+
+Q8.
+
+Chain rule applies when:
+Answer: Composite function
+Explanation: f(g(x)).
+
+Q9.
+
+(uv)' equals?
+Answer: u'v + uv'
+Explanation: Product rule.
+
+Q10.
+
+Derivative of sin x?
+Answer: cos x
+Explanation: Standard.
+
+Q11.
+
+L’Hospital applies for:
+Answer: 0/0 or ∞/∞
+Explanation: Indeterminate forms.
+
+Q12.
+
+If f''(x)>0, point is:
+Answer: Local minimum
+Explanation: Second derivative test.
+
+Q13.
+
+If f''(x)<0, point is:
+Answer: Local maximum
+Explanation: Concave down.
+
+Q14.
+
+Continuity requires:
+Answer: Limit = function value
+Explanation: Definition.
+
+Q15.
+
+Jump discontinuity occurs when:
+Answer: Left and right limits differ
+Explanation: Break.
+
+Q16.
+
+Derivative at critical point equals:
+Answer: 0
+Explanation: Necessary condition.
+
+Q17.
+
+Derivative of cos x?
+Answer: −sin x
+Explanation: Standard.
+
+Q18.
+
+lim x→0 (eˣ−1)/x = ?
+Answer: 1
+Explanation: Standard.
+
+Q19.
+
+Derivative of tan x?
+Answer: sec²x
+Explanation: Identity.
+
+Q20.
+
+Function differentiable everywhere except cusp?
+Answer: Yes
+Explanation: Sharp turn fails.
+
+Q21.
+
+lim x→0 (ln(1+x))/x = ?
+Answer: 1
+Explanation: Standard limit.
+
+Q22.
+
+Continuous but not differentiable example?
+Answer: |x|
+Explanation: Classic case.
+
+Q23.
+
+Derivative measures:
+Answer: Rate of change
+Explanation: Slope.
+
+Q24.
+
+If derivative positive, function is:
+Answer: Increasing
+Explanation: Positive slope.
+
+Q25.
+
+If derivative negative, function is:
+Answer: Decreasing
+Explanation: Negative slope.
+
+Q26.
+
+Most PYQ-tested limit concept?
+Answer: Standard trigonometric limits
+Explanation: Frequently asked.
+
+Q27.
+
+Biggest GATE trap?
+Answer: Misusing L’Hospital
+Explanation: Only for 0/0, ∞/∞.
+
+Q28.
+
+If function not continuous, derivative exists?
+Answer: No
+Explanation: Must be continuous.
+
+Q29.
+
+Critical points occur when:
+Answer: f'(x)=0 or undefined
+Explanation: Definition.
+
+Q30.
+
+Calculus heavily used in:
+Answer: Optimization & ML
+Explanation: Core tool.
