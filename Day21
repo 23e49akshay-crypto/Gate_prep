@@ -1,0 +1,601 @@
+📚 Subject: Engineering Mathematics – Calculus
+🧠 Topic: Integration
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is Integration?
+
+Integration is the reverse process of differentiation.
+
+If:
+
+𝑑
+𝑑
+𝑥
+𝐹
+(
+𝑥
+)
+=
+𝑓
+(
+𝑥
+)
+dx
+d
+	​
+
+F(x)=f(x)
+
+Then:
+
+∫
+𝑓
+(
+𝑥
+)
+ 
+𝑑
+𝑥
+=
+𝐹
+(
+𝑥
+)
++
+𝐶
+∫f(x)dx=F(x)+C
+
+C → Constant of integration.
+
+🔹 Basic Integration Formulas (VERY IMPORTANT)
+
+1️⃣
+
+∫
+𝑥
+𝑛
+𝑑
+𝑥
+=
+𝑥
+𝑛
++
+1
+𝑛
++
+1
++
+𝐶
+(
+𝑛
+≠
+−
+1
+)
+∫x
+n
+dx=
+n+1
+x
+n+1
+	​
+
++C(n
+
+=−1)
+
+2️⃣
+
+∫
+1
+𝑥
+𝑑
+𝑥
+=
+ln
+⁡
+∣
+𝑥
+∣
++
+𝐶
+∫
+x
+1
+	​
+
+dx=ln∣x∣+C
+
+3️⃣
+
+∫
+𝑒
+𝑥
+𝑑
+𝑥
+=
+𝑒
+𝑥
++
+𝐶
+∫e
+x
+dx=e
+x
++C
+
+4️⃣
+
+∫
+sin
+⁡
+𝑥
+𝑑
+𝑥
+=
+−
+cos
+⁡
+𝑥
++
+𝐶
+∫sinxdx=−cosx+C
+
+5️⃣
+
+∫
+cos
+⁡
+𝑥
+𝑑
+𝑥
+=
+sin
+⁡
+𝑥
++
+𝐶
+∫cosxdx=sinx+C
+🔹 Standard Integrals (PYQ FAVORITE)
+∫
+1
+𝑎
+2
++
+𝑥
+2
+𝑑
+𝑥
+=
+1
+𝑎
+tan
+⁡
+−
+1
+(
+𝑥
+𝑎
+)
++
+𝐶
+∫
+a
+2
++x
+2
+1
+	​
+
+dx=
+a
+1
+	​
+
+tan
+−1
+(
+a
+x
+	​
+
+)+C
+∫
+1
+𝑎
+2
+−
+𝑥
+2
+𝑑
+𝑥
+=
+sin
+⁡
+−
+1
+(
+𝑥
+𝑎
+)
++
+𝐶
+∫
+a
+2
+−x
+2
+	​
+
+1
+	​
+
+dx=sin
+−1
+(
+a
+x
+	​
+
+)+C
+
+📌 These appear frequently in GATE.
+
+🔹 Methods of Integration
+1️⃣ Substitution Method
+
+If integral contains composite function:
+
+Let:
+
+𝑢
+=
+𝑔
+(
+𝑥
+)
+u=g(x)
+2️⃣ Integration by Parts
+∫
+𝑢
+ 
+𝑑
+𝑣
+=
+𝑢
+𝑣
+−
+∫
+𝑣
+ 
+𝑑
+𝑢
+∫udv=uv−∫vdu
+
+📌 LIATE Rule (choose u wisely):
+L → Log
+I → Inverse trig
+A → Algebraic
+T → Trig
+E → Exponential
+
+3️⃣ Partial Fractions
+
+Used for rational functions:
+
+𝑃
+(
+𝑥
+)
+𝑄
+(
+𝑥
+)
+Q(x)
+P(x)
+	​
+
+
+when degree P < degree Q.
+
+🔹 Definite Integration
+∫
+𝑎
+𝑏
+𝑓
+(
+𝑥
+)
+ 
+𝑑
+𝑥
+∫
+a
+b
+	​
+
+f(x)dx
+
+Properties:
+
+If upper = lower → 0
+
+If limits reversed → sign changes
+
+Even function:
+
+∫
+−
+𝑎
+𝑎
+𝑓
+(
+𝑥
+)
+𝑑
+𝑥
+=
+2
+∫
+0
+𝑎
+𝑓
+(
+𝑥
+)
+𝑑
+𝑥
+∫
+−a
+a
+	​
+
+f(x)dx=2∫
+0
+a
+	​
+
+f(x)dx
+
+Odd function:
+
+∫
+−
+𝑎
+𝑎
+𝑓
+(
+𝑥
+)
+𝑑
+𝑥
+=
+0
+∫
+−a
+a
+	​
+
+f(x)dx=0
+
+📌 Very common GATE trick.
+
+🔹 Area Under Curve
+
+Definite integral gives area.
+
+If curve below x-axis → negative contribution.
+
+🔹 Improper Integrals
+
+If limits are infinite or function undefined at point.
+
+Example:
+
+∫
+1
+∞
+1
+𝑥
+2
+𝑑
+𝑥
+∫
+1
+∞
+	​
+
+x
+2
+1
+	​
+
+dx
+🔹 Common GATE Traps
+
+Forgetting constant C
+
+Mixing odd/even property
+
+Not checking convergence in improper integrals
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+∫ x² dx = ?
+Answer: x³/3 + C
+Explanation: Power rule.
+
+Q2.
+
+∫ 1/x dx = ?
+Answer: ln|x| + C
+Explanation: Special case.
+
+Q3.
+
+∫ eˣ dx = ?
+Answer: eˣ + C
+Explanation: Self integral.
+
+Q4.
+
+∫ sin x dx = ?
+Answer: −cos x + C
+Explanation: Standard.
+
+Q5.
+
+∫ cos x dx = ?
+Answer: sin x + C
+Explanation: Standard.
+
+Q6.
+
+∫ 1/(1+x²) dx = ?
+Answer: tan⁻¹x + C
+Explanation: Standard form.
+
+Q7.
+
+Integration by parts formula?
+Answer: ∫u dv = uv − ∫v du
+Explanation: Definition.
+
+Q8.
+
+LIATE helps in:
+Answer: Choosing u
+Explanation: Priority rule.
+
+Q9.
+
+If f(x) even, ∫₋a^a f(x)dx = ?
+Answer: 2∫₀^a f(x)dx
+Explanation: Even property.
+
+Q10.
+
+If f(x) odd, ∫₋a^a f(x)dx = ?
+Answer: 0
+Explanation: Symmetry.
+
+Q11.
+
+∫ 1/√(1−x²) dx = ?
+Answer: sin⁻¹x + C
+Explanation: Standard integral.
+
+Q12.
+
+∫ x eˣ dx uses:
+Answer: Integration by parts
+Explanation: Product.
+
+Q13.
+
+∫ (2x)/(1+x²) dx = ?
+Answer: ln(1+x²) + C
+Explanation: Substitution.
+
+Q14.
+
+Reversing limits changes:
+Answer: Sign
+Explanation: Property.
+
+Q15.
+
+∫₀⁰ f(x) dx = ?
+Answer: 0
+Explanation: Same limits.
+
+Q16.
+
+Improper integral means:
+Answer: Infinite limit or discontinuity
+Explanation: Definition.
+
+Q17.
+
+∫₁^∞ 1/x² dx converges?
+Answer: Yes
+Explanation: p>1.
+
+Q18.
+
+Area below x-axis contributes:
+Answer: Negative
+Explanation: Signed area.
+
+Q19.
+
+Most PYQ-tested integration concept?
+Answer: Standard integrals
+Explanation: Frequently asked.
+
+Q20.
+
+Biggest GATE trap?
+Answer: Forgetting even/odd rule
+Explanation: Quick simplification missed.
+
+Q21.
+
+∫ ln x dx uses:
+Answer: Integration by parts
+Explanation: Log function.
+
+Q22.
+
+∫ 1/(a²+x²) dx equals?
+Answer: (1/a) tan⁻¹(x/a) + C
+Explanation: Standard.
+
+Q23.
+
+Constant of integration appears in:
+Answer: Indefinite integral
+Explanation: Not in definite.
+
+Q24.
+
+Derivative of integral gives:
+Answer: Original function
+Explanation: Fundamental theorem.
+
+Q25.
+
+∫₀^π sin x dx = ?
+Answer: 2
+Explanation: Evaluate.
+
+Q26.
+
+∫ x/(x²+1) dx = ?
+Answer: ½ ln(x²+1) + C
+Explanation: Substitution.
+
+Q27.
+
+∫ sec²x dx = ?
+Answer: tan x + C
+Explanation: Derivative of tan.
+
+Q28.
+
+Improper integral convergence depends on:
+Answer: Behavior near infinity
+Explanation: Limit test.
+
+Q29.
+
+∫₋a^a x³ dx = ?
+Answer: 0
+Explanation: Odd function.
+
+Q30.
+
+Integration heavily used in:
+Answer: Probability & ML
+Explanation: Continuous distributions.
