@@ -1,0 +1,441 @@
+📚 Subject: Engineering Mathematics – Probability & Statistics
+🧠 Topic: Probability Basics
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Random Experiment
+
+An experiment whose outcome cannot be predicted with certainty.
+
+Example:
+
+Tossing a coin
+
+Rolling a dice
+
+🔹 Sample Space (S)
+
+Set of all possible outcomes.
+
+Example:
+
+Coin toss → S = {H, T}
+
+Dice → S = {1,2,3,4,5,6}
+
+🔹 Event
+
+Subset of sample space.
+
+Example:
+Even number on dice → {2,4,6}
+
+🔹 Probability of an Event
+
+For equally likely outcomes:
+
+𝑃
+(
+𝐴
+)
+=
+Favourable outcomes
+Total outcomes
+P(A)=
+Total outcomes
+Favourable outcomes
+	​
+
+🔹 Important Properties
+
+1️⃣
+
+0
+≤
+𝑃
+(
+𝐴
+)
+≤
+1
+0≤P(A)≤1
+
+2️⃣
+
+𝑃
+(
+𝑆
+)
+=
+1
+P(S)=1
+
+3️⃣
+
+𝑃
+(
+∅
+)
+=
+0
+P(∅)=0
+
+4️⃣ Complement Rule:
+
+𝑃
+(
+𝐴
+𝑐
+)
+=
+1
+−
+𝑃
+(
+𝐴
+)
+P(A
+c
+)=1−P(A)
+🔹 Addition Rule
+𝑃
+(
+𝐴
+∪
+𝐵
+)
+=
+𝑃
+(
+𝐴
+)
++
+𝑃
+(
+𝐵
+)
+−
+𝑃
+(
+𝐴
+∩
+𝐵
+)
+P(A∪B)=P(A)+P(B)−P(A∩B)
+
+If A and B mutually exclusive:
+
+𝑃
+(
+𝐴
+∪
+𝐵
+)
+=
+𝑃
+(
+𝐴
+)
++
+𝑃
+(
+𝐵
+)
+P(A∪B)=P(A)+P(B)
+🔹 Conditional Probability (VERY IMPORTANT)
+𝑃
+(
+𝐴
+∣
+𝐵
+)
+=
+𝑃
+(
+𝐴
+∩
+𝐵
+)
+𝑃
+(
+𝐵
+)
+P(A∣B)=
+P(B)
+P(A∩B)
+	​
+
+🔹 Independence
+
+Events A and B are independent if:
+
+𝑃
+(
+𝐴
+∩
+𝐵
+)
+=
+𝑃
+(
+𝐴
+)
+𝑃
+(
+𝐵
+)
+P(A∩B)=P(A)P(B)
+🔹 Bayes’ Theorem (PYQ FAVORITE)
+𝑃
+(
+𝐴
+∣
+𝐵
+)
+=
+𝑃
+(
+𝐵
+∣
+𝐴
+)
+𝑃
+(
+𝐴
+)
+𝑃
+(
+𝐵
+)
+P(A∣B)=
+P(B)
+P(B∣A)P(A)
+	​
+
+
+Used in:
+
+Machine learning
+
+Medical testing
+
+Decision making
+
+🔹 Total Probability Theorem
+
+If A₁,A₂,... form partition:
+
+𝑃
+(
+𝐵
+)
+=
+∑
+𝑃
+(
+𝐵
+∣
+𝐴
+𝑖
+)
+𝑃
+(
+𝐴
+𝑖
+)
+P(B)=∑P(B∣A
+i
+	​
+
+)P(A
+i
+	​
+
+)
+🔹 Common GATE Traps
+
+Confusing independence with mutual exclusion
+
+Forgetting subtraction in addition rule
+
+Ignoring denominator in conditional probability
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Probability range is:
+Answer: 0 to 1
+Explanation: Basic property.
+
+Q2.
+
+P(S) equals:
+Answer: 1
+Explanation: Entire sample space.
+
+Q3.
+
+P(∅) equals:
+Answer: 0
+Explanation: Impossible event.
+
+Q4.
+
+Complement rule is:
+Answer: 1 − P(A)
+Explanation: Standard property.
+
+Q5.
+
+If P(A)=0.4, P(A^c)=?
+Answer: 0.6
+Explanation: 1−0.4.
+
+Q6.
+
+Addition rule formula?
+Answer: P(A)+P(B)−P(A∩B)
+Explanation: Avoid double count.
+
+Q7.
+
+If events mutually exclusive, P(A∩B)=?
+Answer: 0
+Explanation: Cannot occur together.
+
+Q8.
+
+If independent, P(A∩B)=?
+Answer: P(A)P(B)
+Explanation: Independence condition.
+
+Q9.
+
+Conditional probability formula?
+Answer: P(A∩B)/P(B)
+Explanation: Definition.
+
+Q10.
+
+If P(A)=0.5 and P(B)=0.5 independent, P(A∩B)=?
+Answer: 0.25
+Explanation: Multiply.
+
+Q11.
+
+Bayes theorem relates:
+Answer: Reverse conditional probability
+Explanation: P(A|B).
+
+Q12.
+
+If two events are mutually exclusive, can they be independent?
+Answer: No (unless one has probability 0)
+Explanation: Intersection zero.
+
+Q13.
+
+Probability of even number in dice?
+Answer: 1/2
+Explanation: 3/6.
+
+Q14.
+
+Probability of head in fair coin?
+Answer: 1/2
+Explanation: Two outcomes.
+
+Q15.
+
+If P(A)=0.3, P(B)=0.4, P(A∩B)=0.1, P(A∪B)=?
+Answer: 0.6
+Explanation: 0.3+0.4−0.1.
+
+Q16.
+
+Total probability theorem helps find:
+Answer: P(B)
+Explanation: Partition events.
+
+Q17.
+
+If P(A|B)=1, then:
+Answer: B implies A
+Explanation: Always occurs.
+
+Q18.
+
+If P(A∩B)=0 and both >0, they are:
+Answer: Mutually exclusive
+Explanation: Cannot happen together.
+
+Q19.
+
+Most PYQ-tested concept?
+Answer: Bayes theorem
+Explanation: Very common.
+
+Q20.
+
+Biggest GATE trap?
+Answer: Confusing independence and mutual exclusion
+Explanation: Different concepts.
+
+Q21.
+
+Probability of at least one event equals:
+Answer: 1 − P(none)
+Explanation: Complement trick.
+
+Q22.
+
+If A ⊆ B, then P(A∩B)=?
+Answer: P(A)
+Explanation: A inside B.
+
+Q23.
+
+If P(A)=1, event is:
+Answer: Certain
+Explanation: Always happens.
+
+Q24.
+
+Conditional probability denominator must be:
+Answer: Non-zero
+Explanation: P(B)>0.
+
+Q25.
+
+For independent events, P(A|B)=?
+Answer: P(A)
+Explanation: No effect.
+
+Q26.
+
+If P(A)=0, event is:
+Answer: Impossible
+Explanation: Cannot occur.
+
+Q27.
+
+If P(A∪B)=1 and disjoint, P(A)+P(B)=?
+Answer: 1
+Explanation: Direct sum.
+
+Q28.
+
+Sample space of two coin tosses size?
+Answer: 4
+Explanation: HH,HT,TH,TT.
+
+Q29.
+
+Probability theory heavily used in:
+Answer: ML & AI
+Explanation: Core tool.
+
+Q30.
+
+Most common student mistake?
+Answer: Forgetting −P(A∩B)
+Explanation: Double counting.
