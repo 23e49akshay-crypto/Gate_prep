@@ -1,0 +1,499 @@
+📚 Subject: Engineering Mathematics – Probability & Statistics
+🧠 Topic: Random Variables & Probability Distributions
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Random Variable (RV)
+
+A random variable is a function that assigns a real number to each outcome in the sample space.
+
+Two types:
+
+1️⃣ Discrete Random Variable
+2️⃣ Continuous Random Variable
+
+🔹 Discrete Random Variable
+
+Takes countable values.
+
+Example:
+Number of heads in 3 coin tosses.
+
+🔹 Probability Mass Function (PMF)
+𝑃
+(
+𝑋
+=
+𝑥
+)
+P(X=x)
+
+Properties:
+
+1️⃣ 
+𝑃
+(
+𝑋
+=
+𝑥
+)
+≥
+0
+P(X=x)≥0
+2️⃣ 
+∑
+𝑃
+(
+𝑋
+=
+𝑥
+)
+=
+1
+∑P(X=x)=1
+
+🔹 Continuous Random Variable
+
+Takes values in an interval.
+
+🔹 Probability Density Function (PDF)
+𝑓
+(
+𝑥
+)
+f(x)
+
+Properties:
+
+1️⃣ 
+𝑓
+(
+𝑥
+)
+≥
+0
+f(x)≥0
+2️⃣ 
+∫
+−
+∞
+∞
+𝑓
+(
+𝑥
+)
+𝑑
+𝑥
+=
+1
+∫
+−∞
+∞
+	​
+
+f(x)dx=1
+
+Probability:
+
+𝑃
+(
+𝑎
+≤
+𝑋
+≤
+𝑏
+)
+=
+∫
+𝑎
+𝑏
+𝑓
+(
+𝑥
+)
+𝑑
+𝑥
+P(a≤X≤b)=∫
+a
+b
+	​
+
+f(x)dx
+
+📌 Important:
+For continuous RV,
+
+𝑃
+(
+𝑋
+=
+𝑎
+)
+=
+0
+P(X=a)=0
+🔹 Cumulative Distribution Function (CDF)
+𝐹
+(
+𝑥
+)
+=
+𝑃
+(
+𝑋
+≤
+𝑥
+)
+F(x)=P(X≤x)
+
+For continuous case:
+
+𝐹
+(
+𝑥
+)
+=
+∫
+−
+∞
+𝑥
+𝑓
+(
+𝑡
+)
+𝑑
+𝑡
+F(x)=∫
+−∞
+x
+	​
+
+f(t)dt
+🔹 Expected Value (Mean)
+
+For discrete:
+
+𝐸
+(
+𝑋
+)
+=
+∑
+𝑥
+𝑃
+(
+𝑋
+=
+𝑥
+)
+E(X)=∑xP(X=x)
+
+For continuous:
+
+𝐸
+(
+𝑋
+)
+=
+∫
+𝑥
+𝑓
+(
+𝑥
+)
+𝑑
+𝑥
+E(X)=∫xf(x)dx
+🔹 Variance
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
+=
+𝐸
+(
+𝑋
+2
+)
+−
+[
+𝐸
+(
+𝑋
+)
+]
+2
+Var(X)=E(X
+2
+)−[E(X)]
+2
+
+Standard deviation = √Variance.
+
+🔹 Important Distributions (VERY IMPORTANT)
+1️⃣ Bernoulli Distribution
+
+Single trial:
+
+Success probability = p
+
+Failure = 1−p
+
+Mean = p
+Variance = p(1−p)
+
+2️⃣ Binomial Distribution
+𝑃
+(
+𝑋
+=
+𝑘
+)
+=
+(
+𝑛
+𝑘
+)
+𝑝
+𝑘
+(
+1
+−
+𝑝
+)
+𝑛
+−
+𝑘
+P(X=k)=(
+k
+n
+	​
+
+)p
+k
+(1−p)
+n−k
+
+Mean = np
+Variance = np(1−p)
+
+3️⃣ Poisson Distribution
+𝑃
+(
+𝑋
+=
+𝑘
+)
+=
+𝜆
+𝑘
+𝑒
+−
+𝜆
+𝑘
+!
+P(X=k)=
+k!
+λ
+k
+e
+−λ
+	​
+
+
+Mean = λ
+Variance = λ
+
+4️⃣ Uniform Distribution
+
+Constant density over interval.
+
+🔹 Important GATE Traps
+
+Forgetting sum = 1 condition
+
+Thinking PDF value is probability
+
+Mixing binomial & Poisson
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Discrete RV takes:
+Answer: Countable values
+Explanation: Finite or countable.
+
+Q2.
+
+Continuous RV takes:
+Answer: Interval values
+Explanation: Infinite uncountable.
+
+Q3.
+
+Sum of PMF equals:
+Answer: 1
+Explanation: Total probability.
+
+Q4.
+
+Integral of PDF equals:
+Answer: 1
+Explanation: Property.
+
+Q5.
+
+P(X=a) for continuous RV equals:
+Answer: 0
+Explanation: Zero probability at point.
+
+Q6.
+
+E(X) for discrete equals:
+Answer: Σ xP(x)
+Explanation: Definition.
+
+Q7.
+
+Variance formula?
+Answer: E(X²) − [E(X)]²
+Explanation: Standard formula.
+
+Q8.
+
+Mean of binomial distribution?
+Answer: np
+Explanation: Property.
+
+Q9.
+
+Variance of binomial?
+Answer: np(1−p)
+Explanation: Standard.
+
+Q10.
+
+Mean of Poisson?
+Answer: λ
+Explanation: Equal to variance.
+
+Q11.
+
+Variance of Poisson?
+Answer: λ
+Explanation: Same as mean.
+
+Q12.
+
+Bernoulli mean?
+Answer: p
+Explanation: Single trial.
+
+Q13.
+
+Bernoulli variance?
+Answer: p(1−p)
+Explanation: Standard.
+
+Q14.
+
+Binomial formula includes:
+Answer: nCk
+Explanation: Combination factor.
+
+Q15.
+
+CDF is:
+Answer: P(X ≤ x)
+Explanation: Definition.
+
+Q16.
+
+PDF gives probability directly?
+Answer: No
+Explanation: Must integrate.
+
+Q17.
+
+If f(x)=2x, 0<x<1, check normalization:
+Answer: Valid
+Explanation: ∫0¹2x dx=1.
+
+Q18.
+
+Most PYQ-tested distribution?
+Answer: Binomial & Poisson
+Explanation: Frequently asked.
+
+Q19.
+
+Biggest GATE trap?
+Answer: Confusing PDF value with probability
+Explanation: Need integration.
+
+Q20.
+
+Uniform distribution PDF is:
+Answer: Constant
+Explanation: Equal density.
+
+Q21.
+
+If mean=variance, distribution likely:
+Answer: Poisson
+Explanation: Property.
+
+Q22.
+
+Standard deviation equals:
+Answer: √variance
+Explanation: Definition.
+
+Q23.
+
+If p=0.5, binomial symmetric?
+Answer: Yes
+Explanation: Balanced.
+
+Q24.
+
+Total probability of PMF must be:
+Answer: 1
+Explanation: Required.
+
+Q25.
+
+If X ~ Bernoulli(p), possible values:
+Answer: 0,1
+Explanation: Failure/success.
+
+Q26.
+
+Binomial approximates Poisson when:
+Answer: n large, p small
+Explanation: λ=np fixed.
+
+Q27.
+
+Continuous RV probability over interval found by:
+Answer: Integration
+Explanation: Area under curve.
+
+Q28.
+
+Expectation linearity:
+Answer: E(aX+b)=aE(X)+b
+Explanation: Property.
+
+Q29.
+
+Most important formula here?
+Answer: Mean & Variance
+Explanation: Common in GATE.
+
+Q30.
+
+Probability distributions heavily used in:
+Answer: ML & Data Science
+Explanation: Core concept.
