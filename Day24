@@ -1,0 +1,518 @@
+📚 Subject: Engineering Mathematics – Probability & Statistics
+🧠 Topic: Joint Distributions & Covariance
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Joint Random Variables
+
+When two random variables are considered together:
+
+(
+𝑋
+,
+𝑌
+)
+(X,Y)
+
+We study how they behave together.
+
+Example:
+
+X = number of heads
+
+Y = number of tails
+
+🔹 Joint Probability Mass Function (Joint PMF)
+
+For discrete variables:
+
+𝑃
+(
+𝑋
+=
+𝑥
+,
+𝑌
+=
+𝑦
+)
+P(X=x,Y=y)
+
+Properties:
+
+1️⃣ 
+𝑃
+(
+𝑋
+=
+𝑥
+,
+𝑌
+=
+𝑦
+)
+≥
+0
+P(X=x,Y=y)≥0
+
+2️⃣
+
+∑
+𝑥
+∑
+𝑦
+𝑃
+(
+𝑋
+=
+𝑥
+,
+𝑌
+=
+𝑦
+)
+=
+1
+x
+∑
+	​
+
+y
+∑
+	​
+
+P(X=x,Y=y)=1
+🔹 Marginal Probability
+
+Probability of one variable ignoring the other.
+
+Example:
+
+𝑃
+(
+𝑋
+=
+𝑥
+)
+=
+∑
+𝑦
+𝑃
+(
+𝑋
+=
+𝑥
+,
+𝑌
+=
+𝑦
+)
+P(X=x)=
+y
+∑
+	​
+
+P(X=x,Y=y)
+𝑃
+(
+𝑌
+=
+𝑦
+)
+=
+∑
+𝑥
+𝑃
+(
+𝑋
+=
+𝑥
+,
+𝑌
+=
+𝑦
+)
+P(Y=y)=
+x
+∑
+	​
+
+P(X=x,Y=y)
+🔹 Conditional Distribution
+𝑃
+(
+𝑋
+=
+𝑥
+∣
+𝑌
+=
+𝑦
+)
+=
+𝑃
+(
+𝑋
+=
+𝑥
+,
+𝑌
+=
+𝑦
+)
+𝑃
+(
+𝑌
+=
+𝑦
+)
+P(X=x∣Y=y)=
+P(Y=y)
+P(X=x,Y=y)
+	​
+
+🔹 Independence of Random Variables
+
+X and Y are independent if:
+
+𝑃
+(
+𝑋
+,
+𝑌
+)
+=
+𝑃
+(
+𝑋
+)
+𝑃
+(
+𝑌
+)
+P(X,Y)=P(X)P(Y)
+
+📌 Must hold for all values.
+
+🔹 Expected Value of Two Variables
+Expected Value
+𝐸
+(
+𝑋
+)
+=
+∑
+𝑥
+𝑃
+(
+𝑥
+)
+E(X)=∑xP(x)
+𝐸
+(
+𝑌
+)
+=
+∑
+𝑦
+𝑃
+(
+𝑦
+)
+E(Y)=∑yP(y)
+Expected Value of Product
+𝐸
+(
+𝑋
+𝑌
+)
+=
+∑
+𝑥
+∑
+𝑦
+𝑥
+𝑦
+𝑃
+(
+𝑥
+,
+𝑦
+)
+E(XY)=
+x
+∑
+	​
+
+y
+∑
+	​
+
+xyP(x,y)
+🔹 Covariance (VERY IMPORTANT)
+
+Measures how two variables vary together.
+
+𝐶
+𝑜
+𝑣
+(
+𝑋
+,
+𝑌
+)
+=
+𝐸
+(
+𝑋
+𝑌
+)
+−
+𝐸
+(
+𝑋
+)
+𝐸
+(
+𝑌
+)
+Cov(X,Y)=E(XY)−E(X)E(Y)
+Interpretation
+
+Cov > 0 → positive relation
+
+Cov < 0 → negative relation
+
+Cov = 0 → uncorrelated
+
+🔹 Correlation Coefficient
+𝜌
+=
+𝐶
+𝑜
+𝑣
+(
+𝑋
+,
+𝑌
+)
+𝜎
+𝑋
+𝜎
+𝑌
+ρ=
+σ
+X
+	​
+
+σ
+Y
+	​
+
+Cov(X,Y)
+	​
+
+
+Range:
+
+−
+1
+≤
+𝜌
+≤
+1
+−1≤ρ≤1
+🔹 Important Properties
+
+1️⃣ If X,Y independent → Cov=0
+2️⃣ Cov(X,X)=Var(X)
+
+📌 But Cov=0 does not guarantee independence
+
+🔹 Common GATE Traps
+
+Thinking zero covariance means independence
+
+Forgetting to sum joint probabilities
+
+Mixing marginal and conditional distributions
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Joint PMF describes:
+Answer: Two random variables together
+Explanation: Pair probabilities.
+
+Q2.
+
+Joint PMF sum equals:
+Answer: 1
+Explanation: Total probability.
+
+Q3.
+
+Marginal probability obtained by:
+Answer: Summing over other variable
+Explanation: Eliminate variable.
+
+Q4.
+
+Conditional probability formula?
+Answer: P(X,Y)/P(Y)
+Explanation: Definition.
+
+Q5.
+
+Two RVs independent if:
+Answer: P(X,Y)=P(X)P(Y)
+Explanation: Independence rule.
+
+Q6.
+
+Covariance formula?
+Answer: E(XY)−E(X)E(Y)
+Explanation: Standard definition.
+
+Q7.
+
+Cov(X,X)=?
+Answer: Var(X)
+Explanation: Property.
+
+Q8.
+
+If Cov(X,Y)>0 means:
+Answer: Positive relation
+Explanation: Increase together.
+
+Q9.
+
+If Cov(X,Y)<0 means:
+Answer: Negative relation
+Explanation: Opposite change.
+
+Q10.
+
+If Cov(X,Y)=0 means:
+Answer: Uncorrelated
+Explanation: No linear relation.
+
+Q11.
+
+Does Cov=0 imply independence?
+Answer: No
+Explanation: Only uncorrelated.
+
+Q12.
+
+Correlation coefficient range?
+Answer: −1 to 1
+Explanation: Bound.
+
+Q13.
+
+ρ=1 means:
+Answer: Perfect positive correlation
+Explanation: Linear relation.
+
+Q14.
+
+ρ=−1 means:
+Answer: Perfect negative correlation
+Explanation: Opposite linear.
+
+Q15.
+
+ρ=0 means:
+Answer: No linear relation
+Explanation: Uncorrelated.
+
+Q16.
+
+E(XY) computed from:
+Answer: Joint distribution
+Explanation: Double sum.
+
+Q17.
+
+Marginal probability P(X=x)=?
+Answer: Σy P(X,Y)
+Explanation: Sum over Y.
+
+Q18.
+
+Joint probability always:
+Answer: ≥0
+Explanation: Property.
+
+Q19.
+
+Most PYQ-tested idea?
+Answer: Covariance formula
+Explanation: Frequently asked.
+
+Q20.
+
+Biggest GATE trap?
+Answer: Cov=0 ⇒ independence
+Explanation: Incorrect assumption.
+
+Q21.
+
+Expected value linear property?
+Answer: E(X+Y)=E(X)+E(Y)
+Explanation: Linearity.
+
+Q22.
+
+Variance formula equals:
+Answer: E(X²)−[E(X)]²
+Explanation: Standard.
+
+Q23.
+
+Standard deviation equals:
+Answer: √Variance
+Explanation: Definition.
+
+Q24.
+
+If variables independent then:
+Answer: Cov=0
+Explanation: Property.
+
+Q25.
+
+Joint distribution used for:
+Answer: Multivariate analysis
+Explanation: Multiple variables.
+
+Q26.
+
+Marginal distribution removes:
+Answer: Other variable
+Explanation: Summation.
+
+Q27.
+
+If correlation = 0.8, relation is:
+Answer: Strong positive
+Explanation: Close to 1.
+
+Q28.
+
+If correlation = −0.7, relation is:
+Answer: Strong negative
+Explanation: Negative relation.
+
+Q29.
+
+Joint PDF integrates to:
+Answer: 1
+Explanation: Same rule.
+
+Q30.
+
+Joint distributions used in:
+Answer: ML & Data science
+Explanation: Multivariate models.
