@@ -1,0 +1,423 @@
+📚 Subject: Digital Logic
+🧠 Topic: Boolean Algebra & Logic Gates
+
+(We now move to the next major subject in the GATE CSE syllabus.)
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Boolean Algebra
+
+Boolean algebra deals with variables that take only two values:
+
+0
+=
+𝐹
+𝑎
+𝑙
+𝑠
+𝑒
+,
+1
+=
+𝑇
+𝑟
+𝑢
+𝑒
+0=False,1=True
+
+Basic operations:
+
+Operation	Symbol	Meaning
+AND	.	Multiplication
+OR	+	Addition
+NOT	'	Complement
+🔹 Basic Boolean Laws (VERY IMPORTANT)
+Identity Laws
+𝐴
++
+0
+=
+𝐴
+A+0=A
+𝐴
+⋅
+1
+=
+𝐴
+A⋅1=A
+Null Laws
+𝐴
++
+1
+=
+1
+A+1=1
+𝐴
+⋅
+0
+=
+0
+A⋅0=0
+Idempotent Laws
+𝐴
++
+𝐴
+=
+𝐴
+A+A=A
+𝐴
+⋅
+𝐴
+=
+𝐴
+A⋅A=A
+Complement Laws
+𝐴
++
+𝐴
+′
+=
+1
+A+A
+′
+=1
+𝐴
+⋅
+𝐴
+′
+=
+0
+A⋅A
+′
+=0
+Double Negation
+(
+𝐴
+′
+)
+′
+=
+𝐴
+(A
+′
+)
+′
+=A
+🔹 De Morgan’s Laws (VERY IMPORTANT)
+(
+𝐴
++
+𝐵
+)
+′
+=
+𝐴
+′
+𝐵
+′
+(A+B)
+′
+=A
+′
+B
+′
+(
+𝐴
+𝐵
+)
+′
+=
+𝐴
+′
++
+𝐵
+′
+(AB)
+′
+=A
+′
++B
+′
+
+📌 Extremely important for GATE questions.
+
+🔹 Logic Gates
+
+Logic gates implement Boolean functions.
+
+1️⃣ AND Gate
+
+Output = 1 only if both inputs are 1
+
+A	B	Output
+0	0	0
+0	1	0
+1	0	0
+1	1	1
+2️⃣ OR Gate
+
+Output = 1 if any input is 1
+
+3️⃣ NOT Gate
+
+Single input.
+
+A	Output
+0	1
+1	0
+4️⃣ NAND Gate
+𝑁
+𝐴
+𝑁
+𝐷
+=
+(
+𝐴
+𝐵
+)
+′
+NAND=(AB)
+′
+
+📌 Universal Gate
+
+5️⃣ NOR Gate
+𝑁
+𝑂
+𝑅
+=
+(
+𝐴
++
+𝐵
+)
+′
+NOR=(A+B)
+′
+
+📌 Also Universal Gate
+
+🔹 Universal Gates
+
+Gates that can implement any Boolean function.
+
+✔ NAND
+✔ NOR
+
+🔹 XOR Gate
+𝐴
+⊕
+𝐵
+=
+𝐴
+′
+𝐵
++
+𝐴
+𝐵
+′
+A⊕B=A
+′
+B+AB
+′
+
+Output = 1 when inputs differ.
+
+A	B	Output
+0	0	0
+0	1	1
+1	0	1
+1	1	0
+🔹 XNOR Gate
+
+Complement of XOR.
+
+Output = 1 when inputs same.
+
+🔹 Important GATE Traps
+
+NAND/NOR universality
+
+XOR expression
+
+Applying De Morgan incorrectly
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Boolean variables take values:
+Answer: 0 or 1
+Explanation: Binary logic.
+
+Q2.
+
+A + 0 equals:
+Answer: A
+Explanation: Identity law.
+
+Q3.
+
+A · 1 equals:
+Answer: A
+Explanation: Identity.
+
+Q4.
+
+A + 1 equals:
+Answer: 1
+Explanation: Null law.
+
+Q5.
+
+A · 0 equals:
+Answer: 0
+Explanation: Null law.
+
+Q6.
+
+A + A equals:
+Answer: A
+Explanation: Idempotent.
+
+Q7.
+
+A · A equals:
+Answer: A
+Explanation: Idempotent.
+
+Q8.
+
+A + A' equals:
+Answer: 1
+Explanation: Complement law.
+
+Q9.
+
+A · A' equals:
+Answer: 0
+Explanation: Complement.
+
+Q10.
+
+(A')' equals:
+Answer: A
+Explanation: Double negation.
+
+Q11.
+
+De Morgan law for OR?
+Answer: (A+B)' = A'B'
+Explanation: Complement rule.
+
+Q12.
+
+De Morgan law for AND?
+Answer: (AB)' = A' + B'
+Explanation: Complement rule.
+
+Q13.
+
+Universal gates are:
+Answer: NAND and NOR
+Explanation: Can implement any function.
+
+Q14.
+
+NAND output equals:
+Answer: (AB)'
+Explanation: NOT of AND.
+
+Q15.
+
+NOR output equals:
+Answer: (A+B)'
+Explanation: NOT of OR.
+
+Q16.
+
+XOR outputs 1 when:
+Answer: Inputs differ
+Explanation: Exclusive OR.
+
+Q17.
+
+XNOR outputs 1 when:
+Answer: Inputs same
+Explanation: Complement of XOR.
+
+Q18.
+
+XOR expression equals:
+Answer: A'B + AB'
+Explanation: Standard formula.
+
+Q19.
+
+NOT gate has inputs:
+Answer: 1
+Explanation: Single input.
+
+Q20.
+
+AND gate outputs 1 when:
+Answer: Both inputs 1
+Explanation: Logical multiplication.
+
+Q21.
+
+OR gate outputs 1 when:
+Answer: Any input 1
+Explanation: Logical addition.
+
+Q22.
+
+NAND gate output when inputs 1,1?
+Answer: 0
+Explanation: Complement of AND.
+
+Q23.
+
+NOR gate output when inputs 0,0?
+Answer: 1
+Explanation: Complement of OR.
+
+Q24.
+
+Most PYQ-tested Boolean rule?
+Answer: De Morgan laws
+Explanation: Frequently used.
+
+Q25.
+
+Biggest GATE trap here?
+Answer: Wrong De Morgan conversion
+Explanation: Common mistake.
+
+Q26.
+
+XOR gate symbol means:
+Answer: Exclusive OR
+Explanation: Only one true.
+
+Q27.
+
+Complement of XOR is:
+Answer: XNOR
+Explanation: Opposite output.
+
+Q28.
+
+Boolean algebra used in:
+Answer: Digital circuits
+Explanation: Logic design.
+
+Q29.
+
+NAND implementation means:
+Answer: Only NAND gates used
+Explanation: Universal property.
+
+Q30.
+
+Digital logic heavily used in:
+Answer: Computer architecture
+Explanation: Hardware design.
