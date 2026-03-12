@@ -1,0 +1,431 @@
+📚 Subject: Engineering Mathematics – Probability & Statistics
+🧠 Topic: Common Probability Distributions (Normal, Exponential, Geometric)
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Normal Distribution (Gaussian)
+
+One of the most important distributions in statistics.
+
+Probability density function:
+
+𝑓
+(
+𝑥
+)
+=
+1
+𝜎
+2
+𝜋
+𝑒
+−
+(
+𝑥
+−
+𝜇
+)
+2
+2
+𝜎
+2
+f(x)=
+σ
+2π
+	​
+
+1
+	​
+
+e
+−
+2σ
+2
+(x−μ)
+2
+	​
+
+
+Where:
+
+μ = mean
+
+σ = standard deviation
+
+Important Properties
+
+Symmetric about mean
+
+Mean = Median = Mode
+
+Bell-shaped curve
+
+Standard Normal Distribution
+
+When:
+
+𝜇
+=
+0
+,
+𝜎
+=
+1
+μ=0,σ=1
+
+Then variable:
+
+𝑍
+=
+𝑋
+−
+𝜇
+𝜎
+Z=
+σ
+X−μ
+	​
+
+
+📌 Used in Z-score calculations.
+
+🔹 Exponential Distribution
+
+Used to model waiting times.
+
+PDF:
+
+𝑓
+(
+𝑥
+)
+=
+𝜆
+𝑒
+−
+𝜆
+𝑥
+,
+𝑥
+≥
+0
+f(x)=λe
+−λx
+,x≥0
+
+Mean:
+
+𝐸
+(
+𝑋
+)
+=
+1
+𝜆
+E(X)=
+λ
+1
+	​
+
+
+Variance:
+
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
+=
+1
+𝜆
+2
+Var(X)=
+λ
+2
+1
+	​
+
+Memoryless Property (VERY IMPORTANT)
+𝑃
+(
+𝑋
+>
+𝑠
++
+𝑡
+∣
+𝑋
+>
+𝑠
+)
+=
+𝑃
+(
+𝑋
+>
+𝑡
+)
+P(X>s+t∣X>s)=P(X>t)
+
+📌 Exponential distribution is memoryless.
+
+🔹 Geometric Distribution
+
+Models number of trials until first success.
+
+PMF:
+
+𝑃
+(
+𝑋
+=
+𝑘
+)
+=
+(
+1
+−
+𝑝
+)
+𝑘
+−
+1
+𝑝
+P(X=k)=(1−p)
+k−1
+p
+
+Mean:
+
+𝐸
+(
+𝑋
+)
+=
+1
+𝑝
+E(X)=
+p
+1
+	​
+
+
+Variance:
+
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
+=
+1
+−
+𝑝
+𝑝
+2
+Var(X)=
+p
+2
+1−p
+	​
+
+Memoryless Property
+
+Geometric distribution is also memoryless.
+
+🔹 Important Comparisons
+Distribution	Type	Mean
+Binomial	Discrete	np
+Poisson	Discrete	λ
+Geometric	Discrete	1/p
+Exponential	Continuous	1/λ
+Normal	Continuous	μ
+🔹 Common GATE Traps
+
+Mixing geometric with binomial
+
+Forgetting memoryless distributions
+
+Confusing variance formulas
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Normal distribution is:
+Answer: Continuous
+Explanation: Real-valued variable.
+
+Q2.
+
+Normal distribution shape is:
+Answer: Bell-shaped
+Explanation: Symmetric curve.
+
+Q3.
+
+Mean of normal distribution equals:
+Answer: μ
+Explanation: Parameter.
+
+Q4.
+
+Variance of normal distribution equals:
+Answer: σ²
+Explanation: Standard definition.
+
+Q5.
+
+Standard normal mean equals:
+Answer: 0
+Explanation: μ=0.
+
+Q6.
+
+Standard normal variance equals:
+Answer: 1
+Explanation: σ²=1.
+
+Q7.
+
+Z-score formula?
+Answer: (X−μ)/σ
+Explanation: Standardization.
+
+Q8.
+
+Exponential distribution models:
+Answer: Waiting time
+Explanation: Continuous time events.
+
+Q9.
+
+Mean of exponential distribution?
+Answer: 1/λ
+Explanation: Property.
+
+Q10.
+
+Variance of exponential distribution?
+Answer: 1/λ²
+Explanation: Property.
+
+Q11.
+
+Which distribution is memoryless?
+Answer: Exponential
+Explanation: Key property.
+
+Q12.
+
+Which discrete distribution is memoryless?
+Answer: Geometric
+Explanation: Unique property.
+
+Q13.
+
+Geometric distribution models:
+Answer: Trials until first success
+Explanation: Definition.
+
+Q14.
+
+Mean of geometric distribution?
+Answer: 1/p
+Explanation: Formula.
+
+Q15.
+
+Variance of geometric distribution?
+Answer: (1−p)/p²
+Explanation: Standard formula.
+
+Q16.
+
+Poisson distribution mean equals:
+Answer: λ
+Explanation: Same as variance.
+
+Q17.
+
+Normal distribution symmetric about:
+Answer: Mean
+Explanation: Central point.
+
+Q18.
+
+Most PYQ-tested continuous distribution?
+Answer: Normal
+Explanation: Very common.
+
+Q19.
+
+Biggest GATE trap?
+Answer: Mixing geometric with binomial
+Explanation: Different models.
+
+Q20.
+
+Exponential distribution defined for:
+Answer: x ≥ 0
+Explanation: Non-negative.
+
+Q21.
+
+Normal distribution tails approach:
+Answer: Zero
+Explanation: Asymptotic.
+
+Q22.
+
+Standard deviation symbol:
+Answer: σ
+Explanation: Standard notation.
+
+Q23.
+
+Mean of binomial distribution?
+Answer: np
+Explanation: Property.
+
+Q24.
+
+Variance of Poisson distribution?
+Answer: λ
+Explanation: Same as mean.
+
+Q25.
+
+If p small, binomial approximates:
+Answer: Poisson
+Explanation: Rare events.
+
+Q26.
+
+Normal distribution arises via:
+Answer: Central Limit Theorem
+Explanation: Large samples.
+
+Q27.
+
+Memoryless property means:
+Answer: Past does not affect future
+Explanation: Conditional independence.
+
+Q28.
+
+Geometric distribution support is:
+Answer: 1,2,3,...
+Explanation: Number of trials.
+
+Q29.
+
+Normal distribution used heavily in:
+Answer: Statistics & ML
+Explanation: Data modeling.
+
+Q30.
+
+Most important exam trick?
+Answer: Recognize distribution type
+Explanation: Saves time.
