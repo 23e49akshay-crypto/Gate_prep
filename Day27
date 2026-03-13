@@ -1,0 +1,516 @@
+📚 Subject: Engineering Mathematics – Probability & Statistics
+🧠 Topic: Expectation, Variance & Important Properties
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Expectation (Expected Value)
+
+The expectation of a random variable represents the average outcome over many trials.
+
+For discrete random variable:
+
+𝐸
+(
+𝑋
+)
+=
+∑
+𝑥
+𝑃
+(
+𝑋
+=
+𝑥
+)
+E(X)=∑xP(X=x)
+
+For continuous random variable:
+
+𝐸
+(
+𝑋
+)
+=
+∫
+𝑥
+𝑓
+(
+𝑥
+)
+𝑑
+𝑥
+E(X)=∫xf(x)dx
+🔹 Important Expectation Properties
+1️⃣ Linearity of Expectation
+𝐸
+(
+𝑎
+𝑋
++
+𝑏
+)
+=
+𝑎
+𝐸
+(
+𝑋
+)
++
+𝑏
+E(aX+b)=aE(X)+b
+
+Very important in GATE.
+
+2️⃣ Expectation of Sum
+𝐸
+(
+𝑋
++
+𝑌
+)
+=
+𝐸
+(
+𝑋
+)
++
+𝐸
+(
+𝑌
+)
+E(X+Y)=E(X)+E(Y)
+
+📌 Works even if X and Y are not independent.
+
+🔹 Variance
+
+Variance measures spread of data.
+
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
+=
+𝐸
+[
+(
+𝑋
+−
+𝐸
+(
+𝑋
+)
+)
+2
+]
+Var(X)=E[(X−E(X))
+2
+]
+
+Alternative formula:
+
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
+=
+𝐸
+(
+𝑋
+2
+)
+−
+[
+𝐸
+(
+𝑋
+)
+]
+2
+Var(X)=E(X
+2
+)−[E(X)]
+2
+🔹 Standard Deviation
+𝜎
+=
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
+σ=
+Var(X)
+	​
+
+🔹 Variance Properties
+1️⃣ Scaling Property
+𝑉
+𝑎
+𝑟
+(
+𝑎
+𝑋
++
+𝑏
+)
+=
+𝑎
+2
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
+Var(aX+b)=a
+2
+Var(X)
+2️⃣ Variance of Sum
+
+If X,Y independent:
+
+𝑉
+𝑎
+𝑟
+(
+𝑋
++
+𝑌
+)
+=
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
++
+𝑉
+𝑎
+𝑟
+(
+𝑌
+)
+Var(X+Y)=Var(X)+Var(Y)
+🔹 Covariance
+
+Measures joint variation.
+
+𝐶
+𝑜
+𝑣
+(
+𝑋
+,
+𝑌
+)
+=
+𝐸
+(
+𝑋
+𝑌
+)
+−
+𝐸
+(
+𝑋
+)
+𝐸
+(
+𝑌
+)
+Cov(X,Y)=E(XY)−E(X)E(Y)
+🔹 Variance Using Covariance
+𝑉
+𝑎
+𝑟
+(
+𝑋
++
+𝑌
+)
+=
+𝑉
+𝑎
+𝑟
+(
+𝑋
+)
++
+𝑉
+𝑎
+𝑟
+(
+𝑌
+)
++
+2
+𝐶
+𝑜
+𝑣
+(
+𝑋
+,
+𝑌
+)
+Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)
+🔹 Indicator Random Variable (PYQ FAVORITE)
+
+If event A occurs:
+
+𝐼
+𝐴
+=
+{
+1
+	
+𝐴
+ 
+𝑜
+𝑐
+𝑐
+𝑢
+𝑟
+𝑠
+
+
+0
+	
+𝑜
+𝑡
+ℎ
+𝑒
+𝑟
+𝑤
+𝑖
+𝑠
+𝑒
+I
+A
+	​
+
+={
+1
+0
+	​
+
+A occurs
+otherwise
+	​
+
+
+Then:
+
+𝐸
+(
+𝐼
+𝐴
+)
+=
+𝑃
+(
+𝐴
+)
+E(I
+A
+	​
+
+)=P(A)
+
+📌 Powerful trick in probability problems.
+
+🔹 Important GATE Traps
+
+Forgetting expectation linearity
+
+Mixing variance formulas
+
+Thinking independence needed for expectation
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Expectation of discrete RV equals:
+Answer: Σ xP(x)
+Explanation: Definition.
+
+Q2.
+
+Expectation of continuous RV equals:
+Answer: ∫ xf(x)dx
+Explanation: Definition.
+
+Q3.
+
+Linearity property states:
+Answer: E(aX+b)=aE(X)+b
+Explanation: Important identity.
+
+Q4.
+
+Expectation of sum equals:
+Answer: Sum of expectations
+Explanation: Always true.
+
+Q5.
+
+Variance formula equals:
+Answer: E(X²)−[E(X)]²
+Explanation: Standard formula.
+
+Q6.
+
+Standard deviation equals:
+Answer: √Variance
+Explanation: Definition.
+
+Q7.
+
+Variance of constant equals:
+Answer: 0
+Explanation: No variability.
+
+Q8.
+
+Var(aX+b)=?
+Answer: a²Var(X)
+Explanation: Property.
+
+Q9.
+
+If X,Y independent:
+
+Var(X+Y)=?
+Answer: Var(X)+Var(Y)
+Explanation: Independence removes covariance.
+
+Q10.
+
+Covariance formula?
+Answer: E(XY)−E(X)E(Y)
+Explanation: Definition.
+
+Q11.
+
+Cov(X,X)=?
+Answer: Var(X)
+Explanation: Special case.
+
+Q12.
+
+If Cov(X,Y)>0:
+Answer: Positive relationship
+Explanation: Increase together.
+
+Q13.
+
+If Cov(X,Y)=0:
+Answer: Uncorrelated
+Explanation: No linear relation.
+
+Q14.
+
+Does Cov=0 imply independence?
+Answer: No
+Explanation: Only uncorrelated.
+
+Q15.
+
+Variance always:
+Answer: ≥0
+Explanation: Square term.
+
+Q16.
+
+Indicator variable values:
+Answer: 0 or 1
+Explanation: Event occurrence.
+
+Q17.
+
+Expectation of indicator equals:
+Answer: Probability
+Explanation: E(I)=P(A).
+
+Q18.
+
+Most PYQ-tested property?
+Answer: Linearity of expectation
+Explanation: Widely used.
+
+Q19.
+
+Biggest GATE trap?
+Answer: Assuming independence required for expectation
+Explanation: Not needed.
+
+Q20.
+
+If X constant c, E(X)=?
+Answer: c
+Explanation: Always same value.
+
+Q21.
+
+Var(X−Y)=? (general)
+Answer: Var(X)+Var(Y)−2Cov(X,Y)
+Explanation: Formula.
+
+Q22.
+
+Variance measures:
+Answer: Spread
+Explanation: Dispersion.
+
+Q23.
+
+If Var(X)=0, X is:
+Answer: Constant
+Explanation: No variability.
+
+Q24.
+
+If X,Y independent, Cov(X,Y)=?
+Answer: 0
+Explanation: Independence.
+
+Q25.
+
+Variance of sum formula includes:
+Answer: Covariance term
+Explanation: General formula.
+
+Q26.
+
+Expected value used in:
+Answer: Long-run average
+Explanation: Interpretation.
+
+Q27.
+
+Indicator trick useful for:
+Answer: Counting problems
+Explanation: Simplifies expectation.
+
+Q28.
+
+Standard deviation always:
+Answer: Non-negative
+Explanation: Square root.
+
+Q29.
+
+Most important exam trick?
+Answer: Use expectation linearity
+Explanation: Avoid complex probability.
+
+Q30.
+
+Expectation used heavily in:
+Answer: Algorithms & ML
+Explanation: Randomized analysis.
