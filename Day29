@@ -1,0 +1,444 @@
+📚 Subject: Digital Logic
+🧠 Topic: Boolean Algebra & Logic Gates
+
+✅ From today we start the Digital Logic portion of the GATE syllabus.
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Boolean Algebra
+
+Boolean Algebra deals with binary variables.
+
+Variables can take only two values:
+
+0
+𝑜
+𝑟
+1
+0or1
+
+Where:
+
+0 → False
+
+1 → True
+
+Operations are based on logic.
+
+🔹 Basic Boolean Operations
+1️⃣ AND Operation (·)
+𝑌
+=
+𝐴
+⋅
+𝐵
+Y=A⋅B
+
+Truth table:
+
+A	B	A·B
+0	0	0
+0	1	0
+1	0	0
+1	1	1
+
+📌 Output is 1 only if both inputs are 1.
+
+2️⃣ OR Operation (+)
+𝑌
+=
+𝐴
++
+𝐵
+Y=A+B
+
+Truth table:
+
+A	B	A+B
+0	0	0
+0	1	1
+1	0	1
+1	1	1
+
+📌 Output is 1 if any input is 1.
+
+3️⃣ NOT Operation (')
+𝑌
+=
+𝐴
+′
+Y=A
+′
+
+Truth table:
+
+A	A'
+0	1
+1	0
+
+📌 Inverts the input.
+
+🔹 Basic Logic Gates
+
+These operations are implemented using logic gates.
+
+AND Gate
+
+Output = A·B
+
+OR Gate
+
+Output = A + B
+
+NOT Gate
+
+Output = A'
+
+🔹 Universal Gates (VERY IMPORTANT)
+
+Two gates can implement any Boolean function.
+
+1️⃣ NAND Gate
+𝑌
+=
+(
+𝐴
+⋅
+𝐵
+)
+′
+Y=(A⋅B)
+′
+
+Truth table:
+
+A	B	Output
+0	0	1
+0	1	1
+1	0	1
+1	1	0
+2️⃣ NOR Gate
+𝑌
+=
+(
+𝐴
++
+𝐵
+)
+′
+Y=(A+B)
+′
+
+Both NAND and NOR are universal gates.
+
+📌 Very common GATE question.
+
+🔹 Important Boolean Laws
+Identity Law
+𝐴
++
+0
+=
+𝐴
+A+0=A
+𝐴
+⋅
+1
+=
+𝐴
+A⋅1=A
+Null Law
+𝐴
++
+1
+=
+1
+A+1=1
+𝐴
+⋅
+0
+=
+0
+A⋅0=0
+Idempotent Law
+𝐴
++
+𝐴
+=
+𝐴
+A+A=A
+𝐴
+⋅
+𝐴
+=
+𝐴
+A⋅A=A
+Complement Law
+𝐴
++
+𝐴
+′
+=
+1
+A+A
+′
+=1
+𝐴
+⋅
+𝐴
+′
+=
+0
+A⋅A
+′
+=0
+De Morgan’s Laws (VERY IMPORTANT)
+(
+𝐴
++
+𝐵
+)
+′
+=
+𝐴
+′
+𝐵
+′
+(A+B)
+′
+=A
+′
+B
+′
+(
+𝐴
+𝐵
+)
+′
+=
+𝐴
+′
++
+𝐵
+′
+(AB)
+′
+=A
+′
++B
+′
+
+📌 Used heavily in simplification.
+
+🔹 Duality Principle
+
+Every Boolean identity has a dual form by swapping:
+
+AND ↔ OR
+
+0 ↔ 1
+
+Example:
+
+𝐴
++
+0
+=
+𝐴
+A+0=A
+
+Dual:
+
+𝐴
+⋅
+1
+=
+𝐴
+A⋅1=A
+🔹 Common GATE Traps
+
+Forgetting De Morgan's laws
+
+Confusing NAND with NOR
+
+Ignoring duality principle
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Boolean variables take values:
+Answer: 0 or 1
+Explanation: Binary logic.
+
+Q2.
+
+AND gate outputs 1 when:
+Answer: Both inputs are 1
+Explanation: Logical multiplication.
+
+Q3.
+
+OR gate outputs 1 when:
+Answer: At least one input is 1
+Explanation: Logical addition.
+
+Q4.
+
+NOT gate performs:
+Answer: Complement
+Explanation: Inversion.
+
+Q5.
+
+NAND gate output equals:
+Answer: (AB)'
+Explanation: NOT of AND.
+
+Q6.
+
+NOR gate output equals:
+Answer: (A+B)'
+Explanation: NOT of OR.
+
+Q7.
+
+Universal gates are:
+Answer: NAND and NOR
+Explanation: Can build any logic.
+
+Q8.
+
+Complement law states:
+Answer: A+A'=1
+Explanation: Always true.
+
+Q9.
+
+A·A equals:
+Answer: A
+Explanation: Idempotent law.
+
+Q10.
+
+A+0 equals:
+Answer: A
+Explanation: Identity law.
+
+Q11.
+
+A·1 equals:
+Answer: A
+Explanation: Identity law.
+
+Q12.
+
+A+1 equals:
+Answer: 1
+Explanation: Null law.
+
+Q13.
+
+A·0 equals:
+Answer: 0
+Explanation: Null law.
+
+Q14.
+
+De Morgan's law for OR?
+Answer: (A+B)'=A'B'
+Explanation: Important transformation.
+
+Q15.
+
+De Morgan's law for AND?
+Answer: (AB)'=A'+B'
+Explanation: Complement of product.
+
+Q16.
+
+NAND gate with same inputs acts as:
+Answer: NOT gate
+Explanation: (AA)'=A'.
+
+Q17.
+
+NOR gate with same inputs acts as:
+Answer: NOT gate
+Explanation: (A+A)'=A'.
+
+Q18.
+
+Boolean algebra used in:
+Answer: Digital circuits
+Explanation: Logic design.
+
+Q19.
+
+Most PYQ-tested concept here?
+Answer: De Morgan’s laws
+Explanation: Simplification.
+
+Q20.
+
+Biggest GATE trap?
+Answer: Mixing NAND and NOR truth tables
+Explanation: Common mistake.
+
+Q21.
+
+Dual of A+0=A is:
+Answer: A·1=A
+Explanation: Duality rule.
+
+Q22.
+
+A+A equals:
+Answer: A
+Explanation: Idempotent law.
+
+Q23.
+
+(A')' equals:
+Answer: A
+Explanation: Double negation.
+
+Q24.
+
+Boolean algebra introduced by:
+Answer: George Boole
+Explanation: Founder.
+
+Q25.
+
+AND operation corresponds to:
+Answer: Multiplication
+Explanation: Boolean product.
+
+Q26.
+
+OR operation corresponds to:
+Answer: Addition
+Explanation: Boolean sum.
+
+Q27.
+
+Complement of 0 equals:
+Answer: 1
+Explanation: Inversion.
+
+Q28.
+
+Complement of 1 equals:
+Answer: 0
+Explanation: Inversion.
+
+Q29.
+
+Logic gates implemented using:
+Answer: Electronic circuits
+Explanation: Hardware realization.
+
+Q30.
+
+Boolean algebra forms basis of:
+Answer: Digital system design
+Explanation: Core concept.
