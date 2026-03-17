@@ -1,0 +1,365 @@
+📚 Subject: Digital Logic
+🧠 Topic: Boolean Function Minimization (K-Map & SOP/POS)
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is Boolean Function Minimization?
+
+Goal:
+👉 Reduce a Boolean expression to simplest form
+
+Why?
+
+Fewer gates
+
+Less cost
+
+Faster circuits
+
+🔹 Standard Forms
+1️⃣ Sum of Products (SOP)
+
+Form:
+
+𝐹
+=
+𝑚
+1
++
+𝑚
+2
++
+𝑚
+3
++
+.
+.
+.
+F=m
+1
+	​
+
++m
+2
+	​
+
++m
+3
+	​
+
++...
+
+Sum (OR) of products (AND terms)
+
+Built using minterms
+
+🔹 Minterm
+
+A minterm is a product term where:
+
+Each variable appears exactly once
+
+Either complemented or not
+
+Example (for A, B):
+
+A'B
+
+AB
+
+AB'
+
+2️⃣ Product of Sums (POS)
+
+Form:
+
+𝐹
+=
+(
+𝑀
+1
+)
+(
+𝑀
+2
+)
+(
+𝑀
+3
+)
+.
+.
+.
+F=(M
+1
+	​
+
+)(M
+2
+	​
+
+)(M
+3
+	​
+
+)...
+
+Product (AND) of sum (OR terms)
+
+Built using maxterms
+
+🔹 Minterm Numbering (VERY IMPORTANT)
+
+For variables A,B:
+
+A	B	Minterm	Index
+0	0	A'B'	m₀
+0	1	A'B	m₁
+1	0	AB'	m₂
+1	1	AB	m₃
+
+📌 Index is binary value.
+
+🔹 K-Map (Karnaugh Map)
+
+Used for visual simplification.
+
+🔹 2-Variable K-Map
+
+4 cells
+
+🔹 3-Variable K-Map
+
+8 cells
+
+🔹 4-Variable K-Map
+
+16 cells
+
+🔹 K-Map Rules (VERY IMPORTANT)
+
+1️⃣ Group sizes must be power of 2:
+
+1, 2, 4, 8...
+
+2️⃣ Groups must be rectangular
+
+3️⃣ Wrap-around allowed (edges connect)
+
+4️⃣ Make largest possible groups
+
+🔹 Types of Grouping
+
+Pair → removes 1 variable
+
+Quad → removes 2 variables
+
+Octet → removes 3 variables
+
+🔹 Don’t Care Conditions
+
+Represented by:
+
+𝑋
+ or 
+𝑑
+X or d
+
+Can be used or ignored
+
+Helps in simplification
+
+📌 Very common GATE questions.
+
+🔹 SOP vs POS (Exam Point)
+SOP	POS
+Uses minterms	Uses maxterms
+OR of AND terms	AND of OR terms
+K-map grouping of 1s	K-map grouping of 0s
+🔹 Important GATE Traps
+
+Missing wrap-around grouping
+
+Not choosing largest group
+
+Ignoring don’t-care optimization
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+SOP form means:
+Answer: Sum of products
+Explanation: OR of AND terms.
+
+Q2.
+
+POS form means:
+Answer: Product of sums
+Explanation: AND of OR terms.
+
+Q3.
+
+Minterm includes:
+Answer: All variables once
+Explanation: Definition.
+
+Q4.
+
+Number of minterms for n variables?
+Answer: 2ⁿ
+Explanation: All combinations.
+
+Q5.
+
+K-map grouping sizes must be:
+Answer: Power of 2
+Explanation: Rule.
+
+Q6.
+
+Largest grouping gives:
+Answer: Maximum simplification
+Explanation: Reduces variables.
+
+Q7.
+
+Pair grouping removes how many variables?
+Answer: 1
+Explanation: Reduction rule.
+
+Q8.
+
+Quad grouping removes how many variables?
+Answer: 2
+Explanation: Reduction.
+
+Q9.
+
+Octet grouping removes how many variables?
+Answer: 3
+Explanation: Larger reduction.
+
+Q10.
+
+K-map for 3 variables has cells:
+Answer: 8
+Explanation: 2³.
+
+Q11.
+
+K-map for 4 variables has cells:
+Answer: 16
+Explanation: 2⁴.
+
+Q12.
+
+Wrap-around grouping allowed?
+Answer: Yes
+Explanation: Edge connection.
+
+Q13.
+
+Don’t care symbol:
+Answer: X or d
+Explanation: Flexible value.
+
+Q14.
+
+Don’t care used to:
+Answer: Simplify expression
+Explanation: Optimization.
+
+Q15.
+
+Minterm index determined by:
+Answer: Binary value
+Explanation: Mapping.
+
+Q16.
+
+POS uses grouping of:
+Answer: 0s
+Explanation: Maxterms.
+
+Q17.
+
+SOP uses grouping of:
+Answer: 1s
+Explanation: Minterms.
+
+Q18.
+
+Most PYQ-tested topic here?
+Answer: K-map simplification
+Explanation: Very frequent.
+
+Q19.
+
+Biggest GATE trap?
+Answer: Missing largest grouping
+Explanation: Leads to wrong answer.
+
+Q20.
+
+If 4 cells grouped, variables reduced by:
+Answer: 2
+Explanation: Quad.
+
+Q21.
+
+Single cell group removes variables?
+Answer: None
+Explanation: No reduction.
+
+Q22.
+
+2-variable K-map cells count:
+Answer: 4
+Explanation: 2².
+
+Q23.
+
+Adjacent cells differ in:
+Answer: One variable
+Explanation: Gray code.
+
+Q24.
+
+K-map uses:
+Answer: Gray code ordering
+Explanation: Minimizes change.
+
+Q25.
+
+Maxterms correspond to:
+Answer: 0 outputs
+Explanation: POS form.
+
+Q26.
+
+Minterms correspond to:
+Answer: 1 outputs
+Explanation: SOP form.
+
+Q27.
+
+Boolean minimization reduces:
+Answer: Circuit complexity
+Explanation: Fewer gates.
+
+Q28.
+
+Best grouping strategy:
+Answer: Largest possible
+Explanation: Max reduction.
+
+Q29.
+
+K-map method used for variables up to:
+Answer: 4 or 5 (practically)
+Explanation: Beyond complex.
+
+Q30.
+
+Boolean minimization heavily used in:
+Answer: Digital circuit design
+Explanation: Optimization.
