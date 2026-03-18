@@ -1,0 +1,356 @@
+📚 Subject: Digital Logic
+🧠 Topic: Combinational Circuits
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What are Combinational Circuits?
+
+A combinational circuit is a digital circuit where:
+
+👉 Output depends only on present inputs
+👉 No memory / no feedback
+
+Output
+=
+𝑓
+(
+inputs
+)
+Output=f(inputs)
+
+📌 GATE Trap:
+No past dependency → no storage elements.
+
+🔹 Examples of Combinational Circuits
+
+Adders
+
+Subtractors
+
+Multiplexers
+
+Demultiplexers
+
+Encoders
+
+Decoders
+
+🔹 Half Adder
+
+Adds two bits (A, B)
+
+Outputs:
+
+Sum (S)
+
+Carry (C)
+
+𝑆
+=
+𝐴
+⊕
+𝐵
+S=A⊕B
+𝐶
+=
+𝐴
+𝐵
+C=AB
+🔹 Full Adder
+
+Adds three bits (A, B, Cin)
+
+Outputs:
+
+Sum
+
+Carry
+
+𝑆
+=
+𝐴
+⊕
+𝐵
+⊕
+𝐶
+𝑖
+𝑛
+S=A⊕B⊕Cin
+𝐶
+=
+𝐴
+𝐵
++
+𝐵
+𝐶
+𝑖
+𝑛
++
+𝐴
+𝐶
+𝑖
+𝑛
+C=AB+BCin+ACin
+
+📌 Very important for GATE.
+
+🔹 Multiplexer (MUX)
+
+Selects one input out of many.
+
+Example: 4-to-1 MUX
+
+Inputs: 4
+
+Select lines: 2
+
+Output: 1
+
+📌 Formula:
+
+Select lines
+=
+log
+⁡
+2
+(
+𝑛
+)
+Select lines=log
+2
+	​
+
+(n)
+🔹 Demultiplexer (DEMUX)
+
+Opposite of MUX:
+
+👉 One input → multiple outputs
+
+🔹 Encoder
+
+Converts:
+👉 Multiple inputs → binary code
+
+Example:
+8 inputs → 3-bit output
+
+🔹 Decoder
+
+Converts:
+👉 Binary input → one active output
+
+Example:
+3-to-8 decoder
+
+🔹 Priority Encoder
+
+Handles multiple active inputs:
+
+👉 Gives priority to highest-order input
+
+🔹 Comparator
+
+Compares two numbers:
+
+Outputs:
+
+A > B
+
+A = B
+
+A < B
+
+🔹 Important Formulas
+
+MUX select lines = log₂(n)
+
+Decoder outputs = 2ⁿ
+
+🔹 Common GATE Traps
+
+Confusing MUX and DEMUX
+
+Forgetting number of select lines
+
+Missing carry formula in full adder
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Combinational circuits depend on:
+Answer: Present inputs only
+Explanation: No memory.
+
+Q2.
+
+Combinational circuits have memory?
+Answer: No
+Explanation: Stateless.
+
+Q3.
+
+Half adder sum = ?
+Answer: A ⊕ B
+Explanation: XOR operation.
+
+Q4.
+
+Half adder carry = ?
+Answer: AB
+Explanation: AND operation.
+
+Q5.
+
+Full adder sum = ?
+Answer: A ⊕ B ⊕ Cin
+Explanation: XOR chain.
+
+Q6.
+
+Full adder carry = ?
+Answer: AB + BCin + ACin
+Explanation: Standard formula.
+
+Q7.
+
+MUX selects how many outputs?
+Answer: One
+Explanation: Single output.
+
+Q8.
+
+DEMUX has how many inputs?
+Answer: One
+Explanation: Single input.
+
+Q9.
+
+Select lines for 8 inputs?
+Answer: 3
+Explanation: log₂(8).
+
+Q10.
+
+Decoder outputs for n inputs?
+Answer: 2ⁿ
+Explanation: Expansion.
+
+Q11.
+
+Encoder converts:
+Answer: Inputs to binary
+Explanation: Coding.
+
+Q12.
+
+Decoder converts:
+Answer: Binary to outputs
+Explanation: Decoding.
+
+Q13.
+
+Priority encoder resolves:
+Answer: Multiple active inputs
+Explanation: Priority logic.
+
+Q14.
+
+Comparator checks:
+Answer: Equality/greater/less
+Explanation: Comparison.
+
+Q15.
+
+Most PYQ-tested circuit?
+Answer: Full adder
+Explanation: Very common.
+
+Q16.
+
+Biggest GATE trap?
+Answer: MUX vs DEMUX confusion
+Explanation: Opposite roles.
+
+Q17.
+
+4-to-1 MUX select lines?
+Answer: 2
+Explanation: log₂(4).
+
+Q18.
+
+2-to-4 decoder outputs?
+Answer: 4
+Explanation: 2².
+
+Q19.
+
+XOR gate outputs 1 when:
+Answer: Inputs differ
+Explanation: Exclusive OR.
+
+Q20.
+
+Half adder uses which gates?
+Answer: XOR and AND
+Explanation: Sum & carry.
+
+Q21.
+
+Full adder built using:
+Answer: Two half adders
+Explanation: Standard design.
+
+Q22.
+
+DEMUX distributes:
+Answer: One input to many outputs
+Explanation: Opposite of MUX.
+
+Q23.
+
+Encoder output bits for 16 inputs?
+Answer: 4
+Explanation: log₂(16).
+
+Q24.
+
+MUX reduces number of:
+Answer: Data lines
+Explanation: Selection.
+
+Q25.
+
+Decoder increases number of:
+Answer: Output lines
+Explanation: Expansion.
+
+Q26.
+
+Carry indicates:
+Answer: Overflow bit
+Explanation: Addition result.
+
+Q27.
+
+Combinational circuits are:
+Answer: Memoryless
+Explanation: No feedback.
+
+Q28.
+
+Full adder inputs count:
+Answer: 3
+Explanation: A, B, Cin.
+
+Q29.
+
+Half adder inputs count:
+Answer: 2
+Explanation: A, B.
+
+Q30.
+
+Combinational circuits used in:
+Answer: ALU & processors
+Explanation: Core logic.
