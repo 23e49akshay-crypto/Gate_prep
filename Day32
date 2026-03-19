@@ -1,0 +1,399 @@
+📚 Subject: Digital Logic
+🧠 Topic: Sequential Circuits & Flip-Flops
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What are Sequential Circuits?
+
+A sequential circuit is a digital circuit where:
+
+👉 Output depends on:
+
+Present input
+
+Past state (memory)
+
+Output
+=
+𝑓
+(
+input, previous state
+)
+Output=f(input, previous state)
+
+📌 Key Difference from Combinational:
+
+Combinational → no memory
+
+Sequential → has memory
+
+🔹 Types of Sequential Circuits
+1️⃣ Synchronous
+
+Controlled by clock signal
+
+Changes occur at clock edge
+
+2️⃣ Asynchronous
+
+No clock
+
+Output changes immediately
+
+📌 GATE mostly focuses on synchronous circuits
+
+🔹 Flip-Flops (Memory Elements)
+
+Flip-flops store 1 bit of data.
+
+🔹 SR Flip-Flop
+
+Inputs:
+
+S (Set)
+
+R (Reset)
+
+S	R	Q(next)
+0	0	No change
+0	1	0
+1	0	1
+1	1	Invalid ❌
+
+📌 GATE Trap: S=R=1 is invalid.
+
+🔹 JK Flip-Flop
+
+Improved version of SR.
+
+J	K	Q(next)
+0	0	No change
+0	1	0
+1	0	1
+1	1	Toggle
+
+📌 No invalid state.
+
+🔹 D Flip-Flop
+
+Simplest flip-flop.
+
+𝑄
+(
+𝑛
+𝑒
+𝑥
+𝑡
+)
+=
+𝐷
+Q(next)=D
+
+📌 Eliminates invalid states.
+
+🔹 T Flip-Flop
+
+Toggle flip-flop.
+
+T	Q(next)
+0	No change
+1	Toggle
+🔹 Characteristic Equations
+
+SR: 
+𝑄
+𝑛
+𝑒
+𝑥
+𝑡
+=
+𝑆
++
+𝑅
+′
+𝑄
+Q
+next
+	​
+
+=S+R
+′
+Q
+
+JK: 
+𝑄
+𝑛
+𝑒
+𝑥
+𝑡
+=
+𝐽
+𝑄
+′
++
+𝐾
+′
+𝑄
+Q
+next
+	​
+
+=JQ
+′
++K
+′
+Q
+
+D: 
+𝑄
+𝑛
+𝑒
+𝑥
+𝑡
+=
+𝐷
+Q
+next
+	​
+
+=D
+
+T: 
+𝑄
+𝑛
+𝑒
+𝑥
+𝑡
+=
+𝑇
+⊕
+𝑄
+Q
+next
+	​
+
+=T⊕Q
+
+📌 Very important for GATE.
+
+🔹 Excitation Table (IMPORTANT)
+
+Used to find required inputs for state transition.
+
+Example (JK):
+
+Q	Q(next)	J	K
+0	0	0	X
+0	1	1	X
+1	0	X	1
+1	1	X	0
+🔹 Race Around Condition
+
+Occurs in JK flip-flop when:
+
+👉 J = K = 1
+👉 Clock pulse is long
+
+Result → output toggles continuously
+
+📌 Solution:
+
+Master-slave flip-flop
+
+Edge triggering
+
+🔹 Edge Triggering
+
+Positive edge (↑)
+
+Negative edge (↓)
+
+Changes only at edge → avoids instability
+
+🔹 Common GATE Traps
+
+Confusing SR invalid state
+
+Forgetting toggle condition in JK
+
+Ignoring race-around condition
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Sequential circuits depend on:
+Answer: Input + previous state
+Explanation: Memory-based.
+
+Q2.
+
+Sequential circuits have:
+Answer: Memory
+Explanation: State storage.
+
+Q3.
+
+Flip-flop stores how many bits?
+Answer: 1
+Explanation: Basic memory unit.
+
+Q4.
+
+SR flip-flop invalid state?
+Answer: S=1, R=1
+Explanation: Undefined.
+
+Q5.
+
+JK flip-flop removes:
+Answer: Invalid state
+Explanation: Improved SR.
+
+Q6.
+
+JK flip-flop toggle condition?
+Answer: J=K=1
+Explanation: Flips state.
+
+Q7.
+
+D flip-flop output equals:
+Answer: Input D
+Explanation: Direct.
+
+Q8.
+
+T flip-flop toggles when:
+Answer: T=1
+Explanation: Flip behavior.
+
+Q9.
+
+Characteristic equation of D flip-flop?
+Answer: Q(next)=D
+Explanation: Definition.
+
+Q10.
+
+Characteristic equation of T flip-flop?
+Answer: T⊕Q
+Explanation: XOR.
+
+Q11.
+
+Race-around occurs in:
+Answer: JK flip-flop
+Explanation: When J=K=1.
+
+Q12.
+
+Race-around condition happens when:
+Answer: Clock pulse long
+Explanation: Multiple toggles.
+
+Q13.
+
+Solution for race-around?
+Answer: Master-slave
+Explanation: Controlled toggling.
+
+Q14.
+
+Synchronous circuits use:
+Answer: Clock
+Explanation: Timing control.
+
+Q15.
+
+Asynchronous circuits use:
+Answer: No clock
+Explanation: Immediate change.
+
+Q16.
+
+Edge triggering occurs at:
+Answer: Clock edge
+Explanation: Instant change.
+
+Q17.
+
+Positive edge means:
+Answer: 0→1
+Explanation: Rising edge.
+
+Q18.
+
+Negative edge means:
+Answer: 1→0
+Explanation: Falling edge.
+
+Q19.
+
+Most PYQ-tested flip-flop?
+Answer: JK flip-flop
+Explanation: Frequently asked.
+
+Q20.
+
+Biggest GATE trap?
+Answer: SR invalid condition
+Explanation: Common mistake.
+
+Q21.
+
+Excitation table used for:
+Answer: Designing circuits
+Explanation: Input requirements.
+
+Q22.
+
+Q(next) depends on:
+Answer: Inputs and Q
+Explanation: Feedback.
+
+Q23.
+
+Flip-flops used in:
+Answer: Registers
+Explanation: Storage.
+
+Q24.
+
+Flip-flops used in:
+Answer: Counters
+Explanation: Sequential logic.
+
+Q25.
+
+JK flip-flop characteristic equation?
+Answer: JQ'+K'Q
+Explanation: Formula.
+
+Q26.
+
+SR flip-flop characteristic equation?
+Answer: S + R'Q
+Explanation: Expression.
+
+Q27.
+
+Memory element in sequential circuit?
+Answer: Flip-flop
+Explanation: Storage.
+
+Q28.
+
+Toggle means:
+Answer: Change state
+Explanation: 0↔1.
+
+Q29.
+
+Sequential circuits used in:
+Answer: Counters & registers
+Explanation: State systems.
+
+Q30.
+
+Key difference from combinational circuits?
+Answer: Presence of memory
+Explanation: Core concept
