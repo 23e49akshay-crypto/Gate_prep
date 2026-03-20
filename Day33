@@ -1,0 +1,339 @@
+📚 Subject: Digital Logic
+🧠 Topic: Counters & Registers
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What are Registers?
+
+A register is a group of flip-flops used to store multiple bits.
+
+👉 Each flip-flop stores 1 bit
+👉 n flip-flops → n-bit register
+
+🔹 Types of Registers
+1️⃣ Shift Registers (VERY IMPORTANT)
+
+Used to shift data left or right.
+
+Types:
+
+SISO (Serial In Serial Out)
+
+SIPO (Serial In Parallel Out)
+
+PISO (Parallel In Serial Out)
+
+PIPO (Parallel In Parallel Out)
+
+📌 Very common GATE questions.
+
+🔹 Universal Shift Register
+
+Can perform:
+
+Shift left
+
+Shift right
+
+Parallel load
+
+📌 Most flexible register.
+
+🔹 What are Counters?
+
+A counter is a sequential circuit that counts pulses.
+
+🔹 Types of Counters
+1️⃣ Asynchronous Counter (Ripple Counter)
+
+Flip-flops not triggered simultaneously
+
+Output of one FF → clock of next
+
+📌 Problem: Delay (ripple effect)
+
+2️⃣ Synchronous Counter
+
+All flip-flops triggered by same clock
+
+Faster than asynchronous
+
+📌 Preferred in real systems.
+
+🔹 MOD Counters
+
+MOD = Number of states
+
+Example:
+
+MOD-8 counter → counts 0 to 7
+
+Number of flip-flops
+=
+log
+⁡
+2
+(
+𝑁
+)
+Number of flip-flops=log
+2
+	​
+
+(N)
+Example:
+
+MOD-16 → 4 flip-flops
+
+🔹 Up Counter
+
+Counts:
+
+0
+→
+1
+→
+2
+→
+.
+.
+.
+0→1→2→...
+🔹 Down Counter
+
+Counts:
+
+𝑛
+→
+𝑛
+−
+1
+→
+.
+.
+.
+n→n−1→...
+🔹 Up-Down Counter
+
+Can count both directions.
+
+🔹 Ring Counter
+
+Output of last flip-flop fed to first
+
+Only one bit = 1 at a time
+
+🔹 Johnson Counter
+
+Inverted output fed back
+
+Produces 2n states with n flip-flops
+
+📌 Important GATE concept.
+
+🔹 Important Formulas
+
+Flip-flops required:
+
+𝑛
+=
+⌈
+log
+⁡
+2
+(
+𝑁
+)
+⌉
+n=⌈log
+2
+	​
+
+(N)⌉
+🔹 Common GATE Traps
+
+Confusing synchronous vs asynchronous
+
+Wrong flip-flop count
+
+Forgetting Johnson counter states
+
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Register stores:
+Answer: Multiple bits
+Explanation: Group of flip-flops.
+
+Q2.
+
+1 flip-flop stores:
+Answer: 1 bit
+Explanation: Binary storage.
+
+Q3.
+
+SISO means:
+Answer: Serial in Serial out
+Explanation: Shift register type.
+
+Q4.
+
+SIPO means:
+Answer: Serial in Parallel out
+Explanation: Data conversion.
+
+Q5.
+
+PISO means:
+Answer: Parallel in Serial out
+Explanation: Conversion.
+
+Q6.
+
+PIPO means:
+Answer: Parallel in Parallel out
+Explanation: Direct storage.
+
+Q7.
+
+Universal shift register can:
+Answer: Shift both directions
+Explanation: Flexible.
+
+Q8.
+
+Counter counts:
+Answer: Pulses
+Explanation: Sequential events.
+
+Q9.
+
+Asynchronous counter has:
+Answer: Ripple delay
+Explanation: Sequential triggering.
+
+Q10.
+
+Synchronous counter has:
+Answer: Same clock
+Explanation: Parallel triggering.
+
+Q11.
+
+MOD of counter means:
+Answer: Number of states
+Explanation: Count range.
+
+Q12.
+
+MOD-8 counter needs flip-flops?
+Answer: 3
+Explanation: log₂(8).
+
+Q13.
+
+MOD-16 counter needs flip-flops?
+Answer: 4
+Explanation: log₂(16).
+
+Q14.
+
+Up counter counts:
+Answer: Increasing
+Explanation: 0→n.
+
+Q15.
+
+Down counter counts:
+Answer: Decreasing
+Explanation: n→0.
+
+Q16.
+
+Ring counter uses:
+Answer: Feedback
+Explanation: Circular shift.
+
+Q17.
+
+Johnson counter states = ?
+Answer: 2n
+Explanation: Twice flip-flops.
+
+Q18.
+
+If 4 flip-flops in Johnson counter states?
+Answer: 8
+Explanation: 2×4.
+
+Q19.
+
+Most PYQ-tested topic?
+Answer: MOD counters
+Explanation: Very common.
+
+Q20.
+
+Biggest GATE trap?
+Answer: Flip-flop calculation
+Explanation: Wrong log₂ use.
+
+Q21.
+
+Asynchronous counter speed:
+Answer: Slow
+Explanation: Ripple delay.
+
+Q22.
+
+Synchronous counter speed:
+Answer: Fast
+Explanation: Parallel clock.
+
+Q23.
+
+Register used in:
+Answer: Data storage
+Explanation: Temporary storage.
+
+Q24.
+
+Counters used in:
+Answer: Timing circuits
+Explanation: Pulse counting.
+
+Q25.
+
+MOD-10 counter requires flip-flops?
+Answer: 4
+Explanation: 2³=8 <10 <16.
+
+Q26.
+
+Ring counter states = ?
+Answer: n
+Explanation: Number of flip-flops.
+
+Q27.
+
+Johnson counter feedback is:
+Answer: Inverted
+Explanation: Key difference.
+
+Q28.
+
+Shift register shifts data:
+Answer: Left or right
+Explanation: Movement.
+
+Q29.
+
+Registers built using:
+Answer: Flip-flops
+Explanation: Storage elements.
+
+Q30.
+
+Counters & registers used in:
+Answer: CPU & digital systems
+Explanation: Core hardware.
