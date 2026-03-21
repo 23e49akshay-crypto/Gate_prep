@@ -1,0 +1,373 @@
+📚 Subject: Digital Logic
+🧠 Topic: Number Systems & Binary Arithmetic
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Number Systems
+
+A number system defines how numbers are represented.
+
+System	Base
+Binary	2
+Octal	8
+Decimal	10
+Hexadecimal	16
+🔹 Binary Number System
+
+Uses digits:
+
+0
+,
+1
+0,1
+
+Example:
+
+(
+1011
+)
+2
+=
+11
+10
+(1011)
+2
+	​
+
+=11
+10
+	​
+
+🔹 Conversion Methods (VERY IMPORTANT)
+Binary → Decimal
+(
+1011
+)
+2
+=
+1
+×
+2
+3
++
+0
+×
+2
+2
++
+1
+×
+2
+1
++
+1
+×
+2
+0
+=
+11
+(1011)
+2
+	​
+
+=1×2
+3
++0×2
+2
++1×2
+1
++1×2
+0
+=11
+Decimal → Binary
+
+Repeated division by 2.
+
+Example:
+
+13
+10
+=
+1101
+2
+13
+10
+	​
+
+=1101
+2
+	​
+
+Binary ↔ Octal
+
+Group bits in 3.
+
+Binary ↔ Hexadecimal
+
+Group bits in 4.
+
+🔹 1’s Complement
+
+Flip all bits.
+
+Example:
+
+1010
+→
+0101
+1010→0101
+🔹 2’s Complement (VERY IMPORTANT)
+
+Steps:
+
+Take 1’s complement
+Add 1
+
+Example:
+
+1010
+→
+0101
++
+1
+=
+0110
+1010→0101+1=0110
+
+📌 Used for negative numbers representation
+
+🔹 Binary Arithmetic
+🔹 Binary Addition
+
+Rules:
+
+A	B	Sum	Carry
+0	0	0	0
+0	1	1	0
+1	0	1	0
+1	1	0	1
+🔹 Binary Subtraction
+
+Using 2’s complement.
+
+🔹 Signed Numbers Representation
+🔹 Sign-Magnitude
+MSB = sign
+Rest = magnitude
+🔹 1’s Complement Representation
+
+Negative = bitwise complement
+
+🔹 2’s Complement Representation
+
+Most widely used.
+
+Range (n-bit):
+−
+2
+𝑛
+−
+1
+ to 
+2
+𝑛
+−
+1
+−
+1
+−2
+n−1
+ to 2
+n−1
+−1
+🔹 Overflow (VERY IMPORTANT)
+
+Occurs when result exceeds range.
+
+📌 In 2’s complement:
+
+Adding two positives → negative → overflow
+Adding two negatives → positive → overflow
+🔹 Common GATE Traps
+Wrong 2’s complement calculation
+Forgetting bit grouping (octal/hex)
+Missing overflow condition
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Binary system base?
+Answer: 2
+Explanation: Uses 0 and 1.
+
+Q2.
+
+(1010)₂ in decimal?
+Answer: 10
+Explanation: 8+2.
+
+Q3.
+
+(111)₂ in decimal?
+Answer: 7
+Explanation: 4+2+1.
+
+Q4.
+
+13 in binary?
+Answer: 1101
+Explanation: Division by 2.
+
+Q5.
+
+1’s complement of 1010?
+Answer: 0101
+Explanation: Flip bits.
+
+Q6.
+
+2’s complement of 1010?
+Answer: 0110
+Explanation: Add 1.
+
+Q7.
+
+Binary addition of 1+1?
+Answer: 10
+Explanation: Sum 0 carry 1.
+
+Q8.
+
+Binary addition of 1+1+1?
+Answer: 11
+Explanation: Sum 1 carry 1.
+
+Q9.
+
+Range of 4-bit 2’s complement?
+Answer: −8 to 7
+Explanation: −2³ to 2³−1.
+
+Q10.
+
+Overflow occurs when:
+Answer: Result exceeds range
+Explanation: Limit violation.
+
+Q11.
+
+Binary to octal grouping size?
+Answer: 3 bits
+Explanation: Base 8.
+
+Q12.
+
+Binary to hex grouping size?
+Answer: 4 bits
+Explanation: Base 16.
+
+Q13.
+
+Hexadecimal base?
+Answer: 16
+Explanation: 0–F.
+
+Q14.
+
+MSB represents in signed number?
+Answer: Sign
+Explanation: 0 positive, 1 negative.
+
+Q15.
+
+Most used representation?
+Answer: 2’s complement
+Explanation: Efficient.
+
+Q16.
+
+2’s complement avoids:
+Answer: Two zeros
+Explanation: Advantage.
+
+Q17.
+
+(1111)₂ in decimal (unsigned)?
+Answer: 15
+Explanation: 8+4+2+1.
+
+Q18.
+
+(1000)₂ in 2’s complement equals?
+Answer: −8
+Explanation: Negative.
+
+Q19.
+
+Binary subtraction uses:
+Answer: 2’s complement
+Explanation: Standard method.
+
+Q20.
+
+Most PYQ-tested concept?
+Answer: 2’s complement
+Explanation: Very frequent.
+
+Q21.
+
+Biggest GATE trap?
+Answer: Sign confusion
+Explanation: MSB misinterpretation.
+
+Q22.
+
+Octal base?
+Answer: 8
+Explanation: 0–7.
+
+Q23.
+
+Decimal 8 in binary?
+Answer: 1000
+Explanation: Power of 2.
+
+Q24.
+
+2’s complement formula involves:
+Answer: Add 1
+Explanation: After inversion.
+
+Q25.
+
+Overflow in 2’s complement occurs when:
+Answer: Same sign addition gives different sign
+Explanation: Key rule.
+
+Q26.
+
+Binary multiplication similar to:
+Answer: Decimal
+Explanation: Same logic.
+
+Q27.
+
+Sign-magnitude has issue of:
+Answer: Two zeros
+Explanation: +0 and −0.
+
+Q28.
+
+LSB stands for:
+Answer: Least significant bit
+Explanation: Smallest value bit.
+
+Q29.
+
+MSB stands for:
+Answer: Most significant bit
+Explanation: Highest value bit.
+
+Q30.
+
+Number systems used in:
+Answer: Computer architecture
+Explanation: Data representation.
