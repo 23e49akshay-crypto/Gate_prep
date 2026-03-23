@@ -1,0 +1,306 @@
+📚 Subject: Computer Organization & Architecture (COA)
+🧠 Topic: Basic Computer Organization & Instruction Set
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is Computer Organization?
+
+Computer Organization deals with:
+
+👉 How hardware components are connected
+👉 How instructions are executed
+
+🔹 Basic Components of Computer
+1️⃣ CPU (Central Processing Unit)
+Brain of computer
+Executes instructions
+2️⃣ ALU (Arithmetic Logic Unit)
+Performs arithmetic & logical operations
+3️⃣ Control Unit (CU)
+Controls execution
+Sends control signals
+4️⃣ Registers
+Small, fast memory inside CPU
+5️⃣ Memory
+Stores data and instructions
+🔹 Instruction Cycle (VERY IMPORTANT)
+
+Steps:
+
+1️⃣ Fetch
+2️⃣ Decode
+3️⃣ Execute
+
+Explanation:
+Fetch → Get instruction from memory
+Decode → Understand instruction
+Execute → Perform operation
+
+📌 GATE frequently asks order.
+
+🔹 Instruction Format
+
+An instruction consists of:
+
+Opcode → operation
+Operand → data or address
+
+Example:
+
+𝐴
+𝐷
+𝐷
+𝑅
+1
+,
+𝑅
+2
+ADDR1,R2
+🔹 Types of Instructions
+1️⃣ Data Transfer
+MOV
+LOAD
+STORE
+2️⃣ Arithmetic
+ADD
+SUB
+MUL
+3️⃣ Logical
+AND
+OR
+NOT
+4️⃣ Control Instructions
+JUMP
+CALL
+RETURN
+🔹 Addressing Modes (VERY IMPORTANT)
+
+Defines how operand is accessed.
+
+1️⃣ Immediate Addressing
+
+Value given directly.
+
+𝑀
+𝑂
+𝑉
+𝑅
+1
+,
+5
+MOVR1,5
+2️⃣ Direct Addressing
+
+Address is given.
+
+3️⃣ Indirect Addressing
+
+Address points to another address.
+
+4️⃣ Register Addressing
+
+Operand in register.
+
+5️⃣ Register Indirect
+
+Register holds memory address.
+
+6️⃣ Indexed Addressing
+
+Address + index register.
+
+📌 GATE Favorite: Identify addressing mode.
+
+🔹 Instruction Set Architecture (ISA)
+
+Defines:
+
+Instructions
+Registers
+Addressing modes
+
+📌 Interface between hardware & software.
+
+🔹 Common GATE Traps
+Mixing addressing modes
+Confusing fetch-decode-execute order
+Misinterpreting operand vs opcode
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+CPU stands for:
+Answer: Central Processing Unit
+Explanation: Main processor.
+
+Q2.
+
+ALU performs:
+Answer: Arithmetic & logic operations
+Explanation: Core calculations.
+
+Q3.
+
+Control unit handles:
+Answer: Instruction control
+Explanation: Signals.
+
+Q4.
+
+Instruction cycle starts with:
+Answer: Fetch
+Explanation: First step.
+
+Q5.
+
+Correct order:
+Answer: Fetch → Decode → Execute
+Explanation: Standard cycle.
+
+Q6.
+
+Registers are:
+Answer: Fast memory
+Explanation: Inside CPU.
+
+Q7.
+
+Opcode represents:
+Answer: Operation
+Explanation: Instruction type.
+
+Q8.
+
+Operand represents:
+Answer: Data or address
+Explanation: Input.
+
+Q9.
+
+MOV instruction is:
+Answer: Data transfer
+Explanation: Copy data.
+
+Q10.
+
+ADD instruction is:
+Answer: Arithmetic
+Explanation: Addition.
+
+Q11.
+
+AND instruction is:
+Answer: Logical
+Explanation: Bitwise.
+
+Q12.
+
+JUMP instruction is:
+Answer: Control
+Explanation: Flow control.
+
+Q13.
+
+Immediate addressing uses:
+Answer: Direct value
+Explanation: Constant.
+
+Q14.
+
+Register addressing uses:
+Answer: Registers
+Explanation: Operand inside CPU.
+
+Q15.
+
+Indirect addressing uses:
+Answer: Address of address
+Explanation: Pointer.
+
+Q16.
+
+Indexed addressing uses:
+Answer: Base + index
+Explanation: Offset.
+
+Q17.
+
+Most PYQ-tested topic?
+Answer: Addressing modes
+Explanation: Frequently asked.
+
+Q18.
+
+Biggest GATE trap?
+Answer: Confusing addressing modes
+Explanation: Similar concepts.
+
+Q19.
+
+ISA defines:
+Answer: Instruction set
+Explanation: Architecture.
+
+Q20.
+
+Fetch stage gets instruction from:
+Answer: Memory
+Explanation: First step.
+
+Q21.
+
+Decode stage does:
+Answer: Interpret instruction
+Explanation: Understanding.
+
+Q22.
+
+Execute stage does:
+Answer: Perform operation
+Explanation: Final step.
+
+Q23.
+
+Register indirect means:
+Answer: Register holds address
+Explanation: Pointer.
+
+Q24.
+
+Direct addressing means:
+Answer: Address directly given
+Explanation: No pointer.
+
+Q25.
+
+Instruction set is part of:
+Answer: ISA
+Explanation: Definition.
+
+Q26.
+
+CPU interacts with memory via:
+Answer: Buses
+Explanation: Data transfer.
+
+Q27.
+
+Instruction format includes:
+Answer: Opcode & operand
+Explanation: Basic structure.
+
+Q28.
+
+Registers are faster than:
+Answer: Main memory
+Explanation: Speed hierarchy.
+
+Q29.
+
+Control unit generates:
+Answer: Control signals
+Explanation: Execution control.
+
+Q30.
+
+COA mainly studies:
+Answer: Hardware organization
+Explanation: System structure.
