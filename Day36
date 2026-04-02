@@ -1,0 +1,393 @@
+📚 Subject: Computer Organization & Architecture (COA)
+🧠 Topic: Machine Instructions & Addressing Modes (Deep Dive)
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is a Machine Instruction?
+
+A machine instruction is a binary-coded command executed by CPU.
+
+Structure:
+
+Instruction
+=
+Opcode
++
+Operand(s)
+Instruction=Opcode+Operand(s)
+🔹 Types of Instructions (Based on Operands)
+1️⃣ Zero Address Instruction
+No operand
+Used in stack-based machines
+
+Example:
+
+𝐴
+𝐷
+𝐷
+ADD
+2️⃣ One Address Instruction
+One operand + accumulator
+
+Example:
+
+𝐴
+𝐷
+𝐷
+𝑋
+ADDX
+3️⃣ Two Address Instruction
+Two operands
+
+Example:
+
+𝐴
+𝐷
+𝐷
+𝑅
+1
+,
+𝑅
+2
+ADDR1,R2
+4️⃣ Three Address Instruction
+Three operands
+
+Example:
+
+𝐴
+𝐷
+𝐷
+𝑅
+1
+,
+𝑅
+2
+,
+𝑅
+3
+ADDR1,R2,R3
+
+📌 GATE Trap:
+More operands → fewer instructions but more bits required.
+
+🔹 Addressing Modes (Deep Understanding)
+1️⃣ Immediate Addressing
+
+Operand is inside instruction.
+
+𝑀
+𝑂
+𝑉
+𝑅
+1
+,
+5
+MOVR1,5
+
+📌 Fastest (no memory access)
+
+2️⃣ Register Addressing
+
+Operand stored in register.
+
+𝐴
+𝐷
+𝐷
+𝑅
+1
+,
+𝑅
+2
+ADDR1,R2
+3️⃣ Direct Addressing
+
+Instruction contains memory address.
+
+𝐿
+𝑂
+𝐴
+𝐷
+𝑅
+1
+,
+[
+1000
+]
+LOADR1,[1000]
+4️⃣ Indirect Addressing
+
+Address points to another address.
+
+𝐿
+𝑂
+𝐴
+𝐷
+𝑅
+1
+,
+[
+𝐴
+]
+LOADR1,[A]
+5️⃣ Register Indirect Addressing
+
+Register contains address.
+
+𝐿
+𝑂
+𝐴
+𝐷
+𝑅
+1
+,
+[
+𝑅
+2
+]
+LOADR1,[R2]
+6️⃣ Indexed Addressing
+Effective Address
+=
+Base
++
+Index
+Effective Address=Base+Index
+
+Used in arrays.
+
+7️⃣ Base Register Addressing
+𝐸
+𝐴
+=
+𝐵
+𝑎
+𝑠
+𝑒
++
+𝑂
+𝑓
+𝑓
+𝑠
+𝑒
+𝑡
+EA=Base+Offset
+8️⃣ Relative Addressing
+𝐸
+𝐴
+=
+𝑃
+𝐶
++
+𝑂
+𝑓
+𝑓
+𝑠
+𝑒
+𝑡
+EA=PC+Offset
+
+📌 Used in branch instructions.
+
+🔹 Effective Address (VERY IMPORTANT)
+
+Final address used by CPU.
+
+📌 GATE asks direct formula-based questions.
+
+🔹 Comparison (Important)
+Mode	Speed	Memory Access
+Immediate	Fastest	No
+Register	Very fast	No
+Direct	Medium	Yes
+Indirect	Slow	Multiple
+🔹 Instruction Length
+
+Depends on:
+
+Opcode bits
+Address bits
+Number of operands
+🔹 Common GATE Traps
+Confusing indirect vs register indirect
+Forgetting EA formulas
+Mixing addressing mode speed
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Machine instruction consists of:
+Answer: Opcode + operand
+Explanation: Structure.
+
+Q2.
+
+Zero address instruction used in:
+Answer: Stack machines
+Explanation: No operands.
+
+Q3.
+
+Three-address instruction has:
+Answer: 3 operands
+Explanation: Full specification.
+
+Q4.
+
+Immediate addressing uses:
+Answer: Constant value
+Explanation: Inside instruction.
+
+Q5.
+
+Register addressing uses:
+Answer: Registers
+Explanation: Operand inside CPU.
+
+Q6.
+
+Direct addressing uses:
+Answer: Memory address
+Explanation: Direct access.
+
+Q7.
+
+Indirect addressing uses:
+Answer: Address of address
+Explanation: Pointer.
+
+Q8.
+
+Register indirect uses:
+Answer: Register holds address
+Explanation: Indirect via register.
+
+Q9.
+
+Indexed addressing formula?
+Answer: Base + index
+Explanation: Offset calculation.
+
+Q10.
+
+Relative addressing formula?
+Answer: PC + offset
+Explanation: Branching.
+
+Q11.
+
+Fastest addressing mode?
+Answer: Immediate
+Explanation: No memory.
+
+Q12.
+
+Slowest addressing mode?
+Answer: Indirect
+Explanation: Multiple access.
+
+Q13.
+
+Effective address means:
+Answer: Final address used
+Explanation: Computed address.
+
+Q14.
+
+Base addressing uses:
+Answer: Base register + offset
+Explanation: Formula.
+
+Q15.
+
+Most PYQ-tested topic?
+Answer: Addressing modes
+Explanation: Frequently asked.
+
+Q16.
+
+Biggest GATE trap?
+Answer: Indirect vs register indirect
+Explanation: Confusion.
+
+Q17.
+
+Instruction length depends on:
+Answer: Opcode & operands
+Explanation: Bit allocation.
+
+Q18.
+
+Three-address instruction advantage?
+Answer: Fewer instructions
+Explanation: Direct operation.
+
+Q19.
+
+One-address instruction uses:
+Answer: Accumulator
+Explanation: Implicit operand.
+
+Q20.
+
+Stack machine uses:
+Answer: Zero address
+Explanation: Push/pop.
+
+Q21.
+
+Indirect addressing requires:
+Answer: Extra memory access
+Explanation: Pointer resolution.
+
+Q22.
+
+Register addressing is faster than:
+Answer: Direct addressing
+Explanation: No memory.
+
+Q23.
+
+Indexed addressing used in:
+Answer: Arrays
+Explanation: Offset indexing.
+
+Q24.
+
+Relative addressing used in:
+Answer: Branch instructions
+Explanation: Control flow.
+
+Q25.
+
+Opcode defines:
+Answer: Operation
+Explanation: Instruction type.
+
+Q26.
+
+Operand defines:
+Answer: Data/location
+Explanation: Input.
+
+Q27.
+
+Immediate mode advantage?
+Answer: Speed
+Explanation: No memory fetch.
+
+Q28.
+
+Indirect mode disadvantage?
+Answer: Slow
+Explanation: Extra access.
+
+Q29.
+
+EA stands for:
+Answer: Effective address
+Explanation: Final location.
+
+Q30.
+
+Machine instructions executed by:
+Answer: CPU
+Explanation: Processing unit.
