@@ -1,0 +1,311 @@
+📚 Subject: Computer Organization & Architecture (COA)
+🧠 Topic: Pipelining
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 What is Pipelining?
+
+Pipelining is a technique where:
+
+👉 Multiple instructions are executed overlappingly
+👉 Different stages work simultaneously
+
+📌 Like an assembly line.
+
+🔹 Basic Idea
+
+Without pipelining:
+
+One instruction completes fully before next starts
+
+With pipelining:
+
+Next instruction starts before previous finishes
+🔹 Pipeline Stages (5-stage model)
+
+1️⃣ IF – Instruction Fetch
+2️⃣ ID – Instruction Decode
+3️⃣ EX – Execute
+4️⃣ MEM – Memory Access
+5️⃣ WB – Write Back
+
+🔹 Pipeline Diagram Concept
+
+At each clock cycle:
+
+Different instructions are in different stages
+🔹 Performance Metrics (VERY IMPORTANT)
+🔹 Speedup
+Speedup
+=
+Time without pipeline
+Time with pipeline
+Speedup=
+Time with pipeline
+Time without pipeline
+	​
+
+
+Ideal speedup:
+
+=
+Number of stages
+=Number of stages
+🔹 Throughput
+
+Number of instructions completed per unit time.
+
+🔹 Latency
+
+Time taken for one instruction to complete.
+
+📌 Latency doesn't reduce, throughput increases.
+
+🔹 Pipeline Hazards (VERY IMPORTANT)
+1️⃣ Structural Hazard
+Hardware resource conflict
+
+Example:
+
+One memory for instruction & data
+2️⃣ Data Hazard
+Instruction depends on previous result
+
+Example:
+
+𝐴
+𝐷
+𝐷
+𝑅
+1
+,
+𝑅
+2
+,
+𝑅
+3
+𝑆
+𝑈
+𝐵
+𝑅
+4
+,
+𝑅
+1
+,
+𝑅
+5
+ADDR1,R2,R3SUBR4,R1,R5
+Types:
+RAW (Read After Write)
+WAR (Write After Read)
+WAW (Write After Write)
+
+📌 RAW most common in GATE.
+
+3️⃣ Control Hazard
+Due to branch instructions
+
+Example:
+
+If condition changes flow
+🔹 Hazard Solutions
+Data Hazard Solutions
+Forwarding (bypassing)
+Pipeline stall
+Control Hazard Solutions
+Branch prediction
+Delayed branching
+🔹 Pipeline Efficiency
+Efficiency
+=
+Actual speedup
+Ideal speedup
+Efficiency=
+Ideal speedup
+Actual speedup
+	​
+
+🔹 Common GATE Traps
+Confusing latency vs throughput
+Ignoring hazards
+Wrong speedup calculation
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Pipelining improves:
+Answer: Throughput
+Explanation: More instructions per time.
+
+Q2.
+
+Pipelining reduces:
+Answer: Execution overlap
+Explanation: Parallel stages.
+
+Q3.
+
+Number of stages in basic pipeline?
+Answer: 5
+Explanation: IF, ID, EX, MEM, WB.
+
+Q4.
+
+Ideal speedup equals:
+Answer: Number of stages
+Explanation: Perfect pipeline.
+
+Q5.
+
+Latency in pipeline:
+Answer: Same or slightly increased
+Explanation: Not reduced.
+
+Q6.
+
+Throughput in pipeline:
+Answer: Increased
+Explanation: Parallel execution.
+
+Q7.
+
+Structural hazard caused by:
+Answer: Resource conflict
+Explanation: Hardware limitation.
+
+Q8.
+
+Data hazard caused by:
+Answer: Data dependency
+Explanation: Instruction dependency.
+
+Q9.
+
+Control hazard caused by:
+Answer: Branch instructions
+Explanation: Flow change.
+
+Q10.
+
+RAW stands for:
+Answer: Read After Write
+Explanation: Dependency.
+
+Q11.
+
+WAR stands for:
+Answer: Write After Read
+Explanation: Dependency.
+
+Q12.
+
+WAW stands for:
+Answer: Write After Write
+Explanation: Conflict.
+
+Q13.
+
+Most common hazard?
+Answer: RAW
+Explanation: Frequent dependency.
+
+Q14.
+
+Forwarding used to solve:
+Answer: Data hazard
+Explanation: Avoid stall.
+
+Q15.
+
+Pipeline stall means:
+Answer: Delay
+Explanation: Insert bubble.
+
+Q16.
+
+Branch prediction used for:
+Answer: Control hazard
+Explanation: Guess outcome.
+
+Q17.
+
+Delayed branching reduces:
+Answer: Control hazard
+Explanation: Reorder instructions.
+
+Q18.
+
+Pipeline efficiency depends on:
+Answer: Hazards
+Explanation: Stalls reduce efficiency.
+
+Q19.
+
+Most PYQ-tested concept?
+Answer: Speedup calculation
+Explanation: Frequently asked.
+
+Q20.
+
+Biggest GATE trap?
+Answer: Confusing latency & throughput
+Explanation: Different metrics.
+
+Q21.
+
+If pipeline stages = 4, ideal speedup?
+Answer: 4
+Explanation: Number of stages.
+
+Q22.
+
+Instruction fetch stage does:
+Answer: Fetch instruction
+Explanation: First stage.
+
+Q23.
+
+Decode stage does:
+Answer: Interpret instruction
+Explanation: Understanding.
+
+Q24.
+
+Execute stage does:
+Answer: Perform operation
+Explanation: ALU work.
+
+Q25.
+
+Memory stage does:
+Answer: Access memory
+Explanation: Load/store.
+
+Q26.
+
+Write back stage does:
+Answer: Store result
+Explanation: Final step.
+
+Q27.
+
+Pipeline bubble means:
+Answer: Empty stage
+Explanation: Delay slot.
+
+Q28.
+
+Pipelining is similar to:
+Answer: Assembly line
+Explanation: Overlapping work.
+
+Q29.
+
+Without pipeline, execution is:
+Answer: Sequential
+Explanation: One at a time.
+
+Q30.
+
+Pipelining used in:
+Answer: Modern processors
+Explanation: Performance boost.
