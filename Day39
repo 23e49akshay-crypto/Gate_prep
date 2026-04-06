@@ -1,0 +1,304 @@
+📚 Subject: Computer Organization & Architecture (COA)
+🧠 Topic: Memory Hierarchy & Cache Memory
+
+1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+🔹 Memory Hierarchy
+
+Memory in a computer is organized in levels based on:
+
+👉 Speed
+👉 Cost
+👉 Size
+
+🔹 Levels of Memory
+
+From fastest to slowest:
+
+1️⃣ Registers
+2️⃣ Cache Memory
+3️⃣ Main Memory (RAM)
+4️⃣ Secondary Memory (HDD/SSD)
+
+🔹 Key Idea
+
+👉 Faster memory = smaller & expensive
+👉 Slower memory = larger & cheaper
+
+🔹 Locality of Reference (VERY IMPORTANT)
+
+Programs tend to access:
+
+1️⃣ Temporal Locality
+Recently used data accessed again
+2️⃣ Spatial Locality
+Nearby memory locations accessed
+
+📌 This is why cache works.
+
+🔹 Cache Memory
+
+A small, fast memory between CPU and main memory.
+
+👉 Stores frequently used data
+👉 Reduces access time
+
+🔹 Cache Performance
+🔹 Hit
+
+Data found in cache
+
+🔹 Miss
+
+Data not found → fetched from main memory
+
+🔹 Hit Ratio
+Hit Ratio
+=
+Hits
+Total Accesses
+Hit Ratio=
+Total Accesses
+Hits
+	​
+
+🔹 Miss Ratio
+=
+1
+−
+Hit Ratio
+=1−Hit Ratio
+🔹 Average Memory Access Time (AMAT)
+𝐴
+𝑀
+𝐴
+𝑇
+=
+Hit Time
++
+(
+Miss Rate
+×
+Miss Penalty
+)
+AMAT=Hit Time+(Miss Rate×Miss Penalty)
+
+📌 Very important formula.
+
+🔹 Types of Cache Mapping
+1️⃣ Direct Mapping
+Each block maps to exactly one cache line
+
+📌 Simple but more collisions
+
+2️⃣ Fully Associative Mapping
+Block can go anywhere
+
+📌 Flexible but costly
+
+3️⃣ Set Associative Mapping
+Combination of both
+
+📌 Most practical system
+
+🔹 Replacement Policies
+
+When cache is full:
+
+LRU (Least Recently Used)
+FIFO (First In First Out)
+Random
+
+📌 LRU most common in GATE.
+
+🔹 Write Policies
+1️⃣ Write Through
+Update cache + memory
+2️⃣ Write Back
+Update cache only (memory later)
+
+📌 Write-back is faster.
+
+🔹 Common GATE Traps
+Confusing mapping techniques
+Wrong AMAT formula
+Mixing hit & miss ratio
+2️⃣ Practice: 30 GATE-Level MCQs
+Q1.
+
+Fastest memory is:
+Answer: Registers
+Explanation: Closest to CPU.
+
+Q2.
+
+Cache memory is:
+Answer: Small & fast
+Explanation: High speed.
+
+Q3.
+
+Main memory is:
+Answer: Larger & slower
+Explanation: Compared to cache.
+
+Q4.
+
+Temporal locality means:
+Answer: Recently used data reused
+Explanation: Time-based.
+
+Q5.
+
+Spatial locality means:
+Answer: Nearby data accessed
+Explanation: Location-based.
+
+Q6.
+
+Cache hit means:
+Answer: Data found in cache
+Explanation: Fast access.
+
+Q7.
+
+Cache miss means:
+Answer: Data not in cache
+Explanation: Fetch from memory.
+
+Q8.
+
+Hit ratio formula?
+Answer: Hits / Total
+Explanation: Definition.
+
+Q9.
+
+Miss ratio equals:
+Answer: 1 − hit ratio
+Explanation: Complement.
+
+Q10.
+
+AMAT formula?
+Answer: Hit time + miss rate × miss penalty
+Explanation: Key formula.
+
+Q11.
+
+Direct mapping maps block to:
+Answer: One location
+Explanation: Fixed mapping.
+
+Q12.
+
+Fully associative mapping allows:
+Answer: Any location
+Explanation: Flexible.
+
+Q13.
+
+Set associative is:
+Answer: Hybrid
+Explanation: Combination.
+
+Q14.
+
+LRU stands for:
+Answer: Least Recently Used
+Explanation: Replacement policy.
+
+Q15.
+
+FIFO stands for:
+Answer: First In First Out
+Explanation: Queue policy.
+
+Q16.
+
+Write-through updates:
+Answer: Cache & memory
+Explanation: Immediate.
+
+Q17.
+
+Write-back updates:
+Answer: Cache first
+Explanation: Delayed memory.
+
+Q18.
+
+Most PYQ-tested topic?
+Answer: AMAT
+Explanation: Numerical.
+
+Q19.
+
+Biggest GATE trap?
+Answer: Mapping confusion
+Explanation: Direct vs associative.
+
+Q20.
+
+Cache improves:
+Answer: Speed
+Explanation: Faster access.
+
+Q21.
+
+Miss penalty means:
+Answer: Extra delay
+Explanation: Fetch time.
+
+Q22.
+
+Cache located between:
+Answer: CPU and RAM
+Explanation: Intermediate.
+
+Q23.
+
+Fully associative disadvantage:
+Answer: Cost
+Explanation: Complex hardware.
+
+Q24.
+
+Direct mapping disadvantage:
+Answer: Collisions
+Explanation: Fixed position.
+
+Q25.
+
+Set associative reduces:
+Answer: Collisions
+Explanation: Multiple slots.
+
+Q26.
+
+Hit time means:
+Answer: Time to access cache
+Explanation: Fast.
+
+Q27.
+
+Miss rate equals:
+Answer: Misses / total
+Explanation: Definition.
+
+Q28.
+
+Cache size is:
+Answer: Small
+Explanation: Limited capacity.
+
+Q29.
+
+Memory hierarchy optimizes:
+Answer: Cost & performance
+Explanation: Balance.
+
+Q30.
+
+Cache memory used in:
+Answer: Modern CPUs
+Explanation: Performance.
