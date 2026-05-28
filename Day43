@@ -1,0 +1,452 @@
+
+**📚 Subject:** **Computer Organization & Architecture (COA)**
+**🧠 Topic:** **Parallelism & Performance**
+
+---
+
+# 1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+
+---
+
+# 🔹 What is Parallelism?
+
+Parallelism means:
+
+👉 Performing multiple operations simultaneously
+👉 Improves system performance
+
+Modern processors use:
+
+* Multiple cores
+* Pipelines
+* Parallel execution units
+
+---
+
+# 🔹 Types of Parallelism
+
+---
+
+## 1️⃣ Instruction Level Parallelism (ILP)
+
+Multiple instructions executed simultaneously.
+
+Example:
+
+* Pipelining
+* Superscalar processors
+
+---
+
+## 2️⃣ Data Level Parallelism (DLP)
+
+Same operation on multiple data items.
+
+Example:
+
+* Vector processing
+* SIMD
+
+---
+
+## 3️⃣ Task Level Parallelism (TLP)
+
+Different tasks executed in parallel.
+
+Example:
+
+* Multithreading
+* Multicore CPUs
+
+---
+
+# 🔹 Flynn’s Classification (VERY IMPORTANT)
+
+Based on:
+
+* Instruction streams
+* Data streams
+
+---
+
+## 1️⃣ SISD
+
+Single Instruction Single Data
+
+👉 Traditional sequential computer.
+
+---
+
+## 2️⃣ SIMD
+
+Single Instruction Multiple Data
+
+👉 Same instruction on multiple data.
+
+Example:
+
+* GPU
+* Vector processors
+
+---
+
+## 3️⃣ MISD
+
+Multiple Instruction Single Data
+
+Rarely used.
+
+---
+
+## 4️⃣ MIMD
+
+Multiple Instruction Multiple Data
+
+👉 Modern multicore systems.
+
+---
+
+# 🔹 Performance Metrics
+
+---
+
+## 🔹 CPU Execution Time
+
+[
+CPU\ Time = Instruction\ Count \times CPI \times Clock\ Cycle\ Time
+]
+
+OR
+
+[
+CPU\ Time = \frac{Instruction\ Count \times CPI}{Clock\ Rate}
+]
+
+📌 Very important formula.
+
+---
+
+# 🔹 CPI (Cycles Per Instruction)
+
+Average clock cycles per instruction.
+
+Lower CPI → better performance.
+
+---
+
+# 🔹 MIPS
+
+[
+MIPS = \frac{Instruction\ Count}{Execution\ Time \times 10^6}
+]
+
+Million Instructions Per Second.
+
+📌 Not always reliable for comparison.
+
+---
+
+# 🔹 Speedup
+
+[
+Speedup = \frac{Old\ Execution\ Time}{New\ Execution\ Time}
+]
+
+---
+
+# 🔹 Amdahl’s Law (VERY IMPORTANT)
+
+Limits maximum speedup due to serial portion.
+
+[
+Speedup = \frac{1}{(1-f)+\frac{f}{n}}
+]
+
+Where:
+
+* f = parallelizable fraction
+* n = processors
+
+📌 Major GATE favorite.
+
+---
+
+# 🔹 Throughput vs Latency
+
+| Throughput               | Latency           |
+| ------------------------ | ----------------- |
+| Tasks completed per time | Time for one task |
+
+📌 Parallelism improves throughput more.
+
+---
+
+# 🔹 Superscalar Architecture
+
+CPU issues multiple instructions per clock cycle.
+
+📌 Uses ILP.
+
+---
+
+# 🔹 Multicore Processor
+
+Multiple CPUs on same chip.
+
+Improves:
+
+* Parallel execution
+* Performance
+
+---
+
+# 🔹 Common GATE Traps
+
+* Confusing throughput & latency
+* Wrong Amdahl’s law calculation
+* Mixing SIMD & MIMD
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Parallelism means:
+**Answer:** Simultaneous execution
+**Explanation:** Multiple operations together.
+
+---
+
+### Q2.
+
+ILP stands for:
+**Answer:** Instruction Level Parallelism
+**Explanation:** Parallel instructions.
+
+---
+
+### Q3.
+
+DLP stands for:
+**Answer:** Data Level Parallelism
+**Explanation:** Parallel data processing.
+
+---
+
+### Q4.
+
+TLP stands for:
+**Answer:** Task Level Parallelism
+**Explanation:** Parallel tasks.
+
+---
+
+### Q5.
+
+SISD means:
+**Answer:** Single Instruction Single Data
+**Explanation:** Sequential model.
+
+---
+
+### Q6.
+
+SIMD means:
+**Answer:** Single Instruction Multiple Data
+**Explanation:** Same instruction on many data.
+
+---
+
+### Q7.
+
+MIMD means:
+**Answer:** Multiple Instruction Multiple Data
+**Explanation:** Multicore systems.
+
+---
+
+### Q8.
+
+GPU mainly uses:
+**Answer:** SIMD
+**Explanation:** Vector processing.
+
+---
+
+### Q9.
+
+Modern multicore systems are:
+**Answer:** MIMD
+**Explanation:** Multiple processors.
+
+---
+
+### Q10.
+
+CPU execution time formula?
+**Answer:** IC × CPI × clock cycle time
+**Explanation:** Performance equation.
+
+---
+
+### Q11.
+
+Lower CPI indicates:
+**Answer:** Better performance
+**Explanation:** Fewer cycles.
+
+---
+
+### Q12.
+
+MIPS stands for:
+**Answer:** Million Instructions Per Second
+**Explanation:** Performance metric.
+
+---
+
+### Q13.
+
+Speedup formula?
+**Answer:** Old time / new time
+**Explanation:** Improvement ratio.
+
+---
+
+### Q14.
+
+Amdahl’s law limits:
+**Answer:** Maximum speedup
+**Explanation:** Serial bottleneck.
+
+---
+
+### Q15.
+
+Amdahl’s law includes:
+**Answer:** Parallel fraction
+**Explanation:** f parameter.
+
+---
+
+### Q16.
+
+Throughput measures:
+**Answer:** Tasks per unit time
+**Explanation:** Work rate.
+
+---
+
+### Q17.
+
+Latency measures:
+**Answer:** Time per task
+**Explanation:** Delay.
+
+---
+
+### Q18.
+
+Superscalar processors issue:
+**Answer:** Multiple instructions per cycle
+**Explanation:** Parallel execution.
+
+---
+
+### Q19.
+
+Most PYQ-tested concept?
+**Answer:** Amdahl’s Law
+**Explanation:** Numerical problems.
+
+---
+
+### Q20.
+
+Biggest GATE trap?
+**Answer:** Throughput vs latency confusion
+**Explanation:** Different metrics.
+
+---
+
+### Q21.
+
+Pipeline improves mainly:
+**Answer:** Throughput
+**Explanation:** More instructions completed.
+
+---
+
+### Q22.
+
+Multicore processors improve:
+**Answer:** Parallel execution
+**Explanation:** Multiple cores.
+
+---
+
+### Q23.
+
+SIMD best suited for:
+**Answer:** Vector operations
+**Explanation:** Same operation repeated.
+
+---
+
+### Q24.
+
+MISD architecture is:
+**Answer:** Rare
+**Explanation:** Uncommon use.
+
+---
+
+### Q25.
+
+Clock rate measured in:
+**Answer:** Hertz
+**Explanation:** Cycles per second.
+
+---
+
+### Q26.
+
+Execution time decreases when:
+**Answer:** CPI decreases
+**Explanation:** Fewer cycles.
+
+---
+
+### Q27.
+
+Performance inversely proportional to:
+**Answer:** Execution time
+**Explanation:** Faster means less time.
+
+---
+
+### Q28.
+
+Amdahl’s law shows:
+**Answer:** Diminishing returns
+**Explanation:** Serial limitation.
+
+---
+
+### Q29.
+
+Superscalar architecture uses:
+**Answer:** ILP
+**Explanation:** Multiple instructions together.
+
+---
+
+### Q30.
+
+Parallelism used heavily in:
+**Answer:** Modern processors
+**Explanation:** High performance computing.
+
