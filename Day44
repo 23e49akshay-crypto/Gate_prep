@@ -1,0 +1,531 @@
+
+**📚 Subject:** **Programming & Data Structures (PDS)**
+**🧠 Topic:** **C Programming Basics – Data Types, Variables, Operators & Control Structures**
+
+✅ We have completed the major **COA syllabus**.
+✅ From today, we start **Programming & Data Structures**.
+
+---
+
+# 1️⃣ Concept Teaching (Strict, Clear, GATE-Oriented)
+
+---
+
+# 🔹 What is C Programming?
+
+C is a:
+
+* Procedural language
+* Structured language
+* Middle-level language
+
+Developed by:
+
+**Dennis Ritchie**
+
+at **Bell Labs**.
+
+---
+
+# 🔹 Structure of a C Program
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello World");
+    return 0;
+}
+```
+
+---
+
+### Components
+
+* Header Files
+* Main Function
+* Statements
+* Return Statement
+
+---
+
+# 🔹 Data Types
+
+Define type of data stored.
+
+---
+
+## Basic Data Types
+
+| Data Type | Size (Typical) |
+| --------- | -------------- |
+| char      | 1 byte         |
+| int       | 4 bytes        |
+| float     | 4 bytes        |
+| double    | 8 bytes        |
+
+---
+
+### Example
+
+```c
+int age = 20;
+float marks = 95.5;
+char grade = 'A';
+```
+
+---
+
+# 🔹 Variables
+
+A variable is a named memory location.
+
+Example:
+
+```c
+int x = 10;
+```
+
+Where:
+
+* x = variable
+* 10 = value
+
+---
+
+# 🔹 Constants
+
+Values that do not change.
+
+```c
+const int MAX = 100;
+```
+
+---
+
+# 🔹 Operators
+
+---
+
+## Arithmetic Operators
+
+| Operator | Meaning        |
+| -------- | -------------- |
+| +        | Addition       |
+| -        | Subtraction    |
+| *        | Multiplication |
+| /        | Division       |
+| %        | Modulus        |
+
+---
+
+## Relational Operators
+
+| Operator | Meaning       |
+| -------- | ------------- |
+| ==       | Equal         |
+| !=       | Not Equal     |
+| >        | Greater       |
+| <        | Less          |
+| >=       | Greater Equal |
+| <=       | Less Equal    |
+
+---
+
+## Logical Operators
+
+| Operator | Meaning |
+| -------- | ------- |
+| &&       | AND     |
+| ||       | OR      |
+| !        | NOT     |
+
+---
+
+# 🔹 Operator Precedence
+
+Highest among common operators:
+
+```c
+()
+!
+* / %
++ -
+< <= > >=
+== !=
+&&
+||
+```
+
+📌 GATE frequently asks expression evaluation.
+
+---
+
+# 🔹 Control Structures
+
+Control execution flow.
+
+---
+
+## 1️⃣ if Statement
+
+```c
+if(x > 0)
+{
+   printf("Positive");
+}
+```
+
+---
+
+## 2️⃣ if-else
+
+```c
+if(x>0)
+   printf("Positive");
+else
+   printf("Negative");
+```
+
+---
+
+## 3️⃣ switch
+
+```c
+switch(choice)
+{
+ case 1:
+ break;
+}
+```
+
+---
+
+# 🔹 Loops
+
+---
+
+## for Loop
+
+```c
+for(i=0;i<5;i++)
+```
+
+---
+
+## while Loop
+
+```c
+while(condition)
+```
+
+---
+
+## do-while Loop
+
+```c
+do
+{
+}
+while(condition);
+```
+
+📌 Executes at least once.
+
+---
+
+# 🔹 Common GATE Traps
+
+* Integer division confusion
+
+```c
+5/2 = 2
+```
+
+not 2.5
+
+---
+
+* Assignment vs comparison
+
+```c
+=
+```
+
+and
+
+```c
+==
+```
+
+---
+
+* Infinite loops
+
+```c
+while(1)
+```
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+C language was developed by:
+**Answer:** Dennis Ritchie
+**Explanation:** Developed at Bell Labs.
+
+---
+
+### Q2.
+
+Which is a valid integer data type?
+**Answer:** int
+**Explanation:** Stores integers.
+
+---
+
+### Q3.
+
+Size of char is typically:
+**Answer:** 1 byte
+**Explanation:** Character storage.
+
+---
+
+### Q4.
+
+Which operator gives remainder?
+**Answer:** %
+**Explanation:** Modulus operator.
+
+---
+
+### Q5.
+
+5/2 in C gives:
+**Answer:** 2
+**Explanation:** Integer division.
+
+---
+
+### Q6.
+
+Logical AND operator?
+**Answer:** &&
+**Explanation:** Both conditions true.
+
+---
+
+### Q7.
+
+Logical OR operator?
+**Answer:** ||
+**Explanation:** At least one true.
+
+---
+
+### Q8.
+
+Logical NOT operator?
+**Answer:** !
+**Explanation:** Negation.
+
+---
+
+### Q9.
+
+Equality operator?
+**Answer:** ==
+**Explanation:** Comparison.
+
+---
+
+### Q10.
+
+Assignment operator?
+**Answer:** =
+**Explanation:** Assign value.
+
+---
+
+### Q11.
+
+Which loop executes at least once?
+**Answer:** do-while
+**Explanation:** Condition checked later.
+
+---
+
+### Q12.
+
+for loop mainly used for:
+**Answer:** Known iterations
+**Explanation:** Counter-based.
+
+---
+
+### Q13.
+
+while loop checks condition:
+**Answer:** Before execution
+**Explanation:** Entry-controlled.
+
+---
+
+### Q14.
+
+switch statement used for:
+**Answer:** Multiple choices
+**Explanation:** Selection.
+
+---
+
+### Q15.
+
+Most PYQ-tested concept?
+**Answer:** Operator precedence
+**Explanation:** Expression evaluation.
+
+---
+
+### Q16.
+
+Biggest GATE trap?
+**Answer:** Integer division
+**Explanation:** Truncates decimal.
+
+---
+
+### Q17.
+
+Variable stores:
+**Answer:** Data value
+**Explanation:** Memory location.
+
+---
+
+### Q18.
+
+Constant value:
+**Answer:** Cannot change
+**Explanation:** Fixed.
+
+---
+
+### Q19.
+
+float stores:
+**Answer:** Decimal numbers
+**Explanation:** Real values.
+
+---
+
+### Q20.
+
+double provides:
+**Answer:** Higher precision
+**Explanation:** More bits.
+
+---
+
+### Q21.
+
+Header file for printf()?
+**Answer:** stdio.h
+**Explanation:** Standard I/O.
+
+---
+
+### Q22.
+
+main() function returns:
+**Answer:** int
+**Explanation:** Status code.
+
+---
+
+### Q23.
+
+Infinite loop example?
+**Answer:** while(1)
+**Explanation:** Always true.
+
+---
+
+### Q24.
+
+Relational operators return:
+**Answer:** True/False value
+**Explanation:** Comparison result.
+
+---
+
+### Q25.
+
+Which has higher precedence?
+**Answer:** *
+**Explanation:** Higher than +.
+
+---
+
+### Q26.
+
+char stores:
+**Answer:** Characters
+**Explanation:** Single byte.
+
+---
+
+### Q27.
+
+if statement performs:
+**Answer:** Decision making
+**Explanation:** Conditional execution.
+
+---
+
+### Q28.
+
+switch uses:
+**Answer:** case labels
+**Explanation:** Branching.
+
+---
+
+### Q29.
+
+Programming language closest to hardware among common languages?
+**Answer:** C
+**Explanation:** Middle-level language.
+
+---
+
+### Q30.
+
+C is widely used for:
+**Answer:** Systems programming
+**Explanation:** OS, compilers, embedded systems.
+
+---
+
+## ✅ Progress Update
+
+### Completed Subjects:
+
+✅ Discrete Mathematics
+✅ Digital Logic
+✅ Major COA Topics
+
+### Current Subject:
+
+🔄 Programming & Data Structures
+
+### Next Topic:
+
+**Functions, Scope Rules & Storage Classes in C**
+
