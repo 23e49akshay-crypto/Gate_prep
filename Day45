@@ -1,0 +1,615 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Functions, Scope Rules & Storage Classes in C**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Function?
+
+A function is a block of code that performs a specific task.
+
+Benefits:
+
+✅ Code Reusability
+✅ Modularity
+✅ Easy Debugging
+✅ Better Readability
+
+---
+
+## Function Syntax
+
+```c
+return_type function_name(parameters)
+{
+    // body
+}
+```
+
+Example:
+
+```c
+int add(int a, int b)
+{
+    return a+b;
+}
+```
+
+---
+
+# 🔹 Function Components
+
+### 1. Function Declaration (Prototype)
+
+```c
+int add(int,int);
+```
+
+Tells compiler about function.
+
+---
+
+### 2. Function Definition
+
+```c
+int add(int a,int b)
+{
+   return a+b;
+}
+```
+
+Actual implementation.
+
+---
+
+### 3. Function Call
+
+```c
+sum = add(5,3);
+```
+
+Invokes function.
+
+---
+
+# 🔹 Types of Functions
+
+---
+
+## Library Functions
+
+Provided by C libraries.
+
+Examples:
+
+```c
+printf()
+scanf()
+strlen()
+sqrt()
+```
+
+---
+
+## User Defined Functions
+
+Created by programmer.
+
+Example:
+
+```c
+int square(int x)
+{
+   return x*x;
+}
+```
+
+---
+
+# 🔹 Parameter Passing
+
+---
+
+## Call by Value
+
+Copy of variable passed.
+
+```c
+void fun(int x)
+{
+   x=100;
+}
+```
+
+Original variable unchanged.
+
+---
+
+Example:
+
+```c
+int a=10;
+fun(a);
+```
+
+a remains 10.
+
+---
+
+## Call by Reference (Using Pointers)
+
+Address passed.
+
+```c
+void fun(int *x)
+{
+   *x=100;
+}
+```
+
+Original variable changes.
+
+---
+
+📌 GATE Favorite Concept
+
+---
+
+# 🔹 Recursion
+
+A function calling itself.
+
+Example:
+
+```c
+int fact(int n)
+{
+   if(n==0)
+      return 1;
+
+   return n*fact(n-1);
+}
+```
+
+---
+
+## Recursion Components
+
+### Base Case
+
+Stops recursion.
+
+### Recursive Call
+
+Function calls itself.
+
+---
+
+📌 Without base case → infinite recursion.
+
+---
+
+# 🔹 Scope of Variables
+
+Scope determines visibility.
+
+---
+
+## Local Variable
+
+Declared inside function.
+
+```c
+void fun()
+{
+   int x=10;
+}
+```
+
+Accessible only inside function.
+
+---
+
+## Global Variable
+
+Declared outside all functions.
+
+```c
+int x=10;
+```
+
+Accessible throughout program.
+
+---
+
+# 🔹 Lifetime vs Scope
+
+| Term     | Meaning            |
+| -------- | ------------------ |
+| Scope    | Visibility         |
+| Lifetime | Duration in memory |
+
+📌 Common GATE confusion.
+
+---
+
+# 🔹 Storage Classes
+
+Control scope, lifetime, storage.
+
+---
+
+## 1️⃣ auto
+
+Default local variable.
+
+```c
+auto int x;
+```
+
+---
+
+## 2️⃣ register
+
+Stored in CPU register (if possible).
+
+```c
+register int i;
+```
+
+Faster access.
+
+---
+
+## 3️⃣ static
+
+Retains value between function calls.
+
+Example:
+
+```c
+void fun()
+{
+   static int x=0;
+   x++;
+   printf("%d",x);
+}
+```
+
+Output on successive calls:
+
+```text
+1 2 3 ...
+```
+
+---
+
+📌 Very Important GATE Topic
+
+---
+
+## 4️⃣ extern
+
+Used to access global variable from another file.
+
+```c
+extern int count;
+```
+
+---
+
+# 🔹 Memory Allocation for Variables
+
+| Storage Class | Scope        | Lifetime       |
+| ------------- | ------------ | -------------- |
+| auto          | Local        | Function call  |
+| register      | Local        | Function call  |
+| static        | Local/Global | Entire program |
+| extern        | Global       | Entire program |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Confusing:
+
+```c
+static
+```
+
+with
+
+```c
+extern
+```
+
+---
+
+### Trap 2
+
+Thinking recursion doesn't use stack.
+
+❌ Wrong
+
+Each recursive call gets a stack frame.
+
+---
+
+### Trap 3
+
+Call by value modifies original variable.
+
+❌ Wrong
+
+Only copy is modified.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+A function is used for:
+**Answer:** Code reusability
+**Explanation:** Reuse same code multiple times.
+
+---
+
+### Q2.
+
+Function prototype is:
+**Answer:** Declaration
+**Explanation:** Informs compiler.
+
+---
+
+### Q3.
+
+Function call does:
+**Answer:** Invokes function
+**Explanation:** Executes code.
+
+---
+
+### Q4.
+
+printf() is:
+**Answer:** Library function
+**Explanation:** Standard C library.
+
+---
+
+### Q5.
+
+User-defined function created by:
+**Answer:** Programmer
+**Explanation:** Custom logic.
+
+---
+
+### Q6.
+
+Call by value passes:
+**Answer:** Copy of variable
+**Explanation:** Original unchanged.
+
+---
+
+### Q7.
+
+Call by reference passes:
+**Answer:** Address
+**Explanation:** Allows modification.
+
+---
+
+### Q8.
+
+Recursion means:
+**Answer:** Function calling itself
+**Explanation:** Self-reference.
+
+---
+
+### Q9.
+
+Recursion requires:
+**Answer:** Base case
+**Explanation:** Prevents infinite calls.
+
+---
+
+### Q10.
+
+Local variable scope is:
+**Answer:** Inside function
+**Explanation:** Not visible outside.
+
+---
+
+### Q11.
+
+Global variable declared:
+**Answer:** Outside functions
+**Explanation:** Program-wide access.
+
+---
+
+### Q12.
+
+Scope refers to:
+**Answer:** Visibility
+**Explanation:** Where variable accessible.
+
+---
+
+### Q13.
+
+Lifetime refers to:
+**Answer:** Memory duration
+**Explanation:** Existence period.
+
+---
+
+### Q14.
+
+Default storage class:
+**Answer:** auto
+**Explanation:** Automatic local variable.
+
+---
+
+### Q15.
+
+register variable stored in:
+**Answer:** CPU register
+**Explanation:** Faster access.
+
+---
+
+### Q16.
+
+static variable retains:
+**Answer:** Previous value
+**Explanation:** Across function calls.
+
+---
+
+### Q17.
+
+extern used for:
+**Answer:** External global variable
+**Explanation:** Across files.
+
+---
+
+### Q18.
+
+Most PYQ-tested topic?
+**Answer:** static variable
+**Explanation:** Frequently asked.
+
+---
+
+### Q19.
+
+Biggest GATE trap?
+**Answer:** Call by value/reference
+**Explanation:** Common confusion.
+
+---
+
+### Q20.
+
+Recursive calls use:
+**Answer:** Stack
+**Explanation:** Activation records.
+
+---
+
+### Q21.
+
+A recursive function without base case:
+**Answer:** Infinite recursion
+**Explanation:** Stack overflow.
+
+---
+
+### Q22.
+
+Which storage class persists entire program?
+**Answer:** static
+**Explanation:** Lifetime till program ends.
+
+---
+
+### Q23.
+
+Global variable lifetime:
+**Answer:** Entire program
+**Explanation:** Exists throughout execution.
+
+---
+
+### Q24.
+
+Local variables stored in:
+**Answer:** Stack
+**Explanation:** Function activation record.
+
+---
+
+### Q25.
+
+Function return value specified by:
+**Answer:** Return type
+**Explanation:** Function declaration.
+
+---
+
+### Q26.
+
+void function returns:
+**Answer:** Nothing
+**Explanation:** No value.
+
+---
+
+### Q27.
+
+strlen() returns:
+**Answer:** Length of string
+**Explanation:** Library function.
+
+---
+
+### Q28.
+
+Function improves:
+**Answer:** Modularity
+**Explanation:** Divides program logically.
+
+---
+
+### Q29.
+
+Recursive factorial of 5 equals:
+**Answer:** 120
+**Explanation:** 5×4×3×2×1.
+
+---
+
+### Q30.
+
+Functions are fundamental for:
+**Answer:** Structured programming
+**Explanation:** Modular design.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture (Core Topics)
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
+### Next Topic (Day 42)
+
+**Pointers, Arrays & Pointer Arithmetic in C**
+
+---
+
