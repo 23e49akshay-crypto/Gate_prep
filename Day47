@@ -1,0 +1,591 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Strings, Structures, Unions & Dynamic Memory Allocation**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 Strings in C
+
+A string is a character array terminated by:
+
+```c
+'\0'
+```
+
+(null character)
+
+Example:
+
+```c
+char str[] = "GATE";
+```
+
+Memory:
+
+| G | A | T | E | \0 |
+| - | - | - | - | -- |
+
+---
+
+## String Input/Output
+
+```c
+scanf("%s",str);
+printf("%s",str);
+```
+
+---
+
+## Common String Functions
+
+Include:
+
+```c
+#include <string.h>
+```
+
+### strlen()
+
+Returns length excluding '\0'
+
+```c
+strlen("GATE")
+```
+
+Output:
+
+```text
+4
+```
+
+---
+
+### strcpy()
+
+Copies string.
+
+```c
+strcpy(dest,src);
+```
+
+---
+
+### strcat()
+
+Concatenates strings.
+
+```c
+strcat(str1,str2);
+```
+
+---
+
+### strcmp()
+
+Compares strings.
+
+Returns:
+
+* 0 → equal
+* <0 → first smaller
+* > 0 → first larger
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Structures
+
+A structure stores different data types together.
+
+Example:
+
+```c
+struct Student
+{
+   int id;
+   char name[20];
+   float marks;
+};
+```
+
+---
+
+## Structure Variable
+
+```c
+struct Student s1;
+```
+
+---
+
+## Accessing Members
+
+```c
+s1.id = 1;
+```
+
+using dot operator:
+
+```c
+.
+```
+
+---
+
+## Structure Pointer
+
+```c
+struct Student *p;
+```
+
+Access using:
+
+```c
+p->id
+```
+
+📌 GATE Favorite.
+
+---
+
+# 🔹 Structures vs Arrays
+
+| Structure       | Array     |
+| --------------- | --------- |
+| Different types | Same type |
+| User-defined    | Built-in  |
+
+---
+
+# 🔹 Union
+
+Union allows multiple members to share same memory.
+
+Example:
+
+```c
+union Data
+{
+   int i;
+   float f;
+   char ch;
+};
+```
+
+---
+
+## Important Property
+
+Memory allocated = size of largest member.
+
+Example:
+
+```c
+union U
+{
+   int i;
+   double d;
+};
+```
+
+Size = size(double)
+
+📌 Very common GATE question.
+
+---
+
+# 🔹 Structure vs Union
+
+| Structure           | Union                |
+| ------------------- | -------------------- |
+| Separate memory     | Shared memory        |
+| Larger size         | Smaller size         |
+| Simultaneous access | One member at a time |
+
+---
+
+# 🔹 Dynamic Memory Allocation (DMA)
+
+Memory allocated during runtime.
+
+Header:
+
+```c
+#include <stdlib.h>
+```
+
+---
+
+# 🔹 malloc()
+
+Allocates memory.
+
+```c
+int *p;
+
+p=(int*)malloc(5*sizeof(int));
+```
+
+---
+
+## Characteristics
+
+* Uninitialized memory
+* Returns void pointer
+
+---
+
+# 🔹 calloc()
+
+Allocates and initializes memory to zero.
+
+```c
+p=(int*)calloc(5,sizeof(int));
+```
+
+---
+
+# 🔹 realloc()
+
+Changes memory size.
+
+```c
+p=realloc(p,new_size);
+```
+
+---
+
+# 🔹 free()
+
+Releases memory.
+
+```c
+free(p);
+```
+
+Important to avoid memory leaks.
+
+---
+
+# 🔹 Memory Leak
+
+Occurs when allocated memory is not freed.
+
+Example:
+
+```c
+malloc(...)
+```
+
+without
+
+```c
+free(...)
+```
+
+📌 Common interview & GATE concept.
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+```c
+strlen()
+```
+
+does NOT count '\0'.
+
+---
+
+### Trap 2
+
+Union size = largest member size.
+
+---
+
+### Trap 3
+
+```c
+malloc()
+```
+
+does NOT initialize memory.
+
+---
+
+### Trap 4
+
+Access structure pointer using:
+
+```c
+->
+```
+
+not dot operator.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+A string ends with:
+**Answer:** '\0'
+**Explanation:** Null terminator.
+
+---
+
+### Q2.
+
+strlen("GATE") returns:
+**Answer:** 4
+**Explanation:** Excludes null character.
+
+---
+
+### Q3.
+
+Header file for string functions:
+**Answer:** string.h
+**Explanation:** Standard string library.
+
+---
+
+### Q4.
+
+strcpy() is used to:
+**Answer:** Copy strings
+**Explanation:** Source to destination.
+
+---
+
+### Q5.
+
+strcmp() returns 0 when:
+**Answer:** Strings are equal
+**Explanation:** Exact match.
+
+---
+
+### Q6.
+
+Structure is:
+**Answer:** User-defined datatype
+**Explanation:** Groups variables.
+
+---
+
+### Q7.
+
+Structure members accessed using:
+**Answer:** .
+**Explanation:** Dot operator.
+
+---
+
+### Q8.
+
+Structure pointer members accessed using:
+**Answer:** ->
+**Explanation:** Arrow operator.
+
+---
+
+### Q9.
+
+Union allocates memory equal to:
+**Answer:** Largest member
+**Explanation:** Shared storage.
+
+---
+
+### Q10.
+
+Structure allocates:
+**Answer:** Separate memory
+**Explanation:** Each member stored independently.
+
+---
+
+### Q11.
+
+Union members share:
+**Answer:** Same memory
+**Explanation:** Common storage.
+
+---
+
+### Q12.
+
+malloc() defined in:
+**Answer:** stdlib.h
+**Explanation:** Dynamic allocation library.
+
+---
+
+### Q13.
+
+malloc() returns:
+**Answer:** void*
+**Explanation:** Generic pointer.
+
+---
+
+### Q14.
+
+calloc() initializes memory to:
+**Answer:** Zero
+**Explanation:** Default initialization.
+
+---
+
+### Q15.
+
+realloc() used for:
+**Answer:** Resize memory
+**Explanation:** Modify allocated block.
+
+---
+
+### Q16.
+
+free() used to:
+**Answer:** Release memory
+**Explanation:** Deallocation.
+
+---
+
+### Q17.
+
+Most PYQ-tested concept?
+**Answer:** Structure vs Union
+**Explanation:** Frequently asked.
+
+---
+
+### Q18.
+
+Biggest GATE trap?
+**Answer:** Union size calculation
+**Explanation:** Largest member rule.
+
+---
+
+### Q19.
+
+Memory leak occurs when:
+**Answer:** Memory not freed
+**Explanation:** Lost allocated memory.
+
+---
+
+### Q20.
+
+Dynamic memory allocated from:
+**Answer:** Heap
+**Explanation:** Runtime memory area.
+
+---
+
+### Q21.
+
+Local variables stored in:
+**Answer:** Stack
+**Explanation:** Function memory.
+
+---
+
+### Q22.
+
+strlen("ABC") equals:
+**Answer:** 3
+**Explanation:** Null excluded.
+
+---
+
+### Q23.
+
+Which function concatenates strings?
+**Answer:** strcat()
+**Explanation:** Joins strings.
+
+---
+
+### Q24.
+
+Structure can contain:
+**Answer:** Different data types
+**Explanation:** Heterogeneous data.
+
+---
+
+### Q25.
+
+Union can store effectively:
+**Answer:** One member at a time
+**Explanation:** Shared memory.
+
+---
+
+### Q26.
+
+calloc(5,sizeof(int)) allocates:
+**Answer:** Space for 5 integers
+**Explanation:** Contiguous memory.
+
+---
+
+### Q27.
+
+Pointer returned by malloc should be checked for:
+**Answer:** NULL
+**Explanation:** Allocation failure.
+
+---
+
+### Q28.
+
+Heap memory is managed:
+**Answer:** Dynamically
+**Explanation:** Runtime allocation.
+
+---
+
+### Q29.
+
+Structures are heavily used in:
+**Answer:** Data Structures
+**Explanation:** Records and nodes.
+
+---
+
+### Q30.
+
+Dynamic memory allocation provides:
+**Answer:** Runtime flexibility
+**Explanation:** Memory allocated as needed.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
+
