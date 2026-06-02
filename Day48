@@ -1,0 +1,534 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Linked Lists – Singly, Doubly & Circular Linked Lists**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Linked List?
+
+A Linked List is a **dynamic linear data structure** where elements are stored in nodes.
+
+Each node contains:
+
+1. Data
+2. Address of next node
+
+Structure:
+
+```c
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+```
+
+---
+
+## Linked List vs Array
+
+| Array             | Linked List           |
+| ----------------- | --------------------- |
+| Fixed size        | Dynamic size          |
+| Contiguous memory | Non-contiguous memory |
+| Fast indexing     | Sequential access     |
+| Insertion costly  | Insertion easy        |
+
+📌 Very common GATE comparison.
+
+---
+
+# 🔹 Singly Linked List (SLL)
+
+Each node points to next node.
+
+```text
+10 → 20 → 30 → NULL
+```
+
+---
+
+## Node Structure
+
+```c
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+```
+
+---
+
+## Operations
+
+### Insertion at Beginning
+
+```text
+Before:
+20 → 30
+
+After:
+10 → 20 → 30
+```
+
+Time Complexity:
+
+[
+O(1)
+]
+
+---
+
+### Insertion at End
+
+Need traversal.
+
+Time Complexity:
+
+[
+O(n)
+]
+
+---
+
+### Deletion at Beginning
+
+Remove first node.
+
+Time Complexity:
+
+[
+O(1)
+]
+
+---
+
+### Search
+
+Traverse node by node.
+
+Time Complexity:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Doubly Linked List (DLL)
+
+Each node contains:
+
+* Previous pointer
+* Next pointer
+
+Structure:
+
+```c
+struct Node
+{
+   int data;
+   struct Node *prev;
+   struct Node *next;
+};
+```
+
+---
+
+Representation:
+
+```text
+NULL ← 10 ⇄ 20 ⇄ 30 → NULL
+```
+
+---
+
+## Advantages
+
+✅ Forward traversal
+
+✅ Backward traversal
+
+✅ Easy deletion
+
+---
+
+## Disadvantages
+
+❌ Extra memory for prev pointer
+
+---
+
+# 🔹 Circular Linked List (CLL)
+
+Last node points back to first node.
+
+```text
+10 → 20 → 30
+↑         ↓
+└─────────┘
+```
+
+---
+
+## Important Property
+
+No NULL pointer exists.
+
+---
+
+## Applications
+
+* CPU Scheduling
+* Round Robin Scheduling
+* Multiplayer Games
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Header Node
+
+Special node at beginning.
+
+Stores metadata like:
+
+* Node count
+* Start pointer
+
+---
+
+# 🔹 Traversal
+
+For Singly Linked List:
+
+```c
+temp = head;
+
+while(temp != NULL)
+{
+    temp = temp->next;
+}
+```
+
+Time Complexity:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Time Complexity Table
+
+| Operation        | SLL  |
+| ---------------- | ---- |
+| Access           | O(n) |
+| Search           | O(n) |
+| Insert Beginning | O(1) |
+| Delete Beginning | O(1) |
+| Insert End       | O(n) |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Linked list does NOT support direct indexing.
+
+❌
+
+```c
+list[5]
+```
+
+Impossible.
+
+---
+
+### Trap 2
+
+Searching is NOT O(1).
+
+It is:
+
+[
+O(n)
+]
+
+---
+
+### Trap 3
+
+DLL uses extra memory.
+
+---
+
+### Trap 4
+
+Circular linked list has no NULL node.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Linked list stores elements in:
+**Answer:** Nodes
+**Explanation:** Collection of linked nodes.
+
+---
+
+### Q2.
+
+A node contains:
+**Answer:** Data and link
+**Explanation:** Basic structure.
+
+---
+
+### Q3.
+
+Linked list memory allocation is:
+**Answer:** Dynamic
+**Explanation:** Runtime allocation.
+
+---
+
+### Q4.
+
+Array memory is:
+**Answer:** Contiguous
+**Explanation:** Consecutive locations.
+
+---
+
+### Q5.
+
+Linked list memory is:
+**Answer:** Non-contiguous
+**Explanation:** Scattered locations.
+
+---
+
+### Q6.
+
+Insertion at beginning of SLL:
+**Answer:** O(1)
+**Explanation:** Update head pointer.
+
+---
+
+### Q7.
+
+Search in linked list:
+**Answer:** O(n)
+**Explanation:** Sequential traversal.
+
+---
+
+### Q8.
+
+Access kth element in linked list:
+**Answer:** O(n)
+**Explanation:** No direct indexing.
+
+---
+
+### Q9.
+
+Last node of SLL contains:
+**Answer:** NULL
+**Explanation:** End marker.
+
+---
+
+### Q10.
+
+DLL node contains:
+**Answer:** Prev and Next pointers
+**Explanation:** Two links.
+
+---
+
+### Q11.
+
+DLL supports:
+**Answer:** Bidirectional traversal
+**Explanation:** Forward & backward.
+
+---
+
+### Q12.
+
+Main disadvantage of DLL:
+**Answer:** Extra memory
+**Explanation:** Additional pointer.
+
+---
+
+### Q13.
+
+Circular linked list last node points to:
+**Answer:** First node
+**Explanation:** Forms loop.
+
+---
+
+### Q14.
+
+Circular linked list contains:
+**Answer:** No NULL link
+**Explanation:** Continuous cycle.
+
+---
+
+### Q15.
+
+Most PYQ-tested concept?
+**Answer:** Time complexity
+**Explanation:** Frequently asked.
+
+---
+
+### Q16.
+
+Biggest GATE trap?
+**Answer:** Assuming O(1) access
+**Explanation:** Not possible.
+
+---
+
+### Q17.
+
+Head pointer stores:
+**Answer:** First node address
+**Explanation:** Starting point.
+
+---
+
+### Q18.
+
+Node creation generally uses:
+**Answer:** malloc()
+**Explanation:** Dynamic allocation.
+
+---
+
+### Q19.
+
+Insertion at end without tail pointer:
+**Answer:** O(n)
+**Explanation:** Requires traversal.
+
+---
+
+### Q20.
+
+Deletion at beginning:
+**Answer:** O(1)
+**Explanation:** Change head.
+
+---
+
+### Q21.
+
+Linked lists are useful when:
+**Answer:** Frequent insertions/deletions
+**Explanation:** Dynamic structure.
+
+---
+
+### Q22.
+
+Array better for:
+**Answer:** Random access
+**Explanation:** O(1) indexing.
+
+---
+
+### Q23.
+
+Traversal of linked list:
+**Answer:** O(n)
+**Explanation:** Visit nodes sequentially.
+
+---
+
+### Q24.
+
+Header node stores:
+**Answer:** Metadata
+**Explanation:** Extra information.
+
+---
+
+### Q25.
+
+Circular linked list used in:
+**Answer:** Round Robin Scheduling
+**Explanation:** Cyclic processing.
+
+---
+
+### Q26.
+
+Memory efficiency better in:
+**Answer:** Array
+**Explanation:** No pointer overhead.
+
+---
+
+### Q27.
+
+DLL deletion easier because:
+**Answer:** Previous pointer available
+**Explanation:** Direct access.
+
+---
+
+### Q28.
+
+Linked list nodes connected using:
+**Answer:** Pointers
+**Explanation:** Address links.
+
+---
+
+### Q29.
+
+Dynamic size is advantage of:
+**Answer:** Linked List
+**Explanation:** Grows/shrinks at runtime.
+
+---
+
+### Q30.
+
+Linked lists are foundation for:
+**Answer:** Stacks, Queues, Graphs
+**Explanation:** Core data structure.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
