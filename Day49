@@ -1,0 +1,590 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Stacks – Implementation, Operations & Applications**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Stack?
+
+A Stack is a **linear data structure** that follows:
+
+[
+\text{LIFO} = \text{Last In First Out}
+]
+
+The element inserted last is removed first.
+
+Example:
+
+```text
+Top
+↓
+30
+20
+10
+```
+
+If we pop:
+
+```text
+30 removed first
+```
+
+---
+
+# 🔹 Real-Life Examples
+
+* Stack of plates
+* Browser back button
+* Undo operation
+* Function calls
+
+---
+
+# 🔹 Basic Operations
+
+---
+
+## 1️⃣ Push
+
+Insert element into stack.
+
+Example:
+
+```text
+Before:
+10 20
+
+Push 30
+
+After:
+10 20 30
+```
+
+Time Complexity:
+
+[
+O(1)
+]
+
+---
+
+## 2️⃣ Pop
+
+Remove top element.
+
+```text
+10 20 30
+
+Pop
+
+10 20
+```
+
+Time Complexity:
+
+[
+O(1)
+]
+
+---
+
+## 3️⃣ Peek / Top
+
+Returns top element.
+
+Time Complexity:
+
+[
+O(1)
+]
+
+---
+
+## 4️⃣ isEmpty()
+
+Checks whether stack is empty.
+
+---
+
+## 5️⃣ isFull()
+
+Checks overflow condition (array implementation).
+
+---
+
+# 🔹 Stack Implementation Using Array
+
+---
+
+### Declaration
+
+```c
+int stack[100];
+int top = -1;
+```
+
+---
+
+### Push
+
+```c
+top++;
+stack[top] = value;
+```
+
+---
+
+### Pop
+
+```c
+value = stack[top];
+top--;
+```
+
+---
+
+### Conditions
+
+Overflow:
+
+```c
+top == MAX-1
+```
+
+Underflow:
+
+```c
+top == -1
+```
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Stack Implementation Using Linked List
+
+Structure:
+
+```c
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+```
+
+Top points to first node.
+
+---
+
+## Advantages
+
+✅ Dynamic size
+
+✅ No overflow until memory available
+
+---
+
+## Disadvantages
+
+❌ Extra pointer memory
+
+---
+
+# 🔹 Applications of Stack
+
+---
+
+## 1️⃣ Function Calls
+
+Every function call creates:
+
+👉 Activation Record (Stack Frame)
+
+Stored in Call Stack.
+
+---
+
+## 2️⃣ Recursion
+
+Recursive calls use stack.
+
+Example:
+
+```c
+fact(5)
+```
+
+creates multiple stack frames.
+
+📌 Very important GATE concept.
+
+---
+
+## 3️⃣ Expression Evaluation
+
+Used for:
+
+* Infix
+* Prefix
+* Postfix
+
+---
+
+# 🔹 Infix, Prefix & Postfix
+
+---
+
+### Infix
+
+```text
+A + B
+```
+
+Operator in middle.
+
+---
+
+### Prefix
+
+```text
++ A B
+```
+
+Operator before operands.
+
+---
+
+### Postfix
+
+```text
+A B +
+```
+
+Operator after operands.
+
+---
+
+📌 Postfix evaluation is a favorite GATE topic.
+
+---
+
+# 🔹 Parentheses Matching
+
+Stack used to check:
+
+```text
+( )
+{ }
+[ ]
+```
+
+Balanced or not.
+
+---
+
+# 🔹 Time Complexity
+
+| Operation | Complexity |
+| --------- | ---------- |
+| Push      | O(1)       |
+| Pop       | O(1)       |
+| Peek      | O(1)       |
+| Search    | O(n)       |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Stack follows:
+
+✅ LIFO
+
+NOT FIFO.
+
+---
+
+### Trap 2
+
+Recursive calls use stack memory.
+
+---
+
+### Trap 3
+
+Underflow occurs on pop from empty stack.
+
+---
+
+### Trap 4
+
+Overflow occurs in array implementation only when array is full.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Stack follows:
+**Answer:** LIFO
+**Explanation:** Last inserted removed first.
+
+---
+
+### Q2.
+
+Push operation performs:
+**Answer:** Insertion
+**Explanation:** Adds element.
+
+---
+
+### Q3.
+
+Pop operation performs:
+**Answer:** Deletion
+**Explanation:** Removes top element.
+
+---
+
+### Q4.
+
+Top element accessed using:
+**Answer:** Peek
+**Explanation:** View top.
+
+---
+
+### Q5.
+
+Time complexity of Push:
+**Answer:** O(1)
+**Explanation:** Constant time.
+
+---
+
+### Q6.
+
+Time complexity of Pop:
+**Answer:** O(1)
+**Explanation:** Constant time.
+
+---
+
+### Q7.
+
+Initial value of top:
+**Answer:** -1
+**Explanation:** Empty stack.
+
+---
+
+### Q8.
+
+Overflow occurs when:
+**Answer:** Stack full
+**Explanation:** No space available.
+
+---
+
+### Q9.
+
+Underflow occurs when:
+**Answer:** Stack empty
+**Explanation:** Nothing to remove.
+
+---
+
+### Q10.
+
+Stack implementation can use:
+**Answer:** Array or Linked List
+**Explanation:** Both possible.
+
+---
+
+### Q11.
+
+Linked-list stack grows:
+**Answer:** Dynamically
+**Explanation:** Runtime allocation.
+
+---
+
+### Q12.
+
+Array stack size:
+**Answer:** Fixed
+**Explanation:** Predetermined.
+
+---
+
+### Q13.
+
+Most PYQ-tested topic?
+**Answer:** Expression conversion/evaluation
+**Explanation:** Frequently asked.
+
+---
+
+### Q14.
+
+Biggest GATE trap?
+**Answer:** LIFO vs FIFO confusion
+**Explanation:** Common mistake.
+
+---
+
+### Q15.
+
+Function calls use:
+**Answer:** Stack
+**Explanation:** Call stack.
+
+---
+
+### Q16.
+
+Recursion internally uses:
+**Answer:** Stack
+**Explanation:** Activation records.
+
+---
+
+### Q17.
+
+Infix notation:
+**Answer:** A+B
+**Explanation:** Operator between operands.
+
+---
+
+### Q18.
+
+Prefix notation:
+**Answer:** +AB
+**Explanation:** Operator before operands.
+
+---
+
+### Q19.
+
+Postfix notation:
+**Answer:** AB+
+**Explanation:** Operator after operands.
+
+---
+
+### Q20.
+
+Balanced parentheses checking uses:
+**Answer:** Stack
+**Explanation:** Matching symbols.
+
+---
+
+### Q21.
+
+Search in stack complexity:
+**Answer:** O(n)
+**Explanation:** Sequential search.
+
+---
+
+### Q22.
+
+Top pointer indicates:
+**Answer:** Last inserted element
+**Explanation:** Stack top.
+
+---
+
+### Q23.
+
+Stack frame stores:
+**Answer:** Function information
+**Explanation:** Call details.
+
+---
+
+### Q24.
+
+Postfix evaluation primarily uses:
+**Answer:** Stack
+**Explanation:** Operand storage.
+
+---
+
+### Q25.
+
+Push increases:
+**Answer:** top
+**Explanation:** New element added.
+
+---
+
+### Q26.
+
+Pop decreases:
+**Answer:** top
+**Explanation:** Element removed.
+
+---
+
+### Q27.
+
+Stack is a:
+**Answer:** Linear data structure
+**Explanation:** Sequential organization.
+
+---
+
+### Q28.
+
+Browser back button uses:
+**Answer:** Stack
+**Explanation:** Last page first.
+
+---
+
+### Q29.
+
+Undo operation commonly uses:
+**Answer:** Stack
+**Explanation:** Reverse recent action.
+
+---
+
+### Q30.
+
+Stack is foundation for:
+**Answer:** Recursion and expression processing
+**Explanation:** Core applications.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
+
+
+for **Day 45 – Stacks**.
