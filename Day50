@@ -1,0 +1,610 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Queues – Simple Queue, Circular Queue, Deque & Priority Queue**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Queue?
+
+A Queue is a **linear data structure** that follows:
+
+[
+FIFO = First\ In\ First\ Out
+]
+
+The element inserted first is removed first.
+
+Example:
+
+```text
+Front → 10 20 30 ← Rear
+```
+
+If we delete:
+
+```text
+10 removed first
+```
+
+---
+
+# 🔹 Real-Life Examples
+
+* Ticket counter
+* Printer queue
+* CPU scheduling
+* Call center waiting system
+
+---
+
+# 🔹 Basic Operations
+
+---
+
+## 1️⃣ Enqueue
+
+Insertion at Rear.
+
+```text
+10 20
+
+Enqueue(30)
+
+10 20 30
+```
+
+Time Complexity:
+
+[
+O(1)
+]
+
+---
+
+## 2️⃣ Dequeue
+
+Deletion from Front.
+
+```text
+10 20 30
+
+Dequeue()
+
+20 30
+```
+
+Time Complexity:
+
+[
+O(1)
+]
+
+---
+
+## 3️⃣ Front()
+
+Returns first element.
+
+---
+
+## 4️⃣ Rear()
+
+Returns last element.
+
+---
+
+## 5️⃣ isEmpty()
+
+Checks whether queue is empty.
+
+---
+
+## 6️⃣ isFull()
+
+Checks overflow condition.
+
+---
+
+# 🔹 Queue Implementation Using Array
+
+---
+
+### Initialization
+
+```c
+int queue[MAX];
+int front=-1;
+int rear=-1;
+```
+
+---
+
+### Empty Condition
+
+```c
+front==-1
+```
+
+---
+
+### Full Condition
+
+```c
+rear==MAX-1
+```
+
+---
+
+# 🔹 Problem with Simple Queue
+
+Consider:
+
+```text
+10 20 30 40 50
+```
+
+After several dequeues:
+
+```text
+_ _ _ 40 50
+```
+
+Empty spaces cannot be reused.
+
+👉 Wastage of memory.
+
+---
+
+# 🔹 Circular Queue (VERY IMPORTANT)
+
+Last position connects to first.
+
+```text
+0 ←→ 1 ←→ 2 ←→ 3 ←→ 4
+↑                 ↓
+└─────────────────┘
+```
+
+---
+
+## Full Condition
+
+[
+(rear+1)%size = front
+]
+
+📌 Very common GATE question.
+
+---
+
+## Advantages
+
+✅ Better memory utilization
+
+✅ No wastage
+
+---
+
+# 🔹 Deque (Double Ended Queue)
+
+Insertion and deletion possible from both ends.
+
+---
+
+## Types
+
+### Input Restricted Deque
+
+Insertion from one side.
+
+Deletion from both sides.
+
+---
+
+### Output Restricted Deque
+
+Deletion from one side.
+
+Insertion from both sides.
+
+---
+
+# 🔹 Priority Queue
+
+Every element has priority.
+
+Higher priority element served first.
+
+Example:
+
+```text
+Priority:
+A = 5
+B = 2
+C = 8
+```
+
+Removal order:
+
+```text
+C → A → B
+```
+
+---
+
+## Applications
+
+* CPU Scheduling
+* Dijkstra's Algorithm
+* Event Simulation
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Queue Using Linked List
+
+Structure:
+
+```c
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+```
+
+Maintain:
+
+```c
+front
+rear
+```
+
+---
+
+## Advantages
+
+✅ Dynamic size
+
+✅ No fixed capacity
+
+---
+
+# 🔹 Time Complexity
+
+| Operation | Queue |
+| --------- | ----- |
+| Enqueue   | O(1)  |
+| Dequeue   | O(1)  |
+| Front     | O(1)  |
+| Rear      | O(1)  |
+| Search    | O(n)  |
+
+---
+
+# 🔹 Applications of Queue
+
+---
+
+## CPU Scheduling
+
+Processes wait in queue.
+
+---
+
+## Breadth First Search (BFS)
+
+Graph traversal.
+
+---
+
+## Printer Management
+
+Print requests handled in order.
+
+---
+
+## Networking
+
+Packet buffering.
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Queue follows:
+
+✅ FIFO
+
+NOT LIFO.
+
+---
+
+### Trap 2
+
+Circular queue full condition:
+
+[
+(rear+1)%n=front
+]
+
+---
+
+### Trap 3
+
+Priority queue does NOT necessarily follow FIFO.
+
+---
+
+### Trap 4
+
+Deque allows operations at both ends.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Queue follows:
+**Answer:** FIFO
+**Explanation:** First inserted removed first.
+
+---
+
+### Q2.
+
+Insertion operation called:
+**Answer:** Enqueue
+**Explanation:** Add at rear.
+
+---
+
+### Q3.
+
+Deletion operation called:
+**Answer:** Dequeue
+**Explanation:** Remove from front.
+
+---
+
+### Q4.
+
+Queue insertion occurs at:
+**Answer:** Rear
+**Explanation:** Tail side.
+
+---
+
+### Q5.
+
+Queue deletion occurs at:
+**Answer:** Front
+**Explanation:** Head side.
+
+---
+
+### Q6.
+
+Time complexity of Enqueue:
+**Answer:** O(1)
+**Explanation:** Constant time.
+
+---
+
+### Q7.
+
+Time complexity of Dequeue:
+**Answer:** O(1)
+**Explanation:** Constant time.
+
+---
+
+### Q8.
+
+Most common queue implementation:
+**Answer:** Array and Linked List
+**Explanation:** Standard methods.
+
+---
+
+### Q9.
+
+Circular queue solves:
+**Answer:** Memory wastage
+**Explanation:** Reuses space.
+
+---
+
+### Q10.
+
+Circular queue full condition:
+**Answer:** (rear+1)%n = front
+**Explanation:** Standard formula.
+
+---
+
+### Q11.
+
+Deque stands for:
+**Answer:** Double Ended Queue
+**Explanation:** Operations both ends.
+
+---
+
+### Q12.
+
+Deque allows insertion:
+**Answer:** At both ends
+**Explanation:** Flexible structure.
+
+---
+
+### Q13.
+
+Priority queue removes:
+**Answer:** Highest priority element
+**Explanation:** Priority-based.
+
+---
+
+### Q14.
+
+Most PYQ-tested topic?
+**Answer:** Circular Queue
+**Explanation:** Frequent numericals.
+
+---
+
+### Q15.
+
+Biggest GATE trap?
+**Answer:** FIFO vs LIFO confusion
+**Explanation:** Queue vs Stack.
+
+---
+
+### Q16.
+
+Queue used in:
+**Answer:** BFS
+**Explanation:** Graph traversal.
+
+---
+
+### Q17.
+
+Stack used in:
+**Answer:** DFS
+**Explanation:** Depth traversal.
+
+---
+
+### Q18.
+
+Front pointer indicates:
+**Answer:** First element
+**Explanation:** Deletion side.
+
+---
+
+### Q19.
+
+Rear pointer indicates:
+**Answer:** Last element
+**Explanation:** Insertion side.
+
+---
+
+### Q20.
+
+Queue search complexity:
+**Answer:** O(n)
+**Explanation:** Sequential traversal.
+
+---
+
+### Q21.
+
+Priority queue application:
+**Answer:** CPU Scheduling
+**Explanation:** Priority execution.
+
+---
+
+### Q22.
+
+Linked-list queue size:
+**Answer:** Dynamic
+**Explanation:** Runtime growth.
+
+---
+
+### Q23.
+
+Array queue size:
+**Answer:** Fixed
+**Explanation:** Predetermined capacity.
+
+---
+
+### Q24.
+
+Circular queue is:
+**Answer:** Cyclic structure
+**Explanation:** End connected to start.
+
+---
+
+### Q25.
+
+Queue is a:
+**Answer:** Linear data structure
+**Explanation:** Sequential organization.
+
+---
+
+### Q26.
+
+Network packet buffering uses:
+**Answer:** Queue
+**Explanation:** Ordered processing.
+
+---
+
+### Q27.
+
+Printer requests managed using:
+**Answer:** Queue
+**Explanation:** FIFO order.
+
+---
+
+### Q28.
+
+Input restricted deque allows:
+**Answer:** One-side insertion
+**Explanation:** Restricted input.
+
+---
+
+### Q29.
+
+Output restricted deque allows:
+**Answer:** One-side deletion
+**Explanation:** Restricted output.
+
+---
+
+### Q30.
+
+Queue is foundation for:
+**Answer:** BFS and Scheduling
+**Explanation:** Important applications.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
+### Next Topic (Day 47)
+
+**Trees – Binary Trees, BST, Traversals & Properties**
