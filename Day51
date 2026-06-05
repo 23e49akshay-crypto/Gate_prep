@@ -1,0 +1,638 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Trees – Binary Trees, BST, Traversals & Properties**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Tree?
+
+A Tree is a **non-linear hierarchical data structure**.
+
+It consists of:
+
+* Nodes
+* Edges
+
+Example:
+
+```text
+        A
+      /   \
+     B     C
+    / \   / \
+   D   E F   G
+```
+
+---
+
+# 🔹 Important Terminologies
+
+### Root Node
+
+Topmost node.
+
+Example:
+
+```text
+A
+```
+
+is root.
+
+---
+
+### Parent Node
+
+A node having children.
+
+Example:
+
+```text
+A
+```
+
+is parent of B and C.
+
+---
+
+### Child Node
+
+Node connected below parent.
+
+---
+
+### Leaf Node
+
+Node with no children.
+
+Example:
+
+```text
+D E F G
+```
+
+---
+
+### Siblings
+
+Nodes having same parent.
+
+Example:
+
+```text
+B and C
+```
+
+---
+
+### Degree of Node
+
+Number of children.
+
+---
+
+### Height of Tree
+
+Number of edges in longest root-to-leaf path.
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Binary Tree
+
+A tree where each node has at most:
+
+[
+2
+]
+
+children.
+
+Structure:
+
+```c
+struct Node
+{
+   int data;
+   struct Node *left;
+   struct Node *right;
+};
+```
+
+---
+
+# 🔹 Types of Binary Trees
+
+---
+
+## 1️⃣ Full Binary Tree
+
+Every node has:
+
+* 0 children OR
+* 2 children
+
+---
+
+## 2️⃣ Complete Binary Tree
+
+All levels full except possibly last.
+
+Last level filled left to right.
+
+📌 Used in Heaps.
+
+---
+
+## 3️⃣ Perfect Binary Tree
+
+All internal nodes have 2 children.
+
+All leaves at same level.
+
+---
+
+## 4️⃣ Skewed Binary Tree
+
+Every node has only one child.
+
+Example:
+
+```text
+1
+ \
+  2
+   \
+    3
+```
+
+Behaves like linked list.
+
+---
+
+# 🔹 Binary Tree Properties
+
+For level i:
+
+[
+Maximum\ Nodes = 2^i
+]
+
+---
+
+Maximum nodes in height h:
+
+[
+2^{h+1}-1
+]
+
+---
+
+Minimum height for n nodes:
+
+[
+\lceil \log_2(n+1)\rceil -1
+]
+
+📌 Important numerical questions.
+
+---
+
+# 🔹 Tree Traversals (VERY IMPORTANT)
+
+Traversal = visiting all nodes.
+
+---
+
+## 1️⃣ Preorder
+
+Rule:
+
+```text
+Root → Left → Right
+```
+
+Example:
+
+```text
+      A
+     / \
+    B   C
+```
+
+Traversal:
+
+```text
+A B C
+```
+
+---
+
+## 2️⃣ Inorder
+
+Rule:
+
+```text
+Left → Root → Right
+```
+
+Traversal:
+
+```text
+B A C
+```
+
+---
+
+## 3️⃣ Postorder
+
+Rule:
+
+```text
+Left → Right → Root
+```
+
+Traversal:
+
+```text
+B C A
+```
+
+---
+
+## 4️⃣ Level Order
+
+Breadth-first traversal.
+
+Uses Queue.
+
+---
+
+📌 Traversal questions are extremely common in GATE.
+
+---
+
+# 🔹 Binary Search Tree (BST)
+
+Special Binary Tree.
+
+Property:
+
+[
+Left < Root < Right
+]
+
+Example:
+
+```text
+        50
+       /  \
+     30    70
+    / \   / \
+   20 40 60 80
+```
+
+---
+
+# 🔹 BST Search
+
+Compare and move:
+
+* Smaller → Left
+* Larger → Right
+
+Time Complexity:
+
+[
+O(h)
+]
+
+where h = height.
+
+---
+
+# 🔹 BST Inorder Traversal
+
+Important Property:
+
+👉 Inorder traversal of BST gives:
+
+```text
+Sorted Order
+```
+
+📌 One of the most asked GATE concepts.
+
+---
+
+# 🔹 Complexity Comparison
+
+| Operation | BST  |
+| --------- | ---- |
+| Search    | O(h) |
+| Insert    | O(h) |
+| Delete    | O(h) |
+
+Balanced BST:
+
+[
+O(\log n)
+]
+
+Worst Case:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Inorder of BST is always sorted.
+
+✅ TRUE
+
+---
+
+### Trap 2
+
+Height ≠ Number of Nodes.
+
+---
+
+### Trap 3
+
+Complete tree ≠ Full tree.
+
+---
+
+### Trap 4
+
+Level order traversal uses Queue, not Stack.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Tree is a:
+**Answer:** Non-linear data structure
+**Explanation:** Hierarchical organization.
+
+---
+
+### Q2.
+
+Topmost node called:
+**Answer:** Root
+**Explanation:** Starting node.
+
+---
+
+### Q3.
+
+Node with no children:
+**Answer:** Leaf node
+**Explanation:** Terminal node.
+
+---
+
+### Q4.
+
+Degree of node means:
+**Answer:** Number of children
+**Explanation:** Branch count.
+
+---
+
+### Q5.
+
+Maximum children in binary tree:
+**Answer:** 2
+**Explanation:** Binary property.
+
+---
+
+### Q6.
+
+Maximum nodes at level i:
+**Answer:** 2^i
+**Explanation:** Binary growth.
+
+---
+
+### Q7.
+
+Maximum nodes in height h tree:
+**Answer:** 2^(h+1)-1
+**Explanation:** Binary tree formula.
+
+---
+
+### Q8.
+
+Preorder traversal:
+**Answer:** Root Left Right
+**Explanation:** Visit root first.
+
+---
+
+### Q9.
+
+Inorder traversal:
+**Answer:** Left Root Right
+**Explanation:** Root in middle.
+
+---
+
+### Q10.
+
+Postorder traversal:
+**Answer:** Left Right Root
+**Explanation:** Root last.
+
+---
+
+### Q11.
+
+Level order traversal uses:
+**Answer:** Queue
+**Explanation:** BFS traversal.
+
+---
+
+### Q12.
+
+BST property:
+**Answer:** Left < Root < Right
+**Explanation:** Ordering rule.
+
+---
+
+### Q13.
+
+Inorder traversal of BST gives:
+**Answer:** Sorted order
+**Explanation:** Key property.
+
+---
+
+### Q14.
+
+Search complexity in balanced BST:
+**Answer:** O(log n)
+**Explanation:** Height logarithmic.
+
+---
+
+### Q15.
+
+Most PYQ-tested topic?
+**Answer:** Tree traversals
+**Explanation:** Very frequent.
+
+---
+
+### Q16.
+
+Biggest GATE trap?
+**Answer:** Inorder traversal property
+**Explanation:** Must remember.
+
+---
+
+### Q17.
+
+Complete binary tree fills:
+**Answer:** Left to right
+**Explanation:** Last level rule.
+
+---
+
+### Q18.
+
+Perfect binary tree has:
+**Answer:** All leaves at same level
+**Explanation:** Perfect structure.
+
+---
+
+### Q19.
+
+Skewed tree resembles:
+**Answer:** Linked List
+**Explanation:** One child per node.
+
+---
+
+### Q20.
+
+BST insertion complexity:
+**Answer:** O(h)
+**Explanation:** Depends on height.
+
+---
+
+### Q21.
+
+BST deletion complexity:
+**Answer:** O(h)
+**Explanation:** Height-based.
+
+---
+
+### Q22.
+
+Height of balanced BST:
+**Answer:** O(log n)
+**Explanation:** Efficient structure.
+
+---
+
+### Q23.
+
+Root node has:
+**Answer:** No parent
+**Explanation:** Top node.
+
+---
+
+### Q24.
+
+Sibling nodes share:
+**Answer:** Same parent
+**Explanation:** Common parent.
+
+---
+
+### Q25.
+
+Leaf node degree:
+**Answer:** 0
+**Explanation:** No children.
+
+---
+
+### Q26.
+
+Preorder useful for:
+**Answer:** Tree copying
+**Explanation:** Root processed first.
+
+---
+
+### Q27.
+
+Postorder useful for:
+**Answer:** Tree deletion
+**Explanation:** Children deleted first.
+
+---
+
+### Q28.
+
+Level order traversal is:
+**Answer:** Breadth First Search
+**Explanation:** Level by level.
+
+---
+
+### Q29.
+
+Balanced BST improves:
+**Answer:** Search efficiency
+**Explanation:** Lower height.
+
+---
+
+### Q30.
+
+Trees are foundation for:
+**Answer:** BST, Heaps, Tries
+**Explanation:** Core hierarchical structure.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
