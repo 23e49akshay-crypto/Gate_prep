@@ -1,0 +1,634 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Heap, Priority Queue & Heap Sort**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Heap?
+
+A Heap is a **Complete Binary Tree** that satisfies the **Heap Property**.
+
+📌 Heap is not the same as BST.
+
+---
+
+# 🔹 Types of Heaps
+
+---
+
+## 1️⃣ Max Heap
+
+Every parent node is greater than or equal to its children.
+
+Example:
+
+```text
+        100
+       /   \
+      50    80
+     / \   / \
+    20 30 40 60
+```
+
+Property:
+
+[
+Parent \ge Children
+]
+
+Largest element always at root.
+
+---
+
+## 2️⃣ Min Heap
+
+Every parent node is smaller than or equal to its children.
+
+Example:
+
+```text
+        10
+       /  \
+      20   30
+     / \   / \
+    40 50 60 70
+```
+
+Property:
+
+[
+Parent \le Children
+]
+
+Smallest element at root.
+
+---
+
+# 🔹 Why Complete Binary Tree?
+
+Heap must always be:
+
+✅ Complete Binary Tree
+
+❌ Not necessarily Balanced BST
+
+---
+
+# 🔹 Array Representation of Heap
+
+Heap is generally stored in an array.
+
+Example:
+
+```text
+        50
+       /  \
+      30   40
+     / \
+    10 20
+```
+
+Stored as:
+
+```text
+[50,30,40,10,20]
+```
+
+---
+
+## Important Formulas
+
+For node at index i:
+
+### Parent
+
+[
+Parent = \left\lfloor \frac{i-1}{2} \right\rfloor
+]
+
+---
+
+### Left Child
+
+[
+2i+1
+]
+
+---
+
+### Right Child
+
+[
+2i+2
+]
+
+📌 Very frequently asked in GATE.
+
+---
+
+# 🔹 Heap Operations
+
+---
+
+## 1️⃣ Insertion
+
+Steps:
+
+1. Insert at last position
+2. Heapify Up
+
+Example:
+
+```text
+Insert 90
+```
+
+Move upward until heap property restored.
+
+---
+
+### Complexity
+
+[
+O(\log n)
+]
+
+---
+
+## 2️⃣ Deletion
+
+Usually delete root.
+
+Steps:
+
+1. Replace root with last node
+2. Heapify Down
+
+---
+
+### Complexity
+
+[
+O(\log n)
+]
+
+---
+
+# 🔹 Heapify
+
+Process of restoring heap property.
+
+Two types:
+
+### Heapify Up
+
+Used after insertion.
+
+---
+
+### Heapify Down
+
+Used after deletion.
+
+---
+
+# 🔹 Priority Queue
+
+A data structure where elements are removed based on priority.
+
+Highest priority element served first.
+
+---
+
+## Heap as Priority Queue
+
+Max Heap:
+
+```text
+Highest value → Highest priority
+```
+
+Min Heap:
+
+```text
+Lowest value → Highest priority
+```
+
+---
+
+### Operations
+
+| Operation | Complexity |
+| --------- | ---------- |
+| Insert    | O(log n)   |
+| Delete    | O(log n)   |
+| Peek      | O(1)       |
+
+---
+
+📌 Priority Queue is usually implemented using Heap.
+
+---
+
+# 🔹 Heap Sort
+
+A sorting algorithm based on Heap.
+
+---
+
+## Steps
+
+### Step 1
+
+Build Max Heap.
+
+---
+
+### Step 2
+
+Swap root with last element.
+
+---
+
+### Step 3
+
+Reduce heap size.
+
+---
+
+### Step 4
+
+Heapify root.
+
+Repeat until sorted.
+
+---
+
+# 🔹 Example
+
+Array:
+
+```text
+[4,10,3,5,1]
+```
+
+Build Max Heap:
+
+```text
+10
+/ \
+5  3
+/ \
+4  1
+```
+
+Repeated extraction gives sorted array.
+
+---
+
+# 🔹 Complexity of Heap Sort
+
+---
+
+### Best Case
+
+[
+O(n \log n)
+]
+
+### Average Case
+
+[
+O(n \log n)
+]
+
+### Worst Case
+
+[
+O(n \log n)
+]
+
+📌 Same in all cases.
+
+---
+
+# 🔹 Space Complexity
+
+[
+O(1)
+]
+
+In-place sorting.
+
+---
+
+# 🔹 Heap vs BST
+
+| Heap                 | BST                 |
+| -------------------- | ------------------- |
+| Complete Binary Tree | Ordered Binary Tree |
+| Root is max/min      | Sorted property     |
+| Fast priority access | Fast searching      |
+| Search = O(n)        | Search = O(log n)   |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Heap is NOT a BST.
+
+---
+
+### Trap 2
+
+Heap only guarantees parent-child ordering.
+
+Not complete sorting.
+
+---
+
+### Trap 3
+
+Searching in heap is:
+
+[
+O(n)
+]
+
+NOT
+
+[
+O(\log n)
+]
+
+---
+
+### Trap 4
+
+Heap Sort is NOT stable.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Heap is a:
+**Answer:** Complete Binary Tree
+**Explanation:** Fundamental property.
+
+---
+
+### Q2.
+
+Max Heap root contains:
+**Answer:** Largest element
+**Explanation:** Parent ≥ children.
+
+---
+
+### Q3.
+
+Min Heap root contains:
+**Answer:** Smallest element
+**Explanation:** Parent ≤ children.
+
+---
+
+### Q4.
+
+Heap stored commonly using:
+**Answer:** Array
+**Explanation:** Efficient representation.
+
+---
+
+### Q5.
+
+Left child index of node i:
+**Answer:** 2i+1
+**Explanation:** Array formula.
+
+---
+
+### Q6.
+
+Right child index of node i:
+**Answer:** 2i+2
+**Explanation:** Array formula.
+
+---
+
+### Q7.
+
+Parent index of node i:
+**Answer:** ⌊(i−1)/2⌋
+**Explanation:** Heap relation.
+
+---
+
+### Q8.
+
+Insertion complexity in heap:
+**Answer:** O(log n)
+**Explanation:** Heapify up.
+
+---
+
+### Q9.
+
+Deletion complexity in heap:
+**Answer:** O(log n)
+**Explanation:** Heapify down.
+
+---
+
+### Q10.
+
+Peek operation complexity:
+**Answer:** O(1)
+**Explanation:** Root access.
+
+---
+
+### Q11.
+
+Heapify restores:
+**Answer:** Heap property
+**Explanation:** Reordering process.
+
+---
+
+### Q12.
+
+Priority Queue commonly implemented using:
+**Answer:** Heap
+**Explanation:** Efficient operations.
+
+---
+
+### Q13.
+
+Most PYQ-tested topic?
+**Answer:** Array representation formulas
+**Explanation:** Frequently asked.
+
+---
+
+### Q14.
+
+Biggest GATE trap?
+**Answer:** Heap ≠ BST
+**Explanation:** Different properties.
+
+---
+
+### Q15.
+
+Heap Sort uses:
+**Answer:** Max Heap
+**Explanation:** Standard implementation.
+
+---
+
+### Q16.
+
+Heap Sort complexity:
+**Answer:** O(n log n)
+**Explanation:** All cases.
+
+---
+
+### Q17.
+
+Heap Sort space complexity:
+**Answer:** O(1)
+**Explanation:** In-place.
+
+---
+
+### Q18.
+
+Heap Sort is:
+**Answer:** Not Stable
+**Explanation:** Relative order changes.
+
+---
+
+### Q19.
+
+Searching in heap:
+**Answer:** O(n)
+**Explanation:** No complete ordering.
+
+---
+
+### Q20.
+
+Building heap complexity:
+**Answer:** O(n)
+**Explanation:** Important result.
+
+---
+
+### Q21.
+
+Heap root deletion removes:
+**Answer:** Highest/Lowest priority element
+**Explanation:** Root node.
+
+---
+
+### Q22.
+
+Priority Queue serves:
+**Answer:** Highest priority first
+**Explanation:** Priority-based access.
+
+---
+
+### Q23.
+
+Heap property compares:
+**Answer:** Parent and children
+**Explanation:** Local ordering.
+
+---
+
+### Q24.
+
+Complete Binary Tree fills:
+**Answer:** Left to right
+**Explanation:** Last level rule.
+
+---
+
+### Q25.
+
+Max Heap guarantees:
+**Answer:** Root largest
+**Explanation:** Not fully sorted.
+
+---
+
+### Q26.
+
+Min Heap guarantees:
+**Answer:** Root smallest
+**Explanation:** Heap property.
+
+---
+
+### Q27.
+
+Heap insertion begins at:
+**Answer:** Last position
+**Explanation:** Maintain completeness.
+
+---
+
+### Q28.
+
+Heap deletion starts by replacing root with:
+**Answer:** Last node
+**Explanation:** Standard algorithm.
+
+---
+
+### Q29.
+
+Heap is widely used in:
+**Answer:** Priority Queues
+**Explanation:** Efficient implementation.
+
+---
+
+### Q30.
+
+Heap Sort belongs to:
+**Answer:** Comparison-based sorting
+**Explanation:** Uses element comparisons.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
+
