@@ -1,0 +1,586 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Hashing – Hash Functions, Collision Handling & Applications**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Hashing?
+
+Hashing is a technique used to:
+
+✅ Store data efficiently
+✅ Search data quickly
+
+It maps a key to a memory location using a hash function.
+
+[
+Index = h(Key)
+]
+
+---
+
+# 🔹 Why Hashing?
+
+Without hashing:
+
+* Search in array → O(n)
+* Search in linked list → O(n)
+
+With hashing:
+
+[
+O(1)
+]
+
+average case search.
+
+---
+
+# 🔹 Hash Table
+
+A hash table is an array where data is stored using hash values.
+
+Example:
+
+```text
+Index   Data
+0       -
+1       21
+2       12
+3       33
+4       -
+```
+
+---
+
+# 🔹 Hash Function
+
+A function that converts a key into an index.
+
+Example:
+
+[
+h(k)=k \mod 10
+]
+
+For key:
+
+[
+23
+]
+
+[
+23 \mod 10 = 3
+]
+
+Store at index 3.
+
+---
+
+# 🔹 Characteristics of Good Hash Function
+
+✅ Uniform distribution
+
+✅ Fast computation
+
+✅ Minimum collisions
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Collision
+
+A collision occurs when two keys map to the same location.
+
+Example:
+
+[
+h(k)=k \mod 10
+]
+
+Keys:
+
+```text
+12 → 2
+22 → 2
+```
+
+Collision occurs.
+
+---
+
+# 🔹 Collision Resolution Techniques
+
+---
+
+# 1️⃣ Separate Chaining
+
+Store collided elements using linked list.
+
+Example:
+
+```text
+Index 2
+
+12 → 22 → 32
+```
+
+---
+
+### Complexity
+
+Average:
+
+[
+O(1)
+]
+
+Worst:
+
+[
+O(n)
+]
+
+---
+
+# 2️⃣ Open Addressing
+
+Store collided element elsewhere.
+
+---
+
+## Linear Probing
+
+Formula:
+
+[
+(h(k)+i)\mod m
+]
+
+Example:
+
+```text
+Index 2 occupied
+
+Try:
+3
+4
+5
+...
+```
+
+---
+
+### Problem
+
+Primary Clustering
+
+📌 Important GATE concept.
+
+---
+
+## Quadratic Probing
+
+Formula:
+
+[
+h(k)+i^2
+]
+
+Reduces clustering.
+
+---
+
+## Double Hashing
+
+Uses second hash function.
+
+[
+h(k,i)=
+(h_1(k)+i\cdot h_2(k))
+\mod m
+]
+
+Provides better distribution.
+
+---
+
+# 🔹 Load Factor
+
+[
+\alpha=\frac{n}{m}
+]
+
+Where:
+
+* n = number of keys
+* m = table size
+
+---
+
+Example:
+
+10 elements in table size 20
+
+[
+\alpha=0.5
+]
+
+---
+
+📌 Higher load factor ⇒ More collisions.
+
+---
+
+# 🔹 Rehashing
+
+When table becomes crowded:
+
+✅ Create larger table
+
+✅ Reinsert all elements
+
+---
+
+# 🔹 Applications of Hashing
+
+---
+
+## Database Indexing
+
+Fast record search.
+
+---
+
+## Symbol Tables
+
+Used in compilers.
+
+---
+
+## Password Storage
+
+Store hashed passwords.
+
+---
+
+## Caches
+
+Fast lookups.
+
+---
+
+## Dictionaries
+
+Key-value storage.
+
+---
+
+# 🔹 Complexity Analysis
+
+| Operation | Average | Worst |
+| --------- | ------- | ----- |
+| Search    | O(1)    | O(n)  |
+| Insert    | O(1)    | O(n)  |
+| Delete    | O(1)    | O(n)  |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Hashing gives O(1) average case.
+
+NOT always O(1).
+
+Worst case:
+
+[
+O(n)
+]
+
+---
+
+### Trap 2
+
+Load factor affects performance.
+
+---
+
+### Trap 3
+
+Linear probing causes:
+
+Primary clustering.
+
+---
+
+### Trap 4
+
+Hash table is NOT sorted.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Hashing is used for:
+**Answer:** Fast searching
+**Explanation:** Efficient key lookup.
+
+---
+
+### Q2.
+
+Hash table stores data using:
+**Answer:** Hash function
+**Explanation:** Key mapping.
+
+---
+
+### Q3.
+
+Hash function converts:
+**Answer:** Key to index
+**Explanation:** Address computation.
+
+---
+
+### Q4.
+
+h(k)=k mod 10, h(23)=?
+**Answer:** 3
+**Explanation:** 23 mod 10 = 3.
+
+---
+
+### Q5.
+
+Collision means:
+**Answer:** Two keys map to same index
+**Explanation:** Hash conflict.
+
+---
+
+### Q6.
+
+Most common collision handling method:
+**Answer:** Chaining
+**Explanation:** Linked list storage.
+
+---
+
+### Q7.
+
+Separate chaining uses:
+**Answer:** Linked Lists
+**Explanation:** Store collisions.
+
+---
+
+### Q8.
+
+Linear probing belongs to:
+**Answer:** Open Addressing
+**Explanation:** Alternative slots.
+
+---
+
+### Q9.
+
+Linear probing formula:
+**Answer:** (h(k)+i) mod m
+**Explanation:** Sequential search.
+
+---
+
+### Q10.
+
+Quadratic probing uses:
+**Answer:** i²
+**Explanation:** Quadratic jump.
+
+---
+
+### Q11.
+
+Double hashing uses:
+**Answer:** Two hash functions
+**Explanation:** Better distribution.
+
+---
+
+### Q12.
+
+Load factor formula:
+**Answer:** n/m
+**Explanation:** Occupancy ratio.
+
+---
+
+### Q13.
+
+Higher load factor causes:
+**Answer:** More collisions
+**Explanation:** Crowded table.
+
+---
+
+### Q14.
+
+Most PYQ-tested concept?
+**Answer:** Collision resolution
+**Explanation:** Frequently asked.
+
+---
+
+### Q15.
+
+Biggest GATE trap?
+**Answer:** O(1) not guaranteed always
+**Explanation:** Worst case O(n).
+
+---
+
+### Q16.
+
+Hash table search average complexity:
+**Answer:** O(1)
+**Explanation:** Constant time.
+
+---
+
+### Q17.
+
+Worst-case search complexity:
+**Answer:** O(n)
+**Explanation:** Many collisions.
+
+---
+
+### Q18.
+
+Linear probing suffers from:
+**Answer:** Primary Clustering
+**Explanation:** Consecutive blocks.
+
+---
+
+### Q19.
+
+Quadratic probing reduces:
+**Answer:** Clustering
+**Explanation:** Wider jumps.
+
+---
+
+### Q20.
+
+Rehashing means:
+**Answer:** Rebuilding hash table
+**Explanation:** Larger table.
+
+---
+
+### Q21.
+
+Hashing used in:
+**Answer:** Dictionaries
+**Explanation:** Key-value storage.
+
+---
+
+### Q22.
+
+Hashing used in:
+**Answer:** Compiler symbol tables
+**Explanation:** Fast lookup.
+
+---
+
+### Q23.
+
+Hashing used for:
+**Answer:** Password storage
+**Explanation:** Security.
+
+---
+
+### Q24.
+
+Good hash function should:
+**Answer:** Distribute uniformly
+**Explanation:** Reduce collisions.
+
+---
+
+### Q25.
+
+Hash table is:
+**Answer:** Unordered
+**Explanation:** No sorting guarantee.
+
+---
+
+### Q26.
+
+Open addressing stores elements:
+**Answer:** Inside table
+**Explanation:** No linked lists.
+
+---
+
+### Q27.
+
+Separate chaining stores collisions:
+**Answer:** Outside main array
+**Explanation:** Linked structure.
+
+---
+
+### Q28.
+
+Load factor 1 means:
+**Answer:** Table fully occupied
+**Explanation:** Maximum utilization.
+
+---
+
+### Q29.
+
+Hashing provides:
+**Answer:** Fast access
+**Explanation:** Near constant lookup.
+
+---
+
+### Q30.
+
+Hashing is widely used in:
+**Answer:** Databases and Compilers
+**Explanation:** Efficient retrieval.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
+
