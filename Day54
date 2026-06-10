@@ -1,0 +1,644 @@
+# 📘 Today’s Learning – Day 50 (GATE CSE 2027)
+
+**📅 Date:** 09 April 2026
+**📆 Day:** Thursday
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Graphs – Representation, BFS, DFS & Applications**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Graph?
+
+A Graph is a **non-linear data structure** consisting of:
+
+* Vertices (Nodes)
+* Edges (Connections)
+
+Mathematically:
+
+[
+G = (V,E)
+]
+
+Where:
+
+* V = Set of vertices
+* E = Set of edges
+
+---
+
+## Example
+
+```text
+A ----- B
+|       |
+|       |
+C ----- D
+```
+
+Vertices:
+
+```text
+A,B,C,D
+```
+
+Edges:
+
+```text
+(A,B), (A,C), (B,D), (C,D)
+```
+
+---
+
+# 🔹 Types of Graphs
+
+---
+
+## 1️⃣ Undirected Graph
+
+Edges have no direction.
+
+```text
+A ----- B
+```
+
+Means:
+
+```text
+A ↔ B
+```
+
+---
+
+## 2️⃣ Directed Graph (Digraph)
+
+Edges have direction.
+
+```text
+A → B
+```
+
+Means travel only from A to B.
+
+---
+
+## 3️⃣ Weighted Graph
+
+Edges contain weights.
+
+```text
+A --5-- B
+```
+
+---
+
+## 4️⃣ Unweighted Graph
+
+All edges treated equally.
+
+---
+
+# 🔹 Graph Representation
+
+Very Important for GATE.
+
+---
+
+# 1️⃣ Adjacency Matrix
+
+For n vertices:
+
+[
+n \times n
+]
+
+matrix.
+
+Example:
+
+```text
+A-B
+A-C
+```
+
+Matrix:
+
+```text
+    A B C
+A [ 0 1 1 ]
+B [ 1 0 0 ]
+C [ 1 0 0 ]
+```
+
+---
+
+## Complexity
+
+Space:
+
+[
+O(V^2)
+]
+
+---
+
+### Advantage
+
+Fast edge lookup.
+
+---
+
+### Disadvantage
+
+Wastes memory for sparse graphs.
+
+---
+
+# 2️⃣ Adjacency List
+
+Store neighbors of every vertex.
+
+Example:
+
+```text
+A → B → C
+B → A
+C → A
+```
+
+---
+
+## Complexity
+
+Space:
+
+[
+O(V+E)
+]
+
+---
+
+### Advantage
+
+Memory efficient.
+
+---
+
+📌 Most practical representation.
+
+---
+
+# 🔹 Breadth First Search (BFS)
+
+Visits nodes level by level.
+
+Uses:
+
+✅ Queue
+
+---
+
+## Algorithm
+
+1. Visit source
+2. Insert into queue
+3. Remove from queue
+4. Visit unvisited neighbors
+5. Repeat
+
+---
+
+### Example
+
+```text
+      A
+    /   \
+   B     C
+  / \
+ D   E
+```
+
+BFS Traversal:
+
+```text
+A B C D E
+```
+
+---
+
+## Complexity
+
+[
+O(V+E)
+]
+
+---
+
+# 🔹 Applications of BFS
+
+* Shortest path (unweighted graph)
+* Network broadcasting
+* Web crawling
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Depth First Search (DFS)
+
+Visits node as deep as possible.
+
+Uses:
+
+✅ Stack
+
+(or recursion)
+
+---
+
+## Algorithm
+
+1. Visit node
+2. Visit first unvisited neighbor
+3. Continue deeper
+4. Backtrack
+
+---
+
+### Example
+
+```text
+      A
+    /   \
+   B     C
+  / \
+ D   E
+```
+
+DFS Traversal:
+
+```text
+A B D E C
+```
+
+---
+
+## Complexity
+
+[
+O(V+E)
+]
+
+---
+
+# 🔹 Applications of DFS
+
+* Cycle Detection
+* Topological Sorting
+* Connected Components
+* Maze Solving
+
+---
+
+# 🔹 BFS vs DFS
+
+| Feature        | BFS        | DFS        |
+| -------------- | ---------- | ---------- |
+| Data Structure | Queue      | Stack      |
+| Traversal      | Level-wise | Depth-wise |
+| Shortest Path  | Yes        | No         |
+| Memory Usage   | More       | Less       |
+
+📌 Very important comparison.
+
+---
+
+# 🔹 Connected Graph
+
+Every vertex reachable from every other vertex.
+
+---
+
+# 🔹 Degree of Vertex
+
+Number of incident edges.
+
+Example:
+
+```text
+A connected to B,C,D
+```
+
+Degree(A)=3
+
+---
+
+# 🔹 Handshaking Lemma
+
+For undirected graph:
+
+[
+\sum Degree(v)=2E
+]
+
+📌 Very common numerical question.
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+BFS uses Queue.
+
+NOT Stack.
+
+---
+
+### Trap 2
+
+DFS uses Stack.
+
+NOT Queue.
+
+---
+
+### Trap 3
+
+Adjacency Matrix space:
+
+[
+O(V^2)
+]
+
+---
+
+### Trap 4
+
+BFS gives shortest path only in:
+
+✅ Unweighted Graph
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Graph consists of:
+**Answer:** Vertices and Edges
+**Explanation:** Basic components.
+
+---
+
+### Q2.
+
+Graph represented as:
+**Answer:** G=(V,E)
+**Explanation:** Standard notation.
+
+---
+
+### Q3.
+
+Directed graph edge has:
+**Answer:** Direction
+**Explanation:** One-way connection.
+
+---
+
+### Q4.
+
+Undirected graph edge has:
+**Answer:** No direction
+**Explanation:** Two-way connection.
+
+---
+
+### Q5.
+
+Adjacency matrix space complexity:
+**Answer:** O(V²)
+**Explanation:** n×n matrix.
+
+---
+
+### Q6.
+
+Adjacency list space complexity:
+**Answer:** O(V+E)
+**Explanation:** Efficient representation.
+
+---
+
+### Q7.
+
+Most memory-efficient representation:
+**Answer:** Adjacency List
+**Explanation:** Sparse graphs.
+
+---
+
+### Q8.
+
+BFS uses:
+**Answer:** Queue
+**Explanation:** FIFO traversal.
+
+---
+
+### Q9.
+
+DFS uses:
+**Answer:** Stack
+**Explanation:** LIFO traversal.
+
+---
+
+### Q10.
+
+BFS traversal is:
+**Answer:** Level order
+**Explanation:** Layer by layer.
+
+---
+
+### Q11.
+
+DFS traversal is:
+**Answer:** Depth first
+**Explanation:** Go deep before backtracking.
+
+---
+
+### Q12.
+
+BFS complexity:
+**Answer:** O(V+E)
+**Explanation:** Visits all vertices and edges.
+
+---
+
+### Q13.
+
+DFS complexity:
+**Answer:** O(V+E)
+**Explanation:** Complete traversal.
+
+---
+
+### Q14.
+
+Most PYQ-tested concept?
+**Answer:** BFS vs DFS
+**Explanation:** Frequently asked.
+
+---
+
+### Q15.
+
+Biggest GATE trap?
+**Answer:** Queue vs Stack confusion
+**Explanation:** Common mistake.
+
+---
+
+### Q16.
+
+BFS finds shortest path in:
+**Answer:** Unweighted Graph
+**Explanation:** Minimum edges.
+
+---
+
+### Q17.
+
+DFS commonly used for:
+**Answer:** Cycle Detection
+**Explanation:** Deep traversal.
+
+---
+
+### Q18.
+
+Topological sorting uses:
+**Answer:** DFS
+**Explanation:** DAG processing.
+
+---
+
+### Q19.
+
+Connected graph means:
+**Answer:** Every vertex reachable
+**Explanation:** Connectivity property.
+
+---
+
+### Q20.
+
+Degree of vertex means:
+**Answer:** Number of incident edges
+**Explanation:** Connection count.
+
+---
+
+### Q21.
+
+Handshaking Lemma:
+**Answer:** ΣDegree = 2E
+**Explanation:** Undirected graph property.
+
+---
+
+### Q22.
+
+Graph with 5 vertices has adjacency matrix size:
+**Answer:** 5×5
+**Explanation:** V×V matrix.
+
+---
+
+### Q23.
+
+Recursion-based DFS internally uses:
+**Answer:** Stack
+**Explanation:** Function call stack.
+
+---
+
+### Q24.
+
+Web crawling commonly uses:
+**Answer:** BFS
+**Explanation:** Layered exploration.
+
+---
+
+### Q25.
+
+Sparse graph preferred representation:
+**Answer:** Adjacency List
+**Explanation:** Saves memory.
+
+---
+
+### Q26.
+
+Dense graph often uses:
+**Answer:** Adjacency Matrix
+**Explanation:** Many edges.
+
+---
+
+### Q27.
+
+Queue follows:
+**Answer:** FIFO
+**Explanation:** BFS requirement.
+
+---
+
+### Q28.
+
+Stack follows:
+**Answer:** LIFO
+**Explanation:** DFS requirement.
+
+---
+
+### Q29.
+
+Graphs are foundation for:
+**Answer:** Networks and Routing
+**Explanation:** Real-world modeling.
+
+---
+
+### Q30.
+
+BFS and DFS are:
+**Answer:** Graph Traversal Algorithms
+**Explanation:** Explore graph vertices.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
+
