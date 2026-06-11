@@ -1,0 +1,624 @@
+# 📘 Today’s Learning – Day 51 (GATE CSE 2027)
+
+**📅 Date:** 10 April 2026
+**📆 Day:** Friday
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Advanced Graph Algorithms – Topological Sort, Union-Find & Minimum Spanning Tree (MST) Basics**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 Why Advanced Graph Algorithms?
+
+Many real-world problems involve:
+
+* Task Scheduling
+* Network Design
+* Connected Components
+* Cycle Detection
+
+These are solved using:
+
+✅ Topological Sort
+✅ Union-Find (Disjoint Set)
+✅ Minimum Spanning Tree
+
+---
+
+# 🔹 Topological Sorting
+
+Topological Sort is a linear ordering of vertices such that:
+
+For every directed edge:
+
+[
+u \rightarrow v
+]
+
+u appears before v.
+
+---
+
+## Applicable Only On
+
+✅ Directed Acyclic Graph (DAG)
+
+❌ Not possible if cycle exists.
+
+---
+
+### Example
+
+```text
+A → B → D
+↓
+C → D
+```
+
+Possible Topological Order:
+
+```text
+A C B D
+```
+
+or
+
+```text
+A B C D
+```
+
+---
+
+# 🔹 Applications
+
+* Task Scheduling
+* Course Prerequisites
+* Build Systems
+* Dependency Resolution
+
+---
+
+# 🔹 Kahn's Algorithm
+
+Uses:
+
+✅ Queue
+
+Steps:
+
+1. Calculate indegree
+2. Insert indegree 0 vertices into queue
+3. Remove vertex
+4. Reduce indegree of neighbors
+5. Repeat
+
+---
+
+### Complexity
+
+[
+O(V+E)
+]
+
+📌 Very important GATE topic.
+
+---
+
+# 🔹 Union-Find (Disjoint Set Union - DSU)
+
+Used to manage disjoint sets efficiently.
+
+Supports:
+
+### MakeSet(x)
+
+Create new set.
+
+---
+
+### Find(x)
+
+Find representative (parent).
+
+---
+
+### Union(x,y)
+
+Merge two sets.
+
+---
+
+# 🔹 Example
+
+Initially:
+
+```text
+1   2   3   4
+```
+
+After:
+
+```text
+Union(1,2)
+Union(2,3)
+```
+
+Result:
+
+```text
+1-2-3
+```
+
+Same set.
+
+---
+
+# 🔹 Path Compression
+
+Optimization used in Find().
+
+Before:
+
+```text
+1
+|
+2
+|
+3
+|
+4
+```
+
+After Find(4):
+
+```text
+1
+|\
+2 3 4
+```
+
+Tree becomes flatter.
+
+---
+
+# 🔹 Union by Rank
+
+Attach smaller tree below larger tree.
+
+Reduces height.
+
+---
+
+📌 Path Compression + Union by Rank = Almost O(1)
+
+---
+
+# 🔹 Applications of Union-Find
+
+* Cycle Detection
+* Kruskal's MST
+* Connected Components
+* Network Connectivity
+
+---
+
+# 🔹 Minimum Spanning Tree (MST)
+
+Given:
+
+Connected Weighted Graph
+
+Find:
+
+Tree connecting all vertices with:
+
+✅ Minimum total weight
+
+✅ No cycles
+
+---
+
+# 🔹 Properties of MST
+
+For graph with:
+
+[
+V
+]
+
+vertices,
+
+MST contains:
+
+[
+V-1
+]
+
+edges.
+
+---
+
+### MST Must Be
+
+✅ Connected
+
+✅ Acyclic
+
+---
+
+# 🔹 Example
+
+```text
+A --1-- B
+|       |
+4       2
+|       |
+C --3-- D
+```
+
+MST:
+
+```text
+A-B
+B-D
+D-C
+```
+
+Weight:
+
+[
+1+2+3=6
+]
+
+---
+
+# 🔹 Kruskal's Algorithm
+
+Greedy Algorithm.
+
+Steps:
+
+1. Sort edges by weight
+2. Pick smallest edge
+3. Avoid cycle
+4. Continue until V−1 edges
+
+Uses:
+
+✅ Union-Find
+
+---
+
+### Complexity
+
+[
+O(E\log E)
+]
+
+---
+
+# 🔹 Prim's Algorithm
+
+Starts from a vertex.
+
+Repeatedly selects minimum-weight edge.
+
+Uses:
+
+✅ Priority Queue (Heap)
+
+---
+
+### Complexity
+
+[
+O(E\log V)
+]
+
+---
+
+# 🔹 Kruskal vs Prim
+
+| Feature  | Kruskal       | Prim           |
+| -------- | ------------- | -------------- |
+| Approach | Edge-based    | Vertex-based   |
+| Uses     | Union-Find    | Priority Queue |
+| Suitable | Sparse Graphs | Dense Graphs   |
+
+📌 Very common comparison question.
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Topological sorting works only for DAG.
+
+---
+
+### Trap 2
+
+MST contains exactly:
+
+[
+V-1
+]
+
+edges.
+
+---
+
+### Trap 3
+
+MST is NOT unique always.
+
+Multiple MSTs may exist.
+
+---
+
+### Trap 4
+
+Union-Find is heavily used in Kruskal.
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Topological sorting is applicable to:
+**Answer:** DAG
+**Explanation:** Directed acyclic graph only.
+
+---
+
+### Q2.
+
+Topological ordering exists only when graph is:
+**Answer:** Acyclic
+**Explanation:** Cycles prevent ordering.
+
+---
+
+### Q3.
+
+Kahn's algorithm uses:
+**Answer:** Queue
+**Explanation:** Indegree processing.
+
+---
+
+### Q4.
+
+Topological sorting complexity:
+**Answer:** O(V+E)
+**Explanation:** Complete traversal.
+
+---
+
+### Q5.
+
+Indegree means:
+**Answer:** Incoming edges
+**Explanation:** Count of incoming connections.
+
+---
+
+### Q6.
+
+Union-Find is also called:
+**Answer:** Disjoint Set Union
+**Explanation:** DSU structure.
+
+---
+
+### Q7.
+
+Find() operation returns:
+**Answer:** Set representative
+**Explanation:** Parent/root.
+
+---
+
+### Q8.
+
+Union() operation:
+**Answer:** Merges sets
+**Explanation:** Combines components.
+
+---
+
+### Q9.
+
+Path compression improves:
+**Answer:** Find operation
+**Explanation:** Reduces tree height.
+
+---
+
+### Q10.
+
+Union by rank aims to:
+**Answer:** Keep tree shallow
+**Explanation:** Efficient structure.
+
+---
+
+### Q11.
+
+Most PYQ-tested topic?
+**Answer:** Kruskal's Algorithm
+**Explanation:** Frequently asked.
+
+---
+
+### Q12.
+
+Biggest GATE trap?
+**Answer:** MST not always unique
+**Explanation:** Multiple valid MSTs possible.
+
+---
+
+### Q13.
+
+MST stands for:
+**Answer:** Minimum Spanning Tree
+**Explanation:** Minimum weight tree.
+
+---
+
+### Q14.
+
+MST contains:
+**Answer:** V−1 edges
+**Explanation:** Tree property.
+
+---
+
+### Q15.
+
+MST must be:
+**Answer:** Connected and acyclic
+**Explanation:** Tree definition.
+
+---
+
+### Q16.
+
+Kruskal's algorithm is:
+**Answer:** Greedy
+**Explanation:** Chooses minimum edge.
+
+---
+
+### Q17.
+
+Prim's algorithm is:
+**Answer:** Greedy
+**Explanation:** Expands MST gradually.
+
+---
+
+### Q18.
+
+Kruskal primarily uses:
+**Answer:** Union-Find
+**Explanation:** Cycle detection.
+
+---
+
+### Q19.
+
+Prim primarily uses:
+**Answer:** Priority Queue
+**Explanation:** Minimum edge selection.
+
+---
+
+### Q20.
+
+Cycle detection in Kruskal uses:
+**Answer:** DSU
+**Explanation:** Component checking.
+
+---
+
+### Q21.
+
+Sparse graphs generally favor:
+**Answer:** Kruskal
+**Explanation:** Efficient edge processing.
+
+---
+
+### Q22.
+
+Dense graphs generally favor:
+**Answer:** Prim
+**Explanation:** Vertex expansion.
+
+---
+
+### Q23.
+
+Path compression reduces:
+**Answer:** Tree height
+**Explanation:** Faster searches.
+
+---
+
+### Q24.
+
+Topological sorting used in:
+**Answer:** Task Scheduling
+**Explanation:** Dependency ordering.
+
+---
+
+### Q25.
+
+A tree with n vertices has:
+**Answer:** n−1 edges
+**Explanation:** Fundamental property.
+
+---
+
+### Q26.
+
+Graph with cycle can have topological ordering?
+**Answer:** No
+**Explanation:** DAG requirement.
+
+---
+
+### Q27.
+
+Union-Find complexity with optimizations:
+**Answer:** Almost O(1)
+**Explanation:** Very efficient.
+
+---
+
+### Q28.
+
+Prim starts from:
+**Answer:** Any vertex
+**Explanation:** Growing MST.
+
+---
+
+### Q29.
+
+Kruskal processes:
+**Answer:** Edges in sorted order
+**Explanation:** Increasing weight.
+
+---
+
+### Q30.
+
+MST minimizes:
+**Answer:** Total edge weight
+**Explanation:** Optimization objective.
+
+---
+
+## ✅ Progress Update
+
+### Completed
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+
+### Current Subject
+
+🔄 Programming & Data Structures
+
