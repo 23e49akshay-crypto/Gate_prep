@@ -1,0 +1,608 @@
+
+**📚 Subject:** Programming & Data Structures (PDS)
+**🧠 Topic:** **Data Structures Revision + Time & Space Complexity Master Sheet**
+
+---
+
+# 1️⃣ Concept Teaching (Revision + GATE Master Notes)
+
+Today is a revision day for everything covered in Programming & Data Structures so far.
+
+---
+
+# 🔹 Why Complexity Analysis?
+
+When multiple algorithms solve the same problem, we choose the most efficient one.
+
+Complexity measures:
+
+### 1️⃣ Time Complexity
+
+Execution time growth with input size.
+
+### 2️⃣ Space Complexity
+
+Extra memory required.
+
+---
+
+# 🔹 Asymptotic Notations
+
+---
+
+## Big-O Notation (Upper Bound)
+
+Represents worst-case complexity.
+
+Examples:
+
+[
+O(1)
+]
+
+[
+O(\log n)
+]
+
+[
+O(n)
+]
+
+[
+O(n\log n)
+]
+
+[
+O(n^2)
+]
+
+---
+
+## Big-Ω (Omega)
+
+Best-case complexity.
+
+---
+
+## Big-Θ (Theta)
+
+Tight bound.
+
+---
+
+📌 GATE frequently asks difference between O, Ω and Θ.
+
+---
+
+# 🔹 Complexity Order (Most Important)
+
+From best to worst:
+
+[
+O(1)
+<
+O(\log n)
+<
+O(n)
+<
+O(n\log n)
+<
+O(n^2)
+<
+O(2^n)
+<
+O(n!)
+]
+
+---
+
+# 🔹 Arrays Complexity Sheet
+
+| Operation     | Complexity |
+| ------------- | ---------- |
+| Access        | O(1)       |
+| Search        | O(n)       |
+| Insert End    | O(1)       |
+| Insert Middle | O(n)       |
+| Delete Middle | O(n)       |
+
+---
+
+# 🔹 Linked List Complexity Sheet
+
+| Operation        | Complexity |
+| ---------------- | ---------- |
+| Access           | O(n)       |
+| Search           | O(n)       |
+| Insert Beginning | O(1)       |
+| Delete Beginning | O(1)       |
+| Insert End       | O(n)       |
+
+---
+
+# 🔹 Stack Complexity Sheet
+
+| Operation | Complexity |
+| --------- | ---------- |
+| Push      | O(1)       |
+| Pop       | O(1)       |
+| Peek      | O(1)       |
+| Search    | O(n)       |
+
+---
+
+# 🔹 Queue Complexity Sheet
+
+| Operation | Complexity |
+| --------- | ---------- |
+| Enqueue   | O(1)       |
+| Dequeue   | O(1)       |
+| Front     | O(1)       |
+| Rear      | O(1)       |
+
+---
+
+# 🔹 BST Complexity Sheet
+
+Balanced BST:
+
+| Operation | Complexity |
+| --------- | ---------- |
+| Search    | O(log n)   |
+| Insert    | O(log n)   |
+| Delete    | O(log n)   |
+
+Worst Case:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Heap Complexity Sheet
+
+| Operation  | Complexity |
+| ---------- | ---------- |
+| Insert     | O(log n)   |
+| Delete     | O(log n)   |
+| Peek       | O(1)       |
+| Build Heap | O(n)       |
+
+📌 Build Heap = O(n) is a favorite GATE question.
+
+---
+
+# 🔹 Hashing Complexity Sheet
+
+Average Case:
+
+| Operation | Complexity |
+| --------- | ---------- |
+| Search    | O(1)       |
+| Insert    | O(1)       |
+| Delete    | O(1)       |
+
+Worst Case:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Graph Complexity Sheet
+
+### BFS
+
+[
+O(V+E)
+]
+
+---
+
+### DFS
+
+[
+O(V+E)
+]
+
+---
+
+### Adjacency Matrix Space
+
+[
+O(V^2)
+]
+
+---
+
+### Adjacency List Space
+
+[
+O(V+E)
+]
+
+---
+
+# 🔹 Sorting Complexity Master Sheet
+
+| Algorithm  | Best     | Average  | Worst    |
+| ---------- | -------- | -------- | -------- |
+| Bubble     | O(n)     | O(n²)    | O(n²)    |
+| Selection  | O(n²)    | O(n²)    | O(n²)    |
+| Insertion  | O(n)     | O(n²)    | O(n²)    |
+| Merge Sort | O(nlogn) | O(nlogn) | O(nlogn) |
+| Quick Sort | O(nlogn) | O(nlogn) | O(n²)    |
+| Heap Sort  | O(nlogn) | O(nlogn) | O(nlogn) |
+
+📌 Quick Sort worst case = O(n²)
+
+📌 Heap Sort worst case = O(nlogn)
+
+---
+
+# 🔹 Recursion Complexity Basics
+
+Example:
+
+```text
+T(n)=T(n−1)+1
+```
+
+Solution:
+
+[
+O(n)
+]
+
+---
+
+Example:
+
+```text
+T(n)=2T(n/2)+n
+```
+
+Master Theorem:
+
+[
+O(n\log n)
+]
+
+---
+
+# 🔹 Most Important GATE Traps
+
+### Trap 1
+
+BST Search:
+
+Not always O(log n)
+
+Worst case:
+
+[
+O(n)
+]
+
+---
+
+### Trap 2
+
+Hashing:
+
+Not always O(1)
+
+Worst case:
+
+[
+O(n)
+]
+
+---
+
+### Trap 3
+
+Heap Search:
+
+[
+O(n)
+]
+
+NOT O(log n)
+
+---
+
+### Trap 4
+
+Build Heap:
+
+[
+O(n)
+]
+
+NOT O(nlogn)
+
+---
+
+### Trap 5
+
+BFS and DFS:
+
+[
+O(V+E)
+]
+
+NOT O(V²)
+
+(for adjacency list)
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Big-O represents:
+**Answer:** Worst-case complexity
+**Explanation:** Upper bound.
+
+---
+
+### Q2.
+
+Big-Theta represents:
+**Answer:** Tight bound
+**Explanation:** Exact asymptotic growth.
+
+---
+
+### Q3.
+
+Fastest complexity:
+**Answer:** O(1)
+**Explanation:** Constant time.
+
+---
+
+### Q4.
+
+Access in array:
+**Answer:** O(1)
+**Explanation:** Direct indexing.
+
+---
+
+### Q5.
+
+Search in array:
+**Answer:** O(n)
+**Explanation:** Linear scan.
+
+---
+
+### Q6.
+
+Insertion at beginning in linked list:
+**Answer:** O(1)
+**Explanation:** Update head.
+
+---
+
+### Q7.
+
+Stack Push complexity:
+**Answer:** O(1)
+**Explanation:** Constant operation.
+
+---
+
+### Q8.
+
+Queue Enqueue complexity:
+**Answer:** O(1)
+**Explanation:** Rear insertion.
+
+---
+
+### Q9.
+
+Balanced BST search:
+**Answer:** O(log n)
+**Explanation:** Height logarithmic.
+
+---
+
+### Q10.
+
+Worst-case BST search:
+**Answer:** O(n)
+**Explanation:** Skewed tree.
+
+---
+
+### Q11.
+
+Heap insertion:
+**Answer:** O(log n)
+**Explanation:** Heapify up.
+
+---
+
+### Q12.
+
+Heap root access:
+**Answer:** O(1)
+**Explanation:** Peek operation.
+
+---
+
+### Q13.
+
+Build Heap complexity:
+**Answer:** O(n)
+**Explanation:** Important result.
+
+---
+
+### Q14.
+
+Hashing average search:
+**Answer:** O(1)
+**Explanation:** Constant lookup.
+
+---
+
+### Q15.
+
+Hashing worst-case search:
+**Answer:** O(n)
+**Explanation:** Heavy collisions.
+
+---
+
+### Q16.
+
+BFS complexity:
+**Answer:** O(V+E)
+**Explanation:** Visits vertices and edges.
+
+---
+
+### Q17.
+
+DFS complexity:
+**Answer:** O(V+E)
+**Explanation:** Complete traversal.
+
+---
+
+### Q18.
+
+Adjacency matrix space:
+**Answer:** O(V²)
+**Explanation:** Matrix storage.
+
+---
+
+### Q19.
+
+Adjacency list space:
+**Answer:** O(V+E)
+**Explanation:** Efficient representation.
+
+---
+
+### Q20.
+
+Quick Sort worst case:
+**Answer:** O(n²)
+**Explanation:** Bad pivot choices.
+
+---
+
+### Q21.
+
+Merge Sort worst case:
+**Answer:** O(nlogn)
+**Explanation:** Consistent performance.
+
+---
+
+### Q22.
+
+Heap Sort worst case:
+**Answer:** O(nlogn)
+**Explanation:** Same in all cases.
+
+---
+
+### Q23.
+
+Bubble Sort best case:
+**Answer:** O(n)
+**Explanation:** Already sorted.
+
+---
+
+### Q24.
+
+Selection Sort best case:
+**Answer:** O(n²)
+**Explanation:** Always scans.
+
+---
+
+### Q25.
+
+Master Theorem used for:
+**Answer:** Recurrence Relations
+**Explanation:** Divide-and-conquer analysis.
+
+---
+
+### Q26.
+
+Most PYQ-tested complexity result?
+**Answer:** Build Heap = O(n)
+**Explanation:** Frequently asked.
+
+---
+
+### Q27.
+
+Biggest GATE trap?
+**Answer:** Heap Search = O(n)
+**Explanation:** Heap is not BST.
+
+---
+
+### Q28.
+
+Factorial complexity:
+**Answer:** O(n!)
+**
+Explanation:** Extremely large growth.
+
+---
+
+### Q29.
+
+Logarithmic complexity:
+**Answer:** O(log n)
+**Explanation:** Divide by constant factor.
+
+---
+
+### Q30.
+
+Data Structure optimization aims to:
+**Answer:** Reduce time and space
+**Explanation:** Efficient computation.
+
+---
+
+## ✅ Programming & Data Structures Progress
+
+### Topics Completed
+
+✅ C Basics
+✅ Functions & Storage Classes
+✅ Pointers & Arrays
+✅ Strings, Structures & DMA
+✅ Linked Lists
+✅ Stacks
+✅ Queues
+✅ Trees & BST
+✅ Heaps
+✅ Hashing
+✅ Graphs (BFS, DFS)
+✅ Topological Sort, DSU & MST
+✅ Complexity Revision
+
+---
+
+\
