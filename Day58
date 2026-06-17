@@ -1,0 +1,629 @@
+# 📘 Today’s Learning – Day 54 (GATE CSE 2027)
+
+**📅 Date:** 13 April 2026
+**📆 Day:** Monday
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Divide & Conquer, Recursion Tree Method & Advanced Recurrence Solving**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Divide and Conquer?
+
+Divide and Conquer (D&C) is an algorithmic paradigm that solves a problem by:
+
+1. **Divide** – Break the problem into smaller subproblems.
+2. **Conquer** – Solve each subproblem recursively.
+3. **Combine** – Merge the solutions of the subproblems.
+
+---
+
+## General Form
+
+```text
+Problem
+   │
+Divide
+   │
+Subproblems
+   │
+Conquer
+   │
+Combine
+   │
+Solution
+```
+
+---
+
+# 🔹 Characteristics
+
+✅ Recursive approach
+
+✅ Independent subproblems
+
+✅ Efficient for large inputs
+
+---
+
+# 🔹 Examples of Divide & Conquer Algorithms
+
+| Algorithm                      | Complexity |
+| ------------------------------ | ---------- |
+| Binary Search                  | O(log n)   |
+| Merge Sort                     | O(n log n) |
+| Quick Sort (Average)           | O(n log n) |
+| Strassen Matrix Multiplication | O(n²·⁸¹)   |
+
+📌 Very important for GATE.
+
+---
+
+# 🔹 Binary Search (Review)
+
+Steps:
+
+1. Find middle element.
+2. Compare with key.
+3. Search left or right half.
+4. Repeat.
+
+Recurrence:
+
+[
+T(n)=T(n/2)+1
+]
+
+Complexity:
+
+[
+O(\log n)
+]
+
+---
+
+# 🔹 Merge Sort
+
+Steps:
+
+1. Divide array into two halves.
+2. Sort each half recursively.
+3. Merge the sorted halves.
+
+Recurrence:
+
+[
+T(n)=2T(n/2)+n
+]
+
+Complexity:
+
+[
+O(n\log n)
+]
+
+---
+
+# 🔹 Quick Sort
+
+Steps:
+
+1. Select pivot.
+2. Partition array.
+3. Recursively sort left part.
+4. Recursively sort right part.
+
+---
+
+## Complexity
+
+### Best Case
+
+[
+O(n\log n)
+]
+
+### Average Case
+
+[
+O(n\log n)
+]
+
+### Worst Case
+
+[
+O(n^2)
+]
+
+Worst case occurs when pivot is always the smallest or largest element (e.g., already sorted array with poor pivot choice).
+
+---
+
+# 🔹 Recursion Tree Method
+
+Used to solve recurrence relations by expanding them level by level.
+
+---
+
+## Example 1
+
+[
+T(n)=2T(n/2)+n
+]
+
+### Level 0
+
+Cost:
+
+[
+n
+]
+
+### Level 1
+
+Two subproblems:
+
+[
+2\times\frac{n}{2}=n
+]
+
+### Level 2
+
+Four subproblems:
+
+[
+4\times\frac{n}{4}=n
+]
+
+Every level contributes **n**.
+
+Number of levels:
+
+[
+\log_2 n
+]
+
+Total Cost:
+
+[
+n+n+n+\cdots (\log n\text{ times})
+]
+
+Answer:
+
+[
+O(n\log n)
+]
+
+📌 Classic GATE question.
+
+---
+
+# 🔹 Example 2
+
+Solve:
+
+[
+T(n)=T(n/2)+1
+]
+
+Each level contributes:
+
+[
+1
+]
+
+Levels:
+
+[
+\log n
+]
+
+Answer:
+
+[
+O(\log n)
+]
+
+---
+
+# 🔹 Example 3
+
+Solve:
+
+[
+T(n)=T(n-1)+1
+]
+
+Expansion:
+
+```text
+T(n)
+=T(n−1)+1
+=T(n−2)+2
+=T(n−3)+3
+...
+=T(1)+(n−1)
+```
+
+Answer:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Substitution Method
+
+Guess the answer and prove it using mathematical induction.
+
+Example:
+
+Guess:
+
+[
+T(n)=2T(n/2)+n=O(n\log n)
+]
+
+Substitute into the recurrence and verify.
+
+📌 Used when Master Theorem cannot be applied directly.
+
+---
+
+# 🔹 When Master Theorem Cannot Be Used
+
+Master Theorem **cannot** be applied if the recurrence is not of the form:
+
+[
+T(n)=aT(n/b)+f(n)
+]
+
+Example:
+
+[
+T(n)=T(n-1)+n
+]
+
+Use:
+
+* Expansion
+* Recursion Tree
+* Substitution
+
+---
+
+# 🔹 Comparison of Methods
+
+| Method         | Best Used For            |
+| -------------- | ------------------------ |
+| Expansion      | Simple recurrences       |
+| Recursion Tree | Cost per level           |
+| Master Theorem | Standard D&C recurrences |
+| Substitution   | Complex recurrences      |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Quick Sort worst case:
+
+[
+O(n^2)
+]
+
+NOT
+
+[
+O(n\log n)
+]
+
+---
+
+### Trap 2
+
+Merge Sort worst case is always:
+
+[
+O(n\log n)
+]
+
+---
+
+### Trap 3
+
+Binary Search recurrence:
+
+[
+T(n)=T(n/2)+1
+]
+
+NOT
+
+[
+2T(n/2)+1
+]
+
+---
+
+### Trap 4
+
+Master Theorem cannot solve every recurrence.
+
+---
+
+# 📝 Formula Sheet (Must Memorize)
+
+| Recurrence       | Complexity   |
+| ---------------- | ------------ |
+| (T(n)=T(n-1)+1)  | (O(n))       |
+| (T(n)=T(n/2)+1)  | (O(\log n))  |
+| (T(n)=2T(n/2)+n) | (O(n\log n)) |
+| (T(n)=2T(n/2)+1) | (O(n))       |
+| (T(n)=4T(n/2)+n) | (O(n^2))     |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Divide and Conquer consists of:
+**Answer:** Divide, Conquer, Combine
+**Explanation:** Three fundamental steps.
+
+---
+
+### Q2.
+
+Binary Search is based on:
+**Answer:** Divide and Conquer
+**Explanation:** It repeatedly halves the search space.
+
+---
+
+### Q3.
+
+Merge Sort recurrence is:
+**Answer:** (T(n)=2T(n/2)+n)
+**Explanation:** Two recursive calls plus merge cost.
+
+---
+
+### Q4.
+
+Binary Search recurrence is:
+**Answer:** (T(n)=T(n/2)+1)
+**Explanation:** One recursive call on half the array.
+
+---
+
+### Q5.
+
+Merge Sort worst-case complexity:
+**Answer:** O(n log n)
+**Explanation:** Same for best, average, and worst cases.
+
+---
+
+### Q6.
+
+Quick Sort average complexity:
+**Answer:** O(n log n)
+**Explanation:** Balanced partitions on average.
+
+---
+
+### Q7.
+
+Quick Sort worst-case complexity:
+**Answer:** O(n²)
+**Explanation:** Highly unbalanced partitions.
+
+---
+
+### Q8.
+
+Recursion Tree method is used for:
+**Answer:** Solving recurrences
+**Explanation:** Expands recurrence level by level.
+
+---
+
+### Q9.
+
+Each level in (T(n)=2T(n/2)+n) contributes:
+**Answer:** n
+**Explanation:** Total work at every level is n.
+
+---
+
+### Q10.
+
+Number of levels in Merge Sort recursion tree:
+**Answer:** log₂n
+**Explanation:** Problem size halves each level.
+
+---
+
+### Q11.
+
+Most PYQ-tested topic?
+**Answer:** Master Theorem
+**Explanation:** Frequently appears in GATE.
+
+---
+
+### Q12.
+
+Biggest GATE trap?
+**Answer:** Assuming Quick Sort is always O(n log n)
+**Explanation:** Worst case is O(n²).
+
+---
+
+### Q13.
+
+Expansion method is suitable for:
+**Answer:** Simple recurrences
+**Explanation:** Repeated substitution.
+
+---
+
+### Q14.
+
+Substitution method requires:
+**Answer:** A guessed solution
+**Explanation:** Then prove using induction.
+
+---
+
+### Q15.
+
+Master Theorem applies to:
+**Answer:** (T(n)=aT(n/b)+f(n))
+**Explanation:** Standard divide-and-conquer form.
+
+---
+
+### Q16.
+
+(T(n)=T(n-1)+1) solves to:
+**Answer:** O(n)
+**Explanation:** Linear expansion.
+
+---
+
+### Q17.
+
+(T(n)=T(n/2)+1) solves to:
+**Answer:** O(log n)
+**Explanation:** Logarithmic depth.
+
+---
+
+### Q18.
+
+Merge Sort uses:
+**Answer:** Divide and Conquer
+**Explanation:** Split, sort, merge.
+
+---
+
+### Q19.
+
+Quick Sort uses:
+**Answer:** Partitioning
+**Explanation:** Around a pivot.
+
+---
+
+### Q20.
+
+Binary Search requires:
+**Answer:** Sorted array
+**Explanation:** Otherwise halving is invalid.
+
+---
+
+### Q21.
+
+Merge Sort is:
+**Answer:** Stable
+**Explanation:** Equal elements keep relative order.
+
+---
+
+### Q22.
+
+Quick Sort is generally:
+**Answer:** Not stable
+**Explanation:** Relative order may change.
+
+---
+
+### Q23.
+
+Merge Sort requires extra space:
+**Answer:** O(n)
+**Explanation:** Temporary arrays for merging.
+
+---
+
+### Q24.
+
+Quick Sort extra space (recursion stack, average):
+**Answer:** O(log n)
+**Explanation:** Due to recursive calls.
+
+---
+
+### Q25.
+
+Recursion Tree helps visualize:
+**Answer:** Cost at each level
+**Explanation:** Summing work across levels.
+
+---
+
+### Q26.
+
+Which method is best for (T(n)=2T(n/2)+n)?
+**Answer:** Master Theorem
+**Explanation:** Directly matches its form.
+
+---
+
+### Q27.
+
+Which recurrence cannot be solved directly using Master Theorem?
+**Answer:** (T(n)=T(n-1)+n)
+**Explanation:** Does not reduce problem by a constant factor.
+
+---
+
+### Q28.
+
+Divide and Conquer improves:
+**Answer:** Efficiency for many recursive problems
+**Explanation:** Breaks large problems into manageable pieces.
+
+---
+
+### Q29.
+
+Merge Sort divides the array into:
+**Answer:** Two halves
+**Explanation:** Equal-sized subproblems.
+
+---
+
+### Q30.
+
+Foundation of Divide and Conquer algorithms:
+**Answer:** Recursion
+**Explanation:** Problems are solved recursively and then combined.
+
+---
+
+## ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
