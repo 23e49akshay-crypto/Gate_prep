@@ -1,0 +1,697 @@
+
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Sorting Algorithms – Bubble Sort, Selection Sort & Insertion Sort (Complete Analysis & GATE PYQ Concepts)**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Sorting?
+
+Sorting is the process of arranging data in a specific order.
+
+Two common orders:
+
+* Ascending Order (Small → Large)
+* Descending Order (Large → Small)
+
+Example:
+
+Unsorted:
+
+```text
+8 3 6 1 5
+```
+
+Sorted:
+
+```text
+1 3 5 6 8
+```
+
+Sorting improves the efficiency of:
+
+* Searching
+* Database operations
+* Data analysis
+
+---
+
+# 🔹 Types of Sorting Algorithms
+
+1. Bubble Sort
+2. Selection Sort
+3. Insertion Sort
+4. Merge Sort
+5. Quick Sort
+6. Heap Sort
+
+Today we will cover the first three.
+
+---
+
+# 🔹 Bubble Sort
+
+Bubble Sort repeatedly compares adjacent elements and swaps them if they are in the wrong order.
+
+---
+
+## Algorithm
+
+For array:
+
+```text
+5 1 4 2
+```
+
+### Pass 1
+
+Compare 5 & 1 → Swap
+
+```text
+1 5 4 2
+```
+
+Compare 5 & 4 → Swap
+
+```text
+1 4 5 2
+```
+
+Compare 5 & 2 → Swap
+
+```text
+1 4 2 5
+```
+
+Largest element reaches the end after one pass.
+
+---
+
+## Bubble Sort Code
+
+```c
+for(i=0;i<n-1;i++)
+{
+    for(j=0;j<n-i-1;j++)
+    {
+        if(a[j]>a[j+1])
+        {
+            swap(a[j],a[j+1]);
+        }
+    }
+}
+```
+
+---
+
+## Complexity
+
+### Best Case
+
+Already sorted (using optimization)
+
+[
+O(n)
+]
+
+---
+
+### Average Case
+
+[
+O(n^2)
+]
+
+---
+
+### Worst Case
+
+[
+O(n^2)
+]
+
+---
+
+### Space Complexity
+
+[
+O(1)
+]
+
+---
+
+### Stable?
+
+✅ Yes
+
+---
+
+### In-place?
+
+✅ Yes
+
+---
+
+# 🔹 Selection Sort
+
+Selection Sort repeatedly selects the minimum element and places it in the correct position.
+
+---
+
+Example
+
+```text
+5 2 8 1
+```
+
+Find minimum:
+
+```text
+1
+```
+
+Swap with first element.
+
+Continue for remaining elements.
+
+---
+
+## Code
+
+```c
+for(i=0;i<n-1;i++)
+{
+    min=i;
+
+    for(j=i+1;j<n;j++)
+    {
+        if(a[j]<a[min])
+            min=j;
+    }
+
+    swap(a[i],a[min]);
+}
+```
+
+---
+
+## Complexity
+
+### Best Case
+
+[
+O(n^2)
+]
+
+---
+
+### Average Case
+
+[
+O(n^2)
+]
+
+---
+
+### Worst Case
+
+[
+O(n^2)
+]
+
+---
+
+### Stable?
+
+❌ No
+
+---
+
+### In-place?
+
+✅ Yes
+
+---
+
+# 🔹 Insertion Sort
+
+Builds a sorted portion one element at a time.
+
+---
+
+Example
+
+```text
+5 3 4 1
+```
+
+Insert:
+
+3 before 5
+
+```text
+3 5 4 1
+```
+
+Insert:
+
+4 between 3 and 5
+
+```text
+3 4 5 1
+```
+
+Continue.
+
+---
+
+## Code
+
+```c
+for(i=1;i<n;i++)
+{
+    key=a[i];
+    j=i-1;
+
+    while(j>=0 && a[j]>key)
+    {
+        a[j+1]=a[j];
+        j--;
+    }
+
+    a[j+1]=key;
+}
+```
+
+---
+
+## Complexity
+
+### Best Case
+
+Already sorted
+
+[
+O(n)
+]
+
+---
+
+### Average Case
+
+[
+O(n^2)
+]
+
+---
+
+### Worst Case
+
+Reverse sorted
+
+[
+O(n^2)
+]
+
+---
+
+### Stable?
+
+✅ Yes
+
+---
+
+### In-place?
+
+✅ Yes
+
+---
+
+# 🔹 Comparison Table
+
+| Property | Bubble | Selection | Insertion |
+| -------- | ------ | --------- | --------- |
+| Best     | O(n)   | O(n²)     | O(n)      |
+| Average  | O(n²)  | O(n²)     | O(n²)     |
+| Worst    | O(n²)  | O(n²)     | O(n²)     |
+| Stable   | Yes    | No        | Yes       |
+| In-place | Yes    | Yes       | Yes       |
+| Adaptive | Yes    | No        | Yes       |
+
+---
+
+# 🔹 Stability
+
+A sorting algorithm is **stable** if equal elements keep their relative order after sorting.
+
+Example:
+
+```text
+4A 2 4B 1
+```
+
+Stable sort:
+
+```text
+1 2 4A 4B
+```
+
+Unstable sort may produce:
+
+```text
+1 2 4B 4A
+```
+
+---
+
+# 🔹 Adaptive Sorting
+
+Adaptive algorithms perform faster on nearly sorted data.
+
+Examples:
+
+* Bubble Sort (optimized)
+* Insertion Sort
+
+Selection Sort is **not adaptive**.
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Selection Sort best case is still:
+
+[
+O(n^2)
+]
+
+---
+
+### Trap 2
+
+Bubble Sort becomes O(n) only with the **optimized version** (using a swap flag).
+
+---
+
+### Trap 3
+
+Insertion Sort is efficient for **small or nearly sorted arrays**.
+
+---
+
+### Trap 4
+
+Selection Sort is **not stable**.
+
+---
+
+# 📝 Formula Sheet
+
+| Algorithm | Best  | Average | Worst | Stable | Adaptive |
+| --------- | ----- | ------- | ----- | ------ | -------- |
+| Bubble    | O(n)  | O(n²)   | O(n²) | Yes    | Yes      |
+| Selection | O(n²) | O(n²)   | O(n²) | No     | No       |
+| Insertion | O(n)  | O(n²)   | O(n²) | Yes    | Yes      |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+Bubble Sort repeatedly compares:
+**Answer:** Adjacent elements
+**Explanation:** It swaps neighboring elements if they are in the wrong order.
+
+---
+
+### Q2.
+
+Selection Sort selects:
+**Answer:** Minimum element
+**Explanation:** Places it in the correct position each pass.
+
+---
+
+### Q3.
+
+Insertion Sort builds:
+**Answer:** A sorted subarray
+**Explanation:** It inserts one element into the sorted portion at a time.
+
+---
+
+### Q4.
+
+Best-case complexity of optimized Bubble Sort:
+**Answer:** O(n)
+**Explanation:** Only one pass is needed if no swaps occur.
+
+---
+
+### Q5.
+
+Best-case complexity of Selection Sort:
+**Answer:** O(n²)
+**Explanation:** It always scans the remaining array.
+
+---
+
+### Q6.
+
+Best-case complexity of Insertion Sort:
+**Answer:** O(n)
+**Explanation:** No shifting is needed for an already sorted array.
+
+---
+
+### Q7.
+
+Worst-case complexity of Bubble Sort:
+**Answer:** O(n²)
+**Explanation:** Reverse-sorted input requires maximum swaps.
+
+---
+
+### Q8.
+
+Worst-case complexity of Insertion Sort:
+**Answer:** O(n²)
+**Explanation:** Every element must be shifted.
+
+---
+
+### Q9.
+
+Worst-case complexity of Selection Sort:
+**Answer:** O(n²)
+**Explanation:** Same in all cases.
+
+---
+
+### Q10.
+
+Which sorting algorithm is **not stable**?
+**Answer:** Selection Sort
+**Explanation:** Equal elements may change their relative order.
+
+---
+
+### Q11.
+
+Bubble Sort is:
+**Answer:** Stable
+**Explanation:** Equal elements retain their order.
+
+---
+
+### Q12.
+
+Insertion Sort is:
+**Answer:** Stable
+**Explanation:** Equal elements are not reordered.
+
+---
+
+### Q13.
+
+Which algorithm is adaptive?
+**Answer:** Insertion Sort
+**Explanation:** Performs well on nearly sorted arrays.
+
+---
+
+### Q14.
+
+Optimized Bubble Sort is adaptive because:
+**Answer:** It stops when no swaps occur.
+**Explanation:** This avoids unnecessary passes.
+
+---
+
+### Q15.
+
+Most PYQ-tested topic?
+**Answer:** Time complexity comparison
+**Explanation:** Frequently asked in GATE.
+
+---
+
+### Q16.
+
+Biggest GATE trap?
+**Answer:** Assuming Selection Sort has O(n) best case
+**Explanation:** It always performs O(n²) comparisons.
+
+---
+
+### Q17.
+
+Space complexity of Bubble Sort:
+**Answer:** O(1)
+**Explanation:** It is an in-place algorithm.
+
+---
+
+### Q18.
+
+Space complexity of Insertion Sort:
+**Answer:** O(1)
+**Explanation:** No extra array is required.
+
+---
+
+### Q19.
+
+Space complexity of Selection Sort:
+**Answer:** O(1)
+**Explanation:** Uses constant extra memory.
+
+---
+
+### Q20.
+
+Which algorithm performs the minimum number of swaps?
+**Answer:** Selection Sort
+**Explanation:** At most one swap per pass.
+
+---
+
+### Q21.
+
+Bubble Sort is based on:
+**Answer:** Swapping adjacent elements
+**Explanation:** It repeatedly moves larger elements toward the end.
+
+---
+
+### Q22.
+
+Insertion Sort is efficient for:
+**Answer:** Nearly sorted arrays
+**Explanation:** Very few shifts are required.
+
+---
+
+### Q23.
+
+Selection Sort performs:
+**Answer:** n−1 passes
+**Explanation:** Each pass places one element correctly.
+
+---
+
+### Q24.
+
+Bubble Sort places the ______ at the end after each pass.
+**Answer:** Largest element
+**Explanation:** Larger elements "bubble up" to the end.
+
+---
+
+### Q25.
+
+Insertion Sort inserts the current element into:
+**Answer:** The sorted portion
+**Explanation:** It maintains a growing sorted prefix.
+
+---
+
+### Q26.
+
+Selection Sort always performs:
+**Answer:** O(n²) comparisons
+**Explanation:** Regardless of input order.
+
+---
+
+### Q27.
+
+Stable sorting preserves:
+**Answer:** Relative order of equal elements
+**Explanation:** Important for multi-key sorting.
+
+---
+
+### Q28.
+
+Which algorithm is best for very small arrays?
+**Answer:** Insertion Sort
+**Explanation:** Low overhead makes it efficient.
+
+---
+
+### Q29.
+
+All three algorithms discussed today are:
+**Answer:** Comparison-based sorting algorithms
+**Explanation:** They compare elements to determine order.
+
+---
+
+### Q30.
+
+Sorting is commonly used before:
+**Answer:** Efficient searching
+**Explanation:** Algorithms like Binary Search require sorted data.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
+### Next Topic (Day 56)
+
+# 📚 Algorithms
+
+**Merge Sort & Quick Sort (Complete Analysis, Partitioning, Recurrences & GATE PYQs)**
+
+---
+
+### 📌 Revision Tip
+
+Before moving on, make sure you can answer these without looking:
+
+* Why is **Selection Sort** not adaptive?
+* Why is **Insertion Sort** preferred for nearly sorted arrays?
+* Why is **Bubble Sort** stable?
+* Which of today's algorithms performs the fewest swaps?
+
+When you're ready, type:
+
+
