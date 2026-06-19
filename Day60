@@ -1,0 +1,644 @@
+
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Merge Sort & Quick Sort (Complete Analysis, Partitioning, Recurrences & GATE PYQs)**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 Why Do We Need Efficient Sorting?
+
+The sorting algorithms studied yesterday (Bubble, Selection, Insertion) have **O(n²)** average time complexity.
+
+For very large datasets, this is inefficient.
+
+Efficient algorithms like:
+
+* **Merge Sort**
+* **Quick Sort**
+
+have an average complexity of:
+
+[
+O(n\log n)
+]
+
+and are preferred for large datasets.
+
+---
+
+# 🔹 Merge Sort
+
+Merge Sort is a **Divide and Conquer** algorithm.
+
+### Steps:
+
+1. Divide array into two equal halves.
+2. Recursively sort each half.
+3. Merge the sorted halves.
+
+---
+
+## Example
+
+Given array:
+
+```text
+38 27 43 3 9 82 10
+```
+
+### Divide
+
+```text
+38 27 43 3
+9 82 10
+```
+
+Further divide until one element remains.
+
+```text
+38 | 27 | 43 | 3 | 9 | 82 | 10
+```
+
+Now merge in sorted order.
+
+Final:
+
+```text
+3 9 10 27 38 43 82
+```
+
+---
+
+# 🔹 Merge Operation
+
+Suppose:
+
+```text
+Left:
+2 5 8
+
+Right:
+1 3 6
+```
+
+Compare elements one by one.
+
+Result:
+
+```text
+1 2 3 5 6 8
+```
+
+📌 The merge step takes:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Merge Sort Recurrence
+
+[
+T(n)=2T(n/2)+n
+]
+
+Using Master Theorem:
+
+[
+O(n\log n)
+]
+
+---
+
+# 🔹 Merge Sort Complexity
+
+| Case    | Complexity |
+| ------- | ---------- |
+| Best    | O(n log n) |
+| Average | O(n log n) |
+| Worst   | O(n log n) |
+
+---
+
+## Space Complexity
+
+[
+O(n)
+]
+
+because temporary arrays are required.
+
+---
+
+## Stable?
+
+✅ Yes
+
+---
+
+## In-place?
+
+❌ No
+
+---
+
+# 🔹 Quick Sort
+
+Quick Sort is also a **Divide and Conquer** algorithm.
+
+Instead of merging,
+
+it uses **Partitioning**.
+
+---
+
+## Steps
+
+1. Select Pivot.
+2. Partition array.
+3. Recursively sort left part.
+4. Recursively sort right part.
+
+---
+
+Example
+
+```text
+7 2 1 6 8 5 3 4
+```
+
+Choose pivot:
+
+```text
+4
+```
+
+After partition:
+
+```text
+2 1 3 |4| 7 6 8 5
+```
+
+Now recursively sort both sides.
+
+---
+
+# 🔹 Partitioning
+
+Goal:
+
+Left side:
+
+```text
+Smaller than Pivot
+```
+
+Right side:
+
+```text
+Greater than Pivot
+```
+
+---
+
+# 🔹 Pivot Selection
+
+Common methods:
+
+* First element
+* Last element
+* Random element
+* Median of three
+
+📌 Better pivot ⇒ Better performance.
+
+---
+
+# 🔹 Quick Sort Complexity
+
+### Best Case
+
+Balanced partition
+
+[
+O(n\log n)
+]
+
+---
+
+### Average Case
+
+[
+O(n\log n)
+]
+
+---
+
+### Worst Case
+
+Highly unbalanced partition
+
+Example:
+
+Already sorted array with first element as pivot.
+
+[
+O(n^2)
+]
+
+📌 Very important GATE question.
+
+---
+
+# 🔹 Quick Sort Recurrence
+
+Balanced:
+
+[
+T(n)=2T(n/2)+n
+]
+
+Worst:
+
+[
+T(n)=T(n-1)+n
+]
+
+---
+
+# 🔹 Merge Sort vs Quick Sort
+
+| Feature  | Merge Sort     | Quick Sort                         |
+| -------- | -------------- | ---------------------------------- |
+| Strategy | Divide + Merge | Divide + Partition                 |
+| Best     | O(n log n)     | O(n log n)                         |
+| Average  | O(n log n)     | O(n log n)                         |
+| Worst    | O(n log n)     | O(n²)                              |
+| Stable   | Yes            | No                                 |
+| In-place | No             | Yes (mostly)                       |
+| Space    | O(n)           | O(log n) (recursion stack average) |
+
+---
+
+# 🔹 Applications
+
+### Merge Sort
+
+* External Sorting
+* Linked Lists
+* Stable sorting
+
+---
+
+### Quick Sort
+
+* Internal Sorting
+* Standard library implementations (with optimizations)
+* Fast average performance
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Merge Sort is always:
+
+[
+O(n\log n)
+]
+
+---
+
+### Trap 2
+
+Quick Sort worst case:
+
+[
+O(n^2)
+]
+
+---
+
+### Trap 3
+
+Merge Sort requires:
+
+[
+O(n)
+]
+
+extra memory.
+
+---
+
+### Trap 4
+
+Quick Sort is generally **not stable**.
+
+---
+
+### Trap 5
+
+Merge Sort is preferred for linked lists because merging is efficient without random access.
+
+---
+
+# 📝 Formula Sheet
+
+| Algorithm  | Best       | Average    | Worst      | Space         | Stable |
+| ---------- | ---------- | ---------- | ---------- | ------------- | ------ |
+| Merge Sort | O(n log n) | O(n log n) | O(n log n) | O(n)          | Yes    |
+| Quick Sort | O(n log n) | O(n log n) | O(n²)      | O(log n) Avg. | No     |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+Merge Sort follows which paradigm?
+**Answer:** Divide and Conquer
+**Explanation:** It recursively divides the array and merges sorted halves.
+
+---
+
+### Q2.
+
+Quick Sort is based on:
+**Answer:** Partitioning
+**Explanation:** The array is partitioned around a pivot.
+
+---
+
+### Q3.
+
+Merge Sort recurrence is:
+**Answer:** T(n)=2T(n/2)+n
+**Explanation:** Two recursive calls and linear merge.
+
+---
+
+### Q4.
+
+Merge Sort worst-case complexity:
+**Answer:** O(n log n)
+**Explanation:** Same in all cases.
+
+---
+
+### Q5.
+
+Quick Sort average complexity:
+**Answer:** O(n log n)
+**Explanation:** Balanced partitions on average.
+
+---
+
+### Q6.
+
+Quick Sort worst-case complexity:
+**Answer:** O(n²)
+**Explanation:** Highly unbalanced partitions.
+
+---
+
+### Q7.
+
+Merge Sort space complexity:
+**Answer:** O(n)
+**Explanation:** Temporary arrays are used during merging.
+
+---
+
+### Q8.
+
+Quick Sort average auxiliary space:
+**Answer:** O(log n)
+**Explanation:** Due to recursion stack.
+
+---
+
+### Q9.
+
+Merge Sort is:
+**Answer:** Stable
+**Explanation:** Equal elements maintain their order.
+
+---
+
+### Q10.
+
+Quick Sort is generally:
+**Answer:** Not Stable
+**Explanation:** Partitioning can change the order of equal elements.
+
+---
+
+### Q11.
+
+Merge Sort is:
+**Answer:** Not In-place
+**Explanation:** It requires extra memory.
+
+---
+
+### Q12.
+
+Quick Sort is generally:
+**Answer:** In-place
+**Explanation:** Sorting is done within the array (excluding recursion stack).
+
+---
+
+### Q13.
+
+Most PYQ-tested topic?
+**Answer:** Quick Sort worst case
+**Explanation:** A frequently asked concept.
+
+---
+
+### Q14.
+
+Biggest GATE trap?
+**Answer:** Assuming Quick Sort is always O(n log n)
+**Explanation:** Worst case is O(n²).
+
+---
+
+### Q15.
+
+Merge operation complexity:
+**Answer:** O(n)
+**Explanation:** Two sorted arrays are merged in linear time.
+
+---
+
+### Q16.
+
+Partition operation is used in:
+**Answer:** Quick Sort
+**Explanation:** It arranges elements around a pivot.
+
+---
+
+### Q17.
+
+Balanced partitions produce:
+**Answer:** O(n log n)
+**Explanation:** The recursion tree has logarithmic height.
+
+---
+
+### Q18.
+
+Worst pivot choice leads to:
+**Answer:** O(n²)
+**Explanation:** One partition contains almost all elements.
+
+---
+
+### Q19.
+
+Merge Sort is preferred for:
+**Answer:** Linked Lists
+**Explanation:** Merging is efficient without random access.
+
+---
+
+### Q20.
+
+Quick Sort is efficient because of:
+**Answer:** Good average-case performance
+**Explanation:** It performs well in practice.
+
+---
+
+### Q21.
+
+Master Theorem can solve:
+**Answer:** Merge Sort recurrence
+**Explanation:** It matches the standard form.
+
+---
+
+### Q22.
+
+Quick Sort recurrence in worst case:
+**Answer:** T(n)=T(n−1)+n
+**Explanation:** One subproblem has size n−1.
+
+---
+
+### Q23.
+
+Merge Sort divides the array into:
+**Answer:** Two halves
+**Explanation:** Equal-sized subproblems.
+
+---
+
+### Q24.
+
+Quick Sort recursively sorts:
+**Answer:** Left and right partitions
+**Explanation:** Both partitions are sorted independently.
+
+---
+
+### Q25.
+
+Random pivot selection helps:
+**Answer:** Reduce worst-case probability
+**Explanation:** It avoids consistently poor partitions.
+
+---
+
+### Q26.
+
+Which algorithm guarantees O(n log n) even in the worst case?
+**Answer:** Merge Sort
+**Explanation:** Its recurrence is fixed.
+
+---
+
+### Q27.
+
+Quick Sort performs best when partitions are:
+**Answer:** Balanced
+**Explanation:** This minimizes recursion depth.
+
+---
+
+### Q28.
+
+Merge Sort belongs to:
+**Answer:** Comparison-based sorting
+**Explanation:** It compares elements during merging.
+
+---
+
+### Q29.
+
+Quick Sort belongs to:
+**Answer:** Comparison-based sorting
+**Explanation:** It partitions based on comparisons.
+
+---
+
+### Q30.
+
+The major advantage of Quick Sort over Merge Sort is:
+**Answer:** Better average performance with lower extra memory
+**Explanation:** It is generally in-place and cache-friendly.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
+### Next Topic (Day 57)
+
+# 📚 Algorithms
+
+**Heap Sort, Counting Sort, Radix Sort & Bucket Sort (Complete Analysis + GATE PYQs)**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. Why is **Merge Sort** always **O(n log n)**?
+2. Why can **Quick Sort** become **O(n²)**?
+3. Which algorithm is **stable**?
+4. Which algorithm requires **O(n)** extra space?
+5. Which recurrence corresponds to Merge Sort?
+
+When you've finished studying today's lesson, type:
+
+## **Generate PDF**
+
+I'll prepare a complete, professionally formatted PDF containing:
+
+* Full theory
+* Tables
+* Formula sheet
+* All 30 MCQs
+* Answers with explanations
+* GATE-focused revision notes.
