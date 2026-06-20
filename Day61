@@ -1,0 +1,709 @@
+
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Heap Sort, Counting Sort, Radix Sort & Bucket Sort (Complete Analysis + GATE PYQs)**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 Why Learn More Sorting Algorithms?
+
+Not all sorting algorithms work efficiently for every type of data.
+
+Examples:
+
+* **Heap Sort** → General-purpose sorting with guaranteed O(n log n).
+* **Counting Sort** → Small integer ranges.
+* **Radix Sort** → Large integers, digit by digit.
+* **Bucket Sort** → Uniformly distributed floating-point numbers.
+
+📌 GATE often asks **when to use which sorting algorithm**.
+
+---
+
+# 🔹 Heap Sort
+
+Heap Sort is based on the **Max Heap**.
+
+### Steps
+
+1. Build a Max Heap.
+2. Swap the root with the last element.
+3. Reduce heap size by 1.
+4. Heapify the root.
+5. Repeat until the array is sorted.
+
+---
+
+### Example
+
+Array:
+
+```text
+4 10 3 5 1
+```
+
+Build Max Heap:
+
+```text
+       10
+      /  \
+     5    3
+    / \
+   4   1
+```
+
+After repeated deletion:
+
+```text
+1 3 4 5 10
+```
+
+---
+
+## Complexity
+
+| Case    | Complexity |
+| ------- | ---------- |
+| Best    | O(n log n) |
+| Average | O(n log n) |
+| Worst   | O(n log n) |
+
+---
+
+### Space Complexity
+
+[
+O(1)
+]
+
+---
+
+### Stable?
+
+❌ No
+
+---
+
+### In-place?
+
+✅ Yes
+
+---
+
+# 🔹 Counting Sort
+
+Counting Sort is **not comparison-based**.
+
+Instead of comparing elements, it counts the frequency of each value.
+
+---
+
+### Example
+
+Array:
+
+```text
+4 2 2 8 3 3 1
+```
+
+Frequency Table:
+
+| Value | Count |
+| ----- | ----- |
+| 1     | 1     |
+| 2     | 2     |
+| 3     | 2     |
+| 4     | 1     |
+| 8     | 1     |
+
+Sorted Array:
+
+```text
+1 2 2 3 3 4 8
+```
+
+---
+
+## Complexity
+
+If:
+
+* n = number of elements
+* k = maximum value
+
+Time Complexity:
+
+[
+O(n+k)
+]
+
+---
+
+### Space Complexity
+
+[
+O(n+k)
+]
+
+---
+
+### Stable?
+
+✅ Yes (with cumulative counts)
+
+---
+
+### Limitation
+
+Efficient only when:
+
+[
+k
+]
+
+is small.
+
+---
+
+# 🔹 Radix Sort
+
+Radix Sort sorts numbers **digit by digit**.
+
+Uses:
+
+👉 Counting Sort as a subroutine.
+
+---
+
+### Example
+
+```text
+170
+45
+75
+90
+802
+24
+2
+66
+```
+
+Sort by:
+
+1. Units digit
+2. Tens digit
+3. Hundreds digit
+
+Final:
+
+```text
+2
+24
+45
+66
+75
+90
+170
+802
+```
+
+---
+
+## Complexity
+
+If:
+
+* d = number of digits
+
+Time:
+
+[
+O(d(n+k))
+]
+
+---
+
+### Stable?
+
+✅ Yes
+
+---
+
+### Applications
+
+* Large integers
+* Phone numbers
+* ZIP codes
+
+---
+
+# 🔹 Bucket Sort
+
+Bucket Sort divides elements into buckets.
+
+Each bucket is sorted individually.
+
+---
+
+### Example
+
+```text
+0.78
+0.17
+0.39
+0.26
+0.72
+```
+
+Buckets:
+
+```text
+Bucket 0:
+0.17
+
+Bucket 1:
+0.26
+
+Bucket 2:
+0.39
+
+Bucket 7:
+0.72
+0.78
+```
+
+Merge buckets.
+
+---
+
+## Complexity
+
+### Best/Average
+
+[
+O(n)
+]
+
+(if uniformly distributed)
+
+### Worst
+
+[
+O(n^2)
+]
+
+---
+
+### Stable?
+
+Depends on the sorting algorithm used inside buckets.
+
+---
+
+# 🔹 Comparison Table
+
+| Algorithm     | Best      | Average   | Worst     | Stable  | In-place |
+| ------------- | --------- | --------- | --------- | ------- | -------- |
+| Heap Sort     | O(nlogn)  | O(nlogn)  | O(nlogn)  | No      | Yes      |
+| Counting Sort | O(n+k)    | O(n+k)    | O(n+k)    | Yes     | No       |
+| Radix Sort    | O(d(n+k)) | O(d(n+k)) | O(d(n+k)) | Yes     | No       |
+| Bucket Sort   | O(n)      | O(n)      | O(n²)     | Depends | No       |
+
+---
+
+# 🔹 Comparison-Based vs Non-Comparison-Based Sorting
+
+### Comparison-Based
+
+* Bubble
+* Selection
+* Insertion
+* Merge
+* Quick
+* Heap
+
+Lower bound:
+
+[
+O(n\log n)
+]
+
+---
+
+### Non-Comparison-Based
+
+* Counting
+* Radix
+* Bucket
+
+Can achieve:
+
+[
+O(n)
+]
+
+under suitable conditions.
+
+📌 Very important GATE concept.
+
+---
+
+# 🔹 Applications
+
+### Heap Sort
+
+* Priority Queues
+* Operating Systems
+* Scheduling
+
+---
+
+### Counting Sort
+
+* Exam scores
+* Small integer datasets
+
+---
+
+### Radix Sort
+
+* Employee IDs
+* Phone Numbers
+* PIN Codes
+
+---
+
+### Bucket Sort
+
+* Floating-point numbers
+* Uniform distributions
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Counting Sort **cannot** efficiently sort large integer ranges.
+
+---
+
+### Trap 2
+
+Heap Sort is **not stable**.
+
+---
+
+### Trap 3
+
+Radix Sort requires a **stable sorting algorithm** (commonly Counting Sort).
+
+---
+
+### Trap 4
+
+Bucket Sort performs well only for **uniformly distributed** data.
+
+---
+
+# 📝 Formula Sheet
+
+| Algorithm     | Time Complexity |
+| ------------- | --------------- |
+| Heap Sort     | O(n log n)      |
+| Counting Sort | O(n+k)          |
+| Radix Sort    | O(d(n+k))       |
+| Bucket Sort   | O(n) Average    |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Heap Sort is based on:
+**Answer:** Max Heap
+**Explanation:** The largest element is repeatedly moved to the end.
+
+---
+
+### Q2.
+
+Heap Sort worst-case complexity:
+**Answer:** O(n log n)
+**Explanation:** Same in all cases.
+
+---
+
+### Q3.
+
+Heap Sort is:
+**Answer:** In-place
+**Explanation:** Requires only constant extra space.
+
+---
+
+### Q4.
+
+Heap Sort is:
+**Answer:** Not Stable
+**Explanation:** Equal elements may change order.
+
+---
+
+### Q5.
+
+Counting Sort is:
+**Answer:** Non-comparison-based
+**Explanation:** It counts frequencies instead of comparing elements.
+
+---
+
+### Q6.
+
+Counting Sort complexity:
+**Answer:** O(n+k)
+**Explanation:** Depends on number of elements and key range.
+
+---
+
+### Q7.
+
+Counting Sort works best when:
+**Answer:** Range of keys is small
+**Explanation:** Large ranges increase memory usage.
+
+---
+
+### Q8.
+
+Radix Sort processes:
+**Answer:** Digits
+**Explanation:** It sorts one digit at a time.
+
+---
+
+### Q9.
+
+Radix Sort commonly uses:
+**Answer:** Counting Sort
+**Explanation:** Counting Sort is stable.
+
+---
+
+### Q10.
+
+Radix Sort is:
+**Answer:** Stable
+**Explanation:** Stability is required for correctness.
+
+---
+
+### Q11.
+
+Bucket Sort is suitable for:
+**Answer:** Uniformly distributed data
+**Explanation:** Elements are evenly distributed among buckets.
+
+---
+
+### Q12.
+
+Bucket Sort average complexity:
+**Answer:** O(n)
+**Explanation:** Under uniform distribution.
+
+---
+
+### Q13.
+
+Most PYQ-tested topic?
+**Answer:** Comparison vs Non-comparison Sorting
+**Explanation:** Frequently appears in GATE.
+
+---
+
+### Q14.
+
+Biggest GATE trap?
+**Answer:** Assuming Counting Sort is comparison-based
+**Explanation:** It is not.
+
+---
+
+### Q15.
+
+Heap Sort space complexity:
+**Answer:** O(1)
+**Explanation:** Constant auxiliary space.
+
+---
+
+### Q16.
+
+Counting Sort space complexity:
+**Answer:** O(n+k)
+**Explanation:** Needs count array and output array.
+
+---
+
+### Q17.
+
+Radix Sort time complexity:
+**Answer:** O(d(n+k))
+**Explanation:** d = number of digits.
+
+---
+
+### Q18.
+
+Bucket Sort worst-case complexity:
+**Answer:** O(n²)
+**Explanation:** All elements may fall into one bucket.
+
+---
+
+### Q19.
+
+Heap Sort belongs to:
+**Answer:** Comparison-based sorting
+**Explanation:** Uses element comparisons.
+
+---
+
+### Q20.
+
+Counting Sort cannot efficiently handle:
+**Answer:** Very large key ranges
+**Explanation:** Memory requirement becomes too high.
+
+---
+
+### Q21.
+
+Radix Sort is useful for:
+**Answer:** Integers with fixed number of digits
+**Explanation:** Processes digits sequentially.
+
+---
+
+### Q22.
+
+Heap Sort guarantees:
+**Answer:** O(n log n)
+**Explanation:** Even in the worst case.
+
+---
+
+### Q23.
+
+Which algorithm is **not comparison-based**?
+**Answer:** Counting Sort
+**Explanation:** It uses counting instead of comparisons.
+
+---
+
+### Q24.
+
+Which algorithm uses buckets?
+**Answer:** Bucket Sort
+**Explanation:** Data is distributed into buckets.
+
+---
+
+### Q25.
+
+Radix Sort requires the subroutine to be:
+**Answer:** Stable
+**Explanation:** Otherwise digit ordering is lost.
+
+---
+
+### Q26.
+
+Counting Sort is mainly suitable for:
+**Answer:** Small integer keys
+**Explanation:** Efficient when k is small.
+
+---
+
+### Q27.
+
+Heap construction complexity:
+**Answer:** O(n)
+**Explanation:** Bottom-up heap building.
+
+---
+
+### Q28.
+
+Which algorithm guarantees O(n log n) and is in-place?
+**Answer:** Heap Sort
+**Explanation:** Uses a heap within the original array.
+
+---
+
+### Q29.
+
+Bucket Sort divides data into:
+**Answer:** Buckets
+**Explanation:** Each bucket is sorted individually.
+
+---
+
+### Q30.
+
+Non-comparison-based sorting can achieve:
+**Answer:** Linear time under suitable conditions
+**Explanation:** Example: Counting Sort and Bucket Sort.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
+### Next Topic (Day 58)
+
+# 📚 Algorithms
+
+**Searching Algorithms – Linear Search, Binary Search, Ternary Search & Binary Search Applications**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. Why is **Heap Sort** always O(n log n)?
+2. Why is **Counting Sort** not suitable for a large key range?
+3. Why must **Radix Sort** use a stable sorting algorithm?
+4. Under what condition does **Bucket Sort** achieve O(n)?
+5. Which sorting algorithms are **non-comparison-based**?
+
+When you've finished studying today's lesson, type:
+
+## **Generate PDF**
+
+I'll prepare a complete GATE-ready PDF containing:
+
+* Full theory
+* Comparison tables
+* Formula sheet
+* 30 MCQs
+* Answers with explanations
+* Revision notes for **Day 57 – Heap Sort, Counting Sort, Radix Sort & Bucket Sort**.
