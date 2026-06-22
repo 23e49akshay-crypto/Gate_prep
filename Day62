@@ -1,0 +1,719 @@
+
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Searching Algorithms – Linear Search, Binary Search, Ternary Search & Binary Search Applications**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Searching?
+
+Searching is the process of finding whether a given element (called the **key**) exists in a collection of data and, if it exists, determining its position.
+
+Example:
+
+Array:
+
+```text
+10 25 40 55 70
+```
+
+Search Key:
+
+```text
+40
+```
+
+Output:
+
+```text
+Found at index 2
+```
+
+Searching is one of the most fundamental operations in Computer Science and is heavily tested in GATE.
+
+---
+
+# 🔹 Types of Searching
+
+There are two major searching techniques:
+
+1. Linear Search
+2. Binary Search
+
+We will also study **Ternary Search**, which is useful in specific scenarios.
+
+---
+
+# 🔹 Linear Search
+
+Linear Search checks every element one by one until the key is found.
+
+---
+
+## Algorithm
+
+Given:
+
+```text
+15 22 8 31 10
+```
+
+Search key = 31
+
+Comparison sequence:
+
+```text
+15 ❌
+22 ❌
+8 ❌
+31 ✅
+```
+
+Element found after 4 comparisons.
+
+---
+
+## C Code
+
+```c
+for(i=0;i<n;i++)
+{
+    if(arr[i]==key)
+        return i;
+}
+return -1;
+```
+
+---
+
+## Complexity
+
+### Best Case
+
+Element found at first position.
+
+[
+O(1)
+]
+
+---
+
+### Average Case
+
+[
+O(n)
+]
+
+---
+
+### Worst Case
+
+Element at last position or not present.
+
+[
+O(n)
+]
+
+---
+
+### Advantages
+
+* Simple implementation
+* Works on both sorted and unsorted arrays
+
+---
+
+### Disadvantages
+
+* Slow for large datasets
+
+---
+
+# 🔹 Binary Search
+
+Binary Search repeatedly divides the search space into two halves.
+
+📌 **Requirement: The array must be sorted.**
+
+---
+
+## Example
+
+Sorted Array:
+
+```text
+5 10 20 30 40 50 60
+```
+
+Search Key = 40
+
+Step 1:
+
+Middle = 30
+
+40 > 30
+
+Search right half.
+
+Step 2:
+
+Middle = 50
+
+40 < 50
+
+Search left half.
+
+Step 3:
+
+Middle = 40
+
+Found.
+
+---
+
+## Binary Search Algorithm
+
+1. Calculate middle index.
+2. Compare key with middle.
+3. If equal → Found.
+4. If smaller → Left half.
+5. If larger → Right half.
+6. Repeat.
+
+---
+
+## Recursive Recurrence
+
+[
+T(n)=T(n/2)+1
+]
+
+---
+
+## Complexity
+
+### Best Case
+
+[
+O(1)
+]
+
+---
+
+### Average Case
+
+[
+O(\log n)
+]
+
+---
+
+### Worst Case
+
+[
+O(\log n)
+]
+
+---
+
+### Space Complexity
+
+Iterative:
+
+[
+O(1)
+]
+
+Recursive:
+
+[
+O(\log n)
+]
+
+---
+
+# 🔹 Binary Search Code
+
+```c
+while(low<=high)
+{
+    mid=(low+high)/2;
+
+    if(arr[mid]==key)
+        return mid;
+
+    else if(key<arr[mid])
+        high=mid-1;
+
+    else
+        low=mid+1;
+}
+```
+
+---
+
+# 🔹 Ternary Search
+
+Ternary Search divides the array into **three equal parts**.
+
+Two middle points:
+
+[
+mid_1
+]
+
+and
+
+[
+mid_2
+]
+
+Depending on the key, search continues in one of the three sections.
+
+---
+
+## Complexity
+
+[
+O(\log_3 n)
+]
+
+Although the logarithm base is 3, Ternary Search performs more comparisons per step.
+
+In practice, **Binary Search is generally preferred**.
+
+---
+
+# 🔹 Comparison Table
+
+| Feature               | Linear Search | Binary Search | Ternary Search |
+| --------------------- | ------------- | ------------- | -------------- |
+| Sorted Array Required | No            | Yes           | Yes            |
+| Best Case             | O(1)          | O(1)          | O(1)           |
+| Average Case          | O(n)          | O(log n)      | O(log₃ n)      |
+| Worst Case            | O(n)          | O(log n)      | O(log₃ n)      |
+| Space (Iterative)     | O(1)          | O(1)          | O(1)           |
+
+---
+
+# 🔹 Binary Search Applications
+
+Binary Search is not only used to search elements.
+
+It is also used to solve optimization problems.
+
+Examples:
+
+* Finding square root
+* Finding first occurrence
+* Finding last occurrence
+* Lower Bound
+* Upper Bound
+* Peak Element
+* Searching in rotated sorted arrays
+* Finding minimum in rotated arrays
+
+📌 These are common GATE and interview questions.
+
+---
+
+# 🔹 Lower Bound
+
+Returns the first element:
+
+[
+\ge x
+]
+
+Example:
+
+```text
+1 2 4 4 5 7
+```
+
+Lower Bound of 4:
+
+Index = 2
+
+---
+
+# 🔹 Upper Bound
+
+Returns the first element:
+
+[
+
+> x
+> ]
+
+Example:
+
+```text
+1 2 4 4 5 7
+```
+
+Upper Bound of 4:
+
+Index = 4
+
+---
+
+# 🔹 Binary Search on Answer
+
+Instead of searching for an element, Binary Search can search for the **answer**.
+
+Example Problems:
+
+* Minimum eating speed
+* Allocate books
+* Aggressive cows
+* Painter partition
+
+📌 Very important in competitive programming and interviews.
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Binary Search works **only on sorted data**.
+
+---
+
+### Trap 2
+
+Binary Search is **not always recursive**.
+
+Iterative implementation is often preferred.
+
+---
+
+### Trap 3
+
+Linear Search may be better for **very small arrays**.
+
+---
+
+### Trap 4
+
+Ternary Search is **not always faster** than Binary Search.
+
+---
+
+### Trap 5
+
+Avoid integer overflow when computing mid.
+
+Instead of:
+
+```text
+mid = (low + high)/2
+```
+
+Use:
+
+```text
+mid = low + (high - low)/2
+```
+
+---
+
+# 📝 Formula Sheet
+
+| Algorithm      | Best | Average   | Worst     | Sorted Required |
+| -------------- | ---- | --------- | --------- | --------------- |
+| Linear Search  | O(1) | O(n)      | O(n)      | No              |
+| Binary Search  | O(1) | O(log n)  | O(log n)  | Yes             |
+| Ternary Search | O(1) | O(log₃ n) | O(log₃ n) | Yes             |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+Linear Search works on:
+**Answer:** Both sorted and unsorted arrays
+**Explanation:** It checks elements sequentially.
+
+---
+
+### Q2.
+
+Binary Search requires:
+**Answer:** Sorted array
+**Explanation:** The search space is halved based on ordering.
+
+---
+
+### Q3.
+
+Best-case complexity of Binary Search:
+**Answer:** O(1)
+**Explanation:** If the middle element is the key.
+
+---
+
+### Q4.
+
+Worst-case complexity of Binary Search:
+**Answer:** O(log n)
+**Explanation:** The search space halves each iteration.
+
+---
+
+### Q5.
+
+Worst-case complexity of Linear Search:
+**Answer:** O(n)
+**Explanation:** May need to examine every element.
+
+---
+
+### Q6.
+
+Binary Search recurrence:
+**Answer:** T(n)=T(n/2)+1
+**Explanation:** One recursive call on half the input.
+
+---
+
+### Q7.
+
+Ternary Search divides the array into:
+**Answer:** Three parts
+**Explanation:** Uses two middle points.
+
+---
+
+### Q8.
+
+Binary Search average complexity:
+**Answer:** O(log n)
+**Explanation:** Logarithmic number of comparisons.
+
+---
+
+### Q9.
+
+Linear Search best case:
+**Answer:** O(1)
+**Explanation:** Key found at the first position.
+
+---
+
+### Q10.
+
+Most PYQ-tested topic?
+**Answer:** Binary Search complexity
+**Explanation:** Frequently asked in GATE.
+
+---
+
+### Q11.
+
+Biggest GATE trap?
+**Answer:** Applying Binary Search to an unsorted array
+**Explanation:** Binary Search requires sorted data.
+
+---
+
+### Q12.
+
+Binary Search iterative space complexity:
+**Answer:** O(1)
+**Explanation:** No recursion stack is used.
+
+---
+
+### Q13.
+
+Binary Search recursive space complexity:
+**Answer:** O(log n)
+**Explanation:** Due to recursion.
+
+---
+
+### Q14.
+
+Linear Search compares:
+**Answer:** One element at a time
+**Explanation:** Sequential comparison.
+
+---
+
+### Q15.
+
+Binary Search compares with:
+**Answer:** Middle element
+**Explanation:** It halves the search space.
+
+---
+
+### Q16.
+
+Lower Bound returns:
+**Answer:** First element ≥ x
+**Explanation:** Standard library definition.
+
+---
+
+### Q17.
+
+Upper Bound returns:
+**Answer:** First element > x
+**Explanation:** Useful for range queries.
+
+---
+
+### Q18.
+
+Safe computation of middle index:
+**Answer:** low + (high − low)/2
+**Explanation:** Prevents integer overflow.
+
+---
+
+### Q19.
+
+Binary Search is based on:
+**Answer:** Divide and Conquer
+**Explanation:** The problem size is halved.
+
+---
+
+### Q20.
+
+Linear Search is suitable for:
+**Answer:** Small or unsorted arrays
+**Explanation:** No sorting requirement.
+
+---
+
+### Q21.
+
+Binary Search reduces search space by:
+**Answer:** Half
+**Explanation:** Each iteration discards one half.
+
+---
+
+### Q22.
+
+Searching in a rotated sorted array commonly uses:
+**Answer:** Modified Binary Search
+**Explanation:** One half remains sorted.
+
+---
+
+### Q23.
+
+Binary Search on Answer is used in:
+**Answer:** Optimization problems
+**Explanation:** It searches the solution space.
+
+---
+
+### Q24.
+
+Ternary Search uses:
+**Answer:** Two middle points
+**Explanation:** Divides into three regions.
+
+---
+
+### Q25.
+
+Which algorithm generally performs better in practice on sorted arrays?
+**Answer:** Binary Search
+**Explanation:** Fewer comparisons than Ternary Search.
+
+---
+
+### Q26.
+
+Linear Search belongs to:
+**Answer:** Sequential searching
+**Explanation:** Elements are checked one by one.
+
+---
+
+### Q27.
+
+Binary Search belongs to:
+**Answer:** Divide and Conquer
+**Explanation:** Halves the input repeatedly.
+
+---
+
+### Q28.
+
+The maximum number of comparisons in Binary Search grows:
+**Answer:** Logarithmically
+**Explanation:** Complexity is O(log n).
+
+---
+
+### Q29.
+
+If the key is absent, Binary Search returns:
+**Answer:** Not Found (commonly -1)
+**Explanation:** After exhausting the search interval.
+
+---
+
+### Q30.
+
+Which searching algorithm is most commonly used in GATE numerical questions?
+**Answer:** Binary Search
+**Explanation:** Due to its efficiency and wide range of applications.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
+### Next Topic (Day 59)
+
+# 📚 Algorithms
+
+**Greedy Algorithms – Introduction, Activity Selection, Fractional Knapsack & Huffman Coding**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. Why must Binary Search use a sorted array?
+2. What is the recurrence relation of Binary Search?
+3. What is the difference between Lower Bound and Upper Bound?
+4. Why is `mid = low + (high - low)/2` preferred?
+5. Why isn't Ternary Search always faster than Binary Search?
+
+When you've finished studying today's lesson, type:
+
+## **Generate PDF**
+
+I'll generate a complete revision-ready PDF with:
+
+* Full theory
+* Formula sheet
+* Comparison tables
+* All 30 GATE-level MCQs
+* Answers with explanations
+* Exam-focused revision notes.
