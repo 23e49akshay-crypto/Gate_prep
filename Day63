@@ -1,0 +1,599 @@
+
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Greedy Algorithms – Introduction, Activity Selection, Fractional Knapsack & Huffman Coding**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Greedy Algorithm?
+
+A **Greedy Algorithm** is an algorithmic strategy that **makes the best possible (locally optimal) choice at every step** with the hope of obtaining the **globally optimal solution**.
+
+📌 **Idea:**
+
+> "Choose the best option available now without worrying about future consequences."
+
+Unlike Dynamic Programming, Greedy algorithms **do not reconsider previous decisions**.
+
+---
+
+# 🔹 Characteristics of Greedy Algorithms
+
+A problem can be solved using a Greedy approach if it satisfies:
+
+### 1️⃣ Greedy Choice Property
+
+A locally optimal choice leads to the globally optimal solution.
+
+---
+
+### 2️⃣ Optimal Substructure
+
+An optimal solution contains optimal solutions to its subproblems.
+
+📌 **Both properties are essential.**
+
+---
+
+# 🔹 General Steps of Greedy Algorithm
+
+1. Identify all possible choices.
+2. Select the best local choice.
+3. Never change that choice.
+4. Repeat until the solution is complete.
+
+---
+
+# 🔹 Advantages
+
+✅ Simple to implement
+
+✅ Fast execution
+
+✅ Low memory usage
+
+---
+
+# 🔹 Limitations
+
+❌ Does not always produce the optimal solution.
+
+Example:
+
+**0/1 Knapsack** cannot be solved optimally using a greedy approach.
+
+---
+
+# 🔹 Activity Selection Problem
+
+## Problem Statement
+
+Given multiple activities with:
+
+* Start time
+* Finish time
+
+Select the **maximum number of non-overlapping activities**.
+
+---
+
+### Example
+
+| Activity | Start | Finish |
+| -------- | ----: | -----: |
+| A1       |     1 |      2 |
+| A2       |     3 |      4 |
+| A3       |     0 |      6 |
+| A4       |     5 |      7 |
+| A5       |     8 |      9 |
+
+---
+
+## Greedy Rule
+
+Always choose the activity with the **earliest finishing time**.
+
+Selected:
+
+```text
+A1 → A2 → A4 → A5
+```
+
+Total Activities:
+
+```text
+4
+```
+
+---
+
+## Complexity
+
+Sorting:
+
+[
+O(n\log n)
+]
+
+Selection:
+
+[
+O(n)
+]
+
+Overall:
+
+[
+O(n\log n)
+]
+
+---
+
+# 🔹 Fractional Knapsack
+
+## Problem
+
+Given:
+
+* Weight
+* Profit
+* Capacity
+
+Items **can be divided**.
+
+---
+
+### Example
+
+| Item | Weight | Profit |
+| ---- | -----: | -----: |
+| A    |     10 |     60 |
+| B    |     20 |    100 |
+| C    |     30 |    120 |
+
+Capacity:
+
+```text
+50
+```
+
+---
+
+## Greedy Strategy
+
+Sort by:
+
+[
+\frac{\text{Profit}}{\text{Weight}}
+]
+
+Take the item with the highest ratio first.
+
+If the remaining capacity is insufficient, take only the required fraction.
+
+---
+
+## Complexity
+
+Sorting:
+
+[
+O(n\log n)
+]
+
+---
+
+📌 **Very important GATE topic.**
+
+---
+
+# 🔹 Huffman Coding
+
+Used for **lossless data compression**.
+
+Examples:
+
+* ZIP files
+* PNG images
+* PDF compression
+
+---
+
+## Idea
+
+Characters with **higher frequency get shorter binary codes**.
+
+Characters with **lower frequency get longer binary codes**.
+
+---
+
+### Example
+
+| Character | Frequency |
+| --------- | --------: |
+| A         |        45 |
+| B         |        13 |
+| C         |        12 |
+| D         |        16 |
+| E         |         9 |
+| F         |         5 |
+
+Build a **Min Heap**, repeatedly combine the two nodes with the smallest frequencies until one tree remains.
+
+---
+
+## Properties
+
+✅ Prefix-free codes
+
+✅ No ambiguity in decoding
+
+---
+
+## Complexity
+
+Building the heap:
+
+[
+O(n)
+]
+
+Repeated operations:
+
+[
+O(n\log n)
+]
+
+---
+
+# 🔹 Greedy vs Dynamic Programming
+
+| Feature            | Greedy        | Dynamic Programming |
+| ------------------ | ------------- | ------------------- |
+| Decisions          | Local optimum | Global optimum      |
+| Revisits decisions | No            | Yes                 |
+| Speed              | Faster        | Slower              |
+| Memory             | Less          | More                |
+| Always Optimal     | No            | Yes (if applicable) |
+
+---
+
+# 🔹 Applications of Greedy Algorithms
+
+* Activity Selection
+* Fractional Knapsack
+* Huffman Coding
+* Kruskal's MST
+* Prim's MST
+* Dijkstra's Algorithm (non-negative weights)
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Greedy does **not** always give the optimal solution.
+
+---
+
+### Trap 2
+
+Fractional Knapsack uses Greedy.
+
+**0/1 Knapsack does NOT.**
+
+---
+
+### Trap 3
+
+Activity Selection chooses the activity with the **earliest finishing time**, **not** the earliest starting time.
+
+---
+
+### Trap 4
+
+Huffman Coding uses a **Min Heap**, not a Max Heap.
+
+---
+
+# 📝 Formula Sheet
+
+| Problem             | Greedy Choice         | Complexity |
+| ------------------- | --------------------- | ---------- |
+| Activity Selection  | Earliest Finish Time  | O(n log n) |
+| Fractional Knapsack | Highest Profit/Weight | O(n log n) |
+| Huffman Coding      | Lowest Frequency      | O(n log n) |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+A Greedy Algorithm makes:
+**Answer:** Locally optimal choices
+**Explanation:** It chooses the best option available at each step.
+
+---
+
+### Q2.
+
+Greedy algorithms revisit previous decisions.
+**Answer:** False
+**Explanation:** Once a choice is made, it is not changed.
+
+---
+
+### Q3.
+
+Which property is essential for greedy algorithms?
+**Answer:** Greedy Choice Property
+**Explanation:** Local optimum should lead to global optimum.
+
+---
+
+### Q4.
+
+Another essential property is:
+**Answer:** Optimal Substructure
+**Explanation:** Optimal solutions contain optimal subsolutions.
+
+---
+
+### Q5.
+
+Activity Selection chooses activities based on:
+**Answer:** Earliest finishing time
+**Explanation:** Maximizes the number of activities.
+
+---
+
+### Q6.
+
+Fractional Knapsack sorts items by:
+**Answer:** Profit/Weight ratio
+**Explanation:** Highest ratio first.
+
+---
+
+### Q7.
+
+Fractional Knapsack allows:
+**Answer:** Dividing items
+**Explanation:** Items can be taken partially.
+
+---
+
+### Q8.
+
+0/1 Knapsack is optimally solved using:
+**Answer:** Dynamic Programming
+**Explanation:** Greedy may fail.
+
+---
+
+### Q9.
+
+Huffman Coding is used for:
+**Answer:** Data Compression
+**Explanation:** It generates variable-length prefix codes.
+
+---
+
+### Q10.
+
+Huffman Coding uses:
+**Answer:** Min Heap
+**Explanation:** Smallest frequencies are combined first.
+
+---
+
+### Q11.
+
+Most PYQ-tested Greedy problem?
+**Answer:** Fractional Knapsack
+**Explanation:** Frequently asked in GATE.
+
+---
+
+### Q12.
+
+Biggest GATE trap?
+**Answer:** Confusing Fractional and 0/1 Knapsack
+**Explanation:** Only Fractional Knapsack is solved greedily.
+
+---
+
+### Q13.
+
+Greedy algorithms are generally:
+**Answer:** Fast
+**Explanation:** They avoid exploring all possibilities.
+
+---
+
+### Q14.
+
+Activity Selection complexity:
+**Answer:** O(n log n)
+**Explanation:** Sorting dominates.
+
+---
+
+### Q15.
+
+Fractional Knapsack complexity:
+**Answer:** O(n log n)
+**Explanation:** Due to sorting.
+
+---
+
+### Q16.
+
+Huffman Coding complexity:
+**Answer:** O(n log n)
+**Explanation:** Heap operations dominate.
+
+---
+
+### Q17.
+
+Which algorithm generates prefix-free codes?
+**Answer:** Huffman Coding
+**Explanation:** No code is a prefix of another.
+
+---
+
+### Q18.
+
+Greedy algorithms usually require:
+**Answer:** Less memory
+**Explanation:** They don't store many subproblems.
+
+---
+
+### Q19.
+
+Kruskal's Algorithm is:
+**Answer:** Greedy
+**Explanation:** Selects the minimum-weight edge each step.
+
+---
+
+### Q20.
+
+Prim's Algorithm is:
+**Answer:** Greedy
+**Explanation:** Expands the MST greedily.
+
+---
+
+### Q21.
+
+Dijkstra's Algorithm works correctly with:
+**Answer:** Non-negative edge weights
+**Explanation:** Negative weights can produce incorrect results.
+
+---
+
+### Q22.
+
+Activity Selection first step:
+**Answer:** Sort by finish time
+**Explanation:** Enables optimal selection.
+
+---
+
+### Q23.
+
+Profit density means:
+**Answer:** Profit/Weight ratio
+**Explanation:** Used in Fractional Knapsack.
+
+---
+
+### Q24.
+
+Which algorithm is NOT greedy?
+**Answer:** Merge Sort
+**Explanation:** It is Divide and Conquer.
+
+---
+
+### Q25.
+
+Greedy algorithms always guarantee optimal solutions.
+**Answer:** False
+**Explanation:** Only for problems satisfying greedy properties.
+
+---
+
+### Q26.
+
+Which algorithm is based on frequencies?
+**Answer:** Huffman Coding
+**Explanation:** More frequent symbols get shorter codes.
+
+---
+
+### Q27.
+
+A Min Heap always stores:
+**Answer:** Smallest element at the root
+**Explanation:** Essential for Huffman Coding.
+
+---
+
+### Q28.
+
+Which problem allows partial item selection?
+**Answer:** Fractional Knapsack
+**Explanation:** Items can be divided.
+
+---
+
+### Q29.
+
+The output of Huffman Coding is:
+**Answer:** Variable-length binary codes
+**Explanation:** Efficient encoding based on frequency.
+
+---
+
+### Q30.
+
+Greedy algorithms are preferred because they are:
+**Answer:** Efficient and simple
+**Explanation:** They often provide fast solutions with low memory usage.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
+### Next Topic (Day 60)
+
+# 📚 Algorithms
+
+**Dynamic Programming – Principles, Memoization, Tabulation, Longest Common Subsequence (LCS) & 0/1 Knapsack**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, ensure you can answer:
+
+1. What are the two properties required for a Greedy Algorithm?
+2. Why does Activity Selection choose the earliest finishing activity?
+3. Why does Greedy fail for the 0/1 Knapsack problem?
+4. Why is Huffman Coding called a prefix-free coding technique?
+5. What data structure is used to build the Huffman Tree?
+
+When you're ready, type:
+
+## **Generate PDF**
+
+and I'll generate the complete **Day 59 PDF** with:
+
+* Full theory
+* Formula sheet
+* Comparison tables
+* 30 GATE-level MCQs
+* Answers with explanations
+* Exam-ready revision notes.
