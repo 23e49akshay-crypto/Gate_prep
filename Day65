@@ -1,0 +1,663 @@
+# 📘 Today’s Learning – Day 60 (GATE CSE 2027)
+
+**📅 Date:** 19 April 2026
+**📆 Day:** Sunday
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Dynamic Programming (DP) – Principles, Memoization, Tabulation, Longest Common Subsequence (LCS) & 0/1 Knapsack**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Dynamic Programming (DP)?
+
+Dynamic Programming is an algorithmic technique used to solve problems by:
+
+1. Breaking a problem into **smaller overlapping subproblems**.
+2. Solving each subproblem **only once**.
+3. Storing the result and reusing it whenever needed.
+
+📌 **Core Idea:** *Don't solve the same subproblem repeatedly.*
+
+---
+
+# 🔹 When to Use Dynamic Programming?
+
+A problem is suitable for DP if it has:
+
+### 1️⃣ Optimal Substructure
+
+The optimal solution can be built from optimal solutions of smaller subproblems.
+
+### 2️⃣ Overlapping Subproblems
+
+The same subproblems occur multiple times.
+
+Example:
+
+Computing Fibonacci numbers recursively.
+
+```text
+F(5)
+├── F(4)
+│   ├── F(3)
+│   └── F(2)
+└── F(3)
+```
+
+Notice that **F(3)** is computed more than once.
+
+---
+
+# 🔹 Dynamic Programming vs Recursion
+
+| Recursion              | Dynamic Programming |
+| ---------------------- | ------------------- |
+| Recomputes subproblems | Stores results      |
+| Slower                 | Faster              |
+| More repeated work     | No repeated work    |
+| Higher execution time  | Optimized execution |
+
+---
+
+# 🔹 Memoization (Top-Down DP)
+
+Memoization uses recursion + memory.
+
+### Steps
+
+1. Solve recursively.
+2. Store computed answers.
+3. Reuse stored values.
+
+---
+
+### Fibonacci Example
+
+Without Memoization:
+
+```text
+F(5)
+├── F(4)
+├── F(3)
+├── F(2)
+...
+```
+
+Many repeated calls.
+
+With Memoization:
+
+Each Fibonacci value is computed **only once**.
+
+---
+
+## Complexity
+
+Time:
+
+[
+O(n)
+]
+
+Space:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Tabulation (Bottom-Up DP)
+
+Instead of recursion:
+
+1. Start from the smallest subproblem.
+2. Build answers iteratively.
+
+Example:
+
+```text
+F(0)=0
+F(1)=1
+F(2)=1
+F(3)=2
+F(4)=3
+F(5)=5
+```
+
+---
+
+## Complexity
+
+Time:
+
+[
+O(n)
+]
+
+Space:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Memoization vs Tabulation
+
+| Feature        | Memoization     | Tabulation     |
+| -------------- | --------------- | -------------- |
+| Approach       | Top-Down        | Bottom-Up      |
+| Uses Recursion | Yes             | No             |
+| Stack Space    | Yes             | No             |
+| Speed          | Slightly slower | Usually faster |
+
+📌 Very common GATE theory question.
+
+---
+
+# 🔹 Longest Common Subsequence (LCS)
+
+### Definition
+
+The **Longest Common Subsequence** of two strings is the longest sequence of characters that appears in both strings **in the same order**, but **not necessarily consecutively**.
+
+---
+
+### Example
+
+String 1:
+
+```text
+ABCBDAB
+```
+
+String 2:
+
+```text
+BDCABA
+```
+
+One LCS is:
+
+```text
+BCBA
+```
+
+Length:
+
+```text
+4
+```
+
+---
+
+## DP Recurrence
+
+If last characters are equal:
+
+[
+LCS(i,j)=1+LCS(i-1,j-1)
+]
+
+Else:
+
+[
+LCS(i,j)=\max(LCS(i-1,j),LCS(i,j-1))
+]
+
+---
+
+## Complexity
+
+Time:
+
+[
+O(mn)
+]
+
+Space:
+
+[
+O(mn)
+]
+
+Where:
+
+* m = length of first string
+* n = length of second string
+
+---
+
+# 🔹 0/1 Knapsack (Dynamic Programming)
+
+### Problem
+
+Given:
+
+* Weight
+* Profit
+* Bag Capacity
+
+Each item can be chosen:
+
+* **0 times**
+* **1 time**
+
+📌 **Items cannot be divided.**
+
+---
+
+### Example
+
+| Item | Weight | Profit |
+| ---- | -----: | -----: |
+| A    |      2 |      3 |
+| B    |      3 |      4 |
+| C    |      4 |      5 |
+| D    |      5 |      6 |
+
+Capacity:
+
+```text
+5
+```
+
+The optimal solution is found using DP.
+
+---
+
+## DP Recurrence
+
+If:
+
+[
+weight_i > W
+]
+
+Do not include the item.
+
+Else:
+
+[
+\max(\text{include},\ \text{exclude})
+]
+
+---
+
+## Complexity
+
+Time:
+
+[
+O(nW)
+]
+
+Space:
+
+[
+O(nW)
+]
+
+Where:
+
+* n = number of items
+* W = knapsack capacity
+
+---
+
+# 🔹 Greedy vs Dynamic Programming
+
+| Feature            | Greedy        | Dynamic Programming |
+| ------------------ | ------------- | ------------------- |
+| Decision           | Local optimum | Global optimum      |
+| Revisits decisions | No            | Yes                 |
+| Stores results     | No            | Yes                 |
+| Always Optimal     | Not always    | Yes (if DP applies) |
+
+---
+
+# 🔹 Applications of Dynamic Programming
+
+* Fibonacci
+* 0/1 Knapsack
+* Longest Common Subsequence (LCS)
+* Matrix Chain Multiplication
+* Longest Increasing Subsequence (LIS)
+* Coin Change
+* Edit Distance
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Memoization is **Top-Down**.
+
+Tabulation is **Bottom-Up**.
+
+---
+
+### Trap 2
+
+LCS is **not** the same as Longest Common Substring.
+
+A subsequence does **not** need to be contiguous.
+
+---
+
+### Trap 3
+
+0/1 Knapsack is solved using DP.
+
+Fractional Knapsack uses Greedy.
+
+---
+
+### Trap 4
+
+DP requires **overlapping subproblems**.
+
+Not every recursive problem needs DP.
+
+---
+
+# 📝 Formula Sheet
+
+| Problem        | Time Complexity | Space Complexity |
+| -------------- | --------------- | ---------------- |
+| Fibonacci (DP) | O(n)            | O(n)             |
+| LCS            | O(mn)           | O(mn)            |
+| 0/1 Knapsack   | O(nW)           | O(nW)            |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+Dynamic Programming mainly avoids:
+**Answer:** Recomputing subproblems
+**Explanation:** Previously computed results are stored and reused.
+
+---
+
+### Q2.
+
+DP requires:
+**Answer:** Overlapping subproblems
+**Explanation:** The same subproblems should appear repeatedly.
+
+---
+
+### Q3.
+
+Another requirement for DP:
+**Answer:** Optimal Substructure
+**Explanation:** Optimal solutions are built from optimal subsolutions.
+
+---
+
+### Q4.
+
+Memoization is:
+**Answer:** Top-Down
+**Explanation:** Uses recursion with caching.
+
+---
+
+### Q5.
+
+Tabulation is:
+**Answer:** Bottom-Up
+**Explanation:** Solves smaller subproblems first.
+
+---
+
+### Q6.
+
+Memoization uses:
+**Answer:** Recursion
+**Explanation:** Results are stored during recursive calls.
+
+---
+
+### Q7.
+
+Tabulation generally avoids:
+**Answer:** Recursion
+**Explanation:** It uses iterative table filling.
+
+---
+
+### Q8.
+
+Most PYQ-tested DP problem?
+**Answer:** 0/1 Knapsack
+**Explanation:** Frequently appears in GATE.
+
+---
+
+### Q9.
+
+LCS stands for:
+**Answer:** Longest Common Subsequence
+**Explanation:** Characters need not be contiguous.
+
+---
+
+### Q10.
+
+LCS requires:
+**Answer:** Same relative order
+**Explanation:** Continuity is not required.
+
+---
+
+### Q11.
+
+Longest Common Substring requires:
+**Answer:** Contiguous characters
+**Explanation:** Unlike subsequences.
+
+---
+
+### Q12.
+
+0/1 Knapsack allows:
+**Answer:** Selecting or rejecting an item
+**Explanation:** No partial selection.
+
+---
+
+### Q13.
+
+Fractional Knapsack uses:
+**Answer:** Greedy Algorithm
+**Explanation:** Items can be divided.
+
+---
+
+### Q14.
+
+0/1 Knapsack uses:
+**Answer:** Dynamic Programming
+**Explanation:** Greedy does not always give the optimum.
+
+---
+
+### Q15.
+
+LCS time complexity:
+**Answer:** O(mn)
+**Explanation:** DP table of size m × n.
+
+---
+
+### Q16.
+
+0/1 Knapsack time complexity:
+**Answer:** O(nW)
+**Explanation:** Depends on items and capacity.
+
+---
+
+### Q17.
+
+Memoization stores:
+**Answer:** Computed subproblem results
+**Explanation:** Avoids repeated work.
+
+---
+
+### Q18.
+
+Tabulation starts from:
+**Answer:** Smallest subproblems
+**Explanation:** Builds toward the final answer.
+
+---
+
+### Q19.
+
+DP is generally:
+**Answer:** Faster than naive recursion
+**Explanation:** Reuses stored solutions.
+
+---
+
+### Q20.
+
+Fibonacci with DP complexity:
+**Answer:** O(n)
+**Explanation:** Each value is computed once.
+
+---
+
+### Q21.
+
+Biggest GATE trap?
+**Answer:** Confusing subsequence with substring
+**Explanation:** A subsequence need not be contiguous.
+
+---
+
+### Q22.
+
+DP tables are used in:
+**Answer:** Tabulation
+**Explanation:** Results are filled iteratively.
+
+---
+
+### Q23.
+
+Memoization usually requires:
+**Answer:** Extra memory
+**Explanation:** For storing computed values.
+
+---
+
+### Q24.
+
+DP improves performance by:
+**Answer:** Eliminating repeated calculations
+**Explanation:** It stores and reuses answers.
+
+---
+
+### Q25.
+
+Which is NOT necessarily required for recursion but is required for DP?
+**Answer:** Overlapping subproblems
+**Explanation:** DP is beneficial only when subproblems repeat.
+
+---
+
+### Q26.
+
+Which problem is solved using DP?
+**Answer:** Matrix Chain Multiplication
+**Explanation:** Classic DP problem.
+
+---
+
+### Q27.
+
+Which problem is solved using DP?
+**Answer:** Edit Distance
+**Explanation:** Computes minimum edit operations.
+
+---
+
+### Q28.
+
+Which problem is solved using DP?
+**Answer:** Coin Change
+**Explanation:** Finds minimum coins or number of ways.
+
+---
+
+### Q29.
+
+DP generally trades:
+**Answer:** Space for Time
+**Explanation:** Uses extra memory to improve speed.
+
+---
+
+### Q30.
+
+The main goal of Dynamic Programming is:
+**Answer:** Efficient optimization through reuse of solutions
+**Explanation:** Avoids solving the same subproblem multiple times.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
+### Next Topic (Day 61)
+
+# 📚 Algorithms
+
+**Graph Algorithms – BFS, DFS, Topological Sort, Dijkstra's Algorithm & Bellman-Ford Algorithm**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. What are the two conditions required for Dynamic Programming?
+2. What is the difference between Memoization and Tabulation?
+3. Why can't Greedy solve the 0/1 Knapsack problem optimally?
+4. What is the difference between LCS and Longest Common Substring?
+5. Why is Dynamic Programming often described as a **space-time tradeoff**?
+
+When you're ready, type:
+
+## **Generate PDF**
+
+I'll create the complete **Day 60 PDF** containing:
+
+* Complete theory
+* Formula sheet
+* Comparison tables
+* 30 GATE-level MCQs
+* Answers with explanations
+* Exam-ready revision notes for **GATE CSE 2027**.
