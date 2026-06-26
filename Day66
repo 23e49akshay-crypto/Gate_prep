@@ -1,0 +1,678 @@
+# 📘 Today’s Learning – Day 61 (GATE CSE 2027)
+
+**📅 Date:** 20 April 2026
+**📆 Day:** Monday
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Graph Algorithms – BFS, DFS, Topological Sort, Dijkstra's Algorithm & Bellman-Ford Algorithm**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 Why Graph Algorithms?
+
+Many real-world problems are modeled as graphs:
+
+* 🌐 Computer Networks
+* 🗺️ GPS Navigation
+* 📱 Social Networks
+* ✈️ Airline Route Planning
+* 🤖 AI Path Finding
+
+Graph algorithms help solve:
+
+* Traversal
+* Shortest Path
+* Cycle Detection
+* Dependency Resolution
+* Network Optimization
+
+---
+
+# 🔹 Breadth-First Search (BFS)
+
+BFS explores a graph **level by level**.
+
+### Data Structure Used
+
+✅ Queue (FIFO)
+
+---
+
+### Algorithm
+
+1. Start from the source vertex.
+2. Mark it as visited.
+3. Insert it into the queue.
+4. Remove a vertex from the queue.
+5. Visit all unvisited neighbors.
+6. Repeat until the queue becomes empty.
+
+---
+
+### Example
+
+```text
+      A
+     / \
+    B   C
+   / \   \
+  D   E   F
+```
+
+BFS Traversal:
+
+```text
+A → B → C → D → E → F
+```
+
+---
+
+### Complexity
+
+Time:
+
+[
+O(V+E)
+]
+
+Space:
+
+[
+O(V)
+]
+
+---
+
+### Applications
+
+* Shortest path in **unweighted graphs**
+* Web Crawlers
+* Broadcasting
+* Social Network Analysis
+
+---
+
+# 🔹 Depth-First Search (DFS)
+
+DFS explores one path completely before backtracking.
+
+### Data Structure Used
+
+✅ Stack (or Recursion)
+
+---
+
+### Example
+
+```text
+      A
+     / \
+    B   C
+   / \
+  D   E
+```
+
+DFS Traversal:
+
+```text
+A → B → D → E → C
+```
+
+---
+
+### Complexity
+
+Time:
+
+[
+O(V+E)
+]
+
+Space:
+
+[
+O(V)
+]
+
+---
+
+### Applications
+
+* Cycle Detection
+* Topological Sorting
+* Connected Components
+* Maze Solving
+
+---
+
+# 🔹 BFS vs DFS
+
+| Feature        | BFS              | DFS          |
+| -------------- | ---------------- | ------------ |
+| Data Structure | Queue            | Stack        |
+| Traversal      | Level-wise       | Depth-wise   |
+| Shortest Path  | Yes (Unweighted) | No           |
+| Memory         | More             | Less (often) |
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔹 Topological Sort
+
+Topological Sorting gives a **linear ordering** of vertices such that:
+
+For every directed edge:
+
+[
+u \rightarrow v
+]
+
+Vertex **u appears before v**.
+
+---
+
+### Works Only On
+
+✅ Directed Acyclic Graph (DAG)
+
+---
+
+### Algorithms
+
+* Kahn's Algorithm (Queue + Indegree)
+* DFS-based Topological Sort
+
+---
+
+### Complexity
+
+[
+O(V+E)
+]
+
+---
+
+### Applications
+
+* Course Scheduling
+* Build Systems
+* Task Scheduling
+* Dependency Management
+
+---
+
+# 🔹 Dijkstra's Algorithm
+
+### Purpose
+
+Finds the **shortest path from a single source** to all other vertices.
+
+---
+
+### Works For
+
+✅ Non-negative edge weights
+
+❌ Does NOT work correctly with negative edge weights.
+
+---
+
+### Steps
+
+1. Initialize distances.
+2. Select the unvisited vertex with minimum distance.
+3. Relax all adjacent edges.
+4. Repeat.
+
+---
+
+### Example
+
+```text
+A --4--> B
+|        |
+2        5
+|        |
+C --1--> D
+```
+
+---
+
+### Complexity
+
+Using Binary Heap:
+
+[
+O((V+E)\log V)
+]
+
+Using Array:
+
+[
+O(V^2)
+]
+
+---
+
+### Applications
+
+* GPS Navigation
+* Network Routing
+* Robot Path Planning
+
+---
+
+# 🔹 Bellman-Ford Algorithm
+
+### Purpose
+
+Computes shortest paths from a single source.
+
+### Special Feature
+
+Works even if the graph contains **negative edge weights**.
+
+---
+
+### Algorithm
+
+Relax every edge:
+
+[
+V-1
+]
+
+times.
+
+Then perform one more iteration.
+
+If any distance decreases again:
+
+➡️ A **negative weight cycle** exists.
+
+---
+
+### Complexity
+
+[
+O(VE)
+]
+
+---
+
+### Applications
+
+* Currency Exchange
+* Network Routing
+* Negative Edge Detection
+
+---
+
+# 🔹 Dijkstra vs Bellman-Ford
+
+| Feature               | Dijkstra       | Bellman-Ford |
+| --------------------- | -------------- | ------------ |
+| Negative Edges        | ❌ No           | ✅ Yes        |
+| Detect Negative Cycle | ❌ No           | ✅ Yes        |
+| Complexity            | O((V+E) log V) | O(VE)        |
+| Faster                | ✅ Yes          | ❌ No         |
+
+📌 Very common GATE comparison.
+
+---
+
+# 🔹 Relaxation
+
+Relaxation means updating the shortest known distance.
+
+If:
+
+[
+dist(u)+weight(u,v)<dist(v)
+]
+
+then update:
+
+[
+dist(v)
+]
+
+This is the core operation in both Dijkstra and Bellman-Ford.
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+BFS finds the shortest path **only in unweighted graphs**.
+
+---
+
+### Trap 2
+
+Dijkstra fails for graphs with **negative edge weights**.
+
+---
+
+### Trap 3
+
+Bellman-Ford detects **negative weight cycles**.
+
+---
+
+### Trap 4
+
+Topological Sorting is possible **only for DAGs**.
+
+---
+
+### Trap 5
+
+BFS uses a **Queue**.
+
+DFS uses a **Stack**.
+
+---
+
+# 📝 Formula Sheet
+
+| Algorithm        | Complexity     | Key Property               |
+| ---------------- | -------------- | -------------------------- |
+| BFS              | O(V+E)         | Shortest path (unweighted) |
+| DFS              | O(V+E)         | Cycle detection            |
+| Topological Sort | O(V+E)         | DAG only                   |
+| Dijkstra         | O((V+E) log V) | No negative edges          |
+| Bellman-Ford     | O(VE)          | Supports negative edges    |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+BFS uses:
+**Answer:** Queue
+**Explanation:** FIFO order enables level-wise traversal.
+
+---
+
+### Q2.
+
+DFS uses:
+**Answer:** Stack (or recursion)
+**Explanation:** Explores one path deeply before backtracking.
+
+---
+
+### Q3.
+
+BFS complexity:
+**Answer:** O(V+E)
+**Explanation:** Each vertex and edge is processed at most once.
+
+---
+
+### Q4.
+
+DFS complexity:
+**Answer:** O(V+E)
+**Explanation:** Complete traversal of vertices and edges.
+
+---
+
+### Q5.
+
+BFS finds shortest paths in:
+**Answer:** Unweighted graphs
+**Explanation:** It minimizes the number of edges traversed.
+
+---
+
+### Q6.
+
+Topological Sort works on:
+**Answer:** Directed Acyclic Graphs (DAGs)
+**Explanation:** Cycles prevent a valid ordering.
+
+---
+
+### Q7.
+
+Topological Sort complexity:
+**Answer:** O(V+E)
+**Explanation:** Using DFS or Kahn's algorithm.
+
+---
+
+### Q8.
+
+Dijkstra's algorithm requires:
+**Answer:** Non-negative edge weights
+**Explanation:** Negative edges can produce incorrect results.
+
+---
+
+### Q9.
+
+Bellman-Ford supports:
+**Answer:** Negative edge weights
+**Explanation:** It relaxes edges multiple times.
+
+---
+
+### Q10.
+
+Bellman-Ford detects:
+**Answer:** Negative weight cycles
+**Explanation:** Through an additional relaxation pass.
+
+---
+
+### Q11.
+
+Most PYQ-tested shortest path algorithm?
+**Answer:** Dijkstra's Algorithm
+**Explanation:** Frequently appears in GATE.
+
+---
+
+### Q12.
+
+Biggest GATE trap?
+**Answer:** Using Dijkstra with negative edge weights
+**Explanation:** It may produce incorrect shortest paths.
+
+---
+
+### Q13.
+
+Relaxation updates:
+**Answer:** Shortest distance estimate
+**Explanation:** Improves the known path if a shorter one is found.
+
+---
+
+### Q14.
+
+Bellman-Ford relaxes edges:
+**Answer:** V−1 times
+**Explanation:** This guarantees shortest paths if no negative cycle exists.
+
+---
+
+### Q15.
+
+Dijkstra with a binary heap has complexity:
+**Answer:** O((V+E) log V)
+**Explanation:** Priority queue operations dominate.
+
+---
+
+### Q16.
+
+Bellman-Ford complexity:
+**Answer:** O(VE)
+**Explanation:** All edges are processed V−1 times.
+
+---
+
+### Q17.
+
+Which algorithm is faster for graphs without negative weights?
+**Answer:** Dijkstra's Algorithm
+**Explanation:** More efficient than Bellman-Ford.
+
+---
+
+### Q18.
+
+Kahn's Algorithm is used for:
+**Answer:** Topological Sorting
+**Explanation:** It uses indegree and a queue.
+
+---
+
+### Q19.
+
+DFS is commonly used for:
+**Answer:** Cycle Detection
+**Explanation:** Back edges indicate cycles.
+
+---
+
+### Q20.
+
+BFS traversal order is:
+**Answer:** Level-wise
+**Explanation:** Vertices are visited layer by layer.
+
+---
+
+### Q21.
+
+DFS traversal order is:
+**Answer:** Depth-first
+**Explanation:** It explores one branch completely.
+
+---
+
+### Q22.
+
+Negative edge cycles make shortest paths:
+**Answer:** Undefined
+**Explanation:** Path cost can decrease indefinitely.
+
+---
+
+### Q23.
+
+Which algorithm uses indegree?
+**Answer:** Kahn's Algorithm
+**Explanation:** Vertices with indegree 0 are processed first.
+
+---
+
+### Q24.
+
+Topological Sort is useful for:
+**Answer:** Task Scheduling
+**Explanation:** Dependencies determine execution order.
+
+---
+
+### Q25.
+
+Which algorithm is suitable for GPS navigation?
+**Answer:** Dijkstra's Algorithm
+**Explanation:** Road networks typically have non-negative edge weights.
+
+---
+
+### Q26.
+
+BFS and DFS are:
+**Answer:** Graph traversal algorithms
+**Explanation:** They systematically visit graph vertices.
+
+---
+
+### Q27.
+
+Which algorithm can detect a negative cycle?
+**Answer:** Bellman-Ford
+**Explanation:** By performing one extra relaxation iteration.
+
+---
+
+### Q28.
+
+Which algorithm is not applicable to graphs with cycles for ordering?
+**Answer:** Topological Sort
+**Explanation:** A topological order exists only for DAGs.
+
+---
+
+### Q29.
+
+If all edge weights are equal, the shortest path can be found using:
+**Answer:** BFS
+**Explanation:** It minimizes the number of edges traversed.
+
+---
+
+### Q30.
+
+The primary purpose of shortest path algorithms is to:
+**Answer:** Find minimum-cost paths from a source
+**Explanation:** They compute the least-cost route to each reachable vertex.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 **Algorithms**
+
+### Next Topic (Day 62)
+
+# 📚 Algorithms
+
+**Minimum Spanning Tree (Prim's & Kruskal's Algorithms), Union-Find & Algorithm Revision**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. Why does **BFS** find shortest paths only in **unweighted graphs**?
+2. Why can't **Dijkstra's Algorithm** handle negative edge weights?
+3. How does **Bellman-Ford** detect a negative weight cycle?
+4. Why is **Topological Sort** valid only for DAGs?
+5. What is the purpose of the **relaxation** operation?
+
+When you're ready, type:
+
+## **Generate PDF**
+
+I'll generate the complete **Day 61 PDF** with:
+
+* Complete theory
+* Formula sheet
+* Comparison tables
+* 30 GATE-level MCQs
+* Answers with explanations
+* GATE-focused revision notes.
