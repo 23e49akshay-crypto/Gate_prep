@@ -1,0 +1,573 @@
+# 📘 Today’s Learning – Day 62 (GATE CSE 2027)
+
+**📅 Date:** 21 April 2026
+**📆 Day:** Tuesday
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Minimum Spanning Tree (Prim's & Kruskal's Algorithms), Union-Find & Complete Algorithms Revision**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Minimum Spanning Tree (MST)?
+
+A **Minimum Spanning Tree (MST)** is a spanning tree of a **connected, undirected, weighted graph** with the **minimum possible total edge weight**.
+
+A **Spanning Tree**:
+
+* Connects all vertices.
+* Contains no cycles.
+* Has exactly **V − 1 edges**, where V is the number of vertices.
+
+📌 **Important:** MST is defined only for **connected, undirected, weighted graphs**.
+
+---
+
+## Example
+
+```text
+     2
+A ------- B
+| \       |
+|  \4     |3
+6   \     |
+|    \    |
+C ------- D
+     1
+```
+
+Possible MST:
+
+```text
+A --- B (2)
+B --- D (3)
+D --- C (1)
+```
+
+Total Weight:
+
+[
+2 + 3 + 1 = 6
+]
+
+---
+
+# 🔹 Properties of MST
+
+* Contains exactly **V − 1** edges.
+* Has no cycles.
+* Connects all vertices.
+* May **not be unique** if multiple edges have the same weight.
+
+📌 **GATE Trap:** Multiple MSTs can exist with the same total weight.
+
+---
+
+# 🔹 Prim's Algorithm
+
+Prim's Algorithm builds the MST by **starting from any vertex** and repeatedly adding the **minimum-weight edge** that connects a visited vertex to an unvisited vertex.
+
+---
+
+## Steps
+
+1. Choose any starting vertex.
+2. Mark it as visited.
+3. Select the smallest edge connecting to an unvisited vertex.
+4. Repeat until all vertices are included.
+
+---
+
+## Data Structure Used
+
+✅ Priority Queue (Min Heap)
+
+---
+
+## Complexity
+
+Using Binary Heap:
+
+[
+O((V+E)\log V)
+]
+
+Using Adjacency Matrix:
+
+[
+O(V^2)
+]
+
+---
+
+# 🔹 Kruskal's Algorithm
+
+Kruskal's Algorithm builds the MST by selecting the **smallest edge** that **does not form a cycle**.
+
+---
+
+## Steps
+
+1. Sort all edges by increasing weight.
+2. Pick the smallest edge.
+3. If it forms a cycle, discard it.
+4. Otherwise, include it.
+5. Repeat until **V − 1** edges are selected.
+
+---
+
+## Data Structure Used
+
+✅ Union-Find (Disjoint Set Union - DSU)
+
+---
+
+## Complexity
+
+Sorting edges:
+
+[
+O(E\log E)
+]
+
+Union-Find operations are nearly constant time.
+
+---
+
+# 🔹 Union-Find (Disjoint Set Union - DSU)
+
+Union-Find is a data structure used to efficiently manage **disjoint sets**.
+
+It supports three operations:
+
+### MakeSet(x)
+
+Creates a new set containing x.
+
+---
+
+### Find(x)
+
+Returns the representative (root) of the set containing x.
+
+---
+
+### Union(x, y)
+
+Merges the sets containing x and y.
+
+---
+
+# 🔹 Path Compression
+
+Path Compression optimizes the **Find** operation by making every visited node point directly to the root.
+
+Example:
+
+Before:
+
+```text
+1
+|
+2
+|
+3
+|
+4
+```
+
+After `Find(4)`:
+
+```text
+1
+├──2
+├──3
+└──4
+```
+
+This significantly reduces future search time.
+
+---
+
+# 🔹 Union by Rank
+
+When merging two sets:
+
+* Attach the smaller tree under the larger tree.
+* Keeps the overall tree height small.
+
+Together with Path Compression, operations become **almost O(1)** (amortized).
+
+---
+
+# 🔹 Prim's vs Kruskal's
+
+| Feature         | Prim's         | Kruskal's      |
+| --------------- | -------------- | -------------- |
+| Strategy        | Vertex-based   | Edge-based     |
+| Data Structure  | Priority Queue | Union-Find     |
+| Cycle Detection | Implicit       | Explicit (DSU) |
+| Best for        | Dense Graphs   | Sparse Graphs  |
+| Complexity      | O((V+E) log V) | O(E log E)     |
+
+📌 Very important comparison for GATE.
+
+---
+
+# 🔹 Complete Algorithms Revision Sheet
+
+| Algorithm         | Time Complexity | Main Use                              |
+| ----------------- | --------------- | ------------------------------------- |
+| Linear Search     | O(n)            | Searching                             |
+| Binary Search     | O(log n)        | Searching                             |
+| Merge Sort        | O(n log n)      | Sorting                               |
+| Quick Sort (Avg.) | O(n log n)      | Sorting                               |
+| Heap Sort         | O(n log n)      | Sorting                               |
+| BFS               | O(V+E)          | Traversal, shortest path (unweighted) |
+| DFS               | O(V+E)          | Traversal, cycle detection            |
+| Dijkstra          | O((V+E) log V)  | Shortest path (non-negative)          |
+| Bellman-Ford      | O(VE)           | Shortest path (negative edges)        |
+| Prim's            | O((V+E) log V)  | Minimum Spanning Tree                 |
+| Kruskal's         | O(E log E)      | Minimum Spanning Tree                 |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+MST is defined only for **connected** graphs.
+
+---
+
+### Trap 2
+
+MST has exactly:
+
+[
+V - 1
+]
+
+edges.
+
+---
+
+### Trap 3
+
+Prim's algorithm does **not** require sorting all edges.
+
+---
+
+### Trap 4
+
+Kruskal's algorithm **must** sort edges.
+
+---
+
+### Trap 5
+
+Union-Find is primarily associated with **Kruskal's Algorithm**, not Prim's.
+
+---
+
+# 📝 Formula Sheet
+
+| Algorithm               | Complexity     |
+| ----------------------- | -------------- |
+| Prim's (Heap)           | O((V+E) log V) |
+| Kruskal's               | O(E log E)     |
+| Find (Path Compression) | Nearly O(1)    |
+| Union (By Rank)         | Nearly O(1)    |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+An MST contains:
+**Answer:** V − 1 edges
+**Explanation:** Every spanning tree of a connected graph has V−1 edges.
+
+---
+
+### Q2.
+
+MST is defined for:
+**Answer:** Connected, undirected, weighted graphs
+**Explanation:** All three conditions are required.
+
+---
+
+### Q3.
+
+Prim's Algorithm starts from:
+**Answer:** Any vertex
+**Explanation:** The starting vertex can be chosen arbitrarily.
+
+---
+
+### Q4.
+
+Kruskal's Algorithm processes:
+**Answer:** Edges in increasing order of weight
+**Explanation:** It greedily selects the lightest edge.
+
+---
+
+### Q5.
+
+Prim's Algorithm commonly uses:
+**Answer:** Priority Queue (Min Heap)
+**Explanation:** To efficiently select the next minimum edge.
+
+---
+
+### Q6.
+
+Kruskal's Algorithm commonly uses:
+**Answer:** Union-Find (DSU)
+**Explanation:** To detect cycles efficiently.
+
+---
+
+### Q7.
+
+Union-Find supports:
+**Answer:** MakeSet, Find, Union
+**Explanation:** These are its fundamental operations.
+
+---
+
+### Q8.
+
+Path Compression improves:
+**Answer:** Find operation
+**Explanation:** It flattens the tree structure.
+
+---
+
+### Q9.
+
+Union by Rank aims to:
+**Answer:** Keep trees shallow
+**Explanation:** This improves efficiency.
+
+---
+
+### Q10.
+
+Most PYQ-tested MST algorithm?
+**Answer:** Kruskal's Algorithm
+**Explanation:** Frequently appears in GATE.
+
+---
+
+### Q11.
+
+Biggest GATE trap?
+**Answer:** Assuming MST is always unique
+**Explanation:** Multiple MSTs can exist if edge weights permit.
+
+---
+
+### Q12.
+
+Prim's Algorithm complexity (Heap):
+**Answer:** O((V+E) log V)
+**Explanation:** Heap operations dominate.
+
+---
+
+### Q13.
+
+Kruskal's Algorithm complexity:
+**Answer:** O(E log E)
+**Explanation:** Sorting edges dominates.
+
+---
+
+### Q14.
+
+Cycle detection in Kruskal uses:
+**Answer:** Union-Find
+**Explanation:** Prevents adding edges that create cycles.
+
+---
+
+### Q15.
+
+MST minimizes:
+**Answer:** Total edge weight
+**Explanation:** Subject to connecting all vertices without cycles.
+
+---
+
+### Q16.
+
+Prim's Algorithm is:
+**Answer:** Greedy
+**Explanation:** It repeatedly chooses the smallest connecting edge.
+
+---
+
+### Q17.
+
+Kruskal's Algorithm is:
+**Answer:** Greedy
+**Explanation:** It repeatedly chooses the smallest valid edge.
+
+---
+
+### Q18.
+
+A spanning tree contains:
+**Answer:** No cycles
+**Explanation:** Trees are acyclic.
+
+---
+
+### Q19.
+
+Which algorithm is better for sparse graphs?
+**Answer:** Kruskal's Algorithm
+**Explanation:** Sorting fewer edges is efficient.
+
+---
+
+### Q20.
+
+Which algorithm is often preferred for dense graphs?
+**Answer:** Prim's Algorithm
+**Explanation:** It efficiently grows the MST.
+
+---
+
+### Q21.
+
+Find operation returns:
+**Answer:** Representative of a set
+**Explanation:** Used to identify connected components.
+
+---
+
+### Q22.
+
+Union operation:
+**Answer:** Merges two sets
+**Explanation:** Combines disjoint components.
+
+---
+
+### Q23.
+
+A disconnected graph has:
+**Answer:** No spanning tree
+**Explanation:** Not all vertices can be connected.
+
+---
+
+### Q24.
+
+Path Compression primarily reduces:
+**Answer:** Tree height
+**Explanation:** This speeds up future Find operations.
+
+---
+
+### Q25.
+
+Which algorithm requires sorting all edges first?
+**Answer:** Kruskal's Algorithm
+**Explanation:** Edge order is crucial.
+
+---
+
+### Q26.
+
+Prim's Algorithm grows the MST:
+**Answer:** Vertex by vertex
+**Explanation:** It expands from an initial vertex.
+
+---
+
+### Q27.
+
+Kruskal's Algorithm grows the MST:
+**Answer:** Edge by edge
+**Explanation:** It adds the next lightest valid edge.
+
+---
+
+### Q28.
+
+An MST with V vertices always has:
+**Answer:** V−1 edges
+**Explanation:** Fundamental property of trees.
+
+---
+
+### Q29.
+
+Union-Find optimization techniques are:
+**Answer:** Path Compression and Union by Rank
+**Explanation:** Together they make operations nearly constant time.
+
+---
+
+### Q30.
+
+The primary objective of MST algorithms is:
+**Answer:** Connect all vertices with minimum total edge weight
+**Explanation:** This is the definition of a Minimum Spanning Tree.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms (Core Topics)
+
+### Current Subject
+
+🔄 **Algorithms – Final Revision Completed**
+
+### Next Topic (Day 63)
+
+# 📚 Theory of Computation (TOC)
+
+**Introduction to Automata Theory, Alphabets, Strings, Languages & Finite Automata**
+
+---
+
+### 📌 Revision Tip
+
+Before moving to TOC, make sure you can confidently answer:
+
+1. What is the difference between **Prim's** and **Kruskal's** algorithms?
+2. Why does **Kruskal's Algorithm** use Union-Find?
+3. Why does an MST always contain **V−1 edges**?
+4. Can a graph have multiple MSTs?
+5. Why is Path Compression important?
+
+---
+
+When you've completed today's lesson, type:
+
+## **Generate PDF**
+
+I'll prepare the complete **Day 62 PDF** containing:
+
+* Complete theory
+* Formula sheet
+* Comparison tables
+* All 30 MCQs
+* Answers with explanations
+* Revision notes in your standard GATE CSE PDF format.
