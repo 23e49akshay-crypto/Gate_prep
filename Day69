@@ -1,0 +1,788 @@
+# 📘 Today’s Learning – Day 63 (GATE CSE 2027)
+
+**📅 Date:** **22 April 2026**
+**📆 Day:** **Wednesday**
+**📚 Subject:** **Theory of Computation (TOC)**
+**🧠 Topic:** **Introduction to Automata Theory, Alphabets, Strings, Languages & Finite Automata**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Theory of Computation (TOC)?
+
+**Theory of Computation (TOC)** is a branch of Computer Science that studies:
+
+* What problems can be solved by a computer.
+* How efficiently they can be solved.
+* What problems **cannot** be solved.
+
+TOC forms the mathematical foundation of:
+
+* Compiler Design
+* Artificial Intelligence
+* Programming Languages
+* Formal Verification
+* Parsing
+* Operating Systems
+
+📌 **GATE Weightage:** Approximately **8–12 marks** every year.
+
+---
+
+# 🔹 What is an Automaton?
+
+An **Automaton** (plural: Automata) is an **abstract mathematical machine** that reads an input string and decides whether to **accept** or **reject** it.
+
+Examples:
+
+* Vending Machine
+* ATM
+* Traffic Signal Controller
+* Login Authentication System
+
+---
+
+# 🔹 Types of Automata
+
+| Automaton                      | Recognizes                       |
+| ------------------------------ | -------------------------------- |
+| Finite Automaton (FA)          | Regular Languages                |
+| Pushdown Automaton (PDA)       | Context-Free Languages           |
+| Linear Bounded Automaton (LBA) | Context-Sensitive Languages      |
+| Turing Machine (TM)            | Recursively Enumerable Languages |
+
+📌 This hierarchy is called the **Chomsky Hierarchy**.
+
+---
+
+# 🔹 Alphabet (Σ)
+
+An **Alphabet** is a **finite, non-empty set of symbols**.
+
+Examples:
+
+```text
+Σ = {0,1}
+```
+
+Binary alphabet.
+
+```text
+Σ = {a,b,c}
+```
+
+English characters.
+
+---
+
+# 🔹 Symbol
+
+A **Symbol** is a single element of an alphabet.
+
+Example:
+
+If
+
+```text
+Σ = {a,b}
+```
+
+Then
+
+```text
+a
+```
+
+is a symbol.
+
+---
+
+# 🔹 String (Word)
+
+A **String** is a finite sequence of symbols taken from an alphabet.
+
+Example:
+
+Alphabet:
+
+```text
+Σ={0,1}
+```
+
+Valid strings:
+
+```text
+0
+1
+01
+101
+1110
+```
+
+---
+
+# 🔹 Length of a String
+
+Length is denoted by:
+
+[
+|w|
+]
+
+Example:
+
+```text
+w = 10110
+```
+
+Then:
+
+[
+|w|=5
+]
+
+---
+
+### Examples
+
+| String | Length |
+| ------ | ------ |
+| ε      | 0      |
+| a      | 1      |
+| ab     | 2      |
+| 101    | 3      |
+
+---
+
+# 🔹 Empty String (ε)
+
+The **empty string** contains **no symbols**.
+
+Representation:
+
+[
+\varepsilon
+]
+
+Length:
+
+[
+|\varepsilon|=0
+]
+
+📌 **GATE Trap:**
+
+Empty string (ε) ≠ Empty set (∅)
+
+---
+
+# 🔹 Empty Set vs Empty String
+
+| Empty String (ε)      | Empty Set (∅)       |
+| --------------------- | ------------------- |
+| Contains zero symbols | Contains no strings |
+| Length = 0            | No length           |
+| One valid string      | No elements         |
+
+Example:
+
+```text
+{ε}
+```
+
+contains one string.
+
+Whereas
+
+```text
+∅
+```
+
+contains nothing.
+
+---
+
+# 🔹 Language
+
+A **Language** is a **set of strings** over an alphabet.
+
+Example:
+
+Alphabet:
+
+```text
+Σ={a,b}
+```
+
+Language:
+
+```text
+L={a,ab,abb,abbb}
+```
+
+---
+
+# 🔹 Infinite Language
+
+Example:
+
+```text
+L={aⁿ | n≥0}
+```
+
+Strings:
+
+```text
+ε
+a
+aa
+aaa
+aaaa
+...
+```
+
+Infinite.
+
+---
+
+# 🔹 Finite Language
+
+Example:
+
+```text
+L={a,b,ab}
+```
+
+Only three strings.
+
+---
+
+# 🔹 String Operations
+
+---
+
+## Concatenation
+
+If
+
+```text
+x="ab"
+
+y="cd"
+```
+
+Then
+
+```text
+xy="abcd"
+```
+
+---
+
+## Reverse
+
+If
+
+```text
+w="abc"
+```
+
+Then
+
+```text
+wᴿ="cba"
+```
+
+---
+
+## Power of a String
+
+If
+
+```text
+w="ab"
+```
+
+Then
+
+```text
+w²="abab"
+
+w³="ababab"
+```
+
+---
+
+# 🔹 Closure (Kleene Star)
+
+Given:
+
+```text
+Σ={a,b}
+```
+
+Then
+
+[
+Σ^*
+]
+
+means:
+
+**All possible finite strings** over Σ.
+
+Example:
+
+```text
+ε
+a
+b
+aa
+ab
+ba
+bb
+aaa
+...
+```
+
+Infinite.
+
+---
+
+# 🔹 Positive Closure
+
+Notation:
+
+[
+Σ^+
+]
+
+Contains:
+
+All strings except ε.
+
+Relationship:
+
+[
+Σ^+=Σ^*-{\varepsilon}
+]
+
+---
+
+# 🔹 Finite Automaton (FA)
+
+A **Finite Automaton** is the simplest computational model.
+
+It consists of:
+
+[
+(Q,\Sigma,\delta,q_0,F)
+]
+
+Where:
+
+| Symbol | Meaning                  |
+| ------ | ------------------------ |
+| Q      | Set of states            |
+| Σ      | Input alphabet           |
+| δ      | Transition function      |
+| q₀     | Start state              |
+| F      | Final (accepting) states |
+
+📌 This 5-tuple definition is **one of the most frequently asked GATE questions**.
+
+---
+
+# 🔹 Example of a Finite Automaton
+
+Language:
+
+All binary strings ending with **1**.
+
+States:
+
+```text
+q0 → Start
+
+q1 → Accept
+```
+
+Transition Table:
+
+| Current State | Input 0 | Input 1 |
+| ------------- | ------- | ------- |
+| q0            | q0      | q1      |
+| q1            | q0      | q1      |
+
+Accepting State:
+
+```text
+q1
+```
+
+---
+
+# 🔹 Applications of Finite Automata
+
+* Lexical Analysis (Compiler Design)
+* Pattern Matching
+* Text Editors
+* Network Protocols
+* Spell Checkers
+* Digital Circuit Design
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+[
+\varepsilon \neq \varnothing
+]
+
+Empty string is **not** the empty set.
+
+---
+
+### Trap 2
+
+A language is a **set of strings**, **not** a set of symbols.
+
+---
+
+### Trap 3
+
+Alphabet is **finite**.
+
+---
+
+### Trap 4
+
+Finite Automata recognize **Regular Languages** only.
+
+---
+
+### Trap 5
+
+[
+Σ^+
+]
+
+does **not** contain ε.
+
+---
+
+# 📝 Formula Sheet
+
+| Concept              | Formula          |
+| -------------------- | ---------------- |
+| Length of ε          | 0                |
+| Σ⁺                   | Σ* − {ε}         |
+| String Concatenation | xy               |
+| Reverse              | wᴿ               |
+| FA Definition        | (Q, Σ, δ, q₀, F) |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+Theory of Computation mainly studies:
+**Answer:** Computability and computational models
+**Explanation:** TOC analyzes what problems can be solved and how.
+
+---
+
+### Q2.
+
+An automaton is:
+**Answer:** An abstract mathematical machine
+**Explanation:** It accepts or rejects input strings.
+
+---
+
+### Q3.
+
+Finite Automata recognize:
+**Answer:** Regular Languages
+**Explanation:** They cannot recognize context-free languages.
+
+---
+
+### Q4.
+
+An alphabet is:
+**Answer:** A finite, non-empty set of symbols
+**Explanation:** Symbols are the basic building blocks.
+
+---
+
+### Q5.
+
+A string is:
+**Answer:** A finite sequence of symbols
+**Explanation:** Strings are formed from an alphabet.
+
+---
+
+### Q6.
+
+Length of ε:
+**Answer:** 0
+**Explanation:** The empty string has no symbols.
+
+---
+
+### Q7.
+
+ε represents:
+**Answer:** Empty String
+**Explanation:** It is a valid string of length zero.
+
+---
+
+### Q8.
+
+∅ represents:
+**Answer:** Empty Set
+**Explanation:** It contains no strings.
+
+---
+
+### Q9.
+
+Which is correct?
+A) ε = ∅
+B) ε ≠ ∅
+C) ε ⊂ ∅
+D) ∅ contains ε
+
+**Answer:** B
+**Explanation:** Empty string and empty set are different concepts.
+
+---
+
+### Q10.
+
+A language is:
+**Answer:** A set of strings
+**Explanation:** Not a set of symbols.
+
+---
+
+### Q11.
+
+Σ* contains:
+**Answer:** All finite strings including ε
+**Explanation:** Kleene Star includes the empty string.
+
+---
+
+### Q12.
+
+Σ⁺ contains:
+**Answer:** All non-empty strings
+**Explanation:** Positive closure excludes ε.
+
+---
+
+### Q13.
+
+Most PYQ-tested topic?
+**Answer:** Difference between ε and ∅
+**Explanation:** A very common conceptual question.
+
+---
+
+### Q14.
+
+Biggest GATE trap?
+**Answer:** Confusing alphabet with language
+**Explanation:** Alphabet is a set of symbols; language is a set of strings.
+
+---
+
+### Q15.
+
+The reverse of "abc" is:
+**Answer:** "cba"
+**Explanation:** Reverse changes the order of symbols.
+
+---
+
+### Q16.
+
+If w = "ab", then w² equals:
+**Answer:** "abab"
+**Explanation:** String power means repeated concatenation.
+
+---
+
+### Q17.
+
+The FA start state is denoted by:
+**Answer:** q₀
+**Explanation:** Initial state of the automaton.
+
+---
+
+### Q18.
+
+Accepting states are represented by:
+**Answer:** F
+**Explanation:** Set of final states in the 5-tuple.
+
+---
+
+### Q19.
+
+The transition function is denoted by:
+**Answer:** δ
+**Explanation:** It defines state changes.
+
+---
+
+### Q20.
+
+The set of states is represented by:
+**Answer:** Q
+**Explanation:** Q contains all states of the automaton.
+
+---
+
+### Q21.
+
+The input alphabet is represented by:
+**Answer:** Σ
+**Explanation:** Σ is the set of valid input symbols.
+
+---
+
+### Q22.
+
+An FA is formally represented as:
+**Answer:** (Q, Σ, δ, q₀, F)
+**Explanation:** Standard 5-tuple notation.
+
+---
+
+### Q23.
+
+Which closure contains ε?
+**Answer:** Σ*
+**Explanation:** Kleene Star always includes the empty string.
+
+---
+
+### Q24.
+
+Which closure excludes ε?
+**Answer:** Σ⁺
+**Explanation:** Positive closure excludes the empty string.
+
+---
+
+### Q25.
+
+Finite Automata are widely used in:
+**Answer:** Lexical Analysis
+**Explanation:** Token recognition in compilers.
+
+---
+
+### Q26.
+
+Which hierarchy includes Finite Automata?
+**Answer:** Chomsky Hierarchy
+**Explanation:** FA recognizes regular languages.
+
+---
+
+### Q27.
+
+A finite language has:
+**Answer:** A finite number of strings
+**Explanation:** Its cardinality is finite.
+
+---
+
+### Q28.
+
+An infinite language has:
+**Answer:** Infinite strings
+**Explanation:** Example: {aⁿ | n ≥ 0}.
+
+---
+
+### Q29.
+
+String concatenation joins:
+**Answer:** Two strings
+**Explanation:** It appends one string to another.
+
+---
+
+### Q30.
+
+Finite Automata are the foundation for:
+**Answer:** Regular Language Recognition
+**Explanation:** They accept exactly the class of regular languages.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+
+### Current Subject
+
+🔄 **Theory of Computation (TOC)**
+
+### Next Topic (Day 64)
+
+# 📚 Theory of Computation
+
+**Deterministic Finite Automata (DFA) – Formal Definition, State Transition Diagrams, Transition Tables & Language Recognition**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. What is the difference between **ε** and **∅**?
+2. What is the difference between an **Alphabet**, a **String**, and a **Language**?
+3. What is the formal **5-tuple definition** of a Finite Automaton?
+4. What is the difference between **Σ*** and **Σ⁺**?
+5. Which class of languages is recognized by **Finite Automata**?
+
+---
+
+## 📊 Overall Progress (After Day 63)
+
+| Subject                              |                         Status |
+| ------------------------------------ | -----------------------------: |
+| Engineering Mathematics              |                    ✅ Completed |
+| Digital Logic                        |                    ✅ Completed |
+| Computer Organization & Architecture |                    ✅ Completed |
+| Programming & Data Structures        |                    ✅ Completed |
+| Algorithms                           |                    ✅ Completed |
+| Theory of Computation                | 🟨 Started (1 topic completed) |
+| Compiler Design                      |                      ⏳ Pending |
+| Operating Systems                    |                      ⏳ Pending |
+| DBMS                                 |                      ⏳ Pending |
+| Computer Networks                    |                      ⏳ Pending |
+| General Aptitude                     |                      ⏳ Pending |
+
+**Overall GATE CSE Syllabus Completion:** **~52%**
