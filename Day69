@@ -1,0 +1,579 @@
+# 📘 Today’s Learning – Day 64 (GATE CSE 2027)
+
+**📅 Date:** **23 April 2026**
+**📆 Day:** **Thursday**
+**📚 Subject:** **Theory of Computation (TOC)**
+**🧠 Topic:** **Deterministic Finite Automata (DFA) – Formal Definition, State Transition Diagrams, Transition Tables & Language Recognition**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Deterministic Finite Automaton (DFA)?
+
+A **Deterministic Finite Automaton (DFA)** is a finite-state machine in which **for every state and every input symbol, there is exactly one next state**.
+
+📌 **Deterministic** means there is **no ambiguity** in choosing the next state.
+
+---
+
+# 🔹 Formal Definition
+
+A DFA is represented by the **5-tuple**:
+
+[
+M=(Q,\Sigma,\delta,q_0,F)
+]
+
+Where:
+
+| Symbol | Meaning                         |
+| ------ | ------------------------------- |
+| **Q**  | Finite set of states            |
+| **Σ**  | Input alphabet                  |
+| **δ**  | Transition function             |
+| **q₀** | Start state                     |
+| **F**  | Set of final (accepting) states |
+
+---
+
+# 🔹 Transition Function
+
+The transition function is:
+
+[
+\delta : Q \times \Sigma \rightarrow Q
+]
+
+Meaning:
+
+For every **state** and **input symbol**, the next state is **unique**.
+
+Example:
+
+[
+\delta(q_0,1)=q_1
+]
+
+---
+
+# 🔹 Conditions for a Valid DFA
+
+A DFA must satisfy:
+
+✅ Exactly **one** transition for every input symbol from each state.
+
+✅ No ε-transitions.
+
+✅ No multiple transitions for the same input.
+
+---
+
+# 🔹 Example DFA
+
+### Language
+
+All binary strings ending with **1**.
+
+---
+
+### States
+
+```text
+q0 → Start
+
+q1 → Accept
+```
+
+---
+
+### Transition Diagram
+
+```text
+             1
+        +----------+
+        |          v
+--> (q0) -------> ((q1))
+     ^  |0        |1
+     |  |         |
+     |  +---------+
+     |      0
+     +---------------+
+```
+
+((q1)) = Accepting state
+
+---
+
+### Transition Table
+
+| Current State | Input 0 | Input 1 |
+| ------------- | ------- | ------- |
+| → q0          | q0      | q1      |
+| *q1           | q0      | q1      |
+
+Legend:
+
+* → = Start State
+* * = Final State
+
+---
+
+# 🔹 How DFA Works
+
+Example Input:
+
+```text
+1011
+```
+
+Steps:
+
+| Current State | Input | Next State |
+| ------------- | ----- | ---------- |
+| q0            | 1     | q1         |
+| q1            | 0     | q0         |
+| q0            | 1     | q1         |
+| q1            | 1     | q1         |
+
+Final State:
+
+```text
+q1
+```
+
+Since q1 is an accepting state:
+
+✅ **String Accepted**
+
+---
+
+# 🔹 Another Example
+
+Language:
+
+All strings containing an **even number of 0s**.
+
+---
+
+### States
+
+```text
+q0 → Even number of 0s (Accept)
+
+q1 → Odd number of 0s
+```
+
+---
+
+### Transition Table
+
+| State | 0  | 1  |
+| ----- | -- | -- |
+| → *q0 | q1 | q0 |
+| q1    | q0 | q1 |
+
+---
+
+### Example
+
+Input:
+
+```text
+10010
+```
+
+Number of zeros = 3
+
+Final state:
+
+```text
+q1
+```
+
+❌ Rejected
+
+---
+
+# 🔹 DFA Language Recognition
+
+A string is **accepted** if, after processing all input symbols, the automaton ends in a **final state**.
+
+Otherwise:
+
+❌ Rejected
+
+---
+
+# 🔹 DFA Properties
+
+* Finite number of states.
+* Exactly one transition per symbol.
+* No ε-transitions.
+* Recognizes Regular Languages.
+* Deterministic behavior.
+
+---
+
+# 🔹 Applications of DFA
+
+* Lexical Analysis in Compilers
+* Pattern Matching
+* Network Protocol Design
+* Spell Checkers
+* Digital Circuit Design
+* Text Processing
+
+---
+
+# 🔹 DFA vs NFA
+
+| Feature           | DFA               | NFA                |
+| ----------------- | ----------------- | ------------------ |
+| Next State        | Exactly one       | One, many, or none |
+| ε-Transitions     | Not allowed       | Allowed (in ε-NFA) |
+| Deterministic     | Yes               | No                 |
+| Execution         | Simpler           | More flexible      |
+| Recognition Power | Regular Languages | Regular Languages  |
+
+📌 **Important:** DFA and NFA recognize the **same class of languages (Regular Languages).**
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+A DFA **cannot** have ε-transitions.
+
+---
+
+### Trap 2
+
+Every state must have **exactly one outgoing transition** for each input symbol.
+
+---
+
+### Trap 3
+
+A DFA may have **zero, one, or multiple accepting states**.
+
+---
+
+### Trap 4
+
+DFA and NFA have **equal computational power**.
+
+---
+
+### Trap 5
+
+Acceptance depends on the **final state after reading the complete input**, not on intermediate states.
+
+---
+
+# 📝 Formula Sheet
+
+| Concept             | Formula / Rule   |
+| ------------------- | ---------------- |
+| DFA                 | (Q, Σ, δ, q₀, F) |
+| Transition Function | δ : Q × Σ → Q    |
+| Accept              | Final state ∈ F  |
+| Reject              | Final state ∉ F  |
+| ε-Transitions       | Not Allowed      |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+A DFA is:
+**Answer:** A deterministic finite-state machine.
+**Explanation:** For each state and input, there is exactly one next state.
+
+---
+
+### Q2.
+
+The formal definition of a DFA is:
+**Answer:** (Q, Σ, δ, q₀, F)
+**Explanation:** This is the standard 5-tuple representation.
+
+---
+
+### Q3.
+
+The transition function δ maps:
+**Answer:** Q × Σ → Q
+**Explanation:** Each state-input pair maps to one next state.
+
+---
+
+### Q4.
+
+A DFA allows ε-transitions.
+**Answer:** False
+**Explanation:** ε-transitions are not allowed in a DFA.
+
+---
+
+### Q5.
+
+Each state in a DFA must have:
+**Answer:** Exactly one transition for every input symbol.
+**Explanation:** This ensures determinism.
+
+---
+
+### Q6.
+
+A DFA recognizes:
+**Answer:** Regular Languages.
+**Explanation:** DFAs accept exactly the regular languages.
+
+---
+
+### Q7.
+
+A string is accepted if:
+**Answer:** The final state is an accepting state.
+**Explanation:** Acceptance is determined after processing the entire string.
+
+---
+
+### Q8.
+
+Most PYQ-tested topic?
+**Answer:** DFA construction and transition tables.
+**Explanation:** Very common in GATE.
+
+---
+
+### Q9.
+
+Biggest GATE trap?
+**Answer:** Confusing DFA with NFA.
+**Explanation:** DFA has exactly one transition for each input.
+
+---
+
+### Q10.
+
+The start state is represented by:
+**Answer:** q₀
+**Explanation:** It is the initial state of the DFA.
+
+---
+
+### Q11.
+
+The accepting states are represented by:
+**Answer:** F
+**Explanation:** F is the set of final states.
+
+---
+
+### Q12.
+
+A DFA may have:
+**Answer:** Multiple accepting states.
+**Explanation:** There is no restriction on the number of accepting states.
+
+---
+
+### Q13.
+
+A DFA can have:
+**Answer:** One start state.
+**Explanation:** Exactly one initial state is defined.
+
+---
+
+### Q14.
+
+If no accepting state is reached:
+**Answer:** The string is rejected.
+**Explanation:** Acceptance requires ending in a final state.
+
+---
+
+### Q15.
+
+The alphabet Σ must be:
+**Answer:** Finite and non-empty.
+**Explanation:** This is part of the DFA definition.
+
+---
+
+### Q16.
+
+The set Q contains:
+**Answer:** All states.
+**Explanation:** Q is the finite set of states.
+
+---
+
+### Q17.
+
+Transition diagrams are:
+**Answer:** Graphical representations of DFAs.
+**Explanation:** States are nodes and transitions are labeled edges.
+
+---
+
+### Q18.
+
+A DFA can recognize:
+**Answer:** Strings ending with 1.
+**Explanation:** Such languages are regular.
+
+---
+
+### Q19.
+
+Even parity checking can be implemented using:
+**Answer:** DFA.
+**Explanation:** Regular languages include parity checks.
+
+---
+
+### Q20.
+
+Which is true?
+A) DFA is more powerful than NFA.
+B) NFA is more powerful than DFA.
+C) DFA and NFA recognize the same languages.
+D) None of the above.
+
+**Answer:** C
+**Explanation:** They have equal expressive power.
+
+---
+
+### Q21.
+
+DFA transitions are:
+**Answer:** Deterministic.
+**Explanation:** Only one transition exists for each input.
+
+---
+
+### Q22.
+
+Acceptance depends on:
+**Answer:** The final state after reading the entire input.
+**Explanation:** Intermediate states do not determine acceptance.
+
+---
+
+### Q23.
+
+A transition table represents:
+**Answer:** State changes for each input symbol.
+**Explanation:** It is another representation of a DFA.
+
+---
+
+### Q24.
+
+A DFA can be represented using:
+**Answer:** Transition table and state diagram.
+**Explanation:** Both representations are equivalent.
+
+---
+
+### Q25.
+
+Which is NOT allowed in a DFA?
+**Answer:** Multiple transitions on the same input from a state.
+**Explanation:** That would make it nondeterministic.
+
+---
+
+### Q26.
+
+A DFA with no accepting states accepts:
+**Answer:** No strings.
+**Explanation:** Every input is rejected.
+
+---
+
+### Q27.
+
+A DFA with the start state as the only accepting state accepts:
+**Answer:** The empty string ε (and possibly others depending on transitions).
+**Explanation:** Since processing no input leaves the automaton in the start state.
+
+---
+
+### Q28.
+
+The transition function of a DFA is:
+**Answer:** Total.
+**Explanation:** It must be defined for every state and every input symbol.
+
+---
+
+### Q29.
+
+DFAs are widely used in:
+**Answer:** Lexical Analysis.
+**Explanation:** Compilers use DFAs for token recognition.
+
+---
+
+### Q30.
+
+The computational power of a DFA is equivalent to:
+**Answer:** An NFA.
+**Explanation:** Every NFA has an equivalent DFA.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+
+### Current Subject
+
+🔄 **Theory of Computation (TOC)**
+
+### Next Topic (Day 65)
+
+# 📚 Theory of Computation
+
+**Non-Deterministic Finite Automata (NFA), ε-NFA & Conversion of NFA to DFA**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. What are the five components of a DFA?
+2. Why can't a DFA have ε-transitions?
+3. What is the difference between a transition table and a transition diagram?
+4. Can a DFA have multiple accepting states?
+5. Why do DFA and NFA recognize the same class of languages?
+
+When you've finished today's lesson, type:
+
+## **Generate PDF**
+
+I'll generate the complete **Day 64 PDF** with:
+
+* Complete theory
+* Formula sheet
+* Transition diagrams
+* 30 GATE-level MCQs
+* Answers with explanations
+* GATE-focused revision notes.
