@@ -1,0 +1,625 @@
+# 📘 Today’s Learning – Day 65 (GATE CSE 2027)
+
+**📅 Date:** **24 April 2026**
+**📆 Day:** **Friday**
+**📚 Subject:** **Theory of Computation (TOC)**
+**🧠 Topic:** **Non-Deterministic Finite Automata (NFA), ε-NFA & Conversion of NFA to DFA**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Non-Deterministic Finite Automaton (NFA)?
+
+A **Non-Deterministic Finite Automaton (NFA)** is a finite-state machine in which **a state can have zero, one, or multiple transitions for the same input symbol**.
+
+Unlike a DFA, an NFA can "choose" among multiple possible paths.
+
+📌 **Important:** An NFA accepts a string if **at least one path** leads to an accepting state.
+
+---
+
+# 🔹 Formal Definition
+
+An NFA is also represented by the 5-tuple:
+
+[
+M=(Q,\Sigma,\delta,q_0,F)
+]
+
+Where:
+
+| Symbol | Meaning                 |
+| ------ | ----------------------- |
+| Q      | Finite set of states    |
+| Σ      | Input alphabet          |
+| δ      | Transition function     |
+| q₀     | Start state             |
+| F      | Set of accepting states |
+
+The difference is the transition function.
+
+---
+
+# 🔹 NFA Transition Function
+
+For an NFA:
+
+[
+\delta : Q \times \Sigma \rightarrow 2^Q
+]
+
+where (2^Q) (power set of Q) means the transition can go to **a set of states**.
+
+Example:
+
+[
+\delta(q_0,a)={q_1,q_2}
+]
+
+One input can lead to multiple states.
+
+---
+
+# 🔹 DFA vs NFA Transition Functions
+
+### DFA
+
+[
+\delta : Q \times \Sigma \rightarrow Q
+]
+
+Exactly one next state.
+
+---
+
+### NFA
+
+[
+\delta : Q \times \Sigma \rightarrow 2^Q
+]
+
+Zero, one, or many next states.
+
+📌 This is one of the most frequently tested GATE concepts.
+
+---
+
+# 🔹 Example of an NFA
+
+Language:
+
+Strings over {0,1} ending with **01**.
+
+### States
+
+```text
+→ q0
+  q1
+* q2
+```
+
+### Transition Diagram
+
+```text
+            0
+      +------------+
+      |            |
+      v            |
+--> (q0) --0--> (q1) --1--> ((q2))
+   |  ^
+   |  |
+   +--+
+     1
+```
+
+An input symbol may allow more than one possible move.
+
+---
+
+# 🔹 String Acceptance in NFA
+
+Suppose input:
+
+```text
+101
+```
+
+Possible paths:
+
+```text
+Path 1 → Reject
+
+Path 2 → Accept
+```
+
+Since **one path accepts**:
+
+✅ Entire string is accepted.
+
+---
+
+# 🔹 ε-NFA (Epsilon-NFA)
+
+An **ε-NFA** is an NFA that allows **ε-transitions**.
+
+An ε-transition allows the automaton to move from one state to another **without consuming any input symbol**.
+
+Example:
+
+```text
+q0 --ε--> q1
+```
+
+The automaton changes state without reading the input.
+
+---
+
+# 🔹 ε-Closure
+
+### Definition
+
+The **ε-closure** of a state is the set of all states reachable using **zero or more ε-transitions**.
+
+---
+
+### Example
+
+```text
+q0 --ε--> q1 --ε--> q2
+```
+
+Then:
+
+[
+\varepsilon\text{-closure}(q_0)={q_0,q_1,q_2}
+]
+
+📌 Computing ε-closure is essential when converting an ε-NFA to a DFA.
+
+---
+
+# 🔹 NFA to DFA Conversion (Subset Construction)
+
+Every NFA has an equivalent DFA.
+
+The standard conversion technique is called the **Subset Construction Algorithm**.
+
+---
+
+## Steps
+
+### Step 1
+
+Find the start state.
+
+For ε-NFA, compute the ε-closure of the start state.
+
+---
+
+### Step 2
+
+For each input symbol, compute the set of reachable states.
+
+---
+
+### Step 3
+
+Treat each **set of NFA states** as a **single DFA state**.
+
+Example:
+
+```text
+{q0,q1}
+```
+
+becomes one DFA state.
+
+---
+
+### Step 4
+
+Repeat until no new state sets are generated.
+
+---
+
+### Step 5
+
+Any DFA state containing an NFA accepting state becomes an accepting DFA state.
+
+---
+
+# 🔹 Example
+
+Suppose:
+
+```text
+δ(q0,a)={q0,q1}
+
+δ(q1,a)={q2}
+```
+
+DFA States become:
+
+```text
+{q0}
+
+{q0,q1}
+
+{q0,q1,q2}
+```
+
+Each set acts as one DFA state.
+
+---
+
+# 🔹 Why Convert NFA to DFA?
+
+Computers execute DFAs more efficiently because:
+
+* Exactly one transition per input.
+* Easier implementation.
+* Used in lexical analyzers and pattern matching.
+
+---
+
+# 🔹 DFA vs NFA vs ε-NFA
+
+| Feature                  | DFA               | NFA               | ε-NFA             |
+| ------------------------ | ----------------- | ----------------- | ----------------- |
+| One transition per input | ✅                 | ❌                 | ❌                 |
+| Multiple transitions     | ❌                 | ✅                 | ✅                 |
+| ε-Transitions            | ❌                 | ❌                 | ✅                 |
+| Recognition Power        | Regular Languages | Regular Languages | Regular Languages |
+
+📌 **Important:** All three recognize **exactly the same class of languages** (Regular Languages).
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+NFA is **not more powerful** than DFA.
+
+Both recognize Regular Languages.
+
+---
+
+### Trap 2
+
+An NFA accepts if **at least one computation path** reaches a final state.
+
+---
+
+### Trap 3
+
+ε-transitions consume **no input**.
+
+---
+
+### Trap 4
+
+The number of DFA states after conversion can be up to:
+
+[
+2^n
+]
+
+where n is the number of NFA states.
+
+---
+
+### Trap 5
+
+A DFA **cannot** have ε-transitions.
+
+---
+
+# 📝 Formula Sheet
+
+| Concept            | Formula / Rule                       |
+| ------------------ | ------------------------------------ |
+| DFA Transition     | δ : Q × Σ → Q                        |
+| NFA Transition     | δ : Q × Σ → 2ᴽ                       |
+| ε-Closure          | States reachable using ε-transitions |
+| Maximum DFA States | 2ⁿ                                   |
+| Accepted by NFA    | At least one accepting path          |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+NFA stands for:
+**Answer:** Non-Deterministic Finite Automaton
+**Explanation:** An automaton that can have multiple possible next states.
+
+---
+
+### Q2.
+
+The transition function of an NFA is:
+**Answer:** δ : Q × Σ → 2ᴽ
+**Explanation:** It maps to a set of states.
+
+---
+
+### Q3.
+
+A DFA transition function maps to:
+**Answer:** A single state
+**Explanation:** Exactly one next state for each input.
+
+---
+
+### Q4.
+
+An NFA accepts a string if:
+**Answer:** At least one computation path reaches an accepting state.
+**Explanation:** Only one successful path is needed.
+
+---
+
+### Q5.
+
+ε-transitions consume:
+**Answer:** No input symbol.
+**Explanation:** They allow state changes without reading input.
+
+---
+
+### Q6.
+
+ε-closure of a state contains:
+**Answer:** All states reachable using zero or more ε-transitions.
+**Explanation:** Includes the state itself.
+
+---
+
+### Q7.
+
+Which automaton allows ε-transitions?
+**Answer:** ε-NFA
+**Explanation:** Standard NFAs do not include ε-transitions.
+
+---
+
+### Q8.
+
+Most PYQ-tested topic?
+**Answer:** NFA to DFA Conversion
+**Explanation:** A very common GATE question.
+
+---
+
+### Q9.
+
+Biggest GATE trap?
+**Answer:** Assuming NFA is more powerful than DFA.
+**Explanation:** Both recognize Regular Languages.
+
+---
+
+### Q10.
+
+Maximum DFA states from an N-state NFA:
+**Answer:** 2ⁿ
+**Explanation:** Due to subset construction.
+
+---
+
+### Q11.
+
+Subset Construction converts:
+**Answer:** NFA to DFA
+**Explanation:** Each DFA state represents a subset of NFA states.
+
+---
+
+### Q12.
+
+A DFA state after conversion represents:
+**Answer:** A set of NFA states.
+**Explanation:** This is the key idea of subset construction.
+
+---
+
+### Q13.
+
+A DFA can have ε-transitions.
+**Answer:** False
+**Explanation:** DFA transitions always consume one input symbol.
+
+---
+
+### Q14.
+
+Recognition power of DFA and NFA:
+**Answer:** Same
+**Explanation:** Both recognize Regular Languages.
+
+---
+
+### Q15.
+
+An NFA may have:
+**Answer:** Zero, one, or multiple transitions for the same input.
+**Explanation:** This is the defining feature of nondeterminism.
+
+---
+
+### Q16.
+
+The start state of the converted DFA is:
+**Answer:** ε-closure of the NFA start state (for ε-NFA).
+**Explanation:** The conversion begins from this set.
+
+---
+
+### Q17.
+
+An accepting DFA state contains:
+**Answer:** At least one accepting NFA state.
+**Explanation:** Acceptance carries over through subsets.
+
+---
+
+### Q18.
+
+ε-closure always includes:
+**Answer:** The state itself.
+**Explanation:** Zero ε-transitions are allowed.
+
+---
+
+### Q19.
+
+Which automaton is easier to implement?
+**Answer:** DFA
+**Explanation:** It has a single deterministic transition for each input.
+
+---
+
+### Q20.
+
+The alphabet of a DFA and an equivalent NFA:
+**Answer:** Is the same.
+**Explanation:** Conversion does not change the alphabet.
+
+---
+
+### Q21.
+
+Subset construction may produce:
+**Answer:** Unreachable states.
+**Explanation:** These can be removed later.
+
+---
+
+### Q22.
+
+Which automaton is commonly used in compiler lexical analysis?
+**Answer:** DFA
+**Explanation:** Efficient deterministic execution.
+
+---
+
+### Q23.
+
+The power set of Q is denoted by:
+**Answer:** 2ᴽ
+**Explanation:** It contains all subsets of Q.
+
+---
+
+### Q24.
+
+ε-NFA extends:
+**Answer:** NFA
+**Explanation:** By allowing ε-transitions.
+
+---
+
+### Q25.
+
+During NFA to DFA conversion, each subset becomes:
+**Answer:** One DFA state.
+**Explanation:** Core idea of subset construction.
+
+---
+
+### Q26.
+
+Can an NFA have no transition for an input from a state?
+**Answer:** Yes.
+**Explanation:** Missing transitions are allowed.
+
+---
+
+### Q27.
+
+A DFA must define transitions for:
+**Answer:** Every state and every input symbol.
+**Explanation:** The transition function is total.
+
+---
+
+### Q28.
+
+If all computation paths reject in an NFA:
+**Answer:** The string is rejected.
+**Explanation:** At least one accepting path is required.
+
+---
+
+### Q29.
+
+The conversion from NFA to DFA changes:
+**Answer:** The representation only.
+**Explanation:** The recognized language remains unchanged.
+
+---
+
+### Q30.
+
+The primary purpose of ε-closure is:
+**Answer:** To support ε-NFA to DFA conversion.
+**Explanation:** It computes all reachable states without consuming input.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+
+### Current Subject
+
+🔄 **Theory of Computation (TOC)**
+
+### Next Topic (Day 66)
+
+# 📚 Theory of Computation
+
+**Regular Expressions (RE) & Regular Languages – Operators, DFA/NFA ↔ RE Conversion, Arden's Theorem**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. What is the difference between **DFA**, **NFA**, and **ε-NFA**?
+2. Why does an NFA accept a string if **at least one path** reaches an accepting state?
+3. What is an **ε-closure**, and why is it important?
+4. Why can an equivalent DFA have up to **2ⁿ states**?
+5. What is the **Subset Construction Algorithm** used for?
+
+---
+
+## 📊 Overall Progress (After Day 65)
+
+| Subject                              |                Status |
+| ------------------------------------ | --------------------: |
+| Engineering Mathematics              |           ✅ Completed |
+| Digital Logic                        |           ✅ Completed |
+| Computer Organization & Architecture |           ✅ Completed |
+| Programming & Data Structures        |           ✅ Completed |
+| Algorithms                           |           ✅ Completed |
+| Theory of Computation                | 🟨 3 Topics Completed |
+| Compiler Design                      |             ⏳ Pending |
+| Operating Systems                    |             ⏳ Pending |
+| DBMS                                 |             ⏳ Pending |
+| Computer Networks                    |             ⏳ Pending |
+| General Aptitude                     |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~54%**
