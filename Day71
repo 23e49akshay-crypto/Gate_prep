@@ -1,0 +1,671 @@
+# 📘 Today’s Learning – Day 66 (GATE CSE 2027)
+
+**📅 Date:** **25 April 2026**
+**📆 Day:** **Saturday**
+**📚 Subject:** **Theory of Computation (TOC)**
+**🧠 Topic:** **Regular Expressions (RE), Regular Languages, RE ↔ FA Conversion & Arden's Theorem**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is a Regular Expression (RE)?
+
+A **Regular Expression (RE)** is a formal notation used to describe **Regular Languages**.
+
+Instead of drawing a DFA or NFA, we can describe the same language using a compact expression.
+
+Examples:
+
+* Email validation (basic patterns)
+* Search functionality in editors
+* Lexical analysis in compilers
+* Pattern matching tools (grep, regex engines)
+
+📌 **Important:** Every Regular Expression has an equivalent DFA/NFA, and every DFA/NFA has an equivalent Regular Expression.
+
+---
+
+# 🔹 Basic Symbols in Regular Expressions
+
+Suppose:
+
+[
+\Sigma={a,b}
+]
+
+### Basic REs
+
+| Regular Expression | Meaning        |
+| ------------------ | -------------- |
+| a                  | String "a"     |
+| b                  | String "b"     |
+| ε                  | Empty string   |
+| ∅                  | Empty language |
+
+📌 **Trap:** ε represents one valid string of length 0, whereas ∅ represents no strings at all.
+
+---
+
+# 🔹 Operators in Regular Expressions
+
+## 1️⃣ Union ( | )
+
+Represents **OR**.
+
+Example:
+
+```text
+a|b
+```
+
+Accepted strings:
+
+```text
+a
+b
+```
+
+---
+
+## 2️⃣ Concatenation
+
+Represents one expression followed by another.
+
+Example:
+
+```text
+ab
+```
+
+Accepted string:
+
+```text
+ab
+```
+
+Only "ab" is accepted.
+
+---
+
+## 3️⃣ Kleene Star (*)
+
+Represents **zero or more repetitions**.
+
+Example:
+
+```text
+a*
+```
+
+Accepted strings:
+
+```text
+ε
+a
+aa
+aaa
+aaaa
+...
+```
+
+---
+
+## 4️⃣ Positive Closure (+)
+
+Represents **one or more repetitions**.
+
+Example:
+
+```text
+a+
+```
+
+Accepted strings:
+
+```text
+a
+aa
+aaa
+aaaa
+...
+```
+
+Difference:
+
+[
+a^+=aa^*
+]
+
+---
+
+# 🔹 Operator Precedence
+
+Highest precedence:
+
+1. Kleene Star (*)
+2. Concatenation
+3. Union ( | )
+
+Example:
+
+```text
+ab|c*
+```
+
+Equivalent to:
+
+```text
+(ab)|(c*)
+```
+
+---
+
+# 🔹 Examples of Regular Expressions
+
+### Example 1
+
+Strings ending with **1**
+
+RE:
+
+```text
+(0|1)*1
+```
+
+---
+
+### Example 2
+
+Strings beginning with **a**
+
+```text
+a(a|b)*
+```
+
+---
+
+### Example 3
+
+All binary strings
+
+```text
+(0|1)*
+```
+
+---
+
+### Example 4
+
+Even number of a's
+
+A corresponding DFA exists, and an equivalent RE can be derived using state elimination or Arden's Theorem.
+
+---
+
+# 🔹 Regular Languages
+
+A language is called **Regular** if it can be accepted by:
+
+* DFA
+* NFA
+* ε-NFA
+* Regular Expression
+
+All four are equivalent in expressive power.
+
+---
+
+# 🔹 Conversion: Regular Expression → NFA
+
+**Thompson's Construction** is used.
+
+Basic rules:
+
+* Symbol → Simple transition
+* Union → Parallel branches
+* Concatenation → Sequential connection
+* Kleene Star → Loop with ε-transitions
+
+📌 Thompson's construction guarantees an equivalent ε-NFA.
+
+---
+
+# 🔹 Conversion: NFA/DFA → Regular Expression
+
+Two common methods:
+
+1. State Elimination Method
+2. Arden's Theorem
+
+Both produce an equivalent Regular Expression.
+
+---
+
+# 🔹 Arden's Theorem
+
+Arden's Theorem is widely used in GATE to derive a Regular Expression from a finite automaton.
+
+If:
+
+[
+R = Q + RP
+]
+
+where **ε is not in P**, then
+
+[
+R = QP^*
+]
+
+---
+
+## Example
+
+Given:
+
+[
+R = a + Rb
+]
+
+Applying Arden's Theorem:
+
+[
+R = ab^*
+]
+
+---
+
+### Another Example
+
+[
+R = 0 + R1
+]
+
+Solution:
+
+[
+R = 01^*
+]
+
+---
+
+# 🔹 Equivalence of Models
+
+The following all recognize **exactly the same class of languages**:
+
+| Model              | Recognizes        |
+| ------------------ | ----------------- |
+| DFA                | Regular Languages |
+| NFA                | Regular Languages |
+| ε-NFA              | Regular Languages |
+| Regular Expression | Regular Languages |
+
+📌 **Very Important GATE Fact**
+
+---
+
+# 🔹 Applications of Regular Expressions
+
+* Compiler Design (Lexical Analysis)
+* Search Engines
+* Text Editors
+* Input Validation
+* Log File Analysis
+* Pattern Matching
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+[
+a^*
+]
+
+contains ε.
+
+---
+
+### Trap 2
+
+[
+a^+
+]
+
+does **not** contain ε.
+
+---
+
+### Trap 3
+
+Regular Expressions cannot recognize **Context-Free Languages**.
+
+---
+
+### Trap 4
+
+Every DFA has an equivalent Regular Expression.
+
+---
+
+### Trap 5
+
+Arden's Theorem applies only when **ε is not part of P**.
+
+---
+
+# 📝 Formula Sheet
+
+| Concept          | Formula                           |
+| ---------------- | --------------------------------- |
+| Kleene Star      | (R^*) = Zero or more repetitions  |
+| Positive Closure | (R^+ = RR^*)                      |
+| Arden's Theorem  | (R = Q + RP \Rightarrow R = QP^*) |
+| Regular Language | Accepted by DFA/NFA/RE            |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+A Regular Expression describes:
+**Answer:** A Regular Language.
+**Explanation:** REs are formal descriptions of regular languages.
+
+---
+
+### Q2.
+
+Which operator represents OR?
+**Answer:** Union ( | )
+**Explanation:** It matches either expression.
+
+---
+
+### Q3.
+
+Which operator represents zero or more repetitions?
+**Answer:** Kleene Star (*)
+**Explanation:** Includes the empty string.
+
+---
+
+### Q4.
+
+Which operator represents one or more repetitions?
+**Answer:** Positive Closure (+)
+**Explanation:** Excludes the empty string.
+
+---
+
+### Q5.
+
+The expression (0|1)* represents:
+**Answer:** All binary strings.
+**Explanation:** Any combination of 0s and 1s, including ε.
+
+---
+
+### Q6.
+
+The expression a(a|b)* represents:
+**Answer:** Strings beginning with 'a'.
+**Explanation:** After 'a', any combination of 'a' and 'b' may follow.
+
+---
+
+### Q7.
+
+The language represented by a* includes:
+**Answer:** ε.
+**Explanation:** Zero repetitions are allowed.
+
+---
+
+### Q8.
+
+Most PYQ-tested topic?
+**Answer:** Arden's Theorem.
+**Explanation:** Frequently used in RE derivation.
+
+---
+
+### Q9.
+
+Biggest GATE trap?
+**Answer:** Confusing a* with a+.
+**Explanation:** a* includes ε, while a+ does not.
+
+---
+
+### Q10.
+
+Regular Expressions recognize:
+**Answer:** Regular Languages.
+**Explanation:** Equivalent to finite automata.
+
+---
+
+### Q11.
+
+Which method converts RE to ε-NFA?
+**Answer:** Thompson's Construction.
+**Explanation:** Standard construction algorithm.
+
+---
+
+### Q12.
+
+A DFA can always be converted to:
+**Answer:** A Regular Expression.
+**Explanation:** They are equivalent models.
+
+---
+
+### Q13.
+
+Arden's Theorem solves:
+**Answer:** Linear regular expression equations.
+**Explanation:** Used in FA-to-RE conversion.
+
+---
+
+### Q14.
+
+If (R = a + Rb), then:
+**Answer:** (ab^*)
+**Explanation:** Direct application of Arden's Theorem.
+
+---
+
+### Q15.
+
+The expression ε represents:
+**Answer:** The empty string.
+**Explanation:** A valid string of length zero.
+
+---
+
+### Q16.
+
+The expression ∅ represents:
+**Answer:** The empty language.
+**Explanation:** Contains no strings.
+
+---
+
+### Q17.
+
+Operator with the highest precedence:
+**Answer:** Kleene Star (*)
+**Explanation:** It binds more tightly than concatenation and union.
+
+---
+
+### Q18.
+
+Concatenation has higher precedence than:
+**Answer:** Union.
+**Explanation:** Standard operator precedence.
+
+---
+
+### Q19.
+
+Which model is equivalent to an NFA?
+**Answer:** DFA.
+**Explanation:** They recognize the same languages.
+
+---
+
+### Q20.
+
+Positive Closure of a is:
+**Answer:** aa*
+**Explanation:** One or more repetitions.
+
+---
+
+### Q21.
+
+Which of the following includes ε?
+A) a+
+B) a*
+C) ab+
+D) (ab)+
+
+**Answer:** B
+**Explanation:** Only Kleene Star includes zero repetitions.
+
+---
+
+### Q22.
+
+Regular Expressions are widely used in:
+**Answer:** Pattern Matching.
+**Explanation:** They efficiently describe search patterns.
+
+---
+
+### Q23.
+
+Which language class is recognized by RE?
+**Answer:** Regular Languages.
+**Explanation:** No more powerful than finite automata.
+
+---
+
+### Q24.
+
+Which theorem is commonly used to derive RE from FA?
+**Answer:** Arden's Theorem.
+**Explanation:** A standard GATE topic.
+
+---
+
+### Q25.
+
+The expression (a|b)* accepts:
+**Answer:** All strings over {a, b}.
+**Explanation:** Includes ε and every finite combination.
+
+---
+
+### Q26.
+
+Thompson's Construction produces:
+**Answer:** ε-NFA.
+**Explanation:** It systematically builds an equivalent ε-NFA.
+
+---
+
+### Q27.
+
+Every Regular Expression has an equivalent:
+**Answer:** DFA.
+**Explanation:** Via ε-NFA and subset construction.
+
+---
+
+### Q28.
+
+Can RE recognize context-free languages?
+**Answer:** No.
+**Explanation:** REs are limited to regular languages.
+
+---
+
+### Q29.
+
+The language accepted by a DFA is always:
+**Answer:** Regular.
+**Explanation:** This is the defining property of DFAs.
+
+---
+
+### Q30.
+
+The primary purpose of Arden's Theorem is:
+**Answer:** Convert finite automata into regular expressions.
+**Explanation:** It solves recursive regular expression equations.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+
+### Current Subject
+
+🔄 **Theory of Computation (TOC)**
+
+### Next Topic (Day 67)
+
+# 📚 Theory of Computation
+
+**Pumping Lemma for Regular Languages, Closure Properties & Decision Properties**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. What is the difference between **Kleene Star (*)** and **Positive Closure (+)**?
+2. What are the operator precedence rules in Regular Expressions?
+3. State **Arden's Theorem** and explain when it can be applied.
+4. Why are DFA, NFA, ε-NFA, and RE equivalent in expressive power?
+5. How does **Thompson's Construction** convert a Regular Expression into an ε-NFA?
+
+---
+
+## 📊 Overall Progress (After Day 66)
+
+| Subject                              |                Status |
+| ------------------------------------ | --------------------: |
+| Engineering Mathematics              |           ✅ Completed |
+| Digital Logic                        |           ✅ Completed |
+| Computer Organization & Architecture |           ✅ Completed |
+| Programming & Data Structures        |           ✅ Completed |
+| Algorithms                           |           ✅ Completed |
+| Theory of Computation                | 🟨 4 Topics Completed |
+| Compiler Design                      |             ⏳ Pending |
+| Operating Systems                    |             ⏳ Pending |
+| DBMS                                 |             ⏳ Pending |
+| Computer Networks                    |             ⏳ Pending |
+| General Aptitude                     |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~55%**
+
+When you're done studying, type **Generate PDF**, and I'll create the complete Day 66 PDF with the full theory, formulas, solved examples, 30 MCQs, answers, explanations, and revision notes in your standard GATE study format.
