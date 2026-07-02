@@ -1,0 +1,798 @@
+# 📘 Today’s Learning – Day 67 (GATE CSE 2027)
+
+**📅 Date:** **26 April 2026**
+**📆 Day:** **Sunday**
+**📚 Subject:** **Theory of Computation (TOC)**
+**🧠 Topic:** **Pumping Lemma for Regular Languages, Closure Properties & Decision Properties**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 Why Do We Need the Pumping Lemma?
+
+We know that **Finite Automata (DFA/NFA)** recognize **Regular Languages**.
+
+But how can we **prove that a language is *not* regular**?
+
+The most important tool is the **Pumping Lemma for Regular Languages**.
+
+📌 **GATE Fact:**
+The Pumping Lemma is mainly used to **prove that a language is not regular**. It **cannot prove that a language is regular**.
+
+---
+
+# 🔹 Statement of the Pumping Lemma
+
+If **L is a regular language**, then there exists a positive integer **p** (called the **pumping length**) such that every string **w ∈ L** with:
+
+[
+|w| \ge p
+]
+
+can be divided into:
+
+[
+w = xyz
+]
+
+such that:
+
+### Condition 1
+
+[
+|y| > 0
+]
+
+The middle part **y** cannot be empty.
+
+---
+
+### Condition 2
+
+[
+|xy| \le p
+]
+
+The substring **y** must lie within the first **p** characters.
+
+---
+
+### Condition 3
+
+For every:
+
+[
+i \ge 0
+]
+
+the string
+
+[
+xy^iz
+]
+
+must also belong to **L**.
+
+This means **y** can be repeated (or removed) and the resulting string should still belong to the language if the language is regular.
+
+---
+
+# 🔹 Understanding Pumping
+
+Example:
+
+Suppose:
+
+```text
+w = aaabbb
+```
+
+One possible split:
+
+```text
+x = a
+
+y = aa
+
+z = bbb
+```
+
+Now pump:
+
+### i = 0
+
+```text
+abbb
+```
+
+---
+
+### i = 2
+
+```text
+aaaaabbb
+```
+
+---
+
+### i = 3
+
+```text
+aaaaaaabbb
+```
+
+If **any** pumped string falls outside the language, then the language cannot be regular.
+
+---
+
+# 🔹 Example Proof
+
+Prove:
+
+[
+L={a^nb^n \mid n\ge0}
+]
+
+is **not regular**.
+
+---
+
+### Step 1
+
+Assume L is regular.
+
+---
+
+### Step 2
+
+Let pumping length = p.
+
+Choose:
+
+[
+w=a^pb^p
+]
+
+---
+
+### Step 3
+
+Since:
+
+[
+|xy|\le p
+]
+
+both x and y consist only of **a's**.
+
+Suppose:
+
+```text
+y = aaa
+```
+
+---
+
+### Step 4
+
+Pump:
+
+[
+i=2
+]
+
+Result:
+
+```text
+a^(p+3)b^p
+```
+
+Now:
+
+Number of a's ≠ Number of b's.
+
+Therefore:
+
+[
+a^{p+3}b^p \notin L
+]
+
+Contradiction.
+
+Hence:
+
+[
+L
+]
+
+is **not regular**.
+
+📌 This is one of the **most frequently asked GATE proofs**.
+
+---
+
+# 🔹 Common Languages Proven Non-Regular
+
+### 1.
+
+[
+{a^nb^n}
+]
+
+---
+
+### 2.
+
+[
+{ww}
+]
+
+---
+
+### 3.
+
+Palindromes
+
+---
+
+### 4.
+
+Equal number of 0s and 1s
+
+---
+
+### 5.
+
+Prime-length strings
+
+---
+
+# 🔹 Closure Properties of Regular Languages
+
+A class of languages is **closed** under an operation if applying that operation to regular languages produces another regular language.
+
+---
+
+## Closed Under Union
+
+If:
+
+[
+L_1,L_2
+]
+
+are regular,
+
+then:
+
+[
+L_1\cup L_2
+]
+
+is also regular.
+
+---
+
+## Closed Under Intersection
+
+[
+L_1\cap L_2
+]
+
+Regular.
+
+---
+
+## Closed Under Complement
+
+If L is regular,
+
+then:
+
+[
+\overline{L}
+]
+
+is regular.
+
+---
+
+## Closed Under Difference
+
+[
+L_1-L_2
+]
+
+Regular.
+
+---
+
+## Closed Under Concatenation
+
+[
+L_1L_2
+]
+
+Regular.
+
+---
+
+## Closed Under Kleene Star
+
+[
+L^*
+]
+
+Regular.
+
+---
+
+## Closed Under Reversal
+
+[
+L^R
+]
+
+Regular.
+
+---
+
+## Closed Under Homomorphism
+
+Regular languages remain regular.
+
+---
+
+# 🔹 Not Closed Under
+
+Regular languages themselves are closed under all the above operations. However, operations involving **non-regular languages** do not preserve regularity.
+
+---
+
+# 🔹 Decision Properties
+
+Decision properties answer questions about a language.
+
+---
+
+### Membership Problem
+
+Given:
+
+* String w
+* DFA M
+
+Determine:
+
+[
+w\in L(M)?
+]
+
+Answer:
+
+✅ Decidable.
+
+---
+
+### Emptiness Problem
+
+Does:
+
+[
+L=\varnothing
+]
+
+Answer:
+
+✅ Decidable.
+
+---
+
+### Finiteness Problem
+
+Is the language finite?
+
+Answer:
+
+✅ Decidable.
+
+---
+
+### Equivalence Problem
+
+Given DFA A and DFA B:
+
+[
+L(A)=L(B)?
+]
+
+Answer:
+
+✅ Decidable.
+
+---
+
+### Universality Problem
+
+Does:
+
+[
+L=\Sigma^*
+]
+
+Answer:
+
+✅ Decidable.
+
+---
+
+# 🔹 Pumping Lemma vs Closure Properties
+
+| Pumping Lemma                | Closure Properties                      |
+| ---------------------------- | --------------------------------------- |
+| Used to prove non-regularity | Used to construct new regular languages |
+| Proof technique              | Property of regular languages           |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Pumping Lemma **cannot prove regularity**.
+
+It only helps prove **non-regularity**.
+
+---
+
+### Trap 2
+
+The substring **y** cannot be empty.
+
+[
+|y|>0
+]
+
+---
+
+### Trap 3
+
+The pumped part must lie within the first **p** symbols.
+
+---
+
+### Trap 4
+
+The decomposition (w = xyz) is **not unique**. Your proof must work for **every valid decomposition** satisfying the pumping lemma conditions.
+
+---
+
+### Trap 5
+
+Regular languages are closed under **Union, Intersection, Complement, Concatenation, Kleene Star, Difference, Reversal, and Homomorphism**.
+
+---
+
+# 📝 Formula Sheet
+
+| Concept       | Formula / Property                                                         |    |        |
+| ------------- | -------------------------------------------------------------------------- | -- | ------ |
+| Pumping Lemma | (w=xyz)                                                                    |    |        |
+| Condition 1   | (                                                                          | y  | >0)    |
+| Condition 2   | (                                                                          | xy | \le p) |
+| Condition 3   | (xy^iz\in L,\ \forall i\ge0)                                               |    |        |
+| Closure       | Union, Intersection, Complement, Star, Concatenation, Difference, Reversal |    |        |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+The Pumping Lemma is mainly used to:
+**Answer:** Prove that a language is **not regular**.
+**Explanation:** It provides a necessary condition for regular languages.
+
+---
+
+### Q2.
+
+The pumping length is denoted by:
+**Answer:** p
+**Explanation:** It depends on the regular language.
+
+---
+
+### Q3.
+
+The string selected for pumping must satisfy:
+**Answer:** (|w| \ge p)
+**Explanation:** The pumping lemma applies only to sufficiently long strings.
+
+---
+
+### Q4.
+
+The decomposition of w is:
+**Answer:** (w = xyz)
+**Explanation:** Standard pumping lemma notation.
+
+---
+
+### Q5.
+
+Which condition is correct?
+**Answer:** (|y| > 0)
+**Explanation:** The pumped part cannot be empty.
+
+---
+
+### Q6.
+
+Which condition is correct?
+**Answer:** (|xy| \le p)
+**Explanation:** y must occur within the first p symbols.
+
+---
+
+### Q7.
+
+Which condition is correct?
+**Answer:** (xy^iz \in L) for all (i \ge 0).
+**Explanation:** Pumping any number of copies must keep the string in the language.
+
+---
+
+### Q8.
+
+Most PYQ-tested topic?
+**Answer:** Proof that ({a^n b^n}) is not regular.
+**Explanation:** A classic GATE question.
+
+---
+
+### Q9.
+
+Biggest GATE trap?
+**Answer:** Assuming the Pumping Lemma proves regularity.
+**Explanation:** It only helps prove non-regularity.
+
+---
+
+### Q10.
+
+If (y=\varepsilon), the pumping lemma condition is:
+**Answer:** Violated.
+**Explanation:** (|y|>0) is mandatory.
+
+---
+
+### Q11.
+
+The Pumping Lemma applies to:
+**Answer:** Regular languages.
+**Explanation:** It is a necessary property of all regular languages.
+
+---
+
+### Q12.
+
+Regular languages are closed under:
+**Answer:** Union.
+**Explanation:** The union of two regular languages is regular.
+
+---
+
+### Q13.
+
+Regular languages are closed under:
+**Answer:** Intersection.
+**Explanation:** Can be proved using product automata.
+
+---
+
+### Q14.
+
+Regular languages are closed under:
+**Answer:** Complement.
+**Explanation:** Swap accepting and rejecting states in a complete DFA.
+
+---
+
+### Q15.
+
+Regular languages are closed under:
+**Answer:** Concatenation.
+**Explanation:** The concatenation of two regular languages is regular.
+
+---
+
+### Q16.
+
+Regular languages are closed under:
+**Answer:** Kleene Star.
+**Explanation:** Repeating a regular language preserves regularity.
+
+---
+
+### Q17.
+
+Regular languages are closed under:
+**Answer:** Reversal.
+**Explanation:** Reverse automata can be constructed.
+
+---
+
+### Q18.
+
+Membership problem for DFAs is:
+**Answer:** Decidable.
+**Explanation:** Simulate the DFA on the input string.
+
+---
+
+### Q19.
+
+Emptiness problem for DFAs is:
+**Answer:** Decidable.
+**Explanation:** Check if any accepting state is reachable.
+
+---
+
+### Q20.
+
+Equivalence problem for DFAs is:
+**Answer:** Decidable.
+**Explanation:** Compare the languages recognized by two DFAs.
+
+---
+
+### Q21.
+
+Universality problem for DFAs is:
+**Answer:** Decidable.
+**Explanation:** Determine whether the DFA accepts all strings over its alphabet.
+
+---
+
+### Q22.
+
+A language of prime-length strings is generally:
+**Answer:** Not regular.
+**Explanation:** It can be shown using the Pumping Lemma.
+
+---
+
+### Q23.
+
+The language ({ww \mid w \in {0,1}^*}) is:
+**Answer:** Not regular.
+**Explanation:** It requires remembering an arbitrary prefix.
+
+---
+
+### Q24.
+
+The language of palindromes is:
+**Answer:** Not regular.
+**Explanation:** A finite automaton cannot compare arbitrarily long mirrored halves.
+
+---
+
+### Q25.
+
+The decomposition (w = xyz) is:
+**Answer:** Not unique.
+**Explanation:** Your proof must handle every valid split.
+
+---
+
+### Q26.
+
+When pumping with (i = 0), we:
+**Answer:** Remove the substring (y).
+**Explanation:** (y^0 = \varepsilon).
+
+---
+
+### Q27.
+
+When pumping with (i = 2), we:
+**Answer:** Repeat (y) once more.
+**Explanation:** (y^2 = yy).
+
+---
+
+### Q28.
+
+Closure properties help us:
+**Answer:** Construct new regular languages from existing ones.
+**Explanation:** Regularity is preserved under several operations.
+
+---
+
+### Q29.
+
+Which language is regular?
+A) ({a^n b^n})
+B) ((a|b)^*)
+C) Palindromes over ({a,b})
+D) ({ww})
+
+**Answer:** B
+**Explanation:** It contains all finite strings over ({a,b}).
+
+---
+
+### Q30.
+
+The primary purpose of the Pumping Lemma is:
+**Answer:** To prove that certain languages are not regular.
+**Explanation:** It provides a contradiction when the pumping conditions fail.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+
+### Current Subject
+
+🔄 **Theory of Computation (TOC)**
+
+### Next Topic (Day 68)
+
+# 📚 Theory of Computation
+
+**Context-Free Grammar (CFG) – Variables, Terminals, Productions, Derivations, Parse Trees & Ambiguity**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. State all **three conditions** of the Pumping Lemma.
+2. Why can't the Pumping Lemma prove that a language is regular?
+3. Why is ({a^n b^n}) not regular?
+4. List at least **five closure properties** of regular languages.
+5. What are the **membership**, **emptiness**, and **equivalence** decision problems?
+
+---
+
+## 📊 Overall Progress (After Day 67)
+
+| Subject                              |                Status |
+| ------------------------------------ | --------------------: |
+| Engineering Mathematics              |           ✅ Completed |
+| Digital Logic                        |           ✅ Completed |
+| Computer Organization & Architecture |           ✅ Completed |
+| Programming & Data Structures        |           ✅ Completed |
+| Algorithms                           |           ✅ Completed |
+| Theory of Computation                | 🟨 5 Topics Completed |
+| Compiler Design                      |             ⏳ Pending |
+| Operating Systems                    |             ⏳ Pending |
+| DBMS                                 |             ⏳ Pending |
+| Computer Networks                    |             ⏳ Pending |
+| General Aptitude                     |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~56%**
+
+When you've completed today's lesson, type **Generate PDF**, and I'll create your complete **Day 67 PDF** with:
+
+* Complete theory
+* Solved Pumping Lemma proof
+* Formula sheet
+* Closure property summary
+* 30 GATE-level MCQs
+* Answers with explanations
+* Exam-focused revision notes.
