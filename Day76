@@ -1,0 +1,541 @@
+# 📘 Today’s Learning – Day 71 (GATE CSE 2027)
+
+**📅 Date:** **30 April 2026**
+**📆 Day:** **Thursday**
+**📚 Subject:** **Theory of Computation (TOC)**
+**🧠 Topic:** **Decidability, Undecidability, Recursive Languages, Recursively Enumerable Languages & the Halting Problem**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Decidability?
+
+A problem is **decidable** if there exists a Turing Machine that:
+
+* Always halts, and
+* Gives the correct answer (**Accept** or **Reject**) for every input.
+
+📌 A decidable problem always finishes in finite time.
+
+---
+
+## Example
+
+Problem:
+
+"Is the given binary number even?"
+
+Algorithm:
+
+* Check the last bit.
+* If it is `0`, accept.
+* Otherwise, reject.
+
+This algorithm always halts.
+
+✅ Therefore, the problem is **decidable**.
+
+---
+
+# 🔹 What is an Undecidable Problem?
+
+An **undecidable** problem is one for which **no algorithm can correctly solve all possible inputs and always halt**.
+
+This does **not** mean the problem is difficult—it means **no such algorithm exists**.
+
+---
+
+# 🔹 Recursive (Decidable) Languages
+
+A language is **Recursive** if there exists a Turing Machine that:
+
+* Accepts every string in the language.
+* Rejects every string not in the language.
+* **Always halts.**
+
+---
+
+## Properties
+
+* Every recursive language is decidable.
+* Every recursive language is also recursively enumerable.
+
+---
+
+# 🔹 Recursively Enumerable (RE) Languages
+
+A language is **Recursively Enumerable (RE)** if there exists a Turing Machine that:
+
+* Accepts every string in the language.
+* May **loop forever** for strings not in the language.
+
+📌 It is also called a **Turing-recognizable language**.
+
+---
+
+# 🔹 Difference Between Recursive and RE Languages
+
+| Feature                | Recursive | Recursively Enumerable |
+| ---------------------- | --------- | ---------------------- |
+| Accept valid strings   | ✅         | ✅                      |
+| Reject invalid strings | ✅         | ❌ (may loop forever)   |
+| Always halts           | ✅         | ❌                      |
+| Decidable              | ✅         | ❌ (in general)         |
+
+📌 **Key Fact:** Every recursive language is recursively enumerable, but **not every recursively enumerable language is recursive**.
+
+---
+
+# 🔹 Relationship Among Language Classes
+
+```text
+Recursively Enumerable Languages
+┌─────────────────────────────┐
+│  Recursive Languages        │
+│  ┌───────────────────────┐  │
+│  │ Regular Languages      │  │
+│  │ Context-Free Languages │  │
+│  └───────────────────────┘  │
+└─────────────────────────────┘
+```
+
+---
+
+# 🔹 The Halting Problem
+
+The **Halting Problem** asks:
+
+> Given a Turing Machine **M** and an input **w**, will **M** eventually halt on **w**, or will it run forever?
+
+---
+
+## Why Is It Important?
+
+It was proved by **Alan Turing** that there is **no algorithm** that can correctly answer this question for **all** Turing Machines and inputs.
+
+📌 Therefore, the Halting Problem is **undecidable**.
+
+---
+
+# 🔹 Intuition Behind the Halting Problem
+
+Suppose a program:
+
+```text
+HALT(M, w)
+```
+
+returns:
+
+* YES → if M halts on w
+* NO → if M runs forever on w
+
+Turing showed that assuming such a program exists leads to a **logical contradiction**.
+
+Hence, no universal algorithm can solve the Halting Problem.
+
+---
+
+# 🔹 Examples of Decidable Problems
+
+* DFA Membership
+* DFA Emptiness
+* DFA Equivalence
+* Context-Free Grammar Membership (e.g., using parsing algorithms)
+* Integer Addition and Multiplication
+
+---
+
+# 🔹 Examples of Undecidable Problems
+
+* Halting Problem
+* Post Correspondence Problem (PCP)
+* Turing Machine Acceptance Problem (general form)
+* Program Equivalence Problem
+
+📌 These are common names to remember for GATE.
+
+---
+
+# 🔹 Reductions (Basic Idea)
+
+To prove a problem is undecidable, we often use **reduction**.
+
+Idea:
+
+If we can transform a **known undecidable problem** into another problem, then the new problem is also undecidable.
+
+Example:
+
+```
+Halting Problem
+        ↓
+Problem X
+```
+
+If solving Problem X would solve the Halting Problem, then Problem X is also undecidable.
+
+---
+
+# 🔹 Recursive vs Context-Free vs Regular
+
+| Language Class         | Decidable?   |
+| ---------------------- | ------------ |
+| Regular                | ✅ Yes        |
+| Context-Free           | ✅ Yes        |
+| Recursive              | ✅ Yes        |
+| Recursively Enumerable | ❌ Not always |
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Recursive ≠ Recursively Enumerable.
+
+Recursive languages **always halt**.
+
+---
+
+### Trap 2
+
+Every Recursive Language is RE.
+
+The converse is **false**.
+
+---
+
+### Trap 3
+
+The Halting Problem is **undecidable**, not merely "hard."
+
+---
+
+### Trap 4
+
+An RE language may loop forever on some rejected inputs.
+
+---
+
+### Trap 5
+
+Regular and Context-Free languages are **decidable**.
+
+---
+
+# 📝 Formula Sheet
+
+| Concept            | Definition                         |
+| ------------------ | ---------------------------------- |
+| Recursive Language | TM always halts                    |
+| RE Language        | TM may not halt on rejected inputs |
+| Decidable          | Algorithm always halts             |
+| Undecidable        | No algorithm solves all cases      |
+| Halting Problem    | Undecidable                        |
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+### Q1.
+
+A decidable problem is one for which:
+**Answer:** A Turing Machine always halts with the correct answer.
+**Explanation:** Decidability requires termination on all inputs.
+
+---
+
+### Q2.
+
+A recursive language is:
+**Answer:** Decidable.
+**Explanation:** Membership can always be decided.
+
+---
+
+### Q3.
+
+A recursively enumerable language is:
+**Answer:** Turing-recognizable.
+**Explanation:** The TM accepts strings in the language but may not halt otherwise.
+
+---
+
+### Q4.
+
+Every recursive language is:
+**Answer:** Recursively enumerable.
+**Explanation:** A TM that always halts is also a recognizer.
+
+---
+
+### Q5.
+
+Every recursively enumerable language is recursive.
+**Answer:** False.
+**Explanation:** Some RE languages are undecidable.
+
+---
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Halting Problem.
+**Explanation:** It is the classic undecidable problem.
+
+---
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing recursive with recursively enumerable.
+**Explanation:** The halting behavior is the key difference.
+
+---
+
+### Q8.
+
+The Halting Problem was proved undecidable by:
+**Answer:** Alan Turing.
+**Explanation:** This is a foundational result in computability theory.
+
+---
+
+### Q9.
+
+The Halting Problem asks whether:
+**Answer:** A TM halts on a given input.
+**Explanation:** It considers arbitrary TMs and inputs.
+
+---
+
+### Q10.
+
+The Halting Problem is:
+**Answer:** Undecidable.
+**Explanation:** No algorithm solves it for all cases.
+
+---
+
+### Q11.
+
+A recursive language always:
+**Answer:** Halts.
+**Explanation:** Both acceptance and rejection terminate.
+
+---
+
+### Q12.
+
+An RE language may:
+**Answer:** Loop forever on rejected inputs.
+**Explanation:** This distinguishes it from recursive languages.
+
+---
+
+### Q13.
+
+Regular languages are:
+**Answer:** Recursive.
+**Explanation:** DFAs always halt.
+
+---
+
+### Q14.
+
+Context-Free languages are:
+**Answer:** Decidable.
+**Explanation:** Membership can be decided.
+
+---
+
+### Q15.
+
+The opposite of decidable is:
+**Answer:** Undecidable.
+**Explanation:** No algorithm solves every instance.
+
+---
+
+### Q16.
+
+Reduction is used to:
+**Answer:** Prove undecidability.
+**Explanation:** It transfers hardness from known undecidable problems.
+
+---
+
+### Q17.
+
+The language accepted by a DFA is:
+**Answer:** Recursive.
+**Explanation:** Simulation always terminates.
+
+---
+
+### Q18.
+
+A TM recognizing an RE language:
+**Answer:** May not halt for non-members.
+**Explanation:** Rejection is not guaranteed.
+
+---
+
+### Q19.
+
+Recursive languages require:
+**Answer:** A halting algorithm.
+**Explanation:** Termination is essential.
+
+---
+
+### Q20.
+
+Which class is larger?
+**Answer:** Recursively Enumerable Languages.
+**Explanation:** They include all recursive languages and more.
+
+---
+
+### Q21.
+
+The Halting Problem is an example of:
+**Answer:** An undecidable problem.
+**Explanation:** It has no general algorithmic solution.
+
+---
+
+### Q22.
+
+A language recognized by a DFA belongs to:
+**Answer:** Regular Languages.
+**Explanation:** This is the defining property of DFAs.
+
+---
+
+### Q23.
+
+Recursive languages are closed under:
+**Answer:** Union.
+**Explanation:** They are also closed under other standard Boolean operations.
+
+---
+
+### Q24.
+
+A TM that always rejects invalid strings and halts recognizes:
+**Answer:** A recursive language.
+**Explanation:** It decides the language.
+
+---
+
+### Q25.
+
+The Church–Turing Thesis relates to:
+**Answer:** Computability.
+**Explanation:** It characterizes algorithmically computable functions.
+
+---
+
+### Q26.
+
+An undecidable problem:
+**Answer:** Has no algorithm that solves all instances correctly.
+**Explanation:** This is stronger than saying it is computationally expensive.
+
+---
+
+### Q27.
+
+A TM that never halts on some inputs:
+**Answer:** Can still recognize an RE language.
+**Explanation:** Acceptance is guaranteed only for strings in the language.
+
+---
+
+### Q28.
+
+Which of the following is decidable?
+A) Halting Problem
+B) DFA Membership
+C) General Program Equivalence
+D) Post Correspondence Problem
+
+**Answer:** B
+**Explanation:** DFA membership can be decided by simulation.
+
+---
+
+### Q29.
+
+The primary distinction between Recursive and RE languages is:
+**Answer:** Guaranteed halting.
+**Explanation:** Recursive languages always halt.
+
+---
+
+### Q30.
+
+The main purpose of computability theory is to determine:
+**Answer:** Which problems can and cannot be solved algorithmically.
+**Explanation:** It studies the limits of computation.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+
+### Current Subject
+
+🔄 **Theory of Computation (TOC)**
+
+### Next Topic (Day 72)
+
+# 📚 Theory of Computation
+
+**Complete TOC Revision + Important GATE PYQs + Subject Formula Sheet + Mixed Practice Test**
+
+---
+
+### 📌 Revision Tip
+
+Before tomorrow, make sure you can answer:
+
+1. What is the difference between **Recursive** and **Recursively Enumerable** languages?
+2. Why is the **Halting Problem** undecidable?
+3. What is a **decidable** problem?
+4. How are **reductions** used to prove undecidability?
+5. Draw the hierarchy: **Regular ⊂ Context-Free ⊂ Recursive ⊂ Recursively Enumerable**.
+
+---
+
+## 📊 Overall Progress (After Day 71)
+
+| Subject                              |                                      Status |
+| ------------------------------------ | ------------------------------------------: |
+| Engineering Mathematics              |                                 ✅ Completed |
+| Digital Logic                        |                                 ✅ Completed |
+| Computer Organization & Architecture |                                 ✅ Completed |
+| Programming & Data Structures        |                                 ✅ Completed |
+| Algorithms                           |                                 ✅ Completed |
+| Theory of Computation                | 🟨 9 Topics Completed (Final Revision Next) |
+| Compiler Design                      |                                   ⏳ Pending |
+| Operating Systems                    |                                   ⏳ Pending |
+| DBMS                                 |                                   ⏳ Pending |
+| Computer Networks                    |                                   ⏳ Pending |
+| General Aptitude                     |                                   ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~60%**
+
+Tomorrow (Day 72) we'll complete **Theory of Computation** with a comprehensive revision, high-yield formulas, and GATE PYQs before moving on to **Compiler Design**.
