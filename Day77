@@ -1,0 +1,502 @@
+# 📘 Today’s Learning – Day 72 (GATE CSE 2027)
+
+**📅 Date:** **1 May 2026**
+**📆 Day:** **Friday**
+**📚 Subject:** **Theory of Computation (TOC)**
+**🧠 Topic:** **Complete TOC Revision + High-Yield GATE PYQs + Formula Sheet + Mixed Practice Test**
+
+---
+
+# 🎯 Goal of Today's Session
+
+Today is your **complete revision day** for **Theory of Computation (TOC)**. We'll consolidate all the major concepts covered in Days **63–71**, highlight the most frequently tested ideas in GATE, and finish with a mixed practice test.
+
+---
+
+# 1️⃣ Complete TOC Revision
+
+## 🔹 Module 1: Alphabets, Strings & Languages
+
+### Key Concepts
+
+* Alphabet (**Σ**) → Finite, non-empty set of symbols.
+* String → Finite sequence of symbols.
+* Empty String → **ε**, length = 0.
+* Empty Set → **∅**, contains no strings.
+* Language → Set of strings over an alphabet.
+
+### Remember
+
+* (Σ^*) = All finite strings over Σ (includes ε).
+* (Σ^+) = All non-empty strings over Σ.
+
+---
+
+## 🔹 Module 2: Finite Automata
+
+### DFA
+
+* Exactly one transition for every input symbol.
+* No ε-transitions.
+
+### NFA
+
+* Zero, one, or many transitions for an input.
+
+### ε-NFA
+
+* Allows ε-transitions.
+
+### Key Fact
+
+**DFA = NFA = ε-NFA** (same expressive power).
+
+All recognize **Regular Languages**.
+
+---
+
+## 🔹 Module 3: Regular Expressions
+
+Operators:
+
+* Union (**|**)
+* Concatenation
+* Kleene Star (*****)
+* Positive Closure (**+**)
+
+### Important Identities
+
+* (R^+ = RR^*)
+* (R^*) includes ε.
+* (R^+) excludes ε.
+
+### Arden's Theorem
+
+If
+
+[
+R = Q + RP
+]
+
+and ε ∉ P,
+
+then
+
+[
+R = QP^*
+]
+
+---
+
+## 🔹 Module 4: Pumping Lemma
+
+For every regular language:
+
+[
+w = xyz
+]
+
+such that:
+
+* (|y| > 0)
+* (|xy| \le p)
+* (xy^iz \in L) for all (i \ge 0)
+
+### Used for
+
+✅ Proving **non-regularity**.
+
+❌ Not for proving regularity.
+
+---
+
+## 🔹 Module 5: Context-Free Grammar (CFG)
+
+CFG:
+
+[
+G=(V,\Sigma,P,S)
+]
+
+Components:
+
+* Variables
+* Terminals
+* Productions
+* Start Symbol
+
+Important Concepts:
+
+* Leftmost Derivation
+* Rightmost Derivation
+* Parse Tree
+* Ambiguous Grammar
+
+---
+
+## 🔹 Module 6: Pushdown Automata (PDA)
+
+PDA:
+
+[
+(Q,\Sigma,\Gamma,\delta,q_0,Z_0,F)
+]
+
+Memory:
+
+✅ Stack (LIFO)
+
+Recognizes:
+
+✅ Context-Free Languages
+
+Acceptance:
+
+* Final State
+* Empty Stack
+
+(Both are equivalent in recognition power.)
+
+---
+
+## 🔹 Module 7: Turing Machine (TM)
+
+TM:
+
+[
+(Q,\Sigma,\Gamma,\delta,q_0,B,F)
+]
+
+Features:
+
+* Infinite tape
+* Read/write head
+* Move left/right
+* Blank symbol (B)
+
+Recognizes:
+
+✅ Recursively Enumerable Languages
+
+---
+
+## 🔹 Module 8: Decidability
+
+Recursive Languages
+
+* Always halt.
+
+Recursively Enumerable Languages
+
+* May not halt on some rejected inputs.
+
+Halting Problem
+
+* Undecidable.
+
+---
+
+# 📌 TOC Formula Sheet
+
+| Topic            | Formula / Fact          |
+| ---------------- | ----------------------- |
+| DFA              | (Q, Σ, δ, q₀, F)        |
+| PDA              | (Q, Σ, Γ, δ, q₀, Z₀, F) |
+| TM               | (Q, Σ, Γ, δ, q₀, B, F)  |
+| Kleene Star      | R*                      |
+| Positive Closure | RR*                     |
+| Arden's Theorem  | R = Q + RP ⇒ R = QP*    |
+| Pumping Lemma    | w = xyz                 |
+| CFG              | G = (V, Σ, P, S)        |
+
+---
+
+# ⭐ Top 20 High-Yield GATE PYQ Concepts
+
+1. DFA vs NFA
+2. ε-Closure
+3. Subset Construction
+4. Regular Expressions
+5. Arden's Theorem
+6. Pumping Lemma
+7. Closure Properties
+8. Context-Free Grammar
+9. Parse Tree
+10. Ambiguous Grammar
+11. Pushdown Automata
+12. PDA Acceptance Methods
+13. Turing Machine Components
+14. Church–Turing Thesis
+15. Recursive Languages
+16. Recursively Enumerable Languages
+17. Halting Problem
+18. Decidability
+19. Undecidability
+20. Language Hierarchy
+
+---
+
+# 📝 Mixed Practice Test (30 GATE-Level MCQs)
+
+### Q1.
+
+A DFA recognizes:
+**Answer:** Regular Languages.
+
+---
+
+### Q2.
+
+An NFA accepts a string if:
+**Answer:** At least one computation path accepts.
+
+---
+
+### Q3.
+
+ε-closure is used in:
+**Answer:** ε-NFA to DFA conversion.
+
+---
+
+### Q4.
+
+The pumping lemma is used to:
+**Answer:** Prove a language is not regular.
+
+---
+
+### Q5.
+
+Which contains ε?
+**Answer:** Σ*
+
+---
+
+### Q6.
+
+Which excludes ε?
+**Answer:** Σ+
+
+---
+
+### Q7.
+
+CFGs are recognized by:
+**Answer:** Pushdown Automata.
+
+---
+
+### Q8.
+
+A PDA uses:
+**Answer:** Stack memory.
+
+---
+
+### Q9.
+
+A PDA recognizes:
+**Answer:** Context-Free Languages.
+
+---
+
+### Q10.
+
+A Turing Machine uses:
+**Answer:** An infinite tape.
+
+---
+
+### Q11.
+
+A Universal Turing Machine:
+**Answer:** Simulates other Turing Machines.
+
+---
+
+### Q12.
+
+The Halting Problem is:
+**Answer:** Undecidable.
+
+---
+
+### Q13.
+
+Recursive languages:
+**Answer:** Always halt.
+
+---
+
+### Q14.
+
+Recursively Enumerable languages:
+**Answer:** May not halt for rejected inputs.
+
+---
+
+### Q15.
+
+Arden's Theorem is used to:
+**Answer:** Convert FA to Regular Expression.
+
+---
+
+### Q16.
+
+The expression a* includes:
+**Answer:** ε.
+
+---
+
+### Q17.
+
+The expression a+ includes:
+**Answer:** One or more occurrences of **a**.
+
+---
+
+### Q18.
+
+The parse tree root is:
+**Answer:** Start symbol.
+
+---
+
+### Q19.
+
+A grammar with two parse trees for the same string is:
+**Answer:** Ambiguous.
+
+---
+
+### Q20.
+
+The stack follows:
+**Answer:** LIFO.
+
+---
+
+### Q21.
+
+The blank symbol of a TM is:
+**Answer:** B.
+
+---
+
+### Q22.
+
+Every recursive language is:
+**Answer:** Recursively Enumerable.
+
+---
+
+### Q23.
+
+Every Regular Language is:
+**Answer:** Context-Free.
+
+---
+
+### Q24.
+
+The transition function of a DFA is:
+**Answer:** (Q \times \Sigma \rightarrow Q).
+
+---
+
+### Q25.
+
+The transition function of an NFA is:
+**Answer:** (Q \times \Sigma \rightarrow 2^Q).
+
+---
+
+### Q26.
+
+The pumping lemma requires:
+**Answer:** (|y| > 0).
+
+---
+
+### Q27.
+
+The pumping lemma also requires:
+**Answer:** (|xy| \le p).
+
+---
+
+### Q28.
+
+Which language is **not** regular?
+**Answer:** ({a^n b^n \mid n \ge 0}).
+
+---
+
+### Q29.
+
+The Church–Turing Thesis is:
+**Answer:** A thesis, not a theorem.
+
+---
+
+### Q30.
+
+The most powerful model studied in TOC is:
+**Answer:** Turing Machine.
+
+---
+
+# 📚 Theory of Computation – Status
+
+✅ Introduction to Automata
+✅ DFA
+✅ NFA & ε-NFA
+✅ Regular Expressions & Arden's Theorem
+✅ Pumping Lemma
+✅ Context-Free Grammar
+✅ Pushdown Automata
+✅ Turing Machines
+✅ Decidability & Undecidability
+✅ Complete Revision & Mixed Practice
+
+# 🎉 Theory of Computation Completed!
+
+---
+
+# 📈 Overall Progress
+
+| Subject                              |      Status |
+| ------------------------------------ | ----------: |
+| Engineering Mathematics              | ✅ Completed |
+| Digital Logic                        | ✅ Completed |
+| Computer Organization & Architecture | ✅ Completed |
+| Programming & Data Structures        | ✅ Completed |
+| Algorithms                           | ✅ Completed |
+| Theory of Computation                | ✅ Completed |
+| Compiler Design                      |      ⏳ Next |
+| Operating Systems                    |   ⏳ Pending |
+| DBMS                                 |   ⏳ Pending |
+| Computer Networks                    |   ⏳ Pending |
+| General Aptitude                     |   ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~62%**
+
+---
+
+# 🚀 Tomorrow (Day 73)
+
+**Subject:** Compiler Design
+
+**Topic:** **Introduction to Compiler Design, Phases of Compiler, Lexical Analysis & Tokens, Lexemes, Patterns**
+
+This starts the next major subject in your GATE CSE preparation.
+
+When you're ready, you can also type **Generate PDF**, and I'll prepare the complete **Day 72 TOC Revision PDF** with:
+
+* Full revision notes
+* Formula sheets
+* High-yield PYQs
+* 30 MCQs with answers
+* Exam-ready quick revision material.
