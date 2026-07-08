@@ -1,0 +1,586 @@
+# 📘 Today's Learning – Day 73 (GATE CSE 2027)
+
+**📅 Date:** **2 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **Introduction to Compiler Design, Phases of Compiler, Lexical Analysis, Tokens, Lexemes & Patterns**
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you should be able to:
+
+* Understand what a compiler is.
+* Differentiate between a compiler, interpreter, and assembler.
+* Explain all phases of a compiler.
+* Define tokens, lexemes, and patterns.
+* Understand the role of lexical analysis.
+* Solve common GATE questions on compiler basics.
+
+---
+
+# 1️⃣ What is a Compiler?
+
+A **compiler** is system software that translates a **high-level language (HLL)** program (such as C, C++, or Java) into **machine code** or another lower-level language.
+
+### Example
+
+Source Code (C):
+
+```c
+int a = 10;
+```
+
+Compiler Output (Machine Code):
+
+```text
+10110010...
+```
+
+The compiler checks for errors and generates executable code.
+
+---
+
+# 2️⃣ Language Translation Tools
+
+| Tool        | Input               | Output                |
+| ----------- | ------------------- | --------------------- |
+| Compiler    | High-level language | Machine/Object code   |
+| Interpreter | High-level language | Executes line by line |
+| Assembler   | Assembly language   | Machine code          |
+| Linker      | Object files        | Executable program    |
+| Loader      | Executable file     | Loaded into memory    |
+
+---
+
+# 3️⃣ Compiler vs Interpreter
+
+| Compiler                       | Interpreter                                   |
+| ------------------------------ | --------------------------------------------- |
+| Translates the entire program  | Translates one statement at a time            |
+| Faster execution               | Slower execution                              |
+| Generates object code          | No object code generated                      |
+| Errors shown after compilation | Errors shown line by line                     |
+| Example: C, C++                | Example: Python (traditional execution model) |
+
+📌 **GATE Tip:** Many modern languages (like Java and Python) use combinations of compilation and interpretation in practice, so distinguish the *execution model* from the language itself.
+
+---
+
+# 4️⃣ Phases of a Compiler
+
+A compiler has **six major phases**:
+
+```text
+Source Program
+      │
+      ▼
+1. Lexical Analysis
+      │
+      ▼
+2. Syntax Analysis
+      │
+      ▼
+3. Semantic Analysis
+      │
+      ▼
+4. Intermediate Code Generation
+      │
+      ▼
+5. Code Optimization
+      │
+      ▼
+6. Code Generation
+      │
+      ▼
+Target Program
+```
+
+---
+
+# 5️⃣ Lexical Analysis (Scanner)
+
+The **Lexical Analyzer** is the **first phase** of the compiler.
+
+Its responsibilities are:
+
+* Read the source program character by character.
+* Group characters into meaningful units called **tokens**.
+* Remove comments and whitespace.
+* Report lexical errors.
+* Update the symbol table.
+
+---
+
+## Example
+
+Input:
+
+```c
+int sum = a + 10;
+```
+
+Output Tokens:
+
+```text
+<int> <identifier,sum> <=> <identifier,a> <+> <number,10> <;>
+```
+
+---
+
+# 6️⃣ Token
+
+A **token** is the smallest meaningful unit recognized by the compiler.
+
+Examples:
+
+* Keywords
+* Identifiers
+* Operators
+* Constants
+* Separators
+
+---
+
+### Example
+
+```c
+int total = 25;
+```
+
+Tokens:
+
+| Lexeme | Token               |
+| ------ | ------------------- |
+| int    | Keyword             |
+| total  | Identifier          |
+| =      | Assignment Operator |
+| 25     | Number              |
+| ;      | Separator           |
+
+---
+
+# 7️⃣ Lexeme
+
+A **lexeme** is the actual sequence of characters in the source code that matches a token.
+
+Example:
+
+```c
+float salary;
+```
+
+| Lexeme | Token      |
+| ------ | ---------- |
+| float  | Keyword    |
+| salary | Identifier |
+| ;      | Separator  |
+
+---
+
+# 8️⃣ Pattern
+
+A **pattern** describes the rule used to recognize a token.
+
+Examples:
+
+Identifier Pattern:
+
+```text
+letter(letter|digit)*
+```
+
+Integer Pattern:
+
+```text
+digit+
+```
+
+---
+
+# 9️⃣ Token vs Lexeme vs Pattern
+
+| Token               | Lexeme      | Pattern               |
+| ------------------- | ----------- | --------------------- |
+| Category            | Actual text | Rule for matching     |
+| Example: Identifier | total       | letter(letter|digit)* |
+| Example: Number     | 123         | digit+                |
+
+📌 This comparison is asked frequently in GATE.
+
+---
+
+# 🔟 Symbol Table
+
+The **Symbol Table** stores information about identifiers.
+
+Example:
+
+```c
+int marks;
+float salary;
+```
+
+| Identifier | Type  |
+| ---------- | ----- |
+| marks      | int   |
+| salary     | float |
+
+---
+
+# 1️⃣1️⃣ Lexical Errors
+
+Examples:
+
+```c
+int @abc;
+```
+
+Invalid character:
+
+```text
+@
+```
+
+Other lexical errors include:
+
+* Invalid identifiers
+* Illegal characters
+* Unterminated string literals
+
+---
+
+# 1️⃣2️⃣ Role of Regular Expressions
+
+Lexical analyzers are built using **Regular Expressions**.
+
+Example:
+
+Identifier:
+
+```text
+letter(letter|digit)*
+```
+
+Integer:
+
+```text
+digit+
+```
+
+Tools like **Lex/Flex** generate lexical analyzers from regular-expression specifications.
+
+---
+
+# 📊 Compiler Phase Summary
+
+| Phase                        | Main Task                           |
+| ---------------------------- | ----------------------------------- |
+| Lexical Analysis             | Generate tokens                     |
+| Syntax Analysis              | Build parse tree                    |
+| Semantic Analysis            | Type checking & meaning             |
+| Intermediate Code Generation | Produce intermediate representation |
+| Code Optimization            | Improve efficiency                  |
+| Code Generation              | Produce target machine code         |
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+A **token** is **not** the same as a **lexeme**.
+
+---
+
+### Trap 2
+
+The lexical analyzer **does not** check grammar.
+
+Grammar checking is done by the **syntax analyzer**.
+
+---
+
+### Trap 3
+
+Whitespace and comments are usually removed during **lexical analysis**.
+
+---
+
+### Trap 4
+
+The lexical analyzer commonly uses **regular expressions**, while the parser uses **context-free grammars**.
+
+---
+
+### Trap 5
+
+A compiler performs **translation**, while a linker combines object files and a loader places the executable into memory.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept              | Key Point                      |
+| -------------------- | ------------------------------ |
+| Compiler             | HLL → Machine/Object code      |
+| First Compiler Phase | Lexical Analysis               |
+| Token                | Category                       |
+| Lexeme               | Actual text                    |
+| Pattern              | Rule used to recognize lexemes |
+| Symbol Table         | Stores identifier information  |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+The first phase of a compiler is:
+**Answer:** Lexical Analysis.
+
+---
+
+### Q2.
+
+A compiler translates:
+**Answer:** High-level language to machine/object code.
+
+---
+
+### Q3.
+
+A lexical analyzer produces:
+**Answer:** Tokens.
+
+---
+
+### Q4.
+
+A token is:
+**Answer:** A category of lexical units.
+
+---
+
+### Q5.
+
+A lexeme is:
+**Answer:** The actual character sequence matched by a token.
+
+---
+
+### Q6.
+
+The pattern for identifiers is generally:
+**Answer:** `letter(letter|digit)*`
+
+---
+
+### Q7.
+
+Most PYQ-tested topic?
+**Answer:** Token vs Lexeme vs Pattern.
+
+---
+
+### Q8.
+
+Biggest GATE trap?
+**Answer:** Confusing a token with a lexeme.
+
+---
+
+### Q9.
+
+The symbol table stores:
+**Answer:** Information about identifiers.
+
+---
+
+### Q10.
+
+Comments are removed during:
+**Answer:** Lexical Analysis.
+
+---
+
+### Q11.
+
+Whitespace is generally ignored by:
+**Answer:** The lexical analyzer.
+
+---
+
+### Q12.
+
+Which phase checks grammar?
+**Answer:** Syntax Analysis.
+
+---
+
+### Q13.
+
+Which phase performs type checking?
+**Answer:** Semantic Analysis.
+
+---
+
+### Q14.
+
+Intermediate code is produced during:
+**Answer:** Intermediate Code Generation.
+
+---
+
+### Q15.
+
+Which phase improves efficiency?
+**Answer:** Code Optimization.
+
+---
+
+### Q16.
+
+Machine code is produced during:
+**Answer:** Code Generation.
+
+---
+
+### Q17.
+
+Regular expressions are primarily used in:
+**Answer:** Lexical Analysis.
+
+---
+
+### Q18.
+
+Context-Free Grammars are primarily used in:
+**Answer:** Syntax Analysis.
+
+---
+
+### Q19.
+
+The compiler reports invalid characters during:
+**Answer:** Lexical Analysis.
+
+---
+
+### Q20.
+
+An interpreter:
+**Answer:** Executes code statement by statement.
+
+---
+
+### Q21.
+
+An assembler translates:
+**Answer:** Assembly language to machine code.
+
+---
+
+### Q22.
+
+A linker:
+**Answer:** Combines object files into an executable.
+
+---
+
+### Q23.
+
+A loader:
+**Answer:** Loads the executable into memory.
+
+---
+
+### Q24.
+
+Which of the following is a token category?
+**Answer:** Keyword.
+
+---
+
+### Q25.
+
+`while` is:
+**Answer:** A keyword token.
+
+---
+
+### Q26.
+
+`count` is typically:
+**Answer:** An identifier lexeme.
+
+---
+
+### Q27.
+
+`12345` is recognized as:
+**Answer:** A numeric constant.
+
+---
+
+### Q28.
+
+The lexical analyzer reads:
+**Answer:** Characters from the source program.
+
+---
+
+### Q29.
+
+The parser receives:
+**Answer:** Tokens from the lexical analyzer.
+
+---
+
+### Q30.
+
+The primary role of a compiler is:
+**Answer:** Translate a source program into a target program.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+
+### Current Subject
+
+🔄 **Compiler Design**
+
+### Next Topic (Day 74)
+
+**Compiler Design – Syntax Analysis, Parse Trees, Derivations, Top-Down Parsing & Bottom-Up Parsing**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                         Status |
+| ----------------------------- | -----------------------------: |
+| Engineering Mathematics       |                    ✅ Completed |
+| Digital Logic                 |                    ✅ Completed |
+| COA                           |                    ✅ Completed |
+| Programming & Data Structures |                    ✅ Completed |
+| Algorithms                    |                    ✅ Completed |
+| Theory of Computation         |                    ✅ Completed |
+| Compiler Design               | 🟨 Started (1 topic completed) |
+| Operating Systems             |                      ⏳ Pending |
+| DBMS                          |                      ⏳ Pending |
+| Computer Networks             |                      ⏳ Pending |
+| General Aptitude              |                      ⏳ Pending |
+
+**Overall syllabus completion:** **~63%**
+
+Tomorrow we'll move into one of the highest-weight Compiler Design topics: **Syntax Analysis (Parsing)**, which is frequently tested in GATE.
