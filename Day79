@@ -1,0 +1,603 @@
+# 📘 Today's Learning – Day 74 (GATE CSE 2027)
+
+**📅 Date:** **3 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **Syntax Analysis (Parsing), Parse Trees, Leftmost & Rightmost Derivations, Top-Down Parsing & Bottom-Up Parsing**
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand the purpose of syntax analysis.
+* Differentiate between parsing techniques.
+* Draw and interpret parse trees.
+* Explain leftmost and rightmost derivations.
+* Compare top-down and bottom-up parsing.
+* Solve GATE-level questions on parsing concepts.
+
+---
+
+# 1️⃣ What is Syntax Analysis?
+
+**Syntax Analysis** (also called **Parsing**) is the **second phase** of a compiler.
+
+It takes **tokens** from the lexical analyzer and checks whether they follow the grammar of the programming language.
+
+If the syntax is correct, it builds a **Parse Tree**.
+
+---
+
+### Flow
+
+```text
+Source Program
+      ↓
+Lexical Analyzer
+      ↓
+Tokens
+      ↓
+Syntax Analyzer
+      ↓
+Parse Tree
+```
+
+---
+
+# 2️⃣ Role of the Parser
+
+The parser:
+
+* Checks grammatical correctness.
+* Builds a parse tree.
+* Reports syntax errors.
+* Passes the parse tree to semantic analysis.
+
+Example:
+
+```c
+x = a + b;
+```
+
+Correct syntax → Parse tree generated.
+
+Example with error:
+
+```c
+x = + a ;
+```
+
+Parser reports a **syntax error**.
+
+---
+
+# 3️⃣ Context-Free Grammar (CFG) Review
+
+Parsing is based on **Context-Free Grammars (CFGs)**.
+
+Example grammar:
+
+```text
+E → E + T | T
+T → T * F | F
+F → (E) | id
+```
+
+This grammar generates arithmetic expressions.
+
+---
+
+# 4️⃣ Parse Tree
+
+A **Parse Tree** is a tree representation of how a string is derived from the grammar.
+
+Example:
+
+Input:
+
+```text
+id + id
+```
+
+Grammar:
+
+```text
+E → E + T
+E → T
+T → F
+F → id
+```
+
+Simplified Parse Tree:
+
+```text
+          E
+       /  |  \
+      E   +   T
+      |       |
+      T       F
+      |       |
+      F      id
+      |
+     id
+```
+
+📌 Leaves read from left to right form the input string.
+
+---
+
+# 5️⃣ Leftmost Derivation (LMD)
+
+In a **Leftmost Derivation**, always expand the **leftmost non-terminal** first.
+
+Example:
+
+```text
+S → aSB | ab
+```
+
+Derivation:
+
+```text
+S
+⇒ aSB
+⇒ aaSBB
+⇒ aaabBB
+```
+
+---
+
+# 6️⃣ Rightmost Derivation (RMD)
+
+In a **Rightmost Derivation**, always expand the **rightmost non-terminal** first.
+
+Example:
+
+```text
+S
+⇒ aSB
+⇒ aabB
+⇒ aaabBB
+```
+
+📌 **Important:** The leftmost and rightmost derivations can be different, but if the grammar is unambiguous, they produce the **same parse tree**.
+
+---
+
+# 7️⃣ Ambiguous Grammar
+
+A grammar is **ambiguous** if **one string has more than one parse tree**.
+
+Example:
+
+```text
+E → E + E
+E → E * E
+E → id
+```
+
+Expression:
+
+```text
+id + id * id
+```
+
+Can be interpreted as:
+
+```text
+(id + id) * id
+```
+
+or
+
+```text
+id + (id * id)
+```
+
+Hence, the grammar is **ambiguous**.
+
+---
+
+# 8️⃣ Types of Parsing
+
+There are two major categories:
+
+### Top-Down Parsing
+
+* Starts from the **start symbol**.
+* Builds the parse tree from **root to leaves**.
+* Produces a leftmost derivation.
+
+Examples:
+
+* Recursive Descent Parser
+* LL(1) Parser
+
+---
+
+### Bottom-Up Parsing
+
+* Starts from the **input string**.
+* Builds the parse tree from **leaves to root**.
+* Produces the reverse of a rightmost derivation.
+
+Examples:
+
+* Shift-Reduce Parser
+* LR Parser
+* SLR Parser
+* LALR Parser
+
+---
+
+# 9️⃣ Top-Down vs Bottom-Up Parsing
+
+| Feature           | Top-Down      | Bottom-Up            |
+| ----------------- | ------------- | -------------------- |
+| Starts From       | Start Symbol  | Input String         |
+| Tree Construction | Root → Leaves | Leaves → Root        |
+| Derivation        | Leftmost      | Reverse of Rightmost |
+| Simplicity        | Easier        | More Powerful        |
+| Common Parser     | LL(1)         | LR(1), SLR, LALR     |
+
+📌 Frequently asked in GATE.
+
+---
+
+# 🔟 Recursive Descent Parser
+
+A **Recursive Descent Parser** is a top-down parser that uses recursive procedures for grammar rules.
+
+Advantages:
+
+* Simple to implement.
+* Easy to understand.
+
+Disadvantage:
+
+* Cannot handle left-recursive grammars.
+
+---
+
+# 1️⃣1️⃣ Shift-Reduce Parsing
+
+A bottom-up parsing technique with four actions:
+
+1. **Shift** – Push next input symbol onto the stack.
+2. **Reduce** – Replace symbols using a grammar rule.
+3. **Accept** – Parsing completed successfully.
+4. **Error** – Syntax error detected.
+
+---
+
+# 1️⃣2️⃣ Syntax Errors
+
+Examples:
+
+```c
+int x = ;
+```
+
+Missing expression.
+
+```c
+if (a > b
+```
+
+Missing closing parenthesis.
+
+These are detected by the **parser**, not the lexical analyzer.
+
+---
+
+# 📊 Summary Table
+
+| Concept           | Key Point             |
+| ----------------- | --------------------- |
+| Syntax Analysis   | Second compiler phase |
+| Input             | Tokens                |
+| Output            | Parse Tree            |
+| Top-Down Parsing  | Root → Leaves         |
+| Bottom-Up Parsing | Leaves → Root         |
+| Ambiguous Grammar | Multiple parse trees  |
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+The parser checks **grammar**, not token formation.
+
+---
+
+### Trap 2
+
+Lexical errors are handled by the **lexical analyzer**, not the parser.
+
+---
+
+### Trap 3
+
+Bottom-up parsing generates the **reverse of a rightmost derivation**, not a leftmost derivation.
+
+---
+
+### Trap 4
+
+Left recursion causes problems for many top-down parsers.
+
+---
+
+### Trap 5
+
+A grammar with multiple leftmost derivations for the same string is ambiguous.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept       | Key Point                     |
+| ------------- | ----------------------------- |
+| Parser Input  | Tokens                        |
+| Parser Output | Parse Tree                    |
+| LMD           | Expand leftmost non-terminal  |
+| RMD           | Expand rightmost non-terminal |
+| Top-Down      | Root → Leaves                 |
+| Bottom-Up     | Leaves → Root                 |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Syntax Analysis is the:
+**Answer:** Second phase of a compiler.
+
+---
+
+### Q2.
+
+The parser receives:
+**Answer:** Tokens.
+
+---
+
+### Q3.
+
+The parser produces:
+**Answer:** Parse Tree.
+
+---
+
+### Q4.
+
+Which grammar is used by parsers?
+**Answer:** Context-Free Grammar.
+
+---
+
+### Q5.
+
+Leaves of a parse tree represent:
+**Answer:** The input string.
+
+---
+
+### Q6.
+
+Leftmost derivation expands:
+**Answer:** The leftmost non-terminal.
+
+---
+
+### Q7.
+
+Rightmost derivation expands:
+**Answer:** The rightmost non-terminal.
+
+---
+
+### Q8.
+
+Most PYQ-tested topic?
+**Answer:** Top-down vs Bottom-up parsing.
+
+---
+
+### Q9.
+
+Biggest GATE trap?
+**Answer:** Bottom-up parsing produces the reverse of a rightmost derivation.
+
+---
+
+### Q10.
+
+Top-down parsing starts from:
+**Answer:** The start symbol.
+
+---
+
+### Q11.
+
+Bottom-up parsing starts from:
+**Answer:** The input string.
+
+---
+
+### Q12.
+
+Recursive descent parsing is:
+**Answer:** Top-down.
+
+---
+
+### Q13.
+
+Shift-reduce parsing is:
+**Answer:** Bottom-up.
+
+---
+
+### Q14.
+
+LL(1) is:
+**Answer:** A top-down parser.
+
+---
+
+### Q15.
+
+LR parsing is:
+**Answer:** Bottom-up.
+
+---
+
+### Q16.
+
+Which parser is generally more powerful?
+**Answer:** LR parser.
+
+---
+
+### Q17.
+
+Ambiguous grammar has:
+**Answer:** More than one parse tree for the same string.
+
+---
+
+### Q18.
+
+Syntax errors are detected by:
+**Answer:** Parser.
+
+---
+
+### Q19.
+
+Lexical errors are detected by:
+**Answer:** Lexical Analyzer.
+
+---
+
+### Q20.
+
+The parser checks:
+**Answer:** Grammar rules.
+
+---
+
+### Q21.
+
+The parser does not perform:
+**Answer:** Code optimization.
+
+---
+
+### Q22.
+
+The parser sends the parse tree to:
+**Answer:** Semantic Analysis.
+
+---
+
+### Q23.
+
+Which parser cannot directly handle left recursion?
+**Answer:** Recursive Descent Parser.
+
+---
+
+### Q24.
+
+Shift action means:
+**Answer:** Move the next input symbol onto the stack.
+
+---
+
+### Q25.
+
+Reduce action means:
+**Answer:** Apply a production rule.
+
+---
+
+### Q26.
+
+Accept action means:
+**Answer:** Successful parsing.
+
+---
+
+### Q27.
+
+Error action means:
+**Answer:** Syntax error detected.
+
+---
+
+### Q28.
+
+A parse tree root is:
+**Answer:** The start symbol.
+
+---
+
+### Q29.
+
+Top-down parsing constructs the tree:
+**Answer:** From root to leaves.
+
+---
+
+### Q30.
+
+Bottom-up parsing constructs the tree:
+**Answer:** From leaves to root.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+
+### Current Subject
+
+🔄 **Compiler Design**
+
+### Next Topic (Day 75)
+
+**Compiler Design – FIRST & FOLLOW Sets, LL(1) Parsing Table Construction, Left Recursion Elimination & Left Factoring**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               | 🟨 2 Topics Completed |
+| Operating Systems             |             ⏳ Pending |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall syllabus completion:** **~64%**
+
+Tomorrow's topic (**FIRST & FOLLOW Sets and LL(1) Parsing**) is one of the **highest-weight Compiler Design topics** in GATE and is asked almost every year, so it's worth giving it extra practice.
