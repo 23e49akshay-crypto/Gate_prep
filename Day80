@@ -1,0 +1,715 @@
+# 📘 Today's Learning – Day 75 (GATE CSE 2027)
+
+**📅 Date:** **4 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **FIRST & FOLLOW Sets, LL(1) Parsing Table, Left Recursion Elimination & Left Factoring**
+
+> ⭐ **GATE Importance:** This is one of the **most frequently asked topics** in Compiler Design. Almost every GATE exam has at least one question from **FIRST, FOLLOW, LL(1), or Left Recursion**.
+
+---
+
+# 🎯 Learning Objectives
+
+After today's lesson, you should be able to:
+
+* Compute **FIRST** sets.
+* Compute **FOLLOW** sets.
+* Construct an **LL(1) Parsing Table**.
+* Eliminate **Left Recursion**.
+* Perform **Left Factoring**.
+* Determine whether a grammar is **LL(1)**.
+
+---
+
+# 1️⃣ What is an LL(1) Parser?
+
+An **LL(1) Parser** is a **Top-Down Parser**.
+
+Meaning:
+
+* **L** → Scan input from **Left to Right**
+* **L** → Produce **Leftmost Derivation**
+* **1** → Look ahead **one input symbol**
+
+Example:
+
+```text
+Input:
+
+id + id * id
+```
+
+The parser uses **only one look-ahead token** to decide which production rule to apply.
+
+---
+
+# 2️⃣ FIRST Set
+
+The **FIRST** of a grammar symbol is the set of terminals that can appear as the **first symbol** of strings derived from that symbol.
+
+---
+
+## Rules for FIRST
+
+### Rule 1
+
+If
+
+```text
+A → aα
+```
+
+then
+
+```text
+FIRST(A) = {a}
+```
+
+---
+
+### Rule 2
+
+If
+
+```text
+A → ε
+```
+
+then
+
+```text
+ε ∈ FIRST(A)
+```
+
+---
+
+### Rule 3
+
+If
+
+```text
+A → BC
+```
+
+Then:
+
+* Add FIRST(B), excluding ε.
+* If ε ∈ FIRST(B), then also consider FIRST(C).
+
+---
+
+## Example
+
+Grammar:
+
+```text
+A → aB | bC
+```
+
+FIRST(A):
+
+```text
+{a, b}
+```
+
+---
+
+## Example 2
+
+Grammar:
+
+```text
+A → ε | a
+```
+
+FIRST(A):
+
+```text
+{a, ε}
+```
+
+---
+
+# 3️⃣ FOLLOW Set
+
+The **FOLLOW** of a non-terminal is the set of terminals that can appear **immediately after** it in some sentential form.
+
+---
+
+## Rules for FOLLOW
+
+### Rule 1
+
+Put:
+
+```text
+$
+```
+
+(end marker)
+
+in FOLLOW(Start Symbol).
+
+---
+
+### Rule 2
+
+If:
+
+```text
+A → αBβ
+```
+
+Then:
+
+```text
+FIRST(β) − {ε}
+```
+
+belongs to FOLLOW(B).
+
+---
+
+### Rule 3
+
+If:
+
+```text
+A → αB
+```
+
+or
+
+ε ∈ FIRST(β),
+
+then:
+
+```text
+FOLLOW(A)
+```
+
+belongs to FOLLOW(B).
+
+---
+
+## Example
+
+Grammar:
+
+```text
+S → AB
+
+A → a
+
+B → b
+```
+
+FOLLOW(S):
+
+```text
+{$}
+```
+
+FOLLOW(A):
+
+```text
+{b}
+```
+
+FOLLOW(B):
+
+```text
+{$}
+```
+
+---
+
+# 4️⃣ Difference Between FIRST and FOLLOW
+
+| FIRST                           | FOLLOW                                       |
+| ------------------------------- | -------------------------------------------- |
+| Symbols that can begin a string | Symbols that can appear after a non-terminal |
+| Used during prediction          | Used when ε-productions exist                |
+| May contain ε                   | Never contains ε                             |
+
+📌 **Important GATE Fact:** FOLLOW sets **never** contain ε.
+
+---
+
+# 5️⃣ LL(1) Parsing Table
+
+A parsing table has:
+
+* **Rows** → Non-terminals
+* **Columns** → Terminals + $
+
+---
+
+## Construction Rules
+
+For each production:
+
+```text
+A → α
+```
+
+### Step 1
+
+Put the production in all cells corresponding to:
+
+```text
+FIRST(α)
+```
+
+---
+
+### Step 2
+
+If ε ∈ FIRST(α),
+
+then put the production in all cells corresponding to:
+
+```text
+FOLLOW(A)
+```
+
+---
+
+# Example
+
+Grammar:
+
+```text
+S → aA
+
+A → b | ε
+```
+
+FIRST:
+
+```text
+FIRST(S)={a}
+
+FIRST(A)={b, ε}
+```
+
+FOLLOW:
+
+```text
+FOLLOW(S)={$}
+
+FOLLOW(A)={$}
+```
+
+LL(1) Table:
+
+| Non-terminal | a      | b     | $     |
+| ------------ | ------ | ----- | ----- |
+| S            | S → aA | —     | —     |
+| A            | —      | A → b | A → ε |
+
+---
+
+# 6️⃣ Left Recursion
+
+A grammar is **left recursive** if a non-terminal immediately derives itself.
+
+Example:
+
+```text
+E → E + T
+
+E → T
+```
+
+Problem:
+
+Recursive-descent (top-down) parsers may enter **infinite recursion**.
+
+---
+
+# Eliminating Immediate Left Recursion
+
+General form:
+
+```text
+A → Aα | β
+```
+
+Convert into:
+
+```text
+A → βA'
+
+A' → αA' | ε
+```
+
+---
+
+## Example
+
+Original:
+
+```text
+E → E + T
+
+E → T
+```
+
+Converted:
+
+```text
+E → TE'
+
+E' → +TE'
+
+E' → ε
+```
+
+---
+
+# 7️⃣ Left Factoring
+
+Left Factoring removes **common prefixes** to help predictive parsing.
+
+---
+
+### Example
+
+Original:
+
+```text
+S → if E then S
+
+S → if E then S else S
+```
+
+Both productions start with:
+
+```text
+if E then S
+```
+
+---
+
+### After Left Factoring
+
+```text
+S → if E then SS'
+
+S' → else S
+
+S' → ε
+```
+
+Now the parser can make a deterministic choice after reading the common prefix.
+
+---
+
+# 8️⃣ Conditions for an LL(1) Grammar
+
+A grammar is LL(1) if:
+
+* It has **no left recursion**.
+* It is **left factored** (if needed).
+* For every non-terminal, parsing table entries are unique (no conflicts).
+
+---
+
+# 9️⃣ Common GATE Traps
+
+### Trap 1
+
+FOLLOW sets **never contain ε**.
+
+---
+
+### Trap 2
+
+FIRST sets **may contain ε**.
+
+---
+
+### Trap 3
+
+LL(1) parsers **cannot directly handle left-recursive grammars**.
+
+---
+
+### Trap 4
+
+Left Factoring removes **common prefixes**, not recursion.
+
+---
+
+### Trap 5
+
+Removing left recursion **does not change the language generated**.
+
+---
+
+# 📝 Formula Sheet
+
+| Concept               | Rule                                                  |
+| --------------------- | ----------------------------------------------------- |
+| FIRST(A)              | First terminal derivable from A                       |
+| FOLLOW(A)             | Terminal appearing after A                            |
+| FOLLOW(Start Symbol)  | {$}                                                   |
+| Left Recursion        | A → Aα                                                |
+| Remove Left Recursion | A → βA', A' → αA' | ε                                 |
+| LL(1)                 | Left-to-right scan, Leftmost derivation, 1 look-ahead |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+LL(1) stands for:
+**Answer:** Left-to-right scan, Leftmost derivation, 1 look-ahead.
+
+---
+
+### Q2.
+
+FIRST(A) contains:
+**Answer:** Symbols that can appear first in strings derived from A.
+
+---
+
+### Q3.
+
+FOLLOW(A) contains:
+**Answer:** Symbols that can immediately follow A.
+
+---
+
+### Q4.
+
+FOLLOW(Start Symbol) always contains:
+**Answer:** `$`
+
+---
+
+### Q5.
+
+Can FIRST contain ε?
+**Answer:** Yes.
+
+---
+
+### Q6.
+
+Can FOLLOW contain ε?
+**Answer:** No.
+
+---
+
+### Q7.
+
+Most PYQ-tested topic?
+**Answer:** FIRST and FOLLOW computation.
+
+---
+
+### Q8.
+
+Biggest GATE trap?
+**Answer:** FOLLOW sets never contain ε.
+
+---
+
+### Q9.
+
+LL(1) parser is:
+**Answer:** Top-down.
+
+---
+
+### Q10.
+
+Recursive Descent Parser is:
+**Answer:** Top-down.
+
+---
+
+### Q11.
+
+Left recursion causes:
+**Answer:** Infinite recursion in top-down parsing.
+
+---
+
+### Q12.
+
+Left factoring removes:
+**Answer:** Common prefixes.
+
+---
+
+### Q13.
+
+Removing left recursion changes:
+**Answer:** Grammar structure, but not the language.
+
+---
+
+### Q14.
+
+The parsing table rows represent:
+**Answer:** Non-terminals.
+
+---
+
+### Q15.
+
+The parsing table columns represent:
+**Answer:** Terminals and `$`.
+
+---
+
+### Q16.
+
+LL(1) uses:
+**Answer:** One look-ahead symbol.
+
+---
+
+### Q17.
+
+FIRST(aA):
+**Answer:** `{a}`
+
+---
+
+### Q18.
+
+If ε ∈ FIRST(A), then:
+**Answer:** FOLLOW may be used when constructing the parsing table.
+
+---
+
+### Q19.
+
+A grammar with parsing-table conflicts is:
+**Answer:** Not LL(1).
+
+---
+
+### Q20.
+
+Top-down parsing produces:
+**Answer:** Leftmost derivation.
+
+---
+
+### Q21.
+
+Bottom-up parsing produces:
+**Answer:** Reverse of a rightmost derivation.
+
+---
+
+### Q22.
+
+Which parser commonly uses FIRST and FOLLOW?
+**Answer:** LL(1) Parser.
+
+---
+
+### Q23.
+
+FIRST is computed for:
+**Answer:** Grammar symbols and productions.
+
+---
+
+### Q24.
+
+FOLLOW is computed for:
+**Answer:** Non-terminals only.
+
+---
+
+### Q25.
+
+Immediate left recursion has the form:
+**Answer:** `A → Aα`.
+
+---
+
+### Q26.
+
+The symbol `$` denotes:
+**Answer:** End of input.
+
+---
+
+### Q27.
+
+A predictive parser is generally:
+**Answer:** LL(1).
+
+---
+
+### Q28.
+
+Which transformation is used before building an LL(1) parser?
+**Answer:** Left recursion elimination and left factoring.
+
+---
+
+### Q29.
+
+An LL(1) parser chooses productions using:
+**Answer:** FIRST, FOLLOW, and one look-ahead symbol.
+
+---
+
+### Q30.
+
+The primary purpose of FIRST and FOLLOW is:
+**Answer:** Constructing predictive parsing tables.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+
+### Current Subject
+
+🔄 **Compiler Design**
+
+### Next Topic (Day 76)
+
+**Compiler Design – LR Parsing, SLR(1), Canonical LR(1), LALR(1), Shift-Reduce Parsing & Viable Prefixes**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               | 🟨 3 Topics Completed |
+| Operating Systems             |             ⏳ Pending |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall syllabus completion:** **~65%**
+
+💡 **Study Tip:** Spend 20–30 minutes today manually computing **FIRST** and **FOLLOW** sets for 3–4 grammars. This is one of the most effective ways to prepare for GATE Compiler Design questions.
