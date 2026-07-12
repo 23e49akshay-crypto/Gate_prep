@@ -1,0 +1,571 @@
+# 📘 Today's Learning – Day 76 (GATE CSE 2027)
+
+**📅 Date:** **5 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **LR Parsing, SLR(1), Canonical LR(1), LALR(1), Shift-Reduce Parsing & Viable Prefixes**
+
+> ⭐ **GATE Importance:** LR parsing is one of the **highest-weight topics** in Compiler Design. Questions often test parser types, conflicts, viable prefixes, and differences between SLR, LR(1), and LALR.
+
+---
+
+# 🎯 Learning Objectives
+
+After today's lesson, you should be able to:
+
+* Understand Bottom-Up (LR) Parsing.
+* Explain Shift-Reduce Parsing.
+* Define Viable Prefixes.
+* Differentiate SLR(1), Canonical LR(1), and LALR(1).
+* Identify Shift-Reduce and Reduce-Reduce conflicts.
+* Solve GATE-level LR parsing questions.
+
+---
+
+# 1️⃣ What is LR Parsing?
+
+**LR Parsing** is a **Bottom-Up Parsing** technique.
+
+**LR** means:
+
+* **L** → Scan input **Left to Right**
+* **R** → Construct the **Reverse of a Rightmost Derivation**
+
+LR parsers are more powerful than LL(1) parsers and can handle a larger class of grammars.
+
+---
+
+# 2️⃣ Shift-Reduce Parsing
+
+A Shift-Reduce Parser uses a **stack** and an **input buffer**.
+
+It performs four actions:
+
+### 1. Shift
+
+Move the next input symbol onto the stack.
+
+### 2. Reduce
+
+Replace symbols on the stack using a production rule.
+
+### 3. Accept
+
+The input is parsed successfully.
+
+### 4. Error
+
+A syntax error is detected.
+
+---
+
+### Example
+
+Grammar:
+
+```text
+E → E + T
+E → T
+T → id
+```
+
+Input:
+
+```text
+id + id
+```
+
+Operations:
+
+```text
+Shift id
+Reduce T → id
+Reduce E → T
+Shift +
+Shift id
+Reduce T → id
+Reduce E → E + T
+Accept
+```
+
+---
+
+# 3️⃣ What is a Viable Prefix?
+
+A **Viable Prefix** is:
+
+> A prefix of a right sentential form that does **not extend beyond the handle**.
+
+Simply put:
+
+* It is a valid partial string that can appear on the parser's stack.
+* Every stack content during LR parsing is a viable prefix.
+
+📌 **GATE Fact:** Every viable prefix is recognized by a DFA called the **LR(0) Automaton**.
+
+---
+
+# 4️⃣ What is a Handle?
+
+A **Handle** is the substring that should be reduced in one step during bottom-up parsing.
+
+Example:
+
+Grammar:
+
+```text
+E → E + T
+T → id
+```
+
+Input:
+
+```text
+id + id
+```
+
+Before the final reduction:
+
+```text
+E + T
+```
+
+The **handle** is:
+
+```text
+E + T
+```
+
+Reducing the correct handle leads back to the start symbol.
+
+---
+
+# 5️⃣ LR(0) Items
+
+An **LR(0) Item** is a production with a dot (•) showing parsing progress.
+
+Example:
+
+```text
+A → αβ
+```
+
+Possible items:
+
+```text
+A → •αβ
+A → α•β
+A → αβ•
+```
+
+The dot indicates how much of the production has been recognized.
+
+---
+
+# 6️⃣ Closure Operation
+
+The **Closure** operation adds all productions needed when the dot appears before a non-terminal.
+
+Example:
+
+```text
+E → •T
+T → •id
+```
+
+Closure ensures all possible derivations are considered.
+
+---
+
+# 7️⃣ GOTO Function
+
+The **GOTO(I, X)** function computes the next LR item set after reading symbol **X** from item set **I**.
+
+Together, **Closure** and **GOTO** build the LR automaton.
+
+---
+
+# 8️⃣ Types of LR Parsers
+
+## LR(0)
+
+* Simplest LR parser.
+* No look-ahead.
+* Smallest parsing power.
+
+---
+
+## SLR(1) (Simple LR)
+
+* Uses **FOLLOW** sets to resolve reductions.
+* More powerful than LR(0).
+* Smaller parsing tables than Canonical LR.
+
+---
+
+## Canonical LR(1)
+
+* Uses one look-ahead symbol in each item.
+* Most powerful LR parser among standard LR methods.
+* Largest parsing tables.
+
+---
+
+## LALR(1)
+
+* Merges compatible LR(1) states.
+* Parsing power close to Canonical LR.
+* Much smaller parsing tables.
+* Widely used in compiler generators like **YACC**.
+
+---
+
+# 9️⃣ Comparison of LR Parsers
+
+| Parser          | Look-Ahead  | Parsing Power | Table Size |
+| --------------- | ----------- | ------------- | ---------- |
+| LR(0)           | 0           | Lowest        | Smallest   |
+| SLR(1)          | FOLLOW Sets | Medium        | Small      |
+| LALR(1)         | 1           | High          | Medium     |
+| Canonical LR(1) | 1           | Highest       | Largest    |
+
+📌 **Important GATE Order:**
+
+**LR(0) < SLR(1) < LALR(1) < Canonical LR(1)**
+
+(in terms of parsing power)
+
+---
+
+# 🔟 Parsing Conflicts
+
+## Shift-Reduce Conflict
+
+The parser cannot decide whether to:
+
+* Shift the next symbol, or
+* Reduce the current handle.
+
+---
+
+## Reduce-Reduce Conflict
+
+The parser cannot decide **which production** to reduce.
+
+---
+
+### GATE Tip
+
+Canonical LR(1) resolves more conflicts than SLR(1), making it more powerful.
+
+---
+
+# 1️⃣1️⃣ LR vs LL Parsing
+
+| LL Parser                    | LR Parser                    |
+| ---------------------------- | ---------------------------- |
+| Top-Down                     | Bottom-Up                    |
+| Leftmost Derivation          | Reverse Rightmost Derivation |
+| Less Powerful                | More Powerful                |
+| Easier to Implement          | More Complex                 |
+| Cannot Handle Left Recursion | Can Handle Left Recursion    |
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+LR parsing is **Bottom-Up**, not Top-Down.
+
+---
+
+### Trap 2
+
+LALR(1) is **not** more powerful than Canonical LR(1).
+
+---
+
+### Trap 3
+
+SLR(1) uses **FOLLOW sets**, whereas Canonical LR(1) uses explicit look-ahead symbols.
+
+---
+
+### Trap 4
+
+Every stack content during LR parsing is a **viable prefix**.
+
+---
+
+### Trap 5
+
+Shift-Reduce and Reduce-Reduce are different conflicts.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept         | Key Point                                        |
+| --------------- | ------------------------------------------------ |
+| LR              | Left-to-right scan, Reverse rightmost derivation |
+| Handle          | Substring to reduce                              |
+| Viable Prefix   | Valid stack prefix                               |
+| LR(0)           | No look-ahead                                    |
+| SLR(1)          | Uses FOLLOW sets                                 |
+| LALR(1)         | Merged LR(1) states                              |
+| Canonical LR(1) | Most powerful standard LR parser                 |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+LR parsing is:
+**Answer:** Bottom-Up Parsing.
+
+---
+
+### Q2.
+
+LR stands for:
+**Answer:** Left-to-right scan and Reverse rightmost derivation.
+
+---
+
+### Q3.
+
+Shift-Reduce Parsing is:
+**Answer:** Bottom-Up Parsing.
+
+---
+
+### Q4.
+
+A handle is:
+**Answer:** The substring to be reduced.
+
+---
+
+### Q5.
+
+A viable prefix is:
+**Answer:** A valid prefix of a right sentential form that does not extend beyond the handle.
+
+---
+
+### Q6.
+
+LR(0) uses:
+**Answer:** No look-ahead.
+
+---
+
+### Q7.
+
+Most PYQ-tested topic?
+**Answer:** Comparison of LR parser types.
+
+---
+
+### Q8.
+
+Biggest GATE trap?
+**Answer:** Confusing SLR(1) with LALR(1).
+
+---
+
+### Q9.
+
+SLR(1) uses:
+**Answer:** FOLLOW sets.
+
+---
+
+### Q10.
+
+Canonical LR(1) uses:
+**Answer:** One-symbol look-ahead.
+
+---
+
+### Q11.
+
+LALR(1) is obtained by:
+**Answer:** Merging compatible LR(1) states.
+
+---
+
+### Q12.
+
+Which parser is most powerful?
+**Answer:** Canonical LR(1).
+
+---
+
+### Q13.
+
+Which parser has the largest parsing table?
+**Answer:** Canonical LR(1).
+
+---
+
+### Q14.
+
+Which parser is commonly used in YACC?
+**Answer:** LALR(1).
+
+---
+
+### Q15.
+
+Shift action means:
+**Answer:** Push the next input symbol onto the stack.
+
+---
+
+### Q16.
+
+Reduce action means:
+**Answer:** Apply a grammar production.
+
+---
+
+### Q17.
+
+Accept action means:
+**Answer:** Parsing completed successfully.
+
+---
+
+### Q18.
+
+Error action means:
+**Answer:** Syntax error.
+
+---
+
+### Q19.
+
+A parser stack stores:
+**Answer:** Viable prefixes.
+
+---
+
+### Q20.
+
+Closure operation expands:
+**Answer:** LR items with non-terminals after the dot.
+
+---
+
+### Q21.
+
+The GOTO function computes:
+**Answer:** The next LR item set.
+
+---
+
+### Q22.
+
+LR parsers can handle:
+**Answer:** Left-recursive grammars.
+
+---
+
+### Q23.
+
+LL parsers produce:
+**Answer:** Leftmost derivation.
+
+---
+
+### Q24.
+
+LR parsers produce:
+**Answer:** Reverse of a rightmost derivation.
+
+---
+
+### Q25.
+
+Reduce-Reduce conflict means:
+**Answer:** Multiple possible reductions.
+
+---
+
+### Q26.
+
+Shift-Reduce conflict means:
+**Answer:** Choice between shifting and reducing.
+
+---
+
+### Q27.
+
+Parsing power order is:
+**Answer:** LR(0) < SLR(1) < LALR(1) < Canonical LR(1).
+
+---
+
+### Q28.
+
+Which parser generally has the smallest parsing table?
+**Answer:** LR(0).
+
+---
+
+### Q29.
+
+Which parser is usually preferred in practical compiler generators?
+**Answer:** LALR(1).
+
+---
+
+### Q30.
+
+The primary advantage of LR parsing is:
+**Answer:** It can parse a larger class of grammars than LL parsing.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+
+### Current Subject
+
+🔄 **Compiler Design**
+
+### Next Topic (Day 77)
+
+**Compiler Design – Semantic Analysis, Syntax-Directed Definitions (SDD), Syntax-Directed Translation (SDT), Attribute Grammars & Type Checking**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               | 🟨 4 Topics Completed |
+| Operating Systems             |             ⏳ Pending |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall syllabus completion:** **~66%**
+
+🚀 You're now entering the advanced Compiler Design topics. Once Compiler Design is complete, we'll move to **Operating Systems**, another high-weight GATE subject.
