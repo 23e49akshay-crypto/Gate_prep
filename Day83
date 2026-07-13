@@ -1,0 +1,602 @@
+# 📘 Today's Learning – Day 77 (GATE CSE 2027)
+
+**📅 Date:** **6 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **Semantic Analysis, Syntax-Directed Definitions (SDD), Syntax-Directed Translation (SDT), Attribute Grammars & Type Checking**
+
+> ⭐ **GATE Importance:** Semantic Analysis and Syntax-Directed Definitions are regularly tested in GATE. Questions often involve **inherited/synthesized attributes, dependency graphs, evaluation order, and type checking**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand the purpose of Semantic Analysis.
+* Differentiate between Syntax Analysis and Semantic Analysis.
+* Explain Attribute Grammars.
+* Understand Synthesized and Inherited Attributes.
+* Learn Syntax-Directed Definitions (SDD) and Syntax-Directed Translation (SDT).
+* Understand Static vs Dynamic Type Checking.
+* Solve GATE-level questions.
+
+---
+
+# 1️⃣ What is Semantic Analysis?
+
+**Semantic Analysis** is the **third phase** of the compiler.
+
+It checks whether the program is **meaningful**, not just grammatically correct.
+
+Example:
+
+```c
+int x;
+x = 10;
+```
+
+✅ Semantically correct.
+
+Example:
+
+```c
+int x;
+x = "Hello";
+```
+
+❌ Type mismatch (semantic error).
+
+---
+
+# 2️⃣ Syntax Analysis vs Semantic Analysis
+
+| Syntax Analysis       | Semantic Analysis                     |
+| --------------------- | ------------------------------------- |
+| Checks grammar        | Checks meaning                        |
+| Produces parse tree   | Annotates parse tree with attributes  |
+| Detects syntax errors | Detects type/scope/declaration errors |
+
+📌 **GATE Tip:** A program can be syntactically correct but semantically incorrect.
+
+---
+
+# 3️⃣ Responsibilities of Semantic Analysis
+
+The semantic analyzer performs:
+
+* Type checking
+* Scope checking
+* Variable declaration checking
+* Function parameter checking
+* Return type verification
+* Array index validation
+* Constant expression checking
+
+---
+
+# 4️⃣ Attribute Grammar
+
+An **Attribute Grammar** is a CFG with additional information (attributes) attached to grammar symbols.
+
+Each grammar symbol may have attributes.
+
+Example:
+
+```text
+E → E1 + T
+```
+
+Attribute:
+
+```text
+E.type
+```
+
+---
+
+# 5️⃣ Types of Attributes
+
+## A. Synthesized Attributes
+
+Computed from **children** and passed **upward**.
+
+Example:
+
+```text
+E → E1 + T
+```
+
+```text
+E.value = E1.value + T.value
+```
+
+The parent's value depends on its children.
+
+---
+
+## B. Inherited Attributes
+
+Computed from **parent** or **siblings** and passed **downward** or sideways.
+
+Example:
+
+```text
+D → T L
+```
+
+```text
+L.type = T.type
+```
+
+The child inherits information from the parent.
+
+---
+
+# 6️⃣ Difference Between Synthesized & Inherited Attributes
+
+| Synthesized            | Inherited                     |
+| ---------------------- | ----------------------------- |
+| Flow upward            | Flow downward/sideways        |
+| Computed from children | Computed from parent/siblings |
+| Easier to evaluate     | More complex                  |
+
+📌 **Exam Tip:** This comparison is asked frequently.
+
+---
+
+# 7️⃣ Syntax-Directed Definition (SDD)
+
+An **SDD** is a CFG with attributes and semantic rules.
+
+Example:
+
+Grammar:
+
+```text
+E → E1 + T
+```
+
+Semantic Rule:
+
+```text
+E.value = E1.value + T.value
+```
+
+The parser evaluates these rules while processing the grammar.
+
+---
+
+# 8️⃣ Syntax-Directed Translation (SDT)
+
+An **SDT** embeds semantic actions directly into grammar productions.
+
+Example:
+
+```text
+E → E1 + T { print('+') }
+```
+
+The action executes during parsing.
+
+### Difference
+
+| SDD                         | SDT                                 |
+| --------------------------- | ----------------------------------- |
+| Semantic rules are separate | Actions are embedded in productions |
+
+---
+
+# 9️⃣ Dependency Graph
+
+A **Dependency Graph** shows how attributes depend on each other.
+
+It helps determine the correct order of attribute evaluation.
+
+📌 If the graph has a cycle, attribute evaluation is impossible.
+
+---
+
+# 🔟 Type Checking
+
+Type checking ensures operations are applied to compatible data types.
+
+Example:
+
+```c
+int a = 5;
+float b = 2.5;
+```
+
+```c
+a = b;
+```
+
+May require type conversion depending on the language.
+
+---
+
+# 1️⃣1️⃣ Static vs Dynamic Type Checking
+
+### Static Type Checking
+
+* Done at compile time.
+* Errors detected before execution.
+
+Examples:
+
+* C
+* C++
+* Java
+
+---
+
+### Dynamic Type Checking
+
+* Done at runtime.
+* More flexible, but errors may appear during execution.
+
+Examples:
+
+* Python
+* JavaScript
+
+---
+
+# 1️⃣2️⃣ Type Conversion
+
+## Implicit Type Conversion (Coercion)
+
+Performed automatically.
+
+Example:
+
+```c
+int a = 5;
+float b = a;
+```
+
+---
+
+## Explicit Type Conversion (Casting)
+
+Programmer performs conversion.
+
+Example:
+
+```c
+float x = 5.8;
+int y = (int)x;
+```
+
+---
+
+# 1️⃣3️⃣ Symbol Table in Semantic Analysis
+
+The symbol table stores:
+
+* Variable names
+* Data types
+* Scope
+* Memory locations
+* Function information
+
+Semantic analysis consults the symbol table to verify declarations and types.
+
+---
+
+# 📊 Summary Table
+
+| Concept               | Key Point                  |
+| --------------------- | -------------------------- |
+| Semantic Analysis     | Third compiler phase       |
+| SDD                   | Grammar + semantic rules   |
+| SDT                   | Grammar + embedded actions |
+| Synthesized Attribute | Child → Parent             |
+| Inherited Attribute   | Parent/Sibling → Child     |
+| Static Type Checking  | Compile time               |
+| Dynamic Type Checking | Runtime                    |
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+Syntax correctness does **not** guarantee semantic correctness.
+
+---
+
+### Trap 2
+
+Synthesized attributes flow **upward**, inherited attributes flow **downward/sideways**.
+
+---
+
+### Trap 3
+
+SDD and SDT are related but **not identical**.
+
+---
+
+### Trap 4
+
+Static type checking occurs **before execution**.
+
+---
+
+### Trap 5
+
+A cyclic dependency graph prevents valid attribute evaluation.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept            | Key Point                   |
+| ------------------ | --------------------------- |
+| Compiler Phase     | Semantic Analysis = Phase 3 |
+| SDD                | CFG + semantic rules        |
+| SDT                | CFG + embedded actions      |
+| Synthesized        | Children → Parent           |
+| Inherited          | Parent/Siblings → Child     |
+| Static Type Check  | Compile time                |
+| Dynamic Type Check | Runtime                     |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Semantic Analysis is the:
+**Answer:** Third phase of a compiler.
+
+---
+
+### Q2.
+
+Semantic Analysis checks:
+**Answer:** Meaning of the program.
+
+---
+
+### Q3.
+
+Syntax Analysis checks:
+**Answer:** Grammar.
+
+---
+
+### Q4.
+
+Type checking is performed during:
+**Answer:** Semantic Analysis.
+
+---
+
+### Q5.
+
+Attribute Grammars extend:
+**Answer:** Context-Free Grammars.
+
+---
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Synthesized vs Inherited Attributes.
+
+---
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing Syntax Analysis with Semantic Analysis.
+
+---
+
+### Q8.
+
+Synthesized attributes flow:
+**Answer:** From children to parent.
+
+---
+
+### Q9.
+
+Inherited attributes flow:
+**Answer:** From parent/siblings to child.
+
+---
+
+### Q10.
+
+SDD stands for:
+**Answer:** Syntax-Directed Definition.
+
+---
+
+### Q11.
+
+SDT stands for:
+**Answer:** Syntax-Directed Translation.
+
+---
+
+### Q12.
+
+In SDT:
+**Answer:** Semantic actions are embedded in productions.
+
+---
+
+### Q13.
+
+Type mismatch is detected by:
+**Answer:** Semantic Analysis.
+
+---
+
+### Q14.
+
+Undeclared variable usage is a:
+**Answer:** Semantic error.
+
+---
+
+### Q15.
+
+A dependency graph represents:
+**Answer:** Attribute dependencies.
+
+---
+
+### Q16.
+
+A cyclic dependency graph means:
+**Answer:** Attribute evaluation is not possible.
+
+---
+
+### Q17.
+
+Static type checking occurs:
+**Answer:** At compile time.
+
+---
+
+### Q18.
+
+Dynamic type checking occurs:
+**Answer:** At runtime.
+
+---
+
+### Q19.
+
+C primarily uses:
+**Answer:** Static type checking.
+
+---
+
+### Q20.
+
+Python primarily uses:
+**Answer:** Dynamic type checking.
+
+---
+
+### Q21.
+
+Automatic type conversion is called:
+**Answer:** Coercion.
+
+---
+
+### Q22.
+
+Manual type conversion is called:
+**Answer:** Casting.
+
+---
+
+### Q23.
+
+The symbol table stores:
+**Answer:** Identifier information.
+
+---
+
+### Q24.
+
+Semantic Analysis uses:
+**Answer:** The symbol table.
+
+---
+
+### Q25.
+
+A program may be syntactically correct but:
+**Answer:** Semantically incorrect.
+
+---
+
+### Q26.
+
+Function parameter mismatch is detected during:
+**Answer:** Semantic Analysis.
+
+---
+
+### Q27.
+
+Return type verification is part of:
+**Answer:** Semantic Analysis.
+
+---
+
+### Q28.
+
+The parser sends the parse tree to:
+**Answer:** Semantic Analyzer.
+
+---
+
+### Q29.
+
+The output of Semantic Analysis is:
+**Answer:** An annotated parse tree (or equivalent semantic information).
+
+---
+
+### Q30.
+
+The primary purpose of Semantic Analysis is:
+**Answer:** Ensure the program is meaningful according to language rules.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+
+### Current Subject
+
+🔄 **Compiler Design**
+
+### Next Topic (Day 78)
+
+**Compiler Design – Intermediate Code Generation (Three-Address Code, Quadruples, Triples, Indirect Triples) & Runtime Environments**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               | 🟨 5 Topics Completed |
+| Operating Systems             |             ⏳ Pending |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall syllabus completion:** **~67%**
+
+### 🎯 Today's 30-Minute Practice
+
+1. Compute synthesized and inherited attributes for 3 small grammars.
+2. Solve 10 previous GATE questions on SDD/SDT.
+3. Revise the differences between **Syntax Analysis**, **Semantic Analysis**, **SDD**, and **SDT**.
