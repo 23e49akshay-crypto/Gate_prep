@@ -1,0 +1,588 @@
+# 📘 Today's Learning – Day 78 (GATE CSE 2027)
+
+**📅 Date:** **7 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **Intermediate Code Generation (ICG), Three-Address Code (TAC), Quadruples, Triples, Indirect Triples & Runtime Environments**
+
+> ⭐ **GATE Importance:** Intermediate Code Generation is a **high-scoring topic**. GATE frequently asks questions on **Three-Address Code (TAC)**, **Quadruples vs Triples**, activation records, and runtime memory organization.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you should be able to:
+
+* Understand the purpose of Intermediate Code Generation.
+* Generate Three-Address Code (TAC).
+* Differentiate Quadruples, Triples, and Indirect Triples.
+* Understand Runtime Environments.
+* Explain Activation Records (Stack Frames).
+* Solve GATE-level questions.
+
+---
+
+# 1️⃣ What is Intermediate Code Generation?
+
+After **Semantic Analysis**, the compiler generates an **Intermediate Representation (IR)**.
+
+The IR is:
+
+* Machine-independent.
+* Easier to optimize.
+* Easier to translate into machine code.
+
+Flow:
+
+```text
+Source Code
+      ↓
+Lexical Analysis
+      ↓
+Syntax Analysis
+      ↓
+Semantic Analysis
+      ↓
+Intermediate Code Generation
+      ↓
+Code Optimization
+      ↓
+Code Generation
+```
+
+---
+
+# 2️⃣ Why Use Intermediate Code?
+
+Advantages:
+
+* Machine-independent representation.
+* Easier optimization.
+* Portability.
+* Simplifies compiler design.
+
+---
+
+# 3️⃣ Three-Address Code (TAC)
+
+A **Three-Address Code** instruction contains **at most three addresses**.
+
+General Forms:
+
+```text
+x = y op z
+x = op y
+x = y
+goto L
+if x goto L
+param x
+call P, n
+return x
+```
+
+---
+
+### Example
+
+Expression:
+
+```text
+a = b + c * d
+```
+
+TAC:
+
+```text
+t1 = c * d
+t2 = b + t1
+a = t2
+```
+
+Temporary variables (`t1`, `t2`) store intermediate results.
+
+---
+
+# 4️⃣ More TAC Example
+
+Expression:
+
+```text
+x = (a + b) * (c - d)
+```
+
+TAC:
+
+```text
+t1 = a + b
+t2 = c - d
+t3 = t1 * t2
+x = t3
+```
+
+---
+
+# 5️⃣ Quadruples
+
+A **Quadruple** has four fields:
+
+| Operator | Argument 1 | Argument 2 | Result |
+| -------- | ---------- | ---------- | ------ |
+
+Example:
+
+```text
+t1 = a + b
+```
+
+Representation:
+
+| Op | Arg1 | Arg2 | Result |
+| -- | ---- | ---- | ------ |
+| +  | a    | b    | t1     |
+
+---
+
+# 6️⃣ Triples
+
+A **Triple** removes the explicit result field.
+
+Instead, instructions are referenced by their index.
+
+Example:
+
+```text
+t1 = a + b
+t2 = t1 * c
+```
+
+Representation:
+
+| Index | Op | Arg1 | Arg2 |
+| ----: | -- | ---- | ---- |
+|     0 | +  | a    | b    |
+|     1 | *  | (0)  | c    |
+
+Here, `(0)` refers to the result of instruction 0.
+
+---
+
+# 7️⃣ Indirect Triples
+
+Indirect Triples store pointers to triples rather than directly referencing instruction numbers.
+
+Advantages:
+
+* Easier code reordering during optimization.
+* Better flexibility than Triples.
+
+---
+
+# 8️⃣ Quadruples vs Triples vs Indirect Triples
+
+| Feature             | Quadruples | Triples   | Indirect Triples |
+| ------------------- | ---------- | --------- | ---------------- |
+| Temporary Variables | Yes        | No        | No               |
+| Rearranging Code    | Easy       | Difficult | Easy             |
+| Memory Usage        | Higher     | Lower     | Medium           |
+
+📌 **Frequently asked in GATE.**
+
+---
+
+# 9️⃣ Runtime Environment
+
+A **Runtime Environment** manages program execution.
+
+It handles:
+
+* Memory allocation
+* Function calls
+* Parameters
+* Local variables
+* Return values
+
+---
+
+# 🔟 Runtime Memory Organization
+
+Typical memory layout:
+
+```text
++------------------+
+| Code Segment     |
++------------------+
+| Global Variables |
++------------------+
+| Heap             |
+| (Dynamic Memory) |
++------------------+
+| Stack            |
+| (Function Calls) |
++------------------+
+```
+
+---
+
+# 1️⃣1️⃣ Activation Record (Stack Frame)
+
+Every function call creates an **Activation Record**.
+
+It stores:
+
+* Parameters
+* Local variables
+* Return address
+* Saved registers
+* Control link
+* Access link (if needed)
+
+Example:
+
+```c
+int add(int a, int b)
+{
+    int c;
+    c = a + b;
+    return c;
+}
+```
+
+The activation record stores `a`, `b`, `c`, and the return address.
+
+---
+
+# 1️⃣2️⃣ Heap vs Stack
+
+| Stack                | Heap                       |
+| -------------------- | -------------------------- |
+| Function calls       | Dynamic memory allocation  |
+| Automatic allocation | Programmer/runtime managed |
+| Faster               | Slower                     |
+| LIFO                 | No fixed order             |
+
+---
+
+# 1️⃣3️⃣ Parameter Passing
+
+### Call by Value
+
+A copy of the value is passed.
+
+Changes inside the function do **not** affect the original variable.
+
+---
+
+### Call by Reference
+
+The variable's address/reference is passed.
+
+Changes inside the function **do** affect the original variable.
+
+---
+
+# 1️⃣4️⃣ Common GATE Traps
+
+### Trap 1
+
+TAC instructions have **at most three addresses**, not exactly three.
+
+---
+
+### Trap 2
+
+Triples do **not** use temporary variable names.
+
+---
+
+### Trap 3
+
+Quadruples use explicit result fields.
+
+---
+
+### Trap 4
+
+Each function call creates a **new activation record**.
+
+---
+
+### Trap 5
+
+The **stack** manages function calls, while the **heap** manages dynamic memory allocation.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept           | Key Point                                               |
+| ----------------- | ------------------------------------------------------- |
+| Intermediate Code | Machine-independent representation                      |
+| TAC               | At most three addresses                                 |
+| Quadruple         | (Op, Arg1, Arg2, Result)                                |
+| Triple            | Uses instruction numbers instead of temporary variables |
+| Indirect Triple   | Uses pointers to triples                                |
+| Activation Record | Stores function call information                        |
+| Stack             | Function calls                                          |
+| Heap              | Dynamic memory                                          |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Intermediate Code Generation is performed after:
+**Answer:** Semantic Analysis.
+
+---
+
+### Q2.
+
+The purpose of Intermediate Code is:
+**Answer:** Machine-independent representation.
+
+---
+
+### Q3.
+
+TAC stands for:
+**Answer:** Three-Address Code.
+
+---
+
+### Q4.
+
+A TAC instruction has:
+**Answer:** At most three addresses.
+
+---
+
+### Q5.
+
+Temporary variables are mainly used in:
+**Answer:** Three-Address Code.
+
+---
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Quadruples vs Triples.
+
+---
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Assuming TAC always has exactly three operands.
+
+---
+
+### Q8.
+
+Quadruples contain:
+**Answer:** Operator, Argument1, Argument2, Result.
+
+---
+
+### Q9.
+
+Triples use:
+**Answer:** Instruction numbers as references.
+
+---
+
+### Q10.
+
+Indirect Triples use:
+**Answer:** Pointers to triples.
+
+---
+
+### Q11.
+
+Which representation is easiest to rearrange?
+**Answer:** Quadruples.
+
+---
+
+### Q12.
+
+Which representation avoids temporary variable names?
+**Answer:** Triples.
+
+---
+
+### Q13.
+
+The runtime stack stores:
+**Answer:** Activation Records.
+
+---
+
+### Q14.
+
+The heap is mainly used for:
+**Answer:** Dynamic memory allocation.
+
+---
+
+### Q15.
+
+Activation Record is also called:
+**Answer:** Stack Frame.
+
+---
+
+### Q16.
+
+The return address is stored in:
+**Answer:** Activation Record.
+
+---
+
+### Q17.
+
+Local variables are stored in:
+**Answer:** Activation Record.
+
+---
+
+### Q18.
+
+Global variables are typically stored in:
+**Answer:** Global/Data Segment.
+
+---
+
+### Q19.
+
+Which memory region follows LIFO?
+**Answer:** Stack.
+
+---
+
+### Q20.
+
+Which memory region supports dynamic allocation?
+**Answer:** Heap.
+
+---
+
+### Q21.
+
+Call by Value passes:
+**Answer:** A copy of the variable.
+
+---
+
+### Q22.
+
+Call by Reference passes:
+**Answer:** The address/reference of the variable.
+
+---
+
+### Q23.
+
+Intermediate Code is:
+**Answer:** Machine-independent.
+
+---
+
+### Q24.
+
+Code Optimization works on:
+**Answer:** Intermediate Code.
+
+---
+
+### Q25.
+
+Machine code is produced during:
+**Answer:** Code Generation.
+
+---
+
+### Q26.
+
+Each function call creates:
+**Answer:** A new Activation Record.
+
+---
+
+### Q27.
+
+Triples reduce:
+**Answer:** The need for temporary variable names.
+
+---
+
+### Q28.
+
+The stack is automatically managed by:
+**Answer:** The runtime system.
+
+---
+
+### Q29.
+
+The primary purpose of TAC is:
+**Answer:** Simplify optimization and code generation.
+
+---
+
+### Q30.
+
+The main advantage of Intermediate Code Generation is:
+**Answer:** Portability and easier optimization.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+
+### Current Subject
+
+🔄 **Compiler Design**
+
+### Next Topic (Day 79)
+
+**Compiler Design – Code Optimization (Local, Global, Loop Optimization, DAG, Common Subexpression Elimination, Dead Code Elimination, Constant Folding & Strength Reduction)**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               | 🟨 6 Topics Completed |
+| Operating Systems             |             ⏳ Pending |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall syllabus completion:** **~68%**
+
+### 🎯 Today's Practice Task
+
+Convert the following expressions into **Three-Address Code**, **Quadruples**, and **Triples**:
+
+1. `x = a + b * c`
+2. `y = (p - q) / (r + s)`
+3. `z = a * b + c * d`
+
+This practice will strengthen one of the most commonly tested Compiler Design topics in GATE.
