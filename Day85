@@ -1,0 +1,650 @@
+# 📘 Today's Learning – Day 79 (GATE CSE 2027)
+
+**📅 Date:** **8 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **Code Optimization – Local & Global Optimization, DAG, Common Subexpression Elimination, Constant Folding, Constant Propagation, Dead Code Elimination, Copy Propagation, Strength Reduction & Loop Optimization**
+
+> ⭐ **GATE Importance:** Code optimization is one of the **highest-weight Compiler Design topics**. Questions commonly test optimization techniques, DAGs, loop optimizations, and identifying which optimization applies to a given code snippet.
+
+---
+
+# 🎯 Learning Objectives
+
+After today's lesson, you will be able to:
+
+* Understand why code optimization is needed.
+* Differentiate local and global optimization.
+* Apply common optimization techniques.
+* Understand DAG representation of basic blocks.
+* Solve GATE-level optimization questions.
+
+---
+
+# 1️⃣ What is Code Optimization?
+
+**Code Optimization** is the compiler phase that improves the intermediate code to make it:
+
+* Faster
+* Smaller
+* Less memory-intensive
+* More energy-efficient
+
+without changing the program's meaning.
+
+📌 **Goal:** Improve performance **without changing the output**.
+
+---
+
+# 2️⃣ Types of Code Optimization
+
+## A. Local Optimization
+
+Applied within a **single basic block**.
+
+Example:
+
+```c
+x = 2 + 3;
+```
+
+Optimized:
+
+```c
+x = 5;
+```
+
+---
+
+## B. Global Optimization
+
+Applied across **multiple basic blocks** or the entire program.
+
+Example:
+
+Move repeated computations outside loops.
+
+---
+
+# 3️⃣ What is a Basic Block?
+
+A **Basic Block** is a sequence of consecutive statements with:
+
+* One entry point.
+* One exit point.
+* No jumps except at the end.
+
+Example:
+
+```c
+a = b + c;
+d = a * 2;
+e = d - 1;
+```
+
+This is one basic block.
+
+---
+
+# 4️⃣ DAG (Directed Acyclic Graph)
+
+A **DAG** represents expressions inside a basic block.
+
+Purpose:
+
+* Detect repeated computations.
+* Remove redundant expressions.
+* Support common subexpression elimination.
+
+Example:
+
+```c
+x = a + b;
+y = a + b;
+```
+
+A DAG computes `a + b` **once**, then reuses the result.
+
+---
+
+# 5️⃣ Common Subexpression Elimination (CSE)
+
+If the same expression is computed multiple times without operand changes, compute it once.
+
+### Before
+
+```c
+x = a + b;
+y = a + b;
+```
+
+### After
+
+```c
+x = a + b;
+y = x;
+```
+
+Benefit:
+
+* Fewer arithmetic operations.
+
+---
+
+# 6️⃣ Constant Folding
+
+Compile-time evaluation of constant expressions.
+
+### Before
+
+```c
+x = 10 * 20;
+```
+
+### After
+
+```c
+x = 200;
+```
+
+The multiplication is removed.
+
+---
+
+# 7️⃣ Constant Propagation
+
+Replace variables with known constant values.
+
+### Before
+
+```c
+a = 5;
+b = a + 2;
+```
+
+### After
+
+```c
+a = 5;
+b = 5 + 2;
+```
+
+Further optimization:
+
+```c
+b = 7;
+```
+
+---
+
+# 8️⃣ Copy Propagation
+
+Replace copied variables with the original variable.
+
+### Before
+
+```c
+a = b;
+c = a + 5;
+```
+
+### After
+
+```c
+c = b + 5;
+```
+
+The unnecessary copy is eliminated.
+
+---
+
+# 9️⃣ Dead Code Elimination
+
+Remove statements that never affect program output.
+
+### Before
+
+```c
+x = 5;
+x = 8;
+```
+
+The first assignment is never used.
+
+### After
+
+```c
+x = 8;
+```
+
+---
+
+# 🔟 Strength Reduction
+
+Replace expensive operations with cheaper ones.
+
+### Before
+
+```c
+x = y * 8;
+```
+
+### After
+
+```c
+x = y << 3;
+```
+
+Multiplication by powers of 2 becomes a left shift.
+
+Another example:
+
+```c
+i = i + 1;
+```
+
+instead of repeated multiplication or complex arithmetic where applicable.
+
+---
+
+# 1️⃣1️⃣ Loop Optimization
+
+Loops consume most execution time.
+
+Compiler optimizations include:
+
+---
+
+## A. Loop Invariant Code Motion
+
+Move computations that do not change outside the loop.
+
+### Before
+
+```c
+for(i=0;i<n;i++)
+{
+    x = a*b;
+    y = x+i;
+}
+```
+
+### After
+
+```c
+x = a*b;
+
+for(i=0;i<n;i++)
+{
+    y = x+i;
+}
+```
+
+---
+
+## B. Loop Unrolling
+
+Reduce loop overhead.
+
+### Before
+
+```c
+for(i=0;i<4;i++)
+    sum += a[i];
+```
+
+### After
+
+```c
+sum += a[0];
+sum += a[1];
+sum += a[2];
+sum += a[3];
+```
+
+---
+
+## C. Induction Variable Elimination
+
+Replace unnecessary induction variables.
+
+---
+
+# 1️⃣2️⃣ Peephole Optimization
+
+A **local optimization** that examines a small window ("peephole") of instructions.
+
+Examples:
+
+* Remove redundant instructions.
+* Replace instruction sequences with faster equivalents.
+
+---
+
+# 1️⃣3️⃣ Optimization Summary
+
+| Optimization                     | Purpose                             |
+| -------------------------------- | ----------------------------------- |
+| Constant Folding                 | Evaluate constants                  |
+| Constant Propagation             | Replace variables with constants    |
+| Copy Propagation                 | Remove unnecessary copies           |
+| Dead Code Elimination            | Remove unused code                  |
+| Common Subexpression Elimination | Avoid repeated computation          |
+| Strength Reduction               | Replace expensive operations        |
+| Loop Optimization                | Improve loop efficiency             |
+| Peephole Optimization            | Improve short instruction sequences |
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+Optimization **must not change program semantics**.
+
+---
+
+### Trap 2
+
+Constant Folding is **compile-time evaluation**, not runtime evaluation.
+
+---
+
+### Trap 3
+
+Common Subexpression Elimination is valid only if the operands have **not changed**.
+
+---
+
+### Trap 4
+
+Peephole Optimization is a **local optimization**.
+
+---
+
+### Trap 5
+
+Strength Reduction replaces **expensive** operations with **equivalent cheaper** operations.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept             | Key Point                           |
+| ------------------- | ----------------------------------- |
+| Local Optimization  | Single basic block                  |
+| Global Optimization | Multiple basic blocks               |
+| DAG                 | Detect repeated expressions         |
+| CSE                 | Eliminate repeated computations     |
+| Constant Folding    | Compute constants at compile time   |
+| Dead Code           | Remove unused statements            |
+| Loop Invariant      | Move outside loop                   |
+| Strength Reduction  | Multiply → Shift (when appropriate) |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Code Optimization is performed after:
+**Answer:** Intermediate Code Generation.
+
+---
+
+### Q2.
+
+Optimization should:
+**Answer:** Preserve program semantics.
+
+---
+
+### Q3.
+
+A Basic Block has:
+**Answer:** One entry and one exit.
+
+---
+
+### Q4.
+
+DAG stands for:
+**Answer:** Directed Acyclic Graph.
+
+---
+
+### Q5.
+
+DAG is mainly used for:
+**Answer:** Detecting common subexpressions.
+
+---
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Common Subexpression Elimination.
+
+---
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing Constant Folding with Constant Propagation.
+
+---
+
+### Q8.
+
+Compile-time evaluation of constants is:
+**Answer:** Constant Folding.
+
+---
+
+### Q9.
+
+Replacing variables with known constants is:
+**Answer:** Constant Propagation.
+
+---
+
+### Q10.
+
+Removing repeated expressions is:
+**Answer:** Common Subexpression Elimination.
+
+---
+
+### Q11.
+
+Removing unused assignments is:
+**Answer:** Dead Code Elimination.
+
+---
+
+### Q12.
+
+Replacing copied variables is:
+**Answer:** Copy Propagation.
+
+---
+
+### Q13.
+
+Replacing multiplication by 8 with a left shift is:
+**Answer:** Strength Reduction.
+
+---
+
+### Q14.
+
+Loop Invariant Code Motion:
+**Answer:** Moves unchanged computations outside the loop.
+
+---
+
+### Q15.
+
+Loop Unrolling:
+**Answer:** Reduces loop overhead.
+
+---
+
+### Q16.
+
+Peephole Optimization is:
+**Answer:** Local Optimization.
+
+---
+
+### Q17.
+
+Global Optimization applies to:
+**Answer:** Multiple basic blocks.
+
+---
+
+### Q18.
+
+Local Optimization applies to:
+**Answer:** A single basic block.
+
+---
+
+### Q19.
+
+Which optimization reduces arithmetic operations?
+**Answer:** Common Subexpression Elimination.
+
+---
+
+### Q20.
+
+Which optimization reduces memory accesses?
+**Answer:** Copy Propagation.
+
+---
+
+### Q21.
+
+Dead Code:
+**Answer:** Does not affect program output.
+
+---
+
+### Q22.
+
+Optimization mainly improves:
+**Answer:** Performance.
+
+---
+
+### Q23.
+
+Compiler optimization occurs:
+**Answer:** Before machine code generation.
+
+---
+
+### Q24.
+
+Which optimization is compile-time evaluation?
+**Answer:** Constant Folding.
+
+---
+
+### Q25.
+
+Loop optimization focuses on:
+**Answer:** Improving loop execution efficiency.
+
+---
+
+### Q26.
+
+Strength Reduction replaces:
+**Answer:** Expensive operations with cheaper ones.
+
+---
+
+### Q27.
+
+The output of optimization is:
+**Answer:** Optimized intermediate code.
+
+---
+
+### Q28.
+
+A DAG contains:
+**Answer:** No cycles.
+
+---
+
+### Q29.
+
+Which optimization removes duplicate calculations?
+**Answer:** Common Subexpression Elimination.
+
+---
+
+### Q30.
+
+The primary goal of optimization is:
+**Answer:** Improve efficiency without changing program behavior.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization &Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+
+### Current Subject
+
+🔄 **Compiler Design**
+
+### Next Topic (Day 80)
+
+**Compiler Design – Code Generation, Register Allocation, Register Assignment, Instruction Selection, Compiler Errors & Complete Compiler Design Revision**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               | 🟨 7 Topics Completed |
+| Operating Systems             |             ⏳ Pending |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall syllabus completion:** **~69%**
+
+### 🎯 Daily Challenge
+
+Optimize the following code by applying **Constant Folding**, **Constant Propagation**, **Copy Propagation**, and **Dead Code Elimination**:
+
+```c
+a = 10;
+b = 20;
+c = a + b;
+d = c;
+e = d + 5;
+x = 1;
+x = 2;
+```
+
+Try to produce the final optimized code before checking your answer tomorrow.
