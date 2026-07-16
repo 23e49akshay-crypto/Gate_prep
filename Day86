@@ -1,0 +1,556 @@
+# 📘 Today's Learning – Day 80 (GATE CSE 2027)
+
+**📅 Date:** **9 May 2026**
+**📚 Subject:** **Compiler Design**
+**🧠 Topic:** **Code Generation, Register Allocation, Register Assignment, Instruction Selection, Compiler Errors & Complete Compiler Design Revision**
+
+> ⭐ **GATE Importance:** This topic completes **Compiler Design**. GATE frequently asks conceptual questions about **register allocation, instruction selection, compiler errors, and optimization flow**.
+
+---
+
+# 🎯 Learning Objectives
+
+After today's lesson, you will be able to:
+
+* Understand the Code Generation phase.
+* Learn Register Allocation and Register Assignment.
+* Understand Instruction Selection.
+* Differentiate compiler error types.
+* Revise the complete Compiler Design syllabus.
+* Solve GATE-level MCQs.
+
+---
+
+# 1️⃣ What is Code Generation?
+
+**Code Generation** is the **final phase** of a compiler.
+
+It converts **optimized intermediate code** into **target machine code**.
+
+### Flow
+
+```text
+Source Program
+      ↓
+Lexical Analysis
+      ↓
+Syntax Analysis
+      ↓
+Semantic Analysis
+      ↓
+Intermediate Code Generation
+      ↓
+Code Optimization
+      ↓
+Code Generation
+      ↓
+Machine Code
+```
+
+---
+
+# 2️⃣ Goals of Code Generation
+
+A good code generator should produce code that is:
+
+* Correct
+* Fast
+* Memory efficient
+* Optimized
+* Target-machine compatible
+
+---
+
+# 3️⃣ Register Allocation
+
+A CPU has only a limited number of registers.
+
+**Register Allocation** decides **which variables should be stored in registers** to minimize slow memory accesses.
+
+### Example
+
+```c
+a = b + c;
+d = a + e;
+```
+
+Instead of repeatedly accessing memory:
+
+```text
+R1 = b
+R2 = c
+R3 = R1 + R2
+R4 = e
+R5 = R3 + R4
+```
+
+---
+
+# 4️⃣ Register Assignment
+
+After selecting variables for registers, the compiler decides **which specific register** (R1, R2, etc.) each variable will use.
+
+Example:
+
+```text
+a → R1
+b → R2
+c → R3
+```
+
+---
+
+# 5️⃣ Instruction Selection
+
+Instruction Selection chooses the **most efficient machine instruction** for each intermediate-code operation.
+
+Example:
+
+Intermediate Code:
+
+```text
+x = y + 1
+```
+
+Machine Instruction:
+
+```text
+INC y
+```
+
+instead of:
+
+```text
+ADD y, 1
+```
+
+if the target CPU supports an increment instruction.
+
+---
+
+# 6️⃣ Register Allocation vs Register Assignment
+
+| Register Allocation                       | Register Assignment                |
+| ----------------------------------------- | ---------------------------------- |
+| Decides which variables stay in registers | Decides the actual register number |
+| Optimization problem                      | Mapping problem                    |
+
+📌 **Frequently asked in GATE.**
+
+---
+
+# 7️⃣ Types of Compiler Errors
+
+## A. Lexical Errors
+
+Detected by **Lexical Analyzer**.
+
+Example:
+
+```c
+int @abc;
+```
+
+Invalid character: `@`
+
+---
+
+## B. Syntax Errors
+
+Detected by **Parser**.
+
+Example:
+
+```c
+int a =
+```
+
+Missing expression.
+
+---
+
+## C. Semantic Errors
+
+Detected by **Semantic Analyzer**.
+
+Example:
+
+```c
+int x;
+x = "Hello";
+```
+
+Type mismatch.
+
+---
+
+## D. Runtime Errors
+
+Detected during execution.
+
+Example:
+
+```c
+10 / 0
+```
+
+Division by zero.
+
+---
+
+## E. Logical Errors
+
+Program runs but produces incorrect output.
+
+Example:
+
+```c
+area = length + breadth;
+```
+
+instead of:
+
+```c
+area = length * breadth;
+```
+
+---
+
+# 8️⃣ Compiler Phases – Complete Revision
+
+| Phase                        | Output                      |
+| ---------------------------- | --------------------------- |
+| Lexical Analysis             | Tokens                      |
+| Syntax Analysis              | Parse Tree                  |
+| Semantic Analysis            | Annotated Parse Tree        |
+| Intermediate Code Generation | Three-Address Code          |
+| Code Optimization            | Optimized Intermediate Code |
+| Code Generation              | Machine Code                |
+
+---
+
+# 9️⃣ High-Yield Compiler Design Formula Sheet
+
+| Topic               | Key Point                                |
+| ------------------- | ---------------------------------------- |
+| Token               | Smallest meaningful unit                 |
+| Lexeme              | Actual character sequence                |
+| Pattern             | Rule describing tokens                   |
+| FIRST               | First possible terminal                  |
+| FOLLOW              | Terminals that can follow a non-terminal |
+| LL(1)               | Top-down parser                          |
+| LR                  | Bottom-up parser                         |
+| TAC                 | Three-Address Code                       |
+| Quadruple           | (Op, Arg1, Arg2, Result)                 |
+| Triple              | Uses instruction indices                 |
+| Activation Record   | Stack Frame                              |
+| Constant Folding    | Evaluate constants                       |
+| CSE                 | Remove repeated expressions              |
+| Register Allocation | Choose variables for registers           |
+| Register Assignment | Assign actual registers                  |
+
+---
+
+# 🔟 Most Important GATE PYQ Topics
+
+1. Compiler phases
+2. Tokens, Lexemes & Patterns
+3. FIRST & FOLLOW
+4. LL(1) Parsing
+5. LR Parsing
+6. Shift-Reduce Conflicts
+7. SDD & SDT
+8. Three-Address Code
+9. Quadruples vs Triples
+10. Code Optimization
+11. Register Allocation
+12. Compiler Errors
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+Register Allocation ≠ Register Assignment.
+
+---
+
+### Trap 2
+
+Code Generation is the **last compiler phase**.
+
+---
+
+### Trap 3
+
+Optimization must **not** change the program's output.
+
+---
+
+### Trap 4
+
+Semantic errors are **not** syntax errors.
+
+---
+
+### Trap 5
+
+Runtime errors are **not** detected by the compiler.
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+The final compiler phase is:
+**Answer:** Code Generation.
+
+---
+
+### Q2.
+
+Machine code is generated during:
+**Answer:** Code Generation.
+
+---
+
+### Q3.
+
+Register Allocation decides:
+**Answer:** Which variables stay in registers.
+
+---
+
+### Q4.
+
+Register Assignment decides:
+**Answer:** Which register number each variable uses.
+
+---
+
+### Q5.
+
+Instruction Selection chooses:
+**Answer:** Efficient machine instructions.
+
+---
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Compiler phases and parsing.
+
+---
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing Register Allocation with Register Assignment.
+
+---
+
+### Q8.
+
+Lexical errors are detected by:
+**Answer:** Lexical Analyzer.
+
+---
+
+### Q9.
+
+Syntax errors are detected by:
+**Answer:** Parser.
+
+---
+
+### Q10.
+
+Semantic errors are detected by:
+**Answer:** Semantic Analyzer.
+
+---
+
+### Q11.
+
+Division by zero is:
+**Answer:** A runtime error.
+
+---
+
+### Q12.
+
+A wrong formula producing incorrect output is:
+**Answer:** A logical error.
+
+---
+
+### Q13.
+
+The parser produces:
+**Answer:** Parse Tree.
+
+---
+
+### Q14.
+
+Semantic Analysis produces:
+**Answer:** Annotated Parse Tree.
+
+---
+
+### Q15.
+
+Intermediate Code Generation produces:
+**Answer:** Three-Address Code.
+
+---
+
+### Q16.
+
+Code Optimization produces:
+**Answer:** Optimized Intermediate Code.
+
+---
+
+### Q17.
+
+A token is:
+**Answer:** A lexical category.
+
+---
+
+### Q18.
+
+A lexeme is:
+**Answer:** The actual matched text.
+
+---
+
+### Q19.
+
+The first compiler phase is:
+**Answer:** Lexical Analysis.
+
+---
+
+### Q20.
+
+The third compiler phase is:
+**Answer:** Semantic Analysis.
+
+---
+
+### Q21.
+
+LL(1) is:
+**Answer:** A top-down parser.
+
+---
+
+### Q22.
+
+LR parsing is:
+**Answer:** Bottom-up parsing.
+
+---
+
+### Q23.
+
+Quadruples contain:
+**Answer:** Operator, Arg1, Arg2, Result.
+
+---
+
+### Q24.
+
+Triples:
+**Answer:** Use instruction numbers instead of temporary variable names.
+
+---
+
+### Q25.
+
+Activation Records are stored in:
+**Answer:** The runtime stack.
+
+---
+
+### Q26.
+
+Constant Folding evaluates:
+**Answer:** Constant expressions at compile time.
+
+---
+
+### Q27.
+
+Dead Code Elimination removes:
+**Answer:** Unused statements.
+
+---
+
+### Q28.
+
+Strength Reduction replaces:
+**Answer:** Expensive operations with cheaper ones.
+
+---
+
+### Q29.
+
+Compiler optimization aims to:
+**Answer:** Improve performance without changing semantics.
+
+---
+
+### Q30.
+
+The main purpose of a compiler is:
+**Answer:** Translate source code into target code.
+
+---
+
+# 🎉 Compiler Design Completed!
+
+You have now completed all major GATE Compiler Design topics:
+
+* ✅ Introduction & Compiler Phases
+* ✅ Lexical Analysis
+* ✅ Syntax Analysis
+* ✅ FIRST & FOLLOW
+* ✅ LL(1) Parsing
+* ✅ LR Parsing
+* ✅ Semantic Analysis
+* ✅ Intermediate Code Generation
+* ✅ Code Optimization
+* ✅ Code Generation & Revision
+
+---
+
+# 📊 Overall Progress
+
+| Subject                              |      Status |
+| ------------------------------------ | ----------: |
+| Engineering Mathematics              | ✅ Completed |
+| Digital Logic                        | ✅ Completed |
+| Computer Organization & Architecture | ✅ Completed |
+| Programming & Data Structures        | ✅ Completed |
+| Algorithms                           | ✅ Completed |
+| Theory of Computation                | ✅ Completed |
+| Compiler Design                      | ✅ Completed |
+| Operating Systems                    |      ⏳ Next |
+| DBMS                                 |   ⏳ Pending |
+| Computer Networks                    |   ⏳ Pending |
+| General Aptitude                     |   ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~72%**
+
+---
+
+# 🚀 Tomorrow (Day 81)
+
+## **Operating Systems – Introduction, OS Services, System Calls, Kernel Structure, User Mode vs Kernel Mode & Types of Operating Systems**
+
+This begins one of the most important GATE subjects, with multiple questions appearing almost every year.
