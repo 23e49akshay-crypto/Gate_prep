@@ -1,0 +1,676 @@
+# 📘 Today's Learning – Day 81 (GATE CSE 2027)
+
+**📅 Date:** **10 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **Introduction to Operating Systems, OS Services, System Calls, Kernel Structure, User Mode vs Kernel Mode & Types of Operating Systems**
+
+> ⭐ **GATE Importance:** Operating Systems contributes **6–10 marks** in GATE CSE almost every year. Understanding these fundamentals is essential before studying processes, scheduling, memory management, and synchronization.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Define an Operating System (OS).
+* Understand the functions and services of an OS.
+* Explain System Calls.
+* Differentiate User Mode and Kernel Mode.
+* Understand different Kernel structures.
+* Compare different types of Operating Systems.
+* Solve GATE-level MCQs.
+
+---
+
+# 1️⃣ What is an Operating System?
+
+An **Operating System (OS)** is **system software** that acts as an **interface between users/applications and computer hardware**.
+
+Without an OS:
+
+* Programs cannot efficiently use hardware.
+* Memory, CPU, storage, and I/O devices cannot be managed effectively.
+
+Examples:
+
+* Windows
+* Linux
+* macOS
+* Android
+* iOS
+
+---
+
+# 2️⃣ Objectives of an Operating System
+
+The OS aims to:
+
+* Make the computer easy to use.
+* Use hardware efficiently.
+* Manage resources fairly.
+* Provide security and protection.
+* Support multitasking.
+
+---
+
+# 3️⃣ Functions of an Operating System
+
+The OS performs:
+
+### Process Management
+
+* Creates and terminates processes.
+* Schedules CPU execution.
+
+### Memory Management
+
+* Allocates and deallocates memory.
+* Supports virtual memory.
+
+### File Management
+
+* Creates, deletes, reads, and writes files.
+
+### I/O Device Management
+
+* Controls communication with hardware devices.
+
+### Security
+
+* Authentication and access control.
+
+### Resource Allocation
+
+* Shares CPU, memory, and devices efficiently.
+
+---
+
+# 4️⃣ Operating System Services
+
+The OS provides services to users and applications:
+
+* Program execution
+* I/O operations
+* File-system manipulation
+* Communication between processes
+* Error detection
+* Resource allocation
+* Accounting
+* Protection and security
+
+📌 These are commonly asked in GATE.
+
+---
+
+# 5️⃣ What are System Calls?
+
+A **System Call** is the interface through which a user program requests services from the operating system kernel.
+
+Example:
+
+```c
+open("file.txt");
+```
+
+The application requests the kernel to open a file.
+
+---
+
+## Categories of System Calls
+
+### Process Control
+
+Examples:
+
+* fork()
+* exec()
+* exit()
+* wait()
+
+---
+
+### File Management
+
+Examples:
+
+* open()
+* read()
+* write()
+* close()
+
+---
+
+### Device Management
+
+Examples:
+
+* ioctl()
+
+---
+
+### Information Maintenance
+
+Examples:
+
+* getpid()
+* time()
+
+---
+
+### Communication
+
+Examples:
+
+* pipe()
+* socket()
+
+---
+
+# 6️⃣ User Mode vs Kernel Mode
+
+Modern operating systems execute in two modes.
+
+| User Mode                       | Kernel Mode                  |
+| ------------------------------- | ---------------------------- |
+| Limited privileges              | Full privileges              |
+| Cannot access hardware directly | Can access hardware directly |
+| Applications run here           | OS kernel runs here          |
+
+---
+
+### Example
+
+When an application performs:
+
+```text
+read(file)
+```
+
+Execution changes:
+
+```text
+User Mode
+      ↓
+System Call
+      ↓
+Kernel Mode
+      ↓
+Return
+      ↓
+User Mode
+```
+
+This transition protects the system from faulty or malicious programs.
+
+---
+
+# 7️⃣ Kernel
+
+The **Kernel** is the **core component** of the operating system.
+
+Responsibilities:
+
+* CPU scheduling
+* Memory management
+* Device management
+* Interrupt handling
+* System call handling
+
+---
+
+# 8️⃣ Types of Kernel
+
+## Monolithic Kernel
+
+* Entire OS runs in kernel space.
+* High performance.
+* Large kernel.
+
+Example:
+
+* Linux (primarily monolithic with modular support)
+
+---
+
+## Microkernel
+
+* Only essential services remain in kernel space.
+* Other services run in user space.
+* Better reliability and modularity.
+
+Example:
+
+* MINIX
+
+---
+
+## Hybrid Kernel
+
+Combines features of monolithic and microkernel designs.
+
+Examples:
+
+* Windows NT
+* macOS (XNU)
+
+---
+
+# 9️⃣ Types of Operating Systems
+
+### Batch Operating System
+
+* Jobs executed in batches.
+* No user interaction.
+
+---
+
+### Multiprogramming OS
+
+* Several programs kept in memory.
+* CPU switches when one waits for I/O.
+
+---
+
+### Multitasking OS
+
+* Multiple applications appear to run simultaneously.
+
+---
+
+### Multiuser OS
+
+* Multiple users use the system concurrently.
+
+---
+
+### Multiprocessing OS
+
+* Uses multiple CPUs/cores.
+
+---
+
+### Real-Time Operating System (RTOS)
+
+Provides predictable response times.
+
+Types:
+
+* Hard Real-Time
+* Soft Real-Time
+
+Applications:
+
+* Aircraft control
+* Medical equipment
+* Robotics
+
+---
+
+# 🔟 Interrupts
+
+An **Interrupt** is a signal requesting immediate CPU attention.
+
+Types:
+
+### Hardware Interrupt
+
+Generated by devices.
+
+Example:
+
+* Keyboard press
+* Disk completion
+
+---
+
+### Software Interrupt
+
+Generated by software.
+
+Example:
+
+* System calls
+
+---
+
+# 1️⃣1️⃣ Bootstrap Program
+
+The **Bootstrap Loader**:
+
+* Runs when the computer starts.
+* Loads the operating system into memory.
+* Transfers control to the kernel.
+
+---
+
+# 📊 Summary Table
+
+| Concept          | Key Point                           |
+| ---------------- | ----------------------------------- |
+| Operating System | Interface between user and hardware |
+| Kernel           | Core of OS                          |
+| System Call      | Interface to kernel services        |
+| User Mode        | Limited privileges                  |
+| Kernel Mode      | Full privileges                     |
+| RTOS             | Predictable response time           |
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+Kernel ≠ Operating System.
+
+The kernel is only the core part of the OS.
+
+---
+
+### Trap 2
+
+Applications cannot directly access hardware.
+
+They must use system calls.
+
+---
+
+### Trap 3
+
+System calls switch execution from **User Mode** to **Kernel Mode**.
+
+---
+
+### Trap 4
+
+Microkernels improve modularity but may incur more communication overhead than monolithic kernels.
+
+---
+
+### Trap 5
+
+Multitasking and Multiprocessing are different concepts.
+
+* Multitasking → Multiple tasks.
+* Multiprocessing → Multiple CPUs/cores.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept          | Key Point               |
+| ---------------- | ----------------------- |
+| OS               | Resource manager        |
+| Kernel           | Core of OS              |
+| System Call      | User → Kernel interface |
+| User Mode        | Restricted execution    |
+| Kernel Mode      | Privileged execution    |
+| Bootstrap Loader | Loads OS during startup |
+| RTOS             | Time-critical systems   |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+An Operating System is:
+**Answer:** System software.
+
+---
+
+### Q2.
+
+The core part of an OS is:
+**Answer:** Kernel.
+
+---
+
+### Q3.
+
+System Calls provide:
+**Answer:** An interface between user programs and the kernel.
+
+---
+
+### Q4.
+
+Applications normally execute in:
+**Answer:** User Mode.
+
+---
+
+### Q5.
+
+The kernel executes in:
+**Answer:** Kernel Mode.
+
+---
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** System Calls and User Mode vs Kernel Mode.
+
+---
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing the kernel with the entire operating system.
+
+---
+
+### Q8.
+
+The first program executed during boot is:
+**Answer:** Bootstrap Loader.
+
+---
+
+### Q9.
+
+A system call changes execution to:
+**Answer:** Kernel Mode.
+
+---
+
+### Q10.
+
+`fork()` is used for:
+**Answer:** Process creation.
+
+---
+
+### Q11.
+
+`read()` is a:
+**Answer:** File management system call.
+
+---
+
+### Q12.
+
+`getpid()` returns:
+**Answer:** Process ID.
+
+---
+
+### Q13.
+
+Which kernel is generally more modular?
+**Answer:** Microkernel.
+
+---
+
+### Q14.
+
+Linux primarily uses:
+**Answer:** Monolithic Kernel.
+
+---
+
+### Q15.
+
+Windows NT uses a:
+**Answer:** Hybrid Kernel.
+
+---
+
+### Q16.
+
+RTOS is mainly designed for:
+**Answer:** Predictable timing.
+
+---
+
+### Q17.
+
+An interrupt generated by a keyboard is:
+**Answer:** Hardware Interrupt.
+
+---
+
+### Q18.
+
+A software interrupt is commonly generated by:
+**Answer:** System Calls.
+
+---
+
+### Q19.
+
+The OS manages:
+**Answer:** CPU, memory, files, and devices.
+
+---
+
+### Q20.
+
+Process scheduling is handled by:
+**Answer:** The Operating System.
+
+---
+
+### Q21.
+
+Memory allocation is the responsibility of:
+**Answer:** The Operating System.
+
+---
+
+### Q22.
+
+The main purpose of an OS is:
+**Answer:** Resource management.
+
+---
+
+### Q23.
+
+A Multiuser OS supports:
+**Answer:** Multiple users simultaneously.
+
+---
+
+### Q24.
+
+A Multiprocessing OS uses:
+**Answer:** Multiple processors/cores.
+
+---
+
+### Q25.
+
+Batch systems are characterized by:
+**Answer:** Job execution without user interaction.
+
+---
+
+### Q26.
+
+Multitasking allows:
+**Answer:** Multiple tasks to run apparently simultaneously.
+
+---
+
+### Q27.
+
+The kernel handles:
+**Answer:** System Calls.
+
+---
+
+### Q28.
+
+Hardware devices communicate with the CPU using:
+**Answer:** Interrupts.
+
+---
+
+### Q29.
+
+Protection is primarily achieved using:
+**Answer:** User Mode and Kernel Mode separation.
+
+---
+
+### Q30.
+
+The primary function of the Bootstrap Loader is:
+**Answer:** Load the Operating System into memory.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems**
+
+### Next Topic (Day 82)
+
+**Operating Systems – Processes, Process Control Block (PCB), Process States, Context Switching, Threads & Multithreading**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |               Status |
+| ----------------------------- | -------------------: |
+| Engineering Mathematics       |          ✅ Completed |
+| Digital Logic                 |          ✅ Completed |
+| COA                           |          ✅ Completed |
+| Programming & Data Structures |          ✅ Completed |
+| Algorithms                    |          ✅ Completed |
+| Theory of Computation         |          ✅ Completed |
+| Compiler Design               |          ✅ Completed |
+| Operating Systems             | 🟨 1 Topic Completed |
+| DBMS                          |            ⏳ Pending |
+| Computer Networks             |            ⏳ Pending |
+| General Aptitude              |            ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~73%**
+
+### 🎯 Daily Practice
+
+Draw a flow diagram showing:
+
+**Application → System Call → Kernel → Hardware → Return to User Mode**
+
+Then answer:
+
+1. Why can't applications directly access hardware?
+2. Why are system calls necessary?
+3. What is the difference between a monolithic kernel and a microkernel?
+
+These are common conceptual questions in GATE interviews and exams.
