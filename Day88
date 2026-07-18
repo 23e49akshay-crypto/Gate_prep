@@ -1,0 +1,476 @@
+# 📘 Today's Learning – Day 82 (GATE CSE 2027)
+
+**📅 Date:** **11 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **Processes, Process Control Block (PCB), Process States, Context Switching, Threads & Multithreading**
+
+> ⭐ **GATE Importance:** This is one of the **most frequently tested Operating Systems topics**. Every year, GATE includes questions on **process states, PCB, context switching, threads, and process vs thread**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand what a process is.
+* Explain the Process Control Block (PCB).
+* Identify process states and transitions.
+* Understand context switching.
+* Differentiate processes and threads.
+* Learn multithreading models.
+* Solve GATE-level MCQs.
+
+---
+
+# 1️⃣ What is a Process?
+
+A **Process** is a **program in execution**.
+
+A program stored on disk is passive, but when it is loaded into memory and starts executing, it becomes a process.
+
+### Process Components
+
+* Program Code (Text Segment)
+* Program Counter (PC)
+* CPU Registers
+* Stack (Function calls, local variables)
+* Heap (Dynamic memory)
+* Data Section (Global and static variables)
+
+---
+
+# 2️⃣ Process vs Program
+
+| Program        | Process             |
+| -------------- | ------------------- |
+| Passive        | Active              |
+| Stored on disk | Stored in memory    |
+| Static         | Dynamic             |
+| No execution   | Currently executing |
+
+📌 **GATE Tip:** A single program can create multiple processes.
+
+---
+
+# 3️⃣ Process Control Block (PCB)
+
+The **PCB** is a data structure maintained by the OS for every process.
+
+It contains all the information needed to manage and resume a process.
+
+### PCB Stores
+
+* Process ID (PID)
+* Process State
+* Program Counter
+* CPU Registers
+* CPU Scheduling Information
+* Memory Management Information
+* Accounting Information
+* I/O Status Information
+
+📌 **Remember:** During a context switch, the CPU state is saved to the PCB.
+
+---
+
+# 4️⃣ Process States
+
+### Five-State Model
+
+```text
+           New
+            │
+            ▼
+         Ready
+            │
+      Scheduler
+            ▼
+         Running
+        ↙      ↘
+ Waiting      Ready
+   │            ▲
+   └────────────┘
+            │
+            ▼
+        Terminated
+```
+
+### States
+
+* **New:** Process is being created.
+* **Ready:** Waiting for CPU.
+* **Running:** Currently executing.
+* **Waiting (Blocked):** Waiting for I/O or an event.
+* **Terminated:** Finished execution.
+
+---
+
+# 5️⃣ State Transitions
+
+* New → Ready: Process admitted.
+* Ready → Running: CPU allocated.
+* Running → Waiting: I/O request.
+* Waiting → Ready: I/O completed.
+* Running → Ready: Time slice expires (preemption).
+* Running → Terminated: Process finishes.
+
+---
+
+# 6️⃣ Context Switching
+
+A **Context Switch** occurs when the CPU switches from one process to another.
+
+### Steps
+
+1. Save current process state into its PCB.
+2. Load the next process state from its PCB.
+3. Resume execution of the new process.
+
+📌 **Important:** Context switching is **overhead** because no useful user work is performed during the switch.
+
+---
+
+# 7️⃣ What is a Thread?
+
+A **Thread** is the **smallest unit of CPU execution** within a process.
+
+A process may have one or more threads.
+
+Threads share:
+
+* Code
+* Data
+* Heap
+* Open files
+
+Each thread has its own:
+
+* Program Counter
+* Registers
+* Stack
+
+---
+
+# 8️⃣ Process vs Thread
+
+| Process                      | Thread                       |
+| ---------------------------- | ---------------------------- |
+| Heavyweight                  | Lightweight                  |
+| Separate address space       | Shared address space         |
+| Communication is slower      | Communication is faster      |
+| Higher creation cost         | Lower creation cost          |
+| More context-switch overhead | Less context-switch overhead |
+
+📌 **Frequently asked in GATE.**
+
+---
+
+# 9️⃣ Benefits of Multithreading
+
+* Better CPU utilization.
+* Faster execution.
+* Resource sharing.
+* Improved responsiveness.
+* Lower overhead than processes.
+
+---
+
+# 🔟 Types of Threads
+
+### User-Level Threads (ULT)
+
+* Managed by user libraries.
+* Fast to create.
+* Kernel is unaware.
+
+**Advantage:** Fast switching.
+
+**Disadvantage:** A blocking system call can block all user threads in that process.
+
+---
+
+### Kernel-Level Threads (KLT)
+
+* Managed by the operating system.
+* Better concurrency.
+* Higher management overhead.
+
+---
+
+# 1️⃣1️⃣ Multithreading Models
+
+### Many-to-One
+
+* Many user threads mapped to one kernel thread.
+* Efficient but no true parallelism.
+
+### One-to-One
+
+* Each user thread maps to one kernel thread.
+* Supports parallel execution.
+* Higher overhead.
+
+### Many-to-Many
+
+* Many user threads mapped to many kernel threads.
+* Balances concurrency and efficiency.
+
+---
+
+# 1️⃣2️⃣ Common GATE Traps
+
+### Trap 1
+
+A **process is not the same as a program**.
+
+---
+
+### Trap 2
+
+PCB stores the CPU context during context switching.
+
+---
+
+### Trap 3
+
+Context switching **does not perform useful computation**; it is overhead.
+
+---
+
+### Trap 4
+
+Threads share the **same address space**, but each has its **own stack**.
+
+---
+
+### Trap 5
+
+A blocking system call in a Many-to-One model can block all user threads.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept        | Key Point                  |
+| -------------- | -------------------------- |
+| Process        | Program in execution       |
+| PCB            | Stores process information |
+| Context Switch | Save & restore CPU state   |
+| Thread         | Smallest execution unit    |
+| Process        | Separate address space     |
+| Thread         | Shared address space       |
+| ULT            | Managed by user library    |
+| KLT            | Managed by kernel          |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+A process is:
+**Answer:** A program in execution.
+
+### Q2.
+
+The PCB stores:
+**Answer:** Process management information.
+
+### Q3.
+
+Which state indicates a process waiting for CPU?
+**Answer:** Ready.
+
+### Q4.
+
+Which state indicates waiting for I/O?
+**Answer:** Waiting (Blocked).
+
+### Q5.
+
+A context switch saves the CPU state in:
+**Answer:** PCB.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Process States and PCB.
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing a process with a thread.
+
+### Q8.
+
+A thread is:
+**Answer:** The smallest unit of CPU execution.
+
+### Q9.
+
+Threads within a process share:
+**Answer:** Code, Data, and Heap.
+
+### Q10.
+
+Each thread has its own:
+**Answer:** Stack.
+
+### Q11.
+
+A process has:
+**Answer:** Its own address space.
+
+### Q12.
+
+Context switching is considered:
+**Answer:** Overhead.
+
+### Q13.
+
+Which process state follows Running after an I/O request?
+**Answer:** Waiting.
+
+### Q14.
+
+Which state follows Waiting after I/O completion?
+**Answer:** Ready.
+
+### Q15.
+
+A scheduler selects a process from:
+**Answer:** The Ready queue.
+
+### Q16.
+
+User-Level Threads are managed by:
+**Answer:** User thread library.
+
+### Q17.
+
+Kernel-Level Threads are managed by:
+**Answer:** Operating System.
+
+### Q18.
+
+Which thread model supports true parallelism?
+**Answer:** One-to-One.
+
+### Q19.
+
+Which model maps many user threads to one kernel thread?
+**Answer:** Many-to-One.
+
+### Q20.
+
+Threads communicate:
+**Answer:** Faster than processes.
+
+### Q21.
+
+Creating a thread is:
+**Answer:** Less expensive than creating a process.
+
+### Q22.
+
+Which is a heavyweight unit?
+**Answer:** Process.
+
+### Q23.
+
+Which is a lightweight unit?
+**Answer:** Thread.
+
+### Q24.
+
+The Program Counter is stored in:
+**Answer:** PCB.
+
+### Q25.
+
+A process enters the Terminated state when:
+**Answer:** Execution finishes.
+
+### Q26.
+
+The Ready state means:
+**Answer:** Waiting for CPU allocation.
+
+### Q27.
+
+The Waiting state means:
+**Answer:** Waiting for an event or I/O.
+
+### Q28.
+
+The CPU resumes a process using information from:
+**Answer:** PCB.
+
+### Q29.
+
+Which has lower context-switch overhead?
+**Answer:** Threads.
+
+### Q30.
+
+The primary purpose of multithreading is:
+**Answer:** Improve responsiveness and CPU utilization.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems**
+
+### Next Topic (Day 83)
+
+**Operating Systems – CPU Scheduling (FCFS, SJF, SRTF, Priority, Round Robin), Scheduling Criteria & Numerical Problems**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               |           ✅ Completed |
+| Operating Systems             | 🟨 2 Topics Completed |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~74%**
+
+### 🎯 Daily Challenge
+
+Given the following scenario:
+
+* Process **P1** arrives first and starts executing.
+* While **P1** is running, it requests an I/O operation.
+* The scheduler selects **P2**.
+* After I/O completes, **P1** becomes eligible again.
+
+**Questions:**
+
+1. List the sequence of process states for **P1**.
+2. At which point does a **context switch** occur?
+3. Which PCB fields must be saved before switching from **P1** to **P2**?
+
+These types of conceptual questions frequently appear in GATE and technical interviews.
