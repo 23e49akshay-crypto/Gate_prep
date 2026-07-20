@@ -1,0 +1,491 @@
+# 📘 Today's Learning – Day 83 (GATE CSE 2027)
+
+**📅 Date:** **12 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **CPU Scheduling – FCFS, SJF, SRTF, Priority Scheduling, Round Robin, Scheduling Criteria & Numerical Problems**
+
+> ⭐ **GATE Importance:** CPU Scheduling is one of the **highest-weight topics** in Operating Systems. Almost every GATE exam includes **1–2 numerical questions** on scheduling algorithms.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand CPU Scheduling.
+* Learn scheduling criteria.
+* Solve FCFS, SJF, SRTF, Priority, and Round Robin problems.
+* Draw Gantt Charts.
+* Calculate:
+
+  * Waiting Time (WT)
+  * Turnaround Time (TAT)
+  * Response Time (RT)
+
+---
+
+# 1️⃣ What is CPU Scheduling?
+
+**CPU Scheduling** is the process of selecting a process from the **Ready Queue** and allocating the CPU to it.
+
+The **CPU Scheduler** aims to maximize CPU utilization and improve system performance.
+
+---
+
+# 2️⃣ Scheduling Criteria
+
+A good scheduling algorithm should aim for:
+
+| Criterion       | Goal                 |
+| --------------- | -------------------- |
+| CPU Utilization | Maximize             |
+| Throughput      | Maximize             |
+| Turnaround Time | Minimize             |
+| Waiting Time    | Minimize             |
+| Response Time   | Minimize             |
+| Fairness        | Ensure no starvation |
+
+📌 **GATE Tip:** Know whether a metric should be minimized or maximized.
+
+---
+
+# 3️⃣ Important Formulas
+
+### Turnaround Time (TAT)
+
+```text
+TAT = Completion Time (CT) − Arrival Time (AT)
+```
+
+---
+
+### Waiting Time (WT)
+
+```text
+WT = TAT − Burst Time (BT)
+```
+
+---
+
+### Response Time (RT)
+
+```text
+RT = First CPU Start Time − Arrival Time
+```
+
+---
+
+# 4️⃣ First Come First Serve (FCFS)
+
+* **Non-preemptive**
+* CPU is allocated in order of arrival.
+
+### Example
+
+| Process | AT | BT |
+| ------- | -: | -: |
+| P1      |  0 |  5 |
+| P2      |  1 |  3 |
+| P3      |  2 |  2 |
+
+### Gantt Chart
+
+```text
+0      5      8     10
+| P1 | P2 | P3 |
+```
+
+### Completion Times
+
+* P1 = 5
+* P2 = 8
+* P3 = 10
+
+### Turnaround Time
+
+* P1 = 5 − 0 = **5**
+* P2 = 8 − 1 = **7**
+* P3 = 10 − 2 = **8**
+
+### Waiting Time
+
+* P1 = 5 − 5 = **0**
+* P2 = 7 − 3 = **4**
+* P3 = 8 − 2 = **6**
+
+Average WT = **(0 + 4 + 6) / 3 = 3.33**
+
+---
+
+# 5️⃣ Shortest Job First (SJF)
+
+* **Non-preemptive**
+* Selects the process with the smallest burst time.
+
+### Advantages
+
+* Minimum average waiting time (when burst times are known).
+
+### Disadvantage
+
+* Long processes may suffer **starvation**.
+
+---
+
+# 6️⃣ Shortest Remaining Time First (SRTF)
+
+* **Preemptive** version of SJF.
+* If a newly arrived process has a shorter remaining time, it preempts the running process.
+
+📌 **GATE Tip:** Always redraw the Gantt Chart whenever a new process arrives.
+
+---
+
+# 7️⃣ Priority Scheduling
+
+Each process is assigned a priority.
+
+* Higher-priority process executes first.
+* Can be **preemptive** or **non-preemptive**.
+
+### Problem
+
+Low-priority processes may suffer **starvation**.
+
+### Solution
+
+**Aging** – gradually increase the priority of waiting processes.
+
+---
+
+# 8️⃣ Round Robin (RR)
+
+* **Preemptive**
+* Each process gets a fixed **Time Quantum (TQ)**.
+
+### Example
+
+Time Quantum = **2 ms**
+
+| Process | BT |
+| ------- | -: |
+| P1      |  5 |
+| P2      |  4 |
+| P3      |  3 |
+
+### Gantt Chart
+
+```text
+0   2   4   6   8   10  12
+|P1|P2|P3|P1|P2|P3|P1|
+```
+
+📌 Smaller Time Quantum → Better response time but more context switches.
+
+---
+
+# 9️⃣ Comparison of Scheduling Algorithms
+
+| Algorithm   | Preemptive | Starvation | Average WT |
+| ----------- | ---------- | ---------- | ---------- |
+| FCFS        | No         | No         | High       |
+| SJF         | No         | Yes        | Lowest     |
+| SRTF        | Yes        | Yes        | Very Low   |
+| Priority    | Optional   | Yes        | Depends    |
+| Round Robin | Yes        | No         | Moderate   |
+
+---
+
+# 🔟 Numerical Practice
+
+### Given
+
+| Process | AT | BT |
+| ------- | -: | -: |
+| P1      |  0 |  6 |
+| P2      |  1 |  2 |
+| P3      |  2 |  4 |
+
+**Question:** Draw the Gantt Chart using **SRTF**.
+
+### Solution
+
+* 0–1 : P1
+* 1–3 : P2 (preempts P1)
+* 3–7 : P3
+* 7–12 : P1
+
+```text
+0   1   3   7   12
+|P1|P2|P3|P1|
+```
+
+---
+
+# 1️⃣1️⃣ Common GATE Traps
+
+### Trap 1
+
+FCFS is **non-preemptive**.
+
+---
+
+### Trap 2
+
+SJF and SRTF are different.
+
+* SJF → Non-preemptive
+* SRTF → Preemptive
+
+---
+
+### Trap 3
+
+Priority Scheduling may cause **starvation**.
+
+---
+
+### Trap 4
+
+Aging prevents starvation.
+
+---
+
+### Trap 5
+
+Round Robin performance depends heavily on the **Time Quantum**.
+
+---
+
+# 📝 Formula Sheet
+
+| Formula         | Expression       |
+| --------------- | ---------------- |
+| Turnaround Time | CT − AT          |
+| Waiting Time    | TAT − BT         |
+| Response Time   | First Start − AT |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+CPU Scheduling selects a process from:
+**Answer:** Ready Queue.
+
+### Q2.
+
+FCFS is:
+**Answer:** Non-preemptive.
+
+### Q3.
+
+SJF stands for:
+**Answer:** Shortest Job First.
+
+### Q4.
+
+SRTF stands for:
+**Answer:** Shortest Remaining Time First.
+
+### Q5.
+
+Round Robin is:
+**Answer:** Preemptive.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Numerical scheduling problems.
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing SJF with SRTF.
+
+### Q8.
+
+Waiting Time formula is:
+**Answer:** TAT − BT.
+
+### Q9.
+
+Turnaround Time formula is:
+**Answer:** CT − AT.
+
+### Q10.
+
+Response Time is:
+**Answer:** First CPU Start − Arrival Time.
+
+### Q11.
+
+Which scheduling algorithm minimizes average waiting time (ideal case)?
+**Answer:** SJF.
+
+### Q12.
+
+Which algorithm may suffer convoy effect?
+**Answer:** FCFS.
+
+### Q13.
+
+Starvation occurs in:
+**Answer:** Priority Scheduling and SJF.
+
+### Q14.
+
+Aging prevents:
+**Answer:** Starvation.
+
+### Q15.
+
+Round Robin uses:
+**Answer:** Time Quantum.
+
+### Q16.
+
+Very small Time Quantum causes:
+**Answer:** More context switches.
+
+### Q17.
+
+Very large Time Quantum makes Round Robin behave like:
+**Answer:** FCFS.
+
+### Q18.
+
+SRTF is:
+**Answer:** Preemptive SJF.
+
+### Q19.
+
+CPU Utilization should be:
+**Answer:** Maximized.
+
+### Q20.
+
+Waiting Time should be:
+**Answer:** Minimized.
+
+### Q21.
+
+Turnaround Time should be:
+**Answer:** Minimized.
+
+### Q22.
+
+Response Time should be:
+**Answer:** Minimized.
+
+### Q23.
+
+Throughput should be:
+**Answer:** Maximized.
+
+### Q24.
+
+Fairness means:
+**Answer:** Every process gets CPU time.
+
+### Q25.
+
+A process enters Ready Queue after:
+**Answer:** I/O completion.
+
+### Q26.
+
+Context switching occurs when:
+**Answer:** CPU changes from one process to another.
+
+### Q27.
+
+Round Robin is best suited for:
+**Answer:** Time-sharing systems.
+
+### Q28.
+
+Priority Scheduling can be:
+**Answer:** Preemptive or Non-preemptive.
+
+### Q29.
+
+Burst Time is:
+**Answer:** CPU execution time required by a process.
+
+### Q30.
+
+The scheduler aims to:
+**Answer:** Optimize CPU performance.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems**
+
+### Next Topic (Day 84)
+
+**Operating Systems – Process Synchronization, Critical Section Problem, Race Condition, Peterson's Solution, Hardware Synchronization & Semaphores**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               |           ✅ Completed |
+| Operating Systems             | 🟨 3 Topics Completed |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~75%**
+
+---
+
+## 🎯 Daily Challenge
+
+Using the following processes:
+
+| Process | Arrival Time | Burst Time |
+| ------- | -----------: | ---------: |
+| P1      |            0 |          7 |
+| P2      |            2 |          4 |
+| P3      |            4 |          1 |
+| P4      |            5 |          4 |
+
+1. Draw the **Gantt Chart** for:
+
+   * FCFS
+   * SJF (Non-preemptive)
+   * SRTF
+   * Round Robin (Time Quantum = 2)
+
+2. Calculate:
+
+   * Completion Time (CT)
+   * Turnaround Time (TAT)
+   * Waiting Time (WT)
+   * Average Waiting Time
+
+This style of numerical problem is one of the most common in the GATE Operating Systems section.
