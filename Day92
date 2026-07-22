@@ -1,0 +1,528 @@
+# 📘 Today's Learning – Day 84 (GATE CSE 2027)
+
+**📅 Date:** **13 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **Process Synchronization, Critical Section Problem, Race Condition, Peterson's Solution, Hardware Synchronization & Semaphores**
+
+> ⭐ **GATE Importance:** This is one of the **most important Operating Systems topics**. Questions on **Critical Section, Semaphores, Peterson's Algorithm, and Race Conditions** appear almost every year in GATE.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand Process Synchronization.
+* Explain the Critical Section Problem.
+* Identify Race Conditions.
+* Learn Peterson's Solution.
+* Understand Hardware Synchronization.
+* Master Semaphores.
+* Solve GATE-level questions.
+
+---
+
+# 1️⃣ What is Process Synchronization?
+
+When multiple processes or threads access **shared data**, their execution must be coordinated to avoid incorrect results.
+
+Example:
+
+Two threads increment a shared variable:
+
+```c
+count = count + 1;
+```
+
+If both execute simultaneously, the final value may be incorrect.
+
+This issue is called a **Race Condition**.
+
+---
+
+# 2️⃣ Critical Section
+
+A **Critical Section** is the part of a program where shared resources (variables, files, memory, etc.) are accessed.
+
+Example:
+
+```c
+balance = balance + 100;
+```
+
+If two processes execute this statement simultaneously without synchronization, data corruption can occur.
+
+---
+
+# 3️⃣ Structure of a Process
+
+```text
+Entry Section
+      ↓
+Critical Section
+      ↓
+Exit Section
+      ↓
+Remainder Section
+```
+
+* **Entry Section:** Requests permission to enter the critical section.
+* **Critical Section:** Accesses shared resource.
+* **Exit Section:** Releases the shared resource.
+* **Remainder Section:** Executes non-critical code.
+
+---
+
+# 4️⃣ Critical Section Requirements
+
+A correct solution must satisfy:
+
+### 1. Mutual Exclusion
+
+Only **one process** can execute in the critical section at a time.
+
+---
+
+### 2. Progress
+
+If no process is in the critical section, one of the waiting processes should be allowed to enter without unnecessary delay.
+
+---
+
+### 3. Bounded Waiting
+
+Every waiting process should get a chance to enter the critical section within a finite number of turns.
+
+📌 **GATE Tip:** These three conditions are frequently asked.
+
+---
+
+# 5️⃣ Race Condition
+
+A **Race Condition** occurs when the output depends on the order in which multiple processes execute.
+
+Example:
+
+Initial value:
+
+```text
+x = 5
+```
+
+Two processes execute:
+
+* P1: `x = x + 1`
+* P2: `x = x + 1`
+
+Expected:
+
+```text
+x = 7
+```
+
+Without synchronization, the result may incorrectly be:
+
+```text
+x = 6
+```
+
+---
+
+# 6️⃣ Peterson's Solution
+
+Peterson's Algorithm provides software-based synchronization for **two processes**.
+
+Uses:
+
+* `flag[2]`
+* `turn`
+
+Pseudo-code:
+
+```c
+flag[i] = true;
+turn = j;
+
+while(flag[j] && turn == j);
+
+/* Critical Section */
+
+flag[i] = false;
+```
+
+### Advantages
+
+* Guarantees Mutual Exclusion.
+* Ensures Progress.
+* Ensures Bounded Waiting.
+
+### Limitation
+
+Works only for **two processes**.
+
+---
+
+# 7️⃣ Hardware Synchronization
+
+Modern CPUs provide hardware instructions for synchronization.
+
+Common instructions:
+
+* Test-and-Set (TSL)
+* Compare-and-Swap (CAS)
+* Swap
+* Fetch-and-Add
+
+These instructions execute atomically.
+
+---
+
+# 8️⃣ Semaphore
+
+A **Semaphore** is a synchronization primitive introduced by **Edsger Dijkstra**.
+
+It is an integer variable manipulated only by two atomic operations.
+
+### wait() (P)
+
+```text
+S = S - 1
+
+if(S < 0)
+    block process
+```
+
+---
+
+### signal() (V)
+
+```text
+S = S + 1
+
+if(S <= 0)
+    wake process
+```
+
+---
+
+# 9️⃣ Types of Semaphores
+
+## Binary Semaphore
+
+Possible values:
+
+```text
+0 or 1
+```
+
+Similar to a mutex lock.
+
+---
+
+## Counting Semaphore
+
+Possible values:
+
+```text
+0,1,2,3,...
+```
+
+Used when multiple identical resources exist.
+
+Example:
+
+Printer pool.
+
+---
+
+# 🔟 Mutex vs Semaphore
+
+| Mutex           | Semaphore                    |
+| --------------- | ---------------------------- |
+| Ownership-based | No ownership                 |
+| Only one holder | Multiple resources supported |
+| Binary          | Binary or Counting           |
+
+📌 **Frequently asked in GATE.**
+
+---
+
+# 1️⃣1️⃣ Busy Waiting
+
+Busy waiting occurs when a process continuously checks a condition instead of sleeping.
+
+Example:
+
+```c
+while(lock == 1);
+```
+
+Busy waiting wastes CPU time.
+
+---
+
+# 1️⃣2️⃣ Deadlock vs Starvation
+
+| Deadlock               | Starvation                                         |
+| ---------------------- | -------------------------------------------------- |
+| Processes wait forever | A process waits indefinitely while others continue |
+| No progress            | Some progress occurs                               |
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+Peterson's Algorithm works only for **two processes**.
+
+---
+
+### Trap 2
+
+Binary Semaphore is **not exactly the same** as a Mutex.
+
+---
+
+### Trap 3
+
+Busy waiting wastes CPU cycles.
+
+---
+
+### Trap 4
+
+Mutual Exclusion alone does **not** guarantee Progress or Bounded Waiting.
+
+---
+
+### Trap 5
+
+Race Conditions occur only when **shared data** is accessed concurrently without proper synchronization.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept             | Key Point                                    |
+| ------------------- | -------------------------------------------- |
+| Critical Section    | Shared resource access                       |
+| Race Condition      | Incorrect result due to concurrent execution |
+| Mutual Exclusion    | One process at a time                        |
+| Peterson's Solution | Two-process software solution                |
+| Semaphore           | Synchronization primitive                    |
+| Binary Semaphore    | 0 or 1                                       |
+| Counting Semaphore  | Multiple resources                           |
+| Busy Waiting        | Continuous checking without sleeping         |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+A Critical Section is:
+**Answer:** The code that accesses shared resources.
+
+### Q2.
+
+Race Condition occurs due to:
+**Answer:** Unsynchronized concurrent access to shared data.
+
+### Q3.
+
+Peterson's Solution works for:
+**Answer:** Two processes.
+
+### Q4.
+
+Peterson's Algorithm uses:
+**Answer:** `flag[]` and `turn`.
+
+### Q5.
+
+Semaphore was introduced by:
+**Answer:** Edsger Dijkstra.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Semaphores and Critical Section.
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Confusing Mutex with Semaphore.
+
+### Q8.
+
+Mutual Exclusion ensures:
+**Answer:** Only one process enters the critical section.
+
+### Q9.
+
+Progress ensures:
+**Answer:** Waiting processes are not unnecessarily delayed.
+
+### Q10.
+
+Bounded Waiting prevents:
+**Answer:** Indefinite waiting (starvation).
+
+### Q11.
+
+`wait()` operation:
+**Answer:** Decrements the semaphore.
+
+### Q12.
+
+`signal()` operation:
+**Answer:** Increments the semaphore.
+
+### Q13.
+
+Binary Semaphore values are:
+**Answer:** 0 or 1.
+
+### Q14.
+
+Counting Semaphore is used for:
+**Answer:** Multiple identical resources.
+
+### Q15.
+
+Busy Waiting:
+**Answer:** Wastes CPU cycles.
+
+### Q16.
+
+Hardware synchronization instructions are:
+**Answer:** Atomic.
+
+### Q17.
+
+Test-and-Set is used for:
+**Answer:** Synchronization.
+
+### Q18.
+
+Compare-and-Swap is:
+**Answer:** An atomic hardware instruction.
+
+### Q19.
+
+Mutex primarily provides:
+**Answer:** Mutual Exclusion.
+
+### Q20.
+
+Semaphore provides:
+**Answer:** Synchronization.
+
+### Q21.
+
+Deadlock means:
+**Answer:** Processes wait forever.
+
+### Q22.
+
+Starvation means:
+**Answer:** A process waits indefinitely while others proceed.
+
+### Q23.
+
+Shared variables require:
+**Answer:** Synchronization.
+
+### Q24.
+
+The Entry Section:
+**Answer:** Requests permission to enter the critical section.
+
+### Q25.
+
+The Exit Section:
+**Answer:** Releases the critical section.
+
+### Q26.
+
+Critical Section follows:
+**Answer:** Entry Section.
+
+### Q27.
+
+Peterson's Solution satisfies:
+**Answer:** Mutual Exclusion, Progress, and Bounded Waiting.
+
+### Q28.
+
+Busy Waiting is generally:
+**Answer:** Inefficient.
+
+### Q29.
+
+Semaphores are manipulated using:
+**Answer:** `wait()` and `signal()`.
+
+### Q30.
+
+The primary goal of synchronization is:
+**Answer:** Prevent inconsistent access to shared resources.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems**
+
+### Next Topic (Day 85)
+
+**Operating Systems – Classical Synchronization Problems (Producer–Consumer, Readers–Writers, Dining Philosophers, Sleeping Barber)**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               |           ✅ Completed |
+| Operating Systems             | 🟨 4 Topics Completed |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~76%**
+
+---
+
+## 🎯 Daily Challenge
+
+Using **two processes P1 and P2** with a shared variable `count` initialized to **0**:
+
+1. Show how a **race condition** can result in `count = 1` instead of `2`.
+2. Explain how a **binary semaphore** prevents this issue.
+3. State whether **Peterson's Algorithm** satisfies:
+
+   * Mutual Exclusion
+   * Progress
+   * Bounded Waiting
+
+These are classic GATE and interview questions that build a strong foundation for synchronization problems covered in the next lesson.
