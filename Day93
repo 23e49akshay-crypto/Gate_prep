@@ -1,0 +1,561 @@
+# 📘 Today's Learning – Day 85 (GATE CSE 2027)
+
+**📅 Date:** **14 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **Classical Synchronization Problems – Producer–Consumer, Readers–Writers, Dining Philosophers & Sleeping Barber**
+
+> ⭐ **GATE Importance:** These are **classic Operating Systems problems** that are asked directly or indirectly in GATE. They test your understanding of **semaphores, synchronization, deadlocks, starvation, and resource allocation**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand the Producer–Consumer problem.
+* Solve synchronization using semaphores.
+* Explain the Readers–Writers problem.
+* Understand the Dining Philosophers problem.
+* Learn the Sleeping Barber problem.
+* Identify deadlocks and starvation.
+* Solve GATE-level questions.
+
+---
+
+# 1️⃣ Producer–Consumer Problem (Bounded Buffer)
+
+## Problem
+
+A **Producer** generates data and places it into a shared **buffer**.
+
+A **Consumer** removes data from the buffer.
+
+Problems:
+
+* Producer must not insert into a **full** buffer.
+* Consumer must not remove from an **empty** buffer.
+* Both must not access the buffer simultaneously.
+
+---
+
+## Semaphore Solution
+
+Assume buffer size = **N**
+
+Semaphores:
+
+```text
+mutex = 1
+empty = N
+full = 0
+```
+
+### Producer
+
+```c
+wait(empty);
+wait(mutex);
+
+/* Insert item */
+
+signal(mutex);
+signal(full);
+```
+
+### Consumer
+
+```c
+wait(full);
+wait(mutex);
+
+/* Remove item */
+
+signal(mutex);
+signal(empty);
+```
+
+---
+
+# 2️⃣ Readers–Writers Problem
+
+## Problem
+
+Many readers and writers share a database.
+
+Rules:
+
+* Multiple readers can read simultaneously.
+* Only one writer can write.
+* No reader should read while a writer is writing.
+
+---
+
+### Reader Preference
+
+Advantages:
+
+* High read performance.
+
+Disadvantage:
+
+* Writers may starve.
+
+---
+
+### Writer Preference
+
+Advantages:
+
+* Writers do not starve.
+
+Disadvantage:
+
+* Readers may wait longer.
+
+---
+
+# 3️⃣ Dining Philosophers Problem
+
+## Problem
+
+Five philosophers sit around a table.
+
+Each needs:
+
+* Left fork
+* Right fork
+
+to eat.
+
+Otherwise they think.
+
+```text
+     P1
+   /    \
+ F1      F2
+
+P5        P2
+
+ F5      F3
+   \    /
+     P4
+```
+
+---
+
+## Problem
+
+If every philosopher picks up the **left fork first**, then waits for the right fork:
+
+➡ **Deadlock occurs.**
+
+---
+
+## Deadlock Prevention
+
+Possible solutions:
+
+* Allow only four philosophers to sit simultaneously.
+* Pick forks in different orders.
+* Use a waiter/arbitrator.
+* Use semaphores.
+
+---
+
+# 4️⃣ Sleeping Barber Problem
+
+## Scenario
+
+One barber.
+
+One barber chair.
+
+Limited waiting chairs.
+
+Customers arrive randomly.
+
+---
+
+### Rules
+
+If:
+
+* Barber sleeping → Wake barber.
+* Barber busy → Customer waits.
+* Waiting chairs full → Customer leaves.
+
+This models synchronization between customers and the barber.
+
+---
+
+# 5️⃣ Deadlock
+
+A **Deadlock** occurs when two or more processes wait forever for resources held by each other.
+
+Example:
+
+```
+P1 holds R1 and waits for R2
+
+P2 holds R2 and waits for R1
+```
+
+Neither can proceed.
+
+---
+
+# 6️⃣ Coffman Conditions for Deadlock
+
+All four conditions must hold:
+
+### 1. Mutual Exclusion
+
+Only one process can use a resource.
+
+---
+
+### 2. Hold and Wait
+
+A process holds one resource while waiting for another.
+
+---
+
+### 3. No Preemption
+
+Resources cannot be forcibly taken away.
+
+---
+
+### 4. Circular Wait
+
+Processes form a circular chain of waiting.
+
+📌 **GATE Tip:** Breaking **any one** of these conditions prevents deadlock.
+
+---
+
+# 7️⃣ Deadlock Handling
+
+### Prevention
+
+Break one Coffman condition.
+
+---
+
+### Avoidance
+
+Use safe-state algorithms.
+
+Example:
+
+* Banker's Algorithm
+
+---
+
+### Detection
+
+Allow deadlock, then detect it.
+
+---
+
+### Recovery
+
+* Terminate processes.
+* Preempt resources.
+
+---
+
+# 8️⃣ Starvation
+
+A process waits indefinitely because others continuously receive the resource.
+
+Example:
+
+Low-priority process never gets CPU.
+
+---
+
+### Solution
+
+**Aging**
+
+Gradually increase waiting process priority.
+
+---
+
+# 9️⃣ Deadlock vs Starvation
+
+| Deadlock                    | Starvation              |
+| --------------------------- | ----------------------- |
+| All affected processes stop | Some processes continue |
+| Circular waiting            | Unfair scheduling       |
+| Needs recovery              | Can be solved by aging  |
+
+---
+
+# 🔟 Common GATE Traps
+
+### Trap 1
+
+Producer–Consumer requires **three semaphores**:
+
+* mutex
+* empty
+* full
+
+---
+
+### Trap 2
+
+Multiple readers can read simultaneously.
+
+Multiple writers **cannot** write simultaneously.
+
+---
+
+### Trap 3
+
+Dining Philosophers mainly demonstrates:
+
+* Deadlock
+* Starvation
+
+---
+
+### Trap 4
+
+Sleeping Barber demonstrates synchronization and resource allocation.
+
+---
+
+### Trap 5
+
+Deadlock requires **all four Coffman conditions**.
+
+---
+
+# 📝 Revision Sheet
+
+| Topic               | Key Point                        |
+| ------------------- | -------------------------------- |
+| Producer–Consumer   | Bounded Buffer                   |
+| Readers–Writers     | Readers share, writers exclusive |
+| Dining Philosophers | Deadlock example                 |
+| Sleeping Barber     | Synchronization problem          |
+| Deadlock            | Circular waiting                 |
+| Starvation          | Indefinite waiting               |
+| Aging               | Prevents starvation              |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Producer–Consumer uses:
+**Answer:** Three semaphores.
+
+### Q2.
+
+The semaphore protecting the buffer is:
+**Answer:** `mutex`.
+
+### Q3.
+
+The semaphore counting empty slots is:
+**Answer:** `empty`.
+
+### Q4.
+
+The semaphore counting filled slots is:
+**Answer:** `full`.
+
+### Q5.
+
+Multiple readers can:
+**Answer:** Read simultaneously.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Deadlock and Dining Philosophers.
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Assuming multiple writers can write simultaneously.
+
+### Q8.
+
+The Readers–Writers problem concerns:
+**Answer:** Shared database synchronization.
+
+### Q9.
+
+Dining Philosophers mainly illustrates:
+**Answer:** Deadlock.
+
+### Q10.
+
+Sleeping Barber illustrates:
+**Answer:** Synchronization.
+
+### Q11.
+
+Deadlock requires:
+**Answer:** All four Coffman conditions.
+
+### Q12.
+
+Circular Wait is:
+**Answer:** A Coffman condition.
+
+### Q13.
+
+Mutual Exclusion means:
+**Answer:** Only one process uses a resource at a time.
+
+### Q14.
+
+Hold and Wait means:
+**Answer:** Holding one resource while waiting for another.
+
+### Q15.
+
+No Preemption means:
+**Answer:** Resources cannot be forcibly removed.
+
+### Q16.
+
+Starvation means:
+**Answer:** Indefinite waiting.
+
+### Q17.
+
+Aging prevents:
+**Answer:** Starvation.
+
+### Q18.
+
+Banker's Algorithm is used for:
+**Answer:** Deadlock avoidance.
+
+### Q19.
+
+Deadlock Detection:
+**Answer:** Finds deadlocks after they occur.
+
+### Q20.
+
+Recovery from deadlock may involve:
+**Answer:** Process termination.
+
+### Q21.
+
+Producer–Consumer uses:
+**Answer:** A bounded buffer.
+
+### Q22.
+
+Dining Philosophers share:
+**Answer:** Forks.
+
+### Q23.
+
+The barber sleeps when:
+**Answer:** No customers are present.
+
+### Q24.
+
+Readers–Writers is solved using:
+**Answer:** Synchronization primitives.
+
+### Q25.
+
+Semaphore operations are:
+**Answer:** `wait()` and `signal()`.
+
+### Q26.
+
+Deadlock prevention works by:
+**Answer:** Breaking a Coffman condition.
+
+### Q27.
+
+Priority aging:
+**Answer:** Gradually increases priority over time.
+
+### Q28.
+
+Producer blocks when:
+**Answer:** The buffer is full.
+
+### Q29.
+
+Consumer blocks when:
+**Answer:** The buffer is empty.
+
+### Q30.
+
+The primary goal of synchronization is:
+**Answer:** Safe access to shared resources.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems**
+
+### Next Topic (Day 86)
+
+**Operating Systems – Deadlock: Resource Allocation Graph (RAG), Safe State, Banker's Algorithm & Numerical Problems**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               |           ✅ Completed |
+| Operating Systems             | 🟨 5 Topics Completed |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~77%**
+
+---
+
+## 🎯 Daily Challenge
+
+A system has a **buffer of size 5**.
+
+* Initially: `empty = 5`, `full = 0`, `mutex = 1`.
+* The producer produces **3 items**.
+* Then the consumer consumes **2 items**.
+
+**Questions:**
+
+1. What are the final values of `empty`, `full`, and `mutex`?
+2. Why is `mutex` initialized to `1`?
+3. Which semaphore prevents the producer from inserting into a full buffer?
+
+Mastering these synchronization problems will make the upcoming **Deadlock and Banker's Algorithm** lesson much easier.
