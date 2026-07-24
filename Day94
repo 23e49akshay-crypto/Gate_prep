@@ -1,0 +1,435 @@
+# 📘 Today's Learning – Day 86 (GATE CSE 2027)
+
+**📅 Date:** **15 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **Deadlocks – Resource Allocation Graph (RAG), Safe State, Banker's Algorithm & Numerical Problems**
+
+> ⭐ **GATE Importance:** This is one of the **highest-weight OS topics**. GATE frequently asks **numerical questions** on **Banker's Algorithm**, **Safe/Unsafe States**, and **Resource Allocation Graphs (RAGs)**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand deadlocks in detail.
+* Draw and interpret Resource Allocation Graphs (RAGs).
+* Differentiate Safe and Unsafe states.
+* Apply Banker's Algorithm.
+* Solve GATE-level numerical problems.
+
+---
+
+# 1️⃣ What is a Deadlock?
+
+A **deadlock** occurs when a set of processes is permanently blocked because each process is waiting for a resource held by another process.
+
+### Example
+
+* **P1** holds **R1** and waits for **R2**.
+* **P2** holds **R2** and waits for **R1**.
+
+Neither process can proceed.
+
+---
+
+# 2️⃣ Resource Allocation Graph (RAG)
+
+A **Resource Allocation Graph** is used to represent processes and resources.
+
+### Components
+
+* **Circle (○)** → Process
+* **Square (□)** → Resource
+
+### Edges
+
+* **P → R** : Request edge (process requests resource)
+* **R → P** : Allocation edge (resource allocated to process)
+
+---
+
+### Example
+
+```text
+P1 ───▶ R2
+▲        │
+│        ▼
+R1 ◀─── P2
+```
+
+This forms a **cycle**.
+
+📌 **GATE Tip:**
+
+* **Single instance of each resource:** Cycle ⇒ Deadlock.
+* **Multiple instances:** Cycle ⇒ Possible deadlock (not always).
+
+---
+
+# 3️⃣ Safe State
+
+A system is in a **Safe State** if there exists at least one sequence of process execution where every process can complete without causing a deadlock.
+
+Example Safe Sequence:
+
+```text
+<P1, P3, P2, P4>
+```
+
+---
+
+# 4️⃣ Unsafe State
+
+An **Unsafe State** means no guaranteed safe execution sequence exists.
+
+⚠️ **Important:** An unsafe state does **not** necessarily mean the system is already deadlocked, but it can lead to one.
+
+---
+
+# 5️⃣ Banker's Algorithm
+
+Developed by **Edsger Dijkstra**, Banker's Algorithm is used for **deadlock avoidance**.
+
+It grants a resource request only if doing so keeps the system in a **safe state**.
+
+---
+
+# 6️⃣ Data Structures Used
+
+For **n** processes and **m** resource types:
+
+* **Available[m]** → Available instances of each resource.
+* **Max[n][m]** → Maximum demand.
+* **Allocation[n][m]** → Currently allocated resources.
+* **Need[n][m]** → Remaining requirement.
+
+### Formula
+
+```text
+Need = Max − Allocation
+```
+
+---
+
+# 7️⃣ Steps of Banker's Algorithm
+
+1. Calculate the **Need Matrix**.
+2. Set `Work = Available`.
+3. Find a process whose `Need ≤ Work`.
+4. Execute that process and release its allocated resources.
+5. Update `Work`.
+6. Repeat until all processes finish.
+
+If all processes finish → **Safe State**.
+
+---
+
+# 8️⃣ Numerical Example
+
+### Available
+
+|  A |  B |  C |
+| -: | -: | -: |
+|  3 |  3 |  2 |
+
+### Allocation
+
+| Process |  A |  B |  C |
+| ------- | -: | -: | -: |
+| P0      |  0 |  1 |  0 |
+| P1      |  2 |  0 |  0 |
+| P2      |  3 |  0 |  2 |
+
+### Max
+
+| Process |  A |  B |  C |
+| ------- | -: | -: | -: |
+| P0      |  7 |  5 |  3 |
+| P1      |  3 |  2 |  2 |
+| P2      |  9 |  0 |  2 |
+
+### Need = Max − Allocation
+
+| Process |  A |  B |  C |
+| ------- | -: | -: | -: |
+| P0      |  7 |  4 |  3 |
+| P1      |  1 |  2 |  2 |
+| P2      |  6 |  0 |  0 |
+
+From this, you determine whether a safe sequence exists by repeatedly checking `Need ≤ Available (Work)` and updating `Work` after each completed process.
+
+---
+
+# 9️⃣ Deadlock Prevention vs Avoidance vs Detection
+
+| Technique  | Idea                                                         |
+| ---------- | ------------------------------------------------------------ |
+| Prevention | Break one Coffman condition                                  |
+| Avoidance  | Allocate only if the state remains safe (Banker's Algorithm) |
+| Detection  | Allow deadlocks and detect them later                        |
+| Recovery   | Recover by preemption or process termination                 |
+
+---
+
+# 🔟 Common GATE Traps
+
+### Trap 1
+
+A **cycle** in a RAG with **single-instance resources** always indicates a deadlock.
+
+---
+
+### Trap 2
+
+An **unsafe state is not the same as a deadlock**.
+
+---
+
+### Trap 3
+
+Always compute:
+
+```text
+Need = Max − Allocation
+```
+
+---
+
+### Trap 4
+
+Banker's Algorithm is used for **deadlock avoidance**, not prevention.
+
+---
+
+### Trap 5
+
+A safe sequence is **not unique**. Multiple valid safe sequences may exist.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept            | Formula / Key Point               |
+| ------------------ | --------------------------------- |
+| Need               | Max − Allocation                  |
+| Safe State         | At least one safe sequence exists |
+| Unsafe State       | No guaranteed safe sequence       |
+| RAG                | Process–Resource graph            |
+| Banker's Algorithm | Deadlock avoidance                |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+A deadlock occurs when:
+**Answer:** Processes wait indefinitely for each other's resources.
+
+### Q2.
+
+In a RAG, a circle represents:
+**Answer:** A process.
+
+### Q3.
+
+In a RAG, a square represents:
+**Answer:** A resource.
+
+### Q4.
+
+A request edge is:
+**Answer:** Process → Resource.
+
+### Q5.
+
+An allocation edge is:
+**Answer:** Resource → Process.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Banker's Algorithm.
+
+### Q7.
+
+Biggest GATE trap?
+**Answer:** Assuming an unsafe state is always a deadlock.
+
+### Q8.
+
+Need is calculated as:
+**Answer:** Max − Allocation.
+
+### Q9.
+
+Banker's Algorithm is used for:
+**Answer:** Deadlock avoidance.
+
+### Q10.
+
+A safe state means:
+**Answer:** At least one safe sequence exists.
+
+### Q11.
+
+An unsafe state:
+**Answer:** May lead to a deadlock.
+
+### Q12.
+
+Who proposed Banker's Algorithm?
+**Answer:** Edsger Dijkstra.
+
+### Q13.
+
+A cycle in a single-instance RAG indicates:
+**Answer:** Deadlock.
+
+### Q14.
+
+A cycle in a multiple-instance RAG indicates:
+**Answer:** Possible deadlock.
+
+### Q15.
+
+The Available vector stores:
+**Answer:** Currently available resources.
+
+### Q16.
+
+The Max matrix stores:
+**Answer:** Maximum demand.
+
+### Q17.
+
+The Allocation matrix stores:
+**Answer:** Allocated resources.
+
+### Q18.
+
+The Need matrix stores:
+**Answer:** Remaining resource requirement.
+
+### Q19.
+
+Banker's Algorithm checks:
+**Answer:** System safety before allocation.
+
+### Q20.
+
+Deadlock prevention works by:
+**Answer:** Breaking a Coffman condition.
+
+### Q21.
+
+Deadlock detection:
+**Answer:** Finds deadlocks after they occur.
+
+### Q22.
+
+Recovery may involve:
+**Answer:** Process termination.
+
+### Q23.
+
+A safe sequence:
+**Answer:** Allows every process to complete.
+
+### Q24.
+
+Resource preemption means:
+**Answer:** Taking a resource from a process.
+
+### Q25.
+
+The Work vector is initialized to:
+**Answer:** Available.
+
+### Q26.
+
+When a process finishes:
+**Answer:** Its allocated resources are released.
+
+### Q27.
+
+Need can never be:
+**Answer:** Greater than Max.
+
+### Q28.
+
+Banker's Algorithm is mainly used in:
+**Answer:** Systems with multiple resource types.
+
+### Q29.
+
+The goal of Banker's Algorithm is:
+**Answer:** Keep the system in a safe state.
+
+### Q30.
+
+Deadlock avoidance requires:
+**Answer:** Knowledge of maximum resource requirements.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems**
+
+### Next Topic (Day 87)
+
+**Operating Systems – Memory Management: Address Binding, Logical vs Physical Address, Swapping, Contiguous Allocation, Fragmentation & Paging Introduction**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               |           ✅ Completed |
+| Operating Systems             | 🟨 6 Topics Completed |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~78%**
+
+---
+
+## 🎯 Daily Challenge
+
+A system has:
+
+* **Available = (3, 3, 2)**
+
+| Process | Max     | Allocation |
+| ------- | ------- | ---------- |
+| P1      | (4,2,2) | (2,0,1)    |
+| P2      | (2,2,2) | (1,1,0)    |
+| P3      | (3,3,2) | (1,1,1)    |
+
+1. Compute the **Need** matrix.
+2. Determine whether the system is in a **safe state**.
+3. If it is safe, write one valid **safe sequence**.
+
+This style of numerical problem is one of the most common in GATE Operating Systems and is excellent practice for the exam.
