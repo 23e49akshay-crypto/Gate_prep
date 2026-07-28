@@ -1,0 +1,416 @@
+# 📘 Today's Learning – Day 89 (GATE CSE 2027)
+
+**📅 Date:** **18 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **Page Replacement Algorithms – FIFO, Optimal (OPT), LRU, Second Chance (Clock), Belady's Anomaly & Numerical Problems**
+
+> ⭐ **GATE Importance:** This is one of the **most frequently asked numerical topics** in Operating Systems. Every GATE aspirant should be comfortable solving page replacement problems quickly.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand page replacement.
+* Apply FIFO, OPT, LRU, and Second Chance algorithms.
+* Explain Belady's Anomaly.
+* Compare different algorithms.
+* Solve GATE-style numerical questions.
+
+---
+
+# 1️⃣ Why Do We Need Page Replacement?
+
+When a **page fault** occurs and **no free frame** is available, the OS must remove one page from memory to load the required page.
+
+This decision is made by a **page replacement algorithm**.
+
+---
+
+# 2️⃣ FIFO (First-In, First-Out)
+
+**Rule:** Replace the page that entered memory first.
+
+### Example
+
+Reference String:
+
+```text
+1 2 3 4
+```
+
+Frames = **3**
+
+| Step | Memory | Fault? |
+| ---- | ------ | ------ |
+| 1    | 1      | -      |
+| 2    | 1 2    | -      |
+| 3    | 1 2 3  | -      |
+| 4    | 4 2 3  | ✔      |
+
+FIFO is simple but may remove frequently used pages.
+
+---
+
+# 3️⃣ Optimal (OPT) Algorithm
+
+**Rule:** Replace the page that will **not be used for the longest time in the future**.
+
+Advantages:
+
+* Produces the **minimum possible page faults**.
+* Used as a benchmark.
+
+Disadvantage:
+
+* Future references are unknown in real systems.
+
+---
+
+# 4️⃣ LRU (Least Recently Used)
+
+**Rule:** Replace the page that has **not been used for the longest time in the past**.
+
+Example:
+
+```text
+Reference:
+7 0 1 2 0 3
+```
+
+LRU removes the least recently accessed page.
+
+Advantages:
+
+* Performs close to OPT.
+* Widely used in practice.
+
+---
+
+# 5️⃣ Second Chance (Clock) Algorithm
+
+An improvement over FIFO.
+
+Each page has a **Reference Bit**.
+
+* Bit = **1** → Give the page a second chance and reset the bit.
+* Bit = **0** → Replace the page.
+
+This reduces unnecessary replacements.
+
+---
+
+# 6️⃣ Belady's Anomaly
+
+**Belady's Anomaly** is the surprising situation where **increasing the number of page frames results in more page faults**.
+
+📌 This anomaly occurs with **FIFO**.
+
+It **does not occur** with:
+
+* LRU
+* Optimal
+
+---
+
+# 7️⃣ Comparison of Algorithms
+
+| Algorithm     | Easy | Efficient | Belady's Anomaly |
+| ------------- | :--: | :-------: | :--------------: |
+| FIFO          |   ✅  |     ⭐⭐    |       ✅ Yes      |
+| Optimal       |   ❌  |   ⭐⭐⭐⭐⭐   |       ❌ No       |
+| LRU           |  ⭐⭐⭐ |    ⭐⭐⭐⭐   |       ❌ No       |
+| Second Chance |  ⭐⭐⭐ |    ⭐⭐⭐    |  ❌ Generally No  |
+
+---
+
+# 8️⃣ Numerical Example
+
+Reference String:
+
+```text
+7 0 1 2 0 3 0 4
+```
+
+Frames = **3**
+
+### FIFO
+
+Total Page Faults = **7**
+
+### LRU
+
+Total Page Faults = **6**
+
+### OPT
+
+Total Page Faults = **5**
+
+📌 **Remember:**
+**OPT ≤ LRU ≤ FIFO** (in terms of page faults for the same reference string).
+
+---
+
+# 9️⃣ Stack Algorithms
+
+A **Stack Algorithm** never suffers from Belady's Anomaly.
+
+Examples:
+
+* ✅ LRU
+* ✅ Optimal
+
+FIFO is **not** a stack algorithm.
+
+---
+
+# 🔟 Common GATE Traps
+
+### Trap 1
+
+FIFO may produce **more page faults** when more frames are added.
+
+### Trap 2
+
+OPT cannot be implemented exactly because future page references are unknown.
+
+### Trap 3
+
+LRU uses **past** information, not future information.
+
+### Trap 4
+
+Belady's Anomaly is **only associated with certain algorithms like FIFO**.
+
+### Trap 5
+
+OPT always gives the **minimum page faults**.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept          | Key Point                                |
+| ---------------- | ---------------------------------------- |
+| FIFO             | Oldest page removed                      |
+| OPT              | Replace page used farthest in the future |
+| LRU              | Replace least recently used page         |
+| Second Chance    | FIFO + Reference Bit                     |
+| Belady's Anomaly | More frames → More faults (FIFO)         |
+| Stack Algorithm  | Never shows Belady's Anomaly             |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Page replacement occurs when:
+**Answer:** A page fault occurs and no free frame exists.
+
+### Q2.
+
+FIFO replaces:
+**Answer:** The oldest loaded page.
+
+### Q3.
+
+OPT replaces:
+**Answer:** The page used farthest in the future.
+
+### Q4.
+
+LRU replaces:
+**Answer:** The least recently used page.
+
+### Q5.
+
+Second Chance uses:
+**Answer:** A reference bit.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** FIFO vs LRU numerical problems.
+
+### Q7.
+
+Belady's Anomaly is seen in:
+**Answer:** FIFO.
+
+### Q8.
+
+OPT gives:
+**Answer:** The minimum page faults.
+
+### Q9.
+
+LRU is based on:
+**Answer:** Past usage.
+
+### Q10.
+
+OPT is based on:
+**Answer:** Future usage.
+
+### Q11.
+
+FIFO is:
+**Answer:** Simple to implement.
+
+### Q12.
+
+A page fault occurs when:
+**Answer:** The required page is absent from memory.
+
+### Q13.
+
+Stack algorithms:
+**Answer:** Never exhibit Belady's Anomaly.
+
+### Q14.
+
+Which is not a stack algorithm?
+**Answer:** FIFO.
+
+### Q15.
+
+Second Chance improves:
+**Answer:** FIFO.
+
+### Q16.
+
+The Clock Algorithm is another name for:
+**Answer:** Second Chance.
+
+### Q17.
+
+The reference bit indicates:
+**Answer:** Whether a page was recently accessed.
+
+### Q18.
+
+OPT is mainly used:
+**Answer:** As a theoretical benchmark.
+
+### Q19.
+
+Increasing frames in FIFO:
+**Answer:** May increase page faults.
+
+### Q20.
+
+Increasing frames in LRU:
+**Answer:** Does not increase page faults due to Belady's Anomaly.
+
+### Q21.
+
+The goal of page replacement is:
+**Answer:** Reduce page faults.
+
+### Q22.
+
+Virtual memory depends on:
+**Answer:** Paging.
+
+### Q23.
+
+LRU generally performs:
+**Answer:** Better than FIFO.
+
+### Q24.
+
+FIFO is easy because:
+**Answer:** It uses a queue.
+
+### Q25.
+
+OPT requires:
+**Answer:** Knowledge of future references.
+
+### Q26.
+
+Second Chance avoids replacing:
+**Answer:** Recently referenced pages.
+
+### Q27.
+
+The page replacement decision occurs:
+**Answer:** After a page fault.
+
+### Q28.
+
+The best theoretical algorithm is:
+**Answer:** Optimal.
+
+### Q29.
+
+Belady's Anomaly is an example of:
+**Answer:** Counterintuitive page replacement behaviour.
+
+### Q30.
+
+The primary aim of page replacement algorithms is:
+**Answer:** Minimise page faults.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems**
+
+### Next Topic (Day 90)
+
+**File Systems & Disk Scheduling – File Allocation Methods, Directory Structures, FCFS, SSTF, SCAN, C-SCAN, LOOK & C-LOOK Algorithms**
+
+---
+
+## 📊 Overall GATE CSE Progress
+
+| Subject                       |                Status |
+| ----------------------------- | --------------------: |
+| Engineering Mathematics       |           ✅ Completed |
+| Digital Logic                 |           ✅ Completed |
+| COA                           |           ✅ Completed |
+| Programming & Data Structures |           ✅ Completed |
+| Algorithms                    |           ✅ Completed |
+| Theory of Computation         |           ✅ Completed |
+| Compiler Design               |           ✅ Completed |
+| Operating Systems             | 🟨 9 Topics Completed |
+| DBMS                          |             ⏳ Pending |
+| Computer Networks             |             ⏳ Pending |
+| General Aptitude              |             ⏳ Pending |
+
+**Overall GATE CSE 2027 Syllabus Completion:** **~81%**
+
+---
+
+## 🎯 Daily Challenge
+
+For the reference string:
+
+```text
+1 2 3 4 1 2 5 1 2 3 4 5
+```
+
+with **3 page frames**:
+
+1. Calculate the total number of page faults using **FIFO**.
+2. Calculate the total number of page faults using **LRU**.
+3. Which algorithm performs better for this reference string?
+4. Explain why **Belady's Anomaly** can occur with FIFO but not with LRU.
+
+💡 **Exam Tip:** Practice at least **5 page replacement numericals**. They are among the highest-scoring and most frequently repeated questions in GATE Operating Systems.
