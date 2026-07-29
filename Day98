@@ -1,0 +1,473 @@
+# 📘 Today's Learning – Day 90 (GATE CSE 2027)
+
+**📅 Date:** **19 May 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **File Systems & Disk Scheduling – File Allocation Methods, Directory Structures, FCFS, SSTF, SCAN, C-SCAN, LOOK & C-LOOK**
+
+> ⭐ **GATE Importance:** File Systems and Disk Scheduling are **high-weightage OS topics**. Numerical questions on **disk scheduling** and conceptual questions on **file allocation** appear frequently.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand file systems and directory structures.
+* Learn file allocation methods.
+* Compare disk scheduling algorithms.
+* Solve GATE-style disk scheduling numericals.
+
+---
+
+# 1️⃣ What is a File System?
+
+A **File System** is the OS component responsible for:
+
+* Creating files
+* Deleting files
+* Organising files into directories
+* Managing storage on disks
+* Controlling file access and permissions
+
+Examples:
+
+* FAT32
+* NTFS
+* ext4
+
+---
+
+# 2️⃣ File Allocation Methods
+
+## A. Contiguous Allocation
+
+Each file occupies consecutive disk blocks.
+
+### Advantages
+
+* Fast sequential and random access.
+* Simple implementation.
+
+### Disadvantages
+
+* External fragmentation.
+* Difficult to grow files.
+
+---
+
+## B. Linked Allocation
+
+Each file is stored as a linked list of disk blocks.
+
+### Advantages
+
+* No external fragmentation.
+* Easy file expansion.
+
+### Disadvantages
+
+* Slow random access.
+* Pointer overhead.
+
+---
+
+## C. Indexed Allocation
+
+Each file has an **index block** containing addresses of all file blocks.
+
+### Advantages
+
+* Fast direct access.
+* No external fragmentation.
+
+### Disadvantages
+
+* Extra memory needed for index blocks.
+
+---
+
+# 3️⃣ Directory Structures
+
+### Single-Level Directory
+
+* One directory for all users.
+* Simple but causes filename conflicts.
+
+### Two-Level Directory
+
+* Separate directory for each user.
+* Eliminates filename conflicts.
+
+### Tree-Structured Directory
+
+* Hierarchical structure.
+* Most commonly used.
+
+### Acyclic Graph Directory
+
+* Allows shared files/directories.
+* No cycles.
+
+---
+
+# 4️⃣ Disk Scheduling
+
+When multiple disk access requests exist, the OS decides the servicing order to minimise seek time.
+
+---
+
+# 5️⃣ FCFS (First Come, First Served)
+
+Requests are served in arrival order.
+
+### Advantages
+
+* Simple
+* Fair
+
+### Disadvantages
+
+* Poor average seek time.
+
+---
+
+# 6️⃣ SSTF (Shortest Seek Time First)
+
+Services the request closest to the current head position.
+
+### Advantages
+
+* Better performance than FCFS.
+
+### Disadvantages
+
+* Far-away requests may starve.
+
+---
+
+# 7️⃣ SCAN (Elevator Algorithm)
+
+The disk head moves in one direction, servicing all requests, then reverses direction.
+
+Advantages:
+
+* Good throughput.
+* Less starvation.
+
+---
+
+# 8️⃣ C-SCAN (Circular SCAN)
+
+The head moves in one direction only.
+
+After reaching the end, it jumps back to the beginning without servicing requests on the return.
+
+Advantages:
+
+* More uniform waiting time.
+
+---
+
+# 9️⃣ LOOK Algorithm
+
+Similar to SCAN, but the head reverses at the **last pending request**, not at the physical end of the disk.
+
+Advantage:
+
+* Reduces unnecessary movement.
+
+---
+
+# 🔟 C-LOOK Algorithm
+
+Similar to C-SCAN, but after servicing the last request, the head jumps directly to the first pending request.
+
+Advantage:
+
+* Less head movement than C-SCAN.
+
+---
+
+# 1️⃣1️⃣ Comparison of Disk Scheduling Algorithms
+
+| Algorithm | Average Seek Time  | Starvation | Fairness  |
+| --------- | ------------------ | ---------- | --------- |
+| FCFS      | High               | No         | High      |
+| SSTF      | Low                | Yes        | Medium    |
+| SCAN      | Low                | Rare       | Good      |
+| C-SCAN    | Low                | No         | Very Good |
+| LOOK      | Better than SCAN   | Rare       | Good      |
+| C-LOOK    | Better than C-SCAN | No         | Very Good |
+
+---
+
+# 1️⃣2️⃣ Numerical Example
+
+**Initial Head Position = 50**
+
+Request Queue:
+
+```text
+98, 183, 37, 122, 14, 124, 65, 67
+```
+
+For GATE numericals, you should:
+
+1. Arrange requests according to the algorithm.
+2. Calculate total head movement.
+3. Compare the algorithms.
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+SSTF may cause **starvation**.
+
+### Trap 2
+
+SCAN goes to the **disk end**, LOOK goes only to the **last request**.
+
+### Trap 3
+
+C-SCAN provides more **uniform waiting time** than SCAN.
+
+### Trap 4
+
+Contiguous allocation suffers from **external fragmentation**.
+
+### Trap 5
+
+Indexed allocation supports efficient **direct/random access**.
+
+---
+
+# 📝 Revision Sheet
+
+| Concept               | Key Point                         |
+| --------------------- | --------------------------------- |
+| Contiguous Allocation | Fast, external fragmentation      |
+| Linked Allocation     | Sequential access, easy expansion |
+| Indexed Allocation    | Direct access                     |
+| FCFS                  | Arrival order                     |
+| SSTF                  | Closest request first             |
+| SCAN                  | Elevator algorithm                |
+| C-SCAN                | Circular scan                     |
+| LOOK                  | Reverse at last request           |
+| C-LOOK                | Circular LOOK                     |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Which allocation method suffers from external fragmentation?
+**Answer:** Contiguous Allocation.
+
+### Q2.
+
+Which allocation method uses pointers?
+**Answer:** Linked Allocation.
+
+### Q3.
+
+Which allocation method supports direct access?
+**Answer:** Indexed Allocation.
+
+### Q4.
+
+Most common directory structure?
+**Answer:** Tree-Structured Directory.
+
+### Q5.
+
+FCFS schedules requests based on:
+**Answer:** Arrival order.
+
+### Q6.
+
+Which algorithm may cause starvation?
+**Answer:** SSTF.
+
+### Q7.
+
+SCAN is also called:
+**Answer:** Elevator Algorithm.
+
+### Q8.
+
+C-SCAN moves:
+**Answer:** In one direction only.
+
+### Q9.
+
+LOOK differs from SCAN because it:
+**Answer:** Reverses at the last request.
+
+### Q10.
+
+C-LOOK differs from C-SCAN because it:
+**Answer:** Jumps to the first pending request.
+
+### Q11.
+
+Indexed allocation uses:
+**Answer:** Index blocks.
+
+### Q12.
+
+Linked allocation is efficient for:
+**Answer:** Sequential access.
+
+### Q13.
+
+Contiguous allocation is efficient for:
+**Answer:** Random access.
+
+### Q14.
+
+Which algorithm gives more uniform waiting time?
+**Answer:** C-SCAN.
+
+### Q15.
+
+Tree directories support:
+**Answer:** Hierarchical organisation.
+
+### Q16.
+
+Acyclic graph directories allow:
+**Answer:** Shared files/directories.
+
+### Q17.
+
+Disk scheduling mainly reduces:
+**Answer:** Seek time.
+
+### Q18.
+
+Disk head movement affects:
+**Answer:** Access time.
+
+### Q19.
+
+FCFS is:
+**Answer:** Fair but inefficient.
+
+### Q20.
+
+SSTF selects:
+**Answer:** The nearest request.
+
+### Q21.
+
+SCAN reduces:
+**Answer:** Average seek time.
+
+### Q22.
+
+LOOK avoids:
+**Answer:** Unnecessary movement to the disk end.
+
+### Q23.
+
+C-LOOK improves:
+**Answer:** C-SCAN.
+
+### Q24.
+
+External fragmentation occurs in:
+**Answer:** Contiguous allocation.
+
+### Q25.
+
+Indexed allocation requires:
+**Answer:** Extra index storage.
+
+### Q26.
+
+File systems manage:
+**Answer:** Files and directories.
+
+### Q27.
+
+NTFS is an example of:
+**Answer:** A file system.
+
+### Q28.
+
+The goal of disk scheduling is:
+**Answer:** Minimise seek time.
+
+### Q29.
+
+SSTF generally performs:
+**Answer:** Better than FCFS.
+
+### Q30.
+
+The primary objective of file allocation is:
+**Answer:** Efficient storage and retrieval of files.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+
+### Current Subject
+
+🔄 **Operating Systems** (10 topics completed)
+
+### 📖 Next Topic (Day 91)
+
+**Operating Systems – I/O Systems, RAID Levels (0–6), Protection & Security, UNIX/Linux Basics and Complete Operating Systems Revision**
+
+---
+
+## 📊 Overall GATE CSE 2027 Progress
+
+| Subject                       |                 Status |
+| ----------------------------- | ---------------------: |
+| Engineering Mathematics       |            ✅ Completed |
+| Digital Logic                 |            ✅ Completed |
+| COA                           |            ✅ Completed |
+| Programming & Data Structures |            ✅ Completed |
+| Algorithms                    |            ✅ Completed |
+| Theory of Computation         |            ✅ Completed |
+| Compiler Design               |            ✅ Completed |
+| Operating Systems             | 🟨 10 Topics Completed |
+| DBMS                          |              ⏳ Pending |
+| Computer Networks             |              ⏳ Pending |
+| General Aptitude              |              ⏳ Pending |
+
+**Overall Syllabus Completion:** **~82%**
+
+---
+
+## 🎯 Daily Challenge
+
+For the request queue:
+
+```text
+82, 170, 43, 140, 24, 16, 190
+```
+
+Initial head position = **50**, moving towards higher track numbers.
+
+1. Calculate the total head movement using **FCFS**.
+2. Calculate the total head movement using **SSTF**.
+3. Explain why **SCAN** generally performs better than **FCFS**.
+4. State one advantage of **LOOK** over **SCAN**.
+
+These numerical problems are very common in GATE and will strengthen your understanding of disk scheduling algorithms.
