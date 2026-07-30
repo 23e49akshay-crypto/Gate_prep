@@ -1,0 +1,585 @@
+# 📘 Today's Learning – Day 91 (GATE CSE 2027)
+
+**📅 Date:** **30 July 2026**
+**📚 Subject:** **Operating Systems**
+**🧠 Topic:** **I/O Systems, RAID Levels, Protection & Security, UNIX/Linux Basics & Complete OS Revision**
+
+> ⭐ **GATE Importance:** These topics are frequently tested as **conceptual MCQs**. RAID levels, protection mechanisms, and UNIX commands are common in GATE, ISRO, NIELIT, and PSU exams.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand I/O systems.
+* Learn RAID Levels (0–6).
+* Differentiate protection and security.
+* Revise important UNIX/Linux commands.
+* Complete the Operating Systems syllabus.
+
+---
+
+# 1️⃣ I/O System
+
+An **Input/Output (I/O) System** enables communication between the CPU and peripheral devices.
+
+### Components
+
+* Device Controller
+* Device Driver
+* Interrupt Handler
+* DMA (Direct Memory Access)
+
+---
+
+## Programmed I/O
+
+* CPU continuously checks the device.
+* Simple but wastes CPU time.
+
+---
+
+## Interrupt-Driven I/O
+
+* Device interrupts the CPU when ready.
+* CPU performs other work meanwhile.
+
+**Better than Programmed I/O.**
+
+---
+
+## DMA (Direct Memory Access)
+
+DMA allows devices to transfer data directly to/from memory **without continuous CPU involvement**.
+
+### Advantages
+
+* Faster data transfer
+* Lower CPU overhead
+* Efficient for large data transfers
+
+📌 **GATE Tip:** DMA is heavily tested.
+
+---
+
+# 2️⃣ RAID (Redundant Array of Independent Disks)
+
+RAID combines multiple disks for better performance and/or reliability.
+
+---
+
+## RAID 0 (Striping)
+
+* Data split across disks.
+* High performance.
+* ❌ No fault tolerance.
+
+Minimum disks: **2**
+
+---
+
+## RAID 1 (Mirroring)
+
+* Duplicate copy stored.
+* Excellent reliability.
+* Storage efficiency: **50%**
+
+Minimum disks: **2**
+
+---
+
+## RAID 2
+
+* Bit-level striping with Hamming Code.
+* Rarely used.
+
+---
+
+## RAID 3
+
+* Byte-level striping.
+* Dedicated parity disk.
+
+---
+
+## RAID 4
+
+* Block-level striping.
+* Dedicated parity disk.
+
+---
+
+## RAID 5
+
+* Block-level striping.
+* Distributed parity.
+* Can tolerate **one disk failure**.
+
+Minimum disks: **3**
+
+⭐ **Most widely used RAID level.**
+
+---
+
+## RAID 6
+
+* Double distributed parity.
+* Can tolerate **two simultaneous disk failures**.
+
+Minimum disks: **4**
+
+---
+
+# 3️⃣ RAID Comparison
+
+| RAID   | Performance | Fault Tolerance     |
+| ------ | ----------- | ------------------- |
+| RAID 0 | Excellent   | ❌ None              |
+| RAID 1 | Good        | ✅ Excellent         |
+| RAID 5 | Very Good   | ✅ One disk failure  |
+| RAID 6 | Good        | ✅ Two disk failures |
+
+---
+
+# 4️⃣ Protection vs Security
+
+| Protection               | Security                       |
+| ------------------------ | ------------------------------ |
+| Controls internal access | Protects from external threats |
+| Access rights            | Authentication & encryption    |
+| Prevents misuse          | Prevents attacks               |
+
+---
+
+# 5️⃣ Authentication vs Authorization
+
+### Authentication
+
+"Who are you?"
+
+Examples:
+
+* Password
+* Fingerprint
+* Face ID
+
+---
+
+### Authorization
+
+"What are you allowed to do?"
+
+Examples:
+
+* Read file
+* Modify file
+* Delete file
+
+---
+
+# 6️⃣ Access Matrix
+
+The Access Matrix defines permissions for subjects and objects.
+
+Example:
+
+| User  | File A | File B      |
+| ----- | ------ | ----------- |
+| Alice | Read   | Read, Write |
+| Bob   | Read   | No Access   |
+
+---
+
+# 7️⃣ UNIX/Linux Basics
+
+## File Commands
+
+```bash
+pwd
+```
+
+Current directory.
+
+```bash
+ls
+```
+
+List files.
+
+```bash
+cd
+```
+
+Change directory.
+
+```bash
+mkdir
+```
+
+Create directory.
+
+```bash
+rm
+```
+
+Delete file.
+
+```bash
+cp
+```
+
+Copy file.
+
+```bash
+mv
+```
+
+Move or rename file.
+
+---
+
+## Permission Command
+
+```bash
+chmod
+```
+
+Changes file permissions.
+
+Example:
+
+```bash
+chmod 755 file
+```
+
+---
+
+# 8️⃣ File Permissions
+
+Permission format:
+
+```text
+rwx rwx rwx
+```
+
+Represents:
+
+* Owner
+* Group
+* Others
+
+Values:
+
+| Permission | Value |
+| ---------- | ----: |
+| Read       |     4 |
+| Write      |     2 |
+| Execute    |     1 |
+
+Example:
+
+```text
+755
+```
+
+Owner = 7 (rwx)
+
+Group = 5 (r-x)
+
+Others = 5 (r-x)
+
+---
+
+# 9️⃣ Complete Operating Systems Quick Revision
+
+### Process Management
+
+* Process
+* Thread
+* PCB
+* Context Switch
+
+### CPU Scheduling
+
+* FCFS
+* SJF
+* SRTF
+* Priority
+* Round Robin
+
+### Synchronization
+
+* Critical Section
+* Semaphore
+* Peterson's Algorithm
+* Producer–Consumer
+* Readers–Writers
+
+### Deadlocks
+
+* Coffman Conditions
+* Banker's Algorithm
+* Safe State
+
+### Memory Management
+
+* Paging
+* Segmentation
+* Virtual Memory
+* Page Replacement
+
+### File Systems
+
+* Allocation Methods
+* Directory Structures
+
+### Disk Scheduling
+
+* FCFS
+* SSTF
+* SCAN
+* LOOK
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+RAID 0 **does not provide fault tolerance**.
+
+### Trap 2
+
+RAID 5 tolerates **one** disk failure, not two.
+
+### Trap 3
+
+DMA transfers data directly between **memory and devices**.
+
+### Trap 4
+
+Authentication and authorization are different concepts.
+
+### Trap 5
+
+`chmod 755` gives full permissions only to the **owner**.
+
+---
+
+# 📝 Revision Sheet
+
+| Topic          | Key Point            |
+| -------------- | -------------------- |
+| DMA            | Direct Memory Access |
+| RAID 0         | Striping             |
+| RAID 1         | Mirroring            |
+| RAID 5         | Distributed parity   |
+| RAID 6         | Double parity        |
+| Authentication | Verify identity      |
+| Authorization  | Verify permissions   |
+| chmod          | Change permissions   |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+DMA stands for:
+**Answer:** Direct Memory Access.
+
+### Q2.
+
+Which RAID has no fault tolerance?
+**Answer:** RAID 0.
+
+### Q3.
+
+RAID 1 uses:
+**Answer:** Mirroring.
+
+### Q4.
+
+RAID 5 tolerates:
+**Answer:** One disk failure.
+
+### Q5.
+
+RAID 6 tolerates:
+**Answer:** Two disk failures.
+
+### Q6.
+
+Most PYQ-tested RAID level?
+**Answer:** RAID 5.
+
+### Q7.
+
+Programmed I/O wastes:
+**Answer:** CPU time.
+
+### Q8.
+
+Interrupt-driven I/O uses:
+**Answer:** Interrupts.
+
+### Q9.
+
+Authentication verifies:
+**Answer:** Identity.
+
+### Q10.
+
+Authorization verifies:
+**Answer:** Access rights.
+
+### Q11.
+
+`pwd` displays:
+**Answer:** Current working directory.
+
+### Q12.
+
+`ls` is used to:
+**Answer:** List files.
+
+### Q13.
+
+`mkdir` creates:
+**Answer:** A directory.
+
+### Q14.
+
+`chmod` changes:
+**Answer:** File permissions.
+
+### Q15.
+
+Permission value for **Read** is:
+**Answer:** 4.
+
+### Q16.
+
+Permission value for **Write** is:
+**Answer:** 2.
+
+### Q17.
+
+Permission value for **Execute** is:
+**Answer:** 1.
+
+### Q18.
+
+`755` gives the owner:
+**Answer:** Read, Write, Execute.
+
+### Q19.
+
+Protection mainly concerns:
+**Answer:** Internal access control.
+
+### Q20.
+
+Security mainly protects against:
+**Answer:** External threats.
+
+### Q21.
+
+RAID improves:
+**Answer:** Performance and/or reliability.
+
+### Q22.
+
+DMA mainly reduces:
+**Answer:** CPU overhead.
+
+### Q23.
+
+Which command removes a file?
+**Answer:** `rm`
+
+### Q24.
+
+Which command copies a file?
+**Answer:** `cp`
+
+### Q25.
+
+Which command renames a file?
+**Answer:** `mv`
+
+### Q26.
+
+The Access Matrix stores:
+**Answer:** Access permissions.
+
+### Q27.
+
+RAID 5 requires at least:
+**Answer:** 3 disks.
+
+### Q28.
+
+RAID 6 requires at least:
+**Answer:** 4 disks.
+
+### Q29.
+
+Interrupt-driven I/O is generally:
+**Answer:** More efficient than programmed I/O.
+
+### Q30.
+
+The main purpose of an operating system is:
+**Answer:** Efficient management of computer resources.
+
+---
+
+# ✅ Operating Systems – Completed 🎉
+
+You have now completed the **Operating Systems** syllabus, including:
+
+* ✅ Introduction
+* ✅ Processes & Threads
+* ✅ CPU Scheduling
+* ✅ Synchronization
+* ✅ Classical Synchronization Problems
+* ✅ Deadlocks
+* ✅ Memory Management
+* ✅ Paging & Virtual Memory
+* ✅ Page Replacement
+* ✅ File Systems
+* ✅ Disk Scheduling
+* ✅ I/O Systems
+* ✅ RAID
+* ✅ Protection & Security
+* ✅ UNIX/Linux Basics
+
+---
+
+# 📊 Overall GATE CSE 2027 Progress
+
+| Subject                              |      Status |
+| ------------------------------------ | ----------: |
+| Engineering Mathematics              | ✅ Completed |
+| Digital Logic                        | ✅ Completed |
+| Computer Organization & Architecture | ✅ Completed |
+| Programming & Data Structures        | ✅ Completed |
+| Algorithms                           | ✅ Completed |
+| Theory of Computation                | ✅ Completed |
+| Compiler Design                      | ✅ Completed |
+| Operating Systems                    | ✅ Completed |
+| DBMS                                 |      ⏳ Next |
+| Computer Networks                    |   ⏳ Pending |
+| General Aptitude                     |   ⏳ Pending |
+
+**Overall Syllabus Completion:** **~85%**
+
+---
+
+# 📖 Tomorrow (Day 92)
+
+**Database Management Systems (DBMS) – Introduction, ER Model, Keys, Constraints, Relational Model & Relational Algebra**
+
+This begins the next major GATE subject, another high-weightage area with many recurring questions and numericals.
