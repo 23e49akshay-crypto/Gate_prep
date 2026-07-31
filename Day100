@@ -1,976 +1,514 @@
-🎖️ CDS 2 General Knowledge Training – Day 27
-Questions 26–50 (Mixed Mock | Medium–Hard | 100% Fresh MCQs)
-Q26. (Science)
+# 📘 Today's Learning – Day 92 (GATE CSE 2027)
 
-The basic structural and functional unit of the nervous system is the
+**📅 Date:** **31 July 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **Introduction to DBMS, ER Model, Keys, Constraints, Relational Model & Relational Algebra**
 
-A) Nephron
-B) Neuron
-C) Alveolus
-D) Osteon
+> ⭐ **GATE Importance:** DBMS is one of the **highest-weightage subjects** in GATE CSE. Questions from **ER diagrams, keys, relational algebra, SQL, normalization, and transactions** appear almost every year.
 
-✅ Answer: B) Neuron
+---
 
-Q27. (History)
+# 🎯 Learning Objectives
 
-Who was the first Governor-General of Bengal under the Regulating Act of 1773?
+By the end of today's lesson, you will be able to:
 
-A) Lord Cornwallis
-B) Warren Hastings
-C) Lord Wellesley
-D) Robert Clive
+* Understand DBMS fundamentals.
+* Differentiate DBMS and File Systems.
+* Learn the ER Model.
+* Master Keys and Constraints.
+* Understand the Relational Model.
+* Learn Relational Algebra operators.
 
-✅ Answer: B) Warren Hastings
+---
 
-Q28. (Geography)
+# 1️⃣ What is a DBMS?
 
-The Tungabhadra River is a tributary of the
+A **Database Management System (DBMS)** is software used to create, store, retrieve, update, and manage data efficiently.
 
-A) Godavari
-B) Krishna
-C) Kaveri
-D) Mahanadi
+### Examples
 
-✅ Answer: B) Krishna
+* MySQL
+* PostgreSQL
+* Oracle
+* SQL Server
+* SQLite
 
-Q29. (Polity)
+### Advantages
 
-The Attorney General of India gives legal advice to the
+* Reduces data redundancy.
+* Ensures data consistency.
+* Improves security.
+* Supports concurrent access.
+* Provides backup and recovery.
 
-A) Parliament
-B) Supreme Court
-C) Government of India
-D) Election Commission
+---
 
-✅ Answer: C) Government of India
+# 2️⃣ File System vs DBMS
 
-Q30. (Economy)
+| File System               | DBMS                   |
+| ------------------------- | ---------------------- |
+| High redundancy           | Low redundancy         |
+| Poor security             | Better security        |
+| Difficult backup          | Easy backup & recovery |
+| Limited concurrent access | Supports concurrency   |
+| No transaction management | Supports transactions  |
 
-Which of the following is the largest public sector bank in India?
+📌 **GATE Tip:** DBMS solves redundancy and inconsistency problems of file systems.
 
-A) Punjab National Bank
-B) Canara Bank
-C) Bank of Baroda
-D) State Bank of India
+---
 
-✅ Answer: D) State Bank of India
+# 3️⃣ Database Users
 
-Q31. (Science)
+* **Database Administrator (DBA):** Manages the database.
+* **Database Designer:** Designs schemas.
+* **Application Programmer:** Develops database applications.
+* **End User:** Uses the application.
 
-The largest planet after Jupiter is
+---
 
-A) Saturn
-B) Neptune
-C) Uranus
-D) Mars
+# 4️⃣ ER (Entity–Relationship) Model
 
-✅ Answer: A) Saturn
+The ER Model is used for **conceptual database design**.
 
-Q32. (Defence)
+### Components
 
-Exercise Ajeya Warrior is conducted jointly between India and
+* **Entity:** Real-world object (e.g., Student, Employee).
+* **Attribute:** Property of an entity (e.g., Name, Age).
+* **Relationship:** Association between entities.
 
-A) United Kingdom
-B) France
-C) Australia
-D) Japan
+Example:
 
-✅ Answer: A) United Kingdom
+```text
+Student ---- Enrolls ---- Course
+```
 
-Q33. (History)
+---
 
-The Battle of Talikota (1565) led to the decline of the
+# 5️⃣ Types of Attributes
 
-A) Mughal Empire
-B) Bahmani Sultanate
-C) Vijayanagara Empire
-D) Maratha Empire
+### Simple Attribute
 
-✅ Answer: C) Vijayanagara Empire
+Cannot be divided further.
 
-Q34. (Environment)
+Example:
 
-The Dachigam National Park is famous for conserving the
+* Age
 
-A) Hangul Deer
-B) Snow Leopard
-C) Asiatic Lion
-D) Wild Buffalo
+### Composite Attribute
 
-✅ Answer: A) Hangul Deer
+Can be divided.
 
-Q35. (Science)
+Example:
 
-The SI unit of electric charge is
+* Address → Street, City, PIN
 
-A) Volt
-B) Coulomb
-C) Ampere
-D) Ohm
+### Single-Valued Attribute
 
-✅ Answer: B) Coulomb
+One value per entity.
 
-Q36. (Geography)
+Example:
 
-The Chilka Lake is connected to the
+* Roll Number
 
-A) Arabian Sea
-B) Bay of Bengal
-C) Indian Ocean
-D) Gulf of Mannar
+### Multi-Valued Attribute
 
-✅ Answer: B) Bay of Bengal
+Multiple values.
 
-Q37. (Polity)
+Example:
 
-Which Constitutional Amendment added the words "Socialist", "Secular" and "Integrity" to the Preamble?
+* Phone Numbers
 
-A) 24th Amendment
-B) 42nd Amendment
-C) 44th Amendment
-D) 52nd Amendment
+### Derived Attribute
 
-✅ Answer: B) 42nd Amendment
+Computed from another attribute.
 
-Q38. (Science)
+Example:
 
-Which gas is used in fire extinguishers for electrical fires?
+* Age derived from Date of Birth
 
-A) Oxygen
-B) Carbon Dioxide
-C) Nitrogen
-D) Hydrogen
+---
 
-✅ Answer: B) Carbon Dioxide
+# 6️⃣ Keys
 
-Q39. (History)
+### Super Key
 
-Who wrote the book "Poverty and Un-British Rule in India"?
+A set of attributes that uniquely identifies a tuple.
 
-A) Gopal Krishna Gokhale
-B) Dadabhai Naoroji
-C) Bal Gangadhar Tilak
-D) Bipin Chandra Pal
+---
 
-✅ Answer: B) Dadabhai Naoroji
+### Candidate Key
 
-Q40. (Economy)
+A **minimal** super key.
 
-The Headquarters of the Reserve Bank of India is located in
+---
 
-A) New Delhi
-B) Mumbai
-C) Kolkata
-D) Chennai
+### Primary Key
 
-✅ Answer: B) Mumbai
+Chosen candidate key used to uniquely identify records.
 
-Q41. (Science)
+---
 
-Which part of the digestive system absorbs water from undigested food?
+### Alternate Key
 
-A) Stomach
-B) Small Intestine
-C) Large Intestine
-D) Esophagus
+Candidate keys not selected as the primary key.
 
-✅ Answer: C) Large Intestine
+---
 
-Q42. (Defence)
+### Foreign Key
 
-The Arighaat is India's
+An attribute that references the primary key of another table.
 
-A) Aircraft Carrier
-B) Nuclear-powered Ballistic Missile Submarine (SSBN)
-C) Guided Missile Destroyer
-D) Frigate
+---
 
-✅ Answer: B) Nuclear-powered Ballistic Missile Submarine (SSBN)
+### Composite Key
 
-Q43. (History)
+A key consisting of multiple attributes.
 
-The Home Rule Movement in India was started in
+📌 **GATE Tip:** Every primary key is a candidate key, but not every candidate key is the primary key.
 
-A) 1914
-B) 1915
-C) 1916
-D) 1918
+---
 
-✅ Answer: C) 1916
+# 7️⃣ Constraints
 
-Q44. (Geography)
+### Domain Constraint
 
-The Dibang Wildlife Sanctuary is located in
+Values must belong to a valid domain.
 
-A) Arunachal Pradesh
-B) Assam
-C) Meghalaya
-D) Nagaland
+### Entity Integrity
 
-✅ Answer: A) Arunachal Pradesh
+Primary Key cannot be **NULL**.
 
-Q45. (Assertion–Reason)
+### Referential Integrity
 
-Assertion: Desert regions experience a large difference between day and night temperatures.
+Foreign Key must reference an existing primary key (or be NULL if allowed).
 
-Reason: Sand heats up and cools down rapidly due to its low specific heat capacity and dry atmosphere.
+---
 
-A) Both A and R are true, and R correctly explains A.
+# 8️⃣ Relational Model
 
-B) Both are true, but R is not the correct explanation.
+A database consists of **relations (tables)**.
 
-C) A is true, R is false.
+Example:
 
-D) A is false, R is true.
+**Student**
 
-✅ Answer: A
+| RollNo | Name  | Dept |
+| ------ | ----- | ---- |
+| 101    | Anil  | CSE  |
+| 102    | Priya | ECE  |
 
-Q46. (International Relations)
+* Row → Tuple
+* Column → Attribute
+* Table → Relation
 
-The headquarters of the International Maritime Organization (IMO) is located in
+---
 
-A) London
-B) Paris
-C) Geneva
-D) Brussels
+# 9️⃣ Relational Algebra
 
-✅ Answer: A) London
+Relational Algebra is a **procedural query language**.
 
-Q47. (Polity)
+### Basic Operators
 
-Which Article deals with the constitutional amendment procedure?
+### Selection (σ)
 
-A) Article 352
-B) Article 356
-C) Article 368
-D) Article 370
+Select rows satisfying a condition.
 
-✅ Answer: C) Article 368
+Example:
 
-Q48. (Science)
+```text
+σ Dept = 'CSE' (Student)
+```
 
-Which instrument is used to measure earthquake intensity and ground motion?
+---
 
-A) Hygrometer
-B) Seismograph
-C) Anemometer
-D) Barometer
+### Projection (π)
 
-✅ Answer: B) Seismograph
+Select specific columns.
 
-Q49. (Geography)
+Example:
 
-The Kosi River originates in
+```text
+π Name, Dept (Student)
+```
 
-A) Nepal Himalayas
-B) Arunachal Pradesh
-C) Western Ghats
-D) Vindhya Range
+---
 
-✅ Answer: A) Nepal Himalayas
+### Union (∪)
 
-Q50. (High-Level CDS)
+Combines tuples from two compatible relations.
 
-Consider the following statements:
+---
 
-The Election Commission of India is a multi-member constitutional body.
-The Chief Election Commissioner and Election Commissioners have equal voting powers in Commission decisions.
-The Chief Election Commissioner cannot overrule the other Election Commissioners on a decision.
+### Set Difference (−)
 
-A) 1 and 2 only
+Returns tuples present in one relation but not the other.
 
-B) 2 and 3 only
+---
 
-C) 1 and 3 only
+### Cartesian Product (×)
 
-D) 1, 2 and 3
+Combines every tuple of one relation with every tuple of another.
 
-✅ Answer: D
+---
 
-Explanation: The Election Commission functions as a multi-member constitutional body. Decisions are taken collectively, and the Chief Election Commissioner is first among equals, not a superior with overriding voting power.
+### Rename (ρ)
 
-📊 Day 27 Progress
-✅ Completed: 50/100 Questions
-📚 Total Practice So Far: 2650 MCQs
-🎯 High-Yield Revision
-Article 368 – Constitutional Amendment Procedure
-42nd Amendment – Added Socialist, Secular, and Integrity to the Preamble
-Warren Hastings – First Governor-General of Bengal
-Battle of Talikota (1565) – Decline of the Vijayanagara Empire
-Ajeya Warrior – India–United Kingdom Joint Military Exercise
-INS Arighaat – Nuclear-powered Ballistic Missile Submarine (SSBN)
-Dachigam National Park – Hangul Deer
-IMO Headquarters – London
-Kosi River – Originates in the Nepal Himalayas
-SBI – Largest Public Sector Bank in India
+Renames relations or attributes.
 
-➡️ Type "Continue" for Questions 51–75 (Day 27).
+---
 
-Continue 
-🎖️ CDS 2 General Knowledge Training – Day 27
-Questions 51–75 (Mixed Mock | Medium–Hard | 100% Fresh MCQs)
-Q51. (Science)
+# 🔟 Common GATE Traps
 
-The largest white blood cells (WBCs) are
+### Trap 1
 
-A) Lymphocytes
-B) Monocytes
-C) Neutrophils
-D) Eosinophils
+A **Primary Key cannot contain NULL values**.
 
-✅ Answer: B) Monocytes
+### Trap 2
 
-Q52. (History)
+Every Candidate Key is a Super Key, but not every Super Key is a Candidate Key.
 
-The Treaty of Mangalore (1784) was signed between the British East India Company and
+### Trap 3
 
-A) Hyder Ali
-B) Tipu Sultan
-C) Mir Qasim
-D) Ranjit Singh
+Projection removes **columns**, not rows.
 
-✅ Answer: B) Tipu Sultan
+### Trap 4
 
-Q53. (Geography)
+Selection removes **rows**, not columns.
 
-The Indira Point, the southernmost point of India, is located in
+### Trap 5
 
-A) Little Andaman
-B) Great Nicobar Island
-C) Car Nicobar
-D) Minicoy Island
+Foreign Keys **need not be unique**.
 
-✅ Answer: B) Great Nicobar Island
+---
 
-Q54. (Polity)
+# 📝 Quick Revision Sheet
 
-The Chief Minister of a State is appointed by the
+| Concept               | Key Point                |
+| --------------------- | ------------------------ |
+| Entity                | Real-world object        |
+| Attribute             | Property of entity       |
+| Primary Key           | Unique & NOT NULL        |
+| Foreign Key           | References another table |
+| Selection (σ)         | Filters rows             |
+| Projection (π)        | Selects columns          |
+| Union (∪)             | Combines relations       |
+| Cartesian Product (×) | All tuple combinations   |
 
-A) President of India
-B) Governor
-C) Chief Justice of the High Court
-D) State Legislature
+---
 
-✅ Answer: B) Governor
+# 🧪 Practice – 30 GATE-Level MCQs
 
-Q55. (Economy)
+### Q1.
 
-Which of the following is not regulated by the Reserve Bank of India (RBI)?
+DBMS stands for:
+**Answer:** Database Management System.
 
-A) Monetary Policy
-B) Currency Issue
-C) Insurance Sector
-D) Banking System
+### Q2.
 
-✅ Answer: C) Insurance Sector
+Which user manages database security?
+**Answer:** DBA.
 
-Q56. (Science)
+### Q3.
 
-The SI unit of work is
+An entity represents:
+**Answer:** A real-world object.
 
-A) Newton
-B) Joule
-C) Watt
-D) Pascal
+### Q4.
 
-✅ Answer: B) Joule
+Which attribute can have multiple values?
+**Answer:** Multi-Valued Attribute.
 
-Q57. (History)
+### Q5.
 
-The Battle of Khanwa (1527) was fought between
+Age derived from Date of Birth is:
+**Answer:** Derived Attribute.
 
-A) Babur and Rana Sanga
-B) Babur and Ibrahim Lodi
-C) Akbar and Hemu
-D) Humayun and Sher Shah Suri
+### Q6.
 
-✅ Answer: A) Babur and Rana Sanga
+Most PYQ-tested topic?
+**Answer:** Keys and Relational Algebra.
 
-Q58. (Defence)
+### Q7.
 
-Exercise Harimau Shakti is conducted jointly between India and
+A Candidate Key is:
+**Answer:** A minimal Super Key.
 
-A) Malaysia
-B) Indonesia
-C) Singapore
-D) Thailand
+### Q8.
 
-✅ Answer: A) Malaysia
+A Primary Key:
+**Answer:** Cannot be NULL.
 
-Q59. (Science)
+### Q9.
 
-Which blood group is known as the universal recipient?
+A Foreign Key:
+**Answer:** References a Primary Key.
 
-A) O−
-B) AB+
-C) A+
-D) B+
+### Q10.
 
-✅ Answer: B) AB+
+Selection operator is:
+**Answer:** σ.
 
-Q60. (Environment)
+### Q11.
 
-The Gulf of Mannar Marine National Park is located in
+Projection operator is:
+**Answer:** π.
 
-A) Kerala
-B) Tamil Nadu
-C) Andhra Pradesh
-D) Odisha
+### Q12.
 
-✅ Answer: B) Tamil Nadu
+Projection selects:
+**Answer:** Columns.
 
-Q61. (History)
+### Q13.
 
-The Charter Act of 1833 made the Governor-General of Bengal the
+Selection selects:
+**Answer:** Rows.
 
-A) Governor-General of India
-B) Viceroy of India
-C) Secretary of State for India
-D) Commander-in-Chief
+### Q14.
 
-✅ Answer: A) Governor-General of India
+Cartesian Product symbol is:
+**Answer:** ×.
 
-Q62. (Economy)
+### Q15.
 
-Which organisation regulates the mutual fund industry in India?
+Union requires:
+**Answer:** Compatible relations.
 
-A) RBI
-B) SEBI
-C) IRDAI
-D) PFRDA
+### Q16.
 
-✅ Answer: B) SEBI
+A table is called:
+**Answer:** A Relation.
 
-Q63. (Science)
+### Q17.
 
-Which gas is the second most abundant in Earth's atmosphere?
+A row is called:
+**Answer:** A Tuple.
 
-A) Oxygen
-B) Argon
-C) Carbon Dioxide
-D) Neon
+### Q18.
 
-✅ Answer: A) Oxygen
+A column is called:
+**Answer:** An Attribute.
 
-Q64. (History – Match the Following)
-Reform	Governor-General
-1. Permanent Settlement	A. Lord Cornwallis
-2. Doctrine of Lapse	B. Lord Dalhousie
-3. Local Self-Government	C. Lord Ripon
+### Q19.
 
-Options:
+Entity Integrity applies to:
+**Answer:** Primary Key.
 
-A) 1-A, 2-B, 3-C
+### Q20.
 
-B) 1-B, 2-C, 3-A
+Referential Integrity applies to:
+**Answer:** Foreign Key.
 
-C) 1-C, 2-A, 3-B
+### Q21.
 
-D) 1-A, 2-C, 3-B
+Composite Key consists of:
+**Answer:** Multiple attributes.
 
-✅ Answer: A
+### Q22.
 
-Q65. (Polity)
+Alternate Key is:
+**Answer:** A Candidate Key not chosen as Primary Key.
 
-The State Election Commission is responsible for conducting elections to
+### Q23.
 
-A) Parliament
+DBMS reduces:
+**Answer:** Data redundancy.
 
-B) State Legislative Assembly
+### Q24.
 
-C) Panchayats and Municipalities
+DBMS improves:
+**Answer:** Data consistency.
 
-D) Rajya Sabha
+### Q25.
 
-✅ Answer: C) Panchayats and Municipalities
+Rename operator is:
+**Answer:** ρ.
 
-Q66. (Geography)
+### Q26.
 
-The Chambal River is a tributary of the
+Relational Algebra is:
+**Answer:** Procedural.
 
-A) Ganga
+### Q27.
 
-B) Yamuna
+SQL is:
+**Answer:** Non-procedural (declarative).
 
-C) Narmada
+### Q28.
 
-D) Godavari
+The Relational Model organizes data into:
+**Answer:** Tables.
 
-✅ Answer: B) Yamuna
+### Q29.
 
-Q67. (Science)
+The main purpose of constraints is:
+**Answer:** Maintain data integrity.
 
-The study of fish is called
+### Q30.
 
-A) Entomology
+The biggest advantage of DBMS over file systems is:
+**Answer:** Efficient, consistent, and secure data management.
 
-B) Ichthyology
+---
 
-C) Ornithology
+# ✅ Progress Update
 
-D) Herpetology
+### Completed Subjects
 
-✅ Answer: B) Ichthyology
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
 
-Q68. (Defence)
+### Current Subject
 
-Exercise Surya Kiran is conducted jointly between India and
+🔄 **Database Management Systems (DBMS)**
 
-A) Bhutan
+### 📖 Tomorrow (Day 93)
 
-B) Nepal
+**DBMS – Advanced Relational Algebra, Relational Calculus, SQL (DDL, DML, DCL, TCL), Joins & SQL Queries**
 
-C) Bangladesh
+---
 
-D) Myanmar
+## 📊 Overall GATE CSE 2027 Progress
 
-✅ Answer: B) Nepal
+| Subject                       |               Status |
+| ----------------------------- | -------------------: |
+| Engineering Mathematics       |          ✅ Completed |
+| Digital Logic                 |          ✅ Completed |
+| COA                           |          ✅ Completed |
+| Programming & Data Structures |          ✅ Completed |
+| Algorithms                    |          ✅ Completed |
+| Theory of Computation         |          ✅ Completed |
+| Compiler Design               |          ✅ Completed |
+| Operating Systems             |          ✅ Completed |
+| DBMS                          | 🟨 1 Topic Completed |
+| Computer Networks             |            ⏳ Pending |
+| General Aptitude              |            ⏳ Pending |
 
-Q69. (History)
+**Overall Syllabus Completion:** **~86%**
 
-The Ghadar Party was founded in
+---
 
-A) London
+## 🎯 Daily Challenge
 
-B) San Francisco
+Given the following relations:
 
-C) Berlin
+**Student(RollNo, Name, Dept)**
 
-D) Tokyo
+| RollNo | Name | Dept |
+| ------ | ---- | ---- |
+| 101    | Asha | CSE  |
+| 102    | Ravi | ECE  |
+| 103    | Neha | CSE  |
 
-✅ Answer: B) San Francisco
+Answer the following:
 
-Q70. (Assertion–Reason)
+1. Write the **Relational Algebra** expression to display only the **Name** of students from the **CSE** department.
+2. Identify the **Primary Key** of the `Student` relation.
+3. Explain the difference between a **Candidate Key** and a **Super Key** with an example.
 
-Assertion: The Earth's atmosphere is warmer near the surface than at higher altitudes in the troposphere.
-
-Reason: The Earth's surface absorbs solar energy and heats the air from below.
-
-A) Both A and R are true, and R correctly explains A.
-
-B) Both are true, but R is not the correct explanation.
-
-C) A is true, R is false.
-
-D) A is false, R is true.
-
-✅ Answer: A
-
-Q71. (Polity)
-
-The Chairman of the Rajya Sabha can vote
-
-A) On every question
-
-B) Only in the case of a tie
-
-C) Only on Money Bills
-
-D) Only during Constitutional Amendment Bills
-
-✅ Answer: B) Only in the case of a tie
-
-Q72. (Science)
-
-Which vitamin is required for normal blood clotting?
-
-A) Vitamin A
-
-B) Vitamin D
-
-C) Vitamin E
-
-D) Vitamin K
-
-✅ Answer: D) Vitamin K
-
-Q73. (International Relations)
-
-The headquarters of the World Intellectual Property Organization (WIPO) is located in
-
-A) Paris
-
-B) Geneva
-
-C) Rome
-
-D) Vienna
-
-✅ Answer: B) Geneva
-
-Q74. (Geography)
-
-The Kaveri River originates from
-
-A) Brahmagiri Hills
-
-B) Nilgiri Hills
-
-C) Anaimalai Hills
-
-D) Cardamom Hills
-
-✅ Answer: A) Brahmagiri Hills
-
-Q75. (High-Level CDS)
-
-Consider the following statements:
-
-The Governor may promulgate an Ordinance when the State Legislature is not in session.
-The Governor exercises this power under Article 213 of the Constitution.
-An Ordinance has the same force and effect as an Act of the State Legislature, subject to constitutional limitations.
-
-A) 1 and 2 only
-
-B) 2 and 3 only
-
-C) 1 and 3 only
-
-D) 1, 2 and 3
-
-✅ Answer: D
-
-Explanation: Under Article 213, the Governor can promulgate an Ordinance when the Legislature is not in session. Such an Ordinance has the force of law but must be approved by the Legislature within the constitutional time limit after it reconvenes.
-
-📊 Day 27 Progress
-✅ Completed: 75/100 Questions
-📚 Total Practice So Far: 2675 MCQs
-🎯 High-Yield Revision
-Article 213 – Governor's Ordinance-making Power
-Treaty of Mangalore (1784) – British East India Company & Tipu Sultan
-Battle of Khanwa (1527) – Babur vs Rana Sanga
-Surya Kiran – India–Nepal Joint Military Exercise
-Harimau Shakti – India–Malaysia Joint Military Exercise
-WIPO Headquarters – Geneva
-Indira Point – Great Nicobar Island
-Ghadar Party – Founded in San Francisco
-Kaveri River – Originates at Brahmagiri Hills
-SEBI – Regulator of the Mutual Fund Industry
-
-➡️ Type "Continue" for the final set (Questions 76–100) of Day 27.
-
-Continue 
-🎖️ CDS 2 General Knowledge Training – Day 27
-Questions 76–100 (Final Mixed Mock | Medium–Hard | 100% Fresh MCQs)
-Q76. (Science)
-
-The main excretory organ of the human body is
-
-A) Liver
-B) Skin
-C) Kidney
-D) Lungs
-
-✅ Answer: C) Kidney
-
-Q77. (History)
-
-The Treaty of Seringapatam (1792) was signed after the
-
-A) First Anglo-Mysore War
-B) Second Anglo-Mysore War
-C) Third Anglo-Mysore War
-D) Fourth Anglo-Mysore War
-
-✅ Answer: C) Third Anglo-Mysore War
-
-Q78. (Geography)
-
-The Dihang River is another name for the
-
-A) Ganga
-B) Brahmaputra (in its upper course in India)
-C) Godavari
-D) Teesta
-
-✅ Answer: B) Brahmaputra (in its upper course in India)
-
-Q79. (Polity)
-
-Which Article of the Constitution provides for the appointment of the Advocate General for a State?
-
-A) Article 165
-B) Article 168
-C) Article 170
-D) Article 200
-
-✅ Answer: A) Article 165
-
-Q80. (Economy)
-
-Which institution is responsible for publishing the Financial Stability Report (FSR) in India?
-
-A) SEBI
-B) RBI
-C) Ministry of Finance
-D) NITI Aayog
-
-✅ Answer: B) RBI
-
-Q81. (Science – Assertion–Reason)
-
-Assertion: Metals are generally good conductors of heat.
-
-Reason: Metals contain free electrons that transfer thermal energy efficiently.
-
-A) Both A and R are true, and R correctly explains A.
-
-B) Both are true, but R is not the correct explanation.
-
-C) A is true, R is false.
-
-D) A is false, R is true.
-
-✅ Answer: A
-
-Q82. (Environment)
-
-The Nokrek Biosphere Reserve is located in
-
-A) Meghalaya
-B) Mizoram
-C) Nagaland
-D) Tripura
-
-✅ Answer: A) Meghalaya
-
-Q83. (History)
-
-Who founded the Satavahana Dynasty?
-
-A) Gautamiputra Satakarni
-B) Simuka
-C) Satakarni I
-D) Pulumavi
-
-✅ Answer: B) Simuka
-
-Q84. (Defence)
-
-Exercise Tiger Triumph is a tri-service exercise between India and
-
-A) Japan
-B) Australia
-C) United States
-D) France
-
-✅ Answer: C) United States
-
-Q85. (Science)
-
-The unit of electric potential difference is
-
-A) Ampere
-B) Volt
-C) Watt
-D) Coulomb
-
-✅ Answer: B) Volt
-
-Q86. (Geography)
-
-The Kudremukh National Park is located in
-
-A) Kerala
-B) Karnataka
-C) Tamil Nadu
-D) Goa
-
-✅ Answer: B) Karnataka
-
-Q87. (Economy)
-
-Which tax is levied on the supply of goods and services in India?
-
-A) Income Tax
-B) Corporation Tax
-C) Goods and Services Tax (GST)
-D) Customs Duty
-
-✅ Answer: C) Goods and Services Tax (GST)
-
-Q88. (Polity)
-
-The 73rd Constitutional Amendment is related to
-
-A) Urban Local Bodies
-B) Panchayati Raj Institutions
-C) Anti-Defection Law
-D) Right to Education
-
-✅ Answer: B) Panchayati Raj Institutions
-
-Q89. (Science)
-
-The largest lobe of the human brain is the
-
-A) Frontal Lobe
-B) Parietal Lobe
-C) Temporal Lobe
-D) Occipital Lobe
-
-✅ Answer: A) Frontal Lobe
-
-Q90. (International Relations)
-
-The headquarters of the International Telecommunication Union (ITU) is located in
-
-A) Paris
-B) Geneva
-C) New York
-D) Vienna
-
-✅ Answer: B) Geneva
-
-Q91. (History)
-
-Who was the founder of the Maurya Empire?
-
-A) Ashoka
-B) Bindusara
-C) Chandragupta Maurya
-D) Brihadratha
-
-✅ Answer: C) Chandragupta Maurya
-
-Q92. (Science)
-
-Which blood vessel carries deoxygenated blood to the heart from the body?
-
-A) Pulmonary Vein
-B) Aorta
-C) Vena Cava
-D) Pulmonary Artery
-
-✅ Answer: C) Vena Cava
-
-Q93. (Geography)
-
-The Periyar River flows through the state of
-
-A) Karnataka
-B) Kerala
-C) Tamil Nadu
-D) Andhra Pradesh
-
-✅ Answer: B) Kerala
-
-Q94. (Defence)
-
-The Akash-NG is an advanced version of the
-
-A) Air-to-Air Missile
-B) Surface-to-Air Missile
-C) Cruise Missile
-D) Ballistic Missile
-
-✅ Answer: B) Surface-to-Air Missile
-
-Q95. (History – Match the Following)
-Dynasty	Capital
-1. Maurya	A. Pataliputra
-2. Chola	B. Thanjavur
-3. Vijayanagara	C. Hampi
-
-Options:
-
-A) 1-A, 2-B, 3-C
-
-B) 1-B, 2-C, 3-A
-
-C) 1-C, 2-A, 3-B
-
-D) 1-A, 2-C, 3-B
-
-✅ Answer: A
-
-Q96. (Economy)
-
-Which institution is the banker to the Government of India?
-
-A) SBI
-B) RBI
-C) NABARD
-D) EXIM Bank
-
-✅ Answer: B) RBI
-
-Q97. (Science)
-
-The normal resting heart rate of a healthy adult is approximately
-
-A) 20–40 beats/min
-
-B) 40–60 beats/min
-
-C) 60–100 beats/min
-
-D) 120–140 beats/min
-
-✅ Answer: C) 60–100 beats/min
-
-Q98. (Polity)
-
-Which Part of the Constitution contains the Fundamental Rights?
-
-A) Part II
-
-B) Part III
-
-C) Part IV
-
-D) Part IVA
-
-✅ Answer: B) Part III
-
-Q99. (Defence)
-
-The Quick Reaction Surface-to-Air Missile (QRSAM) has primarily been developed by
-
-A) HAL
-
-B) DRDO
-
-C) ISRO
-
-D) BEL
-
-✅ Answer: B) DRDO
-
-Q100. (High-Level CDS)
-
-Consider the following statements:
-
-The 74th Constitutional Amendment Act deals with Urban Local Bodies.
-It introduced Part IXA into the Constitution.
-It also added the Twelfth Schedule to the Constitution.
-
-A) 1 and 2 only
-
-B) 2 and 3 only
-
-C) 1 and 3 only
-
-D) 1, 2 and 3
-
-✅ Answer: D
-
-Explanation: The 74th Constitutional Amendment Act, 1992 gave constitutional status to Municipalities, inserted Part IXA, and added the Twelfth Schedule, which lists the functions of Urban Local Bodies.
-
-📊 Day 27 Complete (100/100)
-Overall Progress
-Day	MCQs Completed
-Day 1–26	2600
-Day 27	100
-Grand Total	2700 MCQs ✅
-🎯 Day 27 Power Revision
-Article 165 – Advocate General for a State
-Part III – Fundamental Rights
-73rd Amendment – Panchayati Raj Institutions
-74th Amendment – Urban Local Bodies, Part IXA, Twelfth Schedule
-Treaty of Seringapatam (1792) – Third Anglo-Mysore War
-Tiger Triumph – India–USA Tri-Service Exercise
-Akash-NG – Advanced Surface-to-Air Missile
-Nokrek Biosphere Reserve – Meghalaya
-Maurya Capital – Pataliputra
-QRSAM – Developed by DRDO
+💡 **Exam Tip:** Master **Relational Algebra and SQL together**. They form the foundation for normalization, query processing, and many GATE DBMS questions.
