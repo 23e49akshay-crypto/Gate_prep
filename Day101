@@ -1,0 +1,585 @@
+# 📘 Today's Learning – Day 93 (GATE CSE 2027)
+
+**📅 Date:** **1 August 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **SQL (DDL, DML, DCL, TCL), Joins, Nested Queries & SQL Functions**
+
+> ⭐ **GATE Importance:** SQL is one of the **most frequently tested DBMS topics**. GATE regularly asks questions on **joins, nested queries, GROUP BY, HAVING, aggregate functions, and SQL commands**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand SQL categories.
+* Differentiate DDL, DML, DCL, and TCL.
+* Master SQL Joins.
+* Write nested queries.
+* Use aggregate functions.
+* Solve GATE-level SQL questions.
+
+---
+
+# 1️⃣ What is SQL?
+
+**SQL (Structured Query Language)** is the standard language used to interact with relational databases.
+
+It is **declarative (non-procedural)**, meaning you specify **what** you want, not **how** to retrieve it.
+
+---
+
+# 2️⃣ SQL Categories
+
+## A. DDL (Data Definition Language)
+
+Used to define database objects.
+
+Commands:
+
+* `CREATE`
+* `ALTER`
+* `DROP`
+* `TRUNCATE`
+* `RENAME`
+
+Example:
+
+```sql
+CREATE TABLE Student(
+RollNo INT PRIMARY KEY,
+Name VARCHAR(30),
+Dept VARCHAR(10)
+);
+```
+
+---
+
+## B. DML (Data Manipulation Language)
+
+Used to manipulate data.
+
+Commands:
+
+* `INSERT`
+* `UPDATE`
+* `DELETE`
+
+Example:
+
+```sql
+INSERT INTO Student
+VALUES (101,'Akshay','CSE');
+```
+
+---
+
+## C. DQL (Data Query Language)
+
+Used to retrieve data.
+
+Command:
+
+* `SELECT`
+
+Example:
+
+```sql
+SELECT * FROM Student;
+```
+
+---
+
+## D. DCL (Data Control Language)
+
+Controls user permissions.
+
+Commands:
+
+* `GRANT`
+* `REVOKE`
+
+---
+
+## E. TCL (Transaction Control Language)
+
+Controls transactions.
+
+Commands:
+
+* `COMMIT`
+* `ROLLBACK`
+* `SAVEPOINT`
+
+---
+
+# 3️⃣ SQL Clauses
+
+Execution order (logical):
+
+```text
+FROM
+↓
+WHERE
+↓
+GROUP BY
+↓
+HAVING
+↓
+SELECT
+↓
+ORDER BY
+```
+
+📌 **Very important GATE concept.**
+
+---
+
+# 4️⃣ WHERE vs HAVING
+
+| WHERE                          | HAVING                      |
+| ------------------------------ | --------------------------- |
+| Filters rows                   | Filters groups              |
+| Before GROUP BY                | After GROUP BY              |
+| Cannot use aggregate functions | Can use aggregate functions |
+
+Example:
+
+```sql
+SELECT Dept, COUNT(*)
+FROM Student
+GROUP BY Dept
+HAVING COUNT(*) > 5;
+```
+
+---
+
+# 5️⃣ Aggregate Functions
+
+* `COUNT()`
+* `SUM()`
+* `AVG()`
+* `MIN()`
+* `MAX()`
+
+Example:
+
+```sql
+SELECT AVG(Salary)
+FROM Employee;
+```
+
+---
+
+# 6️⃣ SQL Joins
+
+Assume:
+
+**Student**
+
+| RollNo | Name | DeptID |
+| ------ | ---- | -----: |
+| 101    | Asha |      1 |
+| 102    | Ravi |      2 |
+
+**Department**
+
+| DeptID | DeptName |
+| -----: | -------- |
+|      1 | CSE      |
+|      2 | ECE      |
+
+---
+
+## INNER JOIN
+
+Returns only matching rows.
+
+```sql
+SELECT Name, DeptName
+FROM Student
+INNER JOIN Department
+ON Student.DeptID = Department.DeptID;
+```
+
+---
+
+## LEFT OUTER JOIN
+
+Returns:
+
+* All rows from the left table.
+* Matching rows from the right.
+
+---
+
+## RIGHT OUTER JOIN
+
+Returns:
+
+* All rows from the right table.
+* Matching rows from the left.
+
+---
+
+## FULL OUTER JOIN
+
+Returns:
+
+* All rows from both tables.
+
+---
+
+## CROSS JOIN
+
+Returns the Cartesian Product.
+
+---
+
+## SELF JOIN
+
+A table joined with itself.
+
+---
+
+# 7️⃣ Nested Queries
+
+Example:
+
+Find employees earning more than the average salary.
+
+```sql
+SELECT Name
+FROM Employee
+WHERE Salary >
+(
+SELECT AVG(Salary)
+FROM Employee
+);
+```
+
+---
+
+# 8️⃣ EXISTS vs IN
+
+### IN
+
+Checks membership in a list.
+
+```sql
+WHERE DeptID IN (1,2,3)
+```
+
+---
+
+### EXISTS
+
+Checks whether a subquery returns any rows.
+
+Usually faster for correlated subqueries.
+
+---
+
+# 9️⃣ NULL Values
+
+Remember:
+
+```sql
+= NULL
+```
+
+❌ Incorrect
+
+Use:
+
+```sql
+IS NULL
+```
+
+or
+
+```sql
+IS NOT NULL
+```
+
+---
+
+# 🔟 Common GATE Traps
+
+### Trap 1
+
+`DELETE` removes rows.
+
+`DROP` removes the entire table.
+
+---
+
+### Trap 2
+
+`TRUNCATE` removes all rows but keeps the table structure.
+
+---
+
+### Trap 3
+
+`WHERE` cannot use aggregate functions directly.
+
+---
+
+### Trap 4
+
+INNER JOIN returns **only matching records**.
+
+---
+
+### Trap 5
+
+Always use `IS NULL`, not `= NULL`.
+
+---
+
+# 📝 Quick Revision Sheet
+
+| Concept    | Key Point              |
+| ---------- | ---------------------- |
+| DDL        | CREATE, ALTER, DROP    |
+| DML        | INSERT, UPDATE, DELETE |
+| DCL        | GRANT, REVOKE          |
+| TCL        | COMMIT, ROLLBACK       |
+| INNER JOIN | Matching rows          |
+| LEFT JOIN  | All left rows          |
+| GROUP BY   | Groups rows            |
+| HAVING     | Filters groups         |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+SQL is:
+**Answer:** A declarative query language.
+
+### Q2.
+
+DDL stands for:
+**Answer:** Data Definition Language.
+
+### Q3.
+
+Which command creates a table?
+**Answer:** CREATE.
+
+### Q4.
+
+Which command removes all rows but keeps the table?
+**Answer:** TRUNCATE.
+
+### Q5.
+
+Which command permanently saves a transaction?
+**Answer:** COMMIT.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** SQL Joins.
+
+### Q7.
+
+DELETE removes:
+**Answer:** Selected rows.
+
+### Q8.
+
+DROP removes:
+**Answer:** The entire table.
+
+### Q9.
+
+INSERT belongs to:
+**Answer:** DML.
+
+### Q10.
+
+GRANT belongs to:
+**Answer:** DCL.
+
+### Q11.
+
+ROLLBACK belongs to:
+**Answer:** TCL.
+
+### Q12.
+
+GROUP BY is used to:
+**Answer:** Group rows.
+
+### Q13.
+
+HAVING filters:
+**Answer:** Groups.
+
+### Q14.
+
+WHERE filters:
+**Answer:** Rows.
+
+### Q15.
+
+COUNT() is:
+**Answer:** An aggregate function.
+
+### Q16.
+
+AVG() computes:
+**Answer:** Average.
+
+### Q17.
+
+INNER JOIN returns:
+**Answer:** Matching rows only.
+
+### Q18.
+
+LEFT JOIN returns:
+**Answer:** All left-table rows.
+
+### Q19.
+
+RIGHT JOIN returns:
+**Answer:** All right-table rows.
+
+### Q20.
+
+FULL OUTER JOIN returns:
+**Answer:** All rows from both tables.
+
+### Q21.
+
+CROSS JOIN produces:
+**Answer:** Cartesian Product.
+
+### Q22.
+
+SELF JOIN joins:
+**Answer:** A table with itself.
+
+### Q23.
+
+Nested queries are also called:
+**Answer:** Subqueries.
+
+### Q24.
+
+`IS NULL` is used to:
+**Answer:** Test NULL values.
+
+### Q25.
+
+`= NULL` is:
+**Answer:** Incorrect.
+
+### Q26.
+
+SQL is:
+**Answer:** Non-procedural.
+
+### Q27.
+
+The logical first clause executed is:
+**Answer:** FROM.
+
+### Q28.
+
+The last logical clause executed is:
+**Answer:** ORDER BY.
+
+### Q29.
+
+HAVING is usually used with:
+**Answer:** GROUP BY.
+
+### Q30.
+
+The primary purpose of SQL is:
+**Answer:** Store, retrieve, and manipulate relational data.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
+
+### Current Subject
+
+🔄 **Database Management Systems (DBMS)**
+
+**DBMS Progress:** **2 / 12 lessons completed**
+
+---
+
+## 📖 Next Topic (Day 94)
+
+**DBMS – Functional Dependencies (FD), Armstrong's Axioms, Closure of Attributes, Minimal Cover & Candidate Keys**
+
+---
+
+## 📊 Overall GATE CSE 2027 Progress
+
+| Subject                       |                    Status |
+| ----------------------------- | ------------------------: |
+| Engineering Mathematics       |               ✅ Completed |
+| Digital Logic                 |               ✅ Completed |
+| COA                           |               ✅ Completed |
+| Programming & Data Structures |               ✅ Completed |
+| Algorithms                    |               ✅ Completed |
+| Theory of Computation         |               ✅ Completed |
+| Compiler Design               |               ✅ Completed |
+| Operating Systems             |               ✅ Completed |
+| DBMS                          | 🟨 2/12 Lessons Completed |
+| Computer Networks             |                 ⏳ Pending |
+| General Aptitude              |                 ⏳ Pending |
+
+**Overall Syllabus Completion:** **~87%**
+
+---
+
+## 🎯 Daily Challenge
+
+Consider the following tables:
+
+**Employee(EmpID, Name, DeptID, Salary)**
+
+| EmpID | Name  | DeptID | Salary |
+| ----: | ----- | -----: | -----: |
+|     1 | Asha  |     10 |  50000 |
+|     2 | Ravi  |     20 |  60000 |
+|     3 | Neha  |     10 |  70000 |
+|     4 | Karan |     30 |  55000 |
+
+**Department(DeptID, DeptName)**
+
+| DeptID | DeptName |
+| -----: | -------- |
+|     10 | CSE      |
+|     20 | ECE      |
+|     30 | ME       |
+
+Write SQL queries to:
+
+1. Display the names of employees working in the **CSE** department.
+2. Find the **average salary** of each department.
+3. Display departments having an average salary **greater than 55,000**.
+4. Find employees whose salary is **greater than the overall average salary**.
+
+These are classic GATE and placement interview SQL questions.
