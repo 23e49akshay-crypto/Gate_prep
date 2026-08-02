@@ -1,0 +1,610 @@
+# 📘 Today's Learning – Day 94 (GATE CSE 2027)
+
+**📅 Date:** **2 August 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **Functional Dependencies (FD), Armstrong's Axioms, Attribute Closure, Minimal Cover & Candidate Keys**
+
+> ⭐ **GATE Importance:** This is one of the **highest-scoring DBMS topics**. Every year, GATE asks questions on **Functional Dependencies, Attribute Closure, Candidate Keys, and Armstrong's Axioms**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand Functional Dependencies (FDs).
+* Learn Armstrong's Axioms.
+* Compute Attribute Closure.
+* Find Candidate Keys.
+* Understand Minimal Cover.
+* Solve GATE-level numerical questions.
+
+---
+
+# 1️⃣ What is a Functional Dependency (FD)?
+
+A **Functional Dependency** describes a relationship between attributes in a relation.
+
+Notation:
+
+```text
+X → Y
+```
+
+Meaning:
+
+If two tuples have the same value for **X**, they must also have the same value for **Y**.
+
+### Example
+
+**Student(RollNo, Name, Dept)**
+
+```text
+RollNo → Name, Dept
+```
+
+Since each Roll Number uniquely identifies a student.
+
+---
+
+# 2️⃣ Types of Functional Dependencies
+
+### A. Trivial Functional Dependency
+
+If:
+
+```text
+X → Y
+```
+
+where **Y ⊆ X**
+
+Example:
+
+```text
+(A, B) → A
+```
+
+---
+
+### B. Non-Trivial Functional Dependency
+
+If:
+
+```text
+Y ⊄ X
+```
+
+Example:
+
+```text
+RollNo → Name
+```
+
+---
+
+### C. Completely Non-Trivial FD
+
+If:
+
+```text
+X ∩ Y = ∅
+```
+
+Example:
+
+```text
+StudentID → Department
+```
+
+---
+
+# 3️⃣ Armstrong's Axioms
+
+These are the fundamental inference rules for Functional Dependencies.
+
+### 1. Reflexivity
+
+If:
+
+```text
+Y ⊆ X
+```
+
+then
+
+```text
+X → Y
+```
+
+---
+
+### 2. Augmentation
+
+If:
+
+```text
+X → Y
+```
+
+then
+
+```text
+XZ → YZ
+```
+
+---
+
+### 3. Transitivity
+
+If:
+
+```text
+X → Y
+
+Y → Z
+```
+
+then
+
+```text
+X → Z
+```
+
+📌 **These three axioms are frequently asked in GATE.**
+
+---
+
+# 4️⃣ Derived Rules
+
+Using Armstrong's Axioms, we derive:
+
+### Union
+
+If:
+
+```text
+X → Y
+
+X → Z
+```
+
+Then:
+
+```text
+X → YZ
+```
+
+---
+
+### Decomposition
+
+If:
+
+```text
+X → YZ
+```
+
+Then:
+
+```text
+X → Y
+
+X → Z
+```
+
+---
+
+### Pseudotransitivity
+
+If:
+
+```text
+X → Y
+
+WY → Z
+```
+
+Then:
+
+```text
+WX → Z
+```
+
+---
+
+# 5️⃣ Attribute Closure
+
+The closure of an attribute set **X** (denoted **X⁺**) is the set of all attributes that can be functionally determined by **X**.
+
+### Example
+
+Relation:
+
+```text
+R(A, B, C)
+```
+
+FDs:
+
+```text
+A → B
+
+B → C
+```
+
+Find **A⁺**
+
+Solution:
+
+* A gives B
+* B gives C
+
+Therefore:
+
+```text
+A⁺ = {A, B, C}
+```
+
+Since A⁺ contains all attributes, **A is a Candidate Key**.
+
+---
+
+# 6️⃣ Candidate Key
+
+A **Candidate Key** is the **smallest set of attributes** whose closure contains all attributes in the relation.
+
+Example:
+
+Relation:
+
+```text
+R(A, B, C)
+```
+
+FDs:
+
+```text
+A → B
+
+B → C
+```
+
+Here:
+
+```text
+A⁺ = {A, B, C}
+```
+
+Therefore:
+
+**Candidate Key = A**
+
+---
+
+# 7️⃣ Prime & Non-Prime Attributes
+
+### Prime Attribute
+
+Appears in at least one Candidate Key.
+
+### Non-Prime Attribute
+
+Does not appear in any Candidate Key.
+
+📌 Important for **Normalization**.
+
+---
+
+# 8️⃣ Minimal Cover
+
+A **Minimal Cover** is the smallest equivalent set of Functional Dependencies.
+
+Rules:
+
+1. Single attribute on RHS.
+2. Remove redundant attributes from LHS.
+3. Remove redundant FDs.
+
+---
+
+### Example
+
+Given:
+
+```text
+A → BC
+```
+
+Convert to:
+
+```text
+A → B
+
+A → C
+```
+
+---
+
+# 9️⃣ Algorithm to Find Candidate Keys
+
+1. List all FDs.
+2. Compute closure of likely attribute sets.
+3. If closure contains all attributes, it is a Super Key.
+4. Check minimality.
+5. Minimal Super Key = Candidate Key.
+
+---
+
+# 🔟 Common GATE Traps
+
+### Trap 1
+
+Every Candidate Key is a Super Key.
+
+The reverse is **not true**.
+
+---
+
+### Trap 2
+
+Closure determines Candidate Keys.
+
+---
+
+### Trap 3
+
+Minimal Cover requires **single attribute RHS**.
+
+---
+
+### Trap 4
+
+Prime Attributes belong to at least one Candidate Key.
+
+---
+
+### Trap 5
+
+Armstrong's Axioms are always valid for Functional Dependencies.
+
+---
+
+# 📝 Formula & Revision Sheet
+
+| Concept         | Key Point                  |
+| --------------- | -------------------------- |
+| FD              | X → Y                      |
+| Closure         | X⁺                         |
+| Candidate Key   | Minimal Super Key          |
+| Prime Attribute | In Candidate Key           |
+| Minimal Cover   | Simplest equivalent FD set |
+| Reflexivity     | X → Y if Y ⊆ X             |
+| Augmentation    | X→Y ⇒ XZ→YZ                |
+| Transitivity    | X→Y, Y→Z ⇒ X→Z             |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+A Functional Dependency represents:
+**Answer:** A relationship between attributes.
+
+### Q2.
+
+Which notation represents closure?
+**Answer:** X⁺
+
+### Q3.
+
+Most PYQ-tested topic?
+**Answer:** Attribute Closure.
+
+### Q4.
+
+A Candidate Key is:
+**Answer:** A minimal Super Key.
+
+### Q5.
+
+Every Candidate Key is:
+**Answer:** A Super Key.
+
+### Q6.
+
+Every Super Key is:
+**Answer:** Not necessarily a Candidate Key.
+
+### Q7.
+
+Reflexivity applies when:
+**Answer:** Y ⊆ X.
+
+### Q8.
+
+Augmentation states:
+**Answer:** X→Y ⇒ XZ→YZ.
+
+### Q9.
+
+Transitivity states:
+**Answer:** X→Y and Y→Z imply X→Z.
+
+### Q10.
+
+Decomposition converts:
+**Answer:** X→YZ into X→Y and X→Z.
+
+### Q11.
+
+Union combines:
+**Answer:** X→Y and X→Z into X→YZ.
+
+### Q12.
+
+Pseudotransitivity is derived from:
+**Answer:** Armstrong's Axioms.
+
+### Q13.
+
+Minimal Cover requires:
+**Answer:** Single attribute RHS.
+
+### Q14.
+
+Prime Attributes belong to:
+**Answer:** Candidate Keys.
+
+### Q15.
+
+Non-Prime Attributes:
+**Answer:** Are not in any Candidate Key.
+
+### Q16.
+
+Closure is used to:
+**Answer:** Find Candidate Keys.
+
+### Q17.
+
+Trivial FD satisfies:
+**Answer:** RHS ⊆ LHS.
+
+### Q18.
+
+Non-Trivial FD satisfies:
+**Answer:** RHS is not a subset of LHS.
+
+### Q19.
+
+Completely Non-Trivial FD satisfies:
+**Answer:** LHS and RHS are disjoint.
+
+### Q20.
+
+Minimal Cover removes:
+**Answer:** Redundant dependencies.
+
+### Q21.
+
+Closure always contains:
+**Answer:** The original attribute set.
+
+### Q22.
+
+Functional Dependencies help in:
+**Answer:** Database design.
+
+### Q23.
+
+Normalization depends on:
+**Answer:** Functional Dependencies.
+
+### Q24.
+
+Candidate Keys uniquely identify:
+**Answer:** Tuples.
+
+### Q25.
+
+A Primary Key is selected from:
+**Answer:** Candidate Keys.
+
+### Q26.
+
+Super Keys may contain:
+**Answer:** Extra attributes.
+
+### Q27.
+
+The smallest Super Key is:
+**Answer:** Candidate Key.
+
+### Q28.
+
+Armstrong's Axioms are:
+**Answer:** Sound and complete inference rules.
+
+### Q29.
+
+Closure is denoted by:
+**Answer:** X⁺.
+
+### Q30.
+
+The main purpose of Functional Dependencies is:
+**Answer:** Maintain correct database design and identify keys.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
+
+### Current Subject
+
+🔄 **Database Management Systems (DBMS)**
+
+**DBMS Progress:** **3 / 12 lessons completed**
+
+---
+
+## 📖 Tomorrow (Day 95)
+
+**DBMS – Normalization (1NF, 2NF, 3NF, BCNF), Lossless Join, Dependency Preservation & GATE Numericals**
+
+---
+
+## 📊 Overall GATE CSE 2027 Progress
+
+| Subject                       |                    Status |
+| ----------------------------- | ------------------------: |
+| Engineering Mathematics       |               ✅ Completed |
+| Digital Logic                 |               ✅ Completed |
+| COA                           |               ✅ Completed |
+| Programming & Data Structures |               ✅ Completed |
+| Algorithms                    |               ✅ Completed |
+| Theory of Computation         |               ✅ Completed |
+| Compiler Design               |               ✅ Completed |
+| Operating Systems             |               ✅ Completed |
+| DBMS                          | 🟨 3/12 Lessons Completed |
+| Computer Networks             |                 ⏳ Pending |
+| General Aptitude              |                 ⏳ Pending |
+
+**Overall Syllabus Completion:** **~88%**
+
+---
+
+## 🎯 Daily Challenge
+
+Consider the relation:
+
+**R(A, B, C, D)**
+
+Functional Dependencies:
+
+```text
+A → B
+B → C
+C → D
+```
+
+Answer the following:
+
+1. Find **A⁺**.
+2. Is **A** a Candidate Key?
+3. List all **Prime** and **Non-Prime** attributes.
+4. Write the **Minimal Cover** for the given set of Functional Dependencies.
+
+💡 **Exam Tip:** Attribute Closure and Candidate Key questions appear almost every year in GATE. Learn to compute closures quickly—they are the foundation for normalization.
