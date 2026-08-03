@@ -1,0 +1,480 @@
+# 📘 Today's Learning – Day 95 (GATE CSE 2027)
+
+**📅 Date:** **3 August 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **Normalization (1NF, 2NF, 3NF, BCNF), Lossless Join, Dependency Preservation & GATE Numericals**
+
+> ⭐ **GATE Importance:** **Normalization** is one of the **most frequently tested DBMS topics**. Questions on **normal forms, decomposition, candidate keys, and lossless join** appear almost every year.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand normalization and its purpose.
+* Learn 1NF, 2NF, 3NF, and BCNF.
+* Differentiate partial and transitive dependencies.
+* Understand lossless join and dependency preservation.
+* Solve GATE-level normalization problems.
+
+---
+
+# 1️⃣ What is Normalization?
+
+**Normalization** is the process of organizing data in a database to:
+
+* Reduce redundancy.
+* Eliminate update, insertion, and deletion anomalies.
+* Improve data consistency.
+
+---
+
+# 2️⃣ Types of Anomalies
+
+### A. Insertion Anomaly
+
+Cannot insert information without inserting unrelated data.
+
+### B. Update Anomaly
+
+Updating the same information in multiple places may cause inconsistency.
+
+### C. Deletion Anomaly
+
+Deleting one record may unintentionally remove other useful information.
+
+📌 **GATE Tip:** Normalization aims to remove these anomalies.
+
+---
+
+# 3️⃣ First Normal Form (1NF)
+
+A relation is in **1NF** if:
+
+* All attributes contain **atomic (indivisible) values**.
+* No repeating groups or multi-valued attributes.
+
+❌ Example:
+
+| Student | Phone Numbers |
+| ------- | ------------- |
+| Asha    | 9876, 9988    |
+
+✅ Convert to:
+
+| Student | Phone Number |
+| ------- | ------------ |
+| Asha    | 9876         |
+| Asha    | 9988         |
+
+---
+
+# 4️⃣ Second Normal Form (2NF)
+
+A relation is in **2NF** if:
+
+* It is already in **1NF**.
+* It has **no partial dependency**.
+
+### Partial Dependency
+
+A non-prime attribute depends on only part of a composite candidate key.
+
+Example:
+
+Relation:
+
+```text id="r4v0o8"
+Enrollment(StudentID, CourseID, StudentName)
+```
+
+Candidate Key:
+
+```text id="jlwmbl"
+(StudentID, CourseID)
+```
+
+If:
+
+```text id="h2cuzg"
+StudentID → StudentName
+```
+
+Then there is a **partial dependency**, so the relation is **not in 2NF**.
+
+---
+
+# 5️⃣ Third Normal Form (3NF)
+
+A relation is in **3NF** if:
+
+* It is in **2NF**.
+* It has **no transitive dependency**.
+
+### Transitive Dependency
+
+If:
+
+```text id="9pkv9j"
+A → B
+
+B → C
+```
+
+Then:
+
+```text id="5ck54w"
+A → C
+```
+
+Example:
+
+```text id="5fn2e9"
+EmpID → DeptID
+
+DeptID → DeptName
+```
+
+Here, **DeptName** depends transitively on **EmpID**.
+
+---
+
+# 6️⃣ Boyce-Codd Normal Form (BCNF)
+
+A relation is in **BCNF** if:
+
+For every non-trivial FD:
+
+```text id="mz5gkj"
+X → Y
+```
+
+**X must be a Super Key.**
+
+📌 **BCNF is stricter than 3NF.**
+
+---
+
+# 7️⃣ Comparison of Normal Forms
+
+| Normal Form | Removes                                              |
+| ----------- | ---------------------------------------------------- |
+| 1NF         | Repeating groups                                     |
+| 2NF         | Partial dependency                                   |
+| 3NF         | Transitive dependency                                |
+| BCNF        | All FD anomalies where determinant isn't a super key |
+
+---
+
+# 8️⃣ Lossless Join Decomposition
+
+A decomposition is **lossless** if joining the decomposed relations always reconstructs the original relation **without introducing extra tuples**.
+
+Example:
+
+```text id="3mw6xu"
+R(A, B, C)
+```
+
+↓
+
+```text id="v4f53u"
+R1(A, B)
+
+R2(B, C)
+```
+
+If the common attribute (**B**) is a key in at least one relation, the decomposition is generally lossless.
+
+---
+
+# 9️⃣ Dependency Preservation
+
+A decomposition is **dependency preserving** if all original Functional Dependencies can still be enforced **without joining** the decomposed relations.
+
+📌 **Ideal decomposition = Lossless + Dependency Preserving.**
+
+---
+
+# 🔟 Difference: 3NF vs BCNF
+
+| 3NF                             | BCNF                                  |
+| ------------------------------- | ------------------------------------- |
+| Allows some anomalies           | Removes more anomalies                |
+| Slightly relaxed                | Stricter                              |
+| Easier to preserve dependencies | May sacrifice dependency preservation |
+
+---
+
+# 1️⃣1️⃣ Common GATE Traps
+
+### Trap 1
+
+Every BCNF relation is in **3NF**, but not every 3NF relation is in BCNF.
+
+---
+
+### Trap 2
+
+2NF is only meaningful when there is a **composite candidate key**.
+
+---
+
+### Trap 3
+
+3NF removes **transitive dependency**, not partial dependency.
+
+---
+
+### Trap 4
+
+Lossless Join and Dependency Preservation are **different properties**.
+
+---
+
+### Trap 5
+
+A decomposition can be:
+
+* Lossless but not dependency preserving.
+* Dependency preserving but not lossless.
+
+---
+
+# 📝 Quick Revision Sheet
+
+| Concept                 | Key Point                       |
+| ----------------------- | ------------------------------- |
+| 1NF                     | Atomic values                   |
+| 2NF                     | No partial dependency           |
+| 3NF                     | No transitive dependency        |
+| BCNF                    | Determinant must be a Super Key |
+| Lossless Join           | No information loss             |
+| Dependency Preservation | FDs preserved                   |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Normalization reduces:
+**Answer:** Data redundancy.
+
+### Q2.
+
+1NF requires:
+**Answer:** Atomic values.
+
+### Q3.
+
+2NF removes:
+**Answer:** Partial dependency.
+
+### Q4.
+
+3NF removes:
+**Answer:** Transitive dependency.
+
+### Q5.
+
+BCNF requires:
+**Answer:** Every determinant to be a Super Key.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** Normalization and BCNF.
+
+### Q7.
+
+Insertion anomaly occurs when:
+**Answer:** New data cannot be inserted independently.
+
+### Q8.
+
+Update anomaly causes:
+**Answer:** Data inconsistency.
+
+### Q9.
+
+Deletion anomaly results in:
+**Answer:** Unintended data loss.
+
+### Q10.
+
+Partial dependency occurs on:
+**Answer:** Part of a composite key.
+
+### Q11.
+
+Transitive dependency means:
+**Answer:** One non-key attribute depends on another non-key attribute.
+
+### Q12.
+
+Every BCNF relation is:
+**Answer:** In 3NF.
+
+### Q13.
+
+Every 3NF relation is:
+**Answer:** Not necessarily in BCNF.
+
+### Q14.
+
+Lossless decomposition:
+**Answer:** Does not lose information.
+
+### Q15.
+
+Dependency preservation means:
+**Answer:** Functional Dependencies remain enforceable.
+
+### Q16.
+
+1NF eliminates:
+**Answer:** Repeating groups.
+
+### Q17.
+
+2NF requires:
+**Answer:** 1NF.
+
+### Q18.
+
+3NF requires:
+**Answer:** 2NF.
+
+### Q19.
+
+BCNF is:
+**Answer:** Stronger than 3NF.
+
+### Q20.
+
+Candidate Keys are identified using:
+**Answer:** Attribute Closure.
+
+### Q21.
+
+Prime Attributes belong to:
+**Answer:** Candidate Keys.
+
+### Q22.
+
+A determinant is:
+**Answer:** The left-hand side of a Functional Dependency.
+
+### Q23.
+
+Normalization mainly improves:
+**Answer:** Database design.
+
+### Q24.
+
+Redundancy increases:
+**Answer:** Storage and anomalies.
+
+### Q25.
+
+Composite keys are important in:
+**Answer:** 2NF.
+
+### Q26.
+
+A Super Key:
+**Answer:** Uniquely identifies tuples.
+
+### Q27.
+
+A Candidate Key:
+**Answer:** Is a minimal Super Key.
+
+### Q28.
+
+The goal of BCNF is:
+**Answer:** Eliminate FD anomalies.
+
+### Q29.
+
+The ideal decomposition is:
+**Answer:** Lossless and Dependency Preserving.
+
+### Q30.
+
+Normalization is primarily based on:
+**Answer:** Functional Dependencies.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
+
+### Current Subject
+
+🔄 **Database Management Systems (DBMS)**
+
+**DBMS Progress:** **4 / 12 lessons completed**
+
+---
+
+## 📖 Next Topic (Day 96)
+
+**DBMS – Higher Normal Forms (4NF & 5NF), Multivalued Dependencies (MVD), Join Dependencies, Transactions & ACID Properties**
+
+---
+
+## 📊 Overall GATE CSE 2027 Progress
+
+| Subject                       |                    Status |
+| ----------------------------- | ------------------------: |
+| Engineering Mathematics       |               ✅ Completed |
+| Digital Logic                 |               ✅ Completed |
+| COA                           |               ✅ Completed |
+| Programming & Data Structures |               ✅ Completed |
+| Algorithms                    |               ✅ Completed |
+| Theory of Computation         |               ✅ Completed |
+| Compiler Design               |               ✅ Completed |
+| Operating Systems             |               ✅ Completed |
+| DBMS                          | 🟨 4/12 Lessons Completed |
+| Computer Networks             |                 ⏳ Pending |
+| General Aptitude              |                 ⏳ Pending |
+
+**Overall Syllabus Completion:** **~89%**
+
+---
+
+## 🎯 Daily Challenge
+
+Given the relation:
+
+**Employee(EmpID, EmpName, DeptID, DeptName)**
+
+Functional Dependencies:
+
+```text
+EmpID → EmpName, DeptID
+DeptID → DeptName
+```
+
+Answer the following:
+
+1. Identify the **Candidate Key**.
+2. Is the relation in **2NF**?
+3. Is it in **3NF**? If not, identify the **transitive dependency**.
+4. Decompose the relation into **3NF** relations.
+5. State whether your decomposition is **lossless** and **dependency preserving**.
+
+💡 **Exam Tip:** Normalization questions are often solved by identifying **Functional Dependencies**, finding **Candidate Keys**, and then checking each normal form step by step.
