@@ -1,0 +1,488 @@
+# 📘 Today's Learning – Day 96 (GATE CSE 2027)
+
+**📅 Date:** **4 August 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **Higher Normal Forms (4NF & 5NF), Multivalued Dependencies (MVD), Join Dependencies, Transactions & ACID Properties**
+
+> ⭐ **GATE Importance:** Questions on **Transactions, ACID Properties, and Higher Normal Forms** appear regularly in GATE. ACID and transaction schedules are among the most important DBMS concepts.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand Multivalued Dependencies (MVD).
+* Learn 4NF and 5NF.
+* Understand Join Dependencies.
+* Learn Transactions.
+* Master ACID Properties.
+* Solve GATE-level MCQs.
+
+---
+
+# 1️⃣ What is a Transaction?
+
+A **Transaction** is a sequence of database operations treated as a **single logical unit of work**.
+
+Example:
+
+```sql id="1lmbph"
+BEGIN TRANSACTION
+
+Debit ₹1000 from Account A
+
+Credit ₹1000 to Account B
+
+COMMIT
+```
+
+If any step fails:
+
+```sql id="sdzqvj"
+ROLLBACK
+```
+
+---
+
+# 2️⃣ Transaction States
+
+```text id="njahxg"
+Active
+   ↓
+Partially Committed
+   ↓
+Committed
+```
+
+If an error occurs:
+
+```text id="3y1t4y"
+Active
+   ↓
+Failed
+   ↓
+Aborted
+```
+
+---
+
+# 3️⃣ ACID Properties
+
+## A — Atomicity
+
+"All or Nothing."
+
+Either the entire transaction completes or none of it does.
+
+Example:
+
+Bank transfer.
+
+---
+
+## C — Consistency
+
+A transaction must move the database from one **valid state** to another.
+
+Constraints must always hold.
+
+---
+
+## I — Isolation
+
+Concurrent transactions should not interfere with each other.
+
+Users should behave as if transactions execute one after another.
+
+---
+
+## D — Durability
+
+Once committed, changes are **permanent**, even after a power failure.
+
+📌 **GATE Tip:** ACID properties are among the most frequently asked DBMS concepts.
+
+---
+
+# 4️⃣ Multivalued Dependency (MVD)
+
+Notation:
+
+```text id="q0xtoc"
+A ↠ B
+```
+
+Meaning:
+
+For one value of **A**, there may be **multiple independent values** of **B**.
+
+### Example
+
+A student can have:
+
+* Multiple phone numbers.
+* Multiple hobbies.
+
+Phone numbers and hobbies are independent.
+
+---
+
+# 5️⃣ Fourth Normal Form (4NF)
+
+A relation is in **4NF** if:
+
+* It is in **BCNF**.
+* It contains **no non-trivial Multivalued Dependencies**.
+
+### Example
+
+| Student | Hobby   | Language |
+| ------- | ------- | -------- |
+| A       | Cricket | English  |
+| A       | Cricket | Hindi    |
+| A       | Chess   | English  |
+| A       | Chess   | Hindi    |
+
+Split into:
+
+* Student–Hobby
+* Student–Language
+
+---
+
+# 6️⃣ Join Dependency (JD)
+
+A **Join Dependency** exists when a relation can be reconstructed by joining multiple decomposed relations.
+
+Notation:
+
+```text id="54ybh9"
+*(R1,R2,R3)
+```
+
+---
+
+# 7️⃣ Fifth Normal Form (5NF)
+
+A relation is in **5NF** if:
+
+* It is in **4NF**.
+* Every Join Dependency is implied by Candidate Keys.
+
+5NF removes redundancy caused by complex join dependencies.
+
+---
+
+# 8️⃣ Difference Between Normal Forms
+
+| Normal Form | Removes                |
+| ----------- | ---------------------- |
+| 1NF         | Repeating groups       |
+| 2NF         | Partial dependency     |
+| 3NF         | Transitive dependency  |
+| BCNF        | FD anomalies           |
+| 4NF         | Multivalued dependency |
+| 5NF         | Join dependency        |
+
+---
+
+# 9️⃣ COMMIT vs ROLLBACK
+
+| COMMIT                        | ROLLBACK                |
+| ----------------------------- | ----------------------- |
+| Saves changes permanently     | Undoes changes          |
+| Ends transaction successfully | Restores previous state |
+
+---
+
+# 🔟 Savepoint
+
+A **SAVEPOINT** allows partial rollback within a transaction.
+
+Example:
+
+```sql id="jlwm9g"
+SAVEPOINT S1;
+```
+
+Rollback:
+
+```sql id="byww97"
+ROLLBACK TO S1;
+```
+
+---
+
+# 1️⃣1️⃣ Common GATE Traps
+
+### Trap 1
+
+Atomicity means **all or nothing**, not durability.
+
+---
+
+### Trap 2
+
+Durability applies **after COMMIT**.
+
+---
+
+### Trap 3
+
+4NF removes **Multivalued Dependencies**, not Functional Dependencies.
+
+---
+
+### Trap 4
+
+5NF deals with **Join Dependencies**.
+
+---
+
+### Trap 5
+
+COMMIT cannot normally be undone.
+
+---
+
+# 📝 Quick Revision Sheet
+
+| Concept     | Key Point                  |
+| ----------- | -------------------------- |
+| Transaction | Logical unit of work       |
+| Atomicity   | All or nothing             |
+| Consistency | Valid state to valid state |
+| Isolation   | Independent execution      |
+| Durability  | Permanent after commit     |
+| MVD         | A ↠ B                      |
+| 4NF         | Removes MVD                |
+| 5NF         | Removes Join Dependency    |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+A transaction is:
+**Answer:** A logical unit of work.
+
+### Q2.
+
+Atomicity means:
+**Answer:** All or nothing.
+
+### Q3.
+
+Consistency ensures:
+**Answer:** Valid database states.
+
+### Q4.
+
+Isolation prevents:
+**Answer:** Interference among concurrent transactions.
+
+### Q5.
+
+Durability guarantees:
+**Answer:** Permanent committed changes.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** ACID Properties.
+
+### Q7.
+
+ROLLBACK performs:
+**Answer:** Undo.
+
+### Q8.
+
+COMMIT performs:
+**Answer:** Permanent save.
+
+### Q9.
+
+SAVEPOINT allows:
+**Answer:** Partial rollback.
+
+### Q10.
+
+MVD stands for:
+**Answer:** Multivalued Dependency.
+
+### Q11.
+
+MVD notation is:
+**Answer:** A ↠ B.
+
+### Q12.
+
+4NF removes:
+**Answer:** Multivalued Dependencies.
+
+### Q13.
+
+5NF removes:
+**Answer:** Join Dependencies.
+
+### Q14.
+
+Every 5NF relation is:
+**Answer:** In 4NF.
+
+### Q15.
+
+Every 4NF relation is:
+**Answer:** In BCNF.
+
+### Q16.
+
+COMMIT belongs to:
+**Answer:** TCL.
+
+### Q17.
+
+ROLLBACK belongs to:
+**Answer:** TCL.
+
+### Q18.
+
+The first transaction state is:
+**Answer:** Active.
+
+### Q19.
+
+A failed transaction enters:
+**Answer:** Aborted state.
+
+### Q20.
+
+Candidate Keys determine:
+**Answer:** Uniqueness.
+
+### Q21.
+
+Join Dependency is handled in:
+**Answer:** 5NF.
+
+### Q22.
+
+A transaction ends successfully after:
+**Answer:** COMMIT.
+
+### Q23.
+
+Durability mainly protects against:
+**Answer:** System failures after commit.
+
+### Q24.
+
+Atomicity mainly protects against:
+**Answer:** Partial execution.
+
+### Q25.
+
+Isolation relates to:
+**Answer:** Concurrent execution.
+
+### Q26.
+
+Consistency preserves:
+**Answer:** Database integrity.
+
+### Q27.
+
+Normalization reduces:
+**Answer:** Redundancy.
+
+### Q28.
+
+4NF requires:
+**Answer:** BCNF.
+
+### Q29.
+
+5NF requires:
+**Answer:** 4NF.
+
+### Q30.
+
+The main purpose of transactions is:
+**Answer:** Reliable database operations.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization &Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
+
+### Current Subject
+
+🔄 **Database Management Systems (DBMS)**
+
+**DBMS Progress:** **5 / 12 lessons completed**
+
+---
+
+## 📖 Tomorrow (Day 97)
+
+**DBMS – Concurrency Control, Serializability, Conflict Serializability, View Serializability & Schedule Analysis**
+
+---
+
+## 📊 Overall GATE CSE 2027 Progress
+
+| Subject                       |                    Status |
+| ----------------------------- | ------------------------: |
+| Engineering Mathematics       |               ✅ Completed |
+| Digital Logic                 |               ✅ Completed |
+| COA                           |               ✅ Completed |
+| Programming & Data Structures |               ✅ Completed |
+| Algorithms                    |               ✅ Completed |
+| Theory of Computation         |               ✅ Completed |
+| Compiler Design               |               ✅ Completed |
+| Operating Systems             |               ✅ Completed |
+| DBMS                          | 🟨 5/12 Lessons Completed |
+| Computer Networks             |                 ⏳ Pending |
+| General Aptitude              |                 ⏳ Pending |
+
+**Overall Syllabus Completion:** **~90%**
+
+---
+
+## 🎯 Daily Challenge
+
+Consider the following transaction:
+
+```text
+T1:
+Read(A)
+A = A + 500
+Write(A)
+
+Read(B)
+B = B - 500
+Write(B)
+Commit
+```
+
+Answer the following:
+
+1. Which **ACID property** ensures that both updates occur together or not at all?
+2. If the system crashes immediately after `Write(A)` but before `Write(B)`, what should happen?
+3. Which **TCL command** restores the database to its previous consistent state?
+4. Why is **Isolation** important when another transaction `T2` accesses account **A** at the same time?
+
+💡 **Exam Tip:** ACID properties and transaction schedules are core GATE topics. Learn to identify which property is being tested in a given scenario.
