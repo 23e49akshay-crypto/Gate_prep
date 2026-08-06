@@ -1,0 +1,498 @@
+# 📘 Today's Learning – Day 98 (GATE CSE 2027)
+
+**📅 Date:** **6 August 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **Lock-Based Protocols, Two-Phase Locking (2PL), Timestamp Ordering, Deadlocks, Wait–Die & Wound–Wait Protocols**
+
+> ⭐ **GATE Importance:** This topic is among the **most frequently tested DBMS concurrency topics**. GATE often asks conceptual and numerical questions on **2PL, timestamp ordering, deadlock prevention, and lock compatibility**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand lock-based concurrency control.
+* Learn Shared and Exclusive locks.
+* Master Two-Phase Locking (2PL).
+* Understand Timestamp Ordering.
+* Learn deadlock handling in databases.
+* Differentiate Wait–Die and Wound–Wait protocols.
+
+---
+
+# 1️⃣ Lock-Based Concurrency Control
+
+A **lock** is a mechanism used to control concurrent access to database items.
+
+Before accessing a data item, a transaction must obtain the appropriate lock.
+
+---
+
+# 2️⃣ Types of Locks
+
+## A. Shared Lock (S)
+
+* Used for **reading**.
+* Multiple transactions can hold Shared Locks simultaneously.
+
+Example:
+
+```text
+T1 → S(A)
+
+T2 → S(A)
+```
+
+Both transactions can read **A**.
+
+---
+
+## B. Exclusive Lock (X)
+
+* Used for **writing**.
+* Only one transaction can hold an Exclusive Lock.
+
+Example:
+
+```text
+T1 → X(A)
+```
+
+No other transaction can read or write **A** until the lock is released.
+
+---
+
+# 3️⃣ Lock Compatibility Matrix
+
+| Requested ↓ / Held → | Shared (S) | Exclusive (X) |
+| -------------------- | :--------: | :-----------: |
+| **Shared (S)**       |      ✅     |       ❌       |
+| **Exclusive (X)**    |      ❌     |       ❌       |
+
+📌 **Remember:** Shared locks are compatible only with other Shared locks.
+
+---
+
+# 4️⃣ Two-Phase Locking (2PL)
+
+A transaction follows **Two-Phase Locking** if it has two phases:
+
+### Growing Phase
+
+* Can acquire locks.
+* Cannot release any lock.
+
+### Shrinking Phase
+
+* Can release locks.
+* Cannot acquire new locks.
+
+```text
+Acquire Locks
+      ↓
+Growing Phase
+      ↓
+Lock Point
+      ↓
+Shrinking Phase
+      ↓
+Release Locks
+```
+
+---
+
+# 5️⃣ Types of 2PL
+
+## Basic 2PL
+
+* Ensures conflict serializability.
+* May still allow cascading rollbacks.
+
+---
+
+## Strict 2PL
+
+* Holds all **Exclusive Locks** until commit/abort.
+* Prevents cascading rollbacks.
+
+📌 **Most practical database systems use Strict 2PL.**
+
+---
+
+## Rigorous 2PL
+
+* Holds **both Shared and Exclusive Locks** until commit.
+* Stronger than Strict 2PL.
+
+---
+
+# 6️⃣ Timestamp Ordering Protocol
+
+Each transaction receives a unique timestamp when it starts.
+
+Example:
+
+```text
+TS(T1) = 5
+
+TS(T2) = 10
+```
+
+Older transaction → Smaller timestamp.
+
+The protocol ensures operations execute in timestamp order.
+
+Advantages:
+
+* Deadlock-free.
+* Serializable schedules.
+
+Disadvantage:
+
+* Transactions may be restarted frequently.
+
+---
+
+# 7️⃣ Deadlocks in Databases
+
+A deadlock occurs when:
+
+* T1 waits for T2.
+* T2 waits for T1.
+
+Neither transaction can proceed.
+
+---
+
+# 8️⃣ Deadlock Prevention Protocols
+
+## Wait–Die (Non-Preemptive)
+
+Rule:
+
+* Older transaction waits.
+* Younger transaction aborts ("dies").
+
+Example:
+
+```text
+T1 (older)
+
+T2 (younger)
+```
+
+If **T2** requests a resource held by **T1**:
+
+➡ **T2 aborts.**
+
+---
+
+## Wound–Wait (Preemptive)
+
+Rule:
+
+* Older transaction preempts (wounds) the younger one.
+* Younger transaction waits if the older one requests its resource.
+
+Example:
+
+If **T1** (older) requests a resource held by **T2** (younger):
+
+➡ **T2 is aborted.**
+
+---
+
+# 9️⃣ Comparison
+
+| Protocol   | Older Transaction       | Younger Transaction           |
+| ---------- | ----------------------- | ----------------------------- |
+| Wait–Die   | Waits                   | Aborts                        |
+| Wound–Wait | Forces younger to abort | Waits for older if applicable |
+
+📌 **Common GATE question.**
+
+---
+
+# 🔟 Deadlock Detection
+
+A **Wait-for Graph (WFG)** is used.
+
+* Node → Transaction.
+* Edge → Waiting relationship.
+
+### Rule
+
+* Cycle present → Deadlock.
+* No cycle → No deadlock.
+
+---
+
+# 1️⃣1️⃣ Common GATE Traps
+
+### Trap 1
+
+Shared Locks allow multiple readers.
+
+---
+
+### Trap 2
+
+Exclusive Locks block both readers and writers.
+
+---
+
+### Trap 3
+
+2PL guarantees **conflict serializability**, but **Basic 2PL** does not necessarily prevent cascading rollbacks.
+
+---
+
+### Trap 4
+
+Timestamp Ordering is **deadlock-free**.
+
+---
+
+### Trap 5
+
+Do not confuse:
+
+* **Wait–Die:** Younger transaction dies.
+* **Wound–Wait:** Older transaction wounds the younger one.
+
+---
+
+# 📝 Quick Revision Sheet
+
+| Concept            | Key Point                   |
+| ------------------ | --------------------------- |
+| Shared Lock        | Read                        |
+| Exclusive Lock     | Write                       |
+| 2PL                | Growing + Shrinking phases  |
+| Strict 2PL         | Hold X-locks until commit   |
+| Rigorous 2PL       | Hold all locks until commit |
+| Timestamp Ordering | Uses timestamps             |
+| Wait–Die           | Younger aborts              |
+| Wound–Wait         | Older aborts younger        |
+| Wait-for Graph     | Detects deadlocks           |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+A Shared Lock is used for:
+**Answer:** Reading.
+
+### Q2.
+
+An Exclusive Lock is used for:
+**Answer:** Writing.
+
+### Q3.
+
+Can two transactions hold Shared Locks simultaneously?
+**Answer:** Yes.
+
+### Q4.
+
+Can two transactions hold Exclusive Locks simultaneously?
+**Answer:** No.
+
+### Q5.
+
+Most PYQ-tested topic?
+**Answer:** Two-Phase Locking (2PL).
+
+### Q6.
+
+2PL consists of:
+**Answer:** Growing and Shrinking phases.
+
+### Q7.
+
+During the Growing Phase:
+**Answer:** Locks can only be acquired.
+
+### Q8.
+
+During the Shrinking Phase:
+**Answer:** Locks can only be released.
+
+### Q9.
+
+Strict 2PL holds:
+**Answer:** Exclusive locks until commit.
+
+### Q10.
+
+Rigorous 2PL holds:
+**Answer:** All locks until commit.
+
+### Q11.
+
+Timestamp Ordering uses:
+**Answer:** Transaction timestamps.
+
+### Q12.
+
+Timestamp Ordering is:
+**Answer:** Deadlock-free.
+
+### Q13.
+
+Deadlock occurs when:
+**Answer:** Transactions wait indefinitely for each other.
+
+### Q14.
+
+A Wait-for Graph is used for:
+**Answer:** Deadlock detection.
+
+### Q15.
+
+A cycle in a Wait-for Graph indicates:
+**Answer:** Deadlock.
+
+### Q16.
+
+Wait–Die is:
+**Answer:** A deadlock prevention protocol.
+
+### Q17.
+
+Wound–Wait is:
+**Answer:** A deadlock prevention protocol.
+
+### Q18.
+
+In Wait–Die:
+**Answer:** Younger transactions abort.
+
+### Q19.
+
+In Wound–Wait:
+**Answer:** Older transactions abort younger ones.
+
+### Q20.
+
+Shared Locks are compatible with:
+**Answer:** Shared Locks.
+
+### Q21.
+
+Exclusive Locks are compatible with:
+**Answer:** No other locks.
+
+### Q22.
+
+Basic 2PL guarantees:
+**Answer:** Conflict serializability.
+
+### Q23.
+
+Strict 2PL prevents:
+**Answer:** Cascading rollbacks.
+
+### Q24.
+
+Rigorous 2PL is:
+**Answer:** Stronger than Strict 2PL.
+
+### Q25.
+
+Lock compatibility determines:
+**Answer:** Whether locks can coexist.
+
+### Q26.
+
+The lock point is:
+**Answer:** The point where a transaction acquires its last lock.
+
+### Q27.
+
+Timestamp Ordering may cause:
+**Answer:** Transaction restarts.
+
+### Q28.
+
+Deadlock prevention aims to:
+**Answer:** Prevent circular waiting.
+
+### Q29.
+
+Deadlock detection uses:
+**Answer:** Wait-for Graphs.
+
+### Q30.
+
+The main objective of locking is:
+**Answer:** Maintain database consistency during concurrent execution.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
+
+### Current Subject
+
+🔄 **Database Management Systems (DBMS)**
+
+**DBMS Progress:** **7 / 12 Lessons Completed**
+
+---
+
+## 📖 Tomorrow (Day 99)
+
+**DBMS – Recovery System, Log-Based Recovery, Checkpoints, Deferred & Immediate Update, Shadow Paging, ARIES & GATE Numericals**
+
+---
+
+## 📊 Overall GATE CSE 2027 Progress
+
+| Subject                       |                    Status |
+| ----------------------------- | ------------------------: |
+| Engineering Mathematics       |               ✅ Completed |
+| Digital Logic                 |               ✅ Completed |
+| COA                           |               ✅ Completed |
+| Programming & Data Structures |               ✅ Completed |
+| Algorithms                    |               ✅ Completed |
+| Theory of Computation         |               ✅ Completed |
+| Compiler Design               |               ✅ Completed |
+| Operating Systems             |               ✅ Completed |
+| DBMS                          | 🟨 7/12 Lessons Completed |
+| Computer Networks             |                 ⏳ Pending |
+| General Aptitude              |                 ⏳ Pending |
+
+**Overall Syllabus Completion:** **~92%**
+
+---
+
+## 🎯 Daily Challenge
+
+Consider the following scenario:
+
+* **T1** obtains a **Shared Lock** on data item **A**.
+* **T2** requests an **Exclusive Lock** on **A**.
+* **T3** requests a **Shared Lock** on **A**.
+
+Answer the following:
+
+1. Which transactions can proceed immediately?
+2. Which transaction must wait?
+3. Draw the corresponding **Wait-for Graph** if `T2` is waiting for `T1`.
+4. Explain whether a deadlock exists in this scenario.
+
+💡 **Exam Tip:** Questions on **lock compatibility, 2PL, and Wait–Die/Wound–Wait** are among the most common DBMS concurrency questions in GATE.
