@@ -1,0 +1,521 @@
+# 📘 Today's Learning – Day 99 (GATE CSE 2027)
+
+**📅 Date:** **6 August 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **Recovery System, Log-Based Recovery, Checkpoints, Deferred & Immediate Update, Shadow Paging, ARIES & GATE Numericals**
+
+> ⭐ **GATE Importance:** Recovery systems are a **core DBMS topic**. GATE frequently asks conceptual and numerical questions on **UNDO/REDO, checkpoints, write-ahead logging (WAL), deferred update, immediate update, and recovery algorithms**.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand why database recovery is required.
+* Learn log-based recovery.
+* Master Write-Ahead Logging (WAL).
+* Differentiate Deferred and Immediate Update.
+* Understand Checkpoints.
+* Learn Shadow Paging and ARIES.
+* Solve GATE-level MCQs.
+
+---
+
+# 1️⃣ What is Database Recovery?
+
+A **Recovery System** restores the database to a **consistent state** after failures.
+
+### Types of Failures
+
+* Transaction Failure
+* System Crash
+* Media (Disk) Failure
+* Power Failure
+
+---
+
+# 2️⃣ Recovery Goals
+
+The recovery mechanism must ensure:
+
+* Atomicity
+* Durability
+* Consistency after failures
+
+---
+
+# 3️⃣ Log-Based Recovery
+
+A **Log** is a sequential file that records every database modification.
+
+Typical log records:
+
+```text id="4fgq4t"
+<START T1>
+
+<T1, A, 100, 150>
+
+<COMMIT T1>
+```
+
+Where:
+
+* Transaction = T1
+* Data Item = A
+* Old Value = 100
+* New Value = 150
+
+---
+
+# 4️⃣ Write-Ahead Logging (WAL)
+
+**Rule:**
+
+> **The log record must be written to stable storage before the corresponding database page is written to disk.**
+
+Why?
+
+* Enables UNDO after crashes.
+* Enables REDO after crashes.
+
+📌 **GATE Tip:** WAL is the foundation of most modern recovery systems.
+
+---
+
+# 5️⃣ UNDO and REDO
+
+## UNDO
+
+Restores the **old value**.
+
+Example:
+
+```text id="6czpjh"
+Old = 100
+
+New = 150
+```
+
+UNDO restores:
+
+```text id="tx2w0d"
+100
+```
+
+---
+
+## REDO
+
+Reapplies the **new value**.
+
+Restores:
+
+```text id="jlwmt9"
+150
+```
+
+---
+
+# 6️⃣ Deferred Update
+
+Also called:
+
+> **NO-UNDO / REDO**
+
+### Characteristics
+
+* Database pages are updated **only after COMMIT**.
+* Uncommitted changes never reach disk.
+
+Advantages:
+
+* No UNDO required.
+* Simpler recovery.
+
+Disadvantage:
+
+* Changes become visible later.
+
+---
+
+# 7️⃣ Immediate Update
+
+Also called:
+
+> **UNDO / REDO**
+
+### Characteristics
+
+* Database pages may be updated before COMMIT.
+* Uncommitted data may reach disk.
+
+Therefore:
+
+* UNDO may be required.
+* REDO may also be required.
+
+📌 **Most real-world DBMS use Immediate Update.**
+
+---
+
+# 8️⃣ Checkpoints
+
+A **Checkpoint** periodically saves the recovery state.
+
+Purpose:
+
+* Reduce recovery time.
+* Avoid scanning the entire log after a crash.
+
+Checkpoint record:
+
+```text id="c8m9b4"
+<CHECKPOINT>
+```
+
+Recovery starts from the latest checkpoint instead of the beginning of the log.
+
+---
+
+# 9️⃣ Shadow Paging
+
+Instead of modifying original pages:
+
+* Create a copy (shadow page).
+* Apply changes to the copy.
+* Replace the original after COMMIT.
+
+Advantages:
+
+* Simple recovery.
+* No UNDO/REDO required.
+
+Disadvantages:
+
+* High storage overhead.
+* Poor scalability.
+
+---
+
+# 🔟 ARIES Recovery Algorithm
+
+**ARIES** stands for:
+
+> **Algorithms for Recovery and Isolation Exploiting Semantics**
+
+Used by major commercial DBMS.
+
+### Three Recovery Phases
+
+### Phase 1: Analysis
+
+* Identify active transactions.
+* Determine dirty pages.
+
+---
+
+### Phase 2: REDO
+
+Repeat committed updates.
+
+---
+
+### Phase 3: UNDO
+
+Undo incomplete transactions.
+
+📌 **Mnemonic:** **A → R → U (Analysis → REDO → UNDO)**
+
+---
+
+# 1️⃣1️⃣ Recovery Techniques Comparison
+
+| Technique        | UNDO | REDO |
+| ---------------- | :--: | :--: |
+| Deferred Update  |   ❌  |   ✅  |
+| Immediate Update |   ✅  |   ✅  |
+| Shadow Paging    |   ❌  |   ❌  |
+
+---
+
+# 1️⃣2️⃣ Common GATE Traps
+
+### Trap 1
+
+Deferred Update needs **REDO only**.
+
+---
+
+### Trap 2
+
+Immediate Update needs **both UNDO and REDO**.
+
+---
+
+### Trap 3
+
+WAL writes the **log before the data page**.
+
+---
+
+### Trap 4
+
+Checkpoints reduce **recovery time**, not execution time.
+
+---
+
+### Trap 5
+
+ARIES performs:
+
+* Analysis
+* REDO
+* UNDO
+
+(not UNDO before REDO).
+
+---
+
+# 📝 Quick Revision Sheet
+
+| Concept          | Key Point              |
+| ---------------- | ---------------------- |
+| WAL              | Log before data        |
+| UNDO             | Restore old value      |
+| REDO             | Reapply new value      |
+| Deferred Update  | REDO only              |
+| Immediate Update | UNDO + REDO            |
+| Checkpoint       | Faster recovery        |
+| Shadow Paging    | Copy pages             |
+| ARIES            | Analysis → REDO → UNDO |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+Recovery restores the database to:
+**Answer:** A consistent state.
+
+### Q2.
+
+WAL stands for:
+**Answer:** Write-Ahead Logging.
+
+### Q3.
+
+WAL requires:
+**Answer:** Log written before data page.
+
+### Q4.
+
+UNDO restores:
+**Answer:** Old value.
+
+### Q5.
+
+REDO restores:
+**Answer:** New value.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** WAL and UNDO/REDO.
+
+### Q7.
+
+Deferred Update requires:
+**Answer:** REDO only.
+
+### Q8.
+
+Immediate Update requires:
+**Answer:** UNDO and REDO.
+
+### Q9.
+
+Checkpoint reduces:
+**Answer:** Recovery time.
+
+### Q10.
+
+Shadow Paging uses:
+**Answer:** Page copies.
+
+### Q11.
+
+ARIES begins with:
+**Answer:** Analysis.
+
+### Q12.
+
+The second ARIES phase is:
+**Answer:** REDO.
+
+### Q13.
+
+The final ARIES phase is:
+**Answer:** UNDO.
+
+### Q14.
+
+Transaction failures affect:
+**Answer:** Individual transactions.
+
+### Q15.
+
+Media failure affects:
+**Answer:** Storage devices.
+
+### Q16.
+
+Power failure is an example of:
+**Answer:** System crash.
+
+### Q17.
+
+The recovery log stores:
+**Answer:** Database modifications.
+
+### Q18.
+
+Atomicity is ensured using:
+**Answer:** Recovery mechanisms.
+
+### Q19.
+
+Durability is ensured using:
+**Answer:** Logging and recovery.
+
+### Q20.
+
+Stable storage is assumed to:
+**Answer:** Preserve logs after crashes.
+
+### Q21.
+
+Checkpoint records:
+**Answer:** Recovery state.
+
+### Q22.
+
+Immediate Update allows:
+**Answer:** Database pages to be written before commit.
+
+### Q23.
+
+Deferred Update writes pages:
+**Answer:** After commit.
+
+### Q24.
+
+Shadow Paging avoids:
+**Answer:** UNDO and REDO.
+
+### Q25.
+
+ARIES is widely used in:
+**Answer:** Commercial DBMS.
+
+### Q26.
+
+Recovery primarily supports:
+**Answer:** ACID properties.
+
+### Q27.
+
+A COMMIT record indicates:
+**Answer:** Successful completion.
+
+### Q28.
+
+An uncommitted transaction may require:
+**Answer:** UNDO.
+
+### Q29.
+
+A committed transaction after a crash may require:
+**Answer:** REDO.
+
+### Q30.
+
+The main purpose of recovery is:
+**Answer:** Restore database consistency after failures.
+
+---
+
+# ✅ Progress Update
+
+### Completed Subjects
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
+
+### Current Subject
+
+🔄 **Database Management Systems (DBMS)**
+
+**DBMS Progress:** **8 / 12 Lessons Completed**
+
+---
+
+## 📖 Tomorrow (Day 100)
+
+**DBMS – Indexing (Primary, Secondary, Dense, Sparse), B-Trees, B+ Trees, Hashing & GATE Numericals**
+
+---
+
+## 📊 Overall GATE CSE 2027 Progress
+
+| Subject                       |                    Status |
+| ----------------------------- | ------------------------: |
+| Engineering Mathematics       |               ✅ Completed |
+| Digital Logic                 |               ✅ Completed |
+| COA                           |               ✅ Completed |
+| Programming & Data Structures |               ✅ Completed |
+| Algorithms                    |               ✅ Completed |
+| Theory of Computation         |               ✅ Completed |
+| Compiler Design               |               ✅ Completed |
+| Operating Systems             |               ✅ Completed |
+| DBMS                          | 🟨 8/12 Lessons Completed |
+| Computer Networks             |                 ⏳ Pending |
+| General Aptitude              |                 ⏳ Pending |
+
+**Overall Syllabus Completion:** **~93%**
+
+---
+
+## 🎯 Daily Challenge
+
+A transaction log contains:
+
+```text id="hyo55a"
+<START T1>
+
+<T1, A, 50, 80>
+
+<START T2>
+
+<T2, B, 100, 120>
+
+<COMMIT T1>
+
+-- System Crash --
+```
+
+Answer:
+
+1. Which transaction requires **REDO**?
+2. Which transaction requires **UNDO**?
+3. Which ACID property is maintained by performing UNDO and REDO?
+4. Why does **Write-Ahead Logging (WAL)** make this recovery possible?
+
+💡 **Exam Tip:** Recovery questions often combine **log records**, **COMMIT status**, and **UNDO/REDO** decisions. Practice identifying these quickly—they are common in GATE and technical interviews.
