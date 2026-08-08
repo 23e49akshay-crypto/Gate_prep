@@ -1,0 +1,537 @@
+# 📘 Today's Learning – Day 100 🎉 (GATE CSE 2027)
+
+**📅 Date:** **7 August 2026**
+**📚 Subject:** **Database Management Systems (DBMS)**
+**🧠 Topic:** **Indexing (Primary, Secondary, Dense, Sparse), B-Trees, B+ Trees, Hashing & GATE Numericals**
+
+> 🎉 **Congratulations! Today marks your 100th learning day.** Reaching 100 consistent study sessions is a significant milestone. You have completed **8 major GATE subjects** and are well into DBMS. Keep this momentum—consistency is what leads to high GATE scores.
+
+---
+
+# 🎯 Learning Objectives
+
+By the end of today's lesson, you will be able to:
+
+* Understand why indexing is needed.
+* Differentiate primary and secondary indexing.
+* Compare dense and sparse indexes.
+* Learn B-Tree and B+ Tree structures.
+* Understand hashing.
+* Solve GATE-level indexing questions.
+
+---
+
+# 1️⃣ What is Indexing?
+
+An **index** is a data structure that allows the DBMS to locate records **much faster** than scanning the entire table.
+
+Without an index:
+
+```text
+Search Time ≈ O(n)
+```
+
+With a balanced index (B+ Tree):
+
+```text
+Search Time ≈ O(log n)
+```
+
+📌 **GATE Tip:** Indexes improve **read performance** but add overhead for **INSERT, UPDATE, and DELETE**.
+
+---
+
+# 2️⃣ Primary Index
+
+A **Primary Index** is built on the **primary key**.
+
+Example:
+
+| RollNo | Name |
+| -----: | ---- |
+|    101 | Asha |
+|    102 | Ravi |
+|    103 | Neha |
+
+Primary Index:
+
+```text
+101 → Block 1
+102 → Block 2
+103 → Block 3
+```
+
+### Characteristics
+
+* Ordered data.
+* One primary index per table.
+* Usually sparse.
+
+---
+
+# 3️⃣ Secondary Index
+
+A **Secondary Index** is built on a **non-primary attribute**.
+
+Example:
+
+| Dept | Student |
+| ---- | ------- |
+| CSE  | Asha    |
+| CSE  | Neha    |
+| ECE  | Ravi    |
+
+Index:
+
+```text
+CSE → {Asha, Neha}
+ECE → {Ravi}
+```
+
+Multiple secondary indexes can exist.
+
+---
+
+# 4️⃣ Dense vs Sparse Index
+
+## Dense Index
+
+Every search key has an index entry.
+
+```text
+101
+102
+103
+104
+```
+
+Each key appears in the index.
+
+### Advantages
+
+* Faster search.
+
+### Disadvantages
+
+* More storage.
+
+---
+
+## Sparse Index
+
+Only some search keys appear.
+
+```text
+101
+104
+107
+```
+
+Remaining keys are found by scanning the corresponding block.
+
+### Advantages
+
+* Smaller index.
+* Less storage.
+
+### Disadvantages
+
+* Slightly slower search.
+
+---
+
+# 5️⃣ Dense vs Sparse Comparison
+
+| Dense               | Sparse              |
+| ------------------- | ------------------- |
+| Entry for every key | Entry for some keys |
+| Faster search       | Less storage        |
+| Larger index        | Smaller index       |
+
+📌 **Exam Tip:** Sparse indexes require the data file to be **sorted**.
+
+---
+
+# 6️⃣ B-Tree
+
+A **B-Tree** is a balanced multi-way search tree.
+
+Properties:
+
+* All leaves at the same level.
+* Keys stored in internal and leaf nodes.
+* Supports efficient insertions and deletions.
+
+Time Complexity:
+
+```text
+Search = O(log n)
+Insert = O(log n)
+Delete = O(log n)
+```
+
+---
+
+# 7️⃣ B+ Tree
+
+A **B+ Tree** is an improved version of the B-Tree.
+
+### Characteristics
+
+* Internal nodes store only keys.
+* Actual records are stored only in leaf nodes.
+* Leaf nodes are linked.
+
+```text
+          40
+        /    \
+      20      60
+     /  \    /  \
+ [10,20] [30,40] [50,60] [70,80]
+```
+
+Leaf nodes:
+
+```text
+10 ↔ 20 ↔ 30 ↔ 40 ↔ 50 ↔ 60 ↔ 70 ↔ 80
+```
+
+### Advantages
+
+* Excellent range queries.
+* Faster sequential access.
+* Widely used in MySQL, PostgreSQL, Oracle, SQL Server.
+
+📌 **Most GATE questions focus on B+ Trees rather than B-Trees.**
+
+---
+
+# 8️⃣ B-Tree vs B+ Tree
+
+| B-Tree                        | B+ Tree              |
+| ----------------------------- | -------------------- |
+| Data in all nodes             | Data only in leaves  |
+| Slower range queries          | Faster range queries |
+| Leaves not necessarily linked | Leaves linked        |
+| Less common                   | Most commonly used   |
+
+---
+
+# 9️⃣ Hashing
+
+Hashing maps a key to a storage location using a **hash function**.
+
+Example:
+
+```text
+Hash(Key) = Key mod 10
+```
+
+Key:
+
+```text
+37
+```
+
+Hash:
+
+```text
+37 mod 10 = 7
+```
+
+Record stored in **Bucket 7**.
+
+---
+
+# 🔟 Hash Collisions
+
+A collision occurs when two keys map to the same bucket.
+
+Example:
+
+```text
+17 mod 10 = 7
+27 mod 10 = 7
+```
+
+Collision Resolution:
+
+* Chaining
+* Open Addressing
+* Linear Probing
+* Quadratic Probing
+* Double Hashing
+
+---
+
+# 1️⃣1️⃣ B+ Tree vs Hashing
+
+| B+ Tree                | Hashing                           |
+| ---------------------- | --------------------------------- |
+| Supports range queries | Excellent for exact-match queries |
+| Ordered                | Unordered                         |
+| O(log n) search        | Average O(1) search               |
+
+📌 **Use B+ Trees for range searches, hashing for equality searches.**
+
+---
+
+# ⚠️ Common GATE Traps
+
+### Trap 1
+
+Primary Index is generally built on the **primary key**, not any random column.
+
+### Trap 2
+
+Sparse indexes require **sorted data**.
+
+### Trap 3
+
+B+ Trees store **records only in leaf nodes**.
+
+### Trap 4
+
+Hashing is **poor for range queries**.
+
+### Trap 5
+
+Dense indexes consume **more storage** than sparse indexes.
+
+---
+
+# 📝 Quick Revision Sheet
+
+| Concept         | Key Point                   |
+| --------------- | --------------------------- |
+| Primary Index   | On primary key              |
+| Secondary Index | On non-primary attribute    |
+| Dense Index     | Entry for every key         |
+| Sparse Index    | Entry for selected keys     |
+| B-Tree          | Balanced search tree        |
+| B+ Tree         | Records only in leaves      |
+| Hashing         | Fast exact lookup           |
+| Collision       | Two keys map to same bucket |
+
+---
+
+# 🧪 Practice – 30 GATE-Level MCQs
+
+### Q1.
+
+The main purpose of indexing is:
+**Answer:** Faster data retrieval.
+
+### Q2.
+
+A Primary Index is built on:
+**Answer:** Primary Key.
+
+### Q3.
+
+A Secondary Index is built on:
+**Answer:** A non-primary attribute.
+
+### Q4.
+
+A Dense Index contains:
+**Answer:** One entry for every search key.
+
+### Q5.
+
+A Sparse Index contains:
+**Answer:** Entries for selected search keys.
+
+### Q6.
+
+Most PYQ-tested topic?
+**Answer:** B+ Trees.
+
+### Q7.
+
+Sparse indexes require:
+**Answer:** Sorted data files.
+
+### Q8.
+
+Which index uses more storage?
+**Answer:** Dense Index.
+
+### Q9.
+
+Which index provides faster lookup?
+**Answer:** Dense Index.
+
+### Q10.
+
+A B-Tree is:
+**Answer:** A balanced search tree.
+
+### Q11.
+
+B+ Trees store records:
+**Answer:** Only in leaf nodes.
+
+### Q12.
+
+Leaf nodes in a B+ Tree are:
+**Answer:** Linked.
+
+### Q13.
+
+Range queries are best supported by:
+**Answer:** B+ Trees.
+
+### Q14.
+
+Hashing is best for:
+**Answer:** Exact-match queries.
+
+### Q15.
+
+Hashing generally does not support:
+**Answer:** Efficient range queries.
+
+### Q16.
+
+A collision occurs when:
+**Answer:** Two keys hash to the same bucket.
+
+### Q17.
+
+Linear Probing is a:
+**Answer:** Collision resolution technique.
+
+### Q18.
+
+Chaining resolves:
+**Answer:** Hash collisions.
+
+### Q19.
+
+Hash function example:
+**Answer:** `Key mod n`.
+
+### Q20.
+
+Average hash lookup complexity:
+**Answer:** O(1).
+
+### Q21.
+
+B+ Tree search complexity:
+**Answer:** O(log n).
+
+### Q22.
+
+Dense Index improves:
+**Answer:** Search speed.
+
+### Q23.
+
+Sparse Index improves:
+**Answer:** Storage efficiency.
+
+### Q24.
+
+Primary indexes are generally:
+**Answer:** Sparse.
+
+### Q25.
+
+Multiple secondary indexes:
+**Answer:** Can exist on one table.
+
+### Q26.
+
+Hash buckets store:
+**Answer:** Records or pointers to records.
+
+### Q27.
+
+Balanced trees maintain:
+**Answer:** Logarithmic search time.
+
+### Q28.
+
+B+ Trees are widely used because:
+**Answer:** They efficiently support both exact and range queries.
+
+### Q29.
+
+Hashing is unsuitable when:
+**Answer:** Ordered traversal is required.
+
+### Q30.
+
+The primary goal of indexing is:
+**Answer:** Reduce search time.
+
+---
+
+# 🏆 100-Day Milestone Summary
+
+## ✅ Subjects Completed
+
+* ✅ Engineering Mathematics
+* ✅ Digital Logic
+* ✅ Computer Organization & Architecture
+* ✅ Programming & Data Structures
+* ✅ Algorithms
+* ✅ Theory of Computation
+* ✅ Compiler Design
+* ✅ Operating Systems
+
+## 🔄 Current Subject
+
+**Database Management Systems**
+
+**DBMS Progress:** **9 / 12 Lessons Completed**
+
+---
+
+# 📊 Overall GATE CSE 2027 Progress
+
+| Subject                 |      Progress |
+| ----------------------- | ------------: |
+| Engineering Mathematics |        ✅ 100% |
+| Digital Logic           |        ✅ 100% |
+| COA                     |        ✅ 100% |
+| Programming & DS        |        ✅ 100% |
+| Algorithms              |        ✅ 100% |
+| Theory of Computation   |        ✅ 100% |
+| Compiler Design         |        ✅ 100% |
+| Operating Systems       |        ✅ 100% |
+| DBMS                    |        🟨 75% |
+| Computer Networks       | ⏳ Not Started |
+| General Aptitude        | ⏳ Not Started |
+
+### 🎯 Overall Syllabus Completion: **~94%**
+
+---
+
+# 📖 Tomorrow (Day 101)
+
+**DBMS – Query Processing, Query Optimization, Cost Estimation, Join Algorithms (Nested Loop, Sort-Merge, Hash Join), Complete DBMS Revision & PYQs**
+
+After this, we'll move on to **Computer Networks**, the final major technical subject before General Aptitude and the comprehensive revision phase.
+
+---
+
+## 🎯 Daily Challenge
+
+A table contains **1,000,000 records**.
+
+1. Which data structure would you choose for:
+
+   * Exact search by **Employee ID**?
+   * Range search for **Salary between ₹50,000 and ₹70,000**?
+2. Explain why **B+ Trees** are preferred over **hashing** for range queries.
+3. A hash table has **10 buckets** and uses the function `h(k) = k mod 10`. Into which buckets will the keys **42, 57, 82, and 97** be placed? Identify any collisions.
+
+💡 **Exam Tip:** Indexing questions often test your ability to choose the **right data structure** for a given workload. Remember:
+
+* **Hashing → Exact-match lookups**
+* **B+ Trees → Exact-match + Range queries**
+* **Dense Index → Faster lookups**
+* **Sparse Index → Lower storage overhead**
