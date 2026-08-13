@@ -1,0 +1,614 @@
+# 📘 Today's Learning — Day 105
+
+**📅 Date:** 12 August 2026
+**🎯 GATE CSE 2027 | Computer Networks**
+**🧠 Topic: Physical Layer — Bandwidth, Bit Rate, Nyquist & Shannon**
+
+Yesterday we covered the **OSI/TCP-IP models**. Today we move into the **Physical Layer**, especially the numerical concepts that frequently appear in GATE.
+
+---
+
+# 1️⃣ What Does the Physical Layer Do?
+
+The Physical Layer is responsible for transmitting **raw bits** over a communication medium.
+
+```text
+101101001011
+      ↓
+Electrical / Optical / Radio Signal
+      ↓
+Transmission Medium
+```
+
+It deals with:
+
+* Signals
+* Bit transmission
+* Data rate
+* Bandwidth
+* Transmission media
+* Encoding/modulation
+
+---
+
+# 2️⃣ Analog vs Digital Signal
+
+### Digital Signal
+
+Has discrete levels.
+
+```text
+1 ────┐    ┌────
+      │    │
+0     └────┘
+```
+
+### Analog Signal
+
+Continuous waveform.
+
+```text
+     /‾\      /‾\
+____/   \____/   \____
+```
+
+---
+
+# 3️⃣ Bit Rate vs Baud Rate
+
+### Bit Rate
+
+Number of **bits transmitted per second**.
+
+Unit:
+
+```text
+bps
+```
+
+Example:
+
+**10 Mbps = 10 million bits/sec**
+
+### Baud Rate
+
+Number of **signal symbols transmitted per second**.
+
+If each symbol represents multiple bits:
+
+[
+Bit\ Rate = Baud\ Rate \times Bits/Symbol
+]
+
+Example:
+
+If:
+
+* Baud rate = 1,000 symbols/sec
+* Each symbol = 4 bits
+
+Then:
+
+[
+Bit\ Rate=1000\times4
+]
+
+[
+\boxed{4000\ bps}
+]
+
+📌 **GATE Trap:** Bit rate and baud rate are **not always the same**.
+
+---
+
+# 4️⃣ Bandwidth
+
+Bandwidth represents the frequency range occupied by a signal/channel.
+
+For an analog channel:
+
+[
+Bandwidth=f_{max}-f_{min}
+]
+
+Example:
+
+If:
+
+[
+f_{max}=10MHz
+]
+
+and:
+
+[
+f_{min}=2MHz
+]
+
+then:
+
+[
+Bandwidth=10-2
+]
+
+[
+\boxed{8MHz}
+]
+
+---
+
+# 5️⃣ Nyquist Bit Rate
+
+For a **noiseless channel**, Nyquist gives the maximum data rate:
+
+[
+\boxed{Bit\ Rate=2B\log_2 L}
+]
+
+where:
+
+* (B) = bandwidth in Hz
+* (L) = number of signal levels
+
+---
+
+# 🧮 6️⃣ Nyquist Example
+
+A noiseless channel has:
+
+* Bandwidth = 3 kHz
+* 4 signal levels
+
+Calculate maximum bit rate.
+
+[
+2B\log_2L
+]
+
+[
+=2(3000)\log_2(4)
+]
+
+Since:
+
+[
+\log_2 4=2
+]
+
+Therefore:
+
+[
+=6000\times2
+]
+
+[
+\boxed{12,000\ bps}
+]
+
+### Key idea:
+
+More signal levels → potentially higher bit rate.
+
+---
+
+# 7️⃣ Shannon Capacity
+
+For a **noisy channel**, Shannon gives the theoretical maximum capacity:
+
+[
+\boxed{C=B\log_2(1+S/N)}
+]
+
+where:
+
+* (C) = channel capacity
+* (B) = bandwidth
+* (S/N) = signal-to-noise ratio
+
+---
+
+# 8️⃣ SNR in Decibels
+
+Signal-to-noise ratio is often given in dB.
+
+[
+\boxed{SNR_{dB}=10\log_{10}(S/N)}
+]
+
+Therefore:
+
+[
+\boxed{S/N=10^{SNR_{dB}/10}}
+]
+
+---
+
+# 🧮 9️⃣ Shannon Example
+
+A channel has:
+
+* Bandwidth = 1 MHz
+* SNR = 30 dB
+
+First convert SNR.
+
+[
+S/N=10^{30/10}
+]
+
+[
+=10^3=1000
+]
+
+Now:
+
+[
+C=10^6\log_2(1+1000)
+]
+
+[
+C=10^6\log_2(1001)
+]
+
+Since:
+
+[
+\log_2(1001)\approx9.97
+]
+
+Therefore:
+
+[
+\boxed{C\approx9.97Mbps}
+]
+
+---
+
+# 🔥 10️⃣ Nyquist vs Shannon
+
+This is extremely important.
+
+| Nyquist                              | Shannon                    |
+| ------------------------------------ | -------------------------- |
+| Noiseless channel                    | Noisy channel              |
+| Depends on bandwidth + signal levels | Depends on bandwidth + SNR |
+| (2B\log_2L)                          | (B\log_2(1+S/N))           |
+
+### Memory trick:
+
+> **Nyquist → Levels**
+
+> **Shannon → Noise**
+
+---
+
+# 1️⃣1️⃣ Maximum Capacity With Both Limits
+
+In practical situations, both limitations can matter.
+
+Calculate:
+
+[
+C_{Nyquist}=2B\log_2L
+]
+
+and:
+
+[
+C_{Shannon}=B\log_2(1+S/N)
+]
+
+The achievable theoretical rate cannot exceed the relevant limiting capacity.
+
+---
+
+# 1️⃣2️⃣ Transmission Media
+
+## Guided Media
+
+Signal travels through a physical path.
+
+### Twisted Pair
+
+Two copper wires twisted together.
+
+Types:
+
+* UTP
+* STP
+
+Cheap and widely used.
+
+---
+
+### Coaxial Cable
+
+Contains:
+
+```text
+Central conductor
+     ↓
+Insulation
+     ↓
+Shield
+```
+
+Better shielding than ordinary twisted pair.
+
+---
+
+### Optical Fiber
+
+Uses **light** for transmission.
+
+Advantages:
+
+* Very high bandwidth
+* Low attenuation
+* Immune to electromagnetic interference
+* Suitable for long distances
+
+---
+
+# 1️⃣3️⃣ Fiber Types
+
+### Single-Mode Fiber
+
+* One propagation mode
+* Long-distance communication
+* Very high bandwidth
+
+### Multimode Fiber
+
+* Multiple propagation modes
+* Generally shorter distances
+* Less expensive in many applications
+
+---
+
+# 1️⃣4️⃣ Wireless Media
+
+Examples:
+
+* Radio waves
+* Microwaves
+* Infrared
+* Satellite communication
+
+No physical cable is required.
+
+---
+
+# 1️⃣5️⃣ Attenuation
+
+Attenuation means **signal strength decreases as it travels**.
+
+```text
+Strong signal ─────────→ Weak signal
+```
+
+Usually measured in **decibels (dB)**.
+
+---
+
+# 1️⃣6️⃣ Noise
+
+Noise is unwanted electrical/electromagnetic disturbance that affects communication.
+
+Examples:
+
+* Thermal noise
+* Crosstalk
+* Impulse noise
+
+Noise reduces reliable communication capacity.
+
+---
+
+# 1️⃣7️⃣ Propagation Speed vs Data Rate
+
+Don't confuse these.
+
+### Data Rate
+
+How many bits can be transmitted per second.
+
+### Propagation Speed
+
+How quickly the signal physically travels through the medium.
+
+For example:
+
+A fiber can have:
+
+```text
+Very high data rate
+```
+
+while the signal still takes some finite time to travel a long distance.
+
+---
+
+# 🧮 1️⃣8️⃣ GATE Numerical
+
+A noiseless channel has bandwidth **4 kHz** and **8 signal levels**.
+
+Find maximum bit rate.
+
+[
+C=2B\log_2L
+]
+
+[
+=2(4000)\log_2(8)
+]
+
+[
+=8000\times3
+]
+
+[
+\boxed{24,000\ bps}
+]
+
+---
+
+# 🧮 1️⃣9️⃣ Another Numerical
+
+A channel has bandwidth **2 MHz** and SNR = **20 dB**.
+
+Convert SNR:
+
+[
+S/N=10^{20/10}=100
+]
+
+Shannon:
+
+[
+C=2\times10^6\log_2(101)
+]
+
+[
+\log_2(101)\approx6.66
+]
+
+Therefore:
+
+[
+\boxed{C\approx13.32Mbps}
+]
+
+---
+
+# ⚠️ GATE Traps
+
+### Trap 1
+
+Higher bandwidth does not automatically mean the exact same increase in capacity when noise and other constraints are involved.
+
+### Trap 2
+
+Nyquist is for a **noiseless** channel.
+
+### Trap 3
+
+Shannon accounts for **noise**.
+
+### Trap 4
+
+Bit rate ≠ baud rate when one symbol carries multiple bits.
+
+### Trap 5
+
+Propagation speed ≠ transmission rate.
+
+---
+
+# 📝 20 Quick GATE Questions
+
+1. Physical Layer transmits → **Bits**
+2. Unit of bit rate → **bps**
+3. Nyquist applies to → **Noiseless channels**
+4. Shannon applies to → **Noisy channels**
+5. Nyquist formula → **(2B\log_2L)**
+6. Shannon formula → **(B\log_2(1+S/N))**
+7. SNR dB formula → **(10\log_{10}(S/N))**
+8. Fiber uses → **Light**
+9. Fiber is immune to → **Electromagnetic interference**
+10. Attenuation means → **Signal strength decreases**
+11. More signal levels can increase → **Nyquist maximum bit rate**
+12. SNR means → **Signal-to-noise ratio**
+13. Baud rate measures → **Symbols/sec**
+14. Bit rate measures → **Bits/sec**
+15. Twisted pair is → **Guided medium**
+16. Radio is → **Unguided medium**
+17. Single-mode fiber is suitable for → **Long-distance communication**
+18. Bandwidth of (f_1) to (f_2) → **(f_2-f_1)**
+19. Propagation speed concerns → **Signal travel**
+20. Transmission rate concerns → **Bits transmitted per second**
+
+---
+
+# 🧠 Today's Master Formula Sheet
+
+### Bandwidth
+
+[
+\boxed{B=f_{max}-f_{min}}
+]
+
+### Transmission Delay
+
+[
+\boxed{d_{trans}=\frac{L}{R}}
+]
+
+### Propagation Delay
+
+[
+\boxed{d_{prop}=\frac{d}{v}}
+]
+
+### Nyquist
+
+[
+\boxed{C=2B\log_2L}
+]
+
+### Shannon
+
+[
+\boxed{C=B\log_2(1+S/N)}
+]
+
+### SNR
+
+[
+\boxed{SNR_{dB}=10\log_{10}(S/N)}
+]
+
+---
+
+# 🎯 Today's Challenge
+
+A **noiseless channel** has a bandwidth of **5 kHz** and **16 signal levels**.
+
+Calculate:
+
+1. Maximum bit rate using Nyquist.
+2. If the channel instead has SNR = **30 dB**, calculate its Shannon capacity.
+3. Which limitation gives the lower theoretical capacity?
+4. Explain why increasing the number of signal levels cannot overcome the Shannon limit indefinitely.
+
+Try these yourself before checking the formulas above.
+
+---
+
+# 📊 GATE CSE 2027 Progress
+
+| Subject                 | Status                 |
+| ----------------------- | ---------------------- |
+| Engineering Mathematics | ✅                      |
+| Digital Logic           | ✅                      |
+| COA                     | ✅                      |
+| Programming & DS        | ✅                      |
+| Algorithms              | ✅                      |
+| TOC                     | ✅                      |
+| Compiler Design         | ✅                      |
+| Operating Systems       | ✅                      |
+| DBMS                    | ✅ **100%**             |
+| **Computer Networks**   | 🟨 **3 / ~12 lessons** |
+| General Aptitude        | ⏳                      |
+
+### 🌐 CN Progress: **~25%**
+
+### 🎯 Overall technical syllabus: **~95%+**
+
+---
+
+## 📖 Next — Day 106
+
+**Computer Networks: Data Link Layer — Framing, Error Detection, CRC, Checksum, Hamming Code & Error Correction.**
+
+This will be a **high-numerical GATE session**, especially **CRC and Hamming Code**.
