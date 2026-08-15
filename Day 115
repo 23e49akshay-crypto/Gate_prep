@@ -1,0 +1,1101 @@
+📘 Today's Learning — Day 107
+
+🎯 GATE CSE 2027 | Computer Networks
+Topic: Flow Control & Error Control — ARQ + Sliding Window
+
+Today is another high-scoring GATE topic. The most important part is understanding Stop-and-Wait, Go-Back-N, Selective Repeat, sequence numbers, and window sizes.
+
+
+---
+
+1️⃣ Flow Control vs Error Control
+
+Don't confuse these two.
+
+Flow Control
+
+Prevents a fast sender from overwhelming a slow receiver.
+
+Fast Sender ─────→ Slow Receiver
+       ↓
+   Flow Control
+
+Error Control
+
+Deals with:
+
+Lost packets
+
+Corrupted packets
+
+Duplicate packets
+
+Missing packets
+
+
+Sender ───X───→ Receiver
+         Error
+
+
+---
+
+2️⃣ ARQ
+
+ARQ = Automatic Repeat reQuest
+
+Basic idea:
+
+Send frame
+    ↓
+Wait for ACK
+    ↓
+ACK received?
+   /    \
+ Yes     No
+ ↓       ↓
+Next    Retransmit
+
+ARQ uses:
+
+ACK
+
+NACK/NAK
+
+Timeout
+
+Retransmission
+
+
+
+---
+
+3️⃣ Stop-and-Wait Protocol
+
+The sender sends one frame and waits for its acknowledgement.
+
+Sender                 Receiver
+
+ Frame 1 ─────────────→
+         ←──────── ACK
+
+ Frame 2 ─────────────→
+         ←──────── ACK
+
+Only after receiving ACK does the sender send the next frame.
+
+
+---
+
+4️⃣ Stop-and-Wait Problem
+
+Suppose:
+
+Transmission time = 1 ms
+Propagation delay = 20 ms
+
+Sender spends most of the time waiting.
+
+Send
+ ↓
+WAIT
+ ↓
+WAIT
+ ↓
+ACK
+ ↓
+Send next
+
+Therefore Stop-and-Wait can have poor link utilization, especially on long-delay links.
+
+
+---
+
+5️⃣ Stop-and-Wait Efficiency
+
+Ignoring ACK transmission time:
+
+\[
+\boxed{
+U=\frac{T_{trans}}{T_{trans}+2T_{prop}}
+}
+\]
+
+where:
+
+\(T_{trans}\) = frame transmission time
+
+\(T_{prop}\) = one-way propagation delay
+
+
+Why 2Tprop?
+
+Sender → Receiver = Tprop
+Receiver → Sender = Tprop
+
+So:
+
+\[
+RTT\approx2T_{prop}
+\]
+
+
+---
+
+🧮 6️⃣ Example
+
+Suppose:
+
+\[
+T_{trans}=10ms
+\]
+
+\[
+T_{prop}=20ms
+\]
+
+Then:
+
+\[
+U=\frac{10}{10+40}
+\]
+
+\[
+\boxed{U=0.2=20\%}
+\]
+
+Only 20% utilization.
+
+
+---
+
+7️⃣ Stop-and-Wait ARQ
+
+Now add error recovery.
+
+Frame 1 ─────→
+        ← ACK
+
+Frame 2 ─────→ X
+        No ACK
+           ↓
+        Timeout
+           ↓
+Frame 2 ─────→
+        ← ACK
+
+If a frame is lost or corrupted:
+
+> Sender retransmits after timeout.
+
+
+
+
+---
+
+8️⃣ Why Sequence Numbers?
+
+Suppose:
+
+Frame 1 → Receiver
+ACK lost
+
+Sender doesn't know that Receiver already received Frame 1.
+
+So sender retransmits Frame 1.
+
+Receiver needs to recognize:
+
+> "This is a duplicate."
+
+
+
+Sequence numbers solve this.
+
+
+---
+
+9️⃣ Stop-and-Wait Sequence Numbers
+
+Usually only two sequence numbers are required:
+
+0
+1
+0
+1
+0
+1
+
+Therefore:
+
+\[
+\boxed{1\text{ sequence bit}}
+\]
+
+is enough for basic Stop-and-Wait ARQ.
+
+
+---
+
+🔥 10️⃣ Go-Back-N ARQ
+
+Go-Back-N allows multiple frames to be transmitted without waiting for individual ACKs.
+
+This is a sliding window protocol.
+
+Example:
+
+Sender:
+
+[1][2][3][4][5]
+
+Several frames can be "in flight."
+
+
+---
+
+1️⃣1️⃣ Go-Back-N Example
+
+Suppose:
+
+1 → ACK
+2 → ACK
+3 → LOST
+4 → received
+5 → received
+
+Receiver detects that Frame 3 is missing.
+
+With Go-Back-N:
+
+Retransmit:
+3
+4
+5
+
+Hence the name:
+
+Go-Back-N
+
+It goes back to the missing frame and retransmits it and subsequent frames.
+
+
+---
+
+1️⃣2️⃣ Cumulative ACK
+
+Go-Back-N generally uses cumulative acknowledgements.
+
+Suppose Receiver successfully received:
+
+1
+2
+3
+
+It can send an ACK indicating that the next expected frame is 4.
+
+This means:
+
+> Frames before 4 have been successfully received in order.
+
+
+
+
+---
+
+1️⃣3️⃣ Go-Back-N Receiver Behavior
+
+Normally, Go-Back-N receiver does not buffer out-of-order frames.
+
+Suppose:
+
+1 ✓
+2 ✓
+3 ✗
+4 ✓
+5 ✓
+
+Frames 4 and 5 are discarded because Frame 3 hasn't arrived.
+
+Then sender retransmits:
+
+3,4,5
+
+
+---
+
+1️⃣4️⃣ Go-Back-N Window Size
+
+If sequence number field has:
+
+\[
+m
+\]
+
+bits, there are:
+
+\[
+2^m
+\]
+
+sequence numbers.
+
+Maximum sender window:
+
+\[
+\boxed{W_s\leq2^m-1}
+\]
+
+This is an extremely important GATE formula.
+
+
+---
+
+🧮 1️⃣5️⃣ Example
+
+Suppose:
+
+\[
+m=3
+\]
+
+Number of sequence numbers:
+
+\[
+2^3=8
+\]
+
+Maximum Go-Back-N window:
+
+\[
+8-1
+\]
+
+\[
+\boxed{7}
+\]
+
+
+---
+
+1️⃣6️⃣ Selective Repeat ARQ
+
+Selective Repeat is more efficient.
+
+Suppose:
+
+1 ✓
+2 ✓
+3 ✗
+4 ✓
+5 ✓
+
+Receiver can buffer 4 and 5.
+
+Only Frame 3 needs retransmission.
+
+3 ─────→
+
+Therefore:
+
+> Selective Repeat retransmits only the missing/damaged frame.
+
+
+
+
+---
+
+1️⃣7️⃣ Selective Repeat vs Go-Back-N
+
+Feature	Go-Back-N	Selective Repeat
+
+Multiple frames	✅	✅
+Cumulative ACK	Usually	Usually individual/selective ACK behavior
+Out-of-order buffering	❌	✅
+Retransmission	Missing + subsequent	Only missing
+Efficiency	Lower	Higher
+Complexity	Lower	Higher
+
+
+
+---
+
+🔥 1️⃣8️⃣ Selective Repeat Window Size
+
+If sequence number field contains \(m\) bits:
+
+\[
+\boxed{W\leq2^{m-1}}
+\]
+
+This prevents ambiguity between old and new frames.
+
+
+---
+
+🧮 1️⃣9️⃣ Example
+
+Suppose:
+
+\[
+m=3
+\]
+
+Then:
+
+\[
+2^3=8
+\]
+
+Maximum Selective Repeat window:
+
+\[
+\frac{8}{2}=4
+\]
+
+Therefore:
+
+\[
+\boxed{W=4}
+\]
+
+
+---
+
+⚡ 20️⃣ The Most Important Comparison
+
+For \(m\) sequence-number bits:
+
+Go-Back-N
+
+\[
+\boxed{W_{max}=2^m-1}
+\]
+
+Selective Repeat
+
+\[
+\boxed{W_{max}=2^{m-1}}
+\]
+
+Memorize these.
+
+
+---
+
+2️⃣1️⃣ Sliding Window
+
+Imagine a window moving across frames:
+
+Before:
+
+[1][2][3] 4 5 6 7
+
+After ACK:
+
+1 2 [3][4][5] 6 7
+
+The window "slides" when acknowledgements arrive.
+
+This allows multiple frames to be transmitted before waiting.
+
+
+---
+
+2️⃣2️⃣ Bandwidth-Delay Product
+
+Very important for network performance.
+
+\[
+\boxed{BDP=Bandwidth\times RTT}
+\]
+
+It represents approximately how much data can be in transit during one RTT.
+
+Example:
+
+Bandwidth:
+
+\[
+10Mbps
+\]
+
+RTT:
+
+\[
+100ms=0.1s
+\]
+
+Then:
+
+\[
+BDP=10\times10^6\times0.1
+\]
+
+\[
+=1,000,000\ bits
+\]
+
+\[
+\boxed{125,000\ bytes}
+\]
+
+
+---
+
+2️⃣3️⃣ Window Size for Full Utilization
+
+To keep the link continuously busy, the sender's window should be large enough to cover the bandwidth-delay product and transmission requirements.
+
+A commonly useful approximation is:
+
+\[
+W \times L \geq Bandwidth\times RTT
+\]
+
+where:
+
+\(W\) = window size in frames
+
+\(L\) = frame size in bits
+
+
+
+---
+
+🧮 2️⃣4️⃣ Example
+
+Bandwidth:
+
+\[
+20Mbps
+\]
+
+RTT:
+
+\[
+50ms
+\]
+
+Frame size:
+
+\[
+10,000bits
+\]
+
+Calculate approximate minimum window.
+
+First:
+
+\[
+BDP=20\times10^6\times0.05
+\]
+
+\[
+=1,000,000bits
+\]
+
+Therefore:
+
+\[
+W\geq\frac{1,000,000}{10,000}
+\]
+
+\[
+\boxed{W\geq100}
+\]
+
+So approximately 100 frames need to be in flight to fully utilize the link under the simplified assumptions.
+
+
+---
+
+2️⃣5️⃣ ACK, NAK & Timeout
+
+ACK
+
+Means:
+
+> Successfully received.
+
+
+
+NAK/NACK
+
+Means:
+
+> Something was wrong; retransmission may be needed.
+
+
+
+Timeout
+
+If ACK doesn't arrive within expected time:
+
+Timeout
+   ↓
+Retransmit
+
+
+---
+
+2️⃣6️⃣ Flow Control
+
+Imagine:
+
+Sender
+1000 Mbps
+    ↓
+Receiver
+100 Mbps
+
+Without flow control:
+
+Receiver buffer
+████████████████
+      FULL
+
+Packets may be dropped.
+
+Flow control prevents the sender from overwhelming the receiver.
+
+
+---
+
+2️⃣7️⃣ Error Control vs Flow Control
+
+Flow Control	Error Control
+
+Prevents receiver overload	Handles transmission errors
+Controls sending rate	Retransmits damaged/lost frames
+Window-based	ACK/NAK/timeout
+Protects receiver	Protects reliability
+
+
+
+---
+
+🧠 2️⃣8️⃣ One Diagram to Remember Everything
+
+ARQ
+                     │
+          ┌──────────┴──────────┐
+          │                     │
+    Stop-and-Wait          Sliding Window
+                                │
+                       ┌────────┴────────┐
+                       │                 │
+                   Go-Back-N       Selective Repeat
+                       │                 │
+                 Retransmit          Retransmit
+                 N frames            only missing
+
+
+---
+
+🔥 2️⃣9️⃣ GATE Formula Sheet
+
+Stop-and-Wait utilization
+
+\[
+\boxed{
+U=\frac{T_{trans}}
+{T_{trans}+2T_{prop}}
+}
+\]
+
+Number of sequence numbers
+
+\[
+\boxed{2^m}
+\]
+
+Go-Back-N
+
+\[
+\boxed{W_{max}=2^m-1}
+\]
+
+Selective Repeat
+
+\[
+\boxed{W_{max}=2^{m-1}}
+\]
+
+Bandwidth-Delay Product
+
+\[
+\boxed{BDP=Bandwidth\times RTT}
+\]
+
+Minimum approximate window for full utilization
+
+\[
+\boxed{W\times L\geq Bandwidth\times RTT}
+\]
+
+
+---
+
+🧪 30 GATE-Style Questions
+
+Q1.
+
+ARQ stands for?
+
+Automatic Repeat reQuest
+
+Q2.
+
+Stop-and-Wait allows how many unacknowledged frames?
+
+One
+
+Q3.
+
+Why are sequence numbers required?
+
+To distinguish new frames from retransmitted duplicates.
+
+Q4.
+
+Go-Back-N retransmits:
+
+The lost frame and subsequent frames in the window.
+
+Q5.
+
+Selective Repeat retransmits:
+
+Only the lost/corrupted frame.
+
+Q6.
+
+Which protocol buffers out-of-order frames?
+
+Selective Repeat
+
+Q7.
+
+Which generally uses cumulative ACK?
+
+Go-Back-N
+
+Q8.
+
+For \(m=3\), number of sequence numbers?
+
+\[
+2^3=8
+\]
+
+Answer: 8
+
+Q9.
+
+GBN maximum window for \(m=3\)?
+
+\[
+8-1=7
+\]
+
+Answer: 7
+
+Q10.
+
+SR maximum window for \(m=3\)?
+
+\[
+2^{2}=4
+\]
+
+Answer: 4
+
+Q11.
+
+If \(m=4\), GBN window?
+
+\[
+2^4-1=15
+\]
+
+Answer: 15
+
+Q12.
+
+If \(m=4\), SR window?
+
+\[
+2^3=8
+\]
+
+Answer: 8
+
+Q13.
+
+Which is more bandwidth efficient after isolated errors?
+
+Selective Repeat
+
+Q14.
+
+Which is simpler?
+
+Go-Back-N
+
+Q15.
+
+What happens when ACK is lost in Stop-and-Wait?
+
+Sender eventually times out and retransmits.
+
+Q16.
+
+Why doesn't the receiver accept the retransmitted frame as new?
+
+Sequence numbers.
+
+Q17.
+
+Flow control protects:
+
+Receiver from being overwhelmed.
+
+Q18.
+
+Error control handles:
+
+Lost/corrupted frames.
+
+Q19.
+
+BDP means:
+
+Bandwidth-Delay Product.
+
+Q20.
+
+BDP approximately represents:
+
+Data that can be in transit.
+
+Q21.
+
+If bandwidth = 10 Mbps and RTT = 1 sec:
+
+\[
+BDP=10Mb
+\]
+
+Answer: 10 Mbits
+
+Q22.
+
+If \(T_{trans}=5ms\), \(T_{prop}=5ms\), utilization?
+
+\[
+\frac{5}{5+10}
+=\frac13
+\]
+
+Answer: 33.33%
+
+Q23.
+
+If \(T_{trans}\gg2T_{prop}\), Stop-and-Wait utilization approaches:
+
+100%
+
+Q24.
+
+If \(T_{trans}\ll2T_{prop}\), utilization becomes:
+
+Low
+
+Q25.
+
+Which protocol is better when retransmission cost is high?
+
+Selective Repeat
+
+Q26.
+
+Which protocol may discard correctly received out-of-order frames?
+
+Go-Back-N
+
+Q27.
+
+Sliding window allows:
+
+Multiple outstanding frames.
+
+Q28.
+
+ACK is used to indicate:
+
+Successful reception.
+
+Q29.
+
+Timeout generally causes:
+
+Retransmission.
+
+Q30.
+
+For \(m\) bits, SR window must be at most:
+
+\[
+\boxed{2^{m-1}}
+\]
+
+
+---
+
+🎯 Today's Numerical Challenge
+
+Problem 1
+
+A Stop-and-Wait protocol has:
+
+Frame transmission time = 2 ms
+
+One-way propagation delay = 18 ms
+
+
+Find utilization.
+
+
+---
+
+Problem 2
+
+A Go-Back-N protocol uses 4-bit sequence numbers.
+
+Find:
+
+1. Number of sequence numbers.
+
+
+2. Maximum sender window.
+
+
+
+
+---
+
+Problem 3
+
+A Selective Repeat protocol uses 5-bit sequence numbers.
+
+Find:
+
+1. Number of sequence numbers.
+
+
+2. Maximum window size.
+
+
+
+
+---
+
+Problem 4
+
+A link has:
+
+Bandwidth = 50 Mbps
+
+RTT = 40 ms
+
+Frame size = 10,000 bits
+
+
+Find the approximate minimum window size needed to keep the link busy.
+
+
+---
+
+🧠 60-Second Revision
+
+Remember this:
+
+Stop-and-Wait
+→ 1 frame at a time
+
+Go-Back-N
+→ Multiple frames
+→ Retransmit lost + following frames
+→ Wmax = 2^m - 1
+
+Selective Repeat
+→ Multiple frames
+→ Buffer out-of-order frames
+→ Retransmit only lost frames
+→ Wmax = 2^(m-1)
+
+BDP
+→ Bandwidth × RTT
+
+🔥 Most important distinction:
+
+> GBN = Go back and retransmit many
+
+
+
+> SR = Select and retransmit only the bad one
+
+
+
+
+---
+
+📊 GATE CSE 2027 Progress
+
+Subject	Status
+
+Engineering Mathematics	✅
+Digital Logic	✅
+COA	✅
+Programming & DS	✅
+Algorithms	✅
+TOC	✅
+Compiler Design	✅
+Operating Systems	✅
+DBMS	✅ 100%
+Computer Networks	🟨 5 / ~12 lessons
+General Aptitude	⏳
+
+
+🌐 CN: ~42% complete
+
+🎯 Overall technical syllabus: ~95%+
+
+
+---
+
+📖 Next — Day 108
+
+MAC Sublayer + Multiple Access Protocols
+
+We'll cover:
+
+Pure ALOHA
+
+Slotted ALOHA
+
+CSMA
+
+CSMA/CD
+
+CSMA/CA
+
+Ethernet
+
+Collision detection
+
+Collision avoidance
+
+ALOHA efficiency numericals
+
+GATE-style problems.
