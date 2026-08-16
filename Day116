@@ -1,0 +1,1025 @@
+# 📘 Today's Learning — Day 108
+
+**🎯 GATE CSE 2027 | Computer Networks**
+**Topic: MAC Sublayer, ALOHA, CSMA, CSMA/CD & CSMA/CA**
+
+Today we'll cover one of the most important **Data Link Layer + Ethernet** topics.
+
+---
+
+# 1️⃣ What is MAC?
+
+**MAC = Media Access Control**
+
+It is a sublayer of the **Data Link Layer**.
+
+Its main job:
+
+> Decide **which device gets access to a shared communication medium**.
+
+Imagine 20 computers connected to the same shared channel.
+
+If everyone transmits simultaneously:
+
+```text id="3d0k5a"
+A ──┐
+B ──┤
+C ──┼── Shared Channel
+D ──┤
+E ──┘
+
+      ↓
+
+   COLLISION 💥
+```
+
+MAC protocols try to control this.
+
+---
+
+# 2️⃣ Two Types of Multiple Access
+
+## Random Access
+
+Devices compete for the channel.
+
+Examples:
+
+* ALOHA
+* CSMA
+* CSMA/CD
+* CSMA/CA
+
+## Controlled Access
+
+Access is coordinated.
+
+Examples:
+
+* Polling
+* Token passing
+
+For GATE, **random access** is especially important.
+
+---
+
+# 3️⃣ ALOHA
+
+ALOHA is one of the simplest random-access protocols.
+
+The basic rule:
+
+> **Transmit whenever you have data.**
+
+No channel sensing is performed.
+
+```text id="e2m9y6"
+Data available?
+      ↓
+Transmit immediately
+      ↓
+Collision?
+  /       \
+No        Yes
+↓          ↓
+Success   Retransmit
+```
+
+---
+
+# 4️⃣ Pure ALOHA
+
+In Pure ALOHA:
+
+> A station can transmit at **any time**.
+
+This makes it simple but inefficient.
+
+---
+
+# 5️⃣ Vulnerable Period of Pure ALOHA
+
+Let:
+
+[
+T
+]
+
+be the frame transmission time.
+
+A frame can collide with another frame that starts:
+
+```text id="d5h3zq"
+T before
+   ↓
+[ Previous Frame ]
+
+      [Your Frame]
+            ↑
+         T after
+```
+
+Therefore:
+
+[
+\boxed{Vulnerable\ Period=2T}
+]
+
+---
+
+# 6️⃣ Pure ALOHA Throughput
+
+The maximum throughput of Pure ALOHA is:
+
+[
+\boxed{S=Ge^{-2G}}
+]
+
+where:
+
+* (G) = offered load
+* (S) = throughput
+
+Maximum occurs at:
+
+[
+G=\frac12
+]
+
+Therefore:
+
+[
+S_{max}=\frac{1}{2e}
+]
+
+[
+\boxed{S_{max}\approx18.4%}
+]
+
+🔥 **Memorize:**
+
+> **Pure ALOHA maximum efficiency ≈ 18.4%**
+
+---
+
+# 7️⃣ Slotted ALOHA
+
+Slotted ALOHA improves Pure ALOHA.
+
+Time is divided into slots.
+
+```text id="7hr9z7"
+| Slot 1 | Slot 2 | Slot 3 | Slot 4 |
+```
+
+A station can transmit **only at the beginning of a slot**.
+
+---
+
+# 8️⃣ Vulnerable Period of Slotted ALOHA
+
+For Slotted ALOHA:
+
+[
+\boxed{Vulnerable\ Period=T}
+]
+
+instead of:
+
+[
+2T
+]
+
+Therefore efficiency improves.
+
+---
+
+# 9️⃣ Slotted ALOHA Throughput
+
+Formula:
+
+[
+\boxed{S=Ge^{-G}}
+]
+
+Maximum occurs at:
+
+[
+G=1
+]
+
+Therefore:
+
+[
+S_{max}=\frac1e
+]
+
+[
+\boxed{S_{max}\approx36.8%}
+]
+
+---
+
+# 🔥 10️⃣ Pure vs Slotted ALOHA
+
+| Feature            |   Pure ALOHA | Slotted ALOHA |
+| ------------------ | -----------: | ------------: |
+| Transmission       |      Anytime | Slot boundary |
+| Vulnerable period  |         (2T) |           (T) |
+| Maximum efficiency |        18.4% |         36.8% |
+| Synchronization    | Not required |      Required |
+
+### Golden memory:
+
+[
+\boxed{18.4% \rightarrow Pure}
+]
+
+[
+\boxed{36.8% \rightarrow Slotted}
+]
+
+---
+
+# 1️⃣1️⃣ CSMA
+
+CSMA = **Carrier Sense Multiple Access**
+
+Unlike ALOHA:
+
+> **Listen before transmitting.**
+
+```text id="xwvz2n"
+Want to transmit?
+       ↓
+Sense channel
+       ↓
+Busy? ───── Yes → Wait
+  |
+ No
+  ↓
+Transmit
+```
+
+This reduces collisions.
+
+---
+
+# 1️⃣2️⃣ Why Can CSMA Still Have Collisions?
+
+Suppose two computers are far apart.
+
+```text id="0zpykn"
+A ---------------------- B
+```
+
+A checks channel → idle.
+
+B checks channel → idle.
+
+Both transmit almost simultaneously.
+
+```text id="yn8w5v"
+A →→→→ 💥 ←←←← B
+```
+
+Why?
+
+Because **propagation delay** means one device may not yet know that another device has started transmitting.
+
+---
+
+# 1️⃣3️⃣ CSMA Persistence Methods
+
+### 1-Persistent CSMA
+
+If channel is idle:
+
+> Transmit immediately.
+
+If busy:
+
+> Keep sensing until idle, then transmit.
+
+---
+
+### Nonpersistent CSMA
+
+If channel is busy:
+
+> Wait a random amount of time, then sense again.
+
+This reduces collision probability.
+
+---
+
+### p-Persistent CSMA
+
+Used in slotted systems.
+
+If channel is idle:
+
+* Transmit with probability (p)
+* Defer with probability (1-p)
+
+---
+
+# 🧠 Quick Comparison
+
+| Protocol      | Main Idea                   |
+| ------------- | --------------------------- |
+| Pure ALOHA    | Transmit anytime            |
+| Slotted ALOHA | Transmit at slot boundaries |
+| CSMA          | Listen before transmitting  |
+
+---
+
+# 1️⃣4️⃣ CSMA/CD
+
+CSMA/CD:
+
+**Carrier Sense Multiple Access with Collision Detection**
+
+Historically associated with shared, half-duplex Ethernet.
+
+Process:
+
+```text id="7gtv7h"
+Sense
+  ↓
+Transmit
+  ↓
+Monitor medium
+  ↓
+Collision?
+ /      \
+No      Yes
+↓        ↓
+Done   Stop + Backoff
+```
+
+---
+
+# 1️⃣5️⃣ Collision Detection
+
+During transmission, the station monitors the medium.
+
+If it detects a collision:
+
+1. Stop transmitting.
+2. Send a jam signal in classic Ethernet.
+3. Wait using a backoff algorithm.
+4. Retransmit.
+
+---
+
+# 1️⃣6️⃣ Binary Exponential Backoff
+
+After a collision, the station waits for a randomly selected number of slot times.
+
+After repeated collisions, the range increases.
+
+For collision number (k), the backoff range is based on:
+
+[
+\boxed{0\leq r<2^k}
+]
+
+subject to the Ethernet-specific maximum backoff exponent.
+
+Example:
+
+### After first collision
+
+Possible:
+
+```text id="ez7v1x"
+0 or 1
+```
+
+### After second collision
+
+Possible:
+
+```text id="6f3dy6"
+0,1,2,3
+```
+
+### After third collision
+
+Possible:
+
+```text id="t2u3hz"
+0–7
+```
+
+---
+
+# 1️⃣7️⃣ CSMA/CD vs CSMA/CA
+
+This is extremely important.
+
+### CSMA/CD
+
+**Collision Detection**
+
+Used historically with:
+
+**Shared Ethernet**
+
+Idea:
+
+> Detect collision after transmission starts.
+
+---
+
+### CSMA/CA
+
+**Collision Avoidance**
+
+Used in:
+
+**Wi-Fi**
+
+Idea:
+
+> Try to avoid collisions before transmission.
+
+---
+
+# 1️⃣8️⃣ Why Wi-Fi Uses Collision Avoidance?
+
+Wireless devices have difficulty detecting collisions while transmitting.
+
+A wireless station may not be able to simultaneously listen reliably while transmitting.
+
+Therefore:
+
+```text id="hjxj5t"
+Ethernet
+→ Collision Detection
+
+Wi-Fi
+→ Collision Avoidance
+```
+
+---
+
+# 1️⃣9️⃣ CSMA/CA Basic Process
+
+```text id="x6g7y2"
+Sense channel
+      ↓
+Idle?
+      ↓
+Wait / Backoff
+      ↓
+Transmit
+      ↓
+ACK?
+   /     \
+Yes      No
+ ↓        ↓
+Done    Retry
+```
+
+Wi-Fi commonly uses acknowledgements at the MAC layer.
+
+---
+
+# 2️⃣0️⃣ Hidden Terminal Problem
+
+Very important in wireless networks.
+
+Imagine:
+
+```text id="c1f1kg"
+A        B        C
+
+A ─────→ B ←───── C
+```
+
+A cannot hear C.
+
+C cannot hear A.
+
+But both communicate with B.
+
+So:
+
+```text id="psp4um"
+A transmits
+C transmits
+
+      ↓
+
+Collision at B 💥
+```
+
+This is the:
+
+# **Hidden Terminal Problem**
+
+---
+
+# 2️⃣1️⃣ RTS/CTS
+
+RTS = **Request To Send**
+
+CTS = **Clear To Send**
+
+Used to help address hidden-terminal situations.
+
+Basic idea:
+
+```text id="b9y4ne"
+A → RTS → B
+A ← CTS ← B
+      ↓
+Others defer
+      ↓
+A transmits
+```
+
+---
+
+# 2️⃣2️⃣ Ethernet
+
+Ethernet is the dominant wired LAN technology.
+
+IEEE standard:
+
+[
+\boxed{802.3}
+]
+
+Wi-Fi:
+
+[
+\boxed{802.11}
+]
+
+🔥 Memorize:
+
+> **802.3 → Ethernet**
+
+> **802.11 → Wi-Fi**
+
+---
+
+# 2️⃣3️⃣ Ethernet Frame
+
+A simplified Ethernet frame contains:
+
+```text id="8r7z4h"
++----------+----------+--------+------+-----+
+| Preamble | Addresses| Type   | Data | FCS |
++----------+----------+--------+------+-----+
+```
+
+Important fields include:
+
+* Destination MAC
+* Source MAC
+* Type/Length
+* Payload
+* FCS
+
+FCS:
+
+**Frame Check Sequence**
+
+Used for error detection.
+
+---
+
+# 2️⃣4️⃣ MAC Address
+
+A MAC address identifies a network interface at the Data Link Layer.
+
+Common Ethernet MAC address representation:
+
+```text id="4d4xiw"
+AA:BB:CC:DD:EE:FF
+```
+
+48 bits =:
+
+[
+\boxed{6\ bytes}
+]
+
+---
+
+# 2️⃣5️⃣ Unicast / Multicast / Broadcast
+
+### Unicast
+
+One sender → one receiver.
+
+```text id="zv0ybb"
+A → B
+```
+
+### Multicast
+
+One sender → selected group.
+
+```text id="8r2v7m"
+A → B,C,D
+```
+
+### Broadcast
+
+One sender → all devices in the broadcast domain.
+
+```text id="qg0r8v"
+A → Everyone
+```
+
+---
+
+# 🧮 2️⃣6️⃣ ALOHA Numerical
+
+For Pure ALOHA:
+
+[
+S=Ge^{-2G}
+]
+
+Suppose:
+
+[
+G=0.5
+]
+
+Then:
+
+[
+S=0.5e^{-1}
+]
+
+[
+S\approx0.184
+]
+
+Therefore:
+
+[
+\boxed{18.4%}
+]
+
+---
+
+# 🧮 2️⃣7️⃣ Slotted ALOHA Numerical
+
+[
+S=Ge^{-G}
+]
+
+At:
+
+[
+G=1
+]
+
+[
+S=e^{-1}
+]
+
+[
+\boxed{36.8%}
+]
+
+---
+
+# 🔥 2️⃣8️⃣ Most Important Formulas
+
+### Pure ALOHA
+
+[
+\boxed{S=Ge^{-2G}}
+]
+
+[
+\boxed{S_{max}=18.4%}
+]
+
+### Slotted ALOHA
+
+[
+\boxed{S=Ge^{-G}}
+]
+
+[
+\boxed{S_{max}=36.8%}
+]
+
+### Ethernet
+
+[
+\boxed{802.3}
+]
+
+### Wi-Fi
+
+[
+\boxed{802.11}
+]
+
+---
+
+# 🧠 2️⃣9️⃣ One-Minute Concept Map
+
+```text id="c8ujqi"
+                 MAC
+                  │
+       ┌──────────┴──────────┐
+       │                     │
+  Random Access        Controlled Access
+       │
+ ┌─────┼─────────┐
+ │     │         │
+ALOHA CSMA    CSMA/CD
+ │     │
+ │     └──────────────→ CSMA/CA
+ │
+ ├── Pure → 18.4%
+ │
+ └── Slotted → 36.8%
+```
+
+---
+
+# 🧪 30 GATE-Style Questions
+
+### Q1.
+
+MAC stands for?
+
+**Media Access Control**
+
+### Q2.
+
+ALOHA performs carrier sensing?
+
+**No**
+
+### Q3.
+
+Pure ALOHA vulnerable period?
+
+**2T**
+
+### Q4.
+
+Slotted ALOHA vulnerable period?
+
+**T**
+
+### Q5.
+
+Maximum Pure ALOHA efficiency?
+
+**18.4%**
+
+### Q6.
+
+Maximum Slotted ALOHA efficiency?
+
+**36.8%**
+
+### Q7.
+
+Which ALOHA requires synchronization?
+
+**Slotted ALOHA**
+
+### Q8.
+
+CSMA means:
+
+**Carrier Sense Multiple Access**
+
+### Q9.
+
+CSMA first:
+
+**Senses the channel**
+
+### Q10.
+
+Why can CSMA still collide?
+
+**Propagation delay**
+
+### Q11.
+
+CSMA/CD means:
+
+**Carrier Sense Multiple Access with Collision Detection**
+
+### Q12.
+
+CSMA/CA means:
+
+**Carrier Sense Multiple Access with Collision Avoidance**
+
+### Q13.
+
+Classic shared Ethernet uses:
+
+**CSMA/CD**
+
+### Q14.
+
+Wi-Fi uses:
+
+**CSMA/CA**
+
+### Q15.
+
+Ethernet IEEE standard:
+
+**802.3**
+
+### Q16.
+
+Wi-Fi IEEE standard:
+
+**802.11**
+
+### Q17.
+
+MAC address length in Ethernet:
+
+**48 bits**
+
+### Q18.
+
+FCS is used for:
+
+**Error detection**
+
+### Q19.
+
+Hidden terminal problem is associated with:
+
+**Wireless networks**
+
+### Q20.
+
+RTS stands for:
+
+**Request To Send**
+
+### Q21.
+
+CTS stands for:
+
+**Clear To Send**
+
+### Q22.
+
+Binary exponential backoff is associated with:
+
+**Collision recovery in Ethernet**
+
+### Q23.
+
+1-persistent CSMA transmits:
+
+**Immediately when the channel becomes idle.**
+
+### Q24.
+
+Nonpersistent CSMA:
+
+**Waits a random time when the channel is busy.**
+
+### Q25.
+
+Pure ALOHA maximum occurs at:
+
+[
+G=0.5
+]
+
+### Q26.
+
+Slotted ALOHA maximum occurs at:
+
+[
+G=1
+]
+
+### Q27.
+
+Broadcast means:
+
+**One → all devices in the relevant broadcast domain.**
+
+### Q28.
+
+Multicast means:
+
+**One → selected group.**
+
+### Q29.
+
+Unicast means:
+
+**One → one.**
+
+### Q30.
+
+Main difference:
+
+**CSMA/CD detects collisions; CSMA/CA attempts to avoid them.**
+
+---
+
+# 🎯 Today's Challenge
+
+### Problem 1
+
+A Pure ALOHA system has:
+
+[
+G=0.25
+]
+
+Calculate throughput:
+
+[
+S=Ge^{-2G}
+]
+
+---
+
+### Problem 2
+
+A Slotted ALOHA system has:
+
+[
+G=0.5
+]
+
+Calculate:
+
+[
+S=Ge^{-G}
+]
+
+---
+
+### Problem 3
+
+Explain why **Slotted ALOHA is exactly twice as efficient as Pure ALOHA at their respective maximum throughputs**.
+
+---
+
+### Problem 4
+
+Explain the **hidden terminal problem** using three wireless nodes A, B and C.
+
+Then explain how **RTS/CTS** helps.
+
+---
+
+# 🧠 Final Revision Card
+
+Memorize these **8 facts today**:
+
+```text id="o8ofzh"
+1. Pure ALOHA → 18.4%
+2. Slotted ALOHA → 36.8%
+3. Pure ALOHA → Vulnerable period 2T
+4. Slotted ALOHA → Vulnerable period T
+5. CSMA → Listen before transmitting
+6. CSMA/CD → Ethernet
+7. CSMA/CA → Wi-Fi
+8. Ethernet → 802.3
+```
+
+---
+
+# 📊 Your Progress
+
+| Subject                 | Status                 |
+| ----------------------- | ---------------------- |
+| Engineering Mathematics | ✅                      |
+| Digital Logic           | ✅                      |
+| COA                     | ✅                      |
+| Programming & DS        | ✅                      |
+| Algorithms              | ✅                      |
+| TOC                     | ✅                      |
+| Compiler Design         | ✅                      |
+| Operating Systems       | ✅                      |
+| DBMS                    | ✅ **100%**             |
+| **Computer Networks**   | 🟨 **6 / ~12 lessons** |
+| General Aptitude        | ⏳                      |
+
+### 🌐 CN Progress: **~50%**
+
+**Next: Day 109 → Network Layer: IPv4, IPv6, IP addressing & subnetting.**
