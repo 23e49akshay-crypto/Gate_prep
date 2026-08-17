@@ -1,0 +1,1150 @@
+📘 Today's Learning — Day 109
+
+🌐 GATE CSE 2027 — Computer Networks
+
+Topic: Network Layer — IPv4, IPv6 & IP Addressing
+
+🔥 Today we enter one of the most important CN sections for GATE: IP addressing and subnetting.
+
+
+---
+
+1️⃣ Network Layer
+
+The Network Layer is Layer 3 of the OSI model.
+
+Its major responsibilities:
+
+Logical addressing
+
+Routing
+
+Packet forwarding
+
+Internetworking
+
+Fragmentation
+
+
+Application
+    ↓
+Transport
+    ↓
+👉 Network Layer
+    ↓
+Data Link
+    ↓
+Physical
+
+Main address:
+
+> IP Address
+
+
+
+Main device:
+
+> Router
+
+
+
+PDU:
+
+> Packet
+
+
+
+
+---
+
+2️⃣ MAC vs IP Address
+
+This is extremely important.
+
+Feature	MAC	IP
+
+Layer	Data Link	Network
+Purpose	Interface identification	Logical addressing
+Example	AA:BB:CC:DD:EE:FF	192.168.1.10
+Used by	Switch	Router
+
+
+Think:
+
+MAC → "Which network interface?"
+IP  → "Which logical destination/network?"
+
+
+---
+
+3️⃣ IPv4
+
+IPv4 uses:
+
+\[
+\boxed{32\ bits}
+\]
+
+Therefore total possible addresses:
+
+\[
+2^{32}
+\]
+
+\[
+=\boxed{4,294,967,296}
+\]
+
+IPv4 is written using dotted decimal notation.
+
+Example:
+
+192.168.1.10
+
+There are four octets:
+
+192 . 168 . 1 . 10
+ ↓     ↓    ↓    ↓
+ 8     8    8    8 bits
+
+Total:
+
+\[
+8+8+8+8=32
+\]
+
+
+---
+
+4️⃣ Binary Representation
+
+Each octet ranges from:
+
+\[
+0\rightarrow255
+\]
+
+because:
+
+\[
+2^8=256
+\]
+
+Example:
+
+192 = 11000000
+168 = 10101000
+1   = 00000001
+10  = 00001010
+
+So:
+
+192.168.1.10
+
+represents:
+
+11000000.10101000.00000001.00001010
+
+
+---
+
+5️⃣ Network Portion + Host Portion
+
+An IP address can be divided into:
+
++----------------------+----------------+
+| Network Portion      | Host Portion   |
++----------------------+----------------+
+
+The subnet mask tells us where the boundary lies.
+
+Example:
+
+IP:
+192.168.1.25
+
+Mask:
+255.255.255.0
+
+Equivalent prefix:
+
+\[
+\boxed{/24}
+\]
+
+Therefore:
+
+Network = 192.168.1
+Host    = 25
+
+
+---
+
+6️⃣ CIDR Notation
+
+CIDR = Classless Inter-Domain Routing
+
+Example:
+
+192.168.1.25/24
+
+/24 means:
+
+> First 24 bits are network bits.
+
+
+
+11111111.11111111.11111111.00000000
+
+That's:
+
+24 network bits
+8 host bits
+
+
+---
+
+7️⃣ Subnet Mask
+
+For /24:
+
+11111111.11111111.11111111.00000000
+
+Convert each octet:
+
+255.255.255.0
+
+Therefore:
+
+\[
+\boxed{/24 = 255.255.255.0}
+\]
+
+
+---
+
+8️⃣ Important CIDR Masks
+
+Memorize this table:
+
+Prefix	Subnet Mask	Host Bits
+
+/8	255.0.0.0	24
+/16	255.255.0.0	16
+/24	255.255.255.0	8
+/25	255.255.255.128	7
+/26	255.255.255.192	6
+/27	255.255.255.224	5
+/28	255.255.255.240	4
+/29	255.255.255.248	3
+/30	255.255.255.252	2
+
+
+
+---
+
+9️⃣ Number of Addresses in a Subnet
+
+If there are \(h\) host bits:
+
+\[
+\boxed{2^h}
+\]
+
+addresses exist.
+
+Example:
+
+/24
+
+Host bits:
+
+\[
+32-24=8
+\]
+
+Therefore:
+
+\[
+2^8=256
+\]
+
+addresses.
+
+
+---
+
+🔥 10️⃣ Usable Host Addresses
+
+For a traditional IPv4 subnet:
+
+\[
+\boxed{2^h-2}
+\]
+
+Why subtract 2?
+
+One address is reserved for:
+
+Network Address
+
+And one for:
+
+Broadcast Address
+
+
+---
+
+🧮 Example
+
+For /24:
+
+\[
+h=8
+\]
+
+Total:
+
+\[
+2^8=256
+\]
+
+Usable hosts:
+
+\[
+256-2
+\]
+
+\[
+\boxed{254}
+\]
+
+
+---
+
+1️⃣1️⃣ Network Address
+
+Suppose:
+
+192.168.1.25/24
+
+Network:
+
+192.168.1.0
+
+Host:
+
+25
+
+Therefore:
+
+\[
+\boxed{Network\ Address=192.168.1.0}
+\]
+
+
+---
+
+1️⃣2️⃣ Broadcast Address
+
+For:
+
+192.168.1.25/24
+
+The last 8 bits are host bits.
+
+Set all host bits to 1:
+
+11111111 = 255
+
+Therefore:
+
+\[
+\boxed{Broadcast=192.168.1.255}
+\]
+
+
+---
+
+1️⃣3️⃣ Usable Range
+
+For:
+
+192.168.1.25/24
+
+Network:
+
+192.168.1.0
+
+Broadcast:
+
+192.168.1.255
+
+Usable:
+
+192.168.1.1
+        ↓
+192.168.1.254
+
+Total:
+
+\[
+\boxed{254}
+\]
+
+
+---
+
+🧠 14️⃣ The Three Addresses You Must Know
+
+Network
+   ↓
+192.168.1.0
+
+Hosts
+   ↓
+192.168.1.1 → 192.168.1.254
+
+Broadcast
+   ↓
+192.168.1.255
+
+
+---
+
+1️⃣5️⃣ IPv4 Address Classes
+
+Traditional classful addressing:
+
+Class	First Octet	Default Mask
+
+A	1–126	/8
+B	128–191	/16
+C	192–223	/24
+D	224–239	Multicast
+E	240–255	Experimental
+
+
+📌 Modern networks primarily use CIDR, not classful addressing.
+
+
+---
+
+1️⃣6️⃣ Private IPv4 Addresses
+
+Important private ranges:
+
+Class A private
+
+10.0.0.0/8
+
+Class B private
+
+172.16.0.0/12
+
+Class C private
+
+192.168.0.0/16
+
+These are commonly used inside private networks.
+
+
+---
+
+1️⃣7️⃣ Special IPv4 Addresses
+
+Loopback
+
+127.0.0.0/8
+
+Most commonly:
+
+127.0.0.1
+
+means:
+
+> This computer itself.
+
+
+
+
+---
+
+Limited Broadcast
+
+255.255.255.255
+
+
+---
+
+1️⃣8️⃣ IPv6
+
+IPv6 was designed to address IPv4's address-space limitations and provide a much larger address space.
+
+IPv6 uses:
+
+\[
+\boxed{128\ bits}
+\]
+
+Total possible addresses:
+
+\[
+\boxed{2^{128}}
+\]
+
+This is enormously larger than IPv4's \(2^{32}\).
+
+
+---
+
+1️⃣9️⃣ IPv6 Notation
+
+IPv6 uses hexadecimal.
+
+Example:
+
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+There are 8 groups.
+
+Each group contains 16 bits.
+
+Therefore:
+
+\[
+8\times16=128
+\]
+
+
+---
+
+2️⃣0️⃣ IPv6 Address Compression
+
+Leading zeros in a group can be removed.
+
+Example:
+
+0db8 → db8
+
+So:
+
+2001:0db8:0000:0000:0000:0000:0000:0001
+
+can become:
+
+2001:db8::1
+
+Important rule:
+
+:: can be used only once in an IPv6 address.
+
+Why?
+
+Because otherwise the number of omitted zero groups would be ambiguous.
+
+
+---
+
+2️⃣1️⃣ IPv4 vs IPv6
+
+Feature	IPv4	IPv6
+
+Address size	32 bits	128 bits
+Notation	Decimal	Hexadecimal
+Example	192.168.1.1	2001:db8::1
+Address space	\(2^{32}\)	\(2^{128}\)
+Broadcast	Supported	No traditional broadcast
+Multicast	Supported	Supported
+
+
+
+---
+
+2️⃣2️⃣ Subnetting
+
+Subnetting means:
+
+> Dividing one larger network into smaller networks.
+
+
+
+Example:
+
+Original:
+
+192.168.1.0/24
+
+We can divide it into smaller subnets.
+
+Suppose we use:
+
+/26
+
+We borrowed:
+
+\[
+26-24=2
+\]
+
+bits.
+
+Therefore number of subnets:
+
+\[
+2^2=4
+\]
+
+
+---
+
+2️⃣3️⃣ /24 Divided into /26
+
+Original:
+
+192.168.1.0/24
+
+becomes four /26 subnets:
+
+1. 192.168.1.0/26
+2. 192.168.1.64/26
+3. 192.168.1.128/26
+4. 192.168.1.192/26
+
+Each contains:
+
+\[
+2^{32-26}=64
+\]
+
+addresses.
+
+Usable:
+
+\[
+64-2=62
+\]
+
+hosts.
+
+
+---
+
+🔥 2️⃣4️⃣ Subnet Block Size
+
+A very useful shortcut:
+
+\[
+\boxed{Block\ Size=256-\text{mask octet}}
+\]
+
+For /26:
+
+Mask:
+
+255.255.255.192
+
+Therefore:
+
+\[
+256-192=64
+\]
+
+Subnets increment by 64:
+
+0
+64
+128
+192
+
+
+---
+
+🧮 2️⃣5️⃣ GATE Example
+
+Given:
+
+192.168.10.77/26
+
+Find:
+
+1. Network address
+
+
+2. Broadcast address
+
+
+3. Usable host range
+
+
+
+Step 1 — Mask
+
+/26:
+
+255.255.255.192
+
+Block size:
+
+\[
+256-192=64
+\]
+
+Subnets:
+
+0–63
+64–127
+128–191
+192–255
+
+77 lies in:
+
+64–127
+
+Therefore:
+
+Network
+
+\[
+\boxed{192.168.10.64}
+\]
+
+Broadcast
+
+\[
+\boxed{192.168.10.127}
+\]
+
+Usable
+
+192.168.10.65
+       ↓
+192.168.10.126
+
+Number of usable hosts:
+
+\[
+64-2
+\]
+
+\[
+\boxed{62}
+\]
+
+
+---
+
+🚨 2️⃣6️⃣ Default Gateway
+
+Suppose your laptop has:
+
+IP:
+192.168.1.10
+
+and wants to communicate with:
+
+8.8.8.8
+
+Since the destination is outside the local network, the packet is sent to the:
+
+Default Gateway
+
+Usually the local router.
+
+Laptop
+192.168.1.10
+     ↓
+Router
+192.168.1.1
+     ↓
+Internet
+
+
+---
+
+2️⃣7️⃣ Routing vs Forwarding
+
+Don't confuse them.
+
+Routing
+
+Determining:
+
+> Which path should the packet take?
+
+
+
+Forwarding
+
+Actually sending the packet through the correct interface.
+
+Routing
+   ↓
+Choose path
+
+Forwarding
+   ↓
+Send packet
+
+
+---
+
+🧠 2️⃣8️⃣ GATE Formula Sheet
+
+IPv4 addresses
+
+\[
+\boxed{2^{32}}
+\]
+
+IPv6 addresses
+
+\[
+\boxed{2^{128}}
+\]
+
+Host bits
+
+\[
+\boxed{32-\text{prefix length}}
+\]
+
+Total addresses
+
+\[
+\boxed{2^{host\ bits}}
+\]
+
+Traditional usable hosts
+
+\[
+\boxed{2^{host\ bits}-2}
+\]
+
+Number of subnets
+
+If \(n\) bits are borrowed:
+
+\[
+\boxed{2^n}
+\]
+
+Block size
+
+\[
+\boxed{256-\text{mask octet}}
+\]
+
+
+---
+
+🧪 29️⃣ GATE-Style Questions
+
+Q1.
+
+IPv4 uses how many bits?
+
+32
+
+Q2.
+
+IPv6 uses how many bits?
+
+128
+
+Q3.
+
+How many IPv4 addresses exist?
+
+\[
+2^{32}
+\]
+
+Q4.
+
+How many IPv6 addresses exist?
+
+\[
+2^{128}
+\]
+
+Q5.
+
+/24 has how many host bits?
+
+\[
+32-24=8
+\]
+
+8
+
+Q6.
+
+/24 has how many total addresses?
+
+\[
+2^8=256
+\]
+
+256
+
+Q7.
+
+Traditional usable hosts in /24?
+
+254
+
+Q8.
+
+/26 host bits?
+
+6
+
+Q9.
+
+/26 total addresses?
+
+\[
+2^6=64
+\]
+
+64
+
+Q10.
+
+/26 usable hosts?
+
+62
+
+Q11.
+
+Subnet mask for /25?
+
+255.255.255.128
+
+Q12.
+
+Subnet mask for /27?
+
+255.255.255.224
+
+Q13.
+
+Subnet mask for /30?
+
+255.255.255.252
+
+Q14.
+
+Private range:
+
+10.0.0.0/8
+
+Q15.
+
+Private range:
+
+172.16.0.0/12
+
+Q16.
+
+Private range:
+
+192.168.0.0/16
+
+Q17.
+
+Loopback address commonly used:
+
+127.0.0.1
+
+Q18.
+
+IPv6 uses:
+
+Hexadecimal notation
+
+Q19.
+
+Can IPv6 use :: twice?
+
+No
+
+Q20.
+
+Does IPv6 use traditional broadcast?
+
+No
+
+
+---
+
+🔥 30️⃣ Today's Challenge
+
+Problem 1
+
+Given:
+
+172.16.35.123/20
+
+Find:
+
+1. Subnet mask
+
+
+2. Network address
+
+
+3. Broadcast address
+
+
+4. Number of usable hosts
+
+
+
+
+---
+
+Problem 2
+
+You have:
+
+192.168.1.0/24
+
+You need 8 equal-sized subnets.
+
+Find:
+
+1. New prefix
+
+
+2. Number of addresses per subnet
+
+
+3. Usable hosts per subnet
+
+
+4. All 8 network addresses
+
+
+
+
+---
+
+Problem 3
+
+Given:
+
+10.10.20.140/27
+
+Find:
+
+1. Network address
+
+
+2. Broadcast address
+
+
+3. Usable host range
+
+
+4. Number of usable hosts
+
+
+
+
+---
+
+🧠 Today's 60-Second Revision
+
+Remember:
+
+IPv4 → 32 bits
+IPv6 → 128 bits
+
+IP → Network Layer
+MAC → Data Link Layer
+
+/24 → 255.255.255.0
+/25 → 255.255.255.128
+/26 → 255.255.255.192
+/27 → 255.255.255.224
+/28 → 255.255.255.240
+/30 → 255.255.255.252
+
+Host bits = 32 - prefix
+
+Addresses = 2^host bits
+
+Traditional usable hosts = 2^host bits - 2
+
+Block size = 256 - mask octet
+
+⭐ Most important mental model:
+
+IP Address
+    ↓
+Network + Host
+    ↓
+Subnet Mask
+    ↓
+Find Network
+    ↓
+Find Broadcast
+    ↓
+Find Host Range
+
+
+---
+
+📊 GATE CSE 2027 Progress
+
+Subject	Status
+
+Engineering Mathematics	✅
+Digital Logic	✅
+COA	✅
+Programming & DS	✅
+Algorithms	✅
+TOC	✅
+Compiler Design	✅
+Operating Systems	✅
+DBMS	✅ 100%
+Computer Networks	🟨 7 / ~12 lessons
+General Aptitude	⏳
+
+
+🌐 CN Progress: ~58%
+
+🎯 Overall technical syllabus: ~95%+
+
+
+---
+
+📖 Next — Day 110
+
+🌐 Routing Algorithms + IPv4 Routing
+
+We'll learn:
+
+Routing tables
+
+Static vs dynamic routing
+
+Distance Vector
+
+Link State
+
+Bellman-Ford
+
+Dijkstra
+
+RIP
+
+OSPF
+
+Routing loops
+
+Count-to-infinity
+
+GATE routing numericals.
