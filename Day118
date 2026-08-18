@@ -1,0 +1,1058 @@
+📘 Today's Learning — Day 110
+
+🌐 GATE CSE 2027 — Computer Networks
+
+Topic: Routing Algorithms + IPv4 Routing
+
+Today is a high-value GATE topic because routing questions often involve algorithms, routing tables, and numerical problems.
+
+
+---
+
+1️⃣ What is Routing?
+
+Suppose computer A wants to send data to computer B.
+
+There may be many possible paths:
+
+R2
+      /  \
+A ─ R1    R4 ─ B
+      \  /
+       R3
+
+The router must decide:
+
+> Which path should the packet take?
+
+
+
+This process is called routing.
+
+
+---
+
+2️⃣ Routing vs Forwarding
+
+Routing
+
+Determines the best path.
+
+Forwarding
+
+Actually sends the packet through the selected interface.
+
+Routing
+   ↓
+"Which path?"
+
+Forwarding
+   ↓
+"Send it this way →"
+
+
+---
+
+3️⃣ Routing Table
+
+A router maintains a routing table.
+
+Example:
+
+Destination	Next Hop	Interface
+
+192.168.1.0/24	Direct	eth0
+10.0.0.0/8	R2	eth1
+172.16.0.0/16	R3	eth2
+
+
+When a packet arrives:
+
+Destination IP
+      ↓
+Routing Table
+      ↓
+Find best match
+      ↓
+Forward packet
+
+
+---
+
+🔥 4️⃣ Longest Prefix Matching
+
+This is very important.
+
+Suppose a router has:
+
+10.0.0.0/8
+10.1.0.0/16
+10.1.1.0/24
+
+Destination:
+
+10.1.1.25
+
+It matches all three.
+
+Which route is selected?
+
+The route with the longest prefix:
+
+\[
+\boxed{10.1.1.0/24}
+\]
+
+Why?
+
+Because /24 is more specific than /16 or /8.
+
+
+---
+
+5️⃣ Example
+
+Routing table:
+
+192.168.0.0/16 → R1
+192.168.10.0/24 → R2
+192.168.10.128/25 → R3
+
+Destination:
+
+192.168.10.150
+
+It matches:
+
+/16
+/24
+/25
+
+Longest prefix:
+
+\[
+\boxed{/25}
+\]
+
+Therefore:
+
+Next hop → R3
+
+
+---
+
+6️⃣ Types of Routing
+
+Static Routing
+
+Routes are manually configured.
+
+Dynamic Routing
+
+Routers automatically learn routes.
+
+Dynamic routing uses routing protocols.
+
+Examples:
+
+RIP
+
+OSPF
+
+BGP
+
+
+
+---
+
+7️⃣ Two Major Routing Approaches
+
+Routing Algorithms
+       │
+ ┌─────┴─────┐
+ │           │
+Distance    Link
+Vector      State
+ │           │
+Bellman-     Dijkstra
+Ford
+
+
+---
+
+8️⃣ Distance Vector Routing
+
+Each router maintains information about:
+
+> Distance to destinations and the next hop.
+
+
+
+A router communicates routing information with its neighbors.
+
+R1 ←→ R2 ←→ R3
+
+R1 doesn't necessarily know the entire network topology.
+
+It learns routes through neighbors.
+
+
+---
+
+9️⃣ Bellman-Ford Algorithm
+
+Distance Vector routing is based on the Bellman-Ford idea.
+
+The basic equation:
+
+\[
+\boxed{
+D_x(y)=\min_v\{c(x,v)+D_v(y)\}
+}
+\]
+
+Meaning:
+
+> Distance from X to Y is the minimum cost of going from X to a neighbor V plus V's distance to Y.
+
+
+
+
+---
+
+🧮 10️⃣ Simple Example
+
+Suppose:
+
+A ──2── B ──3── C
+
+A wants to reach C.
+
+Possible path:
+
+\[
+A\rightarrow B\rightarrow C
+\]
+
+Cost:
+
+\[
+2+3=5
+\]
+
+Therefore:
+
+\[
+\boxed{D_A(C)=5}
+\]
+
+
+---
+
+1️⃣1️⃣ Distance Vector Characteristics
+
+Property	Distance Vector
+
+Algorithm	Bellman-Ford
+Information	Distance + next hop
+Communication	Neighbors
+Knowledge	Partial
+Convergence	Generally slower
+Example	RIP
+
+
+
+---
+
+1️⃣2️⃣ Count-to-Infinity Problem ⭐
+
+One of the most important Distance Vector problems.
+
+Imagine:
+
+A ──1── B ──1── C
+
+Suppose C becomes unreachable.
+
+B learns that C is unreachable.
+
+But A may still tell B:
+
+> "I can reach C through you."
+
+
+
+Then B may think:
+
+> "Okay, I'll reach C through A."
+
+
+
+They keep increasing their distance:
+
+2
+3
+4
+5
+6
+...
+
+This is:
+
+Count-to-Infinity
+
+
+---
+
+1️⃣3️⃣ Why Does It Happen?
+
+Because routers have incomplete knowledge of network topology.
+
+They may incorrectly believe:
+
+A → B → C
+
+while B believes:
+
+B → A → C
+
+This creates a routing loop.
+
+
+---
+
+1️⃣4️⃣ Solutions
+
+Common techniques:
+
+Split Horizon
+
+Don't advertise a route back through the interface from which it was learned.
+
+Poison Reverse
+
+Advertise the route back with an infinite metric.
+
+These help reduce routing loops and count-to-infinity problems.
+
+
+---
+
+🔥 1️⃣5️⃣ Link State Routing
+
+Link State works differently.
+
+Each router learns the network topology by exchanging link-state information.
+
+B
+      / \
+     A---C
+      \ /
+       D
+
+The router builds a topology map.
+
+Then it calculates shortest paths.
+
+
+---
+
+1️⃣6️⃣ Dijkstra's Algorithm
+
+Link State routing commonly uses:
+
+\[
+\boxed{\text{Dijkstra}}
+\]
+
+The router calculates shortest paths from itself to all destinations.
+
+Example:
+
+A ─2─ B
+│     │
+5     1
+│     │
+C ─1─ D
+
+Starting from A:
+
+A = 0
+B = 2
+C = 5
+
+Then explore B:
+
+D = 2+1 = 3
+
+So:
+
+A → B → D
+
+has cost:
+
+\[
+\boxed{3}
+\]
+
+
+---
+
+1️⃣7️⃣ Link State Characteristics
+
+Property	Link State
+
+Algorithm	Dijkstra
+Knowledge	Network topology
+Information	Link states
+Shortest path	Computed locally
+Convergence	Generally faster
+Example	OSPF
+
+
+
+---
+
+1️⃣8️⃣ Distance Vector vs Link State
+
+🔥 Must know
+
+Distance Vector	Link State
+
+Bellman-Ford	Dijkstra
+Talks to neighbors	Distributes link-state information
+Partial network knowledge	Builds topology map
+Generally slower convergence	Generally faster convergence
+Routing loops possible	Less prone to classic DV loops
+RIP	OSPF
+
+
+
+---
+
+1️⃣9️⃣ RIP
+
+RIP = Routing Information Protocol
+
+It is a Distance Vector routing protocol.
+
+Metric:
+
+\[
+\boxed{\text{Hop Count}}
+\]
+
+A route with fewer hops is preferred.
+
+Classic RIP has a maximum usable path length of:
+
+\[
+\boxed{15\ hops}
+\]
+
+A metric of:
+
+\[
+\boxed{16}
+\]
+
+is considered unreachable.
+
+🔥 GATE loves this fact.
+
+
+---
+
+2️⃣0️⃣ OSPF
+
+OSPF = Open Shortest Path First
+
+It is a:
+
+\[
+\boxed{\text{Link State}}
+\]
+
+routing protocol.
+
+It uses:
+
+\[
+\boxed{\text{Dijkstra}}
+\]
+
+and generally uses a cost metric rather than simple hop count.
+
+
+---
+
+2️⃣1️⃣ BGP
+
+BGP = Border Gateway Protocol
+
+It is used for routing between autonomous systems.
+
+It is a:
+
+\[
+\boxed{\text{Path Vector}}
+\]
+
+protocol.
+
+Think:
+
+Inside organization
+       ↓
+OSPF / RIP
+
+Between organizations / ASes
+       ↓
+BGP
+
+
+---
+
+2️⃣2️⃣ Autonomous System
+
+An Autonomous System (AS) is a collection of networks under a common administrative control and routing policy.
+
+Example:
+
+AS 1
+      /    \
+     /      \
+   AS 2 ─── AS 3
+
+BGP handles routing between ASes.
+
+
+---
+
+2️⃣3️⃣ RIP vs OSPF vs BGP
+
+Protocol	Type	Algorithm/Approach	Main Use
+
+RIP	Distance Vector	Bellman-Ford	Interior routing
+OSPF	Link State	Dijkstra	Interior routing
+BGP	Path Vector	Path-vector approach	Inter-AS routing
+
+
+
+---
+
+🧠 2️⃣4️⃣ Routing Metrics
+
+A routing protocol can use metrics such as:
+
+Hop count
+
+Cost
+
+Delay
+
+Bandwidth
+
+Reliability
+
+
+The protocol chooses a route according to its metric/routing rules.
+
+
+---
+
+🔥 2️⃣5️⃣ Shortest Path Example
+
+Consider:
+
+2
+ A -------- B
+ |          |
+4|          |1
+ |          |
+ C -------- D
+       2
+
+Possible A → D paths:
+
+Path 1
+
+\[
+A\rightarrow B\rightarrow D
+\]
+
+Cost:
+
+\[
+2+1=3
+\]
+
+Path 2
+
+\[
+A\rightarrow C\rightarrow D
+\]
+
+Cost:
+
+\[
+4+2=6
+\]
+
+Therefore shortest:
+
+\[
+\boxed{A\rightarrow B\rightarrow D}
+\]
+
+Cost:
+
+\[
+\boxed{3}
+\]
+
+
+---
+
+2️⃣6️⃣ Dijkstra — Important Rule
+
+Dijkstra works correctly when edge weights are:
+
+\[
+\boxed{\geq0}
+\]
+
+It does not handle negative edge weights correctly in the general case.
+
+For GATE:
+
+> Dijkstra → non-negative edge weights
+
+
+
+
+---
+
+2️⃣7️⃣ Routing Loop
+
+A routing loop occurs when packets continuously circulate:
+
+R1 → R2
+↑     ↓
+└─────┘
+
+The packet may never reach the destination.
+
+TTL helps prevent packets from circulating forever.
+
+
+---
+
+2️⃣8️⃣ TTL
+
+TTL = Time To Live
+
+IPv4 contains a TTL field.
+
+Each router forwarding the packet decrements TTL.
+
+TTL = 5
+ ↓
+Router
+ ↓
+TTL = 4
+ ↓
+Router
+ ↓
+TTL = 3
+
+When TTL reaches zero, the packet is discarded.
+
+This prevents indefinite circulation.
+
+
+---
+
+🔥 2️⃣9️⃣ GATE Formula / Fact Sheet
+
+Bellman-Ford
+
+\[
+\boxed{
+D_x(y)=\min_v[c(x,v)+D_v(y)]
+}
+\]
+
+RIP
+
+\[
+\boxed{15\ hops\ maximum\ usable}
+\]
+
+RIP unreachable
+
+\[
+\boxed{16}
+\]
+
+Link State
+
+\[
+\boxed{\text{Dijkstra}}
+\]
+
+Distance Vector
+
+\[
+\boxed{\text{Bellman-Ford}}
+\]
+
+BGP
+
+\[
+\boxed{\text{Path Vector}}
+\]
+
+Longest Prefix Matching
+
+\[
+\boxed{\text{Choose the route with the largest prefix length}}
+\]
+
+
+---
+
+🧪 30 GATE-Style Questions
+
+Q1.
+
+Which layer performs routing?
+
+Network Layer
+
+Q2.
+
+What is the PDU of the Network Layer?
+
+Packet
+
+Q3.
+
+Which device primarily performs IP forwarding?
+
+Router
+
+Q4.
+
+Which routing algorithm is associated with Distance Vector?
+
+Bellman-Ford
+
+Q5.
+
+Which algorithm is associated with Link State?
+
+Dijkstra
+
+Q6.
+
+RIP is:
+
+Distance Vector
+
+Q7.
+
+OSPF is:
+
+Link State
+
+Q8.
+
+BGP is:
+
+Path Vector
+
+Q9.
+
+RIP uses which metric?
+
+Hop count
+
+Q10.
+
+RIP considers metric 16:
+
+Unreachable
+
+Q11.
+
+Maximum usable RIP hop count?
+
+15
+
+Q12.
+
+What causes count-to-infinity?
+
+Routing loops/incomplete topology information in Distance Vector routing.
+
+Q13.
+
+Split Horizon helps prevent:
+
+Routing loops
+
+Q14.
+
+OSPF uses:
+
+Dijkstra
+
+Q15.
+
+BGP operates primarily between:
+
+Autonomous Systems
+
+Q16.
+
+Routing determines:
+
+Best path
+
+Q17.
+
+Forwarding performs:
+
+Actual packet movement to the next hop/interface
+
+Q18.
+
+Longest prefix matching selects:
+
+Most specific matching route
+
+Q19.
+
+Between /16 and /24, which is more specific?
+
+/24
+
+Q20.
+
+If two routes match and one is /25, the other /26:
+
+/26 wins
+
+Q21.
+
+Dijkstra requires:
+
+Non-negative edge weights
+
+Q22.
+
+TTL prevents:
+
+Indefinite packet circulation
+
+Q23.
+
+TTL is decremented by:
+
+Routers during forwarding
+
+Q24.
+
+If TTL becomes zero:
+
+Packet is discarded
+
+Q25.
+
+Distance Vector routers primarily exchange information with:
+
+Neighbors
+
+Q26.
+
+Link State routers build:
+
+A topology/database of the network
+
+Q27.
+
+Which generally converges faster?
+
+Link State
+
+Q28.
+
+Which routing protocol is commonly used within an AS?
+
+OSPF is one example.
+
+Q29.
+
+Which routing protocol is used between ASes?
+
+BGP
+
+Q30.
+
+Longest Prefix Matching is used to select:
+
+The most specific route matching the destination IP.
+
+
+---
+
+🎯 Today's Challenge
+
+Problem 1 — Longest Prefix Match
+
+Routing table:
+
+10.0.0.0/8       → R1
+10.10.0.0/16     → R2
+10.10.10.0/24   → R3
+10.10.10.128/25 → R4
+
+Destination:
+
+10.10.10.150
+
+👉 Which router receives the packet?
+
+
+---
+
+Problem 2 — Shortest Path
+
+A ─2─ B ─3─ D
+│     │
+5     1
+│     │
+C ─2─ D
+
+Find the shortest path from A to D and its cost.
+
+
+---
+
+Problem 3 — Routing Protocol
+
+Identify the protocol:
+
+1. Distance Vector + hop count
+
+
+2. Link State + Dijkstra
+
+
+3. Inter-AS + Path Vector
+
+
+
+
+---
+
+Problem 4 — RIP
+
+A route has:
+
+16 hops
+
+Is it considered reachable by classic RIP?
+
+Why?
+
+
+---
+
+🧠 60-Second Revision
+
+Network Layer
+      ↓
+IP + Routing
+      ↓
+┌───────────────┐
+│ Routing       │
+├───────────────┤
+│ Distance      │
+│ Vector        │
+│ → Bellman-Ford│
+│ → RIP         │
+├───────────────┤
+│ Link State    │
+│ → Dijkstra    │
+│ → OSPF        │
+├───────────────┤
+│ Path Vector   │
+│ → BGP         │
+└───────────────┘
+
+🔥 Remember:
+
+DV → Bellman-Ford → RIP
+
+LS → Dijkstra → OSPF
+
+PV → BGP
+
+Routing table → Longest Prefix Match
+
+TTL → Prevents infinite loops
+
+
+---
+
+📊 GATE CSE 2027 Progress
+
+Subject	Status
+
+Engineering Mathematics	✅
+Digital Logic	✅
+COA	✅
+Programming & DS	✅
+Algorithms	✅
+TOC	✅
+Compiler Design	✅
+Operating Systems	✅
+DBMS	✅ 100%
+Computer Networks	🟨 8 / ~12 lessons
+General Aptitude	⏳
+
+
+🌐 CN Progress: ~67%
+
+🎯 Overall technical syllabus: ~95%+
+
+
+---
+
+📖 Next — Day 111
+
+Transport Layer
+
+We'll cover:
+
+TCP vs UDP
+
+Port numbers
+
+Multiplexing/demultiplexing
+
+TCP 3-way handshake
+
+Connection termination
+
+Sequence & acknowledgement numbers
+
+Flow control
+
+Congestion control
+
+TCP window
+
+GATE numericals.
