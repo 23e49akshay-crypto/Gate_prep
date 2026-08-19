@@ -1,0 +1,1398 @@
+📘 Today's Learning — Day 111
+
+🌐 GATE CSE 2027 — Computer Networks
+
+Topic: Transport Layer — TCP, UDP & 3-Way Handshake
+
+Today we start the Transport Layer, one of the most important CN areas for both GATE + placements.
+
+
+---
+
+1️⃣ Transport Layer
+
+Transport Layer is Layer 4 of the OSI model.
+
+Its main responsibilities:
+
+Process-to-process delivery
+
+Segmentation
+
+Reassembly
+
+Flow control
+
+Error control
+
+Connection management
+
+Multiplexing/demultiplexing
+
+
+Application
+     ↓
+👉 Transport Layer
+     ↓
+Network
+     ↓
+Data Link
+
+Main protocols:
+
+TCP
+UDP
+
+
+---
+
+2️⃣ TCP vs UDP — Most Important
+
+TCP	UDP
+
+Connection-oriented	Connectionless
+Reliable	Unreliable/best-effort
+Ordered delivery	No guarantee of ordering
+Flow control	No TCP-style flow control
+Congestion control	No TCP-style congestion control
+ACKs	No TCP ACK mechanism
+Retransmission	Yes
+More overhead	Less overhead
+Slower generally	Faster/lower overhead generally
+
+
+Easy memory:
+
+> TCP = Trustworthy
+
+
+
+> UDP = Uncomplicated
+
+
+
+
+---
+
+3️⃣ Process-to-Process Communication
+
+Network Layer provides:
+
+> Host-to-host delivery
+
+
+
+Transport Layer provides:
+
+> Process-to-process delivery
+
+
+
+Example:
+
+Computer A
+   ↓
+IP address
+   ↓
+Computer B
+   ↓
+Port number
+   ↓
+Specific application
+
+
+---
+
+4️⃣ Port Number
+
+An IP address identifies a host.
+
+A port number identifies an application/process endpoint on that host.
+
+Example:
+
+192.168.1.10 : 443
+       │        │
+       IP      Port
+
+Common ports:
+
+Protocol	Port
+
+HTTP	80
+HTTPS	443
+FTP	21
+SSH	22
+DNS	53
+
+
+
+---
+
+5️⃣ Socket
+
+A socket endpoint is commonly represented using:
+
+\[
+\boxed{IP\ Address + Port}
+\]
+
+Example:
+
+192.168.1.10:5000
+
+Think:
+
+IP → Which computer?
+Port → Which application?
+
+
+---
+
+6️⃣ Multiplexing
+
+Multiple applications send data through the same transport layer.
+
+Browser ──┐
+          │
+Chat ─────┼──→ Transport Layer
+          │
+Email ────┘
+
+Transport layer adds port numbers.
+
+This is:
+
+Multiplexing
+
+
+---
+
+7️⃣ Demultiplexing
+
+At the receiver:
+
+Transport Layer
+      ↓
+Read port number
+      ↓
+┌─────┼─────┐
+Browser Chat Email
+
+This is:
+
+Demultiplexing
+
+
+---
+
+8️⃣ TCP
+
+TCP = Transmission Control Protocol
+
+TCP provides reliable, connection-oriented communication.
+
+Sender                     Receiver
+
+   SYN ───────────────────→
+       ←──────── SYN + ACK
+   ACK ───────────────────→
+
+       CONNECTION READY
+
+This is the famous:
+
+🔥 TCP 3-Way Handshake
+
+
+---
+
+9️⃣ Why 3-Way Handshake?
+
+The two endpoints need to establish that:
+
+1. The client can send.
+
+
+2. The server can receive and send.
+
+
+3. The client can receive.
+
+
+
+It also synchronizes sequence numbers.
+
+
+---
+
+🔥 1️⃣0️⃣ Three Steps
+
+Step 1 — SYN
+
+Client sends:
+
+SYN
+Seq = x
+
+Meaning:
+
+> "I want to establish a connection, and my initial sequence number is x."
+
+
+
+
+---
+
+Step 2 — SYN + ACK
+
+Server sends:
+
+SYN + ACK
+Seq = y
+Ack = x+1
+
+Meaning:
+
+> "I received your SYN and I'm also establishing my sequence number."
+
+
+
+
+---
+
+Step 3 — ACK
+
+Client sends:
+
+ACK
+Ack = y+1
+
+Now connection is established.
+
+
+---
+
+1️⃣1️⃣ Visualize It
+
+Client                         Server
+
+   SYN, Seq=x
+   ─────────────────────────→
+
+                    SYN+ACK
+                    Seq=y
+                    Ack=x+1
+   ←─────────────────────────
+
+   ACK
+   Ack=y+1
+   ─────────────────────────→
+
+       CONNECTION ESTABLISHED
+
+🔥 Memorize this diagram.
+
+
+---
+
+1️⃣2️⃣ Sequence Number
+
+TCP assigns sequence numbers to transmitted data.
+
+Suppose:
+
+Seq = 1000
+
+and sender transmits:
+
+500 bytes
+
+Then the next sequence number is:
+
+\[
+1000+500=1500
+\]
+
+
+---
+
+1️⃣3️⃣ ACK Number
+
+TCP acknowledgement number usually indicates:
+
+> The next byte expected.
+
+
+
+Example:
+
+Sender sends:
+
+Seq = 1000
+Data = 500 bytes
+
+Receiver expects:
+
+\[
+1000+500=1500
+\]
+
+Therefore:
+
+\[
+\boxed{ACK=1500}
+\]
+
+
+---
+
+🧮 1️⃣4️⃣ GATE Numerical
+
+Sender sends:
+
+Seq = 2000
+Data = 1000 bytes
+
+What ACK should receiver send?
+
+\[
+2000+1000
+\]
+
+\[
+\boxed{ACK=3000}
+\]
+
+
+---
+
+1️⃣5️⃣ SYN Consumes One Sequence Number
+
+This is a classic GATE trap.
+
+Suppose:
+
+SYN:
+Seq = 500
+
+The SYN consumes one sequence number.
+
+Therefore server responds:
+
+ACK = 501
+
+Similarly, FIN also consumes one sequence number.
+
+
+---
+
+🔥 1️⃣6️⃣ TCP Connection Termination
+
+TCP normally uses a 4-step termination because each direction is closed independently.
+
+Client                         Server
+
+   FIN ──────────────────────→
+        ←──────────────── ACK
+
+        ←──────────────── FIN
+   ACK ──────────────────────→
+
+So:
+
+> Connection establishment → 3-way handshake
+
+
+
+> Connection termination → commonly 4 segments
+
+
+
+
+---
+
+1️⃣7️⃣ Why 4 Steps?
+
+TCP is full duplex.
+
+Each direction can be closed independently.
+
+Client → Server
+   CLOSE
+
+Server → Client
+   CLOSE
+
+Hence the FIN/ACK exchange in each direction.
+
+
+---
+
+1️⃣8️⃣ TCP Reliability
+
+TCP provides reliability using:
+
+Sequence numbers
+
+ACKs
+
+Retransmission
+
+Checksum
+
+Timers
+
+
+Data
+ ↓
+Sequence Number
+ ↓
+Receiver
+ ↓
+ACK
+ ↓
+Missing?
+ ↓
+Retransmit
+
+
+---
+
+1️⃣9️⃣ What Happens if a Segment is Lost?
+
+Suppose:
+
+Segment 1 ✓
+Segment 2 ✗
+Segment 3 ✓
+
+Receiver may repeatedly ACK the last contiguous data it has received.
+
+These are called:
+
+Duplicate ACKs
+
+Multiple duplicate ACKs can trigger fast retransmission.
+
+
+---
+
+2️⃣0️⃣ Flow Control
+
+Flow control prevents:
+
+> Fast sender from overwhelming slow receiver.
+
+
+
+TCP uses a receive window.
+
+Sender
+████████████████
+       ↓
+Receiver buffer
+██████
+
+Receiver advertises how much data it can accept.
+
+
+---
+
+2️⃣1️⃣ Congestion Control
+
+Don't confuse this with flow control.
+
+Flow Control
+
+Protects:
+
+> Receiver
+
+
+
+Congestion Control
+
+Protects:
+
+> Network
+
+
+
+Flow Control
+Sender → Receiver
+          ↑
+     Receiver capacity
+
+Congestion Control
+Sender → Network → Receiver
+          ↑
+      Network capacity
+
+
+---
+
+🔥 2️⃣2️⃣ TCP Congestion Control
+
+Important concepts:
+
+Slow Start
+
+Congestion Avoidance
+
+Fast Retransmit
+
+Fast Recovery
+
+
+The main variables include:
+
+\[
+cwnd
+\]
+
+and:
+
+\[
+ssthresh
+\]
+
+
+---
+
+2️⃣3️⃣ Congestion Window
+
+cwnd = congestion window.
+
+It limits the amount of unacknowledged data the sender can have in the network.
+
+Simplified:
+
+\[
+\boxed{Sending\ Window\approx\min(cwnd,rwnd)}
+\]
+
+where:
+
+cwnd = congestion window
+
+rwnd = receiver advertised window
+
+
+
+---
+
+2️⃣4️⃣ Slow Start
+
+Despite its name, Slow Start can grow quickly.
+
+Initially:
+
+cwnd = 1 MSS
+
+Then approximately doubles every RTT:
+
+1
+2
+4
+8
+16
+32
+...
+
+This is approximately exponential growth.
+
+
+---
+
+2️⃣5️⃣ Congestion Avoidance
+
+After reaching the slow-start threshold:
+
+cwnd
+ ↓
+grows approximately linearly
+
+Simplified:
+
+Slow Start:
+1 → 2 → 4 → 8 → 16
+
+Congestion Avoidance:
+16 → 17 → 18 → 19 ...
+
+
+---
+
+2️⃣6️⃣ Timeout
+
+If TCP experiences a timeout:
+
+> Congestion is assumed to be severe.
+
+
+
+Typically:
+
+cwnd → reduced significantly
+ssthresh → adjusted
+
+Classic TCP Reno-style behavior commonly sets:
+
+\[
+ssthresh=\frac{cwnd}{2}
+\]
+
+and resets cwnd to a small value after timeout.
+
+
+---
+
+2️⃣7️⃣ Triple Duplicate ACK
+
+Suppose sender receives:
+
+ACK 5000
+ACK 5000
+ACK 5000
+
+Repeated ACKs indicate that a segment may be missing.
+
+TCP can perform:
+
+Fast Retransmit
+
+without waiting for timeout.
+
+
+---
+
+2️⃣8️⃣ TCP Checksum
+
+TCP includes a checksum to detect corruption.
+
+If the received segment fails checksum verification:
+
+> It is discarded.
+
+
+
+TCP reliability then relies on retransmission mechanisms to recover.
+
+
+---
+
+2️⃣9️⃣ UDP
+
+UDP = User Datagram Protocol
+
+UDP is:
+
+Connectionless
+
+Low overhead
+
+No built-in retransmission
+
+No TCP-style congestion control
+
+No guaranteed ordering
+
+
+UDP is useful when:
+
+> Low latency is more important than guaranteed delivery.
+
+
+
+Examples include:
+
+DNS queries
+
+Real-time applications
+
+Streaming
+
+Online gaming
+
+VoIP
+
+
+
+---
+
+3️⃣0️⃣ TCP vs UDP — Real Example
+
+File download
+
+You don't want:
+
+File:
+HELLO
+HELO
+
+Missing/corrupted data is unacceptable.
+
+So:
+
+\[
+\boxed{TCP}
+\]
+
+Real-time voice
+
+If one packet is late:
+
+HELLO
+HE__O
+
+Retransmitting an old packet may be less useful than continuing with newer audio.
+
+So:
+
+\[
+\boxed{UDP}
+\]
+
+
+---
+
+🧠 3️⃣1️⃣ TCP Header — Important Fields
+
+Simplified:
+
++-------------------------------+
+| Source Port | Destination Port|
++-------------------------------+
+| Sequence Number              |
++-------------------------------+
+| Acknowledgement Number       |
++-------------------------------+
+| Flags | Window               |
++-------------------------------+
+| Checksum | Urgent Pointer    |
++-------------------------------+
+
+Important fields:
+
+Source Port
+
+Destination Port
+
+Sequence Number
+
+ACK Number
+
+Flags
+
+Window Size
+
+Checksum
+
+
+
+---
+
+3️⃣2️⃣ Important TCP Flags
+
+SYN
+
+Synchronize / establish connection.
+
+ACK
+
+Acknowledgement.
+
+FIN
+
+Finish / gracefully close connection.
+
+RST
+
+Reset connection.
+
+PSH
+
+Push data to application.
+
+URG
+
+Urgent pointer field significant.
+
+
+---
+
+🔥 3️⃣3️⃣ TCP Segment vs UDP Datagram
+
+TCP data unit:
+
+> TCP Segment
+
+
+
+UDP data unit:
+
+> UDP Datagram
+
+
+
+
+---
+
+3️⃣4️⃣ UDP Header
+
+UDP has a very small header.
+
+Important fields:
+
++-----------------------------+
+| Source Port | Dest. Port    |
++-----------------------------+
+| Length      | Checksum      |
++-----------------------------+
+
+UDP header size:
+
+\[
+\boxed{8\ bytes}
+\]
+
+
+---
+
+3️⃣5️⃣ TCP Minimum Header Size
+
+TCP minimum header:
+
+\[
+\boxed{20\ bytes}
+\]
+
+TCP can be larger because options may be included.
+
+
+---
+
+🔥 3️⃣6️⃣ UDP vs TCP Header
+
+TCP	UDP
+
+Minimum 20 bytes	8 bytes
+More fields	Fewer fields
+Sequence number	No sequence number
+ACK number	No ACK number
+Window	No TCP receive window
+Flags	No TCP flags
+
+
+
+---
+
+🧮 3️⃣7️⃣ Important Numerical
+
+Suppose:
+
+TCP Seq = 5000
+Data = 2000 bytes
+
+Next expected ACK:
+
+\[
+5000+2000
+\]
+
+\[
+\boxed{7000}
+\]
+
+
+---
+
+🧮 3️⃣8️⃣ SYN Numerical
+
+Client sends:
+
+SYN
+Seq = 100
+
+Server replies:
+
+SYN+ACK
+Seq = 500
+Ack = ?
+
+SYN consumes one sequence number.
+
+Therefore:
+
+\[
+\boxed{Ack=101}
+\]
+
+Client's ACK to server:
+
+\[
+500+1=501
+\]
+
+So:
+
+Client → ACK = 501
+
+
+---
+
+🔥 3️⃣9️⃣ Important GATE Facts
+
+TCP
+
+Connection-oriented
+Reliable
+Ordered
+Flow control
+Congestion control
+Retransmission
+
+UDP
+
+Connectionless
+Low overhead
+No guaranteed delivery
+No guaranteed ordering
+
+Handshake
+
+SYN
+ ↓
+SYN + ACK
+ ↓
+ACK
+
+Termination
+
+FIN
+ACK
+FIN
+ACK
+
+Sequence number
+
+> Counts bytes, not segments.
+
+
+
+SYN/FIN
+
+> Each consumes one sequence number.
+
+
+
+
+---
+
+🧪 40 GATE-Style Questions
+
+Q1.
+
+Transport Layer is which OSI layer?
+
+Layer 4
+
+Q2.
+
+TCP is:
+
+Connection-oriented
+
+Q3.
+
+UDP is:
+
+Connectionless
+
+Q4.
+
+TCP provides reliable delivery?
+
+Yes
+
+Q5.
+
+UDP guarantees delivery?
+
+No
+
+Q6.
+
+TCP uses sequence numbers?
+
+Yes
+
+Q7.
+
+TCP ACK number represents:
+
+Next byte expected.
+
+Q8.
+
+TCP connection establishment requires:
+
+3-way handshake
+
+Q9.
+
+First handshake message?
+
+SYN
+
+Q10.
+
+Second?
+
+SYN + ACK
+
+Q11.
+
+Third?
+
+ACK
+
+Q12.
+
+SYN consumes a sequence number?
+
+Yes
+
+Q13.
+
+FIN consumes a sequence number?
+
+Yes
+
+Q14.
+
+TCP minimum header size?
+
+20 bytes
+
+Q15.
+
+UDP header size?
+
+8 bytes
+
+Q16.
+
+Flow control protects:
+
+Receiver
+
+Q17.
+
+Congestion control protects:
+
+Network
+
+Q18.
+
+TCP variable representing congestion window:
+
+cwnd
+
+Q19.
+
+TCP variable representing slow-start threshold:
+
+ssthresh
+
+Q20.
+
+Slow start initially grows:
+
+Exponentially/approximately doubles each RTT
+
+Q21.
+
+Congestion avoidance grows:
+
+Approximately linearly
+
+Q22.
+
+Three duplicate ACKs can trigger:
+
+Fast retransmit
+
+Q23.
+
+Timeout indicates:
+
+Likely severe congestion/loss
+
+Q24.
+
+Which has lower overhead?
+
+UDP
+
+Q25.
+
+Which is suitable for DNS?
+
+UDP commonly, though DNS can also use TCP when needed.
+
+Q26.
+
+Which is suitable for reliable file transfer?
+
+TCP
+
+Q27.
+
+Which protocol has a checksum?
+
+Both TCP and UDP
+
+Q28.
+
+Port number identifies:
+
+Application/process endpoint
+
+Q29.
+
+IP + Port identifies:
+
+Socket endpoint
+
+Q30.
+
+Multiple applications sharing transport layer is:
+
+Multiplexing
+
+Q31.
+
+Delivering received data to correct application is:
+
+Demultiplexing
+
+Q32.
+
+TCP data unit:
+
+Segment
+
+Q33.
+
+UDP data unit:
+
+Datagram
+
+Q34.
+
+Common HTTPS port:
+
+443
+
+Q35.
+
+Common HTTP port:
+
+80
+
+Q36.
+
+Common DNS port:
+
+53
+
+Q37.
+
+Common SSH port:
+
+22
+
+Q38.
+
+If Seq=1000 and 500 bytes are sent, next ACK?
+
+\[
+\boxed{1500}
+\]
+
+Q39.
+
+If SYN has Seq=200, ACK should be:
+
+\[
+\boxed{201}
+\]
+
+Q40.
+
+TCP vs UDP main exam distinction?
+
+TCP provides connection-oriented reliable byte-stream delivery; UDP provides connectionless best-effort datagram delivery.
+
+
+---
+
+🎯 Today's Challenge
+
+Problem 1
+
+A TCP segment has:
+
+Sequence Number = 5000
+Data = 1500 bytes
+
+Find the acknowledgement number expected by the receiver.
+
+
+---
+
+Problem 2
+
+A client sends:
+
+SYN, Seq = 1000
+
+Server sends:
+
+SYN + ACK, Seq = 5000
+
+Find:
+
+1. Server's ACK number.
+
+
+2. Client's ACK number.
+
+
+
+
+---
+
+Problem 3
+
+Explain the difference between:
+
+Flow Control vs Congestion Control
+
+in exactly 2–3 points each.
+
+
+---
+
+Problem 4
+
+A TCP connection has:
+
+\[
+cwnd=32 MSS
+\]
+
+A timeout occurs.
+
+Using the simplified TCP Reno rule:
+
+\[
+ssthresh=\frac{cwnd}{2}
+\]
+
+What is the new ssthresh?
+
+
+---
+
+🧠 60-Second Revision
+
+Transport Layer
+      ↓
+ ┌────┴────┐
+ TCP       UDP
+ │          │
+Reliable   Fast/low overhead
+Connection Connectionless
+oriented
+ │
+ ├── Sequence Number
+ ├── ACK
+ ├── Retransmission
+ ├── Flow Control
+ └── Congestion Control
+
+🔥 Memorize:
+
+TCP → Reliable + Connection-oriented
+
+UDP → Connectionless + Low overhead
+
+3-way handshake → SYN → SYN-ACK → ACK
+
+TCP ACK → next byte expected
+
+SYN/FIN → consume 1 sequence number
+
+Flow control → receiver
+
+Congestion control → network
+
+TCP min header → 20 bytes
+
+UDP header → 8 bytes
+
+
+---
+
+📊 GATE CSE 2027 Progress
+
+Subject	Status
+
+Engineering Mathematics	✅
+Digital Logic	✅
+COA	✅
+Programming & DS	✅
+Algorithms	✅
+TOC	✅
+Compiler Design	✅
+Operating Systems	✅
+DBMS	✅ 100%
+Computer Networks	🟨 9 / ~12 lessons
+General Aptitude	⏳
+
+
+🌐 CN Progress: ~75%
+
+🎯 Overall technical syllabus: ~95%+
+
+
+---
+
+📖 Next — Day 112
+
+🚀 TCP Flow Control + Congestion Control — Deep Dive
+
+We'll do:
+
+Sliding window in TCP
+
+Receive window
+
+cwnd
+
+ssthresh
+
+Slow Start numericals
+
+Congestion Avoidance
+
+Fast Retransmit
+
+Fast Recovery
+
+TCP throughput
+
+GATE-level TCP numericals
