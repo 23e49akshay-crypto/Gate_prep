@@ -1,0 +1,1197 @@
+📘 Today's Learning — Day 112
+
+🌐 GATE CSE 2027 — Computer Networks
+
+Topic: TCP Flow Control & Congestion Control
+
+Today we go deeper into TCP, especially the numerical part. These concepts are very important for GATE + software engineering interviews.
+
+
+---
+
+1️⃣ Flow Control vs Congestion Control
+
+This is the first thing you must remember.
+
+Flow Control	Congestion Control
+
+Protects the receiver	Protects the network
+Prevents receiver buffer overflow	Prevents network overload
+Uses rwnd	Uses cwnd
+Receiver controls it	Sender/network behavior determines it
+
+
+Easy memory:
+
+> Flow → Receiver
+
+
+
+> Congestion → Network
+
+
+
+
+---
+
+2️⃣ TCP Sending Window
+
+TCP sender is limited by two windows:
+
+Receiver Window
+
+\[
+rwnd
+\]
+
+Tells how much data the receiver can accept.
+
+Congestion Window
+
+\[
+cwnd
+\]
+
+Tells how much data the network is currently allowed to handle.
+
+Therefore:
+
+\[
+\boxed{Effective\ Window=\min(rwnd,cwnd)}
+\]
+
+🔥 Very important GATE formula.
+
+
+---
+
+3️⃣ Example
+
+Suppose:
+
+\[
+rwnd=20KB
+\]
+
+\[
+cwnd=50KB
+\]
+
+Then:
+
+\[
+Effective\ Window=\min(20,50)
+\]
+
+\[
+\boxed{20KB}
+\]
+
+The sender cannot send 50 KB because the receiver can only accept 20 KB.
+
+
+---
+
+4️⃣ What is cwnd?
+
+cwnd = Congestion Window
+
+It controls the amount of unacknowledged data TCP can have in the network.
+
+Sender
+  ↓
+[cwnd amount of data]
+  ↓
+Network
+  ↓
+Receiver
+
+If congestion is detected:
+
+cwnd ↓
+
+If the network appears healthy:
+
+cwnd ↑
+
+
+---
+
+5️⃣ Slow Start
+
+Despite its name, Slow Start initially grows very quickly.
+
+Simplified behavior:
+
+1
+ ↓
+2
+ ↓
+4
+ ↓
+8
+ ↓
+16
+ ↓
+32
+
+Approximately:
+
+\[
+\boxed{cwnd\ doubles\ every\ RTT}
+\]
+
+This is exponential growth.
+
+
+---
+
+6️⃣ Why Does TCP Use Slow Start?
+
+If a sender immediately sends a huge amount of traffic:
+
+Sender
+████████████████████
+        ↓
+     Network
+        ↓
+   💥 Congestion
+
+Instead TCP gradually probes the network capacity.
+
+
+---
+
+7️⃣ Slow-Start Threshold
+
+TCP uses:
+
+\[
+\boxed{ssthresh}
+\]
+
+When:
+
+\[
+cwnd < ssthresh
+\]
+
+TCP is generally in:
+
+Slow Start
+
+When:
+
+\[
+cwnd \geq ssthresh
+\]
+
+TCP enters:
+
+Congestion Avoidance
+
+
+---
+
+8️⃣ Congestion Avoidance
+
+After reaching ssthresh, growth becomes approximately linear.
+
+Example:
+
+Slow Start:
+
+1 → 2 → 4 → 8 → 16
+
+Congestion Avoidance:
+
+16 → 17 → 18 → 19 → 20
+
+So:
+
+Slow Start
+→ Exponential
+
+Congestion Avoidance
+→ Linear
+
+
+---
+
+🧮 9️⃣ GATE Numerical
+
+Suppose:
+
+\[
+cwnd=1MSS
+\]
+
+and:
+
+\[
+ssthresh=16MSS
+\]
+
+Assuming one RTT per growth step:
+
+RTT 1 → 1
+RTT 2 → 2
+RTT 3 → 4
+RTT 4 → 8
+RTT 5 → 16
+
+After reaching the threshold, congestion avoidance begins.
+
+Then approximately:
+
+16 → 17 → 18 → 19 ...
+
+
+---
+
+🔥 10️⃣ What Happens During a Timeout?
+
+A timeout indicates serious packet loss/congestion.
+
+In simplified TCP Reno behavior:
+
+\[
+\boxed{ssthresh=\frac{cwnd}{2}}
+\]
+
+Then:
+
+\[
+\boxed{cwnd\rightarrow1MSS}
+\]
+
+and TCP starts slow start again.
+
+
+---
+
+🧮 11️⃣ Example
+
+Before timeout:
+
+\[
+cwnd=32MSS
+\]
+
+Then:
+
+\[
+ssthresh=\frac{32}{2}
+\]
+
+\[
+\boxed{16MSS}
+\]
+
+And:
+
+\[
+\boxed{cwnd=1MSS}
+\]
+
+Then:
+
+1 → 2 → 4 → 8 → 16
+
+and congestion avoidance begins.
+
+
+---
+
+1️⃣2️⃣ Triple Duplicate ACK
+
+Suppose the sender receives:
+
+ACK 5000
+ACK 5000
+ACK 5000
+
+The repeated ACK suggests:
+
+> A segment may be missing.
+
+
+
+TCP can perform:
+
+Fast Retransmit
+
+without waiting for a timeout.
+
+
+---
+
+1️⃣3️⃣ Fast Retransmit
+
+Segment 1 ✓
+Segment 2 ✗
+Segment 3 ✓
+Segment 4 ✓
+
+Receiver:
+ACK
+ACK
+ACK
+      ↓
+Triple Duplicate ACK
+      ↓
+Fast Retransmit Segment 2
+
+This is faster than waiting for timeout.
+
+
+---
+
+1️⃣4️⃣ Fast Recovery
+
+In TCP Reno-style behavior, after triple duplicate ACKs, TCP reduces the congestion window but does not restart from the smallest window in the same way as a timeout.
+
+Simplified:
+
+\[
+ssthresh=\frac{cwnd}{2}
+\]
+
+Then TCP enters a recovery phase and eventually continues congestion avoidance.
+
+Important distinction:
+
+Timeout
+→ Severe congestion
+→ cwnd becomes very small
+
+Triple duplicate ACK
+→ Loss detected, but network is still transmitting
+→ Less drastic response
+
+
+---
+
+🔥 1️⃣5️⃣ Timeout vs Triple Duplicate ACK
+
+Timeout	3 Duplicate ACKs
+
+More severe indication	Less severe indication
+ssthresh reduced	ssthresh reduced
+cwnd drops significantly	cwnd reduced less drastically in Reno
+Slow Start restarts	Fast Recovery used
+
+
+
+---
+
+1️⃣6️⃣ TCP Reno Congestion Graph
+
+A simplified graph looks like:
+
+cwnd
+ ↑
+ |                 /\
+ |                /  \
+ |       /       /    \
+ |      /       /      \
+ |     /       /        \
+ |    /       /          \
+ |   /       /            \
+ |__/_______/              \__
+ +------------------------------→ Time
+     SS      CA
+
+Slow Start:
+
+Exponential ↑
+
+Congestion Avoidance:
+
+Linear ↑
+
+Loss:
+
+cwnd ↓
+
+
+---
+
+1️⃣7️⃣ MSS
+
+MSS = Maximum Segment Size
+
+It is the maximum amount of TCP payload data in one segment, excluding the TCP header.
+
+Example:
+
+If:
+
+\[
+MSS=1000\ bytes
+\]
+
+and:
+
+\[
+cwnd=10MSS
+\]
+
+then approximately:
+
+\[
+10\times1000
+\]
+
+\[
+\boxed{10,000\ bytes}
+\]
+
+can be outstanding under the congestion window limit.
+
+
+---
+
+1️⃣8️⃣ TCP Window in Bytes
+
+Suppose:
+
+\[
+cwnd=20KB
+\]
+
+and:
+
+\[
+rwnd=15KB
+\]
+
+Then:
+
+\[
+Effective\ Window=\min(20,15)
+\]
+
+\[
+\boxed{15KB}
+\]
+
+
+---
+
+1️⃣9️⃣ Bandwidth-Delay Product
+
+To utilize a high-speed network efficiently:
+
+\[
+\boxed{BDP=Bandwidth\times RTT}
+\]
+
+It represents the amount of data that can be "in flight" during the RTT.
+
+
+---
+
+🧮 20️⃣ Example
+
+Bandwidth:
+
+\[
+100Mbps
+\]
+
+RTT:
+
+\[
+50ms
+\]
+
+Convert:
+
+\[
+50ms=0.05s
+\]
+
+Therefore:
+
+\[
+BDP=100\times10^6\times0.05
+\]
+
+\[
+=5,000,000\ bits
+\]
+
+Convert to bytes:
+
+\[
+\frac{5,000,000}{8}
+\]
+
+\[
+\boxed{625,000\ bytes}
+\]
+
+So approximately 625 KB of data needs to be in flight to fully utilize the link, ignoring other constraints.
+
+
+---
+
+2️⃣1️⃣ TCP Throughput Approximation
+
+A commonly used simplified TCP throughput relationship is:
+
+\[
+\boxed{
+Throughput\approx\frac{Window\ Size}{RTT}
+}
+\]
+
+Example:
+
+Window:
+
+\[
+1MB
+\]
+
+RTT:
+
+\[
+100ms=0.1s
+\]
+
+Then:
+
+\[
+Throughput\approx\frac{1MB}{0.1}
+\]
+
+\[
+\boxed{10MB/s}
+\]
+
+
+---
+
+2️⃣2️⃣ ACK Clocking
+
+TCP uses acknowledgements to regulate transmission.
+
+Conceptually:
+
+Data →→→
+       ↓
+     ACK
+       ↓
+More Data →→→
+
+ACKs provide feedback to the sender about how data is progressing through the network.
+
+This contributes to TCP's congestion-control behavior.
+
+
+---
+
+2️⃣3️⃣ Receiver Advertised Window
+
+Suppose the receiver sends:
+
+\[
+rwnd=8000\ bytes
+\]
+
+The sender must respect that receiver capacity.
+
+If:
+
+\[
+cwnd=12000
+\]
+
+then:
+
+\[
+Effective=\min(12000,8000)
+\]
+
+\[
+\boxed{8000\ bytes}
+\]
+
+
+---
+
+2️⃣4️⃣ Zero Window
+
+Suppose receiver buffer becomes full:
+
+\[
+rwnd=0
+\]
+
+The sender cannot continue normal data transmission.
+
+Receiver Buffer
+████████████████
+      FULL
+       ↓
+rwnd = 0
+
+TCP has mechanisms such as window probes to discover when the receiver becomes able to accept more data.
+
+
+---
+
+2️⃣5️⃣ Flow Control Example
+
+Imagine:
+
+Sender → 1 Gbps
+Receiver → 100 Mbps
+
+Without flow control:
+
+Receiver Buffer
+████████████████
+      OVERFLOW
+
+TCP's receive window prevents the sender from overwhelming the receiver.
+
+
+---
+
+2️⃣6️⃣ Congestion Control Example
+
+Suppose:
+
+Sender
+  ↓
+Router
+  ↓
+Router
+  ↓
+Receiver
+
+The receiver might be capable of accepting data quickly.
+
+But an intermediate router could become overloaded:
+
+Router Queue
+████████████████
+       FULL
+
+TCP congestion control reduces sending rate.
+
+
+---
+
+🔥 2️⃣7️⃣ The Three Important Windows
+
+Remember:
+
+rwnd
+ ↓
+Receiver capacity
+
+cwnd
+ ↓
+Network capacity
+
+Effective Window
+ ↓
+min(rwnd, cwnd)
+
+
+---
+
+🧠 2️⃣8️⃣ Congestion-Control Phases
+
+TCP
+              │
+       ┌──────┴──────┐
+       │             │
+  Slow Start   Congestion Avoidance
+       │             │
+ Exponential       Linear
+       │             │
+       └──────┬──────┘
+              │
+           Packet Loss
+              │
+        ┌─────┴─────┐
+        │           │
+     Timeout    3 Dup ACK
+        │           │
+     Strong      Fast
+     reaction   recovery
+
+
+---
+
+🧮 2️⃣9️⃣ GATE Numerical
+
+Suppose:
+
+\[
+rwnd=40KB
+\]
+
+\[
+cwnd=25KB
+\]
+
+Find effective sending window.
+
+\[
+\min(40,25)
+\]
+
+\[
+\boxed{25KB}
+\]
+
+
+---
+
+🧮 30️⃣ Another Numerical
+
+Suppose:
+
+\[
+cwnd=64MSS
+\]
+
+A timeout occurs.
+
+Using simplified TCP Reno behavior:
+
+\[
+ssthresh=\frac{64}{2}
+\]
+
+\[
+\boxed{32MSS}
+\]
+
+and:
+
+\[
+\boxed{cwnd=1MSS}
+\]
+
+
+---
+
+🧮 31️⃣ Another Numerical
+
+A TCP connection has:
+
+Bandwidth = 40 Mbps
+
+RTT = 100 ms
+
+
+Calculate BDP.
+
+\[
+BDP=40\times10^6\times0.1
+\]
+
+\[
+=4,000,000bits
+\]
+
+Convert:
+
+\[
+\frac{4,000,000}{8}
+\]
+
+\[
+\boxed{500,000bytes}
+\]
+
+
+---
+
+🧮 32️⃣ Slow Start Question
+
+Suppose:
+
+\[
+cwnd=1MSS
+\]
+
+and:
+
+\[
+ssthresh=8MSS
+\]
+
+Approximate progression:
+
+1
+2
+4
+8
+
+After reaching 8 MSS:
+
+8
+9
+10
+11
+...
+
+So:
+
+> Before threshold → exponential
+
+
+
+> After threshold → approximately linear
+
+
+
+
+---
+
+🔥 3️⃣3️⃣ Very Important GATE Trap
+
+Don't say:
+
+> "TCP always doubles cwnd every RTT."
+
+
+
+❌ Not always.
+
+It approximately doubles during slow start, subject to implementation details and ACK behavior.
+
+During congestion avoidance:
+
+\[
+\boxed{\text{approximately linear growth}}
+\]
+
+
+---
+
+3️⃣4️⃣ Another Important Trap
+
+Don't confuse:
+
+rwnd
+
+with:
+
+cwnd
+
+rwnd
+
+Receiver tells sender:
+
+> "How much more can I receive?"
+
+
+
+cwnd
+
+TCP sender's congestion control says:
+
+> "How much should I allow into the network?"
+
+
+
+
+---
+
+🧪 35 GATE-Style Questions
+
+Q1.
+
+Flow control protects:
+
+Receiver
+
+Q2.
+
+Congestion control protects:
+
+Network
+
+Q3.
+
+rwnd represents:
+
+Receiver advertised window
+
+Q4.
+
+cwnd represents:
+
+Congestion window
+
+Q5.
+
+Effective sending window:
+
+\[
+\boxed{\min(rwnd,cwnd)}
+\]
+
+Q6.
+
+Slow Start growth:
+
+Approximately exponential
+
+Q7.
+
+Congestion Avoidance growth:
+
+Approximately linear
+
+Q8.
+
+What happens after timeout?
+
+cwnd is drastically reduced and slow start restarts in classic TCP Reno behavior.
+
+Q9.
+
+What can three duplicate ACKs trigger?
+
+Fast Retransmit
+
+Q10.
+
+What follows fast retransmit in TCP Reno?
+
+Fast Recovery
+
+Q11.
+
+If cwnd = 40 MSS and timeout occurs, new ssthresh?
+
+\[
+40/2=20
+\]
+
+20 MSS
+
+Q12.
+
+If rwnd = 10 KB and cwnd = 20 KB?
+
+Effective window = 10 KB
+
+Q13.
+
+If rwnd = 50 KB and cwnd = 30 KB?
+
+Effective window = 30 KB
+
+Q14.
+
+BDP formula?
+
+\[
+\boxed{Bandwidth\times RTT}
+\]
+
+Q15.
+
+BDP represents approximately:
+
+Data in flight needed to fill the path.
+
+Q16.
+
+MSS stands for:
+
+Maximum Segment Size
+
+Q17.
+
+MSS excludes:
+
+TCP header
+
+Q18.
+
+Does timeout indicate more severe congestion than triple duplicate ACK?
+
+Generally yes.
+
+Q19.
+
+Does TCP congestion control protect the receiver?
+
+No — primarily the network.
+
+Q20.
+
+Does TCP flow control protect the network?
+
+No — primarily the receiver.
+
+
+---
+
+🎯 Today's Challenge
+
+🔢 Problem 1
+
+A TCP connection has:
+
+\[
+rwnd=80KB
+\]
+
+\[
+cwnd=50KB
+\]
+
+Find the maximum amount of unacknowledged data that can normally be in flight.
+
+
+---
+
+🔢 Problem 2
+
+A TCP connection has:
+
+\[
+cwnd=64MSS
+\]
+
+A timeout occurs.
+
+Using the simplified Reno model, find:
+
+1. New ssthresh
+
+
+2. New cwnd
+
+
+3. What phase does TCP enter?
+
+
+
+
+---
+
+🔢 Problem 3
+
+A network has:
+
+Bandwidth = 200 Mbps
+
+RTT = 20 ms
+
+
+Calculate the BDP in:
+
+1. bits
+
+
+2. bytes
+
+
+3. approximately KB
+
+
+
+
+---
+
+🔢 Problem 4
+
+Starting with:
+
+\[
+cwnd=1MSS
+\]
+
+and:
+
+\[
+ssthresh=16MSS
+\]
+
+Show the approximate cwnd progression until it reaches the threshold and then give the next 4 congestion-avoidance values.
+
+
+---
+
+🧠 60-Second Revision
+
+FLOW CONTROL
+→ Protect receiver
+→ rwnd
+
+CONGESTION CONTROL
+→ Protect network
+→ cwnd
+
+EFFECTIVE WINDOW
+→ min(rwnd, cwnd)
+
+SLOW START
+→ Exponential growth
+
+CONGESTION AVOIDANCE
+→ Linear growth
+
+TIMEOUT
+→ Strong congestion response
+→ cwnd drastically reduced
+
+3 DUP ACK
+→ Fast Retransmit
+→ Fast Recovery
+
+BDP
+→ Bandwidth × RTT
+
+⭐ The formula to never forget:
+
+\[
+\boxed{Effective\ Window=\min(rwnd,cwnd)}
+\]
+
+
+---
+
+📊 GATE CSE 2027 Progress
+
+Subject	Status
+
+Engineering Mathematics	✅
+Digital Logic	✅
+COA	✅
+Programming & DS	✅
+Algorithms	✅
+TOC	✅
+Compiler Design	✅
+Operating Systems	✅
+DBMS	✅ 100%
+Computer Networks	🟨 10 / ~12 lessons
+General Aptitude	⏳
+
+
+🌐 CN Progress: ~83%
+
+🎯 Overall technical syllabus: ~95%+
+
+
+---
+
+📖 Next — Day 113
+
+🌐 Application Layer + DNS + HTTP/HTTPS + FTP + Email
+
+We'll cover the major application-layer protocols and GATE questions on DNS resolution, HTTP connections, status codes, caching, cookies, and email protocols (SMTP/POP3/IMAP).
