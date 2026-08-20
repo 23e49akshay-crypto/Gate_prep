@@ -1,0 +1,1096 @@
+📘 Today's Learning — Day 113
+
+🌐 GATE CSE 2027 — Computer Networks
+
+Topic: Application Layer — DNS, HTTP/HTTPS & Email Protocols
+
+Today we cover the major Application Layer protocols. These are comparatively easy marks once you understand the purpose and protocol differences.
+
+
+---
+
+1️⃣ Application Layer
+
+Application Layer is Layer 7 of the OSI model.
+
+It provides network services to applications.
+
+Important protocols:
+
+Application Layer
+       │
+ ┌─────┼─────────┐
+ │     │         │
+DNS   HTTP     SMTP
+      HTTPS    POP3
+               IMAP
+      FTP
+
+
+---
+
+2️⃣ DNS ⭐
+
+DNS = Domain Name System
+
+Its main purpose:
+
+> Convert a domain name into an IP address.
+
+
+
+Example:
+
+www.example.com
+       ↓
+      DNS
+       ↓
+93.184.216.34
+
+Humans prefer:
+
+google.com
+
+Computers communicate using:
+
+IP address
+
+DNS connects the two.
+
+
+---
+
+3️⃣ Why DNS?
+
+Without DNS, users would have to remember IP addresses.
+
+Instead of:
+
+142.250.x.x
+
+we use:
+
+google.com
+
+
+---
+
+4️⃣ DNS Hierarchy
+
+DNS is hierarchical.
+
+Root
+                     │
+             ┌───────┴───────┐
+            .com            .org
+             │
+          example
+             │
+          www
+
+Hierarchy:
+
+Root
+ ↓
+TLD
+ ↓
+Authoritative domain/server
+ ↓
+Host
+
+
+---
+
+5️⃣ Root DNS Servers
+
+At the top is the:
+
+Root
+
+Root servers help direct queries toward the appropriate Top-Level Domain (TLD) servers.
+
+Examples of TLDs:
+
+.com
+.org
+.net
+.in
+.edu
+
+
+---
+
+6️⃣ DNS Query
+
+Suppose you enter:
+
+www.example.com
+
+A simplified resolution process:
+
+Client
+  ↓
+Local DNS Resolver
+  ↓
+Root
+  ↓
+.com TLD
+  ↓
+Authoritative DNS
+  ↓
+IP address
+
+Then the IP is returned to the client.
+
+
+---
+
+7️⃣ DNS Resolver
+
+Your computer typically sends the DNS query to a recursive resolver.
+
+The resolver performs the necessary lookups and returns the answer.
+
+Client
+   ↓
+Recursive Resolver
+   ↓
+DNS hierarchy
+   ↓
+Answer
+   ↓
+Client
+
+
+---
+
+8️⃣ DNS Caching ⭐
+
+DNS results are cached.
+
+Why?
+
+To avoid repeating the complete lookup every time.
+
+First request:
+Client → DNS hierarchy → IP
+
+Later:
+Client → Cache → IP
+
+This reduces:
+
+DNS traffic
+
+Lookup latency
+
+
+
+---
+
+9️⃣ TTL in DNS
+
+DNS records have a TTL (Time To Live) value.
+
+It determines how long a resolver may cache the record.
+
+Example:
+
+TTL = 3600 seconds
+
+means the cached record can normally be retained for about:
+
+\[
+\boxed{1\ hour}
+\]
+
+
+---
+
+🔥 10️⃣ DNS Record Types
+
+Important records:
+
+A
+
+Maps hostname → IPv4 address.
+
+example.com → 192.0.2.1
+
+AAAA
+
+Maps hostname → IPv6 address.
+
+CNAME
+
+Alias for another hostname.
+
+MX
+
+Specifies mail exchange servers.
+
+NS
+
+Specifies authoritative name servers.
+
+TXT
+
+Stores text information, commonly used for verification and email-related policies.
+
+
+---
+
+🧠 11️⃣ DNS Record Table
+
+Record	Purpose
+
+A	IPv4 address
+AAAA	IPv6 address
+CNAME	Alias
+MX	Mail server
+NS	Name server
+TXT	Text/policy information
+
+
+🔥 A → IPv4
+
+🔥 AAAA → IPv6
+
+🔥 MX → Mail
+
+
+---
+
+1️⃣2️⃣ DNS Port
+
+DNS commonly uses:
+
+\[
+\boxed{53}
+\]
+
+DNS queries commonly use:
+
+UDP port 53
+
+TCP port 53 is also used in situations such as zone transfers and responses requiring TCP.
+
+📌 Don't memorize "DNS = only UDP." That's a common trap.
+
+
+---
+
+1️⃣3️⃣ HTTP
+
+HTTP = HyperText Transfer Protocol
+
+It is used for communication between:
+
+Web Browser ↔ Web Server
+
+Example:
+
+Browser
+   ↓ HTTP request
+Web Server
+   ↓ HTTP response
+Browser
+
+
+---
+
+1️⃣4️⃣ HTTP is Stateless
+
+HTTP is fundamentally:
+
+\[
+\boxed{Stateless}
+\]
+
+Meaning:
+
+> Each request is treated independently at the protocol level; HTTP itself does not inherently remember previous requests.
+
+
+
+Example:
+
+Request 1 → Response
+Request 2 → Response
+Request 3 → Response
+
+State can be maintained using mechanisms such as:
+
+Cookies
+
+Sessions
+
+Tokens
+
+
+
+---
+
+1️⃣5️⃣ HTTP Request
+
+A simplified HTTP request:
+
+GET /index.html HTTP/1.1
+Host: example.com
+
+Important components:
+
+Method
+
+URI/path
+
+Version
+
+Headers
+
+Optional body
+
+
+
+---
+
+1️⃣6️⃣ HTTP Methods
+
+GET
+
+Retrieve a resource.
+
+POST
+
+Submit data / request creation or processing.
+
+PUT
+
+Create or replace a resource representation.
+
+PATCH
+
+Partially modify a resource.
+
+DELETE
+
+Delete a resource.
+
+
+---
+
+🔥 1️⃣7️⃣ HTTP Status Codes
+
+Three major categories:
+
+1xx → Informational
+2xx → Success
+3xx → Redirection
+4xx → Client error
+5xx → Server error
+
+Important examples:
+
+Code	Meaning
+
+200	OK
+201	Created
+301	Moved Permanently
+302	Found / temporary redirection
+304	Not Modified
+400	Bad Request
+401	Unauthorized
+403	Forbidden
+404	Not Found
+500	Internal Server Error
+503	Service Unavailable
+
+
+
+---
+
+🧠 1️⃣8️⃣ 401 vs 403
+
+Common interview question.
+
+401
+
+Authentication is required or failed.
+
+Think:
+
+> Who are you?
+
+
+
+403
+
+Server understood the request but refuses to authorize it.
+
+Think:
+
+> I know who you are, but you can't access this.
+
+
+
+
+---
+
+1️⃣9️⃣ HTTP vs HTTPS
+
+HTTPS means:
+
+> HTTP over TLS
+
+
+
+HTTPS provides:
+
+Encryption
+
+Authentication
+
+Integrity protection
+
+
+HTTP
+ ↓
+TLS
+ ↓
+TCP
+ ↓
+IP
+
+For HTTP/1.1 and HTTP/2, HTTPS commonly uses TCP + TLS.
+
+HTTP/3 uses QUIC over UDP.
+
+
+---
+
+🔥 2️⃣0️⃣ HTTP Default Ports
+
+HTTP:
+
+\[
+\boxed{80}
+\]
+
+HTTPS:
+
+\[
+\boxed{443}
+\]
+
+
+---
+
+2️⃣1️⃣ HTTP Persistent Connection
+
+Older HTTP/1.0 commonly opened a separate TCP connection per request unless keep-alive mechanisms were used.
+
+HTTP/1.1 introduced persistent connections as the default behavior.
+
+TCP Connection
+ ↓
+Request 1 → Response
+ ↓
+Request 2 → Response
+ ↓
+Request 3 → Response
+
+This reduces connection-establishment overhead.
+
+
+---
+
+2️⃣2️⃣ HTTP/1.1 vs HTTP/2 vs HTTP/3
+
+HTTP/1.1
+
+Persistent connections
+
+Text-based message format
+
+Requests can be pipelined, though browser usage largely moved away from it
+
+
+HTTP/2
+
+Important features:
+
+Binary framing
+
+Multiplexing
+
+Header compression
+
+Multiple streams over one connection
+
+
+HTTP/3
+
+Uses:
+
+\[
+\boxed{QUIC}
+\]
+
+which runs over:
+
+\[
+\boxed{UDP}
+\]
+
+
+---
+
+2️⃣3️⃣ FTP
+
+FTP = File Transfer Protocol
+
+Used for:
+
+> File transfer between client and server.
+
+
+
+FTP uses separate control and data connections.
+
+Common control connection:
+
+\[
+\boxed{TCP\ 21}
+\]
+
+Traditional active-mode data connection:
+
+\[
+\boxed{TCP\ 20}
+\]
+
+📌 Passive FTP uses dynamically negotiated server ports for data.
+
+
+---
+
+2️⃣4️⃣ Email Architecture
+
+Important protocols:
+
+SMTP
+POP3
+IMAP
+
+They don't all do the same thing.
+
+
+---
+
+2️⃣5️⃣ SMTP
+
+SMTP = Simple Mail Transfer Protocol
+
+Used primarily for:
+
+> Sending/relaying email
+
+
+
+Sender
+  ↓
+SMTP
+  ↓
+Mail Server
+
+Common ports:
+
+TCP 25 → server-to-server SMTP
+
+TCP 587 → message submission
+
+TCP 465 → commonly used for SMTP over implicit TLS
+
+
+For GATE, remember the basic role:
+
+\[
+\boxed{SMTP=Send}
+\]
+
+
+---
+
+2️⃣6️⃣ POP3
+
+POP3 = Post Office Protocol version 3
+
+Used for:
+
+> Retrieving email from a mail server.
+
+
+
+Common port:
+
+\[
+\boxed{110}
+\]
+
+POP3S commonly uses:
+
+\[
+\boxed{995}
+\]
+
+POP3 traditionally focuses on downloading messages to the client and can be configured to remove them from the server.
+
+
+---
+
+2️⃣7️⃣ IMAP
+
+IMAP = Internet Message Access Protocol
+
+Used for:
+
+> Managing and accessing email while keeping mail synchronized with the server.
+
+
+
+Common port:
+
+\[
+\boxed{143}
+\]
+
+IMAPS:
+
+\[
+\boxed{993}
+\]
+
+
+---
+
+🔥 2️⃣8️⃣ SMTP vs POP3 vs IMAP
+
+Protocol	Main Function
+
+SMTP	Send/relay email
+POP3	Retrieve/download email
+IMAP	Access/synchronize email on server
+
+
+Memory:
+
+> SMTP → Send
+
+
+
+> POP3 → Pick up
+
+
+
+> IMAP → Internet mailbox synchronization
+
+
+
+
+---
+
+2️⃣9️⃣ FTP vs HTTP
+
+FTP	HTTP
+
+File transfer	Web resources
+Separate control/data connections	Request/response
+TCP	TCP traditionally; HTTP/3 uses QUIC/UDP
+Port 21 control	Port 80
+Stateful control connection	Stateless application protocol
+
+
+
+---
+
+🧠 3️⃣0️⃣ Application Protocol Cheat Sheet
+
+HTTP   → Web
+HTTPS  → Secure Web
+DNS    → Name resolution
+FTP    → File transfer
+SMTP   → Send email
+POP3   → Retrieve email
+IMAP   → Access/sync email
+
+
+---
+
+🔥 3️⃣1️⃣ Port Number Cheat Sheet
+
+Service	Port
+
+FTP control	21
+SSH	22
+SMTP	25
+DNS	53
+HTTP	80
+POP3	110
+IMAP	143
+HTTPS	443
+
+
+Also remember:
+
+SMTP submission → 587
+IMAPS → 993
+POP3S → 995
+
+
+---
+
+🧪 3️⃣2️⃣ GATE-Style Questions
+
+Q1.
+
+DNS translates:
+
+Domain names → IP addresses
+
+Q2.
+
+DNS operates at:
+
+Application Layer
+
+Q3.
+
+DNS commonly uses port:
+
+53
+
+Q4.
+
+A record maps to:
+
+IPv4
+
+Q5.
+
+AAAA maps to:
+
+IPv6
+
+Q6.
+
+MX record identifies:
+
+Mail exchange server
+
+Q7.
+
+DNS caching reduces:
+
+Lookup delay and DNS traffic
+
+Q8.
+
+HTTP is:
+
+Stateless
+
+Q9.
+
+HTTP default port:
+
+80
+
+Q10.
+
+HTTPS default port:
+
+443
+
+Q11.
+
+HTTPS uses:
+
+HTTP over TLS
+
+Q12.
+
+HTTP 200 means:
+
+OK / success
+
+Q13.
+
+HTTP 404 means:
+
+Not Found
+
+Q14.
+
+HTTP 500 means:
+
+Internal Server Error
+
+Q15.
+
+401 indicates:
+
+Authentication is required/failed
+
+Q16.
+
+403 indicates:
+
+Forbidden
+
+Q17.
+
+HTTP/2 supports:
+
+Multiplexing
+
+Q18.
+
+HTTP/3 uses:
+
+QUIC
+
+Q19.
+
+QUIC runs over:
+
+UDP
+
+Q20.
+
+FTP control connection commonly uses:
+
+TCP 21
+
+Q21.
+
+SMTP is primarily for:
+
+Sending/relaying email
+
+Q22.
+
+POP3 is for:
+
+Email retrieval
+
+Q23.
+
+IMAP is for:
+
+Email access/synchronization
+
+Q24.
+
+SMTP server-to-server commonly uses:
+
+TCP 25
+
+Q25.
+
+Common submission port:
+
+587
+
+Q26.
+
+POP3:
+
+110
+
+Q27.
+
+IMAP:
+
+143
+
+Q28.
+
+IMAPS:
+
+993
+
+Q29.
+
+POP3S:
+
+995
+
+Q30.
+
+Which is better for keeping mail synchronized across multiple devices?
+
+IMAP
+
+
+---
+
+🎯 Today's Challenge
+
+Problem 1 — DNS
+
+Explain the complete resolution of:
+
+www.example.com
+
+from your browser until the IP address is obtained.
+
+Include:
+
+Resolver → Root → TLD → Authoritative DNS → IP
+
+
+---
+
+Problem 2 — HTTP
+
+A browser requests:
+
+GET /index.html
+
+The server responds:
+
+HTTP/1.1 404 Not Found
+
+What does 404 mean?
+
+
+---
+
+Problem 3 — Email
+
+Identify the correct protocol:
+
+1. Send an email
+
+
+2. Download/retrieve emails
+
+
+3. Synchronize emails across multiple devices
+
+
+
+
+---
+
+Problem 4 — Protocol + Port
+
+Match:
+
+DNS
+HTTP
+HTTPS
+SMTP
+FTP
+POP3
+IMAP
+
+with their common ports.
+
+
+---
+
+🧠 60-Second Revision
+
+DNS
+→ Domain → IP
+→ Port 53
+→ A = IPv4
+→ AAAA = IPv6
+→ MX = Mail
+
+HTTP
+→ Web
+→ 80
+→ Stateless
+
+HTTPS
+→ HTTP + TLS
+→ 443
+
+HTTP/2
+→ Multiplexing
+
+HTTP/3
+→ QUIC → UDP
+
+FTP
+→ File transfer
+→ Control port 21
+
+SMTP
+→ SEND
+→ 25 / 587
+
+POP3
+→ RETRIEVE
+→ 110
+
+IMAP
+→ SERVER-SYNC
+→ 143
+
+⭐ One line to memorize:
+
+> DNS finds it → HTTP gets it → SMTP sends mail → POP3 retrieves mail → IMAP synchronizes mail.
+
+
+
+
+---
+
+📊 GATE CSE 2027 Progress
+
+Subject	Status
+
+Engineering Mathematics	✅
+Digital Logic	✅
+COA	✅
+Programming & DS	✅
+Algorithms	✅
+TOC	✅
+Compiler Design	✅
+Operating Systems	✅
+DBMS	✅ 100%
+Computer Networks	🟨 11 / ~12 lessons
+General Aptitude	⏳
+
+
+🌐 CN Progress: ~92%
+
+You're now very close to finishing Computer Networks. 🚀
+
+📖 Next — Day 114
+
+Computer Networks Final Topics + Complete CN Revision
+
+Network security basics
+
+Firewalls
+
+NAT
+
+DHCP
+
+ARP
+
+ICMP
+
+Important protocol comparisons
+
+Full CN formula sheet
+
+GATE PYQ-style mixed questions
+
+
+After that, we'll move to General Aptitude and then begin the full revision + PYQ phase.
