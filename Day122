@@ -1,0 +1,1188 @@
+📘 TODAY'S LEARNING — DAY 114
+
+🌐 GATE CSE 2027 — Computer Networks
+
+🔥 Final CN Topics + ARP, DHCP, NAT, ICMP & Network Security
+
+Today we finish the remaining major Computer Networks concepts. 🎯
+After today's session, CN moves into revision + PYQs.
+
+
+---
+
+1️⃣ ARP — Address Resolution Protocol
+
+ARP is used to find:
+
+> MAC address corresponding to an IPv4 address on the local network.
+
+
+
+Example:
+
+IP known:
+192.168.1.20
+
+MAC unknown
+       ↓
+      ARP
+       ↓
+MAC found:
+AA:BB:CC:DD:EE:FF
+
+Simple idea:
+
+> IP → MAC
+
+
+
+
+---
+
+2️⃣ Why Do We Need ARP?
+
+Suppose:
+
+Computer A
+IP = 192.168.1.10
+       ↓
+wants to communicate with
+       ↓
+Computer B
+IP = 192.168.1.20
+
+A knows B's IP but needs B's MAC address to send the Ethernet frame on the local network.
+
+So A sends an:
+
+ARP Request
+
+
+---
+
+3️⃣ ARP Request
+
+ARP request is generally broadcast on the local network:
+
+A:
+"Who has 192.168.1.20?"
+
+       ↓↓↓↓↓
+   Broadcast
+       ↓↓↓↓↓
+
+B:
+"That's me!"
+
+
+---
+
+4️⃣ ARP Reply
+
+The device owning the IP responds with its MAC address.
+
+ARP Request
+A ─────────────→ Everyone
+
+ARP Reply
+B ─────────────→ A
+       ↓
+"192.168.1.20 =
+ AA:BB:CC:DD:EE:FF"
+
+The sender can then construct the Ethernet frame.
+
+
+---
+
+🧠 5️⃣ ARP Memory Trick
+
+\[
+\boxed{ARP: IP\rightarrow MAC}
+\]
+
+Don't confuse:
+
+ARP → IP → MAC
+DNS → Domain → IP
+
+🔥 Very important.
+
+
+---
+
+6️⃣ DHCP
+
+DHCP = Dynamic Host Configuration Protocol
+
+It automatically provides network configuration to a host.
+
+It can provide:
+
+IP address
+
+Subnet mask
+
+Default gateway
+
+DNS server information
+
+Lease information
+
+
+
+---
+
+7️⃣ Why DHCP?
+
+Without DHCP, you could manually configure:
+
+IP
+Subnet Mask
+Gateway
+DNS
+
+DHCP automates this.
+
+
+---
+
+8️⃣ DHCP Process — DORA ⭐
+
+Memorize:
+
+DORA
+
+D → Discover
+O → Offer
+R → Request
+A → Acknowledge
+
+
+---
+
+Step 1 — DHCP Discover
+
+Client broadcasts:
+
+> "Is there a DHCP server?"
+
+
+
+Client
+  ↓
+DHCP Discover
+  ↓
+Broadcast
+
+
+---
+
+Step 2 — DHCP Offer
+
+DHCP server offers an IP configuration.
+
+Server
+  ↓
+DHCP Offer
+  ↓
+Client
+
+
+---
+
+Step 3 — DHCP Request
+
+Client requests the offered configuration.
+
+Client
+  ↓
+DHCP Request
+  ↓
+Server
+
+
+---
+
+Step 4 — DHCP ACK
+
+Server confirms the allocation.
+
+Server
+  ↓
+DHCP ACK
+  ↓
+Client
+
+
+---
+
+🔥 9️⃣ DORA Diagram
+
+Client                         DHCP Server
+
+   DHCP DISCOVER
+   ─────────────────────────→
+
+                  DHCP OFFER
+   ←─────────────────────────
+
+   DHCP REQUEST
+   ─────────────────────────→
+
+                  DHCP ACK
+   ←─────────────────────────
+
+Remember:
+
+> Discover → Offer → Request → Acknowledge
+
+
+
+
+---
+
+1️⃣0️⃣ DHCP Uses UDP
+
+DHCP commonly uses:
+
+\[
+\boxed{UDP}
+\]
+
+Ports:
+
+Server → UDP 67
+
+Client → UDP 68
+
+
+🔥 Memorize:
+
+\[
+\boxed{DHCP=67/68}
+\]
+
+
+---
+
+1️⃣1️⃣ NAT
+
+NAT = Network Address Translation
+
+It translates addresses between networks, commonly:
+
+Private IP
+    ↓
+NAT Router
+    ↓
+Public IP
+    ↓
+Internet
+
+Example:
+
+192.168.1.10
+      ↓
+    NAT
+      ↓
+203.x.x.x
+
+
+---
+
+1️⃣2️⃣ Why NAT?
+
+Private networks can use private IPv4 addresses internally.
+
+NAT allows many internal devices to share one or more public addresses.
+
+Example:
+
+Laptop ─────┐
+Phone ──────┤
+Tablet ─────┼──→ NAT Router → Internet
+TV ─────────┘
+
+
+---
+
+1️⃣3️⃣ PAT
+
+PAT = Port Address Translation
+
+Also commonly called NAT overload.
+
+It allows many internal connections to share one public IP by distinguishing connections using port numbers.
+
+Example:
+
+192.168.1.10:5000
+        ↓
+203.x.x.x:40001
+
+192.168.1.11:5001
+        ↓
+203.x.x.x:40002
+
+
+---
+
+🔥 1️⃣4️⃣ NAT vs PAT
+
+NAT	PAT
+
+Translates IP addresses	Translates IP + uses ports
+Can map addresses in different ways	Commonly many-to-one public IP sharing
+Broader concept	Specific/common NAT technique
+
+
+
+---
+
+1️⃣5️⃣ ICMP
+
+ICMP = Internet Control Message Protocol
+
+It is used for:
+
+Error reporting
+
+Diagnostics
+
+Network control messages
+
+
+Example:
+
+Destination Unreachable
+Time Exceeded
+
+
+---
+
+1️⃣6️⃣ Ping
+
+ping commonly uses:
+
+ICMP Echo Request
+
+and:
+
+ICMP Echo Reply
+
+Computer A
+    │
+    │ Echo Request
+    ↓
+Computer B
+    │
+    │ Echo Reply
+    ↓
+Computer A
+
+So:
+
+> Ping uses ICMP messages.
+
+
+
+
+---
+
+1️⃣7️⃣ Traceroute
+
+Traceroute helps discover the path to a destination.
+
+It relies on the TTL / Hop Limit mechanism and ICMP responses in common implementations.
+
+Example:
+
+You
+ ↓
+Router 1
+ ↓
+Router 2
+ ↓
+Router 3
+ ↓
+Server
+
+It reveals intermediate hops.
+
+
+---
+
+1️⃣8️⃣ TTL
+
+IPv4 has:
+
+TTL — Time To Live
+
+Each router decreases TTL.
+
+TTL = 5
+   ↓
+Router
+TTL = 4
+   ↓
+Router
+TTL = 3
+
+When TTL expires:
+
+> Packet is discarded.
+
+
+
+This prevents packets from circulating forever.
+
+
+---
+
+1️⃣9️⃣ Firewall
+
+A firewall controls network traffic according to security rules.
+
+Internet
+    ↓
+┌───────────┐
+│ FIREWALL  │
+└───────────┘
+    ↓
+Internal Network
+
+It can inspect:
+
+IP addresses
+
+Ports
+
+Protocols
+
+Connection state
+
+Application traffic, depending on firewall type
+
+
+
+---
+
+2️⃣0️⃣ Packet Filtering Firewall
+
+Uses rules such as:
+
+Allow TCP 443
+Block TCP 23
+Allow internal subnet
+Block unknown traffic
+
+Example:
+
+TCP 443 → ✅
+TCP 23  → ❌
+
+
+---
+
+2️⃣1️⃣ Stateful Firewall
+
+A stateful firewall tracks the state of connections.
+
+Example:
+
+Client → Server
+   SYN
+   ↓
+Connection tracked
+   ↓
+Return traffic
+   ↓
+Allowed if valid
+
+It understands whether packets belong to an established/expected connection.
+
+
+---
+
+2️⃣2️⃣ Proxy Firewall
+
+A proxy acts as an intermediary.
+
+Client
+  ↓
+Proxy
+  ↓
+Internet
+
+The client doesn't directly communicate with the destination server in the same way as a simple packet-forwarding setup.
+
+
+---
+
+2️⃣3️⃣ VPN
+
+VPN = Virtual Private Network
+
+It creates a protected communication tunnel over an underlying network.
+
+Laptop
+  ╲
+   ╲ Encrypted Tunnel
+    ╲
+     VPN Server
+        ↓
+     Internet
+
+VPNs can provide:
+
+Confidentiality
+
+Integrity
+
+Authentication
+
+
+depending on the VPN technology and configuration.
+
+
+---
+
+🔥 2️⃣4️⃣ Important Protocol Map
+
+ARP
+↓
+IP → MAC
+
+DNS
+↓
+Domain → IP
+
+DHCP
+↓
+Automatic network configuration
+
+ICMP
+↓
+Diagnostics / errors
+
+NAT
+↓
+Address translation
+
+HTTP
+↓
+Web
+
+TCP
+↓
+Reliable transport
+
+UDP
+↓
+Connectionless transport
+
+
+---
+
+2️⃣5️⃣ ARP vs DNS vs DHCP
+
+Protocol	Main Job
+
+ARP	IP → MAC
+DNS	Domain → IP
+DHCP	Assign/configure IP settings
+
+
+🔥 This table is very important for exams.
+
+
+---
+
+2️⃣6️⃣ Network Addressing Journey
+
+Suppose you enter:
+
+www.example.com
+
+What happens?
+
+Step 1
+
+DNS resolves:
+
+Domain → IP
+
+Step 2
+
+Your computer determines whether destination is local or remote.
+
+Step 3
+
+If remote, it sends the frame toward the default gateway.
+
+Step 4
+
+ARP may resolve:
+
+Gateway IP → Gateway MAC
+
+Step 5
+
+Ethernet frame carries the IP packet to the router.
+
+Step 6
+
+Routers forward the packet toward the destination.
+
+
+---
+
+🧠 2️⃣7️⃣ Full Networking Picture
+
+Application
+    │
+    │ DNS / HTTP / SMTP
+    ↓
+Transport
+    │
+    │ TCP / UDP
+    ↓
+Network
+    │
+    │ IP / ICMP
+    ↓
+Data Link
+    │
+    │ Ethernet / ARP
+    ↓
+Physical
+
+This is the complete mental model you should have.
+
+
+---
+
+🔥 2️⃣8️⃣ Common GATE Traps
+
+Trap 1
+
+ARP does NOT convert:
+
+❌ Domain → IP
+
+It converts:
+
+✅ IP → MAC
+
+
+---
+
+Trap 2
+
+DNS does NOT directly provide MAC addresses.
+
+✅ DNS → IP
+
+
+---
+
+Trap 3
+
+DHCP does not just assign an IP.
+
+It can also provide:
+
+Mask
+
+Gateway
+
+DNS
+
+Lease information
+
+
+
+---
+
+Trap 4
+
+Ping doesn't use TCP.
+
+✅ Ping uses ICMP Echo messages.
+
+
+---
+
+Trap 5
+
+NAT is not encryption.
+
+NAT:
+
+> Address translation
+
+
+
+VPN/TLS/IPsec:
+
+> Can provide security properties depending on configuration.
+
+
+
+
+---
+
+🧮 2️⃣9️⃣ GATE Quick Questions
+
+Q1.
+
+ARP converts:
+
+IP → MAC
+
+Q2.
+
+DNS converts:
+
+Domain → IP
+
+Q3.
+
+DHCP is used for:
+
+Automatic network configuration
+
+Q4.
+
+DHCP process?
+
+DORA
+
+Q5.
+
+DHCP server port?
+
+UDP 67
+
+Q6.
+
+DHCP client port?
+
+UDP 68
+
+Q7.
+
+Ping uses:
+
+ICMP Echo Request/Reply
+
+Q8.
+
+ICMP belongs to:
+
+Network-layer protocol suite / Internet layer
+
+Q9.
+
+TTL is decremented by:
+
+Routers
+
+Q10.
+
+TTL prevents:
+
+Indefinite packet looping
+
+Q11.
+
+NAT performs:
+
+Address translation
+
+Q12.
+
+PAT additionally uses:
+
+Port numbers
+
+Q13.
+
+Firewall controls:
+
+Network traffic according to security rules
+
+Q14.
+
+Stateful firewall tracks:
+
+Connection state
+
+Q15.
+
+VPN creates:
+
+Protected tunnel over an underlying network
+
+
+---
+
+🧠 3️⃣0️⃣ COMPLETE CN REVISION MAP
+
+You have now covered:
+
+COMPUTER NETWORKS
+                        │
+ ┌──────────────────────┼──────────────────────┐
+ │                      │                      │
+Physical              Data Link             Network
+ │                      │                      │
+Signals               Framing                 IPv4
+Bandwidth             CRC                     IPv6
+Nyquist               Hamming                 Subnetting
+Shannon               ARQ                     Routing
+ │                    ALOHA                    │
+ │                    CSMA              DV / LS / BGP
+ │                      │                      │
+ └──────────────────────┼──────────────────────┘
+                        │
+                   Transport
+                        │
+                 ┌──────┴──────┐
+                 TCP           UDP
+                 │
+          Flow / Congestion
+                        │
+                  Application
+                        │
+       ┌────────┬───────┼────────┬─────────┐
+       DNS     HTTP    FTP      SMTP      IMAP
+
+
+---
+
+📚 3️⃣1️⃣ CN Formula Sheet
+
+Nyquist
+
+\[
+\boxed{C=2B\log_2L}
+\]
+
+Shannon
+
+\[
+\boxed{C=B\log_2(1+S/N)}
+\]
+
+Hamming parity
+
+\[
+\boxed{2^r\geq m+r+1}
+\]
+
+Error detection
+
+\[
+\boxed{d_{min}-1}
+\]
+
+Error correction
+
+\[
+\boxed{\left\lfloor\frac{d_{min}-1}{2}\right\rfloor}
+\]
+
+Stop-and-Wait utilization
+
+\[
+\boxed{
+U=\frac{T_{trans}}
+{T_{trans}+2T_{prop}}
+}
+\]
+
+GBN window
+
+\[
+\boxed{2^m-1}
+\]
+
+Selective Repeat window
+
+\[
+\boxed{2^{m-1}}
+\]
+
+BDP
+
+\[
+\boxed{Bandwidth\times RTT}
+\]
+
+TCP effective window
+
+\[
+\boxed{\min(cwnd,rwnd)}
+\]
+
+IPv4 addresses
+
+\[
+\boxed{2^{32}}
+\]
+
+IPv6 addresses
+
+\[
+\boxed{2^{128}}
+\]
+
+IPv4 subnet hosts
+
+\[
+\boxed{2^h-2}
+\]
+
+
+---
+
+🏆 3️⃣2️⃣ 20 MUST-REMEMBER CN FACTS
+
+1. OSI → 7 layers
+
+
+2. TCP → Transport
+
+
+3. IP → Network
+
+
+4. MAC → Data Link
+
+
+5. TCP → reliable + connection-oriented
+
+
+6. UDP → connectionless + low overhead
+
+
+7. Pure ALOHA → 18.4%
+
+
+8. Slotted ALOHA → 36.8%
+
+
+9. GBN → \(2^m-1\)
+
+
+10. SR → \(2^{m-1}\)
+
+
+11. IPv4 → 32 bits
+
+
+12. IPv6 → 128 bits
+
+
+13. Longest prefix → most specific route
+
+
+14. RIP → Distance Vector
+
+
+15. OSPF → Link State
+
+
+16. BGP → Path Vector
+
+
+17. DNS → Domain → IP
+
+
+18. ARP → IP → MAC
+
+
+19. DHCP → DORA
+
+
+20. Ping → ICMP
+
+
+
+
+---
+
+🧪 3️⃣3️⃣ FINAL CN CHALLENGE
+
+Before moving to revision, solve these without notes.
+
+Q1 — Subnetting
+
+192.168.10.77/26
+
+Find:
+
+Network
+
+Broadcast
+
+Host range
+
+Number of usable hosts
+
+
+
+---
+
+Q2 — Routing
+
+Given:
+
+10.0.0.0/8       → R1
+10.10.0.0/16     → R2
+10.10.10.0/24    → R3
+
+Destination:
+
+10.10.10.50
+
+Which router?
+
+
+---
+
+Q3 — TCP
+
+Seq = 5000
+Data = 2000 bytes
+
+Find ACK.
+
+
+---
+
+Q4 — Hamming
+
+\[
+d_{min}=7
+\]
+
+Find:
+
+Maximum detectable errors
+
+Maximum correctable errors
+
+
+
+---
+
+Q5 — Nyquist
+
+Bandwidth:
+
+\[
+4kHz
+\]
+
+Signal levels:
+
+\[
+8
+\]
+
+Find maximum bit rate.
+
+
+---
+
+Q6 — DHCP
+
+Write:
+
+D → ?
+O → ?
+R → ?
+A → ?
+
+
+---
+
+Q7 — Protocol Mapping
+
+Match:
+
+ARP
+DNS
+DHCP
+ICMP
+NAT
+
+with their primary functions.
+
+
+---
+
+🎯 CONGRATULATIONS — COMPUTER NETWORKS COMPLETE! 🎉
+
+You have now covered the full major CN syllabus:
+
+✅ Physical Layer
+
+✅ Data Link Layer
+
+✅ MAC & Ethernet
+
+✅ Network Layer
+
+✅ IPv4/IPv6
+
+✅ Subnetting
+
+✅ Routing
+
+✅ TCP/UDP
+
+✅ Flow & Congestion Control
+
+✅ DNS/HTTP/FTP/Email
+
+✅ ARP/DHCP/ICMP/NAT
+
+✅ Network Security Basics
+
+
+---
+
+📊 Your Progress
+
+Subject	Status
+
+Engineering Mathematics	✅
+Digital Logic	✅
+COA	✅
+Programming & DS	✅
+Algorithms	✅
+TOC	✅
+Compiler Design	✅
+Operating Systems	✅
+DBMS	✅ 100%
+Computer Networks	✅ 100% 🎉
+General Aptitude	⏳
+
+
+🏁 Major Milestone
+
+Day 114 → Computer Networks completed. ✅
+
+From the next session, we shift from learning new CN concepts to CN PYQs + revision, while finishing the remaining overall preparation.
+
+📖 Next — Day 115
+
+🧠 GENERAL APTITUDE — DAY 1
+
+Quantitative Aptitude: Percentages, Ratios, Averages & basic calculation shortcuts
+
+This begins the final remaining learning block before the full revision + PYQ + mock-test phase.
