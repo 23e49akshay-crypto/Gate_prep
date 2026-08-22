@@ -1,0 +1,775 @@
+📘 Today's Learning — Day 115
+
+📅 Date: 22 August 2026
+🎯 GATE CSE 2027 | General Aptitude — Day 1
+🧠 Topic: Percentages
+
+🎉 Computer Networks is completed! Now we begin the remaining General Aptitude block before moving heavily into revision + PYQs.
+
+
+---
+
+1️⃣ What is Percentage?
+
+Percentage means "per 100."
+
+\[
+\boxed{x\%=\frac{x}{100}}
+\]
+
+Examples:
+
+\[
+25\%=\frac{25}{100}=\frac14
+\]
+
+\[
+50\%=\frac12
+\]
+
+\[
+75\%=\frac34
+\]
+
+
+---
+
+2️⃣ Must-Know Percentage ↔ Fraction
+
+Memorize these:
+
+Percentage	Fraction
+
+10%	1/10
+12.5%	1/8
+20%	1/5
+25%	1/4
+33.33%	1/3
+50%	1/2
+66.67%	2/3
+75%	3/4
+80%	4/5
+100%	1
+
+
+🔥 These conversions make aptitude much faster.
+
+
+---
+
+3️⃣ Finding a Percentage of a Number
+
+Example
+
+Find 20% of 250.
+
+\[
+20\%\times250
+\]
+
+\[
+=\frac{20}{100}\times250
+\]
+
+\[
+=\boxed{50}
+\]
+
+Shortcut
+
+20% = 1/5
+
+\[
+250\div5=50
+\]
+
+
+---
+
+4️⃣ Percentage Increase
+
+Suppose salary increases from:
+
+₹20,000 → ₹25,000
+
+Increase:
+
+\[
+25,000-20,000=5,000
+\]
+
+Percentage increase:
+
+\[
+\frac{5000}{20000}\times100
+\]
+
+\[
+=\boxed{25\%}
+\]
+
+Formula
+
+\[
+\boxed{
+\%Increase=
+\frac{Increase}{Original}\times100
+}
+\]
+
+⚠️ Always divide by the ORIGINAL value.
+
+
+---
+
+5️⃣ Percentage Decrease
+
+Suppose price falls:
+
+₹800 → ₹600
+
+Decrease:
+
+\[
+800-600=200
+\]
+
+Percentage decrease:
+
+\[
+\frac{200}{800}\times100
+\]
+
+\[
+=\boxed{25\%}
+\]
+
+Formula:
+
+\[
+\boxed{
+\%Decrease=
+\frac{Decrease}{Original}\times100
+}
+\]
+
+
+---
+
+6️⃣ Finding the New Value
+
+If a number increases by \(20%\):
+
+\[
+New=Original\times(1+0.20)
+\]
+
+\[
+\boxed{New=Original\times1.20}
+\]
+
+Example:
+
+\[
+500\times1.20=600
+\]
+
+
+---
+
+If it decreases by \(20%\):
+
+\[
+New=Original\times(1-0.20)
+\]
+
+\[
+\boxed{New=Original\times0.80}
+\]
+
+Example:
+
+\[
+500\times0.8=400
+\]
+
+
+---
+
+🔥 7️⃣ Successive Percentage Changes
+
+This is a very common aptitude trap.
+
+Suppose a price increases by 20% and then decreases by 20%.
+
+You might think:
+
+\[
+20-20=0\%
+\]
+
+❌ Wrong.
+
+Take original:
+
+\[
+100
+\]
+
+Increase 20%:
+
+\[
+100\rightarrow120
+\]
+
+Decrease 20% of 120:
+
+\[
+120\times0.8=96
+\]
+
+Final:
+
+\[
+96
+\]
+
+So there is:
+
+\[
+\boxed{4\%\ decrease}
+\]
+
+
+---
+
+8️⃣ Successive Change Formula ⭐
+
+For two percentage changes \(a%\) and \(b%\):
+
+\[
+\boxed{
+Net\ Change=a+b+\frac{ab}{100}
+}
+\]
+
+Use the signs:
+
+Increase → \(+\)
+
+Decrease → \(-\)
+
+
+Example:
+
+Increase 20%, decrease 20%:
+
+\[
+20-20+\frac{20(-20)}{100}
+\]
+
+\[
+=0-4
+\]
+
+\[
+\boxed{-4\%}
+\]
+
+Therefore:
+
+4% decrease.
+
+
+---
+
+9️⃣ Another Example
+
+A number increases by 10% and then by 20%.
+
+\[
+10+20+\frac{10\times20}{100}
+\]
+
+\[
+=30+2
+\]
+
+\[
+\boxed{32\%}
+\]
+
+So two increases of 10% and 20% result in:
+
+32% increase, not 30%.
+
+
+---
+
+🔥 10️⃣ Percentage Change in Reverse
+
+Suppose after a 20% increase, the final price is ₹600.
+
+What was the original price?
+
+We know:
+
+\[
+Final=Original\times1.2
+\]
+
+Therefore:
+
+\[
+Original=\frac{600}{1.2}
+\]
+
+\[
+\boxed{500}
+\]
+
+Important:
+
+If a value increases by \(x%\), don't subtract \(x%\) from the final value to reverse it.
+
+You must divide by the multiplier.
+
+
+---
+
+1️⃣1️⃣ Percentage Comparison
+
+A is 25% more than B.
+
+Suppose:
+
+\[
+B=100
+\]
+
+Then:
+
+\[
+A=125
+\]
+
+Therefore A is 25% more than B.
+
+But B is not 25% less than A.
+
+Difference:
+
+\[
+125-100=25
+\]
+
+Compared with A:
+
+\[
+\frac{25}{125}\times100
+\]
+
+\[
+=\boxed{20\%}
+\]
+
+So:
+
+> If A is 25% more than B, B is 20% less than A.
+
+
+
+🔥 Very common aptitude question.
+
+
+---
+
+1️⃣2️⃣ General Reverse Formula
+
+If:
+
+A is \(x%\) more than B
+
+then B is:
+
+\[
+\boxed{
+\frac{x}{100+x}\times100
+}
+\]
+
+less than A.
+
+For 25%:
+
+\[
+\frac{25}{125}\times100
+\]
+
+\[
+=\boxed{20\%}
+\]
+
+
+---
+
+1️⃣3️⃣ Marks Problem
+
+A student scores:
+
+\[
+360/500
+\]
+
+Percentage:
+
+\[
+\frac{360}{500}\times100
+\]
+
+\[
+=\boxed{72\%}
+\]
+
+
+---
+
+1️⃣4️⃣ Finding Marks
+
+A student scored 80% in an exam of 600 marks.
+
+\[
+80\%\times600
+\]
+
+\[
+=\frac{80}{100}\times600
+\]
+
+\[
+\boxed{480}
+\]
+
+
+---
+
+🧮 1️⃣5️⃣ GATE-Style Example
+
+A number is increased by 25% and then decreased by 20%.
+
+Take:
+
+\[
+100
+\]
+
+Increase:
+
+\[
+100\rightarrow125
+\]
+
+Decrease 20%:
+
+\[
+125\times0.8=100
+\]
+
+Therefore:
+
+\[
+\boxed{0\%\ change}
+\]
+
+Notice:
+
+\[
+25-20\neq5\%
+\]
+
+because the second percentage is calculated on the new value.
+
+
+---
+
+1️⃣6️⃣ Fast Calculation Tricks
+
+10%
+
+Move decimal one place left.
+
+\[
+10\%\ of\ 450=45
+\]
+
+5%
+
+Half of 10%.
+
+\[
+5\%\ of\ 450=22.5
+\]
+
+20%
+
+Double 10%.
+
+\[
+20\%\ of\ 450=90
+\]
+
+25%
+
+Divide by 4.
+
+\[
+25\%\ of\ 800=200
+\]
+
+50%
+
+Divide by 2.
+
+\[
+50\%\ of\ 800=400
+\]
+
+75%
+
+Three-fourths.
+
+\[
+75\%\ of\ 800=600
+\]
+
+
+---
+
+🧠 1️⃣7️⃣ Golden Aptitude Strategy
+
+When a percentage question looks complicated:
+
+Step 1
+
+Assume the original value is:
+
+\[
+\boxed{100}
+\]
+
+Step 2
+
+Apply each percentage change.
+
+Step 3
+
+Compare final value with 100.
+
+Example:
+
+Increase 30%, then decrease 10%.
+
+100
+ ↓ +30%
+130
+ ↓ -10%
+117
+
+Therefore:
+
+\[
+\boxed{17\%\ increase}
+\]
+
+This method is extremely useful.
+
+
+---
+
+🧪 18️⃣ Today's Practice
+
+Q1
+
+Find 15% of 240.
+
+Q2
+
+A price increases from ₹500 to ₹650. Find percentage increase.
+
+Q3
+
+A number decreases from 800 to 600. Find percentage decrease.
+
+Q4
+
+A number increases by 20% and then decreases by 10%. Find net percentage change.
+
+Q5
+
+A is 40% more than B. B is what percentage less than A?
+
+Q6
+
+After a 25% increase, a number becomes 500. Find the original number.
+
+Q7
+
+A student scores 420 out of 600. Find percentage.
+
+Q8
+
+A price increases by 10% twice. Find the total percentage increase.
+
+
+---
+
+🎯 Answers
+
+Q1
+
+\[
+15\%\times240=\boxed{36}
+\]
+
+Q2
+
+\[
+\frac{150}{500}\times100=\boxed{30\%}
+\]
+
+Q3
+
+\[
+\frac{200}{800}\times100=\boxed{25\%}
+\]
+
+Q4
+
+\[
+20-10+\frac{20(-10)}{100}
+\]
+
+\[
+=\boxed{8\%\ increase}
+\]
+
+Q5
+
+\[
+\frac{40}{140}\times100
+\]
+
+\[
+=\boxed{28.57\%\ less}
+\]
+
+Q6
+
+\[
+500/1.25=\boxed{400}
+\]
+
+Q7
+
+\[
+420/600\times100=\boxed{70\%}
+\]
+
+Q8
+
+\[
+10+10+\frac{10\times10}{100}
+\]
+
+\[
+=\boxed{21\%}
+\]
+
+
+---
+
+🧠 Today's Formula Card
+
+Percentage
+
+\[
+\boxed{\frac{Part}{Whole}\times100}
+\]
+
+Increase
+
+\[
+\boxed{\frac{Increase}{Original}\times100}
+\]
+
+Decrease
+
+\[
+\boxed{\frac{Decrease}{Original}\times100}
+\]
+
+New value after increase
+
+\[
+\boxed{Original(1+\frac{x}{100})}
+\]
+
+New value after decrease
+
+\[
+\boxed{Original(1-\frac{x}{100})}
+\]
+
+Successive changes
+
+\[
+\boxed{a+b+\frac{ab}{100}}
+\]
+
+Reverse after increase
+
+\[
+\boxed{Original=\frac{Final}{1+x/100}}
+\]
+
+
+---
+
+🗣️ Communication Practice — 150 Words
+
+Topic: Explaining a Technical Concept Clearly
+
+In a software engineering interview, explaining a concept clearly is as important as knowing the concept. I try to follow a simple structure: first define the concept, then explain why it is needed, and finally give an example. For example, if I explain TCP, I would first say that TCP is a connection-oriented transport protocol. Then I would explain that it provides reliable and ordered delivery using sequence numbers, acknowledgements, and retransmissions. Finally, I would give a practical example such as downloading a file, where losing data can corrupt the result. This structure helps me avoid unnecessary technical details and makes my explanation easier to understand. I also try to speak slowly and confidently instead of rushing through the answer. My goal is not to use complicated words, but to demonstrate that I genuinely understand the concept.
+
+🎯 Today's speaking task:
+
+Explain TCP vs UDP in 60 seconds using:
+
+Definition → Difference → Real-world example.
+
+
+---
+
+📊 Progress Update
+
+Area	Status
+
+Major Technical Subjects	✅ Completed
+DBMS	✅ 100%
+Computer Networks	✅ 100%
+General Aptitude	🟨 1 / ~7 days
+Revision + PYQs	⏳
+Mock Tests	⏳
+
+
+🏆 Day 115 Milestone
+
+Technical syllabus → essentially complete ✅
+
+Now we're entering the final preparation phase:
+
+Aptitude → PYQs → Revision → Mock Tests → Placement/GATE readiness.
+
+📖 Tomorrow — Day 116
+
+Aptitude: Ratio & Proportion — shortcuts, direct/inverse proportion, mixtures basics, and GATE-level problems.
