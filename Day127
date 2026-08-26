@@ -1,0 +1,1128 @@
+# 📘 TODAY'S LEARNING — DAY 119
+
+**📅 26 August 2026**
+**🎯 GATE CSE 2027 + Placement Preparation**
+
+## Topic: ⏱️ **Time, Speed & Distance**
+
+Today we'll master **one topic only** with shortcuts, formulas, and placement-level questions.
+
+---
+
+# 1️⃣ The Fundamental Formula
+
+Everything starts with:
+
+[
+\boxed{Speed=\frac{Distance}{Time}}
+]
+
+Therefore:
+
+[
+\boxed{Distance=Speed\times Time}
+]
+
+[
+\boxed{Time=\frac{Distance}{Speed}}
+]
+
+### 🧠 Memory Trick
+
+**DST Triangle**
+
+```text id="2d0q4v"
+       D
+      ---
+     S | T
+```
+
+Cover what you want:
+
+* D → S × T
+* S → D / T
+* T → D / S
+
+---
+
+# 2️⃣ Units — Very Important 🚨
+
+Common units:
+
+```text id="1q1n8a"
+km/h
+m/s
+```
+
+Conversion:
+
+[
+\boxed{1\ km/h=\frac{5}{18}\ m/s}
+]
+
+Therefore:
+
+[
+\boxed{1\ m/s=\frac{18}{5}\ km/h}
+]
+
+### Example
+
+Convert:
+
+[
+72\ km/h
+]
+
+to m/s:
+
+[
+72\times\frac5{18}
+]
+
+[
+\boxed{20\ m/s}
+]
+
+---
+
+# 3️⃣ Fast Conversion Trick
+
+### km/h → m/s
+
+Multiply by:
+
+[
+\boxed{\frac5{18}}
+]
+
+### m/s → km/h
+
+Multiply by:
+
+[
+\boxed{\frac{18}{5}}
+]
+
+Examples:
+
+[
+54\ km/h=54\times5/18=\boxed{15m/s}
+]
+
+[
+25m/s=25\times18/5=\boxed{90km/h}
+]
+
+---
+
+# 4️⃣ Basic Example
+
+A car travels at:
+
+[
+60\ km/h
+]
+
+for:
+
+[
+3\ hours
+]
+
+Distance:
+
+[
+D=S\times T
+]
+
+[
+60\times3
+]
+
+[
+\boxed{180\ km}
+]
+
+---
+
+# 5️⃣ Average Speed ⭐
+
+Average speed is:
+
+[
+\boxed{
+\frac{Total\ Distance}{Total\ Time}
+}
+]
+
+⚠️ Don't automatically take the arithmetic average of speeds.
+
+---
+
+# 6️⃣ Equal-Distance Shortcut
+
+If equal distances are travelled at speeds (a) and (b):
+
+[
+\boxed{
+Average\ Speed=\frac{2ab}{a+b}
+}
+]
+
+Example:
+
+Equal distances at:
+
+[
+40,\ 60\ km/h
+]
+
+[
+Average=\frac{2(40)(60)}{40+60}
+]
+
+[
+=\boxed{48\ km/h}
+]
+
+---
+
+# 7️⃣ Equal-Time Shortcut
+
+If equal time is spent at speeds (a) and (b):
+
+[
+\boxed{
+Average=\frac{a+b}{2}
+}
+]
+
+Example:
+
+Equal time at:
+
+[
+40,\ 60
+]
+
+Average:
+
+[
+\boxed{50\ km/h}
+]
+
+---
+
+# 🔥 8️⃣ Relative Speed
+
+Relative speed tells us:
+
+> How quickly one object approaches or moves away from another.
+
+---
+
+## Objects Moving in Opposite Directions
+
+Add speeds:
+
+[
+\boxed{Relative\ Speed=S_1+S_2}
+]
+
+Example:
+
+```text id="m5ddqa"
+A →→→       ←←← B
+  40 km/h   60 km/h
+```
+
+Relative speed:
+
+[
+40+60
+]
+
+[
+\boxed{100\ km/h}
+]
+
+---
+
+# 9️⃣ Objects Moving in Same Direction
+
+Subtract speeds:
+
+[
+\boxed{Relative\ Speed=|S_1-S_2|}
+]
+
+Example:
+
+```text id="hbr0gt"
+A →→→→
+B   →→
+```
+
+Speeds:
+
+[
+70,\ 50
+]
+
+Relative speed:
+
+[
+70-50
+]
+
+[
+\boxed{20\ km/h}
+]
+
+---
+
+# 🔟 Catch-Up Problems
+
+Suppose:
+
+A is moving at:
+
+[
+60km/h
+]
+
+B is moving at:
+
+[
+40km/h
+]
+
+A is 100 km behind B.
+
+Relative speed:
+
+[
+60-40=20
+]
+
+Time to catch:
+
+[
+100/20
+]
+
+[
+\boxed{5\ hours}
+]
+
+---
+
+# 1️⃣1️⃣ Meeting Problems
+
+Two cars are:
+
+[
+300km
+]
+
+apart.
+
+They travel toward each other at:
+
+[
+60km/h
+]
+
+and:
+
+[
+40km/h
+]
+
+Relative speed:
+
+[
+60+40=100
+]
+
+Time:
+
+[
+300/100
+]
+
+[
+\boxed{3\ hours}
+]
+
+---
+
+# 🔥 1️⃣2️⃣ Trains
+
+Train questions use:
+
+[
+\boxed{Time=\frac{Distance}{Speed}}
+]
+
+But the important question is:
+
+> What distance does the train need to cover?
+
+---
+
+# 1️⃣3️⃣ Train Passing a Pole
+
+Suppose:
+
+Train length:
+
+[
+200m
+]
+
+Speed:
+
+[
+20m/s
+]
+
+A pole has negligible length.
+
+Distance travelled:
+
+[
+200m
+]
+
+Therefore:
+
+[
+Time=200/20
+]
+
+[
+\boxed{10s}
+]
+
+---
+
+# 1️⃣4️⃣ Train Passing a Platform
+
+Suppose:
+
+Train:
+
+[
+200m
+]
+
+Platform:
+
+[
+300m
+]
+
+To completely cross the platform, the train covers:
+
+[
+200+300
+]
+
+[
+\boxed{500m}
+]
+
+If speed = 25 m/s:
+
+[
+Time=500/25
+]
+
+[
+\boxed{20s}
+]
+
+---
+
+# 1️⃣5️⃣ Two Trains Crossing Each Other
+
+Train A:
+
+[
+200m
+]
+
+Train B:
+
+[
+300m
+]
+
+Total distance:
+
+[
+200+300
+]
+
+[
+500m
+]
+
+If moving in opposite directions:
+
+[
+Relative\ Speed=S_1+S_2
+]
+
+Suppose:
+
+[
+20m/s,\ 30m/s
+]
+
+Then:
+
+[
+Relative=50m/s
+]
+
+Time:
+
+[
+500/50
+]
+
+[
+\boxed{10s}
+]
+
+---
+
+# 1️⃣6️⃣ Two Trains Same Direction
+
+If both move in the same direction:
+
+[
+Relative\ Speed=|S_1-S_2|
+]
+
+Example:
+
+```text id="n9qjyt"
+Train A →→→→→
+Train B →→
+```
+
+Speeds:
+
+[
+60km/h,\ 40km/h
+]
+
+Relative:
+
+[
+20km/h
+]
+
+---
+
+# 🧠 1️⃣7️⃣ Train Formula Card
+
+### Pole
+
+[
+\boxed{Distance=Train\ Length}
+]
+
+### Platform
+
+[
+\boxed{Distance=Train+Platform}
+]
+
+### Two trains
+
+[
+\boxed{Distance=L_1+L_2}
+]
+
+### Opposite direction
+
+[
+\boxed{Relative=S_1+S_2}
+]
+
+### Same direction
+
+[
+\boxed{Relative=|S_1-S_2|}
+]
+
+---
+
+# 1️⃣8️⃣ Boats & Streams
+
+Two important speeds:
+
+### Boat speed in still water
+
+[
+B
+]
+
+### Stream speed
+
+[
+S
+]
+
+---
+
+# 1️⃣9️⃣ Downstream
+
+Boat moves **with the stream**.
+
+[
+\boxed{Downstream=B+S}
+]
+
+---
+
+# 2️⃣0️⃣ Upstream
+
+Boat moves **against the stream**.
+
+[
+\boxed{Upstream=B-S}
+]
+
+---
+
+# 🔥 2️⃣1️⃣ Finding Boat & Stream Speed
+
+If:
+
+[
+Downstream=D
+]
+
+and:
+
+[
+Upstream=U
+]
+
+Then:
+
+[
+\boxed{
+Boat=\frac{D+U}{2}
+}
+]
+
+[
+\boxed{
+Stream=\frac{D-U}{2}
+}
+]
+
+---
+
+# 🧮 2️⃣2️⃣ Example
+
+Downstream speed:
+
+[
+18km/h
+]
+
+Upstream speed:
+
+[
+10km/h
+]
+
+Boat speed:
+
+[
+\frac{18+10}{2}
+]
+
+[
+\boxed{14km/h}
+]
+
+Stream speed:
+
+[
+\frac{18-10}{2}
+]
+
+[
+\boxed{4km/h}
+]
+
+---
+
+# 2️⃣3️⃣ Escalator Problems
+
+Another common placement question.
+
+If a person walks on a moving escalator:
+
+```text id="m7o2hb"
+Person ↑
+Escalator ↑
+```
+
+Their effective speed relative to ground is:
+
+[
+\boxed{Person\ Speed+Escalator\ Speed}
+]
+
+If walking opposite the escalator:
+
+[
+\boxed{Person\ Speed-Escalator\ Speed}
+]
+
+---
+
+# 🔥 2️⃣4️⃣ Time-Saving Relationship
+
+For a fixed distance:
+
+[
+\boxed{Speed\propto\frac1{Time}}
+]
+
+Therefore:
+
+> If speed increases, time decreases.
+
+Example:
+
+Speed increases from:
+
+[
+50\rightarrow60
+]
+
+Time changes inversely.
+
+If original time = 6 hours:
+
+[
+New\ Time=6\times\frac{50}{60}
+]
+
+[
+\boxed{5\ hours}
+]
+
+---
+
+# 2️⃣5️⃣ Percentage Change in Speed
+
+Suppose speed increases by 25%.
+
+Original:
+
+[
+100
+]
+
+New:
+
+[
+125
+]
+
+For fixed distance:
+
+[
+Time\propto\frac1{Speed}
+]
+
+Therefore new time:
+
+[
+\frac{100}{125}=0.8
+]
+
+So time decreases by:
+
+[
+\boxed{20%}
+]
+
+🔥 Important:
+
+> **25% increase in speed ≠ 25% decrease in time.**
+
+---
+
+# 2️⃣6️⃣ General Formula
+
+If speed increases by (x%), percentage decrease in time is:
+
+[
+\boxed{
+\frac{x}{100+x}\times100
+}
+]
+
+For 25%:
+
+[
+\frac{25}{125}\times100
+]
+
+[
+\boxed{20%}
+]
+
+---
+
+# 2️⃣7️⃣ If Speed Decreases
+
+If speed decreases by 20%:
+
+New speed:
+
+[
+80%
+]
+
+of original.
+
+Time becomes:
+
+[
+\frac{100}{80}=1.25
+]
+
+Therefore time increases by:
+
+[
+\boxed{25%}
+]
+
+---
+
+# 🧠 2️⃣8️⃣ Golden Relationship
+
+For fixed distance:
+
+```text id="8jts0e"
+Speed ↑
+   ↓
+Time ↓
+
+Speed ↓
+   ↓
+Time ↑
+```
+
+And:
+
+[
+\boxed{S_1T_1=S_2T_2}
+]
+
+---
+
+# 🧮 2️⃣9️⃣ GATE-Style Example
+
+A person normally takes 60 minutes to travel a fixed distance.
+
+If speed increases by 20%, find new time.
+
+[
+S_2=1.2S_1
+]
+
+Since:
+
+[
+S_1T_1=S_2T_2
+]
+
+[
+T_2=\frac{T_1}{1.2}
+]
+
+[
+=\frac{60}{1.2}
+]
+
+[
+\boxed{50\ minutes}
+]
+
+---
+
+# 3️⃣0️⃣ Today's Practice
+
+### Q1
+
+Convert 90 km/h to m/s.
+
+### Q2
+
+A car travels at 72 km/h for 2.5 hours. Find distance.
+
+### Q3
+
+Two cars moving toward each other travel at 50 km/h and 70 km/h. Their distance is 360 km. When will they meet?
+
+### Q4
+
+A 180 m train travels at 15 m/s. How long to cross a pole?
+
+### Q5
+
+A 200 m train crosses a 300 m platform at 25 m/s. Find time.
+
+### Q6
+
+A boat travels downstream at 20 km/h and upstream at 12 km/h. Find boat and stream speeds.
+
+### Q7
+
+A vehicle's speed increases by 25%. By what percentage does travel time decrease for the same distance?
+
+### Q8
+
+A person travels equal distances at 30 km/h and 60 km/h. Find average speed.
+
+---
+
+# ✅ Answers
+
+### Q1
+
+[
+90\times\frac5{18}
+]
+
+[
+\boxed{25m/s}
+]
+
+### Q2
+
+[
+72\times2.5
+]
+
+[
+\boxed{180km}
+]
+
+### Q3
+
+Relative speed:
+
+[
+50+70=120
+]
+
+Time:
+
+[
+360/120
+]
+
+[
+\boxed{3hours}
+]
+
+### Q4
+
+[
+180/15
+]
+
+[
+\boxed{12s}
+]
+
+### Q5
+
+Distance:
+
+[
+200+300=500m
+]
+
+[
+500/25
+]
+
+[
+\boxed{20s}
+]
+
+### Q6
+
+Boat:
+
+[
+\frac{20+12}{2}
+]
+
+[
+\boxed{16km/h}
+]
+
+Stream:
+
+[
+\frac{20-12}{2}
+]
+
+[
+\boxed{4km/h}
+]
+
+### Q7
+
+[
+\frac{25}{125}\times100
+]
+
+[
+\boxed{20%\ decrease}
+]
+
+### Q8
+
+Equal distance:
+
+[
+\frac{2(30)(60)}{30+60}
+]
+
+[
+\boxed{40km/h}
+]
+
+---
+
+# 🧠 TODAY'S FORMULA CARD
+
+### Basic
+
+[
+\boxed{D=ST}
+]
+
+[
+\boxed{S=D/T}
+]
+
+[
+\boxed{T=D/S}
+]
+
+### Conversion
+
+[
+\boxed{km/h\rightarrow m/s:\times5/18}
+]
+
+[
+\boxed{m/s\rightarrow km/h:\times18/5}
+]
+
+### Relative speed
+
+Opposite:
+
+[
+\boxed{S_1+S_2}
+]
+
+Same:
+
+[
+\boxed{|S_1-S_2|}
+]
+
+### Equal-distance average
+
+[
+\boxed{\frac{2ab}{a+b}}
+]
+
+### Boats
+
+[
+\boxed{Downstream=B+S}
+]
+
+[
+\boxed{Upstream=B-S}
+]
+
+[
+\boxed{B=\frac{D+U}{2}}
+]
+
+[
+\boxed{S=\frac{D-U}{2}}
+]
+
+### Fixed distance
+
+[
+\boxed{S_1T_1=S_2T_2}
+]
+
+---
+
+# 🗣️ Communication Practice — 100–200 Words
+
+### Topic: **Why Problem-Solving Is Important in Software Engineering**
+
+Problem-solving is one of the most important skills for a software engineer because programming is mainly about converting problems into practical solutions. A good engineer does not immediately start coding. First, they understand the requirements and identify constraints. Then they break the problem into smaller components and choose an appropriate approach. After implementing the solution, they test it with normal cases, edge cases, and unexpected inputs. If the solution is inefficient, they analyze its time and space complexity and improve it. Problem-solving also helps outside programming because real software projects involve debugging, system design, database issues, performance problems, and changing requirements. Strong problem-solving skills allow an engineer to remain calm when something doesn't work and systematically identify the root cause. This is why coding interviews focus not only on getting the correct answer but also on how a candidate thinks and explains the solution.
+
+### 🎤 Speaking task:
+
+Explain **how you would solve a difficult coding problem** in 60 seconds.
+
+Use:
+
+**Understand → Break → Solve → Test → Optimize**
+
+---
+
+# 📊 PROGRESS
+
+| Area                     | Status             |
+| ------------------------ | ------------------ |
+| Major Technical Subjects | ✅                  |
+| DBMS                     | ✅ 100%             |
+| Computer Networks        | ✅ 100%             |
+| General Aptitude         | 🟨 **5 / ~7 days** |
+| Revision + PYQs          | ⏳                  |
+| Mock Tests               | ⏳                  |
+
+## 🏆 Day 119 Milestone
+
+You've now completed:
+
+**Percentage → Ratio → Average → Profit/Loss → Time-Speed-Distance**
+
+Only a small portion of the **new aptitude learning block** remains.
+
+### 📖 Next — Day 120
+
+## **Time & Work**
+
+Workers, efficiency, pipes & cisterns, work ratios, and fast solving methods.
