@@ -1,0 +1,1119 @@
+# 📘 TODAY'S LEARNING — DAY 120
+
+**📅 27 August 2026**
+**🎯 GATE CSE 2027 + Placement Preparation**
+
+## ⚙️ Topic: **Time & Work**
+
+Today we'll learn how to solve work problems using **efficiency and unit-work methods** instead of memorizing complicated formulas.
+
+---
+
+# 1️⃣ The Basic Idea
+
+If a person completes a job in **10 days**, then their work done in 1 day is:
+
+$$
+\boxed{\frac{1}{10}}
+$$
+
+So:
+
+$$
+Daily\ Work=\frac{1}{Time}
+$$
+
+And:
+
+$$
+\boxed{Time=\frac{Total\ Work}{Daily\ Work}}
+$$
+
+---
+
+# 2️⃣ Work = Efficiency × Time
+
+The most important relationship:
+
+$$
+\boxed{Work=Efficiency\times Time}
+$$
+
+Therefore:
+
+$$
+\boxed{Efficiency=\frac{Work}{Time}}
+$$
+
+$$
+\boxed{Time=\frac{Work}{Efficiency}}
+$$
+
+---
+
+# 3️⃣ Simple Example
+
+A can complete a job in:
+
+$$
+10\ days
+$$
+
+Therefore A's one-day work:
+
+$$
+\frac1{10}
+$$
+
+B can complete it in:
+
+$$
+20\ days
+$$
+
+B's one-day work:
+
+$$
+\frac1{20}
+$$
+
+If they work together:
+
+$$
+\frac1{10}+\frac1{20}
+$$
+
+$$
+=\frac2{20}+\frac1{20}
+$$
+
+$$
+=\frac3{20}
+$$
+
+Therefore combined time:
+
+$$
+\frac{20}{3}
+$$
+
+$$
+\boxed{6.67\ days}
+$$
+
+---
+
+# 🔥 4️⃣ The LCM Method — Faster
+
+For aptitude, the **LCM method** is often easier.
+
+A takes:
+
+$$
+10\ days
+$$
+
+B takes:
+
+$$
+20\ days
+$$
+
+LCM:
+
+$$
+LCM(10,20)=20
+$$
+
+Assume total work = **20 units**.
+
+Then:
+
+```text
+A → 20/10 = 2 units/day
+B → 20/20 = 1 unit/day
+```
+
+Together:
+
+$$
+2+1=3\ units/day
+$$
+
+Time:
+
+$$
+20/3
+$$
+
+$$
+\boxed{6.67\ days}
+$$
+
+### 🧠 Memory:
+
+> **LCM = Total Work**
+
+Then calculate everyone's daily efficiency.
+
+---
+
+# 5️⃣ Efficiency Ratio
+
+If:
+
+A completes a job in:
+
+$$
+10\ days
+$$
+
+B completes it in:
+
+$$
+20\ days
+$$
+
+Efficiency is inversely proportional to time.
+
+$$
+Efficiency_A:Efficiency_B
+=
+20:10
+$$
+
+$$
+\boxed{2:1}
+$$
+
+So A is **twice as efficient** as B.
+
+---
+
+# 6️⃣ Time and Efficiency Relationship ⭐
+
+For the same work:
+
+$$
+\boxed{Efficiency\propto\frac1{Time}}
+$$
+
+Therefore:
+
+```text
+Efficiency ↑ → Time ↓
+
+Efficiency ↓ → Time ↑
+```
+
+---
+
+# 7️⃣ Example
+
+A is 50% more efficient than B.
+
+If B takes:
+
+$$
+12\ days
+$$
+
+to complete a job, how long does A take?
+
+Let B's efficiency = 100.
+
+A's efficiency:
+
+$$
+150
+$$
+
+Since time is inversely proportional:
+
+$$
+T_A=T_B\times\frac{100}{150}
+$$
+
+$$
+=12\times\frac23
+$$
+
+$$
+\boxed{8\ days}
+$$
+
+---
+
+# 🔥 8️⃣ Two People Working Together
+
+Suppose:
+
+A = 12 days
+
+B = 18 days
+
+LCM:
+
+$$
+36
+$$
+
+Assume total work = 36 units.
+
+```text
+A → 36/12 = 3 units/day
+B → 36/18 = 2 units/day
+```
+
+Together:
+
+$$
+3+2=5
+$$
+
+Time:
+
+$$
+36/5
+$$
+
+$$
+\boxed{7.2\ days}
+$$
+
+---
+
+# 9️⃣ Three People
+
+A = 10 days
+B = 15 days
+C = 30 days
+
+LCM:
+
+$$
+30
+$$
+
+Total work = 30 units.
+
+Efficiencies:
+
+$$
+A=3
+$$
+
+$$
+B=2
+$$
+
+$$
+C=1
+$$
+
+Together:
+
+$$
+3+2+1=6
+$$
+
+Time:
+
+$$
+30/6
+$$
+
+$$
+\boxed{5\ days}
+$$
+
+---
+
+# 🧠 1️⃣0️⃣ Work Ratio
+
+Suppose:
+
+A's efficiency : B's efficiency
+
+$$
+=3:2
+$$
+
+In the same amount of time, work ratio is:
+
+$$
+\boxed{3:2}
+$$
+
+If both work for 10 days:
+
+```text
+A → 30 units
+B → 20 units
+```
+
+---
+
+# 1️⃣1️⃣ Men and Days
+
+For the same work:
+
+$$
+\boxed{Men\times Days=Constant}
+$$
+
+Example:
+
+10 workers complete a job in 15 days.
+
+How many workers are required in 5 days?
+
+$$
+10\times15=x\times5
+$$
+
+$$
+150=5x
+$$
+
+$$
+\boxed{x=30}
+$$
+
+---
+
+# 🔥 1️⃣2️⃣ Men × Days × Hours
+
+If working hours differ:
+
+$$
+\boxed{
+Men\times Days\times Hours
+=Constant
+}
+$$
+
+assuming all workers have the same efficiency.
+
+Example:
+
+10 workers work 8 hours/day for 12 days.
+
+How many workers are needed to complete the same work in 6 days at 10 hours/day?
+
+$$
+10\times12\times8
+=
+x\times6\times10
+$$
+
+$$
+960=60x
+$$
+
+$$
+\boxed{x=16}
+$$
+
+---
+
+# 1️⃣3️⃣ Efficiency Differences
+
+Suppose:
+
+A is 25% more efficient than B.
+
+Take:
+
+$$
+B=100
+$$
+
+Then:
+
+$$
+A=125
+$$
+
+Efficiency ratio:
+
+$$
+125:100
+$$
+
+$$
+\boxed{5:4}
+$$
+
+Therefore time ratio is reversed:
+
+$$
+\boxed{4:5}
+$$
+
+So:
+
+> A takes 4 parts of time while B takes 5 parts.
+
+---
+
+# 1️⃣4️⃣ A Leaves the Work
+
+Suppose:
+
+A completes a job in 10 days.
+
+B completes it in 15 days.
+
+They work together for 3 days, then A leaves.
+
+### Step 1 — Total work
+
+LCM:
+
+$$
+30
+$$
+
+A:
+
+$$
+3/day
+$$
+
+B:
+
+$$
+2/day
+$$
+
+Together:
+
+$$
+5/day
+$$
+
+### Step 2 — Work in 3 days
+
+$$
+5\times3=15
+$$
+
+Remaining:
+
+$$
+30-15=15
+$$
+
+### Step 3 — B finishes
+
+B does:
+
+$$
+2/day
+$$
+
+Time:
+
+$$
+15/2
+$$
+
+$$
+\boxed{7.5\ days}
+$$
+
+Total time:
+
+$$
+3+7.5
+$$
+
+$$
+\boxed{10.5\ days}
+$$
+
+---
+
+# 🔥 1️⃣5️⃣ Pipes & Cisterns
+
+Pipes are basically **time-and-work problems**.
+
+A pipe fills a tank in:
+
+$$
+10\ hours
+$$
+
+Its filling rate:
+
+$$
+\frac1{10}
+$$
+
+Another pipe fills it in:
+
+$$
+15\ hours
+$$
+
+Rate:
+
+$$
+\frac1{15}
+$$
+
+Together:
+
+$$
+\frac1{10}+\frac1{15}
+$$
+
+LCM 30:
+
+$$
+\frac3{30}+\frac2{30}
+$$
+
+$$
+=\frac5{30}
+$$
+
+$$
+=\frac16
+$$
+
+Therefore:
+
+$$
+\boxed{6\ hours}
+$$
+
+---
+
+# 1️⃣6️⃣ Outlet / Leakage
+
+An outlet **removes** water.
+
+So its rate is negative.
+
+Suppose:
+
+Fill pipe:
+
+$$
+10h
+$$
+
+Leak:
+
+$$
+20h
+$$
+
+Rates:
+
+$$
++\frac1{10}-\frac1{20}
+$$
+
+$$
+=\frac2{20}-\frac1{20}
+$$
+
+$$
+=\frac1{20}
+$$
+
+Therefore tank fills in:
+
+$$
+\boxed{20h}
+$$
+
+---
+
+# 🧠 1️⃣7️⃣ Pipes Memory
+
+```text
+Filling pipe → +
+
+Emptying pipe → -
+```
+
+Then simply add rates.
+
+---
+
+# 1️⃣8️⃣ Work Equivalence
+
+Suppose:
+
+5 men can do a job in 12 days.
+
+How many days would 10 men take?
+
+$$
+5\times12=10x
+$$
+
+$$
+60=10x
+$$
+
+$$
+\boxed{6days}
+$$
+
+Double workers → half the time.
+
+---
+
+# 🔥 1️⃣9️⃣ A Common Trap
+
+If A can complete a job in 10 days and B in 20 days:
+
+Don't do:
+
+$$
+10+20=30
+$$
+
+❌ Wrong.
+
+You add **work rates**, not completion times:
+
+$$
+\frac1{10}+\frac1{20}
+$$
+
+---
+
+# 2️⃣0️⃣ Work Problem Mental Model
+
+Think of a job as a **bucket of 100 units**.
+
+```text
+        TOTAL WORK
+      ┌─────────────┐
+      │ 100 units   │
+      └─────────────┘
+         ↑       ↑
+      Person A Person B
+      10/day    5/day
+```
+
+Then:
+
+$$
+Total\ Time=
+\frac{100}{Total\ Daily\ Work}
+$$
+
+This mental model makes work questions much easier.
+
+---
+
+# 🧮 2️⃣1️⃣ GATE-Style Questions
+
+### Q1
+
+A can complete a job in 12 days and B in 18 days. How long together?
+
+LCM:
+
+$$
+36
+$$
+
+A = 3 units/day
+
+B = 2 units/day
+
+Together:
+
+$$
+5
+$$
+
+Time:
+
+$$
+36/5
+$$
+
+$$
+\boxed{7.2days}
+$$
+
+---
+
+### Q2
+
+A is twice as efficient as B.
+
+Together they complete a job in 12 days.
+
+Find A's time alone.
+
+Efficiency ratio:
+
+$$
+A:B=2:1
+$$
+
+Together = 3 parts.
+
+A's share of efficiency:
+
+$$
+2/3
+$$
+
+If combined rate:
+
+$$
+1/12
+$$
+
+A's rate:
+
+$$
+\frac23\times\frac1{12}
+=
+\frac1{18}
+$$
+
+Therefore:
+
+$$
+\boxed{18days}
+$$
+
+---
+
+### Q3
+
+A pipe fills a tank in 8 hours and another in 12 hours.
+
+Together:
+
+$$
+\frac18+\frac1{12}
+$$
+
+LCM 24:
+
+$$
+3/24+2/24=5/24
+$$
+
+Time:
+
+$$
+24/5
+$$
+
+$$
+\boxed{4.8hours}
+$$
+
+---
+
+# 🎯 2️⃣2️⃣ Today's Practice
+
+Try these **before checking the answers**.
+
+### Q1
+
+A can complete a job in 15 days and B in 10 days. How long together?
+
+### Q2
+
+A and B together complete a job in 8 days. A alone takes 12 days. How long does B alone take?
+
+### Q3
+
+12 workers complete a job in 15 days. How many workers are needed for 9 days?
+
+### Q4
+
+A is 50% more efficient than B. If B takes 18 days, how long does A take?
+
+### Q5
+
+A pipe fills a tank in 12 hours. A second pipe fills it in 18 hours. How long together?
+
+### Q6
+
+A fills a tank in 10 hours and a leak empties it in 20 hours. How long does it take to fill the tank when both operate?
+
+### Q7
+
+A can do a job in 20 days and B in 30 days. They work together for 5 days. What fraction of the work remains?
+
+---
+
+# ✅ Answers
+
+### Q1
+
+$$
+\frac1{15}+\frac1{10}
+$$
+
+$$
+=\frac2{30}+\frac3{30}
+=\frac5{30}
+=\frac16
+$$
+
+$$
+\boxed{6days}
+$$
+
+---
+
+### Q2
+
+Combined rate:
+
+$$
+1/8
+$$
+
+A's rate:
+
+$$
+1/12
+$$
+
+B's rate:
+
+$$
+1/8-1/12
+$$
+
+$$
+=\frac3{24}-\frac2{24}
+=\frac1{24}
+$$
+
+$$
+\boxed{24days}
+$$
+
+---
+
+### Q3
+
+$$
+12\times15=x\times9
+$$
+
+$$
+180=9x
+$$
+
+$$
+\boxed{20workers}
+$$
+
+---
+
+### Q4
+
+A is 150% of B's efficiency.
+
+$$
+T_A=18\times\frac{100}{150}
+$$
+
+$$
+\boxed{12days}
+$$
+
+---
+
+### Q5
+
+$$
+1/12+1/18
+$$
+
+LCM = 36:
+
+$$
+3/36+2/36=5/36
+$$
+
+Time:
+
+$$
+36/5
+$$
+
+$$
+\boxed{7.2hours}
+$$
+
+---
+
+### Q6
+
+$$
+1/10-1/20
+$$
+
+$$
+=1/20
+$$
+
+$$
+\boxed{20hours}
+$$
+
+---
+
+### Q7
+
+Combined rate:
+
+$$
+1/20+1/30
+$$
+
+$$
+=\frac3{60}+\frac2{60}
+=\frac5{60}
+=\frac1{12}
+$$
+
+Work in 5 days:
+
+$$
+5/12
+$$
+
+Remaining:
+
+$$
+1-\frac5{12}
+$$
+
+$$
+\boxed{\frac7{12}}
+$$
+
+---
+
+# 🧠 TODAY'S FORMULA CARD
+
+### Basic work
+
+$$
+\boxed{Work=Efficiency\times Time}
+$$
+
+### Daily work
+
+$$
+\boxed{Daily\ Work=\frac1{Time}}
+$$
+
+### Combined work
+
+$$
+\boxed{Rate_{total}=Rate_1+Rate_2+\cdots}
+$$
+
+### Men & Days
+
+$$
+\boxed{M_1D_1=M_2D_2}
+$$
+
+### Men, Days & Hours
+
+$$
+\boxed{M_1D_1H_1=M_2D_2H_2}
+$$
+
+### Efficiency
+
+$$
+\boxed{Efficiency\propto\frac1{Time}}
+$$
+
+### Pipes
+
+$$
+\boxed{Filling=+,\ Emptying=-}
+$$
+
+---
+
+# 🧠 60-SECOND MEMORY TRICK
+
+When you see:
+
+> **"A can finish in X days."**
+
+Immediately think:
+
+$$
+\boxed{A's\ rate=1/X}
+$$
+
+When multiple people work:
+
+> **ADD RATES**
+
+When a pipe empties:
+
+> **SUBTRACT RATE**
+
+When workers/days change:
+
+> **WORK = CONSTANT**
+
+That's the entire foundation of Time & Work.
+
+---
+
+# 🗣️ Communication Practice — 100–200 Words
+
+### Topic: **A Technical Challenge I Faced**
+
+One of the most important things I have learned from technical projects is that problems rarely appear exactly as expected. When I face a technical issue, I first reproduce the problem so that I can clearly understand what is failing. Then I check the error message, logs, recent changes, and dependencies involved. Instead of changing many things at once, I test one possible cause at a time. Once I identify the root cause, I apply the smallest appropriate fix and test the complete workflow again. I also document the solution because the same problem may appear later. This process has taught me that debugging is not about guessing. It is about forming a hypothesis, testing it, and using evidence to narrow down the cause. I believe this systematic approach will help me become a better software engineer.
+
+### 🎤 Speaking task
+
+Explain **one technical problem you solved** using:
+
+**Problem → Investigation → Cause → Solution → Result**
+
+---
+
+# 📊 PROGRESS
+
+| Area                     | Status             |
+| ------------------------ | ------------------ |
+| Major Technical Subjects | ✅                  |
+| DBMS                     | ✅ 100%             |
+| Computer Networks        | ✅ 100%             |
+| General Aptitude         | 🟨 **6 / ~7 days** |
+| Revision + PYQs          | ⏳                  |
+| Mock Tests               | ⏳                  |
+
+## 🏆 DAY 120
+
+You've now completed:
+
+**Percentage → Ratio & Proportion → Averages → Profit/Loss → Time-Speed-Distance → Time & Work**
+
+### 🔜 Next — DAY 121
+
+## 📊 **Data Interpretation + Probability Basics**
+
+We'll learn how to quickly read **tables, bar graphs, pie charts and percentages**, followed by the core probability concepts needed for aptitude.
