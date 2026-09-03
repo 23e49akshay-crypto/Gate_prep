@@ -1,0 +1,1221 @@
+📘 TODAY'S LEARNING — DAY 120
+
+📅 3 September 2026
+🎯 GATE CSE 2027 + Placement Preparation
+
+⏳ Topic: Time & Work + Pipes & Cisterns
+
+This is one of the most important aptitude topics for placements.
+
+The secret is simple:
+
+> Don't think in terms of days. Think in terms of WORK DONE PER DAY.
+
+
+
+
+---
+
+1️⃣ The Basic Concept
+
+Suppose A can complete a job in 10 days.
+
+That means:
+
+\[
+\boxed{\text{A's 1-day work}=\frac{1}{10}}
+\]
+
+Suppose B can complete the same job in 20 days.
+
+\[
+\boxed{\text{B's 1-day work}=\frac{1}{20}}
+\]
+
+
+---
+
+🧠 Golden Formula
+
+If a person completes work in \(n\) days:
+
+\[
+\boxed{\text{1-day work}=\frac1n}
+\]
+
+If a person does \(\frac1n\) work per day:
+
+\[
+\boxed{\text{Total days}=n}
+\]
+
+
+---
+
+2️⃣ Working Together ⭐
+
+A finishes a job in 10 days.
+
+B finishes it in 20 days.
+
+Their one-day work:
+
+\[
+\frac{1}{10}+\frac{1}{20}
+\]
+
+LCM = 20:
+
+\[
+\frac{2}{20}+\frac{1}{20}
+\]
+
+\[
+=\frac3{20}
+\]
+
+Together they complete:
+
+\[
+\frac3{20}
+\]
+
+of the work per day.
+
+Time required:
+
+\[
+\frac{1}{3/20}
+\]
+
+\[
+\boxed{\frac{20}{3}=6.67\text{ days}}
+\]
+
+
+---
+
+🔥 3️⃣ Direct Shortcut
+
+If A takes \(a\) days and B takes \(b\) days:
+
+\[
+\boxed{
+\text{Together time}=
+\frac{ab}{a+b}
+}
+\]
+
+Example:
+
+A = 10 days
+B = 20 days
+
+\[
+\frac{10\times20}{10+20}
+\]
+
+\[
+=\frac{200}{30}
+\]
+
+\[
+=\boxed{6.67\text{ days}}
+\]
+
+⚠️ This shortcut works for two workers doing positive work together.
+
+
+---
+
+4️⃣ The LCM Method ⭐⭐⭐
+
+This is often the fastest method.
+
+Suppose:
+
+A completes work in 10 days.
+
+B completes work in 15 days.
+
+Take total work as:
+
+\[
+LCM(10,15)=30\ units
+\]
+
+Therefore:
+
+A's efficiency = 30/10 = 3 units/day
+B's efficiency = 30/15 = 2 units/day
+
+Together:
+
+\[
+3+2=5
+\]
+
+Time:
+
+\[
+30/5
+\]
+
+\[
+\boxed{6\text{ days}}
+\]
+
+🔥 For aptitude questions, the LCM method is extremely powerful.
+
+
+---
+
+5️⃣ Efficiency and Time
+
+Efficiency and time are inversely proportional.
+
+\[
+\boxed{
+Efficiency\propto\frac1{Time}
+}
+\]
+
+Suppose:
+
+A takes 10 days.
+
+B takes 20 days.
+
+Then:
+
+\[
+A:B\text{ efficiency}
+\]
+
+\[
+=\frac1{10}:\frac1{20}
+\]
+
+\[
+=\boxed{2:1}
+\]
+
+So A is twice as efficient as B.
+
+
+---
+
+6️⃣ Efficiency Ratio Trick
+
+If:
+
+\[
+A:B\text{ time}=2:3
+\]
+
+Then efficiency ratio is:
+
+\[
+\boxed{3:2}
+\]
+
+Memory:
+
+> Time ratio → Flip it → Efficiency ratio
+
+
+
+
+---
+
+7️⃣ Men × Days = Constant
+
+For the same work:
+
+\[
+\boxed{
+Men\times Days=Constant
+}
+\]
+
+Example:
+
+10 workers complete a job in 12 days.
+
+How many days will 15 workers take?
+
+\[
+10\times12=15\times x
+\]
+
+\[
+x=8
+\]
+
+\[
+\boxed{8\text{ days}}
+\]
+
+This works when all workers have the same efficiency.
+
+
+---
+
+8️⃣ Men–Days–Hours
+
+Sometimes working hours also change.
+
+\[
+\boxed{
+Men\times Days\times Hours\times Efficiency
+}
+\]
+
+is proportional to total work.
+
+Example:
+
+10 workers work 8 hours/day for 6 days.
+
+Another group has 12 workers and works 10 hours/day.
+
+How many days for the same work?
+
+\[
+10\times8\times6
+=
+12\times10\times x
+\]
+
+\[
+480=120x
+\]
+
+\[
+\boxed{x=4\text{ days}}
+\]
+
+
+---
+
+🔥 9️⃣ Work Done in Some Days
+
+A can finish a job in 12 days.
+
+One-day work:
+
+\[
+\frac1{12}
+\]
+
+In 4 days:
+
+\[
+4\times\frac1{12}
+\]
+
+\[
+=\boxed{\frac13}
+\]
+
+Therefore remaining work:
+
+\[
+1-\frac13
+\]
+
+\[
+=\boxed{\frac23}
+\]
+
+
+---
+
+🔟 A Works First, Then B Joins
+
+A completes work in 10 days.
+
+B completes it in 15 days.
+
+A works alone for 2 days.
+
+Using LCM:
+
+\[
+LCM(10,15)=30
+\]
+
+Total work = 30 units.
+
+A's daily work:
+
+\[
+30/10=3
+\]
+
+B's daily work:
+
+\[
+30/15=2
+\]
+
+A works 2 days:
+
+\[
+2\times3=6
+\]
+
+Remaining:
+
+\[
+30-6=24
+\]
+
+Together per day:
+
+\[
+3+2=5
+\]
+
+Time:
+
+\[
+24/5=4.8
+\]
+
+Total time:
+
+\[
+2+4.8
+\]
+
+\[
+\boxed{6.8\text{ days}}
+\]
+
+
+---
+
+1️⃣1️⃣ One Worker Leaves
+
+A can do work in 10 days.
+
+B can do work in 15 days.
+
+They work together for 2 days, then B leaves.
+
+LCM method:
+
+Total work:
+
+\[
+30
+\]
+
+A:
+
+\[
+3/day
+\]
+
+B:
+
+\[
+2/day
+\]
+
+Together:
+
+\[
+5/day
+\]
+
+Work in 2 days:
+
+\[
+10
+\]
+
+Remaining:
+
+\[
+20
+\]
+
+A alone:
+
+\[
+20/3
+\]
+
+\[
+=6.67\text{ days}
+\]
+
+Total:
+
+\[
+2+6.67
+\]
+
+\[
+\boxed{8.67\text{ days}}
+\]
+
+
+---
+
+💰 1️⃣2️⃣ Work and Wages
+
+Wages are proportional to work done.
+
+\[
+\boxed{
+Wages\propto Work
+}
+\]
+
+Suppose:
+
+A and B work in efficiency ratio:
+
+\[
+2:3
+\]
+
+Total payment:
+
+₹5000.
+
+Total ratio:
+
+\[
+2+3=5
+\]
+
+A gets:
+
+\[
+\frac25\times5000
+\]
+
+\[
+=\boxed{₹2000}
+\]
+
+B gets:
+
+\[
+\boxed{₹3000}
+\]
+
+
+---
+
+🚰 1️⃣3️⃣ Pipes & Cisterns
+
+Pipes follow the same Time & Work logic.
+
+A pipe fills a tank in 10 hours.
+
+Its 1-hour work:
+
+\[
+\boxed{\frac1{10}}
+\]
+
+A pipe filling in 20 hours:
+
+\[
+\boxed{\frac1{20}}
+\]
+
+Together:
+
+\[
+\frac1{10}+\frac1{20}
+\]
+
+\[
+=\frac3{20}
+\]
+
+Tank fills in:
+
+\[
+\boxed{6.67\text{ hours}}
+\]
+
+
+---
+
+🚨 1️⃣4️⃣ Outlet / Leak Pipe
+
+An outlet removes work.
+
+So we subtract its rate.
+
+Suppose:
+
+Inlet fills in 10 hours → \(+1/10\)
+
+Outlet empties in 20 hours → \(-1/20\)
+
+
+Net work:
+
+\[
+\frac1{10}-\frac1{20}
+\]
+
+\[
+=\frac1{20}
+\]
+
+Therefore tank fills in:
+
+\[
+\boxed{20\text{ hours}}
+\]
+
+
+---
+
+🔥 1️⃣5️⃣ Multiple Pipes
+
+Suppose:
+
+Pipe A fills in 12 hours.
+
+Pipe B fills in 18 hours.
+
+Pipe C empties in 36 hours.
+
+
+Net rate:
+
+\[
+\frac1{12}+\frac1{18}-\frac1{36}
+\]
+
+LCM = 36:
+
+\[
+\frac3{36}+\frac2{36}-\frac1{36}
+\]
+
+\[
+=\frac4{36}
+\]
+
+\[
+=\frac19
+\]
+
+Therefore:
+
+\[
+\boxed{9\text{ hours}}
+\]
+
+
+---
+
+1️⃣6️⃣ Efficiency Percentage
+
+Suppose A is 50% more efficient than B.
+
+Take B's efficiency = 100 units.
+
+A:
+
+\[
+150
+\]
+
+Efficiency ratio:
+
+\[
+A:B=150:100
+\]
+
+\[
+=\boxed{3:2}
+\]
+
+Since time is inverse:
+
+\[
+A:B\text{ time}
+\]
+
+\[
+=\boxed{2:3}
+\]
+
+
+---
+
+1️⃣7️⃣ If A is Twice as Efficient
+
+Suppose:
+
+A's efficiency = 2 × B.
+
+Then:
+
+\[
+Efficiency\ ratio=2:1
+\]
+
+Time ratio:
+
+\[
+\boxed{1:2}
+\]
+
+If B takes 20 days:
+
+A takes:
+
+\[
+\boxed{10\text{ days}}
+\]
+
+
+---
+
+🔥 1️⃣8️⃣ The Most Important Mental Model
+
+Think of work as a tank of 100 units.
+
+Example:
+
+A finishes in 10 days
+
+Then:
+
+\[
+A=10\ units/day
+\]
+
+B finishes in 20 days
+
+Then:
+
+\[
+B=5\ units/day
+\]
+
+Together:
+
+\[
+15\ units/day
+\]
+
+Time:
+
+\[
+100/15=6.67
+\]
+
+This is exactly the same as fractions—but easier to visualize.
+
+
+---
+
+🧮 1️⃣9️⃣ GATE/Placement-Style Problem
+
+A can complete a work in 20 days.
+
+B can complete it in 30 days.
+
+They work together for 5 days.
+
+What fraction of work remains?
+
+Step 1: LCM
+
+\[
+LCM(20,30)=60
+\]
+
+Total work = 60 units.
+
+A:
+
+\[
+3/day
+\]
+
+B:
+
+\[
+2/day
+\]
+
+Together:
+
+\[
+5/day
+\]
+
+Work in 5 days:
+
+\[
+25
+\]
+
+Remaining:
+
+\[
+60-25=35
+\]
+
+Fraction remaining:
+
+\[
+\boxed{\frac{35}{60}=\frac7{12}}
+\]
+
+
+---
+
+🧮 2️⃣0️⃣ Pipes Problem
+
+Pipe A fills a tank in 8 hours.
+
+Pipe B fills it in 12 hours.
+
+Pipe C empties it in 24 hours.
+
+Find total filling time.
+
+LCM:
+
+\[
+24
+\]
+
+Rates:
+
+A = +3
+B = +2
+C = -1
+
+Net:
+
+\[
+3+2-1=4
+\]
+
+Time:
+
+\[
+24/4
+\]
+
+\[
+\boxed{6\text{ hours}}
+\]
+
+
+---
+
+🎯 TODAY'S PRACTICE
+
+Q1
+
+A can complete a job in 12 days. What fraction does A complete in 1 day?
+
+Q2
+
+A completes a job in 10 days and B in 15 days. How long together?
+
+Q3
+
+A can complete work in 20 days and B in 30 days. They work together for 4 days. What fraction of work is completed?
+
+Q4
+
+10 workers complete a job in 12 days. How many days will 15 workers take?
+
+Q5
+
+12 workers working 8 hours/day finish a job in 10 days. How many days will 16 workers working 6 hours/day take?
+
+Q6
+
+A is twice as efficient as B. If B takes 18 days, how many days does A take?
+
+Q7
+
+Pipe A fills a tank in 8 hours and Pipe B fills it in 12 hours. How long together?
+
+Q8
+
+Pipe A fills in 10 hours and an outlet empties in 20 hours. How long to fill the tank?
+
+Q9
+
+A and B have efficiency ratio 3:2. They receive ₹5000. How much does A receive?
+
+Q10
+
+A can complete a job in 15 days. He works for 5 days. What fraction of work remains?
+
+
+---
+
+✅ ANSWERS
+
+Q1
+
+\[
+\boxed{\frac1{12}}
+\]
+
+
+---
+
+Q2
+
+\[
+\frac{10\times15}{10+15}
+\]
+
+\[
+=\frac{150}{25}
+\]
+
+\[
+\boxed{6\text{ days}}
+\]
+
+
+---
+
+Q3
+
+One-day work:
+
+\[
+\frac1{20}+\frac1{30}
+\]
+
+\[
+=\frac5{60}=\frac1{12}
+\]
+
+In 4 days:
+
+\[
+\boxed{\frac4{12}=\frac13}
+\]
+
+
+---
+
+Q4
+
+\[
+10\times12=15x
+\]
+
+\[
+\boxed{x=8\text{ days}}
+\]
+
+
+---
+
+Q5
+
+Total work:
+
+\[
+12\times8\times10
+\]
+
+New daily capacity:
+
+\[
+16\times6
+\]
+
+\[
+x=\frac{12\times8\times10}{16\times6}
+\]
+
+\[
+=\boxed{10\text{ days}}
+\]
+
+
+---
+
+Q6
+
+Twice efficient means half the time:
+
+\[
+\boxed{9\text{ days}}
+\]
+
+
+---
+
+Q7
+
+\[
+\frac18+\frac1{12}
+\]
+
+LCM = 24:
+
+\[
+\frac3{24}+\frac2{24}
+=\frac5{24}
+\]
+
+Time:
+
+\[
+\boxed{\frac{24}{5}=4.8\text{ hours}}
+\]
+
+
+---
+
+Q8
+
+\[
+\frac1{10}-\frac1{20}
+=\frac1{20}
+\]
+
+\[
+\boxed{20\text{ hours}}
+\]
+
+
+---
+
+Q9
+
+Ratio = 3:2.
+
+A's share:
+
+\[
+\frac35\times5000
+\]
+
+\[
+\boxed{₹3000}
+\]
+
+
+---
+
+Q10
+
+Work done:
+
+\[
+5\times\frac1{15}
+=\frac13
+\]
+
+Remaining:
+
+\[
+1-\frac13
+\]
+
+\[
+\boxed{\frac23}
+\]
+
+
+---
+
+⚡ FAST MCQ TRICKS
+
+🟢 If people work together:
+
+\[
+\boxed{\text{Add efficiencies}}
+\]
+
+🔴 If a pipe leaks/empties:
+
+\[
+\boxed{\text{Subtract efficiency}}
+\]
+
+🔄 Efficiency vs Time:
+
+Efficiency ↑ → Time ↓
+Efficiency ↓ → Time ↑
+
+👷 Men-Days:
+
+More workers → fewer days
+
+🚰 Pipes:
+
+Inlet → +
+Outlet → -
+
+
+---
+
+🧠 FINAL FORMULA CARD
+
+\[
+\boxed{\text{1-day work}=\frac1n}
+\]
+
+\[
+\boxed{\text{Work}=Rate\times Time}
+\]
+
+For two workers:
+
+\[
+\boxed{\text{Together time}=\frac{ab}{a+b}}
+\]
+
+Efficiency:
+
+\[
+\boxed{E\propto\frac1T}
+\]
+
+Same work:
+
+\[
+\boxed{Men\times Days=Constant}
+\]
+
+With hours:
+
+\[
+\boxed{Men\times Days\times Hours\times Efficiency}
+\]
+
+Pipes:
+
+\[
+\boxed{Net\ Rate=Inlets-Outlets}
+\]
+
+
+---
+
+🧠 RETENTION TEST
+
+Without looking above, answer:
+
+1. If A takes 20 days, what is A's one-day work?
+
+
+2. If A takes 10 days and B takes 15 days, how long together?
+
+
+3. Do we add or subtract an outlet pipe?
+
+
+4. If efficiency doubles, what happens to time?
+
+
+5. What is the relationship between men and days?
+
+
+6. If A works for 5 days on a 15-day job, how much work remains?
+
+
+
+🎯 If you get 5/6, you understand the core concept well.
+
+
+---
+
+🗣️ COMMUNICATION PRACTICE
+
+🎤 Today's 60-Second Speaking Challenge
+
+Explain Time & Work to a beginner.
+
+Use:
+
+> Job → Days → One-day work → Add rates → Find total time
+
+
+
+Example:
+
+> “If A finishes a job in 10 days, A completes one-tenth of the job each day. If B finishes it in 20 days, B completes one-twentieth per day. Together, their daily work is the sum of these rates…”
+
+
+
+Try explaining it without reading the formulas. 🔥
+
+
+---
+
+📊 YOUR PROGRESS
+
+Area	Status
+
+Major Technical Subjects	✅ Completed
+DBMS	✅ 100%
+Computer Networks	✅ 100%
+General Aptitude	🟨 6 / ~7 days
+Revision + PYQs	⏳ Next Phase
+Mock Tests	⏳
+
+
+🏆 DAY 120 MILESTONE
+
+You have now completed 120 days of consistent learning. 🔥💪
+
+Completed Aptitude Topics:
+
+✅ Percentage
+✅ Ratio & Proportion
+✅ Averages
+✅ Profit, Loss & Discount
+✅ Time, Speed & Distance
+✅ Time & Work + Pipes
+
+
+---
+
+📖 NEXT — DAY 121
+
+🧠 Permutation, Combination & Probability Basics
+
+We'll cover:
+
+Factorials
+
+Permutations
+
+Combinations
+
+Selection vs arrangement
+
+Basic probability
+
+Fast MCQ identification tricks
+
+
+After that, we move strongly into:
+
+> Revision → PYQs → Timed Practice → Mock Tests → Interview Preparation 🚀
+
+
+
+Keep going — 120 days is not just progress; it's proof of consistency. 🏆🔥
