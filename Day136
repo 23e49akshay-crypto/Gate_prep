@@ -1,0 +1,902 @@
+# 📘 TODAY'S LEARNING — DAY 121 🔥
+
+**📅 4 September 2026**
+**🎯 Placement Aptitude + GATE CSE 2027 Preparation**
+
+# 🧠 Permutation, Combination & Probability Basics
+
+Today's biggest goal is to understand one simple difference:
+
+> **Permutation = Arrangement → Order matters**
+> **Combination = Selection → Order doesn't matter**
+
+---
+
+# 1️⃣ Factorial Basics
+
+Factorial of \(n\):
+
+$$
+\boxed{n! = n(n-1)(n-2)...1}
+$$
+
+Examples:
+
+$$
+5! = 5\times4\times3\times2\times1 = \boxed{120}
+$$
+
+$$
+4! = \boxed{24}
+$$
+
+Important:
+
+$$
+\boxed{0! = 1}
+$$
+
+### 🧠 Quick values to remember
+
+| n |  n! |
+| - | --: |
+| 0 |   1 |
+| 1 |   1 |
+| 2 |   2 |
+| 3 |   6 |
+| 4 |  24 |
+| 5 | 120 |
+| 6 | 720 |
+
+---
+
+# 2️⃣ Permutation — Order Matters ⭐
+
+Suppose we have:
+
+**A, B, C**
+
+How many ways can we arrange all three?
+
+```text
+ABC
+ACB
+BAC
+BCA
+CAB
+CBA
+```
+
+Total:
+
+$$
+\boxed{6=3!}
+$$
+
+### Formula
+
+Arranging \(r\) objects from \(n\):
+
+$$
+\boxed{
+{}^nP_r=\frac{n!}{(n-r)!}
+}
+$$
+
+---
+
+# 3️⃣ Permutation Example
+
+How many ways can we choose and arrange 2 people from 5?
+
+$$
+{}^5P_2
+$$
+
+$$
+=\frac{5!}{3!}
+$$
+
+$$
+=5\times4
+$$
+
+$$
+\boxed{20}
+$$
+
+### Why?
+
+Because:
+
+```text
+First position → 5 choices
+Second position → 4 choices
+```
+
+$$
+5\times4=20
+$$
+
+---
+
+# 🔥 4️⃣ Combination — Order Doesn't Matter
+
+Suppose you select 2 people:
+
+A and B.
+
+Choosing:
+
+```text
+A, B
+```
+
+is the same as:
+
+```text
+B, A
+```
+
+So order does **not** matter.
+
+### Formula
+
+$$
+\boxed{
+{}^nC_r=\frac{n!}{r!(n-r)!}
+}
+$$
+
+---
+
+# 5️⃣ Combination Example
+
+Choose 2 people from 5:
+
+$$
+{}^5C_2
+$$
+
+$$
+=\frac{5!}{2!3!}
+$$
+
+$$
+=\frac{5\times4}{2}
+$$
+
+$$
+\boxed{10}
+$$
+
+---
+
+# 🚨 The Most Important Identification Trick
+
+Ask yourself:
+
+### Does changing the order create a new result?
+
+### YES → Permutation
+
+Examples:
+
+* Arranging people in chairs
+* Passwords
+* Rankings
+* Seating arrangements
+* First, second, third positions
+
+### NO → Combination
+
+Examples:
+
+* Selecting a team
+* Choosing committee members
+* Picking cards
+* Choosing students
+
+---
+
+# 🧠 Memory Trick
+
+```text
+Permutation → Position
+
+Combination → Collection
+```
+
+---
+
+# 6️⃣ Relationship Between P and C ⭐
+
+$$
+\boxed{
+{}^nP_r={}^nC_r\times r!
+}
+$$
+
+Example:
+
+$$
+{}^5P_2=10\times2!
+$$
+
+$$
+=20
+$$
+
+---
+
+# 7️⃣ Important Combination Shortcut
+
+$$
+\boxed{
+{}^nC_r={}^nC_{n-r}
+}
+$$
+
+Example:
+
+$$
+{}^{10}C_8={} ^{10}C_2
+$$
+
+So:
+
+$$
+\frac{10\times9}{2}
+$$
+
+$$
+=\boxed{45}
+$$
+
+🔥 Always choose the **smaller value of \(r\)** for easier calculation.
+
+---
+
+# 8️⃣ Circular Permutation
+
+When people sit around a circular table:
+
+$$
+\boxed{(n-1)!}
+$$
+
+Example:
+
+5 people around a table:
+
+$$
+(5-1)!
+$$
+
+$$
+4!
+$$
+
+$$
+\boxed{24}
+$$
+
+### Why not \(5!\)?
+
+Because rotating everyone doesn't create a genuinely different seating arrangement.
+
+---
+
+# 9️⃣ Probability Basics 🎲
+
+Probability means:
+
+> **How likely something is to happen.**
+
+Formula:
+
+$$
+\boxed{
+P(E)=\frac{\text{Favourable Outcomes}}{\text{Total Outcomes}}
+}
+$$
+
+Probability always lies between:
+
+$$
+\boxed{0\leq P(E)\leq1}
+$$
+
+---
+
+# 🔟 Example: Dice 🎲
+
+A normal die has:
+
+$$
+6
+$$
+
+possible outcomes:
+
+$$
+1,2,3,4,5,6
+$$
+
+What is the probability of getting an even number?
+
+Favourable outcomes:
+
+$$
+2,4,6
+$$
+
+Total:
+
+$$
+6
+$$
+
+$$
+P=\frac36
+$$
+
+$$
+\boxed{\frac12}
+$$
+
+---
+
+# 1️⃣1️⃣ Example: Coin 🪙
+
+A fair coin:
+
+```text
+Heads
+Tails
+```
+
+Probability of Heads:
+
+$$
+\boxed{\frac12}
+$$
+
+Probability of Tails:
+
+$$
+\boxed{\frac12}
+$$
+
+---
+
+# 🔥 1️⃣2️⃣ Complement Rule
+
+Sometimes it's easier to calculate what **doesn't happen**.
+
+$$
+\boxed{
+P(\text{Not E})=1-P(E)
+}
+$$
+
+Example:
+
+Probability of getting a 6 on a die:
+
+$$
+\frac16
+$$
+
+Probability of **not** getting a 6:
+
+$$
+1-\frac16
+$$
+
+$$
+\boxed{\frac56}
+$$
+
+---
+
+# 1️⃣3️⃣ Probability of "OR"
+
+For mutually exclusive events:
+
+$$
+\boxed{
+P(A\text{ or }B)=P(A)+P(B)
+}
+$$
+
+Example:
+
+Probability of getting 1 or 2 on a die:
+
+$$
+\frac16+\frac16
+$$
+
+$$
+=\boxed{\frac13}
+$$
+
+---
+
+# 1️⃣4️⃣ Probability of "AND"
+
+For independent events:
+
+$$
+\boxed{
+P(A\text{ and }B)=P(A)\times P(B)
+}
+$$
+
+Example:
+
+Getting Heads twice:
+
+$$
+\frac12\times\frac12
+$$
+
+$$
+\boxed{\frac14}
+$$
+
+---
+
+# 🎯 1️⃣5️⃣ Important: Replacement vs No Replacement
+
+This is a common aptitude trap.
+
+## With Replacement
+
+After selecting an item, you put it back.
+
+Total items remain the same.
+
+## Without Replacement
+
+You don't put it back.
+
+Total items decrease.
+
+---
+
+### Example
+
+Bag contains:
+
+* 3 Red balls
+* 2 Blue balls
+
+Total = 5.
+
+Probability of selecting 2 red balls **without replacement**:
+
+First red:
+
+$$
+\frac35
+$$
+
+Second red:
+
+Now only 2 red out of 4:
+
+$$
+\frac24
+$$
+
+Therefore:
+
+$$
+\frac35\times\frac24
+$$
+
+$$
+\boxed{\frac3{10}}
+$$
+
+---
+
+# 🧮 1️⃣6️⃣ Permutation Question
+
+How many 3-letter arrangements can be made using:
+
+A, B, C, D?
+
+$$
+{}^4P_3
+$$
+
+$$
+=4\times3\times2
+$$
+
+$$
+\boxed{24}
+$$
+
+---
+
+# 🧮 1️⃣7️⃣ Combination Question
+
+From 8 students, choose a team of 3.
+
+$$
+{}^8C_3
+$$
+
+$$
+=\frac{8\times7\times6}{3\times2\times1}
+$$
+
+$$
+=\boxed{56}
+$$
+
+---
+
+# 🧮 1️⃣8️⃣ Probability Question
+
+A bag contains:
+
+* 4 Red
+* 3 Blue
+* 3 Green
+
+Total:
+
+$$
+10
+$$
+
+Probability of selecting Blue:
+
+$$
+\boxed{\frac3{10}}
+$$
+
+---
+
+# 🧮 1️⃣9️⃣ Probability Using Combination
+
+A box contains 5 red and 5 blue balls.
+
+Two balls are selected.
+
+Probability that both are red:
+
+Total ways:
+
+$$
+{}^{10}C_2=45
+$$
+
+Favourable ways:
+
+$$
+{}^5C_2=10
+$$
+
+Probability:
+
+$$
+\frac{10}{45}
+$$
+
+$$
+\boxed{\frac29}
+$$
+
+---
+
+# 🔥 2️⃣0️⃣ The Fast Decision Tree
+
+```text
+                 QUESTION
+                     │
+          ┌──────────┴──────────┐
+          │                     │
+       Selection?            Arrangement?
+          │                     │
+     Combination           Permutation
+       nCr                   nPr
+```
+
+For probability:
+
+```text
+Probability
+     │
+     ├── OR → Add
+     │
+     ├── AND → Multiply
+     │
+     └── NOT → 1 - P
+```
+
+---
+
+# 🎯 TODAY'S PRACTICE
+
+Try these yourself first.
+
+### Q1
+
+Find:
+
+$$
+5!
+$$
+
+### Q2
+
+How many ways can 3 people be arranged from 6 people?
+
+### Q3
+
+How many ways can you select 3 people from 6?
+
+### Q4
+
+Find:
+
+$$
+{}^8C_6
+$$
+
+### Q5
+
+How many ways can 6 people sit around a circular table?
+
+### Q6
+
+What is the probability of getting an odd number on a die?
+
+### Q7
+
+Two coins are tossed. Probability of getting two Heads?
+
+### Q8
+
+Probability of not getting a 6 on a die?
+
+### Q9
+
+A bag contains 4 red and 6 blue balls. Find the probability of selecting a red ball.
+
+### Q10
+
+A bag contains 3 red and 2 blue balls. Two balls are selected without replacement. Find the probability that both are red.
+
+---
+
+# ✅ ANSWERS
+
+### Q1
+
+$$
+\boxed{120}
+$$
+
+### Q2
+
+$$
+{}^6P_3=6\times5\times4
+$$
+
+$$
+\boxed{120}
+$$
+
+### Q3
+
+$$
+{}^6C_3
+$$
+
+$$
+=\boxed{20}
+$$
+
+### Q4
+
+$$
+{}^8C_6={}^8C_2
+$$
+
+$$
+=\frac{8\times7}{2}
+$$
+
+$$
+\boxed{28}
+$$
+
+### Q5
+
+$$
+(6-1)!
+$$
+
+$$
+5!
+$$
+
+$$
+\boxed{120}
+$$
+
+### Q6
+
+Odd numbers:
+
+$$
+1,3,5
+$$
+
+$$
+P=\frac36
+$$
+
+$$
+\boxed{\frac12}
+$$
+
+### Q7
+
+$$
+\frac12\times\frac12
+$$
+
+$$
+\boxed{\frac14}
+$$
+
+### Q8
+
+$$
+1-\frac16
+$$
+
+$$
+\boxed{\frac56}
+$$
+
+### Q9
+
+$$
+\frac4{10}
+$$
+
+$$
+\boxed{\frac25}
+$$
+
+### Q10
+
+$$
+\frac35\times\frac24
+$$
+
+$$
+=\boxed{\frac3{10}}
+$$
+
+---
+
+# ⚡ FAST FORMULA CARD
+
+### Permutation
+
+$$
+\boxed{
+{}^nP_r=\frac{n!}{(n-r)!}
+}
+$$
+
+### Combination
+
+$$
+\boxed{
+{}^nC_r=\frac{n!}{r!(n-r)!}
+}
+$$
+
+### Relationship
+
+$$
+\boxed{
+{}^nP_r={}^nC_r\times r!
+}
+$$
+
+### Circular Arrangement
+
+$$
+\boxed{(n-1)!}
+$$
+
+### Probability
+
+$$
+\boxed{
+P(E)=\frac{Favourable}{Total}
+}
+$$
+
+### Complement
+
+$$
+\boxed{P(\text{Not E})=1-P(E)}
+$$
+
+### Independent AND
+
+$$
+\boxed{P(A\cap B)=P(A)P(B)}
+$$
+
+---
+
+# 🧠 TODAY'S 5 GOLDEN POINTS
+
+1. **Arrangement = Permutation**
+2. **Selection = Combination**
+3. **Order matters → P**
+4. **Order doesn't matter → C**
+5. **Probability = Favourable ÷ Total**
+
+---
+
+# 🗣️ COMMUNICATION PRACTICE
+
+### 🎤 60-Second Challenge
+
+Explain the difference between **Permutation and Combination** without using formulas first.
+
+Use a real-world example:
+
+> “If I am selecting three students for a project team, the order doesn't matter, so it is a combination. But if I am assigning gold, silver, and bronze positions, the order matters, so it becomes a permutation.”
+
+Then explain the formulas.
+
+---
+
+# 📊 YOUR PROGRESS
+
+| Area                     | Status             |
+| ------------------------ | ------------------ |
+| Major Technical Subjects | ✅ Completed        |
+| DBMS                     | ✅ Completed        |
+| Computer Networks        | ✅ Completed        |
+| General Aptitude         | 🟨 **7 / ~7 days** |
+| Revision                 | 🔜 Next            |
+| PYQs                     | 🔜 Next            |
+| Mock Tests               | 🔜 Next            |
+| Placement Interview Prep | 🔜 Next            |
+
+# 🏆 DAY 121 COMPLETE! 🔥
+
+You have now finished the **core aptitude learning block**. 💪
+
+## 🚀 NEXT PHASE — DAY 122
+
+### 🔄 **Revision + PYQs Strategy**
+
+We'll start combining everything you've learned:
+
+* DBMS revision + PYQs
+* OS revision + PYQs
+* CN revision + PYQs
+* DSA revision
+* Aptitude timed practice
+* Coding interview questions
+* Placement-focused preparation
+
+**From Day 122 onward, the goal changes from learning topics → becoming interview-ready.** 🔥🏆
