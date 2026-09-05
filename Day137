@@ -1,0 +1,662 @@
+# 📘 TODAY'S LEARNING — DAY 122 🔥
+
+**📅 5 September 2026**
+**🎯 Placement + GATE CSE 2027 Preparation**
+
+# 🚀 NEW PHASE: REVISION → PYQs → INTERVIEW READINESS
+
+You have completed the main learning phase. From now on, we will **convert knowledge into problem-solving ability**.
+
+## Today's Focus: 🗄️ DBMS REVISION + PYQs
+
+---
+
+# 1️⃣ DBMS — The Big Picture
+
+Think of a DBMS like a **well-organized digital library**:
+
+```text
+Users
+  ↓
+Application
+  ↓
+DBMS
+  ↓
+Database
+```
+
+The DBMS handles:
+
+* Storing data
+* Retrieving data
+* Updating data
+* Security
+* Concurrency
+* Transactions
+* Recovery
+
+---
+
+# 2️⃣ The Most Important DBMS Topics — Quick Revision
+
+## 🔑 Keys
+
+### Super Key
+
+Any attribute/set of attributes that uniquely identifies a row.
+
+### Candidate Key
+
+A **minimal super key**.
+
+### Primary Key
+
+The candidate key chosen as the main identifier.
+
+### Foreign Key
+
+Creates a relationship between tables.
+
+### 🧠 Interview Trick
+
+> Every candidate key is a super key, but not every super key is a candidate key.
+
+---
+
+# 3️⃣ Normalization ⭐⭐⭐
+
+Purpose:
+
+> **Reduce redundancy and prevent anomalies.**
+
+### 1NF
+
+* Atomic values
+* No repeating groups
+
+### 2NF
+
+* Must be in 1NF
+* No partial dependency
+
+### 3NF
+
+* Must be in 2NF
+* No transitive dependency
+
+### BCNF
+
+For every functional dependency:
+
+$$
+X\rightarrow Y
+$$
+
+\(X\) should be a super key.
+
+### 🧠 Memory Trick
+
+```text
+1NF → Atomic
+2NF → No Partial
+3NF → No Transitive
+BCNF → Stronger rule
+```
+
+---
+
+# 4️⃣ Functional Dependency
+
+If:
+
+$$
+A\rightarrow B
+$$
+
+It means:
+
+> Knowing A uniquely determines B.
+
+Example:
+
+```text
+StudentID → StudentName
+```
+
+But:
+
+```text
+StudentName → StudentID
+```
+
+is not necessarily true.
+
+---
+
+# 5️⃣ Transactions ⭐⭐⭐
+
+A transaction is a group of operations treated as **one unit**.
+
+Example:
+
+```text
+Transfer ₹1000
+
+Account A → -₹1000
+Account B → +₹1000
+```
+
+Both must succeed together.
+
+---
+
+# 🔥 ACID Properties
+
+### A — Atomicity
+
+All operations happen or none happen.
+
+### C — Consistency
+
+Database remains valid.
+
+### I — Isolation
+
+Transactions don't interfere incorrectly.
+
+### D — Durability
+
+Committed data survives failures.
+
+### 🧠 Memory:
+
+```text
+A → All or nothing
+C → Correct state
+I → Independent
+D → Data survives
+```
+
+---
+
+# 6️⃣ Transaction States
+
+```text
+Active
+  ↓
+Partially Committed
+  ↓
+Committed
+```
+
+If something fails:
+
+```text
+Active
+  ↓
+Failed
+  ↓
+Aborted
+```
+
+---
+
+# 7️⃣ Concurrency Problems ⭐⭐⭐
+
+## Lost Update
+
+Two transactions overwrite each other's updates.
+
+## Dirty Read
+
+Reading uncommitted data.
+
+## Non-Repeatable Read
+
+Reading the same row twice and getting different committed values.
+
+## Phantom Read
+
+Re-running a query and seeing new/deleted rows.
+
+---
+
+# 🧠 Quick Table
+
+| Problem             | Meaning               |
+| ------------------- | --------------------- |
+| Lost Update         | Update overwritten    |
+| Dirty Read          | Uncommitted data read |
+| Non-repeatable Read | Same row changes      |
+| Phantom Read        | Result set changes    |
+
+---
+
+# 8️⃣ Serializability ⭐⭐⭐
+
+Concurrent transactions should produce results equivalent to **some serial execution**.
+
+### Conflict Serializable
+
+Can be transformed into a serial schedule by swapping non-conflicting operations.
+
+### Precedence Graph
+
+```text
+No Cycle → Serializable ✅
+
+Cycle → Not Serializable ❌
+```
+
+🔥 **Most important PYQ shortcut.**
+
+---
+
+# 9️⃣ Deadlock
+
+Deadlock occurs when transactions wait forever.
+
+Example:
+
+```text
+T1 holds A → waits for B
+
+T2 holds B → waits for A
+```
+
+Neither can proceed.
+
+---
+
+# 🔥 Four Necessary Conditions
+
+1. Mutual Exclusion
+2. Hold and Wait
+3. No Preemption
+4. Circular Wait
+
+Break any one condition → prevent deadlock.
+
+---
+
+# 🔟 SQL Revision ⭐⭐⭐
+
+## SELECT
+
+```sql
+SELECT * FROM students;
+```
+
+## WHERE
+
+```sql
+SELECT * 
+FROM students
+WHERE marks > 80;
+```
+
+## GROUP BY
+
+```sql
+SELECT department, COUNT(*)
+FROM students
+GROUP BY department;
+```
+
+## HAVING
+
+```sql
+SELECT department, COUNT(*)
+FROM students
+GROUP BY department
+HAVING COUNT(*) > 5;
+```
+
+### 🚨 Important
+
+```text
+WHERE → filters rows BEFORE grouping
+
+HAVING → filters groups AFTER grouping
+```
+
+---
+
+# 1️⃣1️⃣ JOINs
+
+Suppose:
+
+```text
+Students
+StudentID | Name
+
+Marks
+StudentID | Score
+```
+
+### INNER JOIN
+
+Only matching records.
+
+### LEFT JOIN
+
+All left-table records + matches.
+
+### RIGHT JOIN
+
+All right-table records + matches.
+
+### FULL OUTER JOIN
+
+Everything from both tables.
+
+---
+
+# 🧠 Join Visual
+
+```text
+INNER → Only common
+
+LEFT → Everything left
+
+RIGHT → Everything right
+
+FULL → Everything
+```
+
+---
+
+# 🎯 DBMS PYQ PRACTICE
+
+## Q1 ⭐
+
+A relation has attributes:
+
+$$
+(A,B,C)
+$$
+
+Functional dependencies:
+
+$$
+A\rightarrow B
+$$
+
+$$
+B\rightarrow C
+$$
+
+Which dependency is transitive?
+
+### Answer
+
+$$
+A\rightarrow B\rightarrow C
+$$
+
+Therefore:
+
+$$
+\boxed{A\rightarrow C}
+$$
+
+This is a **transitive dependency**.
+
+---
+
+## Q2 ⭐
+
+A schedule has a precedence graph containing a cycle.
+
+Is it conflict serializable?
+
+### Answer:
+
+$$
+\boxed{\text{No}}
+$$
+
+### Rule:
+
+> **Cycle = Not conflict serializable**
+
+---
+
+## Q3 ⭐⭐
+
+Which ACID property ensures that committed data survives a crash?
+
+$$
+\boxed{\text{Durability}}
+$$
+
+---
+
+## Q4 ⭐⭐
+
+Transaction T1 reads uncommitted data written by T2.
+
+What problem is this?
+
+$$
+\boxed{\text{Dirty Read}}
+$$
+
+---
+
+## Q5 ⭐⭐⭐
+
+A relation is in 2NF but has:
+
+$$
+A\rightarrow B
+$$
+
+$$
+B\rightarrow C
+$$
+
+where B is not a candidate key.
+
+Which normal form is violated?
+
+$$
+\boxed{\text{3NF}}
+$$
+
+Because of **transitive dependency**.
+
+---
+
+# 🧠 INTERVIEW QUESTIONS — DBMS
+
+### Q1: What is the difference between DBMS and RDBMS?
+
+**DBMS:** General database management system.
+
+**RDBMS:** Stores data in related tables using relationships, keys, and relational principles.
+
+---
+
+### Q2: What is normalization?
+
+Normalization is the process of organizing database tables to reduce redundancy and avoid insertion, deletion, and update anomalies.
+
+---
+
+### Q3: Primary Key vs Unique Key?
+
+| Primary Key        | Unique Key                    |
+| ------------------ | ----------------------------- |
+| Main identifier    | Ensures uniqueness            |
+| Only one per table | Can have multiple             |
+| Cannot be NULL     | NULL handling depends on DBMS |
+
+---
+
+### Q4: DELETE vs TRUNCATE vs DROP?
+
+| Command  | Meaning                  |
+| -------- | ------------------------ |
+| DELETE   | Removes selected rows    |
+| TRUNCATE | Removes all rows         |
+| DROP     | Removes the table itself |
+
+---
+
+# ⚡ TODAY'S MINI SQL CHALLENGE
+
+Given:
+
+```text
+EMPLOYEE
+-------------------------
+id
+name
+department
+salary
+```
+
+### Write a query to find employees earning more than the average salary.
+
+Think first.
+
+### Answer:
+
+```sql
+SELECT *
+FROM employee
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employee
+);
+```
+
+---
+
+# 🧠 ACTIVE RECALL — CLOSE THE NOTES
+
+Answer these without looking:
+
+1. Candidate key vs super key?
+2. What is partial dependency?
+3. What is transitive dependency?
+4. ACID properties?
+5. Dirty read?
+6. Rule for precedence graph?
+7. Four deadlock conditions?
+8. WHERE vs HAVING?
+9. INNER JOIN vs LEFT JOIN?
+10. DELETE vs TRUNCATE vs DROP?
+
+🎯 **Target: 8/10 correct.**
+
+---
+
+# 💻 CODING PRACTICE FOR TODAY
+
+## Easy DSA Revision: Two Sum
+
+### Problem
+
+Given an array and a target, find two numbers whose sum equals the target.
+
+### Optimal Python Solution
+
+```python
+def twoSum(nums, target):
+    seen = {}
+
+    for i, num in enumerate(nums):
+        need = target - num
+
+        if need in seen:
+            return [seen[need], i]
+
+        seen[num] = i
+```
+
+### Complexity
+
+$$
+\boxed{O(n)\text{ Time}}
+$$
+
+$$
+\boxed{O(n)\text{ Space}}
+$$
+
+### 🧠 Pattern
+
+```text
+Array + Target Sum
+        ↓
+      HashMap
+```
+
+This pattern appears frequently in coding interviews.
+
+---
+
+# 🗣️ COMMUNICATION PRACTICE
+
+## 🎤 60-Second Interview Challenge
+
+Answer:
+
+### **"Explain ACID properties with a real-world example."**
+
+Use a bank transfer:
+
+> “Suppose ₹1000 is transferred from Account A to Account B…”
+
+Explain:
+
+* Atomicity
+* Consistency
+* Isolation
+* Durability
+
+🎯 Try speaking without memorizing exact sentences.
+
+---
+
+# 📊 YOUR NEW PROGRESS TRACKER
+
+| Phase                   | Status              |
+| ----------------------- | ------------------- |
+| Core Technical Learning | ✅ Complete          |
+| DBMS                    | 🔄 Revision Started |
+| OS                      | ⏳ Next              |
+| Computer Networks       | ⏳                   |
+| DSA                     | 🔄 Daily Revision   |
+| Aptitude                | 🔄 Timed Practice   |
+| PYQs                    | 🔄 Started          |
+| Mock Tests              | 🔜 Coming Soon      |
+| Interview Preparation   | 🔄 Started          |
+
+---
+
+# 🏆 DAY 122 COMPLETE
+
+Today marks the beginning of the **most important phase**:
+
+> ❌ Learning more and more topics
+> ✅ Mastering what you already learned
+
+### 📖 NEXT — DAY 123
+
+# 💻 **Operating Systems Revision + PYQs**
+
+We'll revise:
+
+* Processes vs Threads
+* CPU Scheduling
+* Deadlocks
+* Paging & Segmentation
+* Virtual Memory
+* Synchronization
+* GATE-style PYQs
+* OS interview questions
+
+🔥 **You are now in the final transformation phase: Knowledge → Speed → Confidence → Selection.**
