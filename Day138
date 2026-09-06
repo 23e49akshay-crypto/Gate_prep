@@ -1,0 +1,854 @@
+# 📘 TODAY'S LEARNING — DAY 123 🔥
+
+**📅 6 September 2026**
+**🎯 Placement + GATE CSE 2027 Preparation**
+
+# 💻 OPERATING SYSTEMS — REVISION + PYQs
+
+Today we move from **learning OS concepts** to **remembering and solving them quickly**.
+
+---
+
+# 1️⃣ OS Big Picture 🧠
+
+An Operating System is the **manager of the computer**.
+
+```text
+User
+  ↓
+Applications
+  ↓
+Operating System
+  ↓
+Hardware
+```
+
+The OS manages:
+
+* CPU 🧠
+* Memory 💾
+* Processes ⚙️
+* Files 📁
+* I/O devices ⌨️
+* Security 🔐
+
+---
+
+# 2️⃣ Process vs Thread ⭐⭐⭐
+
+## Process
+
+A process is a **program currently executing**.
+
+Example:
+
+```text
+Chrome
+VS Code
+Spotify
+```
+
+Each running program can be a process.
+
+## Thread
+
+A thread is the **smallest unit of execution inside a process**.
+
+Example:
+
+```text
+Chrome Process
+ ├── Tab Thread
+ ├── Rendering Thread
+ └── Network Thread
+```
+
+### 🔥 Key Difference
+
+| Process                  | Thread                  |
+| ------------------------ | ----------------------- |
+| Heavyweight              | Lightweight             |
+| Separate memory          | Shares process memory   |
+| Context switch is costly | Faster context switch   |
+| Communication is slower  | Communication is easier |
+
+### 🧠 Interview Line
+
+> **A process provides resources, while a thread performs execution.**
+
+---
+
+# 3️⃣ Process States ⭐⭐
+
+Typical process lifecycle:
+
+```text
+New
+ ↓
+Ready ↔ Running
+ ↓       │
+Waiting ←┘
+ ↓
+Ready
+ ↓
+Terminated
+```
+
+### Important:
+
+* **Ready** → Waiting for CPU
+* **Waiting/Blocked** → Waiting for I/O/event
+* **Running** → Currently executing
+
+🚨 Common interview question:
+
+### Ready vs Waiting?
+
+> **Ready means the process is prepared to run but waiting for CPU. Waiting means it cannot run until some event occurs.**
+
+---
+
+# 4️⃣ CPU Scheduling ⭐⭐⭐
+
+The OS decides:
+
+> **Which process gets the CPU next?**
+
+Main algorithms:
+
+### FCFS
+
+First Come First Serve.
+
+### SJF
+
+Shortest Job First.
+
+### Priority Scheduling
+
+Highest priority runs first.
+
+### Round Robin
+
+Each process gets a time quantum.
+
+---
+
+# 5️⃣ Scheduling Terms
+
+### Turnaround Time
+
+$$
+\boxed{TAT = Completion\ Time - Arrival\ Time}
+$$
+
+### Waiting Time
+
+$$
+\boxed{WT = TAT - Burst\ Time}
+$$
+
+### Response Time
+
+$$
+\boxed{First\ CPU\ Allocation - Arrival\ Time}
+$$
+
+🔥 These are frequently asked.
+
+---
+
+# 6️⃣ FCFS Example
+
+Processes:
+
+| Process | Burst Time |
+| ------- | ---------: |
+| P1      |          5 |
+| P2      |          3 |
+| P3      |          8 |
+
+Order:
+
+```text
+P1 → P2 → P3
+```
+
+Gantt Chart:
+
+```text
+0 -----5 ---8 --------16
+   P1      P2      P3
+```
+
+Waiting times:
+
+* P1 = 0
+* P2 = 5
+* P3 = 8
+
+Average:
+
+$$
+\frac{0+5+8}{3}
+$$
+
+$$
+\boxed{4.33}
+$$
+
+---
+
+# 7️⃣ SJF ⭐⭐⭐
+
+SJF chooses the process with the **smallest burst time**.
+
+Using:
+
+* P1 = 5
+* P2 = 3
+* P3 = 8
+
+Order:
+
+```text
+P2 → P1 → P3
+```
+
+Waiting times:
+
+* P2 = 0
+* P1 = 3
+* P3 = 8
+
+Average:
+
+$$
+\frac{0+3+8}{3}
+$$
+
+$$
+\boxed{3.67}
+$$
+
+### 🧠 Key Point
+
+> SJF gives minimum average waiting time **when burst times are known**.
+
+---
+
+# 8️⃣ Round Robin ⭐⭐⭐
+
+Each process receives a fixed:
+
+$$
+\boxed{\text{Time Quantum}}
+$$
+
+Example:
+
+```text
+Quantum = 2ms
+```
+
+Processes rotate:
+
+```text
+P1 → P2 → P3 → P1 → ...
+```
+
+### Too small quantum?
+
+➡️ Too many context switches.
+
+### Too large quantum?
+
+➡️ Behaves similar to FCFS.
+
+---
+
+# 9️⃣ Preemptive vs Non-Preemptive 🔥
+
+## Preemptive
+
+OS can interrupt a running process.
+
+Examples:
+
+* Round Robin
+* SRTF
+
+## Non-Preemptive
+
+Running process keeps CPU until completion/blocking.
+
+Examples:
+
+* FCFS
+* Non-preemptive SJF
+
+---
+
+# 🔟 Deadlock ⭐⭐⭐
+
+Deadlock happens when processes wait forever.
+
+Example:
+
+```text
+P1 holds Resource A → waits for B
+
+P2 holds Resource B → waits for A
+```
+
+Neither can continue.
+
+---
+
+# 1️⃣1️⃣ Four Deadlock Conditions 🚨
+
+All four must exist:
+
+1. **Mutual Exclusion**
+2. **Hold and Wait**
+3. **No Preemption**
+4. **Circular Wait**
+
+### 🧠 Memory Trick
+
+**M H N C**
+
+> **My Hungry Nerdy Cat** 😄
+
+Break any one condition → Deadlock can be prevented.
+
+---
+
+# 1️⃣2️⃣ Deadlock Handling
+
+### Prevention
+
+Ensure at least one necessary condition cannot occur.
+
+### Avoidance
+
+Allocate resources safely.
+
+👉 Example: **Banker's Algorithm**
+
+### Detection
+
+Allow deadlock, then detect it.
+
+### Recovery
+
+Terminate processes or reclaim resources.
+
+---
+
+# 1️⃣3️⃣ Paging ⭐⭐⭐
+
+Memory is divided into:
+
+```text
+Logical Memory → Pages
+Physical Memory → Frames
+```
+
+Example:
+
+```text
+Process Pages:
+P0 | P1 | P2
+
+Memory Frames:
+F2 | F7 | F4
+```
+
+Pages can be stored in **non-contiguous memory**.
+
+### Advantage:
+
+$$
+\boxed{\text{No External Fragmentation}}
+$$
+
+---
+
+# 1️⃣4️⃣ Internal vs External Fragmentation
+
+## Internal Fragmentation
+
+Unused space **inside an allocated block**.
+
+## External Fragmentation
+
+Free memory exists but is scattered into small blocks.
+
+### Memory Trick:
+
+```text
+INternal → INside block
+
+EXternal → between/scattered blocks
+```
+
+---
+
+# 1️⃣5️⃣ Segmentation
+
+Memory is divided according to logical units:
+
+```text
+Code
+Data
+Stack
+Heap
+```
+
+Unlike paging:
+
+* Segment sizes can vary.
+* Segmentation can suffer from external fragmentation.
+
+---
+
+# 1️⃣6️⃣ Virtual Memory ⭐⭐⭐
+
+Virtual memory allows a program to execute even when the entire program is **not currently in RAM**.
+
+```text
+Program
+   ↓
+Virtual Address
+   ↓
+RAM + Disk
+```
+
+The most common technique:
+
+$$
+\boxed{\text{Demand Paging}}
+$$
+
+Pages are loaded only when needed.
+
+---
+
+# 1️⃣7️⃣ Page Fault
+
+A page fault occurs when:
+
+> A required page is not currently in main memory.
+
+Then:
+
+```text
+Page Fault
+   ↓
+OS checks disk
+   ↓
+Loads page into RAM
+   ↓
+Execution continues
+```
+
+---
+
+# 1️⃣8️⃣ Page Replacement Algorithms
+
+### FIFO
+
+Replace the oldest page.
+
+### LRU ⭐
+
+Replace the least recently used page.
+
+### Optimal
+
+Replace the page that will be used farthest in the future.
+
+🧠 Important:
+
+> Optimal gives the minimum possible page faults, but future knowledge is generally unavailable in real systems.
+
+---
+
+# 1️⃣9️⃣ Belady's Anomaly 🚨
+
+In some cases:
+
+> Increasing the number of frames increases page faults.
+
+This can happen with:
+
+$$
+\boxed{\text{FIFO}}
+$$
+
+It does **not** occur in stack algorithms such as LRU and Optimal.
+
+---
+
+# 2️⃣0️⃣ Synchronization ⭐⭐⭐
+
+When multiple processes access shared resources, we need synchronization.
+
+Example:
+
+```text
+Two processes
+      ↓
+Shared Bank Account
+```
+
+Without synchronization → Race Condition.
+
+---
+
+# 2️⃣1️⃣ Critical Section
+
+The part of a program accessing shared data.
+
+```text
+Entry Section
+      ↓
+Critical Section
+      ↓
+Exit Section
+      ↓
+Remainder Section
+```
+
+A good solution should provide:
+
+1. Mutual Exclusion
+2. Progress
+3. Bounded Waiting
+
+---
+
+# 2️⃣2️⃣ Semaphore
+
+A synchronization mechanism.
+
+### wait()
+
+Decreases semaphore.
+
+### signal()
+
+Increases semaphore.
+
+Conceptually:
+
+```text
+wait()   → Acquire
+signal() → Release
+```
+
+---
+
+# 🎯 OS PYQ PRACTICE
+
+## Q1 ⭐
+
+Which scheduling algorithm gives minimum average waiting time when burst times are known?
+
+### ✅ Answer:
+
+$$
+\boxed{\text{SJF}}
+$$
+
+---
+
+## Q2 ⭐⭐
+
+A process is ready to execute but waiting for CPU.
+
+Which state?
+
+### ✅ Answer:
+
+$$
+\boxed{\text{Ready}}
+$$
+
+---
+
+## Q3 ⭐⭐⭐
+
+Which page replacement algorithm can show Belady's anomaly?
+
+### ✅ Answer:
+
+$$
+\boxed{\text{FIFO}}
+$$
+
+---
+
+## Q4 ⭐⭐⭐
+
+Which fragmentation occurs in paging?
+
+### ✅ Answer:
+
+$$
+\boxed{\text{Internal Fragmentation}}
+$$
+
+Paging eliminates external fragmentation.
+
+---
+
+## Q5 ⭐⭐
+
+Which deadlock algorithm checks for a safe state?
+
+### ✅ Answer:
+
+$$
+\boxed{\text{Banker's Algorithm}}
+$$
+
+---
+
+## Q6 ⭐⭐⭐
+
+Which scheduling algorithm becomes similar to FCFS when the time quantum becomes very large?
+
+### ✅ Answer:
+
+$$
+\boxed{\text{Round Robin}}
+$$
+
+---
+
+# 💻 MINI NUMERICAL
+
+Processes:
+
+| Process | Arrival Time | Burst Time |
+| ------- | -----------: | ---------: |
+| P1      |            0 |          4 |
+| P2      |            1 |          3 |
+| P3      |            2 |          2 |
+
+### Question:
+
+Using **FCFS**, find the average waiting time.
+
+### Step 1: Order
+
+```text
+P1 → P2 → P3
+```
+
+### Step 2: Waiting Time
+
+P1:
+
+$$
+0
+$$
+
+P2:
+
+P1 finishes at 4.
+
+$$
+WT=4-1=\boxed3
+$$
+
+P3:
+
+Starts at:
+
+$$
+7
+$$
+
+$$
+WT=7-2=\boxed5
+$$
+
+Average:
+
+$$
+\frac{0+3+5}{3}
+$$
+
+$$
+\boxed{2.67}
+$$
+
+---
+
+# 💼 OS INTERVIEW QUESTIONS
+
+### 1. Process vs Thread?
+
+> A process has its own resources and memory space, while threads are lightweight execution units inside a process that share resources.
+
+---
+
+### 2. What is a deadlock?
+
+> A deadlock occurs when processes are permanently waiting for resources held by each other.
+
+---
+
+### 3. What is a page fault?
+
+> A page fault occurs when a required page is not present in RAM and must be loaded from secondary storage.
+
+---
+
+### 4. What is virtual memory?
+
+> Virtual memory allows processes to use an address space larger than physical RAM by using secondary storage as an extension.
+
+---
+
+### 5. What is a semaphore?
+
+> A semaphore is a synchronization mechanism used to control access to shared resources.
+
+---
+
+# 🧠 ACTIVE RECALL TEST
+
+Close the notes and answer:
+
+1. Process vs Thread?
+2. Ready vs Waiting?
+3. Formula for Turnaround Time?
+4. Which algorithm minimizes average waiting time?
+5. What happens when RR quantum is very large?
+6. Four deadlock conditions?
+7. Pages vs Frames?
+8. Internal vs External fragmentation?
+9. What causes a page fault?
+10. Which algorithm shows Belady's anomaly?
+11. Three requirements of Critical Section?
+12. What does a semaphore do?
+
+🎯 **Target: 10/12**
+
+---
+
+# 💻 DSA REVISION — TODAY'S PATTERN
+
+## 🔢 Sliding Window
+
+### Problem
+
+Find the maximum sum of a subarray of size `k`.
+
+Example:
+
+```text
+[2, 1, 5, 1, 3, 2]
+k = 3
+```
+
+### Brute Force ❌
+
+Check every subarray repeatedly.
+
+$$
+O(nk)
+$$
+
+### Optimal Approach ✅
+
+Use a sliding window.
+
+```python
+def max_sum(arr, k):
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+
+    for i in range(k, len(arr)):
+        window_sum += arr[i] - arr[i - k]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+```
+
+### Complexity
+
+$$
+\boxed{O(n)}
+$$
+
+### 🧠 Pattern Recognition
+
+```text
+Contiguous Subarray
+        +
+Fixed Size k
+        ↓
+Sliding Window
+```
+
+---
+
+# 🗣️ COMMUNICATION PRACTICE
+
+## 🎤 60-Second Interview Challenge
+
+### Question:
+
+**"What is the difference between a process and a thread?"**
+
+Use this structure:
+
+> **Definition → Memory → Cost → Communication → Real-world example**
+
+Example real-world analogy:
+
+> A process is like a company with its own building and resources. Threads are employees working inside the same company and sharing its resources.
+
+Try saying it naturally rather than memorizing.
+
+---
+
+# 📊 YOUR PROGRESS
+
+| Area                       | Status                    |
+| -------------------------- | ------------------------- |
+| Core Technical Learning    | ✅ Complete                |
+| DBMS Revision              | ✅ Day 1 Complete          |
+| OS Revision                | ✅ Day 2 Complete          |
+| Computer Networks Revision | 🔜 Next                   |
+| DSA                        | 🔄 Daily Pattern Revision |
+| Aptitude                   | 🔄 Practice Phase         |
+| PYQs                       | 🔄 Started                |
+| Mock Tests                 | 🔜 Coming Soon            |
+| Interview Preparation      | 🔄 Active                 |
+
+# 🏆 DAY 123 COMPLETE! 🔥
+
+You're now building **speed and recall**, not just collecting information.
+
+## 📖 NEXT — DAY 124
+
+# 🌐 Computer Networks Revision + PYQs
+
+We will revise:
+
+* OSI & TCP/IP
+* IP addressing & subnetting
+* TCP vs UDP
+* Routing
+* DNS, HTTP, HTTPS
+* Flow & congestion control
+* CN PYQs
+* Network interview questions
+
+🔥 **Your next goal: Make DBMS + OS + CN your strongest placement subjects.**
