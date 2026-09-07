@@ -1,0 +1,883 @@
+📘 TODAY'S LEARNING — DAY 124 🔥
+
+📅 7 September 2026
+🎯 Placement + GATE CSE 2027 Preparation
+
+🌐 COMPUTER NETWORKS — REVISION + PYQs
+
+Today’s goal is to make Computer Networks interview-ready through fast revision, important concepts, and common PYQ patterns.
+
+
+---
+
+1️⃣ The Big Picture: How the Internet Works
+
+When you open a website:
+
+Your Device
+   ↓
+Application Layer
+   ↓
+Transport Layer
+   ↓
+Network Layer
+   ↓
+Data Link Layer
+   ↓
+Physical Layer
+   ↓
+Internet 🌐
+
+Each layer has a specific responsibility.
+
+
+---
+
+2️⃣ OSI Model ⭐⭐⭐
+
+The OSI model has 7 layers:
+
+7️⃣ Application
+6️⃣ Presentation
+5️⃣ Session
+4️⃣ Transport
+3️⃣ Network
+2️⃣ Data Link
+1️⃣ Physical
+
+🧠 Memory Trick
+
+> All People Seem To Need Data Processing
+
+
+
+
+---
+
+Layer Responsibilities
+
+Layer	Main Job
+
+Application	User/network services
+Presentation	Encryption, compression
+Session	Session management
+Transport	End-to-end delivery
+Network	Routing
+Data Link	Frames + MAC addressing
+Physical	Bits and signals
+
+
+
+---
+
+3️⃣ TCP/IP Model ⭐⭐⭐
+
+The practical Internet model:
+
+Application
+Transport
+Internet
+Network Access
+
+Mapping
+
+OSI                    TCP/IP
+--------------------------------
+Application ┐
+Presentation├──→ Application
+Session     ┘
+
+Transport   ───→ Transport
+
+Network     ───→ Internet
+
+Data Link   ┐
+Physical    ┘──→ Network Access
+
+
+---
+
+4️⃣ TCP vs UDP 🔥🔥🔥
+
+One of the most common interview questions.
+
+TCP	UDP
+
+Connection-oriented	Connectionless
+Reliable	Best-effort
+Slower	Faster
+Ordered delivery	No ordering guarantee
+Error recovery	Limited recovery mechanisms
+Used for web/file transfer	Used for streaming/DNS/real-time use cases
+
+
+🧠 Simple Rule
+
+> Need reliability → TCP
+Need low latency → UDP
+
+
+
+
+---
+
+5️⃣ TCP Three-Way Handshake ⭐⭐⭐
+
+Before communication:
+
+Client                 Server
+
+SYN  ───────────────→
+
+     ←──────────── SYN + ACK
+
+ACK  ───────────────→
+
+Purpose
+
+Establishes a TCP connection and synchronizes sequence information.
+
+🧠 Remember
+
+SYN → SYN-ACK → ACK
+
+
+---
+
+6️⃣ TCP Connection Termination
+
+Usually uses a four-step process:
+
+FIN → ACK → FIN → ACK
+
+
+---
+
+7️⃣ IP Addressing ⭐⭐⭐
+
+IPv4
+
+IPv4 address:
+
+\[
+32\ bits
+\]
+
+Example:
+
+192.168.1.10
+
+Each section is called an octet.
+
+8 + 8 + 8 + 8 = 32 bits
+
+
+---
+
+IPv6
+
+IPv6:
+
+\[
+128\ bits
+\]
+
+Created mainly because IPv4 addresses are limited.
+
+
+---
+
+8️⃣ Private IP Ranges 🔥
+
+Important for interviews:
+
+10.0.0.0/8
+
+172.16.0.0 – 172.31.255.255
+
+192.168.0.0/16
+
+Private IPs are generally used inside local networks.
+
+
+---
+
+9️⃣ Subnetting Basics ⭐⭐⭐
+
+Subnetting divides a network into smaller networks.
+
+Example:
+
+192.168.1.0/24
+
+/24 means:
+
+24 bits → Network part
+8 bits → Host part
+
+Total addresses:
+
+\[
+2^8=256
+\]
+
+For a traditional IPv4 subnet:
+
+\[
+\boxed{Usable\ Hosts=2^h-2}
+\]
+
+So:
+
+\[
+256-2=\boxed{254}
+\]
+
+
+---
+
+🔟 Common Subnet Values
+
+CIDR	Total Addresses	Traditional Usable Hosts
+
+/24	256	254
+/25	128	126
+/26	64	62
+/27	32	30
+/28	16	14
+/29	8	6
+/30	4	2
+
+
+🔥 Memorize this table.
+
+
+---
+
+1️⃣1️⃣ Important Devices
+
+Hub
+
+Broadcasts data to all connected devices.
+
+Switch ⭐
+
+Uses MAC addresses to forward frames intelligently.
+
+Router ⭐
+
+Connects different networks and routes packets using IP addresses.
+
+🧠 Quick Trick
+
+Hub    → Everything
+Switch → MAC
+Router → IP
+
+
+---
+
+1️⃣2️⃣ MAC Address
+
+A MAC address identifies a network interface at the Data Link layer.
+
+Example:
+
+00:1A:2B:3C:4D:5E
+
+Usually represented using 48 bits.
+
+
+---
+
+1️⃣3️⃣ ARP ⭐⭐⭐
+
+ARP means:
+
+> Address Resolution Protocol
+
+
+
+It maps:
+
+IP Address
+    ↓
+MAC Address
+
+Example:
+
+> “I know the destination IP, but what is its MAC address on my local network?”
+
+
+
+ARP helps resolve it.
+
+
+---
+
+1️⃣4️⃣ DNS ⭐⭐⭐
+
+DNS is like the phonebook of the Internet.
+
+google.com
+     ↓
+IP Address
+
+Instead of remembering IP addresses, we use domain names.
+
+
+---
+
+1️⃣5️⃣ HTTP vs HTTPS 🔥
+
+HTTP
+
+No built-in transport encryption
+
+Typically uses port 80
+
+
+HTTPS
+
+HTTP protected using TLS
+
+Typically uses port 443
+
+
+🧠 Rule
+
+> HTTPS = HTTP + TLS security
+
+
+
+
+---
+
+1️⃣6️⃣ Important Protocols & Ports
+
+Protocol	Common Port
+
+HTTP	80
+HTTPS	443
+FTP	21
+SSH	22
+DNS	53
+SMTP	25
+
+
+🎯 Learn these for interviews and MCQs.
+
+
+---
+
+1️⃣7️⃣ Routing ⭐⭐⭐
+
+Routers decide:
+
+> Where should this packet go next?
+
+
+
+Routing can be:
+
+Static Routing
+
+Manually configured routes.
+
+Dynamic Routing
+
+Routers automatically exchange routing information.
+
+Examples include:
+
+RIP
+
+OSPF
+
+BGP
+
+
+
+---
+
+1️⃣8️⃣ Distance Vector vs Link State
+
+Distance Vector
+
+Routers exchange routing information with neighbours.
+
+Example:
+
+> RIP
+
+
+
+Link State
+
+Routers build a broader view of network topology.
+
+Example:
+
+> OSPF
+
+
+
+🧠 Easy Memory
+
+Distance Vector → RIP
+Link State → OSPF
+
+
+---
+
+1️⃣9️⃣ Flow Control vs Congestion Control ⭐⭐⭐
+
+Flow Control
+
+Prevents a fast sender from overwhelming a slow receiver.
+
+Sender → Receiver
+
+Congestion Control
+
+Prevents too much traffic from overwhelming the network.
+
+Many Senders
+      ↓
+   Network
+
+🔥 Interview favorite.
+
+
+---
+
+2️⃣0️⃣ TCP Flow Control
+
+TCP uses the receiver's advertised window to help control how much data the sender can send before overwhelming the receiver.
+
+Think:
+
+> Receiver capacity problem → Flow control
+
+
+
+
+---
+
+2️⃣1️⃣ TCP Congestion Control
+
+TCP adjusts sending behavior based on network conditions.
+
+Important concepts:
+
+Slow Start
+
+Congestion Avoidance
+
+Fast Retransmit
+
+Fast Recovery
+
+
+Think:
+
+> Network capacity problem → Congestion control
+
+
+
+
+---
+
+🎯 CN PYQ PRACTICE
+
+Q1 ⭐
+
+Which layer is responsible for routing?
+
+✅ Answer
+
+\[
+\boxed{\text{Network Layer}}
+\]
+
+
+---
+
+Q2 ⭐⭐
+
+Which protocol maps an IP address to a MAC address?
+
+✅ Answer
+
+\[
+\boxed{\text{ARP}}
+\]
+
+
+---
+
+Q3 ⭐⭐
+
+Which protocol is connection-oriented?
+
+✅ Answer
+
+\[
+\boxed{\text{TCP}}
+\]
+
+
+---
+
+Q4 ⭐⭐⭐
+
+Which protocol uses a three-way handshake?
+
+✅ Answer
+
+\[
+\boxed{\text{TCP}}
+\]
+
+
+---
+
+Q5 ⭐⭐⭐
+
+A /26 network has how many traditional usable host addresses?
+
+\[
+2^{32-26}-2
+\]
+
+\[
+2^6-2
+\]
+
+\[
+64-2
+\]
+
+\[
+\boxed{62}
+\]
+
+
+---
+
+Q6 ⭐⭐
+
+Which device primarily works using MAC addresses?
+
+✅ Answer
+
+\[
+\boxed{\text{Switch}}
+\]
+
+
+---
+
+Q7 ⭐⭐⭐
+
+What is the difference between flow control and congestion control?
+
+✅ Answer
+
+> Flow control protects the receiver. Congestion control protects the network.
+
+
+
+
+---
+
+💼 IMPORTANT INTERVIEW QUESTIONS
+
+1. What happens when you type a URL in the browser?
+
+A simplified flow:
+
+URL
+ ↓
+DNS Lookup
+ ↓
+IP Address Found
+ ↓
+TCP Connection / Secure Setup
+ ↓
+HTTP Request
+ ↓
+Server Response
+ ↓
+Browser Renders Page
+
+🔥 This is an excellent interview answer.
+
+
+---
+
+2. TCP vs UDP?
+
+> TCP provides reliable, ordered communication with connection management, while UDP prioritizes low overhead and speed without guaranteeing delivery or ordering.
+
+
+
+
+---
+
+3. What is DNS?
+
+> DNS translates human-readable domain names into IP addresses.
+
+
+
+
+---
+
+4. What is ARP?
+
+> ARP resolves an IPv4 address to a MAC address within a local network.
+
+
+
+
+---
+
+5. What is a subnet mask?
+
+> A subnet mask identifies which part of an IP address represents the network and which part represents the host.
+
+
+
+
+---
+
+💻 DSA REVISION — TODAY'S PATTERN
+
+🔤 Two Pointers
+
+Problem
+
+Given a sorted array, determine whether two numbers have a target sum.
+
+Example:
+
+[1, 2, 4, 6, 10]
+Target = 8
+
+
+---
+
+🧠 Approach
+
+Start with:
+
+L → 1
+          R → 10
+
+Check:
+
+1 + 10 > 8
+
+Move R left.
+
+1 + 6 < 8
+
+Move L right.
+
+2 + 6 = 8 ✅
+
+
+---
+
+Python Code
+
+def has_pair(arr, target):
+    left, right = 0, len(arr) - 1
+
+    while left < right:
+        total = arr[left] + arr[right]
+
+        if total == target:
+            return True
+        elif total < target:
+            left += 1
+        else:
+            right -= 1
+
+    return False
+
+Complexity
+
+\[
+\boxed{O(n)\text{ Time}}
+\]
+
+\[
+\boxed{O(1)\text{ Space}}
+\]
+
+🧠 Pattern Recognition
+
+> Sorted Array + Pair Problem → Two Pointers
+
+
+
+
+---
+
+🧮 APTITUDE SPEED PRACTICE
+
+Q1
+
+A number increased by 20% becomes 240.
+
+Original number?
+
+\[
+240/1.2=\boxed{200}
+\]
+
+
+---
+
+Q2
+
+A train travels 120 km in 2 hours.
+
+Speed?
+
+\[
+120/2=\boxed{60\ km/h}
+\]
+
+
+---
+
+Q3
+
+If the ratio is:
+
+\[
+3:5
+\]
+
+and total is 40, first part?
+
+\[
+\frac38\times40
+\]
+
+\[
+\boxed{15}
+\]
+
+
+---
+
+🗣️ COMMUNICATION PRACTICE
+
+🎤 60-Second Interview Challenge
+
+Question:
+
+“What happens when you enter a URL in a browser?”
+
+Use this structure:
+
+> DNS → Connection → Request → Response → Rendering
+
+
+
+Try explaining it naturally in your own words.
+
+
+---
+
+🧠 ACTIVE RECALL TEST
+
+Close the notes and answer:
+
+1. Name all 7 OSI layers.
+
+
+2. TCP vs UDP?
+
+
+3. TCP handshake steps?
+
+
+4. What does ARP do?
+
+
+5. What does DNS do?
+
+
+6. Switch uses MAC or IP?
+
+
+7. Router uses MAC or IP for routing?
+
+
+8. How many usable hosts in /27?
+
+
+9. Flow control vs congestion control?
+
+
+10. HTTP vs HTTPS?
+
+
+
+🎯 Target: 8/10
+
+
+---
+
+📊 YOUR PROGRESS
+
+Area	Status
+
+DBMS Revision	✅ Complete
+OS Revision	✅ Complete
+Computer Networks Revision	✅ Complete
+Core Technical Subjects	🔄 Revision Phase
+DSA	🔄 Daily Practice
+Aptitude	🔄 Timed Practice
+PYQs	🔄 Active
+Interview Preparation	🔄 Active
+
+
+
+---
+
+🏆 DAY 124 COMPLETE! 🔥
+
+You've now revised the Big 3 Core Placement Subjects:
+
+✅ DBMS
+✅ Operating Systems
+✅ Computer Networks
+
+🚀 NEXT — DAY 125
+
+🔥 DSA REVISION — ARRAYS + STRINGS + HASHING
+
+We'll focus on:
+
+Pattern recognition
+
+Most common interview questions
+
+Arrays
+
+Strings
+
+HashMaps/Sets
+
+Time complexity tricks
+
+Placement-style coding questions
+
+
+You are now entering the phase where practice matters more than theory. 💪🚀
