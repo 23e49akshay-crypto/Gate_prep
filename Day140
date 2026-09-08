@@ -1,0 +1,694 @@
+📘 TODAY'S LEARNING — DAY 125 🔥
+
+📅 8 September 2026
+🎯 Placement + GATE CSE 2027 Preparation
+
+💻 DSA REVISION — ARRAYS + STRINGS + HASHING
+
+Today is extremely important because Arrays, Strings, and Hashing form the foundation of many placement coding questions.
+
+> 🎯 Today's goal: Learn to identify the pattern quickly and write the optimal solution.
+
+
+
+
+---
+
+1️⃣ ARRAY PATTERN RECOGNITION 🧠
+
+When you see an array problem, ask:
+
+Question 1:
+
+Do I need to find a pair?
+
+👉 Think: HashMap / Two Pointers
+
+Question 2:
+
+Is it a contiguous subarray?
+
+👉 Think: Sliding Window / Prefix Sum
+
+Question 3:
+
+Do I need frequency/count?
+
+👉 Think: HashMap
+
+Question 4:
+
+Is the array sorted?
+
+👉 Think: Two Pointers / Binary Search
+
+
+---
+
+🧠 DSA DECISION MAP
+
+ARRAY PROBLEM
+     │
+     ├── Pair / Target Sum → HashMap or Two Pointers
+     │
+     ├── Frequency → HashMap
+     │
+     ├── Contiguous Subarray → Sliding Window
+     │
+     ├── Sorted Array → Two Pointers / Binary Search
+     │
+     └── Maximum/Minimum → Greedy / Kadane / Heap
+
+
+---
+
+2️⃣ TWO SUM ⭐⭐⭐
+
+Problem
+
+Find two indices whose values add up to the target.
+
+Example:
+
+nums = [2, 7, 11, 15]
+target = 9
+
+Answer:
+
+[0, 1]
+
+Because:
+
+\[
+2+7=9
+\]
+
+
+---
+
+🧠 Optimal Idea
+
+Instead of checking every pair:
+
+2 + ?
+
+Calculate:
+
+need = target - current_number
+
+Store previously seen numbers in a HashMap.
+
+
+---
+
+✅ Python Solution
+
+def twoSum(nums, target):
+    seen = {}
+
+    for i, num in enumerate(nums):
+        need = target - num
+
+        if need in seen:
+            return [seen[need], i]
+
+        seen[num] = i
+
+Complexity
+
+Time	Space
+
+O(n)	O(n)
+
+
+🧠 Pattern
+
+> Array + Target Sum → HashMap
+
+
+
+
+---
+
+3️⃣ CONTAINS DUPLICATE ⭐⭐
+
+Problem
+
+Check whether an array contains duplicate values.
+
+Example:
+
+[1, 2, 3, 1]
+
+Answer:
+
+True
+
+
+---
+
+✅ Optimal Python
+
+def containsDuplicate(nums):
+    return len(nums) != len(set(nums))
+
+Complexity
+
+\[
+O(n)
+\]
+
+🧠 Pattern
+
+> Duplicate checking → Set
+
+
+
+
+---
+
+4️⃣ VALID ANAGRAM ⭐⭐⭐
+
+Two strings are anagrams if they contain the same characters with the same frequency.
+
+Example:
+
+listen
+silent
+
+✅ Anagram.
+
+
+---
+
+Approach
+
+Use a frequency map.
+
+Python Solution
+
+from collections import Counter
+
+def isAnagram(s, t):
+    return Counter(s) == Counter(t)
+
+Complexity
+
+\[
+O(n)
+\]
+
+🧠 Pattern
+
+> Character frequency → HashMap / Counter
+
+
+
+
+---
+
+5️⃣ FIRST UNIQUE CHARACTER ⭐⭐
+
+Example:
+
+s = "leetcode"
+
+Answer:
+
+0
+
+Because l appears only once.
+
+
+---
+
+Python Solution
+
+from collections import Counter
+
+def firstUniqChar(s):
+    count = Counter(s)
+
+    for i, char in enumerate(s):
+        if count[char] == 1:
+            return i
+
+    return -1
+
+🧠 Pattern
+
+Frequency Count
+      +
+Second Traversal
+
+
+---
+
+6️⃣ LONGEST SUBSTRING WITHOUT REPEATING CHARACTERS ⭐⭐⭐🔥
+
+Example:
+
+"abcabcbb"
+
+Longest substring:
+
+"abc"
+
+Answer:
+
+\[
+\boxed{3}
+\]
+
+
+---
+
+🧠 Pattern Recognition
+
+Keywords:
+
+> Longest + Substring + No Repeating
+
+
+
+Immediately think:
+
+👉 Sliding Window + Set/HashMap
+
+
+---
+
+Python Solution
+
+def lengthOfLongestSubstring(s):
+    chars = set()
+    left = 0
+    longest = 0
+
+    for right in range(len(s)):
+
+        while s[right] in chars:
+            chars.remove(s[left])
+            left += 1
+
+        chars.add(s[right])
+
+        longest = max(longest, right - left + 1)
+
+    return longest
+
+Complexity
+
+\[
+\boxed{O(n)}
+\]
+
+
+---
+
+7️⃣ GROUP ANAGRAMS ⭐⭐⭐
+
+Example:
+
+["eat", "tea", "tan", "ate", "nat", "bat"]
+
+Output groups:
+
+[
+ ["eat", "tea", "ate"],
+ ["tan", "nat"],
+ ["bat"]
+]
+
+
+---
+
+🧠 Idea
+
+Words with the same sorted characters belong together.
+
+eat → aet
+tea → aet
+ate → aet
+
+
+---
+
+Python Solution
+
+from collections import defaultdict
+
+def groupAnagrams(words):
+    groups = defaultdict(list)
+
+    for word in words:
+        key = "".join(sorted(word))
+        groups[key].append(word)
+
+    return list(groups.values())
+
+Complexity
+
+Approximately:
+
+\[
+O(n\cdot k\log k)
+\]
+
+where k is average word length.
+
+
+---
+
+8️⃣ MAJORITY ELEMENT ⭐⭐⭐
+
+Find the element appearing more than:
+
+\[
+\frac{n}{2}
+\]
+
+times.
+
+Example:
+
+[2, 2, 1, 1, 1, 2, 2]
+
+Answer:
+
+2
+
+
+---
+
+🔥 Best Interview Algorithm
+
+Boyer-Moore Voting Algorithm
+
+def majorityElement(nums):
+    candidate = None
+    count = 0
+
+    for num in nums:
+        if count == 0:
+            candidate = num
+
+        count += 1 if num == candidate else -1
+
+    return candidate
+
+Complexity
+
+\[
+\boxed{O(n)\text{ Time}}
+\]
+
+\[
+\boxed{O(1)\text{ Space}}
+\]
+
+🧠 Interview Value: ⭐⭐⭐⭐⭐
+
+
+---
+
+9️⃣ HASHMAP vs SET 🧠
+
+Use a SET when:
+
+You only need to know:
+
+> Does this value exist?
+
+
+
+Example:
+
+seen = set()
+
+
+---
+
+Use a HASHMAP when:
+
+You need:
+
+> Value → Information
+
+
+
+Example:
+
+frequency = {
+    "a": 3,
+    "b": 2
+}
+
+
+---
+
+🔟 IMPORTANT TIME COMPLEXITY TRICKS ⚡
+
+Operation	Typical Complexity
+
+Array access	O(1)
+Array search	O(n)
+HashMap lookup	O(1) average
+Set lookup	O(1) average
+Sorting	O(n log n)
+
+
+🧠 Interview Trick
+
+If you see:
+
+for i in nums:
+    for j in nums:
+
+🚨 Usually:
+
+\[
+O(n^2)
+\]
+
+Try asking:
+
+> Can I use a HashMap to remove one loop?
+
+
+
+
+---
+
+🔥 TODAY'S 5 MUST-SOLVE QUESTIONS
+
+Q1 — Two Sum
+
+[3, 2, 4]
+target = 6
+
+Find the indices.
+
+
+---
+
+Q2 — Contains Duplicate
+
+[1, 2, 3, 4, 1]
+
+Return True or False.
+
+
+---
+
+Q3 — Valid Anagram
+
+"rat"
+"tar"
+
+
+---
+
+Q4 — Longest Substring
+
+"pwwkew"
+
+Find the length of the longest substring without repeating characters.
+
+
+---
+
+Q5 — Majority Element
+
+[3, 3, 4, 2, 3, 3, 5]
+
+Find the majority element.
+
+
+---
+
+✅ ANSWERS
+
+Q1
+
+[1, 2]
+
+Because:
+
+\[
+2+4=6
+\]
+
+
+---
+
+Q2
+
+True
+
+
+---
+
+Q3
+
+True
+
+
+---
+
+Q4
+
+3
+
+One longest substring is:
+
+"wke"
+
+
+---
+
+Q5
+
+3
+
+
+---
+
+🧠 INTERVIEW RAPID-FIRE
+
+Answer these without looking:
+
+1. When do you use a HashMap?
+
+
+2. When do you use a Set?
+
+
+3. Array + target sum → Which pattern?
+
+
+4. Frequency counting → Which data structure?
+
+
+5. Longest substring without repetition → Which pattern?
+
+
+6. Sorted array pair problem → Which pattern?
+
+
+7. Complexity of HashMap lookup?
+
+
+8. Complexity of sorting?
+
+
+9. Which algorithm finds Majority Element in O(1) space?
+
+
+10. How can you often reduce O(n²) pair checking?
+
+
+
+🎯 Target: 8/10
+
+
+---
+
+💼 INTERVIEW COMMUNICATION PRACTICE
+
+🎤 60-Second Challenge
+
+Explain:
+
+“Why is a HashMap useful?”
+
+Use this structure:
+
+> Problem → Slow approach → HashMap solution → Complexity → Example
+
+
+
+Example idea:
+
+> “Without a HashMap, finding whether a value already exists may require scanning the array repeatedly, which can lead to O(n²) solutions. A HashMap allows average O(1) lookup…”
+
+
+
+Speak it naturally in your own words. 🔥
+
+
+---
+
+📊 PROGRESS TRACKER
+
+Area	Status
+
+DBMS Revision	✅
+OS Revision	✅
+CN Revision	✅
+Arrays + Strings + Hashing	✅ Day 125
+DSA Revision	🔄 Active
+Aptitude	🔄 Practice
+PYQs	🔄 Active
+Interview Preparation	🔄 Active
+Mock Tests	🔜 Soon
+
+
+
+---
+
+🏆 DAY 125 COMPLETE! 🔥
+
+Today you strengthened one of the highest-value placement skills:
+
+> Pattern Recognition → Optimal Approach → Clean Code
+
+
+
+
+---
+
+🚀 NEXT — DAY 126
+
+🔗 DSA REVISION: LINKED LIST + STACK + QUEUE
+
+We’ll cover:
+
+Linked List patterns
+
+Fast & Slow pointers
+
+Reversal
+
+Stack interview problems
+
+Valid Parentheses
+
+Queue concepts
+
+Monotonic Stack basics
+
+
+🔥 Day 126 will focus on pointer thinking and data structure patterns.
+
+Keep the consistency going — 125 days completed! 🏆💪
