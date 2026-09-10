@@ -1,0 +1,1306 @@
+# 📘 TODAY'S LEARNING — DAY 127 🔥
+
+**📅 10 September 2026**
+**🎯 GATE CSE 2027 + Placement Preparation**
+
+# 🌳 DSA REVISION — TREES + BST + RECURSION
+
+Today we move into one of the **highest-value DSA interview topics**.
+
+> 🧠 **Core idea:** A tree problem usually becomes easy once you identify **DFS, BFS, BST property, or recursion**.
+
+---
+
+# 1️⃣ What is a Tree?
+
+A tree is a hierarchical data structure consisting of nodes connected by edges.
+
+Example:
+
+```text
+              10
+            /    \
+           5      15
+         /  \    /  \
+        2    7  12   20
+```
+
+---
+
+# 2️⃣ Important Tree Terminology
+
+### Root
+
+Topmost node.
+
+```text
+10 ← Root
+```
+
+### Parent
+
+A node directly above another node.
+
+```text
+10
+ |
+5
+```
+
+10 is parent of 5.
+
+### Child
+
+Node directly below another node.
+
+### Leaf
+
+Node with **no children**.
+
+Here:
+
+```text
+2, 7, 12, 20
+```
+
+are leaves.
+
+### Height
+
+Length of the longest path from a node to a leaf.
+
+⚠️ Depending on convention, height may be measured in **edges or nodes**. Always check the definition in the question.
+
+---
+
+# 3️⃣ Tree Properties ⭐
+
+For a tree with:
+
+$$
+n
+$$
+
+nodes:
+
+$$
+\boxed{Edges=n-1}
+$$
+
+Example:
+
+10 nodes:
+
+$$
+10-1=\boxed9\ edges
+$$
+
+🔥 Very common GATE question.
+
+---
+
+# 4️⃣ Binary Tree
+
+A binary tree is a tree where each node has **at most two children**.
+
+```text
+        10
+       /  \
+      5    20
+```
+
+Children are called:
+
+* Left child
+* Right child
+
+---
+
+# 5️⃣ Full Binary Tree
+
+Every node has either:
+
+* 0 children
+* 2 children
+
+Example:
+
+```text
+        1
+       / \
+      2   3
+```
+
+No node has exactly one child.
+
+---
+
+# 6️⃣ Complete Binary Tree ⭐⭐⭐
+
+All levels are completely filled except possibly the last.
+
+The last level is filled:
+
+> **From left to right.**
+
+Example:
+
+```text
+        1
+      /   \
+     2     3
+    / \   /
+   4   5 6
+```
+
+This structure is important because **heaps use complete binary trees**.
+
+---
+
+# 7️⃣ Perfect Binary Tree
+
+Every internal node has two children and all leaves are at the same level.
+
+For height \(h\):
+
+$$
+\boxed{Nodes=2^{h+1}-1}
+$$
+
+if height is measured in edges.
+
+Example:
+
+Height 2:
+
+$$
+2^3-1=7
+$$
+
+```text
+        1
+      /   \
+     2     3
+    / \   / \
+   4  5  6  7
+```
+
+---
+
+# 🔥 8️⃣ Binary Tree Maximum Nodes
+
+For height \(h\):
+
+$$
+\boxed{Maximum\ nodes=2^{h+1}-1}
+$$
+
+Maximum nodes at level \(i\):
+
+$$
+\boxed{2^i}
+$$
+
+---
+
+# 9️⃣ Tree Traversals ⭐⭐⭐⭐⭐
+
+This is extremely important.
+
+There are three major DFS traversals:
+
+### Preorder
+
+```text
+ROOT → LEFT → RIGHT
+```
+
+### Inorder
+
+```text
+LEFT → ROOT → RIGHT
+```
+
+### Postorder
+
+```text
+LEFT → RIGHT → ROOT
+```
+
+---
+
+# 🧠 Memory Trick
+
+```text
+PRE  → Root comes PREviously
+IN   → Root comes IN between
+POST → Root comes POST
+```
+
+---
+
+# 🔟 Example
+
+Tree:
+
+```text
+        1
+       / \
+      2   3
+     / \
+    4   5
+```
+
+### Preorder
+
+Root → Left → Right
+
+```text
+1 2 4 5 3
+```
+
+### Inorder
+
+Left → Root → Right
+
+```text
+4 2 5 1 3
+```
+
+### Postorder
+
+Left → Right → Root
+
+```text
+4 5 2 3 1
+```
+
+---
+
+# 1️⃣1️⃣ Level Order Traversal
+
+Level order visits nodes level by level.
+
+```text
+        1
+       / \
+      2   3
+     / \
+    4   5
+```
+
+Output:
+
+```text
+1 2 3 4 5
+```
+
+### Pattern:
+
+> **Level order → BFS → Queue**
+
+---
+
+# 🔥 1️⃣2️⃣ DFS vs BFS
+
+| DFS                            | BFS                                           |
+| ------------------------------ | --------------------------------------------- |
+| Goes deep first                | Goes level by level                           |
+| Stack/recursion                | Queue                                         |
+| Pre/In/Postorder               | Level order                                   |
+| Useful for path/tree recursion | Useful for shortest path in unweighted graphs |
+
+---
+
+# 1️⃣3️⃣ Recursive Tree Traversal
+
+### Inorder
+
+```python
+def inorder(root):
+    if not root:
+        return
+
+    inorder(root.left)
+    print(root.val)
+    inorder(root.right)
+```
+
+### Pattern:
+
+```text
+Left
+ ↓
+Root
+ ↓
+Right
+```
+
+---
+
+# 1️⃣4️⃣ Binary Search Tree — BST ⭐⭐⭐⭐⭐
+
+A BST follows:
+
+```text
+Left subtree < Root < Right subtree
+```
+
+Example:
+
+```text
+          10
+        /    \
+       5      15
+      / \    / \
+     2   7  12 20
+```
+
+All left values:
+
+$$
+<10
+$$
+
+All right values:
+
+$$
+>10
+$$
+
+---
+
+# 🔥 1️⃣5️⃣ Most Important BST Fact
+
+### Inorder traversal of a BST gives sorted order.
+
+Example:
+
+```text
+        10
+       /  \
+      5    15
+```
+
+Inorder:
+
+```text
+5 10 15
+```
+
+Therefore:
+
+$$
+\boxed{\text{BST + Inorder = Sorted Order}}
+$$
+
+🚨 Memorize this.
+
+---
+
+# 1️⃣6️⃣ Search in BST
+
+Suppose we search for 12.
+
+```text
+        10
+       /  \
+      5    15
+          /
+         12
+```
+
+Start:
+
+$$
+12>10
+$$
+
+Go right.
+
+Then:
+
+$$
+12<15
+$$
+
+Go left.
+
+Found 12.
+
+### Complexity
+
+Balanced BST:
+
+$$
+\boxed{O(\log n)}
+$$
+
+Worst case:
+
+$$
+\boxed{O(n)}
+$$
+
+---
+
+# 1️⃣7️⃣ Why Can BST Become O(n)?
+
+If the tree becomes skewed:
+
+```text
+10
+  \
+   20
+     \
+      30
+        \
+         40
+```
+
+It behaves like a linked list.
+
+Therefore:
+
+$$
+\boxed{O(n)}
+$$
+
+---
+
+# 1️⃣8️⃣ Balanced BST
+
+A balanced BST keeps height approximately:
+
+$$
+O(\log n)
+$$
+
+Examples:
+
+* AVL Tree
+* Red-Black Tree
+
+These maintain balance using different rules.
+
+---
+
+# 1️⃣9️⃣ BST Insertion
+
+Suppose:
+
+```text
+        10
+       /  \
+      5    15
+```
+
+Insert 7.
+
+Compare:
+
+$$
+7<10
+$$
+
+Go left.
+
+Then:
+
+$$
+7>5
+$$
+
+Go right.
+
+Result:
+
+```text
+        10
+       /  \
+      5    15
+       \
+        7
+```
+
+---
+
+# 2️⃣0️⃣ Find Minimum in BST
+
+Minimum value is obtained by continuously moving:
+
+```text
+LEFT → LEFT → LEFT
+```
+
+Example:
+
+```text
+        10
+       /
+      5
+     /
+    2
+```
+
+Minimum:
+
+$$
+\boxed2
+$$
+
+---
+
+# 2️⃣1️⃣ Find Maximum in BST
+
+Continuously move:
+
+```text
+RIGHT → RIGHT → RIGHT
+```
+
+Maximum:
+
+$$
+\boxed{20}
+$$
+
+---
+
+# 2️⃣2️⃣ Lowest Common Ancestor — LCA ⭐⭐⭐
+
+For a BST, suppose we want LCA of:
+
+```text
+5 and 15
+```
+
+Tree:
+
+```text
+        10
+       /  \
+      5    15
+```
+
+10 is the first node where paths split.
+
+Therefore:
+
+$$
+\boxed{LCA=10}
+$$
+
+### BST Trick
+
+At node `root`:
+
+```text
+Both values < root
+→ go left
+
+Both values > root
+→ go right
+
+Otherwise
+→ root is LCA
+```
+
+---
+
+# 2️⃣3️⃣ Recursion — Core Concept 🔥
+
+Recursion means:
+
+> A function calls itself to solve a smaller version of the same problem.
+
+Example:
+
+$$
+factorial(n)=n\times factorial(n-1)
+$$
+
+Base case:
+
+$$
+factorial(0)=1
+$$
+
+---
+
+# 2️⃣4️⃣ Recursion Structure
+
+Every recursive function should have:
+
+### 1. Base Case
+
+Stops recursion.
+
+### 2. Recursive Case
+
+Moves toward the base case.
+
+Example:
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+
+    return n * factorial(n - 1)
+```
+
+---
+
+# 🚨 2️⃣5️⃣ Recursion Trap
+
+If you forget the base case:
+
+```python
+def fun(n):
+    return fun(n - 1)
+```
+
+The calls continue until the program encounters a recursion/stack limitation.
+
+### 🧠 Rule:
+
+> **Every recursion needs a path toward termination.**
+
+---
+
+# 2️⃣6️⃣ Recursion Tree
+
+Consider:
+
+```python
+f(n):
+    f(n-1)
+```
+
+Calls:
+
+```text
+f(4)
+ ↓
+f(3)
+ ↓
+f(2)
+ ↓
+f(1)
+ ↓
+f(0)
+```
+
+Depth:
+
+$$
+O(n)
+$$
+
+Space due to call stack:
+
+$$
+O(n)
+$$
+
+---
+
+# 🔥 2️⃣7️⃣ Binary Tree Height Recursion
+
+A common pattern:
+
+```python
+def height(root):
+    if not root:
+        return 0
+
+    return 1 + max(
+        height(root.left),
+        height(root.right)
+    )
+```
+
+If height is counted in nodes:
+
+$$
+\boxed{Height=1+\max(L,R)}
+$$
+
+This convention gives empty tree height 0.
+
+---
+
+# 2️⃣8️⃣ Tree Diameter
+
+Diameter means the **longest path between two nodes**.
+
+A common DFS approach calculates:
+
+```text
+left height
++
+right height
+```
+
+at each node.
+
+Then updates the maximum.
+
+### Complexity:
+
+$$
+\boxed{O(n)}
+$$
+
+---
+
+# 🧠 2️⃣9️⃣ TREE PATTERN MAP
+
+```text
+Tree Problem
+     │
+     ├── Traversal
+     │      ├── Preorder → DFS
+     │      ├── Inorder → DFS
+     │      ├── Postorder → DFS
+     │      └── Level Order → BFS + Queue
+     │
+     ├── BST
+     │      ├── Search
+     │      ├── Insert
+     │      ├── Min/Max
+     │      └── LCA
+     │
+     └── Recursive Tree Problem
+            ↓
+      Base Case + DFS
+```
+
+---
+
+# 🎯 3️⃣0️⃣ PYQ-STYLE QUESTIONS
+
+### Q1
+
+A tree contains 25 nodes.
+
+How many edges?
+
+$$
+25-1
+$$
+
+$$
+\boxed{24}
+$$
+
+---
+
+### Q2
+
+What traversal of a BST gives sorted order?
+
+$$
+\boxed{\text{Inorder}}
+$$
+
+---
+
+### Q3
+
+Which data structure is commonly used for level-order traversal?
+
+$$
+\boxed{\text{Queue}}
+$$
+
+---
+
+### Q4
+
+What is the worst-case search complexity of a BST?
+
+$$
+\boxed{O(n)}
+$$
+
+---
+
+### Q5
+
+What is the search complexity of a balanced BST?
+
+$$
+\boxed{O(\log n)}
+$$
+
+---
+
+### Q6
+
+Which traversal is:
+
+$$
+Root\rightarrow Left\rightarrow Right
+$$
+
+?
+
+$$
+\boxed{\text{Preorder}}
+$$
+
+---
+
+### Q7
+
+Which traversal is:
+
+$$
+Left\rightarrow Right\rightarrow Root
+$$
+
+?
+
+$$
+\boxed{\text{Postorder}}
+$$
+
+---
+
+### Q8
+
+A perfect binary tree has height 3, measured in edges. Maximum nodes?
+
+$$
+2^{3+1}-1
+$$
+
+$$
+\boxed{15}
+$$
+
+---
+
+# 💻 3️⃣1️⃣ CODING QUESTION — MAXIMUM DEPTH
+
+### Problem
+
+Find maximum depth of a binary tree.
+
+### Python
+
+```python
+def maxDepth(root):
+    if not root:
+        return 0
+
+    left = maxDepth(root.left)
+    right = maxDepth(root.right)
+
+    return 1 + max(left, right)
+```
+
+### Complexity
+
+Every node is visited once:
+
+$$
+\boxed{O(n)}
+$$
+
+Recursion stack:
+
+$$
+\boxed{O(h)}
+$$
+
+where \(h\) is tree height.
+
+---
+
+# 💻 3️⃣2️⃣ CODING QUESTION — SEARCH BST
+
+```python
+def searchBST(root, target):
+    while root:
+        if root.val == target:
+            return root
+        elif target < root.val:
+            root = root.left
+        else:
+            root = root.right
+
+    return None
+```
+
+### Complexity
+
+Balanced:
+
+$$
+O(\log n)
+$$
+
+Worst case:
+
+$$
+O(n)
+$$
+
+### 🧠 Pattern:
+
+> **BST → Compare target with root → Choose one side.**
+
+---
+
+# 🧪 3️⃣3️⃣ TODAY'S CHALLENGE
+
+Try these before checking the answers.
+
+### Q1
+
+For this tree:
+
+```text
+        8
+       / \
+      4   12
+     / \  / \
+    2  6 10 14
+```
+
+Find:
+
+**Preorder**
+
+---
+
+### Q2
+
+Find:
+
+**Inorder**
+
+---
+
+### Q3
+
+Find:
+
+**Postorder**
+
+---
+
+### Q4
+
+Find:
+
+**Level order**
+
+---
+
+### Q5
+
+Is the following a BST?
+
+```text
+       10
+      /  \
+     5    15
+         /
+        20
+```
+
+---
+
+### Q6
+
+What is the maximum number of nodes in a binary tree of height 4, where height is measured in edges?
+
+---
+
+### Q7
+
+Which data structure is normally used for BFS?
+
+---
+
+### Q8
+
+Which traversal of BST produces sorted elements?
+
+---
+
+# ✅ ANSWERS
+
+### Q1
+
+Preorder:
+
+$$
+\boxed{8,4,2,6,12,10,14}
+$$
+
+### Q2
+
+Inorder:
+
+$$
+\boxed{2,4,6,8,10,12,14}
+$$
+
+### Q3
+
+Postorder:
+
+$$
+\boxed{2,6,4,10,14,12,8}
+$$
+
+### Q4
+
+Level order:
+
+$$
+\boxed{8,4,12,2,6,10,14}
+$$
+
+### Q5
+
+❌ **Not a BST**
+
+Why?
+
+20 is in the left subtree of 15:
+
+$$
+20>15
+$$
+
+which violates the BST property.
+
+---
+
+### Q6
+
+$$
+2^{4+1}-1
+$$
+
+$$
+\boxed{31}
+$$
+
+### Q7
+
+$$
+\boxed{\text{Queue}}
+$$
+
+### Q8
+
+$$
+\boxed{\text{Inorder}}
+$$
+
+---
+
+# ⚡ 3️⃣4️⃣ INTERVIEW RAPID FIRE
+
+Try answering in **one sentence each**:
+
+### 1. What is a binary tree?
+
+A tree where each node has at most two children.
+
+### 2. What is a BST?
+
+A binary tree maintaining an ordering property between left subtree, root, and right subtree.
+
+### 3. Why is BST search fast?
+
+Because each comparison eliminates one subtree when the BST is balanced.
+
+### 4. Why can BST become O(n)?
+
+Because it can become skewed like a linked list.
+
+### 5. What is tree traversal?
+
+Systematically visiting every node in a tree.
+
+### 6. BFS uses?
+
+**Queue.**
+
+### 7. DFS uses?
+
+**Recursion or stack.**
+
+### 8. BST sorted traversal?
+
+**Inorder.**
+
+---
+
+# 🧠 3️⃣5️⃣ GATE MEMORY SHEET
+
+```text
+TREE
+│
+├── n nodes → n-1 edges
+│
+├── Binary Tree
+│
+├── Full
+│   └── 0 or 2 children
+│
+├── Complete
+│   └── Last level filled left → right
+│
+├── Perfect
+│   └── All internal nodes 2 children
+│
+├── Traversals
+│   ├── Pre  → Root Left Right
+│   ├── In   → Left Root Right
+│   └── Post → Left Right Root
+│
+├── Level Order
+│   └── BFS + Queue
+│
+└── BST
+    ├── Left < Root < Right
+    ├── Inorder = Sorted
+    ├── Balanced → O(log n)
+    └── Worst → O(n)
+```
+
+---
+
+# 💻 DSA PATTERN OF THE DAY
+
+When you see:
+
+> **Tree + "visit all nodes"**
+
+Think:
+
+```text
+DFS / BFS
+```
+
+When you see:
+
+> **BST + search**
+
+Think:
+
+```text
+Compare → Left or Right
+```
+
+When you see:
+
+> **Tree + height/depth**
+
+Think:
+
+```text
+Recursion
+```
+
+When you see:
+
+> **Level by level**
+
+Think:
+
+```text
+BFS + Queue
+```
+
+When you see:
+
+> **BST + sorted order**
+
+Think:
+
+```text
+Inorder
+```
+
+🔥 These five patterns alone solve a huge number of basic tree interview questions.
+
+---
+
+# 🗣️ COMMUNICATION PRACTICE 🎤
+
+### Interview Question:
+
+**"What is the difference between a binary tree and a binary search tree?"**
+
+Try this structure:
+
+> **Definition → Ordering → Searching → Example**
+
+Your answer should mention:
+
+* Binary tree → at most two children
+* BST → additionally follows ordering
+* BST enables efficient search when balanced
+
+Target:
+
+### ⏱️ **45–60 seconds**
+
+---
+
+# 📊 YOUR PROGRESS
+
+| Area                        | Status        |
+| --------------------------- | ------------- |
+| DBMS Revision               | ✅             |
+| OS Revision                 | ✅             |
+| CN Revision                 | ✅             |
+| Arrays + Strings + Hashing  | ✅             |
+| Linked List + Stack + Queue | ✅             |
+| **Trees + BST + Recursion** | ✅ **Day 127** |
+| DSA Revision                | 🔄            |
+| Aptitude                    | 🔄            |
+| PYQs                        | 🔄            |
+| Interview Preparation       | 🔄            |
+| Mock Tests                  | 🔜            |
+
+# 🏆 DAY 127 COMPLETE
+
+You have now covered the **core tree patterns**:
+
+✅ Binary Trees
+✅ Tree Traversals
+✅ DFS
+✅ BFS
+✅ BST
+✅ BST Search
+✅ LCA concept
+✅ Tree Height
+✅ Tree Diameter concept
+✅ Recursion
+
+### 🚀 NEXT — DAY 128
+
+# 📊 DSA REVISION — HEAPS + GREEDY + SORTING
+
+We'll focus on:
+
+* Min Heap / Max Heap
+* Priority Queue
+* Kth Largest/Smallest
+* Heap Sort
+* Greedy pattern recognition
+* When Greedy works
+* Classic placement problems
+
+**Target:** Start solving medium-level interview questions without relying on memorized solutions. 🔥
