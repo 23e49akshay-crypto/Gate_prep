@@ -1,0 +1,1006 @@
+📘 TODAY'S LEARNING — DAY 128 🔥
+
+📅 11 September 2026
+🎯 Placement + GATE CSE 2027
+
+Today we continue with DSA Revision: Heaps + Greedy + Sorting.
+
+> 🎯 Goal: Learn to recognize which data structure or algorithm to choose before writing code.
+
+
+
+
+---
+
+1️⃣ HEAP — THE CORE IDEA 🏔️
+
+A Heap is a complete binary tree that follows a heap property.
+
+Min Heap
+
+Smallest element at the root.
+
+2
+       / \
+      5   3
+     / \
+    8   7
+
+Max Heap
+
+Largest element at the root.
+
+10
+       /  \
+      7    8
+     / \
+    2   5
+
+🧠 Remember
+
+Min Heap → Minimum on top
+Max Heap → Maximum on top
+
+
+---
+
+2️⃣ Heap vs BST ⭐⭐⭐
+
+Heap	BST
+
+Complete binary tree	Ordered binary tree
+Root gives min/max	Root doesn't necessarily give min/max
+Great for priority	Great for ordered searching
+Not fully sorted	Maintains ordering
+Used in Priority Queue	Used for searching
+
+
+🔥 Heap is NOT a sorted tree.
+
+
+---
+
+3️⃣ HEAP OPERATIONS ⭐⭐⭐
+
+For a binary heap:
+
+Insert
+
+Typically:
+
+\[
+O(\log n)
+\]
+
+Delete root
+
+Typically:
+
+\[
+O(\log n)
+\]
+
+Peek min/max
+
+\[
+O(1)
+\]
+
+Build heap
+
+\[
+\boxed{O(n)}
+\]
+
+This last one is a common GATE/interview trick.
+
+
+---
+
+4️⃣ Python HEAP — heapq 🐍
+
+Python provides a min heap through heapq.
+
+import heapq
+
+heap = []
+
+heapq.heappush(heap, 5)
+heapq.heappush(heap, 2)
+heapq.heappush(heap, 8)
+
+print(heapq.heappop(heap))
+
+Output:
+
+2
+
+
+---
+
+5️⃣ MAX HEAP IN PYTHON
+
+Python's heapq is a min heap.
+
+To simulate a max heap:
+
+import heapq
+
+heap = []
+
+heapq.heappush(heap, -10)
+heapq.heappush(heap, -5)
+heapq.heappush(heap, -20)
+
+print(-heapq.heappop(heap))
+
+Output:
+
+20
+
+🧠 Trick
+
+> Negative values → simulate Max Heap
+
+
+
+
+---
+
+6️⃣ PRIORITY QUEUE ⭐⭐⭐
+
+A priority queue removes elements based on priority, not simply insertion order.
+
+Example:
+
+Emergency Room 🏥
+
+Critical patient → treated first
+Normal patient   → treated later
+
+Heap is commonly used to implement a priority queue efficiently.
+
+
+---
+
+7️⃣ Kth LARGEST ELEMENT ⭐⭐⭐⭐⭐
+
+Suppose:
+
+[3, 2, 1, 5, 6, 4]
+
+Find 2nd largest.
+
+Answer:
+
+5
+
+🧠 Pattern
+
+> Kth largest/smallest → Heap is a strong candidate
+
+
+
+For kth largest, maintain a min heap of size k.
+
+import heapq
+
+def kthLargest(nums, k):
+    heap = []
+
+    for num in nums:
+        heapq.heappush(heap, num)
+
+        if len(heap) > k:
+            heapq.heappop(heap)
+
+    return heap[0]
+
+Complexity
+
+\[
+\boxed{O(n\log k)}
+\]
+
+Space:
+
+\[
+\boxed{O(k)}
+\]
+
+
+---
+
+8️⃣ WHEN SHOULD YOU THINK "HEAP"? 🧠
+
+If the problem says:
+
+Kth largest
+
+Kth smallest
+
+Top K
+
+Closest K
+
+Minimum repeatedly
+
+Maximum repeatedly
+
+Priority
+
+Merge K sorted lists
+
+
+🚨 Think Heap / Priority Queue.
+
+
+---
+
+9️⃣ SORTING — CORE REVISION 🔥
+
+Important algorithms:
+
+Algorithm	Average Time
+
+Bubble Sort	O(n²)
+Selection Sort	O(n²)
+Insertion Sort	O(n²)
+Merge Sort	O(n log n)
+Quick Sort	O(n log n) average
+Heap Sort	O(n log n)
+
+
+
+---
+
+🔟 MERGE SORT ⭐⭐⭐
+
+Divide the array:
+
+[8, 3, 2, 9]
+
+Split:
+
+[8,3]   [2,9]
+
+Split again:
+
+[8] [3] [2] [9]
+
+Then merge in sorted order.
+
+[3,8]   [2,9]
+     ↓
+[2,3,8,9]
+
+Complexity
+
+\[
+\boxed{O(n\log n)}
+\]
+
+Extra Space
+
+Typically:
+
+\[
+\boxed{O(n)}
+\]
+
+
+---
+
+1️⃣1️⃣ QUICK SORT ⭐⭐⭐
+
+Choose a pivot.
+
+Partition elements around it.
+
+Example:
+
+[5, 2, 8, 1, 7]
+
+Suppose pivot = 5:
+
+Smaller    Pivot    Larger
+[2,1]       5       [8,7]
+
+Then recursively sort both sides.
+
+Average:
+
+\[
+O(n\log n)
+\]
+
+Worst:
+
+\[
+O(n^2)
+\]
+
+🧠 Important
+
+Good pivot selection helps avoid worst-case behavior.
+
+
+---
+
+1️⃣2️⃣ STABLE SORTING
+
+A sorting algorithm is stable if equal elements maintain their relative order.
+
+Example:
+
+(A, 90)
+(B, 80)
+(C, 90)
+
+If sorting by marks:
+
+(B,80)
+(A,90)
+(C,90)
+
+A stable sort keeps:
+
+A before C
+
+
+---
+
+1️⃣3️⃣ GREEDY ALGORITHM ⭐⭐⭐⭐⭐
+
+Greedy means:
+
+> Make the best-looking local choice at each step.
+
+
+
+Example:
+
+Suppose you need to make change and appropriate coin denominations allow the greedy strategy.
+
+You repeatedly choose the largest useful denomination.
+
+Amount = 37
+
+Choose largest useful coin
+↓
+Choose next
+↓
+Continue
+
+⚠️ Important:
+
+> Greedy does not work for every problem.
+
+
+
+You need a proof or a known property showing that local optimal choices lead to a global optimum.
+
+
+---
+
+1️⃣4️⃣ GREEDY vs DP 🔥
+
+Greedy	Dynamic Programming
+
+Makes local choice	Considers subproblems
+Usually doesn't revisit choice	Stores/reuses results
+Often simpler	Usually more systematic
+Requires greedy-choice property	Uses optimal substructure + overlapping subproblems
+
+
+🧠 Quick Recognition
+
+Local best choice
+      ↓
+Think GREEDY
+
+Many overlapping choices/subproblems
+      ↓
+Think DP
+
+
+---
+
+1️⃣5️⃣ ACTIVITY SELECTION ⭐⭐⭐⭐⭐
+
+Given activities:
+
+Activity | Start | Finish
+A        | 1     | 3
+B        | 2     | 5
+C        | 4     | 6
+D        | 6     | 7
+
+Goal:
+
+> Select the maximum number of non-overlapping activities.
+
+
+
+Greedy Strategy:
+
+Choose the activity that finishes earliest.
+
+Sort by finish time:
+
+A → B → C → D
+
+Choose:
+
+A → C → D
+
+Answer:
+
+\[
+\boxed{3}
+\]
+
+🔥 Pattern
+
+> Activity selection → Sort by finishing time
+
+
+
+
+---
+
+1️⃣6️⃣ FRACTIONAL KNAPSACK ⭐⭐⭐
+
+You can take fractions of items.
+
+Example:
+
+Item A → value 60, weight 10
+Item B → value 100, weight 20
+
+Calculate:
+
+\[
+value/weight
+\]
+
+Choose highest ratio first.
+
+Greedy works here.
+
+
+---
+
+1️⃣7️⃣ 0/1 KNAPSACK
+
+You either:
+
+Take item
+OR
+Don't take item
+
+You cannot take a fraction.
+
+Greedy?
+
+❌ Generally doesn't guarantee the optimal solution.
+
+Typical approach:
+
+\[
+\boxed{\text{Dynamic Programming}}
+\]
+
+🔥 Very important distinction:
+
+Fractional Knapsack → Greedy
+
+0/1 Knapsack → DP
+
+
+---
+
+1️⃣8️⃣ COIN CHANGE TRAP 🚨
+
+Don't blindly assume:
+
+> Coin Change = Greedy.
+
+
+
+For some coin systems greedy works.
+
+For arbitrary denominations, it may fail.
+
+Example:
+
+Coins = [1, 3, 4]
+Amount = 6
+
+Greedy:
+
+4 + 1 + 1 = 3 coins
+
+Optimal:
+
+3 + 3 = 2 coins
+
+Therefore:
+
+\[
+\boxed{\text{Greedy is not always optimal}}
+\]
+
+
+---
+
+1️⃣9️⃣ HUFFMAN CODING ⭐⭐⭐
+
+Huffman coding constructs an optimal prefix code based on character frequencies.
+
+Greedy idea:
+
+Repeatedly combine the two least frequent nodes.
+
+Smallest
+   +
+Second smallest
+   ↓
+Combine
+   ↓
+Repeat
+
+Data structure:
+
+\[
+\boxed{\text{Min Heap}}
+\]
+
+🔥 Pattern:
+
+> Huffman → Greedy + Min Heap
+
+
+
+
+---
+
+2️⃣0️⃣ GREEDY PATTERN MAP 🧠
+
+GREEDY
+ │
+ ├── Activity Selection
+ │      ↓
+ │   Earliest Finish
+ │
+ ├── Fractional Knapsack
+ │      ↓
+ │   Highest Value/Weight
+ │
+ ├── Huffman Coding
+ │      ↓
+ │   Two Minimum Frequencies
+ │
+ └── Scheduling Problems
+        ↓
+     Problem-specific sorting
+
+
+---
+
+🎯 2️⃣1️⃣ PYQ-STYLE QUESTIONS
+
+Q1
+
+What is the time complexity of heap insertion?
+
+\[
+\boxed{O(\log n)}
+\]
+
+
+---
+
+Q2
+
+What is the time complexity of accessing the minimum element in a min heap?
+
+\[
+\boxed{O(1)}
+\]
+
+
+---
+
+Q3
+
+What is the complexity of building a heap from an arbitrary array?
+
+\[
+\boxed{O(n)}
+\]
+
+🚨 Don't answer \(O(n\log n)\).
+
+
+---
+
+Q4
+
+Which sorting algorithm has average complexity \(O(n\log n)\) but worst-case \(O(n^2)\)?
+
+\[
+\boxed{\text{Quick Sort}}
+\]
+
+
+---
+
+Q5
+
+Which sorting algorithm uses divide and conquer and typically requires O(n) auxiliary space?
+
+\[
+\boxed{\text{Merge Sort}}
+\]
+
+
+---
+
+Q6
+
+Which knapsack problem is solved optimally using the greedy ratio approach?
+
+\[
+\boxed{\text{Fractional Knapsack}}
+\]
+
+
+---
+
+Q7
+
+Which data structure is commonly used in Huffman coding?
+
+\[
+\boxed{\text{Min Heap}}
+\]
+
+
+---
+
+Q8
+
+Activity selection chooses activities based on:
+
+\[
+\boxed{\text{Earliest finishing time}}
+\]
+
+
+---
+
+💻 2️⃣2️⃣ CODING PROBLEM — TOP K FREQUENT ELEMENTS ⭐⭐⭐⭐⭐
+
+Given:
+
+[1,1,1,2,2,3]
+k = 2
+
+Answer:
+
+[1,2]
+
+Pattern:
+
+Frequency
+   +
+Top K
+   ↓
+HashMap + Heap
+
+Python
+
+from collections import Counter
+import heapq
+
+def topKFrequent(nums, k):
+    count = Counter(nums)
+    return [x for x, _ in heapq.nlargest(k, count.items(),
+                                          key=lambda p: p[1])]
+
+Complexity
+
+Roughly:
+
+\[
+O(n+k\log n)
+\]
+
+with the shown approach.
+
+
+---
+
+💻 2️⃣3️⃣ CODING PROBLEM — ACTIVITY SELECTION
+
+def activitySelection(activities):
+    activities.sort(key=lambda x: x[1])
+
+    count = 0
+    last_end = -1
+
+    for start, end in activities:
+        if start >= last_end:
+            count += 1
+            last_end = end
+
+    return count
+
+Pattern:
+
+Sort
+ ↓
+Earliest finish
+ ↓
+Select compatible activity
+
+
+---
+
+🧠 2️⃣4️⃣ THE MOST IMPORTANT INTERVIEW PATTERNS TODAY
+
+Memorize this:
+
+Kth Largest
+      ↓
+Heap
+
+Top K
+      ↓
+Heap
+
+Repeated Min/Max
+      ↓
+Heap
+
+Activity Selection
+      ↓
+Greedy + Sort by Finish
+
+Fractional Knapsack
+      ↓
+Greedy + Ratio
+
+0/1 Knapsack
+      ↓
+DP
+
+Huffman
+      ↓
+Greedy + Min Heap
+
+
+---
+
+🧪 2️⃣5️⃣ TODAY'S CHALLENGE
+
+Try without looking at the answers.
+
+Q1
+
+For:
+
+[5, 1, 8, 3, 2]
+
+What is the minimum element in a min heap?
+
+
+---
+
+Q2
+
+Which data structure would you choose for:
+
+> Find the 10 largest elements from 1 million numbers.
+
+
+
+
+---
+
+Q3
+
+Which approach for fractional knapsack?
+
+
+---
+
+Q4
+
+Which approach for 0/1 knapsack?
+
+
+---
+
+Q5
+
+Which sorting algorithm has worst-case \(O(n^2)\)?
+
+
+---
+
+Q6
+
+Activity selection → sort by what?
+
+
+---
+
+Q7
+
+Huffman coding → which heap?
+
+
+---
+
+✅ ANSWERS
+
+Q1: 1
+
+Q2: Min Heap of size 10
+
+Q3: Greedy
+
+Q4: Dynamic Programming
+
+Q5: Quick Sort
+
+Q6: Finish time
+
+Q7: Min Heap
+
+
+---
+
+⚡ APTITUDE — 3 QUICK QUESTIONS
+
+Q1
+
+20% of 250?
+
+\[
+\boxed{50}
+\]
+
+Q2
+
+A product costing ₹800 is sold at 10% profit.
+
+\[
+800\times1.10=\boxed{₹880}
+\]
+
+Q3
+
+Average of:
+
+10, 20, 30, 40
+
+\[
+100/4=\boxed{25}
+\]
+
+
+---
+
+🗣️ INTERVIEW COMMUNICATION 🎤
+
+Question:
+
+“When would you use a heap instead of sorting?”
+
+Strong answer structure:
+
+> “If I repeatedly need the minimum or maximum, or only need the top K elements, a heap can be more efficient than sorting the entire dataset. For example, finding the K largest elements can be done using a heap of size K in O(n log K) time.”
+
+
+
+🎯 Target: 45 seconds
+
+
+---
+
+🧠 FINAL ACTIVE RECALL
+
+Without looking, explain:
+
+1. Min Heap vs Max Heap
+
+
+2. Heap vs BST
+
+
+3. Why heap insertion is O(log n)
+
+
+4. Why heap peek is O(1)
+
+
+5. Why build heap is O(n)
+
+
+6. Kth largest → which pattern?
+
+
+7. Activity selection → which greedy choice?
+
+
+8. Fractional vs 0/1 Knapsack
+
+
+9. Why greedy doesn't always work
+
+
+10. Huffman → which data structure?
+
+
+
+🎯 Target: 8/10
+
+
+---
+
+📊 DAY 128 PROGRESS
+
+Topic	Status
+
+DBMS	✅ Revised
+OS	✅ Revised
+CN	✅ Revised
+Arrays/Strings/Hashing	✅ Revised
+Linked List/Stack/Queue	✅ Revised
+Trees/BST	✅ Revised
+Heaps	✅
+Greedy	✅
+Sorting	✅
+DSA	🔥 Revision Phase
+PYQs	🔄
+Aptitude	🔄
+Interviews	🔄
+
+
+🏆 DAY 128 COMPLETE!
+
+You now have a strong foundation across the major DSA patterns.
+
+🚀 NEXT — DAY 129
+
+🧠 DYNAMIC PROGRAMMING + BACKTRACKING
+
+We'll learn:
+
+DP identification
+
+Memoization
+
+Tabulation
+
+1D DP
+
+2D DP
+
+Fibonacci pattern
+
+Climbing Stairs
+
+House Robber
+
+0/1 Knapsack
+
+Backtracking
+
+Subsets & permutations
+
+
+> The goal is not to memorize DP solutions — it's to learn how to construct the state and recurrence yourself. 🔥💪
