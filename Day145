@@ -1,0 +1,1094 @@
+# 📘 TODAY'S LEARNING — DAY 130 🔥
+
+**📅 13 September 2026**
+**🎯 Placement + GATE CSE 2027**
+
+# 🕸️ DSA — GRAPHS + BFS + DFS
+
+Today we enter one of the **most important DSA topics for interviews and GATE**.
+
+> 🧠 **Golden rule:**
+> **Graph problem → First identify representation → then traversal → then the specific pattern.**
+
+---
+
+# 1️⃣ WHAT IS A GRAPH?
+
+A graph consists of:
+
+```text
+Vertices (Nodes)
++
+Edges (Connections)
+```
+
+Example:
+
+```text
+      A
+     / \
+    B---C
+     \
+      D
+```
+
+Vertices:
+
+```text
+A, B, C, D
+```
+
+Edges:
+
+```text
+A-B
+A-C
+B-C
+B-D
+```
+
+---
+
+# 2️⃣ TYPES OF GRAPHS 🧠
+
+### Undirected Graph
+
+Connection works both ways.
+
+```text
+A ─── B
+```
+
+Means:
+
+```text
+A → B
+B → A
+```
+
+### Directed Graph
+
+Connection has a direction.
+
+```text
+A ───→ B
+```
+
+Means:
+
+```text
+A → B
+```
+
+but not necessarily:
+
+```text
+B → A
+```
+
+---
+
+# 3️⃣ WEIGHTED GRAPH
+
+Edges have costs/weights.
+
+```text
+A ──5── B
+│       │
+2       7
+│       │
+C ──3── D
+```
+
+Examples:
+
+* Road distance
+* Flight cost
+* Network latency
+
+---
+
+# 4️⃣ GRAPH REPRESENTATION ⭐⭐⭐⭐⭐
+
+Two major representations:
+
+## Adjacency Matrix
+
+```text
+    A B C
+A   0 1 1
+B   1 0 1
+C   1 1 0
+```
+
+Space:
+
+$$
+\boxed{O(V^2)}
+$$
+
+Good when the graph is dense.
+
+---
+
+# 5️⃣ ADJACENCY LIST ⭐⭐⭐⭐⭐
+
+Store neighbors for each node.
+
+```text
+A → B, C
+B → A, C
+C → A, B
+```
+
+Python:
+
+```python
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'C'],
+    'C': ['A', 'B']
+}
+```
+
+Space:
+
+$$
+\boxed{O(V+E)}
+$$
+
+Usually preferred for sparse graphs.
+
+---
+
+# 6️⃣ BFS — BREADTH FIRST SEARCH 🔥
+
+BFS explores:
+
+> **Level by level**
+
+Example:
+
+```text
+        A
+       / \
+      B   C
+     / \
+    D   E
+```
+
+BFS:
+
+```text
+A → B → C → D → E
+```
+
+### Data Structure:
+
+# 👉 QUEUE
+
+---
+
+# 7️⃣ BFS CODE
+
+```python
+from collections import deque
+
+def bfs(graph, start):
+    queue = deque([start])
+    visited = {start}
+
+    while queue:
+        node = queue.popleft()
+        print(node)
+
+        for nei in graph[node]:
+            if nei not in visited:
+                visited.add(nei)
+                queue.append(nei)
+```
+
+### Complexity
+
+For adjacency list:
+
+$$
+\boxed{O(V+E)}
+$$
+
+---
+
+# 8️⃣ WHEN SHOULD YOU THINK BFS? 🧠
+
+If you see:
+
+> **Level by level**
+
+→ BFS
+
+> **Shortest path in an unweighted graph**
+
+→ BFS
+
+> **Minimum number of moves/steps**
+
+→ BFS
+
+> **Grid shortest path**
+
+→ BFS
+
+🔥 Especially:
+
+```text
+Shortest + Unweighted
+        ↓
+       BFS
+```
+
+---
+
+# 9️⃣ DFS — DEPTH FIRST SEARCH
+
+DFS goes:
+
+> **As deep as possible before backtracking.**
+
+Example:
+
+```text
+        A
+       / \
+      B   C
+     / \
+    D   E
+```
+
+One possible DFS:
+
+```text
+A → B → D → E → C
+```
+
+DFS can be implemented using:
+
+* Recursion
+* Stack
+
+---
+
+# 🔟 DFS CODE
+
+```python
+def dfs(graph, node, visited):
+    if node in visited:
+        return
+
+    visited.add(node)
+    print(node)
+
+    for nei in graph[node]:
+        dfs(graph, nei, visited)
+```
+
+Call:
+
+```python
+dfs(graph, 'A', set())
+```
+
+### Complexity
+
+$$
+\boxed{O(V+E)}
+$$
+
+---
+
+# 1️⃣1️⃣ BFS vs DFS ⭐⭐⭐⭐⭐
+
+| BFS                                | DFS                                               |
+| ---------------------------------- | ------------------------------------------------- |
+| Queue                              | Stack / Recursion                                 |
+| Level-wise                         | Depth-wise                                        |
+| Shortest path in unweighted graph  | Useful for exploration/cycle/topological patterns |
+| Can use more memory on wide graphs | Can use deep recursion/stack                      |
+
+### 🧠 Memory Trick
+
+```text
+BFS → Broad → Queue
+DFS → Deep → Stack
+```
+
+---
+
+# 1️⃣2️⃣ VISITED ARRAY 🚨
+
+Why do we need `visited`?
+
+Consider:
+
+```text
+A ─ B
+ \ /
+  C
+```
+
+Without `visited`, traversal could repeatedly revisit nodes.
+
+```text
+A → B → C → A → B → C ...
+```
+
+Therefore:
+
+```python
+visited = set()
+```
+
+is fundamental in graph traversal.
+
+---
+
+# 1️⃣3️⃣ CONNECTED COMPONENTS ⭐⭐⭐⭐⭐
+
+Suppose:
+
+```text
+A ─ B      D ─ E
+          /
+         F
+```
+
+There are:
+
+```text
+Component 1 → A, B
+
+Component 2 → D, E, F
+```
+
+To count components:
+
+```text
+For every unvisited node:
+    Start DFS/BFS
+    count += 1
+```
+
+### Pattern:
+
+> **Count disconnected groups → DFS/BFS**
+
+---
+
+# 1️⃣4️⃣ NUMBER OF ISLANDS ⭐⭐⭐⭐⭐
+
+Grid:
+
+```text
+1 1 0
+0 1 0
+1 0 1
+```
+
+Each connected group of `1`s is an island.
+
+### Pattern:
+
+```text
+Grid
+ ↓
+Connected cells
+ ↓
+DFS / BFS
+```
+
+---
+
+### DFS Solution
+
+```python
+def dfs(grid, r, c):
+    if (r < 0 or r >= len(grid) or
+        c < 0 or c >= len(grid[0]) or
+        grid[r][c] == '0'):
+        return
+
+    grid[r][c] = '0'
+
+    dfs(grid, r + 1, c)
+    dfs(grid, r - 1, c)
+    dfs(grid, r, c + 1)
+    dfs(grid, r, c - 1)
+```
+
+Then scan every cell and start DFS whenever you find land.
+
+### Complexity:
+
+$$
+\boxed{O(R\times C)}
+$$
+
+---
+
+# 1️⃣5️⃣ CYCLE DETECTION 🔥
+
+Cycle detection depends on whether the graph is:
+
+### Undirected
+
+Can use:
+
+> DFS + Parent tracking
+
+or:
+
+> Union-Find
+
+### Directed
+
+Can use:
+
+> DFS + recursion-state tracking
+
+This distinction is **very important**.
+
+---
+
+# 1️⃣6️⃣ TOPOLOGICAL SORT ⭐⭐⭐⭐⭐
+
+Used for:
+
+> **Ordering tasks when dependencies exist.**
+
+Example:
+
+```text
+Learn Python
+     ↓
+Learn ML
+     ↓
+Build ML Project
+```
+
+You cannot build the project before learning the prerequisites.
+
+This creates a **dependency graph**.
+
+---
+
+# 1️⃣7️⃣ TOPOLOGICAL SORT ONLY WORKS ON:
+
+# 👉 DAG
+
+DAG =
+
+> **Directed Acyclic Graph**
+
+Directed:
+
+```text
+A → B
+```
+
+Acyclic:
+
+```text
+No directed cycle
+```
+
+---
+
+# 1️⃣8️⃣ TOPOLOGICAL SORT — EXAMPLE
+
+```text
+A → C
+B → C
+C → D
+```
+
+Valid ordering:
+
+```text
+A → B → C → D
+```
+
+or:
+
+```text
+B → A → C → D
+```
+
+There can be multiple valid topological orders.
+
+---
+
+# 1️⃣9️⃣ KAHN'S ALGORITHM ⭐⭐⭐⭐
+
+Kahn's algorithm uses:
+
+# 👉 BFS + Indegree
+
+### Indegree
+
+Number of incoming edges.
+
+Example:
+
+```text
+A → C
+B → C
+```
+
+Indegree:
+
+```text
+A = 0
+B = 0
+C = 2
+```
+
+Start with nodes having:
+
+```text
+indegree = 0
+```
+
+Process them and reduce neighbors' indegrees.
+
+---
+
+# 2️⃣0️⃣ DIJKSTRA'S ALGORITHM ⭐⭐⭐⭐⭐
+
+Used for:
+
+> **Shortest paths from a source in a weighted graph with non-negative edge weights.**
+
+Example:
+
+```text
+A --4-- B
+|       |
+1       2
+|       |
+C --3-- D
+```
+
+Dijkstra repeatedly chooses the currently closest unprocessed node.
+
+### Main data structure:
+
+# 👉 Min Heap / Priority Queue
+
+---
+
+# 2️⃣1️⃣ DIJKSTRA PATTERN
+
+```text
+Weighted graph
++
+Non-negative weights
++
+Shortest path
+        ↓
+    Dijkstra
+```
+
+Complexity with adjacency list + binary heap:
+
+$$
+\boxed{O((V+E)\log V)}
+$$
+
+Often simplified to:
+
+$$
+O(E\log V)
+$$
+
+for connected graphs.
+
+---
+
+# 2️⃣2️⃣ IMPORTANT SHORTEST-PATH COMPARISON 🚨
+
+| Problem                  | Algorithm      |
+| ------------------------ | -------------- |
+| Unweighted shortest path | BFS            |
+| Weighted, non-negative   | Dijkstra       |
+| Negative edges allowed   | Bellman-Ford   |
+| All-pairs shortest path  | Floyd-Warshall |
+
+🔥 This table is **GATE gold**.
+
+---
+
+# 2️⃣3️⃣ UNION-FIND / DSU ⭐⭐⭐⭐
+
+Disjoint Set Union is used to manage groups of connected elements.
+
+Main operations:
+
+```text
+Find
+Union
+```
+
+Example:
+
+```text
+{1,2,3}    {4,5}
+```
+
+Union:
+
+```text
+3 and 4
+```
+
+becomes:
+
+```text
+{1,2,3,4,5}
+```
+
+With:
+
+* Path compression
+* Union by rank/size
+
+operations become extremely efficient.
+
+Amortized complexity:
+
+$$
+\boxed{O(\alpha(n))}
+$$
+
+where \(\alpha(n)\) grows extraordinarily slowly.
+
+For practical purposes:
+
+$$
+\boxed{\approx O(1)}
+$$
+
+---
+
+# 2️⃣4️⃣ WHEN SHOULD YOU THINK DSU?
+
+Common clues:
+
+> Dynamic connectivity
+
+> Connecting components
+
+> Detect cycle in undirected graph
+
+> Kruskal's MST
+
+Think:
+
+# 👉 Union-Find / DSU
+
+---
+
+# 2️⃣5️⃣ MINIMUM SPANNING TREE 🌳
+
+An MST connects:
+
+> **All vertices with minimum total edge weight and no cycles.**
+
+Two famous algorithms:
+
+### Kruskal
+
+```text
+Sort edges
+↓
+Pick smallest edge
+↓
+Avoid cycle
+↓
+DSU
+```
+
+### Prim
+
+```text
+Start from a vertex
+↓
+Repeatedly choose minimum edge
+↓
+Min Heap
+```
+
+---
+
+# 🧠 2️⃣6️⃣ KRUSKAL vs PRIM
+
+| Kruskal                 | Prim                              |
+| ----------------------- | --------------------------------- |
+| Edge-based              | Vertex/tree-based                 |
+| Sort edges              | Min Heap commonly used            |
+| Uses DSU                | Uses priority queue               |
+| Great for sparse graphs | Often convenient for dense graphs |
+
+---
+
+# 🔥 2️⃣7️⃣ GRAPH PATTERN MAP
+
+```text
+GRAPH
+│
+├── Traversal
+│   ├── BFS → Queue
+│   └── DFS → Stack/Recursion
+│
+├── Connected Components
+│   └── BFS / DFS
+│
+├── Unweighted Shortest Path
+│   └── BFS
+│
+├── Weighted Shortest Path
+│   └── Dijkstra
+│
+├── Dependencies
+│   └── Topological Sort
+│
+├── Undirected Connectivity
+│   └── DSU
+│
+└── Minimum Spanning Tree
+    ├── Kruskal → DSU
+    └── Prim → Heap
+```
+
+---
+
+# 🎯 2️⃣8️⃣ MUST-KNOW COMPLEXITIES
+
+| Algorithm              |        Complexity |
+| ---------------------- | ----------------: |
+| BFS                    |            O(V+E) |
+| DFS                    |            O(V+E) |
+| Dijkstra + Binary Heap |    O((V+E) log V) |
+| Topological Sort       |            O(V+E) |
+| Kruskal                |        O(E log E) |
+| Prim + Binary Heap     |        O(E log V) |
+| DSU operation          | O(α(n)) amortized |
+
+---
+
+# 🧪 2️⃣9️⃣ TODAY'S CHALLENGE
+
+Try these **without looking at the answers**.
+
+### Q1
+
+Which data structure does BFS use?
+
+### Q2
+
+Which data structure does DFS use?
+
+### Q3
+
+Shortest path in an unweighted graph?
+
+### Q4
+
+Shortest path with non-negative weights?
+
+### Q5
+
+Topological sorting requires what type of graph?
+
+### Q6
+
+Which algorithm uses indegree + BFS?
+
+### Q7
+
+Kruskal uses which data structure to detect cycles?
+
+### Q8
+
+What is the difference between an adjacency matrix and adjacency list?
+
+### Q9
+
+How do you find connected components?
+
+### Q10
+
+What algorithm is commonly used for Number of Islands?
+
+---
+
+# ✅ ANSWERS
+
+```text
+1. Queue
+2. Stack / Recursion
+3. BFS
+4. Dijkstra
+5. DAG
+6. Kahn's Algorithm
+7. DSU / Union-Find
+8. Matrix → O(V²), List → O(V+E)
+9. BFS / DFS
+10. BFS / DFS
+```
+
+---
+
+# 💻 3️⃣0️⃣ MUST-KNOW CODE — BFS
+
+```python
+from collections import deque
+
+def bfs(graph, start):
+    q = deque([start])
+    seen = {start}
+
+    while q:
+        node = q.popleft()
+
+        for nei in graph[node]:
+            if nei not in seen:
+                seen.add(nei)
+                q.append(nei)
+```
+
+### 🧠 Three things to remember:
+
+```text
+Queue
+Visited
+Neighbors
+```
+
+---
+
+# 💻 3️⃣1️⃣ MUST-KNOW CODE — DFS
+
+```python
+def dfs(graph, node, seen):
+    if node in seen:
+        return
+
+    seen.add(node)
+
+    for nei in graph[node]:
+        dfs(graph, nei, seen)
+```
+
+### 🧠 Three things:
+
+```text
+Recursion
+Visited
+Neighbors
+```
+
+---
+
+# 🧠 3️⃣2️⃣ THE BIG INTERVIEW DECISION TREE
+
+When you get a graph question:
+
+```text
+             GRAPH
+               │
+       ┌───────┴────────┐
+       │                │
+    Unweighted        Weighted
+       │                │
+       │          ┌─────┴─────┐
+       │          │           │
+   Shortest?   Non-negative  Negative
+       │          │           │
+      BFS      Dijkstra   Bellman-Ford
+```
+
+For dependencies:
+
+```text
+Dependencies
+     ↓
+Topological Sort
+```
+
+For minimum-cost connection:
+
+```text
+MST
+├── Kruskal
+└── Prim
+```
+
+🔥 Learn this decision tree.
+
+---
+
+# 🗣️ 3️⃣3️⃣ INTERVIEW COMMUNICATION 🎤
+
+### Question:
+
+**"Why would you use BFS instead of DFS to find the shortest path in an unweighted graph?"**
+
+Strong answer:
+
+> “BFS explores the graph level by level. Therefore, the first time it reaches a node, it has reached that node using the minimum number of edges from the source. DFS does not guarantee this because it can explore a deeper path before discovering a shorter one.”
+
+🎯 Target: **45–60 seconds**
+
+---
+
+# ⚡ 3️⃣4️⃣ GATE QUICK FIRE
+
+### Q1
+
+A connected undirected graph has 10 vertices. Minimum number of edges?
+
+$$
+\boxed9
+$$
+
+### Q2
+
+Maximum number of edges in a simple undirected graph with \(n\) vertices?
+
+$$
+\boxed{\frac{n(n-1)}2}
+$$
+
+### Q3
+
+Maximum number of edges in a simple directed graph without self-loops?
+
+$$
+\boxed{n(n-1)}
+$$
+
+### Q4
+
+BFS complexity using adjacency list?
+
+$$
+\boxed{O(V+E)}
+$$
+
+### Q5
+
+Can topological sorting be performed on a graph containing a directed cycle?
+
+$$
+\boxed{\text{No}}
+$$
+
+### Q6
+
+Dijkstra works correctly with negative edge weights?
+
+$$
+\boxed{\text{No}}
+$$
+
+---
+
+# 🧠 3️⃣5️⃣ FINAL ACTIVE RECALL
+
+Close the notes and answer:
+
+1. BFS → ?
+2. DFS → ?
+3. Unweighted shortest path → ?
+4. Weighted non-negative shortest path → ?
+5. Negative edges → ?
+6. Dependencies → ?
+7. DAG → ?
+8. Kruskal → ?
+9. Prim → ?
+10. DSU → ?
+
+### 🎯 Target: **10/10**
+
+---
+
+# 📊 YOUR DAY 130 PROGRESS
+
+| Topic                       | Status         |
+| --------------------------- | -------------- |
+| DBMS                        | ✅              |
+| OS                          | ✅              |
+| CN                          | ✅              |
+| Arrays + Strings + Hashing  | ✅              |
+| Linked List + Stack + Queue | ✅              |
+| Trees + BST                 | ✅              |
+| Heaps + Sorting + Greedy    | ✅              |
+| DP + Backtracking           | ✅              |
+| **Graphs + BFS + DFS**      | 🔥 **DAY 130** |
+| PYQs                        | 🔄             |
+| Aptitude                    | 🔄             |
+| Interview Prep              | 🔄             |
+
+# 🏆 DAY 130 COMPLETE!
+
+You've now covered essentially the **core DSA syllabus**:
+
+```text
+Arrays
+↓
+Strings
+↓
+Hashing
+↓
+Linked List
+↓
+Stack
+↓
+Queue
+↓
+Trees
+↓
+BST
+↓
+Heap
+↓
+Sorting
+↓
+Greedy
+↓
+DP
+↓
+Backtracking
+↓
+Graphs
+```
+
+### 🚀 NEXT — DAY 131
+
+# 🧩 DSA — ADVANCED PROBLEM-SOLVING + INTERVIEW PATTERNS
+
+We'll shift from **“learning topics” → “solving mixed problems.”**
+
+Focus areas:
+
+* Two Pointers
+* Sliding Window
+* Prefix Sum
+* Binary Search
+* Monotonic Stack
+* Heap
+* Greedy
+* DP
+* Graph patterns
+* **How to identify the pattern within 30 seconds**
+
+🔥 **This is where placement-level problem solving really begins.**
