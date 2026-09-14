@@ -1,0 +1,1047 @@
+📘 TODAY'S LEARNING — DAY 131 🚀
+
+📅 14 September 2026
+🎯 Placement + GATE CSE 2027
+
+Yesterday we completed Graphs + BFS + DFS.
+Today we shift gears:
+
+🧠 DSA PATTERN RECOGNITION
+
+From “I know DSA” → “I know which technique to use.”
+
+This is one of the most important skills for coding interviews.
+
+
+---
+
+1️⃣ THE 30-SECOND RULE ⏱️
+
+When you see a coding problem, don't immediately start coding.
+
+Ask:
+
+1. What is the input size?
+2. What is being asked?
+3. Is the array sorted?
+4. Is it asking for a range?
+5. Is it asking for top K?
+6. Is it asking for shortest path?
+7. Is it asking for all possibilities?
+8. Is there a repeated state?
+
+Then identify the pattern.
+
+
+---
+
+2️⃣ THE MASTER PATTERN TABLE 🔥
+
+Problem clue	Pattern
+
+Sorted array + pair	Two Pointers
+Subarray + sum	Prefix Sum / Sliding Window
+Longest/shortest contiguous segment	Sliding Window
+Search in sorted data	Binary Search
+Next greater/smaller	Monotonic Stack
+Top K	Heap
+Kth largest/smallest	Heap
+Take/Don't Take	DP
+Generate all possibilities	Backtracking
+Shortest unweighted path	BFS
+Shortest weighted path	Dijkstra
+Dependencies	Topological Sort
+Connected components	DFS/BFS
+Minimum spanning tree	Kruskal/Prim
+
+
+🔥 Memorize the clue, not just the algorithm.
+
+
+---
+
+3️⃣ TWO POINTERS ⭐⭐⭐⭐⭐
+
+Suppose:
+
+[1, 2, 3, 4, 6]
+
+Find two numbers whose sum is 6.
+
+Use:
+
+left → 1
+right → 6
+
+Sum:
+
+1 + 6 = 7
+
+Too large → move right.
+
+1  2  3  4  6
+   ↑     ↑
+   L     R
+
+Now:
+
+2 + 4 = 6
+
+Answer found.
+
+Pattern:
+
+Sorted array
++
+Pair / comparison
+        ↓
+Two Pointers
+
+
+---
+
+4️⃣ TWO POINTERS TEMPLATE 🐍
+
+left, right = 0, len(nums) - 1
+
+while left < right:
+    total = nums[left] + nums[right]
+
+    if total == target:
+        return [left, right]
+    elif total < target:
+        left += 1
+    else:
+        right -= 1
+
+Complexity
+
+\[
+\boxed{O(n)}
+\]
+
+instead of:
+
+\[
+O(n^2)
+\]
+
+with brute force.
+
+
+---
+
+5️⃣ SLIDING WINDOW ⭐⭐⭐⭐⭐
+
+Used for contiguous subarrays/substrings.
+
+Example:
+
+[2, 1, 5, 1, 3, 2]
+
+Find maximum sum of a subarray of size 3.
+
+Window:
+
+[2,1,5] → 8
+
+Slide:
+
+[1,5,1] → 7
+
+Slide:
+
+[5,1,3] → 9
+
+Slide:
+
+[1,3,2] → 6
+
+Answer:
+
+\[
+\boxed9
+\]
+
+
+---
+
+6️⃣ FIXED SLIDING WINDOW
+
+window = sum(nums[:k])
+ans = window
+
+for i in range(k, len(nums)):
+    window += nums[i] - nums[i-k]
+    ans = max(ans, window)
+
+return ans
+
+Complexity:
+
+\[
+\boxed{O(n)}
+\]
+
+
+---
+
+7️⃣ VARIABLE SLIDING WINDOW
+
+Used when window size isn't fixed.
+
+Example:
+
+> Longest substring without repeating characters.
+
+
+
+We expand:
+
+right →
+
+If the window becomes invalid:
+
+← left
+
+Shrink until valid again.
+
+Pattern:
+
+Expand
+  ↓
+Invalid?
+  ↓
+Shrink
+  ↓
+Continue
+
+
+---
+
+8️⃣ PREFIX SUM ⭐⭐⭐⭐⭐
+
+Suppose:
+
+nums = [2,4,1,5,3]
+
+Prefix:
+
+[0,2,6,7,12,15]
+
+Meaning:
+
+prefix[i] = sum of elements before i
+
+To find sum from index L to R:
+
+\[
+\boxed{prefix[R+1]-prefix[L]}
+\]
+
+Example:
+
+Range [1,3]:
+
+4 + 1 + 5 = 10
+
+Using prefix:
+
+prefix[4] - prefix[1]
+= 12 - 2
+= 10
+
+
+---
+
+9️⃣ PREFIX SUM + HASHMAP 🔥
+
+Very important interview pattern.
+
+Problem:
+
+> Count subarrays whose sum equals k.
+
+
+
+Example:
+
+[1, 2, 3]
+k = 3
+
+Valid:
+
+[1,2]
+[3]
+
+Answer:
+
+2
+
+Core idea:
+
+If:
+
+\[
+prefix[j]-prefix[i]=k
+\]
+
+then:
+
+\[
+prefix[i]=prefix[j]-k
+\]
+
+So we store previous prefix sums in a hashmap.
+
+
+---
+
+🔟 CODE
+
+def subarraySum(nums, k):
+    count = {0: 1}
+    prefix = 0
+    ans = 0
+
+    for x in nums:
+        prefix += x
+        ans += count.get(prefix - k, 0)
+        count[prefix] = count.get(prefix, 0) + 1
+
+    return ans
+
+Complexity:
+
+\[
+\boxed{O(n)}
+\]
+
+🔥 This is a must-know placement problem.
+
+
+---
+
+1️⃣1️⃣ BINARY SEARCH ⭐⭐⭐⭐⭐
+
+If you see:
+
+Sorted array
++
+Search
+
+Think:
+
+👉 Binary Search
+
+Example:
+
+[1,3,5,7,9,11]
+
+Search 7.
+
+Instead of checking everything:
+
+1 → 3 → 5 → 7
+
+Check the middle and eliminate half each time.
+
+
+---
+
+1️⃣2️⃣ BINARY SEARCH TEMPLATE
+
+left, right = 0, len(nums) - 1
+
+while left <= right:
+    mid = (left + right) // 2
+
+    if nums[mid] == target:
+        return mid
+    elif nums[mid] < target:
+        left = mid + 1
+    else:
+        right = mid - 1
+
+return -1
+
+Complexity:
+
+\[
+\boxed{O(\log n)}
+\]
+
+
+---
+
+1️⃣3️⃣ BINARY SEARCH ON ANSWER 🔥
+
+This is a higher-level pattern.
+
+Sometimes you're not searching for an element.
+
+You're searching for:
+
+> The minimum/maximum possible answer.
+
+
+
+Examples:
+
+Minimum capacity
+
+Minimum eating speed
+
+Maximum minimum distance
+
+Minimum time
+
+
+Pattern:
+
+Possible answer range
+        ↓
+Binary Search
+        ↓
+Check feasibility
+
+This is extremely useful in interviews.
+
+
+---
+
+1️⃣4️⃣ MONOTONIC STACK ⭐⭐⭐⭐⭐
+
+If the problem says:
+
+> Next greater element
+
+
+
+or
+
+> Next smaller element
+
+
+
+🚨 Think:
+
+👉 Monotonic Stack
+
+Example:
+
+[2,1,5,3]
+
+For 2, next greater is:
+
+5
+
+For 1:
+
+5
+
+For 5:
+
+-1
+
+
+---
+
+1️⃣5️⃣ MONOTONIC STACK IDEA
+
+Maintain a stack where values remain:
+
+Increasing
+
+or:
+
+Decreasing
+
+Depending on the problem.
+
+Typical complexity:
+
+\[
+\boxed{O(n)}
+\]
+
+🔥 Even though there is a nested-looking loop, each element is generally pushed and popped at most once.
+
+
+---
+
+1️⃣6️⃣ HEAP PATTERN 🔥
+
+If you see:
+
+Top K
+Kth largest
+Kth smallest
+Repeated minimum
+Repeated maximum
+
+Think:
+
+👉 Heap
+
+Example:
+
+> Find 3 largest numbers from 1 million numbers.
+
+
+
+Don't necessarily sort all million.
+
+Use:
+
+Min Heap of size 3
+
+Complexity:
+
+\[
+\boxed{O(n\log k)}
+\]
+
+
+---
+
+1️⃣7️⃣ GREEDY PATTERN
+
+Look for:
+
+Make the best local decision
+
+Examples:
+
+Activity Selection
+Fractional Knapsack
+Huffman Coding
+
+But always ask:
+
+> Why is the greedy choice safe?
+
+
+
+Don't use greedy just because it looks fast.
+
+
+---
+
+1️⃣8️⃣ DP PATTERN
+
+Look for:
+
+Maximum
+Minimum
+Number of ways
+Can achieve?
+Take / Don't Take
+Repeated states
+
+Example:
+
+House Robber
+
+Choice:
+
+Take house
+OR
+Skip house
+
+Therefore:
+
+\[
+dp[i]=\max(dp[i-1],nums[i]+dp[i-2])
+\]
+
+
+---
+
+1️⃣9️⃣ GRAPH PATTERN
+
+Remember this decision tree:
+
+Graph
+ │
+ ├── Unweighted shortest path
+ │       ↓
+ │      BFS
+ │
+ ├── Weighted + non-negative
+ │       ↓
+ │    Dijkstra
+ │
+ ├── Negative edges
+ │       ↓
+ │ Bellman-Ford
+ │
+ ├── Dependencies
+ │       ↓
+ │ Topological Sort
+ │
+ └── Minimum spanning tree
+         ↓
+      MST
+
+
+---
+
+2️⃣0️⃣ BACKTRACKING
+
+If the question says:
+
+> Generate all possible...
+
+
+
+Think:
+
+👉 Backtracking
+
+Examples:
+
+Subsets
+Permutations
+Combinations
+N-Queens
+Sudoku
+
+Core pattern:
+
+choose()
+explore()
+undo()
+
+The undo is critical.
+
+
+---
+
+🧠 2️⃣1️⃣ THE MOST IMPORTANT SKILL — PATTERN IDENTIFICATION
+
+Suppose you see:
+
+Problem A
+
+> Given a sorted array, find two numbers that add to target.
+
+
+
+Your brain:
+
+Sorted + Pair
+      ↓
+Two Pointers
+
+Problem B
+
+> Find longest substring without repeating characters.
+
+
+
+Longest + Substring
+      ↓
+Sliding Window
+
+Problem C
+
+> Find kth largest element.
+
+
+
+Kth largest
+      ↓
+Heap
+
+Problem D
+
+> Find shortest path in an unweighted graph.
+
+
+
+Shortest + Unweighted Graph
+      ↓
+BFS
+
+Problem E
+
+> Generate all permutations.
+
+
+
+All possibilities
+      ↓
+Backtracking
+
+
+---
+
+🔥 2️⃣2️⃣ INTERVIEW PATTERN CHEAT SHEET
+
+SORTED + PAIR
+→ TWO POINTERS
+
+CONTIGUOUS + LONGEST/SHORTEST
+→ SLIDING WINDOW
+
+RANGE SUM
+→ PREFIX SUM
+
+SORTED + SEARCH
+→ BINARY SEARCH
+
+NEXT GREATER/SMALLER
+→ MONOTONIC STACK
+
+TOP K / KTH
+→ HEAP
+
+TAKE / DON'T TAKE
+→ DP
+
+ALL POSSIBILITIES
+→ BACKTRACKING
+
+UNWEIGHTED SHORTEST PATH
+→ BFS
+
+WEIGHTED SHORTEST PATH
+→ DIJKSTRA
+
+DEPENDENCIES
+→ TOPOLOGICAL SORT
+
+CONNECTIVITY / MST
+→ DSU / KRUSKAL / PRIM
+
+📌 SAVE THIS TABLE.
+
+It is one of the most useful things from today's session.
+
+
+---
+
+🧪 2️⃣3️⃣ PATTERN IDENTIFICATION QUIZ
+
+Don't solve them yet.
+
+Just identify the technique.
+
+Q1
+
+> Given a sorted array, find whether two numbers sum to X.
+
+
+
+Q2
+
+> Find the longest substring containing at most 2 distinct characters.
+
+
+
+Q3
+
+> Find the sum of many arbitrary ranges [L,R].
+
+
+
+Q4
+
+> Find the position of X in a sorted array.
+
+
+
+Q5
+
+> Find the next greater element for every element.
+
+
+
+Q6
+
+> Find the 5 largest elements from 1 million numbers.
+
+
+
+Q7
+
+> Find the maximum money without robbing adjacent houses.
+
+
+
+Q8
+
+> Generate all subsets.
+
+
+
+Q9
+
+> Find minimum number of edges from source to destination in an unweighted graph.
+
+
+
+Q10
+
+> Arrange courses according to prerequisites.
+
+
+
+
+---
+
+✅ ANSWERS
+
+Q1 → Two Pointers
+Q2 → Sliding Window
+Q3 → Prefix Sum
+Q4 → Binary Search
+Q5 → Monotonic Stack
+Q6 → Heap
+Q7 → DP
+Q8 → Backtracking
+Q9 → BFS
+Q10 → Topological Sort
+
+
+---
+
+💻 2️⃣4️⃣ MIXED CODING CHALLENGE
+
+Problem:
+
+Given:
+
+nums = [2, 7, 11, 15]
+target = 9
+
+Find two indices whose values sum to target.
+
+Think first:
+
+Array
++
+Pair
++
+Need fast lookup
+
+You have two possible patterns:
+
+Hashing
+
+def twoSum(nums, target):
+    seen = {}
+
+    for i, x in enumerate(nums):
+        need = target - x
+
+        if need in seen:
+            return [seen[need], i]
+
+        seen[x] = i
+
+Complexity:
+
+\[
+\boxed{O(n)}
+\]
+
+
+---
+
+🧠 Important Insight
+
+Not every "pair sum" problem should use two pointers.
+
+If:
+
+Sorted
+
+→ Two Pointers is excellent.
+
+If:
+
+Unsorted
+
+→ HashMap is usually the better choice.
+
+This is pattern selection.
+
+
+---
+
+⚡ 2️⃣5️⃣ APTITUDE — QUICK PRACTICE
+
+Q1
+
+A number is increased by 20% and then decreased by 20%.
+
+Is it back to the original value?
+
+❌ No.
+
+Net change:
+
+\[
+20-20-\frac{20\times20}{100}
+\]
+
+\[
+=\boxed{-4\%}
+\]
+
+
+---
+
+Q2
+
+If:
+
+A:B = 2:3
+B:C = 4:5
+
+Find:
+
+A:B:C
+
+Make B common:
+
+A:B = 8:12
+B:C = 12:15
+
+Therefore:
+
+\[
+\boxed{8:12:15}
+\]
+
+
+---
+
+Q3
+
+A train travels 240 km in 4 hours.
+
+Speed:
+
+\[
+\frac{240}{4}
+=
+\boxed{60\text{ km/h}}
+\]
+
+
+---
+
+🗣️ 2️⃣6️⃣ INTERVIEW QUESTION 🎤
+
+"How do you approach an unfamiliar coding problem?"
+
+A strong answer:
+
+> “First I understand the constraints and clarify what the problem is asking. Then I look for structural clues such as sorted data, contiguous ranges, repeated states, graph properties, or top-K requirements. Based on those clues, I select an appropriate pattern such as two pointers, sliding window, binary search, heap, DP, or graph traversal. Finally, I consider complexity before implementing.”
+
+
+
+🎯 This answer shows problem-solving maturity, not memorization.
+
+
+---
+
+🧠 2️⃣7️⃣ TODAY'S GOLDEN RULES
+
+Remember these 10:
+
+1. Sorted + Pair → Two Pointers
+
+2. Contiguous + Longest → Sliding Window
+
+3. Range Sum → Prefix Sum
+
+4. Sorted + Search → Binary Search
+
+5. Next Greater → Monotonic Stack
+
+6. Top K → Heap
+
+7. Take/Don't Take → DP
+
+8. Generate Everything → Backtracking
+
+9. Unweighted Shortest Path → BFS
+
+10. Dependencies → Topological Sort
+
+
+---
+
+🎯 2️⃣8️⃣ YOUR 30-SECOND PATTERN TEST
+
+Tomorrow, before coding any LeetCode/Unstop problem, spend 30 seconds asking:
+
+What is the clue?
+        ↓
+Which pattern matches?
+        ↓
+What is the brute force?
+        ↓
+Can the pattern optimize it?
+        ↓
+What's the complexity?
+        ↓
+CODE.
+
+This habit will make a huge difference in placement coding rounds.
+
+
+---
+
+📊 DAY 131 PROGRESS
+
+Area	Status
+
+DBMS	✅
+OS	✅
+CN	✅
+Core DSA Topics	✅
+Graphs	✅
+Pattern Recognition	🔥
+Two Pointers	✅
+Sliding Window	✅
+Prefix Sum	✅
+Binary Search	✅
+Monotonic Stack	✅
+Heap	✅
+DP	✅
+Backtracking	✅
+PYQs	🔄
+Aptitude	🔄
+Interview Prep	🔄
+
+
+🏆 DAY 131 COMPLETE
+
+You've completed 131 / 150 days.
+
+⏳ Remaining:
+
+\[
+\boxed{150-131=19\text{ days}}
+\]
+
+🔥 Only 19 days left to complete the full 150-day learning journey.
+
+🚀 NEXT — DAY 132
+
+💻 PLACEMENT CODING DAY — 10 MUST-SOLVE PROBLEMS
+
+We'll start doing mixed DSA problems without being told the topic, exactly like a real coding assessment.
+
+The challenge will be:
+
+> Read → identify pattern → choose approach → code → analyze complexity.
+
+
+
+That's the transition from DSA learner → placement problem solver. 🚀
