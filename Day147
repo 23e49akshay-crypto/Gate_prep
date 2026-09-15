@@ -1,0 +1,1167 @@
+# 📘 TODAY'S LEARNING — DAY 132 🔥
+
+**📅 15 September 2026**
+**🎯 Focus: Placement Coding + DSA Pattern Recognition**
+
+Yesterday we learned how to identify patterns. Today we **remove the labels**.
+
+I’ll give you problems the way a coding assessment does—you must first figure out **what pattern to use**.
+
+---
+
+# 🧠 1. THE PLACEMENT SOLVING FRAMEWORK
+
+For every problem:
+
+```text
+1️⃣ Understand
+      ↓
+2️⃣ Check constraints
+      ↓
+3️⃣ Identify pattern
+      ↓
+4️⃣ Think brute force
+      ↓
+5️⃣ Optimize
+      ↓
+6️⃣ Code
+      ↓
+7️⃣ Analyze complexity
+```
+
+### 🚨 Most important:
+
+**Don't start coding immediately.**
+
+First ask:
+
+> **“What pattern is hiding inside this problem?”**
+
+---
+
+# 🔥 2. PROBLEM 1 — TWO SUM
+
+### Given:
+
+```text
+nums = [2, 7, 11, 15]
+target = 9
+```
+
+Find two indices whose values add up to `target`.
+
+### Brute force
+
+Check every pair:
+
+$$
+O(n^2)
+$$
+
+### Better thinking
+
+For every number:
+
+```text
+needed = target - current
+```
+
+Store previously seen numbers.
+
+### Pattern:
+
+# 👉 HASHING
+
+### Python
+
+```python
+def twoSum(nums, target):
+    seen = {}
+
+    for i, x in enumerate(nums):
+        need = target - x
+
+        if need in seen:
+            return [seen[need], i]
+
+        seen[x] = i
+```
+
+### Complexity
+
+```text
+Time  → O(n)
+Space → O(n)
+```
+
+---
+
+# 🔥 3. PROBLEM 2 — BEST TIME TO BUY AND SELL STOCK
+
+Given:
+
+```text
+[7,1,5,3,6,4]
+```
+
+Buy once and sell once.
+
+Maximum profit?
+
+```text
+Buy = 1
+Sell = 6
+
+Profit = 5
+```
+
+### Naive:
+
+Try every buy/sell pair.
+
+$$
+O(n^2)
+$$
+
+### Better:
+
+Maintain:
+
+```text
+minimum price so far
+maximum profit
+```
+
+### Python
+
+```python
+def maxProfit(prices):
+    low = prices[0]
+    profit = 0
+
+    for price in prices:
+        low = min(low, price)
+        profit = max(profit, price - low)
+
+    return profit
+```
+
+### Complexity
+
+$$
+\boxed{O(n)}
+$$
+
+### 🧠 Pattern
+
+This is essentially a **one-pass greedy/state-tracking pattern**.
+
+---
+
+# 🔥 4. PROBLEM 3 — CONTAINS DUPLICATE
+
+```text
+[1,2,3,1]
+```
+
+Does any value appear more than once?
+
+### Pattern:
+
+# 👉 HASH SET
+
+```python
+def containsDuplicate(nums):
+    seen = set()
+
+    for x in nums:
+        if x in seen:
+            return True
+
+        seen.add(x)
+
+    return False
+```
+
+Complexity:
+
+```text
+Time  → O(n)
+Space → O(n)
+```
+
+### 🧠 Recognition clue:
+
+```text
+Need fast existence checking
+        ↓
+Hash Set
+```
+
+---
+
+# 🔥 5. PROBLEM 4 — LONGEST SUBSTRING WITHOUT REPEATING CHARACTERS
+
+Input:
+
+```text
+"abcabcbb"
+```
+
+Answer:
+
+```text
+3
+```
+
+Because:
+
+```text
+"abc"
+```
+
+is the longest substring without repetition.
+
+### Ask yourself:
+
+```text
+Substring?
+Longest?
+Need contiguous characters?
+```
+
+🚨 Pattern appears:
+
+# 👉 SLIDING WINDOW
+
+---
+
+## Python
+
+```python
+def lengthOfLongestSubstring(s):
+    seen = set()
+    left = 0
+    ans = 0
+
+    for right in range(len(s)):
+        while s[right] in seen:
+            seen.remove(s[left])
+            left += 1
+
+        seen.add(s[right])
+        ans = max(ans, right - left + 1)
+
+    return ans
+```
+
+### Complexity:
+
+$$
+O(n)
+$$
+
+---
+
+# 🔥 6. PROBLEM 5 — PRODUCT OF ARRAY EXCEPT SELF
+
+Given:
+
+```text
+[1,2,3,4]
+```
+
+Return:
+
+```text
+[24,12,8,6]
+```
+
+### Key idea:
+
+For each index:
+
+```text
+product of everything on left
+×
+product of everything on right
+```
+
+Use prefix and suffix products.
+
+### Python
+
+```python
+def productExceptSelf(nums):
+    ans = [1] * len(nums)
+
+    prefix = 1
+    for i in range(len(nums)):
+        ans[i] = prefix
+        prefix *= nums[i]
+
+    suffix = 1
+    for i in range(len(nums)-1, -1, -1):
+        ans[i] *= suffix
+        suffix *= nums[i]
+
+    return ans
+```
+
+### Complexity:
+
+```text
+Time  → O(n)
+Space → O(1) extra
+```
+
+### Pattern:
+
+# 👉 PREFIX / SUFFIX
+
+---
+
+# 🔥 7. PROBLEM 6 — VALID PARENTHESES
+
+Input:
+
+```text
+"({[]})"
+```
+
+Output:
+
+```text
+True
+```
+
+Input:
+
+```text
+"([)]"
+```
+
+Output:
+
+```text
+False
+```
+
+### Think:
+
+What must happen?
+
+```text
+Last opened
+must be
+first closed
+```
+
+That's exactly:
+
+# 👉 STACK
+
+### Python
+
+```python
+def isValid(s):
+    stack = []
+    pairs = {')': '(', ']': '[', '}': '{'}
+
+    for ch in s:
+        if ch in pairs:
+            if not stack or stack.pop() != pairs[ch]:
+                return False
+        else:
+            stack.append(ch)
+
+    return not stack
+```
+
+### Complexity:
+
+$$
+O(n)
+$$
+
+---
+
+# 🔥 8. PROBLEM 7 — BINARY SEARCH
+
+Given:
+
+```text
+[1,3,5,7,9]
+```
+
+Find `7`.
+
+### Clue:
+
+```text
+Sorted
++
+Search
+```
+
+Therefore:
+
+# 👉 BINARY SEARCH
+
+```python
+def search(nums, target):
+    left, right = 0, len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1
+```
+
+Complexity:
+
+$$
+\boxed{O(\log n)}
+$$
+
+---
+
+# 🔥 9. PROBLEM 8 — KTH LARGEST
+
+```text
+[3,2,1,5,6,4]
+k = 2
+```
+
+Answer:
+
+```text
+5
+```
+
+### Don't automatically sort.
+
+Clue:
+
+```text
+Kth largest
+```
+
+Think:
+
+# 👉 HEAP
+
+Maintain a min heap of size `k`.
+
+```python
+import heapq
+
+def kthLargest(nums, k):
+    heap = []
+
+    for x in nums:
+        heapq.heappush(heap, x)
+
+        if len(heap) > k:
+            heapq.heappop(heap)
+
+    return heap[0]
+```
+
+Complexity:
+
+$$
+\boxed{O(n\log k)}
+$$
+
+---
+
+# 🔥 10. PROBLEM 9 — NUMBER OF ISLANDS
+
+Grid:
+
+```text
+1 1 0 0
+1 0 0 1
+0 0 1 1
+```
+
+Count connected groups of `1`.
+
+### Clue:
+
+```text
+Grid
++
+Connected cells
+```
+
+Think:
+
+# 👉 DFS / BFS
+
+Each time you find an unvisited `1`:
+
+```text
+count += 1
+```
+
+then explore the entire island.
+
+### Pattern:
+
+```text
+Grid connectivity
+      ↓
+DFS / BFS
+```
+
+---
+
+# 🔥 11. PROBLEM 10 — HOUSE ROBBER
+
+```text
+[2,7,9,3,1]
+```
+
+Cannot rob adjacent houses.
+
+Answer:
+
+```text
+12
+```
+
+### At every house:
+
+```text
+Rob
+OR
+Skip
+```
+
+🚨 Pattern:
+
+# 👉 DP
+
+Transition:
+
+$$
+dp[i]=\max(dp[i-1], nums[i]+dp[i-2])
+$$
+
+---
+
+# 🧠 12. THE 10-PROBLEM PATTERN TABLE
+
+| Problem               | Pattern                 |
+| --------------------- | ----------------------- |
+| Two Sum               | Hashing                 |
+| Contains Duplicate    | Hash Set                |
+| Best Time to Buy/Sell | Greedy / State Tracking |
+| Longest Substring     | Sliding Window          |
+| Product Except Self   | Prefix/Suffix           |
+| Valid Parentheses     | Stack                   |
+| Binary Search         | Binary Search           |
+| Kth Largest           | Heap                    |
+| Number of Islands     | DFS/BFS                 |
+| House Robber          | DP                      |
+
+🔥 **This is exactly the skill we're building today.**
+
+---
+
+# 🚨 13. DON'T CONFUSE THESE
+
+### Two Sum
+
+Unsorted:
+
+```text
+HashMap
+```
+
+Sorted:
+
+```text
+Two Pointers
+```
+
+---
+
+### Shortest Path
+
+Unweighted:
+
+```text
+BFS
+```
+
+Weighted + non-negative:
+
+```text
+Dijkstra
+```
+
+---
+
+### Knapsack
+
+Fractional:
+
+```text
+Greedy
+```
+
+0/1:
+
+```text
+DP
+```
+
+---
+
+### Generate
+
+All subsets:
+
+```text
+Backtracking
+```
+
+Maximum/minimum/count:
+
+```text
+Often DP
+```
+
+---
+
+# 🧠 14. CONSTRAINTS MATTER
+
+Suppose:
+
+```text
+n ≤ 20
+```
+
+An:
+
+$$
+O(2^n)
+$$
+
+solution might be possible.
+
+But if:
+
+```text
+n ≤ 10^5
+```
+
+then:
+
+$$
+O(2^n)
+$$
+
+is impossible.
+
+### Rough placement rule:
+
+|     n | Usually consider            |
+| ----: | --------------------------- |
+|  ≤ 10 | Brute force / Backtracking  |
+|  ≤ 20 | Bitmask / Backtracking / DP |
+| ≤ 10³ | O(n²) may work              |
+| ≤ 10⁵ | O(n log n) / O(n)           |
+| ≤ 10⁶ | Usually O(n)                |
+
+Not absolute—but a useful first filter.
+
+---
+
+# ⚡ 15. BRUTE FORCE → OPTIMIZATION
+
+This is the core interview thought process.
+
+Example:
+
+### Two Sum
+
+Brute:
+
+```text
+Every pair
+↓
+O(n²)
+```
+
+Optimization:
+
+```text
+Need complement
+↓
+HashMap
+↓
+O(n)
+```
+
+---
+
+### Longest substring
+
+Brute:
+
+```text
+Every substring
+↓
+O(n²) or worse
+```
+
+Optimization:
+
+```text
+Maintain valid window
+↓
+Sliding Window
+↓
+O(n)
+```
+
+---
+
+### Kth largest
+
+Brute:
+
+```text
+Sort everything
+↓
+O(n log n)
+```
+
+Optimization:
+
+```text
+Only need K
+↓
+Heap
+↓
+O(n log k)
+```
+
+🔥 Interviewers love hearing this reasoning.
+
+---
+
+# 🎯 16. TODAY'S REAL INTERVIEW TEST
+
+Now **don't look for the answers immediately**.
+
+Identify ONLY the pattern.
+
+### Q1
+
+> Given a sorted array, find whether two numbers add to `target`.
+
+### Q2
+
+> Find the longest subarray with sum ≤ K.
+
+### Q3
+
+> Find the next greater element for every element.
+
+### Q4
+
+> Find the minimum number of coins required to make an amount.
+
+### Q5
+
+> Generate every permutation of an array.
+
+### Q6
+
+> Find the shortest path in an unweighted graph.
+
+### Q7
+
+> Find the top 10 most frequent numbers.
+
+### Q8
+
+> Determine whether a directed graph contains a cycle.
+
+### Q9
+
+> Find the maximum value obtainable by selecting non-adjacent elements.
+
+### Q10
+
+> Find the minimum feasible capacity to ship packages within D days.
+
+---
+
+# ✅ ANSWERS
+
+| Question | Pattern                    |
+| -------- | -------------------------- |
+| Q1       | Two Pointers               |
+| Q2       | Sliding Window*            |
+| Q3       | Monotonic Stack            |
+| Q4       | DP                         |
+| Q5       | Backtracking               |
+| Q6       | BFS                        |
+| Q7       | Heap                       |
+| Q8       | DFS / Topological approach |
+| Q9       | DP                         |
+| Q10      | Binary Search on Answer    |
+
+*Sliding window for Q2 depends on the exact constraints, especially whether all numbers are non-negative. With negative numbers, a standard sliding window doesn't generally work.
+
+---
+
+# 💻 17. ONE VERY IMPORTANT PATTERN
+
+## Binary Search on Answer
+
+Consider:
+
+> Find the minimum capacity needed to ship packages within `D` days.
+
+You're not searching for an element.
+
+You're searching:
+
+```text
+minimum possible answer
+```
+
+Imagine:
+
+```text
+capacity
+100  200  300  400  500
+ ❌   ❌   ❌   ✅   ✅
+```
+
+Once it becomes possible, everything larger is also possible.
+
+That gives:
+
+```text
+False False False True True
+```
+
+This is **monotonic**.
+
+Therefore:
+
+# 👉 Binary Search on Answer
+
+This pattern appears frequently in coding assessments.
+
+---
+
+# 🧠 18. MONOTONICITY = BINARY SEARCH CLUE
+
+If you can say:
+
+> “If X works, every value greater than X also works.”
+
+Think:
+
+# 🔥 BINARY SEARCH ON ANSWER
+
+Examples:
+
+* Minimum capacity
+* Minimum speed
+* Minimum time
+* Maximum minimum distance
+
+---
+
+# 🧪 19. MINI CODING CHALLENGE
+
+## Problem
+
+Given:
+
+```text
+nums = [1,2,3,4,5]
+```
+
+Find whether there exists a pair with sum:
+
+```text
+9
+```
+
+### Your thought process should be:
+
+```text
+Sorted?
+   ↓
+YES
+   ↓
+Pair?
+   ↓
+YES
+   ↓
+Two Pointers
+```
+
+Dry run:
+
+```text
+1 + 5 = 6
+```
+
+Too small:
+
+```text
+left++
+```
+
+```text
+2 + 5 = 7
+```
+
+Still small.
+
+```text
+3 + 5 = 8
+```
+
+Still small.
+
+```text
+4 + 5 = 9
+```
+
+Found.
+
+### Complexity:
+
+$$
+\boxed{O(n)}
+$$
+
+---
+
+# 🎤 20. INTERVIEW QUESTION
+
+### “How do you optimize a brute-force solution?”
+
+Don't say:
+
+> “I use a better algorithm.”
+
+Say:
+
+> “I first identify why the brute-force solution is expensive. Then I look for repeated work or useful structure in the input, such as sorted order, frequency information, overlapping subproblems, or contiguous ranges. Based on that, I replace unnecessary computation with a suitable data structure or algorithm—for example, a HashMap, sliding window, binary search, heap, or dynamic programming.”
+
+🔥 That's a much stronger interview answer.
+
+---
+
+# 🧠 21. TODAY'S GOLDEN CHEAT SHEET
+
+```text
+SORTED + PAIR
+→ TWO POINTERS
+
+FAST LOOKUP
+→ HASHING
+
+CONTIGUOUS + LONGEST/SHORTEST
+→ SLIDING WINDOW
+
+RANGE SUM
+→ PREFIX SUM
+
+SORTED + SEARCH
+→ BINARY SEARCH
+
+MIN/MAX FEASIBLE ANSWER
+→ BINARY SEARCH ON ANSWER
+
+NEXT GREATER/SMALLER
+→ MONOTONIC STACK
+
+TOP K / KTH
+→ HEAP
+
+TAKE / DON'T TAKE
+→ DP
+
+ALL POSSIBILITIES
+→ BACKTRACKING
+
+UNWEIGHTED SHORTEST PATH
+→ BFS
+
+GRAPH EXPLORATION
+→ DFS/BFS
+
+DEPENDENCIES
+→ TOPOLOGICAL SORT
+```
+
+---
+
+# ⚡ 22. APTITUDE — QUICK 5
+
+### Q1
+
+A number is increased by 25% and then decreased by 20%.
+
+Net change?
+
+$$
+1.25\times0.80=1
+$$
+
+### Answer:
+
+$$
+\boxed{0\%}
+$$
+
+---
+
+### Q2
+
+If 5 workers complete a job in 12 days, assuming equal efficiency, 10 workers take:
+
+$$
+\boxed6\text{ days}
+$$
+
+---
+
+### Q3
+
+A train travels 360 km at 60 km/h.
+
+Time:
+
+$$
+360/60=\boxed6\text{ hours}
+$$
+
+---
+
+### Q4
+
+Average of:
+
+```text
+15, 20, 25, 30, 35
+```
+
+$$
+125/5=\boxed25
+$$
+
+---
+
+### Q5
+
+If:
+
+$$
+2x+5=17
+$$
+
+then:
+
+$$
+\boxed{x=6}
+$$
+
+---
+
+# 🗣️ 23. DAILY COMMUNICATION PRACTICE
+
+### Topic:
+
+**“Explain one DSA problem you solved.”**
+
+Use this structure:
+
+```text
+Problem
+↓
+Brute Force
+↓
+Problem with Brute Force
+↓
+Optimized Approach
+↓
+Why it works
+↓
+Complexity
+```
+
+Example:
+
+> “For Two Sum, the brute-force approach checks every pair, which takes O(n²). Instead, I use a HashMap to store previously seen values. For each number, I calculate its required complement and check whether that complement already exists. This reduces the time complexity to O(n), with O(n) additional space.”
+
+🎯 Practice saying it aloud in **45 seconds**.
+
+---
+
+# 📊 DAY 132 PROGRESS
+
+| Area                         | Status |
+| ---------------------------- | ------ |
+| DBMS                         | ✅      |
+| OS                           | ✅      |
+| CN                           | ✅      |
+| Core DSA                     | ✅      |
+| Graphs                       | ✅      |
+| DP                           | ✅      |
+| Backtracking                 | ✅      |
+| **Pattern Recognition**      | 🔥     |
+| **Mixed Placement Problems** | 🔥     |
+| Aptitude                     | 🔄     |
+| Interview Communication      | 🔄     |
+| PYQs                         | 🔄     |
+
+# 🏆 DAY 132 COMPLETE
+
+$$
+\boxed{132/150}
+$$
+
+### ⏳ ONLY **18 DAYS LEFT** 🔥
+
+You've moved from learning individual DSA topics to the much more important skill:
+
+> **“Given an unfamiliar problem, identify the right approach.”**
+
+### 🚀 NEXT — DAY 133
+
+# 💻 PLACEMENT CODING — ARRAYS + STRINGS
+
+We'll attack **10 medium-level interview problems** involving:
+
+* Hashing
+* Two Pointers
+* Sliding Window
+* Prefix Sum
+* Binary Search
+* Stack
+
+**No topic will be revealed before each problem.**
+You'll first learn to recognize the pattern like an actual coding assessment. 💯
