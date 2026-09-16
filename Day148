@@ -1,0 +1,1238 @@
+# 📘 TODAY'S LEARNING — DAY 133 🔥
+
+**📅 16 September 2026**
+**🎯 Focus: Placement Coding — Arrays + Strings**
+
+Yesterday was **pattern recognition**. Today we make it harder:
+
+> **You will see the problem first → identify the pattern → then solve it.**
+
+No algorithm name is given upfront. This is closer to a real placement test.
+
+---
+
+# 🧠 1. TODAY'S CORE SKILL
+
+For every problem, follow:
+
+```text
+PROBLEM
+   ↓
+What is being asked?
+   ↓
+What structure do I see?
+   ↓
+Brute force
+   ↓
+Can I eliminate repeated work?
+   ↓
+Optimal pattern
+   ↓
+Code
+   ↓
+Complexity
+```
+
+---
+
+# 🔥 PROBLEM 1 — LONGEST CONSECUTIVE SEQUENCE
+
+Given:
+
+```text
+nums = [100, 4, 200, 1, 3, 2]
+```
+
+Find the length of the longest consecutive sequence.
+
+Answer:
+
+```text
+1, 2, 3, 4
+```
+
+So:
+
+$$
+\boxed{4}
+$$
+
+### ❌ Brute force
+
+Sort:
+
+```text
+[1,2,3,4,100,200]
+```
+
+Complexity:
+
+$$
+O(n\log n)
+$$
+
+But can we do better?
+
+### 🧠 Key observation
+
+For every number `x`, check:
+
+```text
+x - 1
+```
+
+If `x - 1` doesn't exist, `x` is the **start** of a sequence.
+
+Use a set.
+
+### Python
+
+```python
+def longestConsecutive(nums):
+    s = set(nums)
+    best = 0
+
+    for x in s:
+        if x - 1 not in s:
+            length = 1
+
+            while x + length in s:
+                length += 1
+
+            best = max(best, length)
+
+    return best
+```
+
+### Complexity
+
+Average:
+
+$$
+\boxed{O(n)}
+$$
+
+Space:
+
+$$
+\boxed{O(n)}
+$$
+
+### 🎯 Pattern
+
+**Hash Set + sequence-start detection**
+
+---
+
+# 🔥 PROBLEM 2 — CONTAINER WITH MOST WATER
+
+Given:
+
+```text
+height = [1,8,6,2,5,4,8,3,7]
+```
+
+Find two lines that contain the maximum amount of water.
+
+### Brute force
+
+Try every pair:
+
+$$
+O(n^2)
+$$
+
+### Observation
+
+Area:
+
+$$
+Area = \min(h_L,h_R)\times(R-L)
+$$
+
+Start with:
+
+```text
+L = 0
+R = n-1
+```
+
+Then:
+
+> Move the pointer with the **smaller height**.
+
+Why?
+
+Because the width decreases every time we move inward. Keeping the shorter side cannot improve the limiting height.
+
+### Python
+
+```python
+def maxArea(height):
+    left, right = 0, len(height) - 1
+    ans = 0
+
+    while left < right:
+        area = min(height[left], height[right]) * (right - left)
+        ans = max(ans, area)
+
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+
+    return ans
+```
+
+### Complexity
+
+$$
+\boxed{O(n)}
+$$
+
+### 🎯 Pattern
+
+**Two Pointers**
+
+---
+
+# 🔥 PROBLEM 3 — 3SUM
+
+Given:
+
+```text
+nums = [-1,0,1,2,-1,-4]
+```
+
+Find all unique triplets whose sum is `0`.
+
+Answer:
+
+```text
+[-1,-1,2]
+[-1,0,1]
+```
+
+### Brute force
+
+Three nested loops:
+
+$$
+O(n^3)
+$$
+
+Too slow.
+
+### Better idea
+
+1. Sort.
+2. Fix one number.
+3. Use two pointers for the remaining two.
+
+```text
+i
+ ↓
+[-4,-1,-1,0,1,2]
+     L       R
+```
+
+### Python
+
+```python
+def threeSum(nums):
+    nums.sort()
+    ans = []
+
+    for i in range(len(nums) - 2):
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+
+        left, right = i + 1, len(nums) - 1
+
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+
+            if total == 0:
+                ans.append([nums[i], nums[left], nums[right]])
+                left += 1
+                right -= 1
+
+                while left < right and nums[left] == nums[left - 1]:
+                    left += 1
+
+            elif total < 0:
+                left += 1
+            else:
+                right -= 1
+
+    return ans
+```
+
+### Complexity
+
+Sorting:
+
+$$
+O(n\log n)
+$$
+
+Two-pointer search:
+
+$$
+O(n^2)
+$$
+
+Overall:
+
+$$
+\boxed{O(n^2)}
+$$
+
+### 🎯 Pattern
+
+**Sorting + Two Pointers**
+
+---
+
+# 🔥 PROBLEM 4 — VALID ANAGRAM
+
+Are these strings anagrams?
+
+```text
+"listen"
+"silent"
+```
+
+Yes.
+
+### Observation
+
+They must contain exactly the same character frequencies.
+
+Use a frequency map.
+
+```python
+def isAnagram(s, t):
+    if len(s) != len(t):
+        return False
+
+    count = {}
+
+    for ch in s:
+        count[ch] = count.get(ch, 0) + 1
+
+    for ch in t:
+        count[ch] = count.get(ch, 0) - 1
+
+    return all(x == 0 for x in count.values())
+```
+
+### Complexity
+
+$$
+\boxed{O(n)}
+$$
+
+### 🎯 Pattern
+
+**Frequency HashMap**
+
+---
+
+# 🔥 PROBLEM 5 — GROUP ANAGRAMS
+
+Input:
+
+```text
+["eat","tea","tan","ate","nat","bat"]
+```
+
+Output groups:
+
+```text
+["eat","tea","ate"]
+["tan","nat"]
+["bat"]
+```
+
+### Key insight
+
+Anagrams have the same character-frequency signature.
+
+For example:
+
+```text
+eat → a:1,e:1,t:1
+tea → a:1,e:1,t:1
+ate → a:1,e:1,t:1
+```
+
+So use that signature as a dictionary key.
+
+### Python
+
+```python
+from collections import defaultdict
+
+def groupAnagrams(strs):
+    groups = defaultdict(list)
+
+    for s in strs:
+        key = [0] * 26
+
+        for ch in s:
+            key[ord(ch) - ord('a')] += 1
+
+        groups[tuple(key)].append(s)
+
+    return list(groups.values())
+```
+
+### Complexity
+
+If total characters = \(N\):
+
+$$
+\boxed{O(N)}
+$$
+
+for a fixed 26-letter alphabet.
+
+### 🎯 Pattern
+
+**Hashing + Frequency Signature**
+
+---
+
+# 🔥 PROBLEM 6 — LONGEST PALINDROMIC SUBSTRING
+
+Input:
+
+```text
+"babad"
+```
+
+Possible answer:
+
+```text
+"bab"
+```
+
+or:
+
+```text
+"aba"
+```
+
+### Key observation
+
+Every palindrome expands around a center.
+
+For:
+
+```text
+aba
+ ↑
+center
+```
+
+Expand:
+
+```text
+a b a
+```
+
+For even palindrome:
+
+```text
+abba
+ ↑↑
+center
+```
+
+There are two centers between the middle characters.
+
+### Python
+
+```python
+def longestPalindrome(s):
+    ans = ""
+
+    def expand(l, r):
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            l -= 1
+            r += 1
+        return s[l + 1:r]
+
+    for i in range(len(s)):
+        ans = max(ans, expand(i, i), expand(i, i + 1), key=len)
+
+    return ans
+```
+
+### Complexity
+
+$$
+\boxed{O(n^2)}
+$$
+
+Space:
+
+$$
+O(n)
+$$
+
+for the returned substring/result handling.
+
+### 🎯 Pattern
+
+**Expand Around Center**
+
+---
+
+# 🔥 PROBLEM 7 — PRODUCT OF ARRAY EXCEPT SELF
+
+Input:
+
+```text
+[1,2,3,4]
+```
+
+Output:
+
+```text
+[24,12,8,6]
+```
+
+The trick:
+
+```text
+answer[i]
+=
+left product × right product
+```
+
+Use two passes.
+
+```python
+def productExceptSelf(nums):
+    ans = [1] * len(nums)
+
+    prefix = 1
+    for i in range(len(nums)):
+        ans[i] = prefix
+        prefix *= nums[i]
+
+    suffix = 1
+    for i in range(len(nums) - 1, -1, -1):
+        ans[i] *= suffix
+        suffix *= nums[i]
+
+    return ans
+```
+
+### Complexity
+
+$$
+\boxed{O(n)}
+$$
+
+Extra space:
+
+$$
+\boxed{O(1)}
+$$
+
+excluding the output array.
+
+### 🎯 Pattern
+
+**Prefix + Suffix**
+
+---
+
+# 🔥 PROBLEM 8 — SUBARRAY SUM EQUALS K
+
+Given:
+
+```text
+nums = [1,2,3]
+k = 3
+```
+
+Answer:
+
+```text
+2
+```
+
+Because:
+
+```text
+[1,2]
+[3]
+```
+
+### Critical equation
+
+Let prefix sum be:
+
+$$
+P
+$$
+
+We need:
+
+$$
+P-current - P-previous = k
+$$
+
+Therefore:
+
+$$
+P_{previous}=P_{current}-k
+$$
+
+So store prefix sums in a HashMap.
+
+```python
+def subarraySum(nums, k):
+    count = {0: 1}
+    prefix = 0
+    ans = 0
+
+    for x in nums:
+        prefix += x
+
+        ans += count.get(prefix - k, 0)
+
+        count[prefix] = count.get(prefix, 0) + 1
+
+    return ans
+```
+
+### Complexity
+
+$$
+\boxed{O(n)}
+$$
+
+### 🎯 Pattern
+
+**Prefix Sum + HashMap**
+
+---
+
+# 🔥 PROBLEM 9 — MERGE INTERVALS
+
+Input:
+
+```text
+[[1,3],[2,6],[8,10],[15,18]]
+```
+
+Output:
+
+```text
+[[1,6],[8,10],[15,18]]
+```
+
+### Key observation
+
+Sort by starting point.
+
+Then compare:
+
+```text
+current interval
+vs
+previous merged interval
+```
+
+If:
+
+$$
+current.start \le previous.end
+$$
+
+they overlap.
+
+### Python
+
+```python
+def merge(intervals):
+    intervals.sort()
+    ans = []
+
+    for start, end in intervals:
+        if not ans or start > ans[-1][1]:
+            ans.append([start, end])
+        else:
+            ans[-1][1] = max(ans[-1][1], end)
+
+    return ans
+```
+
+### Complexity
+
+Sorting dominates:
+
+$$
+\boxed{O(n\log n)}
+$$
+
+### 🎯 Pattern
+
+**Sorting + Interval Merging**
+
+---
+
+# 🔥 PROBLEM 10 — DAILY TEMPERATURES
+
+Input:
+
+```text
+[73,74,75,71,69,72,76,73]
+```
+
+For each day, find how many days until a warmer temperature.
+
+### Key clue:
+
+> **Next greater element**
+
+Immediately think:
+
+# 👉 MONOTONIC STACK
+
+```python
+def dailyTemperatures(temperatures):
+    stack = []
+    ans = [0] * len(temperatures)
+
+    for i, temp in enumerate(temperatures):
+        while stack and temperatures[stack[-1]] < temp:
+            j = stack.pop()
+            ans[j] = i - j
+
+        stack.append(i)
+
+    return ans
+```
+
+### Complexity
+
+$$
+\boxed{O(n)}
+$$
+
+Why?
+
+Each index:
+
+```text
+push → at most once
+pop  → at most once
+```
+
+So total operations remain linear.
+
+---
+
+# 🧠 11. TODAY'S 10 PATTERNS
+
+| Problem                   | Hidden Pattern         |
+| ------------------------- | ---------------------- |
+| Longest Consecutive       | Hash Set               |
+| Container With Most Water | Two Pointers           |
+| 3Sum                      | Sorting + Two Pointers |
+| Valid Anagram             | Frequency Hashing      |
+| Group Anagrams            | Frequency Signature    |
+| Longest Palindrome        | Expand Around Center   |
+| Product Except Self       | Prefix + Suffix        |
+| Subarray Sum K            | Prefix Sum + HashMap   |
+| Merge Intervals           | Sorting                |
+| Daily Temperatures        | Monotonic Stack        |
+
+---
+
+# 🚨 12. INTERVIEW PATTERN TRAPS
+
+## Trap 1
+
+> "Find a pair."
+
+Does **not automatically mean Two Pointers**.
+
+Ask:
+
+```text
+Is it sorted?
+```
+
+If yes → Two Pointers may work.
+
+If no → HashMap may be better.
+
+---
+
+## Trap 2
+
+> "Find a subarray."
+
+Doesn't automatically mean Sliding Window.
+
+If negative numbers exist:
+
+```text
+Sliding Window
+```
+
+may fail.
+
+For exact sum:
+
+```text
+Prefix Sum + HashMap
+```
+
+may be appropriate.
+
+---
+
+## Trap 3
+
+> "Next greater."
+
+Immediately consider:
+
+```text
+Monotonic Stack
+```
+
+---
+
+# 🧠 13. THE MOST IMPORTANT DISTINCTION
+
+### Sliding Window
+
+Usually:
+
+```text
+contiguous
++
+maintain a valid window
+```
+
+Example:
+
+```text
+Longest substring without repeating characters
+```
+
+### Prefix Sum + HashMap
+
+Usually:
+
+```text
+subarray
++
+exact sum / count
+```
+
+Example:
+
+```text
+Number of subarrays with sum K
+```
+
+---
+
+# 🎯 14. CODING INTERVIEW METHOD
+
+When interviewer gives you a problem:
+
+### Step 1 — Restate
+
+> “So we need to find...”
+
+### Step 2 — Give brute force
+
+> “A straightforward approach would be...”
+
+### Step 3 — Identify bottleneck
+
+> “The problem with this is...”
+
+### Step 4 — Optimize
+
+> “We can avoid that repeated work by...”
+
+### Step 5 — Explain correctness
+
+> “This works because...”
+
+### Step 6 — Complexity
+
+> “Time is O(...), space is O(...).”
+
+### Step 7 — Code
+
+This makes your solution much easier to follow.
+
+---
+
+# 🧪 15. YOUR CHALLENGE — DON'T LOOK AT ANSWERS
+
+Identify the pattern **before solving**.
+
+### Q1
+
+Find whether a string contains duplicate characters.
+
+### Q2
+
+Find the longest subarray containing at most K distinct numbers.
+
+### Q3
+
+Find the next smaller element for every array element.
+
+### Q4
+
+Find the kth smallest number.
+
+### Q5
+
+Find all combinations that sum to a target.
+
+### Q6
+
+Find whether two intervals overlap.
+
+### Q7
+
+Find the shortest path in an unweighted grid.
+
+### Q8
+
+Find the maximum sum of non-adjacent elements.
+
+### Q9
+
+Search for an element in a sorted array.
+
+### Q10
+
+Find the number of subarrays whose sum equals K.
+
+---
+
+# ✅ ANSWERS
+
+```text
+Q1 → Hash Set
+
+Q2 → Sliding Window + HashMap
+
+Q3 → Monotonic Stack
+
+Q4 → Heap
+
+Q5 → Backtracking
+
+Q6 → Sorting / Interval logic
+
+Q7 → BFS
+
+Q8 → DP
+
+Q9 → Binary Search
+
+Q10 → Prefix Sum + HashMap
+```
+
+---
+
+# 💻 16. TODAY'S MUST-MASTER CODE
+
+Don't memorize 10 solutions.
+
+Master these **5 templates**:
+
+### HashMap
+
+```python
+seen = {}
+
+for x in nums:
+    if x in seen:
+        ...
+    seen[x] = ...
+```
+
+### Two Pointers
+
+```python
+left, right = 0, len(nums)-1
+
+while left < right:
+    ...
+```
+
+### Sliding Window
+
+```python
+left = 0
+
+for right in range(len(nums)):
+    ...
+    while invalid:
+        left += 1
+```
+
+### Prefix Sum
+
+```python
+prefix = 0
+count = {0: 1}
+
+for x in nums:
+    prefix += x
+    ...
+```
+
+### Monotonic Stack
+
+```python
+stack = []
+
+for i, x in enumerate(nums):
+    while stack and condition:
+        stack.pop()
+
+    stack.append(i)
+```
+
+🔥 These five patterns solve a **huge number of interview problems**.
+
+---
+
+# 🧠 17. GATE CONNECTION
+
+Today's concepts also connect directly to algorithm analysis:
+
+```text
+Hashing
+→ Expected O(1) lookup
+
+Sorting
+→ O(n log n)
+
+Two Pointers
+→ Often O(n)
+
+Stack
+→ Often O(n)
+
+Binary Search
+→ O(log n)
+
+Prefix Sum
+→ O(1) range query after O(n) preprocessing
+```
+
+The important GATE habit is:
+
+> **Always ask what operation is being repeated and whether preprocessing can eliminate it.**
+
+---
+
+# 🎤 18. INTERVIEW QUESTION OF THE DAY
+
+### Why is a HashMap often used to optimize an O(n²) problem?
+
+Strong answer:
+
+> “The brute-force solution often repeatedly searches for information inside the array, which can take O(n) per operation. A HashMap provides average O(1) lookup, allowing us to store previously processed information and avoid repeated searches. This can reduce an O(n²) solution to approximately O(n), at the cost of additional memory.”
+
+---
+
+# ⚡ 19. APTITUDE — QUICK 5
+
+### Q1
+
+A product costs ₹800 and is sold at ₹960.
+
+Profit percentage?
+
+$$
+\frac{160}{800}\times100
+=\boxed{20\%}
+$$
+
+---
+
+### Q2
+
+A number is increased by 10% twice.
+
+Overall increase:
+
+$$
+1.1\times1.1=1.21
+$$
+
+$$
+\boxed{21\%}
+$$
+
+---
+
+### Q3
+
+Ratio:
+
+$$
+3:5
+$$
+
+Total = 64.
+
+One part:
+
+$$
+64/8=8
+$$
+
+Numbers:
+
+$$
+\boxed{24,\ 40}
+$$
+
+---
+
+### Q4
+
+Simple interest on ₹10,000 at 8% for 2 years:
+
+$$
+SI=\frac{10000\times8\times2}{100}
+$$
+
+$$
+\boxed{₹1600}
+$$
+
+---
+
+### Q5
+
+Average of 6 numbers is 20.
+
+Their total:
+
+$$
+6\times20=\boxed{120}
+$$
+
+---
+
+# 🏆 20. DAY 133 CHECKPOINT
+
+Before finishing today, you should be able to answer instantly:
+
+```text
+Pair + sorted
+→ ?
+
+Longest contiguous window
+→ ?
+
+Exact subarray sum
+→ ?
+
+Next greater
+→ ?
+
+Kth largest
+→ ?
+
+All combinations
+→ ?
+
+Non-adjacent maximum
+→ ?
+
+Sorted search
+→ ?
+
+Unweighted shortest path
+→ ?
+```
+
+Answers:
+
+```text
+Two Pointers
+Sliding Window
+Prefix Sum + HashMap
+Monotonic Stack
+Heap
+Backtracking
+DP
+Binary Search
+BFS
+```
+
+---
+
+# 📊 YOUR 150-DAY JOURNEY
+
+| Progress   |         Status |
+| ---------- | -------------: |
+| Completed  | **133 days** ✅ |
+| Remaining  | **17 days** 🔥 |
+| Total      |            150 |
+| Completion |      **88.7%** |
+
+# 🚀 DAY 133 COMPLETE
+
+Only:
+
+$$
+\boxed{17\ DAYS}
+$$
+
+remain.
+
+And we're now in the **placement-focused final phase**.
+
+### NEXT → DAY 134
+
+# 🧩 MIXED MEDIUM DSA — REAL CODING ROUND
+
+Tomorrow we'll do problems where **I won't tell you the pattern or topic**.
+
+You'll get:
+
+```text
+Problem
+↓
+You identify pattern
+↓
+Brute force
+↓
+Optimal approach
+↓
+Python
+↓
+Dry run
+↓
+Complexity
+↓
+Interview explanation
+```
+
+**This is where we start training for the actual coding round, not just studying DSA.** 💯
